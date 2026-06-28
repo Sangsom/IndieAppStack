@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { PlausibleAnalytics } from "@/components/analytics/plausible-analytics";
 import "./globals.css";
 
 const sourceSerif = localFont({
@@ -39,7 +40,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={sourceSerif.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <PlausibleAnalytics />
+      </body>
     </html>
   );
 }

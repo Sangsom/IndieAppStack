@@ -1,0 +1,65 @@
+export const analyticsEvents = {
+  affiliate_link_clicked: {
+    description: "Visitor clicks through to an affiliate partner.",
+    goal: true,
+  },
+  article_read: {
+    description: "Visitor reaches a meaningful article-read milestone.",
+    goal: false,
+  },
+  cta_clicked: {
+    description: "Visitor clicks a primary call to action.",
+    goal: true,
+  },
+  newsletter_subscribed: {
+    description: "Visitor submits the newsletter subscription form.",
+    goal: true,
+  },
+  outbound_link_clicked: {
+    description: "Visitor clicks a non-affiliate outbound link.",
+    goal: false,
+  },
+  search_submitted: {
+    description: "Visitor submits an onsite search query.",
+    goal: false,
+  },
+  stack_recommendation_viewed: {
+    description: "Visitor views a stack recommendation.",
+    goal: false,
+  },
+} as const;
+
+export type AnalyticsEventName = keyof typeof analyticsEvents;
+
+export type AnalyticsEventProperties = {
+  affiliate_link_clicked: {
+    affiliate_link_id?: string;
+    location: string;
+    tool_slug: string;
+  };
+  article_read: {
+    article_slug: string;
+    milestone: "started" | "halfway" | "completed";
+  };
+  cta_clicked: {
+    href?: string;
+    label: string;
+    location: string;
+  };
+  newsletter_subscribed: {
+    location: string;
+  };
+  outbound_link_clicked: {
+    href: string;
+    location: string;
+  };
+  search_submitted: {
+    result_count?: number;
+    search_location: string;
+  };
+  stack_recommendation_viewed: {
+    stack_slug: string;
+  };
+};
+
+export type AnalyticsPropertyValue = boolean | number | string;

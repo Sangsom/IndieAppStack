@@ -16,7 +16,9 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - `npm run lint`
 - `npm run format`
 - `npm run typecheck`
+- `npm run design:contrast`
 - `npm run build`
+- `npm run security:check-supabase-key`
 
 ## Structure
 
@@ -41,3 +43,8 @@ Useful commands:
 - `npm run supabase:types` regenerates hosted database types.
 - `npm run supabase:types:local` regenerates local database types.
 - `npm run security:check-supabase-key` verifies the service-role key is absent from client bundles.
+
+## Deployment and Analytics
+
+- [Deployment runbook](docs/deployment.md)
+- [Analytics baseline](docs/analytics.md)
