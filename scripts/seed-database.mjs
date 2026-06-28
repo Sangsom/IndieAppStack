@@ -111,6 +111,7 @@ try {
             "RevenueCat helps solo developers ship reliable subscriptions without building receipt validation from scratch.",
           website_url: "https://www.revenuecat.com/",
           pricing_summary: "Free starter tier, then usage-based pricing.",
+          pricing_last_checked: "2026-06-28",
           pricing_model: "freemium",
           best_for: [
             "Subscriptions",
@@ -133,6 +134,7 @@ try {
             "Supabase is a pragmatic backend default for indie apps that need relational data and auth quickly.",
           website_url: "https://supabase.com/",
           pricing_summary: "Free tier, then project-based paid plans.",
+          pricing_last_checked: "2026-06-28",
           pricing_model: "freemium",
           best_for: ["Auth", "Postgres", "Rapid backend setup"],
           not_good_for: [
@@ -152,6 +154,7 @@ try {
             "TelemetryDeck gives app developers useful product analytics without invasive tracking.",
           website_url: "https://telemetrydeck.com/",
           pricing_summary: "Free tier, then event-volume pricing.",
+          pricing_last_checked: "2026-06-28",
           pricing_model: "freemium",
           best_for: [
             "Privacy-friendly analytics",
