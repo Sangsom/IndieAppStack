@@ -28,6 +28,11 @@ type ToolRow = {
   website_url: string | null;
 };
 
+type AffiliateLinkRow = {
+  destination_url: string;
+  tool_id: string | null;
+};
+
 type ArticleRow = {
   content_type: string;
   excerpt: string | null;
@@ -48,7 +53,7 @@ export type HomepageCategory = {
 };
 
 export type HomepageTool = {
-  affiliateHref: string;
+  affiliateHref?: string;
   bestFor: string[];
   category: string;
   detailsHref: string;
@@ -135,6 +140,7 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
     categoriesResult,
     toolsResult,
     toolCategoriesResult,
+    affiliateLinksResult,
     guidesResult,
     comparisonsResult,
   ] = await Promise.all([
@@ -156,6 +162,10 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
       .from("tool_categories")
       .select("tool_id,category_id,sort_order")
       .order("sort_order", { ascending: true }),
+    supabase
+      .from("affiliate_links")
+      .select("tool_id,destination_url")
+      .in("status", ["active", "pending"]),
     supabase
       .from("articles")
       .select(
@@ -182,6 +192,7 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
     categoriesResult.error,
     toolsResult.error,
     toolCategoriesResult.error,
+    affiliateLinksResult.error,
     guidesResult.error,
     comparisonsResult.error,
   ].find(Boolean);
@@ -201,6 +212,7 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
 
   const toolCountByCategoryId = new Map<string, number>();
   const categoryIdByToolId = new Map<string, string>();
+  const affiliateHrefByToolId = new Map<string, string>();
 
   toolCategoryRows.forEach((row) => {
     toolCountByCategoryId.set(
@@ -210,6 +222,12 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
 
     if (!categoryIdByToolId.has(row.tool_id)) {
       categoryIdByToolId.set(row.tool_id, row.category_id);
+    }
+  });
+
+  ((affiliateLinksResult.data ?? []) as AffiliateLinkRow[]).forEach((row) => {
+    if (row.tool_id && !affiliateHrefByToolId.has(row.tool_id)) {
+      affiliateHrefByToolId.set(row.tool_id, row.destination_url);
     }
   });
 
@@ -235,10 +253,7 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
       const monetization = categoryBySlug.get("monetization");
 
       return {
-        affiliateHref:
-          tool.slug === "revenuecat"
-            ? "/go/revenuecat"
-            : (tool.website_url ?? "#"),
+        affiliateHref: affiliateHrefByToolId.get(tool.id),
         bestFor: tool.best_for.length
           ? tool.best_for.slice(0, 3)
           : ["Mobile app teams"],

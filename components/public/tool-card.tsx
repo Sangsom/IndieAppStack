@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 type ToolCardProps = {
-  affiliateHref: string;
+  affiliateHref?: string;
   bestFor: string[];
   category: string;
   className?: string;
@@ -92,11 +92,13 @@ export function ToolCard({
       </section>
 
       <div className="mt-5 flex flex-wrap gap-3">
-        <AffiliateCta
-          href={affiliateHref}
-          kind="affiliate"
-          label="Try partner offer"
-        />
+        {affiliateHref ? (
+          <AffiliateCta
+            href={affiliateHref}
+            kind="affiliate"
+            label="Try partner offer"
+          />
+        ) : null}
         <AffiliateCta
           href={officialHref}
           kind="official"
