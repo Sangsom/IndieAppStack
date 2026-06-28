@@ -244,12 +244,39 @@ try {
             "A starter guide for choosing subscriptions, paywalls, and analytics tools.",
           excerpt:
             "A practical starting stack for indie mobile developers who need revenue infrastructure.",
-          body_markdown:
-            "RevenueCat, Supabase, and TelemetryDeck make a strong first stack for subscription apps.",
+          body_markdown: `## Start with the revenue workflow
+RevenueCat, Supabase, and TelemetryDeck make a strong first stack for subscription apps because each tool owns a clear job.
+
+> [!NOTE] Editorial note
+> Choose the smallest stack that lets you validate payment, entitlement, and retention signals.
+
+## Recommended stack
+- RevenueCat for subscriptions and entitlement sync.
+- Supabase for auth, Postgres, and app data.
+- TelemetryDeck for privacy-friendly product analytics.
+
+:::comparison Monetization starter comparison
+| Decision | RevenueCat | Supabase | TelemetryDeck |
+| --- | --- | --- | --- |
+| Primary job | Subscriptions | Backend | Analytics |
+| Best stage | MVP to scale | Prototype to growth | MVP to growth |
+| Pricing shape | Free tier, usage-based | Free tier, project-based | Free tier, event-volume |
+:::
+
+## Implementation note
+\`\`\`ts
+const stack = ["RevenueCat", "Supabase", "TelemetryDeck"];
+\`\`\`
+
+## What to revisit later
+Revisit paywall testing, lifecycle email, and attribution once the app has real subscription traffic.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("monetization").id,
+          seo_title: "Best monetization tools for solo mobile developers",
+          seo_description:
+            "A practical starter stack for mobile app monetization with subscriptions, backend, and analytics tools.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
@@ -261,12 +288,35 @@ try {
             "A practical comparison for solo builders choosing their first backend.",
           excerpt:
             "How to compare portability, auth, database fit, and launch speed when picking a mobile backend.",
-          body_markdown:
-            "Supabase and Firebase can both launch mobile apps quickly, but the better default depends on data shape, portability needs, and team habits.",
+          body_markdown: `## The short version
+Supabase and Firebase can both launch mobile apps quickly, but the better default depends on data shape, portability needs, and team habits.
+
+## Comparison table
+| Decision | Supabase | Firebase |
+| --- | --- | --- |
+| Data model | Relational Postgres | Document-first NoSQL |
+| Auth | Built in | Built in |
+| Portability | Strong SQL portability | Strong Google ecosystem fit |
+
+## When Supabase wins
+- Your app data is relational.
+- You want SQL reporting and direct database access.
+- You prefer an open-source backend path.
+
+## When Firebase wins
+- You already rely heavily on Google services.
+- Your app fits document-style syncing.
+- Your team knows Firebase deeply.
+
+> [!NOTE] Backend choice
+> Pick the backend your future debugging self can understand quickly.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "comparison",
           primary_category_id: categories.get("backend").id,
+          seo_title: "Supabase vs Firebase for indie mobile apps",
+          seo_description:
+            "A practical Supabase versus Firebase comparison for solo mobile app builders.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
@@ -278,15 +328,53 @@ try {
             "Useful defaults for measuring product behavior without heavy tracking.",
           excerpt:
             "A lightweight analytics approach for mobile apps that need signal without invasive data collection.",
-          body_markdown:
-            "TelemetryDeck is a strong starting point for privacy-conscious app analytics, especially when paired with a small event taxonomy.",
+          body_markdown: `## Start with fewer events
+TelemetryDeck is a strong starting point for privacy-conscious app analytics, especially when paired with a small event taxonomy.
+
+## Starter taxonomy
+| Event | Why it matters |
+| --- | --- |
+| onboarding_completed | Activation |
+| paywall_viewed | Monetization intent |
+| subscription_started | Revenue conversion |
+
+## Example naming
+\`\`\`json
+{
+  "event": "paywall_viewed",
+  "source": "settings"
+}
+\`\`\`
+
+> [!NOTE] Keep it small
+> A clear five-event taxonomy is better than a noisy dashboard nobody trusts.
+
+## Review cadence
+Review events monthly and remove anything that does not change product decisions.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("analytics").id,
+          seo_title: "Privacy-friendly analytics starter stack",
+          seo_description:
+            "A lightweight analytics setup for mobile apps that need useful product signal without invasive tracking.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
+        },
+        {
+          title: "Draft guide that should stay private",
+          slug: "draft-guide-private",
+          subtitle: "This seed record proves drafts stay out of public routes.",
+          excerpt: "A non-public draft article.",
+          body_markdown: "## Draft\nThis should not be public.",
+          author: "IndieAppStack",
+          status: "draft",
+          content_type: "guide",
+          primary_category_id: categories.get("backend").id,
+          human_reviewed: false,
+          ai_assisted: false,
+          published_at: null,
         },
       ],
       { onConflict: "slug" },

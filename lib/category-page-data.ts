@@ -427,7 +427,7 @@ export const getCategoryPageData = cache(
       guides: ((guidesResult.data ?? []) as ArticleRow[]).map((guide) => ({
         description:
           guide.excerpt ?? guide.subtitle ?? "A related category guide.",
-        href: `/guides`,
+        href: `/guides/${guide.slug}`,
         title: guide.title,
       })),
       tools,

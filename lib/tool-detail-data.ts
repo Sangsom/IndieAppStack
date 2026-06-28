@@ -136,19 +136,11 @@ function formatPricing(model: string, summary: string | null) {
   return labels[model] ?? model.replaceAll("_", " ");
 }
 
-function articleHref(article: ArticleRow) {
-  if (article.content_type === "comparison") {
-    return `/comparisons`;
-  }
-
-  return `/guides`;
-}
-
 function formatArticle(article: ArticleRow): ToolDetailArticle {
   return {
     description:
       article.excerpt ?? article.subtitle ?? "A related field guide entry.",
-    href: articleHref(article),
+    href: `/guides/${article.slug}`,
     label: article.content_type.replaceAll("_", " "),
     title: article.title,
   };
