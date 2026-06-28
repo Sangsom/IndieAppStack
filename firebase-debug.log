@@ -1,0 +1,6 @@
+[debug] [2026-06-28T14:37:01.597Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-28T14:37:01.598Z] > authorizing via signed-in user (rinalds.domanovs@mapon.com)
+[debug] [2026-06-28T14:37:01.599Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-28T14:37:01.599Z] > authorizing via signed-in user (rinalds.domanovs@mapon.com)
+[debug] [2026-06-28T14:37:01.607Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-28T14:37:01.608Z] > authorizing via signed-in user (rinalds.domanovs@mapon.com)

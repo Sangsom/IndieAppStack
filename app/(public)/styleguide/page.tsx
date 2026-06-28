@@ -11,7 +11,7 @@ export default function StyleguidePage() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 py-12 sm:px-10">
+    <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
       <header className="border-b border-rule pb-8">
         <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.18em] text-pine">
           Field Guide
@@ -133,6 +133,6 @@ export default function StyleguidePage() {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

@@ -14,6 +14,30 @@ export type Database = {
   };
   public: {
     Tables: {
+      admin_users: {
+        Row: {
+          created_at: string;
+          email: string;
+          role: Database["public"]["Enums"]["admin_role"];
+          updated_at: string;
+          user_id: string;
+        };
+        Insert: {
+          created_at?: string;
+          email: string;
+          role?: Database["public"]["Enums"]["admin_role"];
+          updated_at?: string;
+          user_id: string;
+        };
+        Update: {
+          created_at?: string;
+          email?: string;
+          role?: Database["public"]["Enums"]["admin_role"];
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       affiliate_links: {
         Row: {
           affiliate_program_id: string | null;
@@ -625,9 +649,11 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      has_admin_role: { Args: { target_user_id?: string }; Returns: boolean };
       healthcheck: { Args: never; Returns: number };
     };
     Enums: {
+      admin_role: "admin";
       affiliate_link_status: "pending" | "active" | "inactive" | "broken";
       affiliate_program_status:
         "not_applied" | "applied" | "approved" | "rejected" | "paused";
@@ -781,6 +807,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      admin_role: ["admin"],
       affiliate_link_status: ["pending", "active", "inactive", "broken"],
       affiliate_program_status: [
         "not_applied",

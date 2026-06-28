@@ -48,3 +48,4 @@ Useful commands:
 
 - [Deployment runbook](docs/deployment.md)
 - [Analytics baseline](docs/analytics.md)
+- [Admin authentication](docs/admin-auth.md)

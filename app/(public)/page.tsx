@@ -7,7 +7,7 @@ export default async function Home() {
   const supabaseHealthcheck = await getSupabaseHealthcheck();
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-5xl flex-col justify-center px-6 py-16 sm:px-10">
+    <section className="mx-auto flex min-h-[calc(100dvh-4rem)] w-full max-w-5xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
       <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-pine">
         Field Guide
       </p>
@@ -29,6 +29,6 @@ export default async function Home() {
         />
         {supabaseHealthcheck.message}
       </div>
-    </main>
+    </section>
   );
 }
