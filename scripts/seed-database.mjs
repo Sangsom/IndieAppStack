@@ -251,6 +251,40 @@ try {
           ai_assisted: false,
           published_at: new Date().toISOString(),
         },
+        {
+          title: "Supabase vs Firebase for indie mobile apps",
+          slug: "supabase-vs-firebase-indie-mobile-apps",
+          subtitle:
+            "A practical comparison for solo builders choosing their first backend.",
+          excerpt:
+            "How to compare portability, auth, database fit, and launch speed when picking a mobile backend.",
+          body_markdown:
+            "Supabase and Firebase can both launch mobile apps quickly, but the better default depends on data shape, portability needs, and team habits.",
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("backend").id,
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "A privacy-friendly analytics starter stack",
+          slug: "privacy-friendly-analytics-starter-stack",
+          subtitle:
+            "Useful defaults for measuring product behavior without heavy tracking.",
+          excerpt:
+            "A lightweight analytics approach for mobile apps that need signal without invasive data collection.",
+          body_markdown:
+            "TelemetryDeck is a strong starting point for privacy-conscious app analytics, especially when paired with a small event taxonomy.",
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("analytics").id,
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
       ],
       { onConflict: "slug" },
     ),
@@ -274,6 +308,18 @@ try {
         tool_id: tools.get("supabase").id,
         relationship: "supporting",
         sort_order: 20,
+      },
+      {
+        article_id: articles.get("supabase-vs-firebase-indie-mobile-apps").id,
+        tool_id: tools.get("supabase").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("privacy-friendly-analytics-starter-stack").id,
+        tool_id: tools.get("telemetrydeck").id,
+        relationship: "recommended",
+        sort_order: 10,
       },
     ],
     { onConflict: "article_id,tool_id" },
