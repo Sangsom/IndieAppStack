@@ -1,39 +1,98 @@
 @import "tailwindcss";
+@config "../tailwind.config.mjs";
 
 :root {
-  --background: #f6f3ea;
-  --foreground: #1d241f;
-  --ink: #1d241f;
-  --muted: #5b655c;
-  --paper: #fffdf7;
-  --line: #d8d1c2;
-  --pine: #1f5a3f;
-  --sage: #9eb7a2;
-  --site-font-serif: Georgia, "Times New Roman", serif;
-  --site-font-sans:
+  --color-paper: #fbfaf7;
+  --color-surface: #ffffff;
+  --color-ink: #20241f;
+  --color-muted: #6e6a5e;
+  --color-pine: #2c5f4f;
+  --color-accent-soft: #e8efea;
+  --color-gold: #9a6b23;
+  --color-rule: #e7e2d7;
+  --color-danger: #9e4434;
+  --color-focus: #2c5f4f;
+
+  --font-serif-display:
+    var(--font-source-serif), "Iowan Old Style", Georgia, serif;
+  --font-sans-body:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
+  --font-mono-label:
+    "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --radius-card: 7px;
+  --radius-button: 6px;
+  --radius-badge: 4px;
+
+  --shadow-field: 0 1px 2px rgba(40, 35, 20, 0.05);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-ink: var(--ink);
-  --color-muted: var(--muted);
-  --color-paper: var(--paper);
-  --color-line: var(--line);
-  --color-pine: var(--pine);
-  --color-sage: var(--sage);
-  --font-sans: var(--site-font-sans);
-  --font-serif: var(--site-font-serif);
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-paper: var(--color-paper);
+  --color-surface: var(--color-surface);
+  --color-ink: var(--color-ink);
+  --color-muted: var(--color-muted);
+  --color-pine: var(--color-pine);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-gold: var(--color-gold);
+  --color-rule: var(--color-rule);
+  --color-danger: var(--color-danger);
+  --color-focus: var(--color-focus);
+
+  --font-sans: var(--font-sans-body);
+  --font-serif: var(--font-serif-display);
+  --font-mono: var(--font-mono-label);
+
+  --radius-card: var(--radius-card);
+  --radius-button: var(--radius-button);
+  --radius-badge: var(--radius-badge);
+
+  --shadow-field: var(--shadow-field);
+
+  --text-display-xl: 4rem;
+  --text-display-xl--line-height: 1.02;
+  --text-display-lg: 3rem;
+  --text-display-lg--line-height: 1.08;
+  --text-display-md: 2.25rem;
+  --text-display-md--line-height: 1.14;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.75rem;
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.625rem;
+  --text-label-sm: 0.75rem;
+  --text-label-sm--line-height: 1rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--site-font-sans);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans-body);
 }
 
 * {
   box-sizing: border-box;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

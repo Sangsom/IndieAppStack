@@ -1,0 +1,96 @@
+export const designTokens = {
+  colors: [
+    {
+      name: "Paper",
+      token: "--color-paper",
+      value: "#FBFAF7",
+      use: "Page background",
+      className: "bg-paper",
+    },
+    {
+      name: "Surface",
+      token: "--color-surface",
+      value: "#FFFFFF",
+      use: "Cards and tables",
+      className: "bg-surface",
+    },
+    {
+      name: "Ink",
+      token: "--color-ink",
+      value: "#20241F",
+      use: "Primary text",
+      className: "bg-ink",
+    },
+    {
+      name: "Muted",
+      token: "--color-muted",
+      value: "#6E6A5E",
+      use: "Secondary text",
+      className: "bg-muted",
+    },
+    {
+      name: "Pine",
+      token: "--color-pine",
+      value: "#2C5F4F",
+      use: "CTAs, links, accents",
+      className: "bg-pine",
+    },
+    {
+      name: "Accent soft",
+      token: "--color-accent-soft",
+      value: "#E8EFEA",
+      use: "Tinted backgrounds",
+      className: "bg-accent-soft",
+    },
+    {
+      name: "Gold",
+      token: "--color-gold",
+      value: "#9A6B23",
+      use: "Sparing highlights",
+      className: "bg-gold",
+    },
+    {
+      name: "Rule",
+      token: "--color-rule",
+      value: "#E7E2D7",
+      use: "Borders and dividers",
+      className: "bg-rule",
+    },
+    {
+      name: "Danger",
+      token: "--color-danger",
+      value: "#9E4434",
+      use: "Errors and not-good-for notes",
+      className: "bg-danger",
+    },
+  ],
+  radii: [
+    { name: "Card", token: "--radius-card", value: "7px" },
+    { name: "Button", token: "--radius-button", value: "6px" },
+    { name: "Badge", token: "--radius-badge", value: "4px" },
+  ],
+  typeScale: [
+    { name: "Display XL", className: "text-display-xl", sample: "Field Guide" },
+    {
+      name: "Display LG",
+      className: "text-display-lg",
+      sample: "Tool directory",
+    },
+    {
+      name: "Display MD",
+      className: "text-display-md",
+      sample: "Category pages",
+    },
+    {
+      name: "Body LG",
+      className: "text-body-lg",
+      sample: "Practical advice for solo mobile developers.",
+    },
+    {
+      name: "Body MD",
+      className: "text-body-md",
+      sample: "Useful notes, pricing caveats, and editorial context.",
+    },
+    { name: "Label SM", className: "text-label-sm", sample: "PLATFORM" },
+  ],
+} as const;
