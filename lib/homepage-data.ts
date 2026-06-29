@@ -124,7 +124,10 @@ function formatArticle(
   return {
     category: category ?? row.content_type.replaceAll("_", " "),
     description: row.excerpt ?? row.subtitle ?? "A practical field guide note.",
-    href: `/guides/${row.slug}`,
+    href:
+      row.content_type === "comparison"
+        ? `/comparisons/${row.slug}`
+        : `/guides/${row.slug}`,
     publishedAt: formatDate(row.published_at),
     title: row.title,
   };

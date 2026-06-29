@@ -1,4 +1,5 @@
 import { ComparisonTable } from "@/components/public/comparison-table";
+import { InlineMarkdown } from "@/components/public/inline-markdown";
 import { Callout } from "@/components/ui/callout";
 import type { ArticleMarkdownBlock } from "@/lib/article-markdown";
 
@@ -31,7 +32,7 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
         if (block.type === "paragraph") {
           return (
             <p className="text-body-md leading-8 text-muted" key={index}>
-              {block.text}
+              <InlineMarkdown text={block.text} />
             </p>
           );
         }
@@ -45,7 +46,9 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
               {block.items.map((item) => (
                 <li className="flex gap-2" key={item}>
                   <span aria-hidden="true">-</span>
-                  <span>{item}</span>
+                  <span>
+                    <InlineMarkdown text={item} />
+                  </span>
                 </li>
               ))}
             </ul>
@@ -66,7 +69,7 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
         if (block.type === "callout") {
           return (
             <Callout key={index} title={block.title}>
-              {block.body}
+              <InlineMarkdown text={block.body} />
             </Callout>
           );
         }

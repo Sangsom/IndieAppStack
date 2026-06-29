@@ -1,3 +1,4 @@
+import { InlineMarkdown } from "@/components/public/inline-markdown";
 import { cn } from "@/lib/utils";
 
 export type ComparisonColumn = {
@@ -94,7 +95,7 @@ export function ComparisonTable({
                       )}
                       key={column.key}
                     >
-                      {getCellValue(cell)}
+                      <InlineMarkdown text={getCellValue(cell)} />
                     </td>
                   );
                 })}

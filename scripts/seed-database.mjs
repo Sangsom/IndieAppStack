@@ -899,28 +899,56 @@ Last checked: 2026-06-29.`,
             "A practical comparison for solo builders choosing their first backend.",
           excerpt:
             "How to compare portability, auth, database fit, and launch speed when picking a mobile backend.",
-          body_markdown: `## The short version
-Supabase and Firebase can both launch mobile apps quickly, but the better default depends on data shape, portability needs, and team habits.
+          body_markdown: `## Short answer
+Choose [Supabase](/tools/supabase) when your app data is relational, you want SQL visibility, and portability matters. Choose [Firebase](/tools/firebase) when you already want Google's mobile backend ecosystem, document-style data, and Crashlytics/Analytics nearby.
 
 ## Comparison table
+:::comparison Backend fit
 | Decision | Supabase | Firebase |
 | --- | --- | --- |
 | Data model | Relational Postgres | Document-first NoSQL |
 | Auth | Built in | Built in |
-| Portability | Strong SQL portability | Strong Google ecosystem fit |
+| Best fit | SQL-backed app data | Google ecosystem mobile apps |
+| Portability | Strong SQL portability | Strong Google platform fit |
+| Source | [Supabase pricing](https://supabase.com/pricing) | [Firebase pricing](https://firebase.google.com/pricing) |
+:::
 
-## When Supabase wins
-- Your app data is relational.
-- You want SQL reporting and direct database access.
-- You prefer an open-source backend path.
+## Tool-by-tool breakdown
+### Supabase
+[Supabase](/tools/supabase) fits apps that want Postgres, SQL reporting, Auth, Storage, and a backend that feels close to a normal database-backed product.
 
-## When Firebase wins
-- You already rely heavily on Google services.
-- Your app fits document-style syncing.
-- Your team knows Firebase deeply.
+### Firebase
+[Firebase](/tools/firebase) fits apps that want a broad mobile backend suite, fast setup, Google ecosystem integrations, and a document-first data model.
 
-> [!NOTE] Backend choice
-> Pick the backend your future debugging self can understand quickly.`,
+## Recommendation matrix
+:::comparison Best choice by use case
+| Use case | Recommended choice | Why |
+| --- | --- | --- |
+| Relational app data | Supabase | Postgres keeps joins, reporting, and migrations familiar |
+| Google-first mobile stack | Firebase | Firebase keeps auth, analytics, messaging, and Crashlytics close together |
+| SQL reporting needs | Supabase | Direct SQL access is easier to reason about |
+| Document sync mental model | Firebase | Firestore is designed around document collections |
+:::
+
+## Pricing comparison
+Last checked: 2026-06-29. Use the official [Supabase pricing](https://supabase.com/pricing) and [Firebase pricing](https://firebase.google.com/pricing) pages before committing, because usage limits and product packaging can change.
+
+## Setup complexity
+Supabase is simple when the team is comfortable with SQL, schema design, and migrations. Firebase is simple when the app fits Firebase defaults and the team wants less database administration.
+
+## Platform support
+Both can support iOS, Android, and web apps. The practical difference is not platform availability; it is whether your future product logic is easier as relational SQL or Firebase documents.
+
+## Recommendation
+For most indie apps with structured app data, Supabase is the cleaner default. Choose Firebase when the app benefits from staying inside Firebase's mobile product suite.
+
+## Affiliate disclosure
+This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+
+## Related tools and guides
+- Compare [Supabase](/tools/supabase) and [Firebase](/tools/firebase).
+- Review the [backend category](/categories/backend).
+- Pair this with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).`,
           author: "IndieAppStack",
           status: "published",
           content_type: "comparison",
@@ -928,6 +956,207 @@ Supabase and Firebase can both launch mobile apps quickly, but the better defaul
           seo_title: "Supabase vs Firebase for indie mobile apps",
           seo_description:
             "A practical Supabase versus Firebase comparison for solo mobile app builders.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "RevenueCat vs Adapty for iOS subscriptions",
+          slug: "revenuecat-vs-adapty-ios-subscriptions",
+          subtitle:
+            "A practical comparison for subscription infrastructure, paywalls, experiments, and analytics.",
+          excerpt:
+            "Compare RevenueCat and Adapty before choosing a subscription and paywall stack for an iOS app.",
+          body_markdown: `## Short answer
+Choose [RevenueCat](/tools/revenuecat) when subscription infrastructure, receipt validation, and entitlement reliability are the core job. Choose [Adapty](/tools/adapty) when no-code paywalls, experiments, and subscription analytics are a larger part of the workflow.
+
+## Comparison table
+:::comparison Subscription tool fit
+| Decision | RevenueCat | Adapty |
+| --- | --- | --- |
+| Primary job | Purchases and entitlements | Paywalls, experiments, and subscription analytics |
+| Strongest fit | Infrastructure-first subscription apps | Growth workflow around paywalls |
+| Team stage | MVP to scale | MVP to scale |
+| Source | [RevenueCat pricing](https://www.revenuecat.com/pricing/) | [Adapty pricing](https://adapty.io/pricing/) |
+:::
+
+## Tool-by-tool breakdown
+### RevenueCat
+[RevenueCat](/tools/revenuecat) is the stronger default when the team wants a reliable subscription backend first: products, purchases, receipt validation, entitlements, and cross-platform customer state.
+
+### Adapty
+[Adapty](/tools/adapty) is a better fit when the paywall workflow itself is the main operating surface, especially if the team wants visual paywall iteration, experiments, and analytics in one place.
+
+## Recommendation matrix
+:::comparison Best choice by use case
+| Use case | Recommended choice | Why |
+| --- | --- | --- |
+| Subscription backend first | RevenueCat | Entitlements and purchase infrastructure are the center |
+| Paywall experimentation first | Adapty | Paywall iteration and analytics are more prominent |
+| Small solo app launching subscriptions | RevenueCat | Fewer moving parts for the core purchase path |
+| Growth team optimizing upgrade screens | Adapty | More emphasis on paywall and experiment workflows |
+:::
+
+## Pricing comparison
+Last checked: 2026-06-29. Check [RevenueCat pricing](https://www.revenuecat.com/pricing/) and [Adapty pricing](https://adapty.io/pricing/) before choosing. Do not rely on copied plan names or thresholds without checking the official pricing pages.
+
+## Setup complexity
+RevenueCat setup complexity is usually around product configuration, SDK integration, and entitlement modeling. Adapty setup complexity is similar for purchases, then adds paywall configuration and experiment workflow decisions.
+
+## Platform support
+Both are relevant for iOS subscription apps and broader mobile subscription workflows. Confirm current SDK coverage and store support in official docs before implementing.
+
+## Recommendation
+Start with RevenueCat if you mainly need durable purchase infrastructure. Choose Adapty if the team expects frequent paywall iteration to be the primary operating loop.
+
+## Affiliate disclosure
+This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+
+## Related tools and guides
+- Compare [RevenueCat](/tools/revenuecat) and [Adapty](/tools/adapty).
+- Review the [paywalls category](/categories/paywalls).
+- Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("paywalls").id,
+          seo_title: "RevenueCat vs Adapty for iOS subscriptions",
+          seo_description:
+            "Compare RevenueCat and Adapty for iOS subscriptions, paywalls, entitlements, setup complexity, pricing checks, and best use cases.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "Appfigures vs AppTweak for ASO research",
+          slug: "appfigures-vs-apptweak-aso-tools",
+          subtitle:
+            "How to choose between app intelligence, review monitoring, and keyword research workflows.",
+          excerpt:
+            "Compare Appfigures and AppTweak for indie app store optimization and competitor research.",
+          body_markdown: `## Short answer
+Choose [AppTweak](/tools/apptweak) when keyword research and ASO planning are the main jobs. Choose [Appfigures](/tools/appfigures) when app intelligence, rankings, reviews, and ongoing store monitoring are the bigger need.
+
+## Comparison table
+:::comparison ASO workflow fit
+| Decision | Appfigures | AppTweak |
+| --- | --- | --- |
+| Primary job | App intelligence and monitoring | ASO research and optimization |
+| Strongest fit | Rankings, reviews, market signal | Keywords, metadata, competitor ASO |
+| Team stage | Launch to growth | Launch to growth |
+| Source | [Appfigures pricing](https://appfigures.com/pricing) | [AppTweak pricing](https://www.apptweak.com/pricing) |
+:::
+
+## Tool-by-tool breakdown
+### Appfigures
+[Appfigures](/tools/appfigures) is useful when the team wants a broad read on store performance, rankings, review changes, and market intelligence over time.
+
+### AppTweak
+[AppTweak](/tools/apptweak) is a stronger fit when the next job is picking keywords, auditing metadata, and improving the search side of an app listing.
+
+## Recommendation matrix
+:::comparison Best choice by use case
+| Use case | Recommended choice | Why |
+| --- | --- | --- |
+| Keyword research sprint | AppTweak | ASO planning is the center of the workflow |
+| Ongoing rank and review monitoring | Appfigures | Broader app intelligence is the core job |
+| Metadata refresh before launch | AppTweak | Better fit for search intent and competitor metadata work |
+| Portfolio-level store tracking | Appfigures | Better fit for monitoring multiple apps over time |
+:::
+
+## Pricing comparison
+Last checked: 2026-06-29. Check [Appfigures pricing](https://appfigures.com/pricing) and [AppTweak pricing](https://www.apptweak.com/pricing) directly before buying, especially if you need multiple apps, countries, keywords, seats, or advanced intelligence features.
+
+## Setup complexity
+Both tools are lighter to adopt than engineering tools. The real setup cost is deciding which apps, countries, keywords, and competitors to track so the dashboard does not become noise.
+
+## Platform support
+Both are relevant to App Store and Google Play research workflows. Confirm current country, keyword, and store coverage on the official product pages before committing.
+
+## Recommendation
+Pick AppTweak when you are actively rewriting the listing around keywords. Pick Appfigures when you need a broader monitoring habit around rankings, reviews, and market signal.
+
+## Affiliate disclosure
+This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+
+## Related tools and guides
+- Compare [Appfigures](/tools/appfigures) and [AppTweak](/tools/apptweak).
+- Review the [ASO category](/categories/aso).
+- Read [Best ASO tools for indie developers](/guides/best-aso-tools-for-indie-developers).`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("aso").id,
+          seo_title: "Appfigures vs AppTweak for ASO research",
+          seo_description:
+            "Compare Appfigures and AppTweak for ASO research, rankings, reviews, keyword workflows, setup complexity, pricing checks, and best use cases.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "Sentry vs Firebase Crashlytics for mobile apps",
+          slug: "sentry-vs-firebase-crashlytics-mobile-apps",
+          subtitle:
+            "A practical crash reporting comparison for indie iOS and Android teams.",
+          excerpt:
+            "Compare Sentry and Firebase Crashlytics for crash reporting, errors, setup complexity, and release monitoring.",
+          body_markdown: `## Short answer
+Choose [Sentry](/tools/sentry) when you want error monitoring that can span mobile, backend, and web surfaces. Choose [Firebase](/tools/firebase) Crashlytics when your app already uses Firebase and you want crash reporting inside that mobile stack.
+
+## Comparison table
+:::comparison Crash reporting fit
+| Decision | Sentry | Firebase Crashlytics |
+| --- | --- | --- |
+| Primary job | Error monitoring across app surfaces | Mobile crash reporting in Firebase |
+| Strongest fit | Cross-platform error visibility | Firebase-native mobile apps |
+| Team stage | MVP to scale | MVP to scale |
+| Source | [Sentry pricing](https://sentry.io/pricing/) | [Firebase Crashlytics](https://firebase.google.com/products/crashlytics) |
+:::
+
+## Tool-by-tool breakdown
+### Sentry
+[Sentry](/tools/sentry) is useful when crashes, handled errors, releases, and traces need to be visible across more than the mobile app.
+
+### Firebase Crashlytics
+[Firebase](/tools/firebase) Crashlytics fits teams already using Firebase who want native mobile crash reporting close to Firebase Analytics and other Firebase services.
+
+## Recommendation matrix
+:::comparison Best choice by use case
+| Use case | Recommended choice | Why |
+| --- | --- | --- |
+| Firebase app already in production | Firebase Crashlytics | Keeps crash reporting in the same operational stack |
+| Mobile plus backend/web monitoring | Sentry | One error-monitoring workflow can span surfaces |
+| First lightweight mobile crash setup | Firebase Crashlytics | Especially simple if Firebase is already installed |
+| Release regression analysis across services | Sentry | Stronger fit when errors cross app boundaries |
+:::
+
+## Pricing comparison
+Last checked: 2026-06-29. Check [Sentry pricing](https://sentry.io/pricing/) and [Firebase pricing](https://firebase.google.com/pricing) before deciding. Also review [Firebase Crashlytics](https://firebase.google.com/products/crashlytics) for current product scope.
+
+## Setup complexity
+Crashlytics is usually simplest when Firebase is already in the app. Sentry can still be straightforward, but the team should decide what platforms, releases, environments, and alerts belong in the same project.
+
+## Platform support
+Both are relevant for mobile crash monitoring. Sentry also covers broader application surfaces, while Crashlytics is centered on Firebase's mobile app workflow.
+
+## Recommendation
+Use Crashlytics if Firebase is already the center of the app stack. Use Sentry if you want error monitoring that can grow beyond mobile crash reports.
+
+## Affiliate disclosure
+This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+
+## Related tools and guides
+- Compare [Sentry](/tools/sentry) and [Firebase](/tools/firebase).
+- Review the [crash reporting category](/categories/crash-reporting).
+- Read [Crash reporting setup for indie mobile apps](/guides/crash-reporting-setup-indie-mobile-apps).`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("crash-reporting").id,
+          seo_title: "Sentry vs Firebase Crashlytics for mobile apps",
+          seo_description:
+            "Compare Sentry and Firebase Crashlytics for mobile crash reporting, setup complexity, platform support, pricing checks, and best use cases.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
@@ -1319,6 +1548,50 @@ Last checked: 2026-06-29.`,
         tool_id: tools.get("supabase").id,
         relationship: "featured",
         sort_order: 10,
+      },
+      {
+        article_id: articles.get("supabase-vs-firebase-indie-mobile-apps").id,
+        tool_id: tools.get("firebase").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("revenuecat-vs-adapty-ios-subscriptions").id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("revenuecat-vs-adapty-ios-subscriptions").id,
+        tool_id: tools.get("adapty").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("appfigures-vs-apptweak-aso-tools").id,
+        tool_id: tools.get("appfigures").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("appfigures-vs-apptweak-aso-tools").id,
+        tool_id: tools.get("apptweak").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("sentry-vs-firebase-crashlytics-mobile-apps")
+          .id,
+        tool_id: tools.get("sentry").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("sentry-vs-firebase-crashlytics-mobile-apps")
+          .id,
+        tool_id: tools.get("firebase").id,
+        relationship: "featured",
+        sort_order: 20,
       },
       {
         article_id: articles.get("privacy-friendly-analytics-starter-stack").id,

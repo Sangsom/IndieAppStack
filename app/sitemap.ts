@@ -1,7 +1,10 @@
 import type { MetadataRoute } from "next";
 
 import { getPublishedCategorySlugs } from "@/lib/category-page-data";
-import { getPublishedGuideSlugs } from "@/lib/guide-data";
+import {
+  getPublishedComparisonSlugs,
+  getPublishedGuideSlugs,
+} from "@/lib/guide-data";
 import { absoluteUrl } from "@/lib/seo";
 import { getPublishedToolSlugs } from "@/lib/tool-detail-data";
 
@@ -23,11 +26,13 @@ function entry({
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [categorySlugs, guideSlugs, toolSlugs] = await Promise.all([
-    getPublishedCategorySlugs(),
-    getPublishedGuideSlugs(),
-    getPublishedToolSlugs(),
-  ]);
+  const [categorySlugs, comparisonSlugs, guideSlugs, toolSlugs] =
+    await Promise.all([
+      getPublishedCategorySlugs(),
+      getPublishedComparisonSlugs(),
+      getPublishedGuideSlugs(),
+      getPublishedToolSlugs(),
+    ]);
 
   return [
     entry({ path: "/", priority: 1 }),
@@ -46,6 +51,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
     ...guideSlugs.map((slug) =>
       entry({ path: `/guides/${slug}`, priority: 0.75 }),
+    ),
+    ...comparisonSlugs.map((slug) =>
+      entry({ path: `/comparisons/${slug}`, priority: 0.75 }),
     ),
   ];
 }

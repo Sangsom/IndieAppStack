@@ -137,6 +137,12 @@ function formatPricing(model: string, summary: string | null) {
   return model.replaceAll("_", " ");
 }
 
+function articleHref(article: Pick<ArticleRow, "content_type" | "slug">) {
+  return article.content_type === "comparison"
+    ? `/comparisons/${article.slug}`
+    : `/guides/${article.slug}`;
+}
+
 function listItem(article: ArticleRow, categoryById: Map<string, CategoryRow>) {
   const category = article.primary_category_id
     ? categoryById.get(article.primary_category_id)?.name
@@ -146,14 +152,16 @@ function listItem(article: ArticleRow, categoryById: Map<string, CategoryRow>) {
     category: category ?? formatType(article.content_type),
     description:
       article.excerpt ?? article.subtitle ?? "A practical field guide article.",
-    href: `/guides/${article.slug}`,
+    href: articleHref(article),
     label: formatType(article.content_type),
     publishedAt: formatShortDate(article.published_at),
     title: article.title,
   };
 }
 
-export const getGuideList = cache(async (): Promise<GuideListItem[]> => {
+async function getArticleListByType(
+  contentType: "comparison" | "guide",
+): Promise<GuideListItem[]> {
   if (!hasSupabaseServerConfig()) {
     return [];
   }
@@ -168,6 +176,7 @@ export const getGuideList = cache(async (): Promise<GuideListItem[]> => {
       )
       .eq("status", "published")
       .eq("human_reviewed", true)
+      .eq("content_type", contentType)
       .order("published_at", { ascending: false, nullsFirst: false }),
     supabase
       .from("categories")
@@ -193,9 +202,17 @@ export const getGuideList = cache(async (): Promise<GuideListItem[]> => {
   return ((articlesResult.data ?? []) as ArticleRow[]).map((article) =>
     listItem(article, categories),
   );
+}
+
+export const getGuideList = cache(async (): Promise<GuideListItem[]> => {
+  return getArticleListByType("guide");
 });
 
-export const getPublishedGuideSlugs = cache(async () => {
+export const getComparisonList = cache(async (): Promise<GuideListItem[]> => {
+  return getArticleListByType("comparison");
+});
+
+async function getPublishedSlugsByType(contentType: "comparison" | "guide") {
   if (!hasSupabaseServerConfig()) {
     return [];
   }
@@ -205,6 +222,7 @@ export const getPublishedGuideSlugs = cache(async () => {
     .select("slug")
     .eq("status", "published")
     .eq("human_reviewed", true)
+    .eq("content_type", contentType)
     .order("slug", { ascending: true });
 
   if (error) {
@@ -212,10 +230,21 @@ export const getPublishedGuideSlugs = cache(async () => {
   }
 
   return (data ?? []).map((article) => article.slug);
+}
+
+export const getPublishedGuideSlugs = cache(async () => {
+  return getPublishedSlugsByType("guide");
+});
+
+export const getPublishedComparisonSlugs = cache(async () => {
+  return getPublishedSlugsByType("comparison");
 });
 
 export const getGuideDetail = cache(
-  async (slug: string): Promise<GuideDetail | null> => {
+  async (
+    slug: string,
+    contentType: "comparison" | "guide" = "guide",
+  ): Promise<GuideDetail | null> => {
     if (!hasSupabaseServerConfig()) {
       return null;
     }
@@ -230,6 +259,7 @@ export const getGuideDetail = cache(
       .eq("slug", slug)
       .eq("status", "published")
       .eq("human_reviewed", true)
+      .eq("content_type", contentType)
       .maybeSingle();
 
     if (articleError) {
@@ -357,3 +387,7 @@ export const getGuideDetail = cache(
     };
   },
 );
+
+export const getComparisonDetail = cache(async (slug: string) => {
+  return getGuideDetail(slug, "comparison");
+});

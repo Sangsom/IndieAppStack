@@ -140,7 +140,10 @@ function formatArticle(article: ArticleRow): ToolDetailArticle {
   return {
     description:
       article.excerpt ?? article.subtitle ?? "A related field guide entry.",
-    href: `/guides/${article.slug}`,
+    href:
+      article.content_type === "comparison"
+        ? `/comparisons/${article.slug}`
+        : `/guides/${article.slug}`,
     label: article.content_type.replaceAll("_", " "),
     title: article.title,
   };
