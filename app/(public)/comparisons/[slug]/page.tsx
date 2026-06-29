@@ -8,6 +8,7 @@ import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { ToolCard } from "@/components/public/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { getTocItems, parseArticleMarkdown } from "@/lib/article-markdown";
+import { affiliateDisclosureCopy } from "@/lib/compliance";
 import {
   getComparisonDetail,
   getPublishedComparisonSlugs,
@@ -175,8 +176,7 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
             {tocItems.length ? <ArticleToc items={tocItems} /> : null}
             {comparison.hasAffiliateDisclosure ? (
               <DisclosureCallout title="Affiliate disclosure">
-                This comparison includes tools that may have sponsored partner
-                links. Editorial recommendations remain independent.
+                {affiliateDisclosureCopy}
               </DisclosureCallout>
             ) : null}
           </aside>

@@ -8,6 +8,7 @@ import { FitList } from "@/components/public/fit-list";
 import { ProsCons } from "@/components/public/pros-cons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
+import { affiliateDisclosureCopy } from "@/lib/compliance";
 import { createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import {
@@ -275,9 +276,8 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
 
           {tool.affiliateLink?.disclosureRequired ? (
             <DisclosureCallout title="Affiliate disclosure">
-              This page may include a sponsored partner link for {tool.name}.
-              The recommendation remains editorial, and the affiliate CTA uses
-              sponsored nofollow link attributes.
+              {affiliateDisclosureCopy} The affiliate CTA uses sponsored
+              nofollow link attributes.
             </DisclosureCallout>
           ) : null}
 

@@ -6,6 +6,7 @@ import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ToolCard } from "@/components/public/tool-card";
 import { Badge } from "@/components/ui/badge";
+import { affiliateDisclosureCopy } from "@/lib/compliance";
 import { getHomepageData, type HomepageArticle } from "@/lib/homepage-data";
 import { createSeoMetadata } from "@/lib/seo";
 
@@ -214,8 +215,7 @@ export default async function Home() {
           title="Get the field guide in your inbox"
         />
         <DisclosureCallout title="Affiliate disclosure">
-          Some links may become affiliate links. Recommendations stay editorial,
-          and the footer includes the full disclosure for every page.
+          {affiliateDisclosureCopy}
         </DisclosureCallout>
       </section>
     </div>

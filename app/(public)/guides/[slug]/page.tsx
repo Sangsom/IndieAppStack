@@ -8,6 +8,7 @@ import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { ToolCard } from "@/components/public/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { getTocItems, parseArticleMarkdown } from "@/lib/article-markdown";
+import { affiliateDisclosureCopy } from "@/lib/compliance";
 import {
   getGuideDetail,
   getPublishedGuideSlugs,
@@ -175,8 +176,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             {tocItems.length ? <ArticleToc items={tocItems} /> : null}
             {guide.hasAffiliateDisclosure ? (
               <DisclosureCallout title="Affiliate disclosure">
-                This article includes tools that may have sponsored partner
-                links. Editorial recommendations remain independent.
+                {affiliateDisclosureCopy}
               </DisclosureCallout>
             ) : null}
           </aside>

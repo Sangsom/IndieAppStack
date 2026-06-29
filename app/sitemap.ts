@@ -41,8 +41,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry({ path: "/guides", priority: 0.8 }),
     entry({ path: "/comparisons", priority: 0.7 }),
     entry({ path: "/stack-finder", priority: 0.7 }),
+    entry({ path: "/about", priority: 0.4 }),
     entry({ path: "/affiliate-disclosure", priority: 0.3 }),
-    entry({ path: "/privacy", priority: 0.3 }),
+    entry({ path: "/privacy-policy", priority: 0.3 }),
+    entry({ path: "/terms", priority: 0.3 }),
     ...toolSlugs.map((slug) =>
       entry({ path: `/tools/${slug}`, priority: 0.8 }),
     ),

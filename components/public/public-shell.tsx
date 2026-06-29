@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { MobileNavigation } from "@/components/public/mobile-navigation";
+import { affiliateDisclosureCopy } from "@/lib/compliance";
 import { footerNavigation, primaryNavigation } from "@/lib/public-navigation";
 import { siteConfig } from "@/lib/site";
 
@@ -56,8 +57,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
               workflows behind durable indie mobile apps.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-6 text-muted">
-              Some recommendations may include affiliate links. Editorial
-              judgment stays independent, and sponsored links are disclosed.
+              {affiliateDisclosureCopy}
             </p>
           </div>
 

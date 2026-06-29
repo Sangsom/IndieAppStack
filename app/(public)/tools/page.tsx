@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { ToolFilterForm } from "@/components/public/tool-filter-form";
 import { ToolCard } from "@/components/public/tool-card";
+import { affiliateDisclosureCopy } from "@/lib/compliance";
 import {
   getToolDirectoryData,
   parseToolDirectoryFilters,
@@ -77,6 +79,7 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
   const { filterGroups, resultCount, totalCount, tools } =
     await getToolDirectoryData(filters);
   const activeFilterCount = getActiveFilterCount(filters);
+  const hasAffiliateLinks = tools.some((tool) => tool.affiliateHref);
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
@@ -142,6 +145,14 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
               Filters combine with AND across groups and OR within each group.
             </p>
           </div>
+
+          {hasAffiliateLinks ? (
+            <div className="mt-6">
+              <DisclosureCallout title="Affiliate disclosure">
+                {affiliateDisclosureCopy}
+              </DisclosureCallout>
+            </div>
+          ) : null}
 
           {tools.length ? (
             <div className="mt-6 grid gap-5 xl:grid-cols-2">

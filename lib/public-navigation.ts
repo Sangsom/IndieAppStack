@@ -23,11 +23,19 @@ export const primaryNavigation = [
 
 export const footerNavigation = [
   {
+    label: "About",
+    href: "/about",
+  },
+  {
     label: "Affiliate disclosure",
     href: "/affiliate-disclosure",
   },
   {
     label: "Privacy policy",
-    href: "/privacy",
+    href: "/privacy-policy",
+  },
+  {
+    label: "Terms",
+    href: "/terms",
   },
 ] as const;

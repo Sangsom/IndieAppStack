@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { ComparisonTable } from "@/components/public/comparison-table";
+import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { ToolCard } from "@/components/public/tool-card";
 import { Callout } from "@/components/ui/callout";
 import {
@@ -10,6 +11,7 @@ import {
   getPublishedCategorySlugs,
   type CategoryFaq,
 } from "@/lib/category-page-data";
+import { affiliateDisclosureCopy } from "@/lib/compliance";
 import { createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
@@ -138,6 +140,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
+  const hasAffiliateLinks = data.tools.some((tool) => tool.affiliateHref);
+
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
       <BreadcrumbStructuredData
@@ -199,6 +203,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             Filter directory
           </Link>
         </div>
+
+        {hasAffiliateLinks ? (
+          <div className="mt-6">
+            <DisclosureCallout title="Affiliate disclosure">
+              {affiliateDisclosureCopy}
+            </DisclosureCallout>
+          </div>
+        ) : null}
 
         <div className="mt-6 grid gap-5 lg:grid-cols-2">
           {data.tools.map((tool) => (
