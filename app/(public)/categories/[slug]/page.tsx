@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ComparisonTable } from "@/components/public/comparison-table";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
+import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ToolCard } from "@/components/public/tool-card";
 import { Callout } from "@/components/ui/callout";
 import {
@@ -227,6 +228,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           rows={data.comparison.rows}
         />
       ) : null}
+
+      <div className="mt-12">
+        <NewsletterSignup
+          ctaLabel="Get updates"
+          description={`Get new ${data.category.name.toLowerCase()} tool notes, comparison updates, and pricing checks.`}
+          source={`category:${data.category.slug}`}
+          title={`Follow ${data.category.name} updates`}
+        />
+      </div>
 
       <section className="mt-12 grid gap-5 lg:grid-cols-[1fr_360px]">
         <div className="rounded-card border border-rule bg-surface p-5 shadow-field">

@@ -23,7 +23,7 @@ export const analyticsEvents = {
     description: "Visitor clicks a primary call to action.",
     goal: true,
   },
-  newsletter_subscribed: {
+  newsletter_signup: {
     description: "Visitor submits the newsletter subscription form.",
     goal: true,
   },
@@ -78,8 +78,10 @@ export type AnalyticsEventProperties = {
     label: string;
     location: string;
   };
-  newsletter_subscribed: {
-    location: string;
+  newsletter_signup: {
+    duplicate?: boolean;
+    source: string;
+    status?: "active" | "pending";
   };
   outbound_link_clicked: {
     href: string;

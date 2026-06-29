@@ -1,14 +1,35 @@
+"use client";
+
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+
 type NewsletterSignupProps = {
   action?: string;
+  ctaLabel?: string;
   description: string;
+  source: string;
   title: string;
 };
 
-export function NewsletterSignup({
-  action = "#",
+const statusMessages: Record<string, string> = {
+  already_subscribed: "You are already on the list. Nice, future-you.",
+  invalid_email: "Enter a valid email address.",
+  rate_limited: "Too many attempts. Please try again in a minute.",
+  subscribed:
+    "You are on the list. Check your inbox if confirmation is enabled.",
+  unavailable: "Newsletter signup is temporarily unavailable.",
+};
+
+function NewsletterSignupForm({
+  action = "/newsletter",
+  ctaLabel = "Join",
   description,
+  message,
+  source,
   title,
-}: NewsletterSignupProps) {
+}: NewsletterSignupProps & { message?: string }) {
+  const inputId = `newsletter-email-${source.replace(/[^a-z0-9_-]+/gi, "-")}`;
+
   return (
     <section className="rounded-card border border-pine bg-accent-soft p-5 shadow-field">
       <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -26,13 +47,16 @@ export function NewsletterSignup({
         <form
           action={action}
           className="flex w-full flex-col gap-2 sm:flex-row"
+          method="post"
         >
-          <label className="sr-only" htmlFor="newsletter-email">
+          <input name="source" type="hidden" value={source} />
+          <label className="sr-only" htmlFor={inputId}>
             Email address
           </label>
           <input
+            aria-describedby={message ? `${inputId}-status` : undefined}
             className="h-11 min-w-0 rounded-button border border-rule bg-surface px-3 text-base text-ink shadow-field outline-none transition-colors focus:border-pine focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-accent-soft sm:w-72"
-            id="newsletter-email"
+            id={inputId}
             name="email"
             placeholder="you@example.com"
             required
@@ -42,10 +66,39 @@ export function NewsletterSignup({
             className="inline-flex h-11 items-center justify-center rounded-button border border-pine bg-pine px-4 text-sm font-semibold text-surface shadow-field transition-colors hover:border-ink hover:bg-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-accent-soft"
             type="submit"
           >
-            Join
+            {ctaLabel}
           </button>
         </form>
       </div>
+      {message ? (
+        <p
+          className="mt-4 text-sm font-semibold text-pine"
+          id={`${inputId}-status`}
+          role="status"
+        >
+          {message}
+        </p>
+      ) : null}
     </section>
+  );
+}
+
+function NewsletterSignupWithStatus(props: NewsletterSignupProps) {
+  const searchParams = useSearchParams();
+  const status = searchParams.get("newsletter");
+  const statusSource = searchParams.get("newsletter_source");
+  const message =
+    status && statusSource === props.source
+      ? statusMessages[status]
+      : undefined;
+
+  return <NewsletterSignupForm {...props} message={message} />;
+}
+
+export function NewsletterSignup(props: NewsletterSignupProps) {
+  return (
+    <Suspense fallback={<NewsletterSignupForm {...props} />}>
+      <NewsletterSignupWithStatus {...props} />
+    </Suspense>
   );
 }

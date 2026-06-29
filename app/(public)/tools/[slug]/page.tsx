@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { AffiliateCta } from "@/components/public/affiliate-cta";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { FitList } from "@/components/public/fit-list";
+import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ProsCons } from "@/components/public/pros-cons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
@@ -341,6 +342,12 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
         </main>
 
         <aside className="grid gap-5 lg:sticky lg:top-24">
+          <NewsletterSignup
+            ctaLabel="Subscribe"
+            description={`Get practical stack notes and pricing checks like this ${tool.name} profile.`}
+            source={`tool:${tool.slug}`}
+            title="Track tool updates"
+          />
           <Callout title="Update note">
             This profile was last updated {tool.updatedAt}. Pricing was last
             checked {tool.lastChecked}.

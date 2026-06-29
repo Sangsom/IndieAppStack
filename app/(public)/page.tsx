@@ -212,6 +212,7 @@ export default async function Home() {
         <NewsletterSignup
           action="/newsletter"
           description="A calm monthly note on useful app tools, pricing changes, and stack decisions for solo mobile developers."
+          source="home"
           title="Get the field guide in your inbox"
         />
         <DisclosureCallout title="Affiliate disclosure">

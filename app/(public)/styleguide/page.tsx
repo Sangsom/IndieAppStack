@@ -252,6 +252,7 @@ export default function StyleguidePage() {
 
           <NewsletterSignup
             description="A calm monthly note on useful tools, pricing changes, and operating lessons for solo app builders."
+            source="styleguide"
             title="Get the field notes"
           />
 

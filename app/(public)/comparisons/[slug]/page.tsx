@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/public/article-body";
 import { ArticleToc } from "@/components/public/article-toc";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
+import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ToolCard } from "@/components/public/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { getTocItems, parseArticleMarkdown } from "@/lib/article-markdown";
@@ -182,6 +183,15 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
           </aside>
         </div>
       </article>
+
+      <section className="mt-12">
+        <NewsletterSignup
+          ctaLabel="Get comparisons"
+          description="Get new head-to-head tool comparisons, pricing checks, and stack decision notes."
+          source={`article-footer:${comparison.slug}`}
+          title="Get the next comparison"
+        />
+      </section>
 
       {comparison.relatedTools.length ? (
         <section className="mt-12">

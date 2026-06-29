@@ -17,6 +17,7 @@
     "supabase:types:local": "supabase gen types typescript --local --schema public > lib/database.types.ts",
     "security:check-supabase-key": "node scripts/assert-service-role-not-client.mjs",
     "db:seed": "node scripts/seed-database.mjs",
+    "subscribers:delete": "node scripts/delete-subscriber.mjs",
     "admin:grant": "node scripts/grant-admin.mjs",
     "design:contrast": "node scripts/check-design-contrast.mjs"
   },
