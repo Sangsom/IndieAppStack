@@ -3,7 +3,13 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { topicStatusOptions, type TopicStatus } from "@/lib/admin-topics";
+import { generateArticleDraft, generateSeoBrief } from "@/lib/ai/draft-flow";
+import { AI_PROMPT_TEMPLATE_VERSION } from "@/lib/ai/prompt-templates";
+import {
+  getAdminTopicAiContext,
+  topicStatusOptions,
+  type TopicStatus,
+} from "@/lib/admin-topics";
 import { requireAdmin } from "@/lib/auth/admin";
 import type { TablesInsert } from "@/lib/database.types";
 
@@ -115,6 +121,11 @@ function adminTopicsUrl(params: Record<string, string>) {
   return `/admin/topics?${query.toString()}`;
 }
 
+function adminTopicAiUrl(topicId: string, params: Record<string, string>) {
+  const query = new URLSearchParams(params);
+  return `/admin/topics/${topicId}/ai?${query.toString()}`;
+}
+
 function isDuplicateSlugError(message: string) {
   return (
     message.includes("topic_queue_slug_key") ||
@@ -136,6 +147,12 @@ function redirectForValidation(errors: string[]): never {
 
 function revalidateTopicPaths() {
   revalidatePath("/admin/topics");
+}
+
+function revalidateAiFlowPaths(topicId: string) {
+  revalidateTopicPaths();
+  revalidatePath(`/admin/topics/${topicId}/ai`);
+  revalidatePath("/admin/articles");
 }
 
 export async function createTopic(formData: FormData) {
@@ -192,4 +209,179 @@ export async function updateTopic(formData: FormData) {
 
   revalidateTopicPaths();
   redirect(adminTopicsUrl({ status: "updated" }));
+}
+
+async function insertArticleTools(articleId: string, toolIds: string[]) {
+  if (!toolIds.length) {
+    return;
+  }
+
+  const { supabase } = await requireAdmin();
+  const { error } = await supabase.from("article_tools").insert(
+    toolIds.map((toolId, index) => ({
+      article_id: articleId,
+      relationship: "ai_context",
+      sort_order: (index + 1) * 10,
+      tool_id: toolId,
+    })),
+  );
+
+  if (error) {
+    throw new Error(`AI draft tool sync failed: ${error.message}`);
+  }
+}
+
+export async function generateTopicBrief(formData: FormData) {
+  const { supabase } = await requireAdmin();
+  const topicId = textValue(formData, "topic_id");
+
+  if (!topicId) {
+    redirect(adminTopicsUrl({ error: "missing_topic" }));
+  }
+
+  const context = await getAdminTopicAiContext(topicId);
+
+  if (!context) {
+    redirect(adminTopicsUrl({ error: "missing_topic" }));
+  }
+
+  if (!context.topic.search_intent) {
+    redirect(adminTopicAiUrl(topicId, { error: "intent_required" }));
+  }
+
+  if (["drafted", "reviewing", "published"].includes(context.topic.status)) {
+    redirect(adminTopicAiUrl(topicId, { error: "topic_already_drafted" }));
+  }
+
+  const brief = await generateSeoBrief({
+    articles: context.articles,
+    categoryName: context.categoryName,
+    tools: context.relatedTools,
+    topic: context.topic,
+  });
+
+  const { error } = await supabase
+    .from("topic_queue")
+    .update({
+      notes: `AI brief template ${AI_PROMPT_TEMPLATE_VERSION}\n\n${brief}`,
+    })
+    .eq("id", topicId);
+
+  if (error) {
+    redirect(adminTopicAiUrl(topicId, { error: "brief_failed" }));
+  }
+
+  revalidateAiFlowPaths(topicId);
+  redirect(adminTopicAiUrl(topicId, { status: "brief_generated" }));
+}
+
+export async function approveTopicBrief(formData: FormData) {
+  const { supabase } = await requireAdmin();
+  const topicId = textValue(formData, "topic_id");
+
+  if (!topicId) {
+    redirect(adminTopicsUrl({ error: "missing_topic" }));
+  }
+
+  const context = await getAdminTopicAiContext(topicId);
+
+  if (!context) {
+    redirect(adminTopicsUrl({ error: "missing_topic" }));
+  }
+
+  if (!context.topic.search_intent) {
+    redirect(adminTopicAiUrl(topicId, { error: "intent_required" }));
+  }
+
+  if (!context.topic.notes) {
+    redirect(adminTopicAiUrl(topicId, { error: "brief_required" }));
+  }
+
+  const { error } = await supabase
+    .from("topic_queue")
+    .update({ status: "briefed" })
+    .eq("id", topicId);
+
+  if (error) {
+    redirect(adminTopicAiUrl(topicId, { error: "approve_failed" }));
+  }
+
+  revalidateAiFlowPaths(topicId);
+  redirect(adminTopicAiUrl(topicId, { status: "brief_approved" }));
+}
+
+export async function generateTopicDraft(formData: FormData) {
+  const { supabase } = await requireAdmin();
+  const topicId = textValue(formData, "topic_id");
+
+  if (!topicId) {
+    redirect(adminTopicsUrl({ error: "missing_topic" }));
+  }
+
+  const context = await getAdminTopicAiContext(topicId);
+
+  if (!context) {
+    redirect(adminTopicsUrl({ error: "missing_topic" }));
+  }
+
+  if (context.topic.status !== "briefed") {
+    redirect(adminTopicAiUrl(topicId, { error: "brief_not_approved" }));
+  }
+
+  if (!context.topic.notes) {
+    redirect(adminTopicAiUrl(topicId, { error: "brief_required" }));
+  }
+
+  const draft = await generateArticleDraft({
+    articles: context.articles,
+    categoryName: context.categoryName,
+    tools: context.relatedTools,
+    topic: context.topic,
+  });
+
+  const { data, error } = await supabase
+    .from("articles")
+    .insert({
+      affiliate_cta_blocks: draft.affiliate_cta_blocks,
+      ai_assisted: true,
+      author: "IndieAppStack AI Draft Assistant",
+      body_markdown: draft.body_markdown,
+      content_type: draft.content_type,
+      excerpt: draft.excerpt,
+      human_reviewed: false,
+      primary_category_id: context.topic.target_category_id,
+      published_at: null,
+      seo_description: draft.seo_description,
+      seo_title: draft.seo_title,
+      slug: context.topic.slug,
+      status: "review",
+      subtitle: draft.subtitle,
+      title: draft.title,
+    } satisfies TablesInsert<"articles">)
+    .select("id,slug")
+    .single();
+
+  if (error) {
+    redirect(
+      adminTopicAiUrl(topicId, {
+        error: isDuplicateSlugError(error.message)
+          ? "draft_duplicate_slug"
+          : "draft_failed",
+      }),
+    );
+  }
+
+  await insertArticleTools(data.id, context.topic.related_tool_ids);
+
+  const { error: updateError } = await supabase
+    .from("topic_queue")
+    .update({ status: "drafted" })
+    .eq("id", topicId);
+
+  if (updateError) {
+    redirect(adminTopicAiUrl(topicId, { error: "topic_update_failed" }));
+  }
+
+  revalidateAiFlowPaths(topicId);
+  redirect(`/admin/articles/${data.id}/edit`);
 }

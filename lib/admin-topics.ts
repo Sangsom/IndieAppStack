@@ -19,6 +19,31 @@ export type AdminTopicListItem = Tables<"topic_queue"> & {
 
 export type AdminTopicEditor = Tables<"topic_queue">;
 
+export type AdminTopicAiContext = {
+  articles: Pick<
+    Tables<"articles">,
+    "content_type" | "seo_description" | "slug" | "title" | "updated_at"
+  >[];
+  categoryName: string | null;
+  relatedTools: Pick<
+    Tables<"tools">,
+    | "alternatives"
+    | "app_stages"
+    | "best_for"
+    | "description"
+    | "internal_notes"
+    | "name"
+    | "not_good_for"
+    | "platforms"
+    | "pricing_last_checked"
+    | "pricing_model"
+    | "pricing_summary"
+    | "slug"
+    | "tagline"
+  >[];
+  topic: Tables<"topic_queue">;
+};
+
 export const topicStatusOptions: Array<{
   label: string;
   value: TopicStatus;
@@ -151,4 +176,69 @@ export async function getApprovedTopicQueue(): Promise<AdminTopicListItem[]> {
     options.categories,
     options.tools,
   );
+}
+
+export async function getAdminTopicAiContext(
+  topicId: string,
+): Promise<AdminTopicAiContext | null> {
+  const { supabase } = await requireAdmin();
+
+  const { data: topic, error: topicError } = await supabase
+    .from("topic_queue")
+    .select("*")
+    .eq("id", topicId)
+    .maybeSingle();
+
+  if (topicError) {
+    throw new Error(`Admin topic AI query failed: ${topicError.message}`);
+  }
+
+  if (!topic) {
+    return null;
+  }
+
+  const typedTopic = topic as Tables<"topic_queue">;
+  const [categoryResult, toolsResult, articlesResult] = await Promise.all([
+    typedTopic.target_category_id
+      ? supabase
+          .from("categories")
+          .select("id,name,slug")
+          .eq("id", typedTopic.target_category_id)
+          .maybeSingle()
+      : Promise.resolve({ data: null, error: null }),
+    typedTopic.related_tool_ids.length
+      ? supabase
+          .from("tools")
+          .select(
+            "name,slug,tagline,description,best_for,not_good_for,platforms,app_stages,pricing_model,pricing_summary,pricing_last_checked,alternatives,internal_notes",
+          )
+          .in("id", typedTopic.related_tool_ids)
+      : Promise.resolve({ data: [], error: null }),
+    supabase
+      .from("articles")
+      .select("title,slug,content_type,seo_description,updated_at")
+      .eq("status", "published")
+      .eq("human_reviewed", true)
+      .order("updated_at", { ascending: false })
+      .limit(24),
+  ]);
+
+  const firstError = [
+    categoryResult.error,
+    toolsResult.error,
+    articlesResult.error,
+  ].find(Boolean);
+
+  if (firstError) {
+    throw new Error(`Admin topic AI context failed: ${firstError.message}`);
+  }
+
+  return {
+    articles: (articlesResult.data ?? []) as AdminTopicAiContext["articles"],
+    categoryName:
+      (categoryResult.data as AdminTopicCategory | null)?.name ?? null,
+    relatedTools: (toolsResult.data ??
+      []) as AdminTopicAiContext["relatedTools"],
+    topic: typedTopic,
+  };
 }

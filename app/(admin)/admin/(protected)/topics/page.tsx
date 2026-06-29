@@ -135,12 +135,20 @@ export default async function AdminTopicsPage({
         emptyTitle="No topics queued"
         rows={topics.map((topic) => ({
           actions: (
-            <Link
-              className="inline-flex h-9 items-center justify-center rounded-button border border-rule px-3 text-sm font-semibold text-pine transition-colors hover:border-pine hover:bg-accent-soft"
-              href={`/admin/topics/${topic.id}/edit`}
-            >
-              Edit
-            </Link>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                className="inline-flex h-9 items-center justify-center rounded-button border border-rule px-3 text-sm font-semibold text-pine transition-colors hover:border-pine hover:bg-accent-soft"
+                href={`/admin/topics/${topic.id}/ai`}
+              >
+                AI flow
+              </Link>
+              <Link
+                className="inline-flex h-9 items-center justify-center rounded-button border border-rule px-3 text-sm font-semibold text-pine transition-colors hover:border-pine hover:bg-accent-soft"
+                href={`/admin/topics/${topic.id}/edit`}
+              >
+                Edit
+              </Link>
+            </div>
           ),
           intent: (
             <div className="grid gap-1">

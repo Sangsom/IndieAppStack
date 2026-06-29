@@ -37,6 +37,8 @@ Configure these in Vercel Project Settings for Production and Preview. Do not co
 | `SUPABASE_SERVICE_ROLE_KEY`        | Service role key            | Service role key                 | Server-only. Never expose to client code.    |
 | `SUPABASE_PROJECT_ID`              | Supabase project ref        | Supabase project ref             | Used by maintenance scripts.                 |
 | `AI_DRAFT_WEBHOOK_SECRET`          | Random server secret        | Random server secret             | Authenticates `/api/ai/drafts`. Server-only. |
+| `ANTHROPIC_API_KEY`                | Anthropic API key           | Anthropic API key                | Server-only key for AI brief/draft flow.     |
+| `ANTHROPIC_MODEL`                  | Current Claude model ID     | Current Claude model ID          | Keep current with Anthropic model docs.      |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`     | `indieappstack.com`         | Optional preview domain          | Enables page-view analytics.                 |
 | `NEXT_PUBLIC_PLAUSIBLE_SCRIPT_SRC` | Optional                    | Optional                         | Use only for Plausible proxy/self-hosting.   |
 
