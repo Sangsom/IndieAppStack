@@ -29,15 +29,16 @@ Local `.env` files are excluded from deployment uploads by `.vercelignore`; use 
 
 Configure these in Vercel Project Settings for Production and Preview. Do not commit real values.
 
-| Variable                           | Production                  | Preview                          | Notes                                      |
-| ---------------------------------- | --------------------------- | -------------------------------- | ------------------------------------------ |
-| `NEXT_PUBLIC_SITE_URL`             | `https://indieappstack.com` | Vercel preview URL or branch URL | Used for metadata and canonical links.     |
-| `NEXT_PUBLIC_SUPABASE_URL`         | Supabase project URL        | Supabase project URL             | Public anon client URL.                    |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY`    | Supabase anon key           | Supabase anon key                | Public browser key.                        |
-| `SUPABASE_SERVICE_ROLE_KEY`        | Service role key            | Service role key                 | Server-only. Never expose to client code.  |
-| `SUPABASE_PROJECT_ID`              | Supabase project ref        | Supabase project ref             | Used by maintenance scripts.               |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`     | `indieappstack.com`         | Optional preview domain          | Enables page-view analytics.               |
-| `NEXT_PUBLIC_PLAUSIBLE_SCRIPT_SRC` | Optional                    | Optional                         | Use only for Plausible proxy/self-hosting. |
+| Variable                           | Production                  | Preview                          | Notes                                        |
+| ---------------------------------- | --------------------------- | -------------------------------- | -------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`             | `https://indieappstack.com` | Vercel preview URL or branch URL | Used for metadata and canonical links.       |
+| `NEXT_PUBLIC_SUPABASE_URL`         | Supabase project URL        | Supabase project URL             | Public anon client URL.                      |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY`    | Supabase anon key           | Supabase anon key                | Public browser key.                          |
+| `SUPABASE_SERVICE_ROLE_KEY`        | Service role key            | Service role key                 | Server-only. Never expose to client code.    |
+| `SUPABASE_PROJECT_ID`              | Supabase project ref        | Supabase project ref             | Used by maintenance scripts.                 |
+| `AI_DRAFT_WEBHOOK_SECRET`          | Random server secret        | Random server secret             | Authenticates `/api/ai/drafts`. Server-only. |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`     | `indieappstack.com`         | Optional preview domain          | Enables page-view analytics.                 |
+| `NEXT_PUBLIC_PLAUSIBLE_SCRIPT_SRC` | Optional                    | Optional                         | Use only for Plausible proxy/self-hosting.   |
 
 ## CI
 
