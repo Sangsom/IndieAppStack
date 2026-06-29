@@ -3,6 +3,10 @@ export const analyticsEvents = {
     description: "Visitor clicks through to an affiliate partner.",
     goal: true,
   },
+  affiliate_link_created: {
+    description: "Admin creates an affiliate redirect link.",
+    goal: false,
+  },
   article_read: {
     description: "Visitor reaches a meaningful article-read milestone.",
     goal: false,
@@ -52,6 +56,10 @@ export type AnalyticsEventProperties = {
     affiliate_link_id?: string;
     location: string;
     tool_slug: string;
+  };
+  affiliate_link_created: {
+    affiliate_link_id: string;
+    affiliate_link_slug: string;
   };
   article_read: {
     article_slug: string;

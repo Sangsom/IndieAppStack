@@ -6,6 +6,7 @@ import {
   createSupabaseServiceRoleClient,
   hasSupabaseServerConfig,
 } from "@/lib/supabase/server";
+import { getAffiliateRedirectPath } from "@/lib/affiliate-links";
 
 type ToolDirectorySearchParams = Record<string, string | string[] | undefined>;
 
@@ -39,7 +40,6 @@ type ToolCategoryRow = {
 };
 
 type AffiliateLinkRow = {
-  destination_url: string;
   slug: string;
   status: string;
   tool_id: string | null;
@@ -313,7 +313,7 @@ export const getToolDirectoryData = cache(
           .order("sort_order", { ascending: true }),
         supabase
           .from("affiliate_links")
-          .select("tool_id,slug,destination_url,status")
+          .select("tool_id,slug,status")
           .in("status", ["active", "pending"]),
       ]);
 
@@ -343,7 +343,10 @@ export const getToolDirectoryData = cache(
 
     ((linksResult.data ?? []) as AffiliateLinkRow[]).forEach((row) => {
       if (row.tool_id && !affiliateHrefByToolId.has(row.tool_id)) {
-        affiliateHrefByToolId.set(row.tool_id, row.destination_url);
+        affiliateHrefByToolId.set(
+          row.tool_id,
+          getAffiliateRedirectPath(row.slug),
+        );
       }
     });
 
