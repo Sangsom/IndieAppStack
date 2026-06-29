@@ -1,11 +1,15 @@
+"use client";
+
 import Image from "next/image";
 
 import { AffiliateCta } from "@/components/public/affiliate-cta";
 import { Badge } from "@/components/ui/badge";
+import { analytics } from "@/lib/analytics/client";
 import { cn } from "@/lib/utils";
 
 type ToolCardProps = {
   affiliateHref?: string;
+  analyticsLocation?: string;
   bestFor: string[];
   category: string;
   className?: string;
@@ -22,6 +26,7 @@ type ToolCardProps = {
 
 export function ToolCard({
   affiliateHref,
+  analyticsLocation = "tool_card",
   bestFor,
   category,
   className,
@@ -35,6 +40,8 @@ export function ToolCard({
   pricing,
   tagline,
 }: ToolCardProps) {
+  const toolSlug = detailsHref.split("/").filter(Boolean).at(-1) ?? "unknown";
+
   return (
     <article
       className={cn(
@@ -94,19 +101,29 @@ export function ToolCard({
       <div className="mt-5 flex flex-wrap gap-3">
         {affiliateHref ? (
           <AffiliateCta
+            analyticsLocation={analyticsLocation}
             href={affiliateHref}
             kind="affiliate"
             label="Try partner offer"
+            toolSlug={toolSlug}
           />
         ) : null}
         <AffiliateCta
+          analyticsLocation={analyticsLocation}
           href={officialHref}
           kind="official"
           label="Official site"
+          toolSlug={toolSlug}
         />
         <a
           className="inline-flex h-10 items-center justify-center rounded-button border border-rule px-4 text-sm font-semibold text-pine transition-colors hover:border-pine hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           href={detailsHref}
+          onClick={() => {
+            analytics.track("tool_card_clicked", {
+              location: analyticsLocation,
+              tool_slug: toolSlug,
+            });
+          }}
         >
           Details
         </a>

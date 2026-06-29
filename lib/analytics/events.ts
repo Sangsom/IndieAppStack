@@ -47,6 +47,10 @@ export const analyticsEvents = {
     description: "Admin updates a tool record.",
     goal: false,
   },
+  tool_card_clicked: {
+    description: "Visitor clicks through from a public tool card.",
+    goal: true,
+  },
 } as const;
 
 export type AnalyticsEventName = keyof typeof analyticsEvents;
@@ -102,6 +106,10 @@ export type AnalyticsEventProperties = {
     tool_id: string;
     tool_slug: string;
     update_type: "archive" | "save";
+  };
+  tool_card_clicked: {
+    location: string;
+    tool_slug: string;
   };
 };
 

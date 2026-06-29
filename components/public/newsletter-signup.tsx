@@ -1,7 +1,10 @@
 "use client";
 
 import { Suspense } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+
+import { analytics } from "@/lib/analytics/client";
 
 type NewsletterSignupProps = {
   action?: string;
@@ -91,6 +94,14 @@ function NewsletterSignupWithStatus(props: NewsletterSignupProps) {
     status && statusSource === props.source
       ? statusMessages[status]
       : undefined;
+
+  useEffect(() => {
+    if (status === "subscribed" && statusSource === props.source) {
+      analytics.track("newsletter_signup", {
+        source: props.source,
+      });
+    }
+  }, [props.source, status, statusSource]);
 
   return <NewsletterSignupForm {...props} message={message} />;
 }

@@ -35,8 +35,11 @@ Do not send names, email addresses, raw search queries, auth IDs, or any other p
 Create matching Plausible custom event goals for:
 
 - `affiliate_link_clicked`
+- `outbound_link_clicked`
+- `tool_card_clicked`
 - `cta_clicked`
-- `newsletter_subscribed`
+- `newsletter_signup`
+- `search_submitted`
 
 Page views are recorded automatically by the Plausible script.
 

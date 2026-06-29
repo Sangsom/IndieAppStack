@@ -102,6 +102,8 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
           action="/tools"
           className="rounded-card border border-rule bg-surface p-5 shadow-field"
           method="get"
+          resultCount={resultCount}
+          searchLocation="tools_filter"
         >
           <div className="flex items-center justify-between gap-3">
             <h2 className="font-serif text-2xl font-semibold text-ink">

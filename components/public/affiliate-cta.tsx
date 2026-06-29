@@ -1,5 +1,8 @@
+"use client";
+
 import type { AnchorHTMLAttributes } from "react";
 
+import { analytics } from "@/lib/analytics/client";
 import { cn } from "@/lib/utils";
 
 type AffiliateCtaKind = "affiliate" | "official";
@@ -8,6 +11,8 @@ type AffiliateCtaProps = Omit<
   AnchorHTMLAttributes<HTMLAnchorElement>,
   "children" | "rel"
 > & {
+  analyticsLocation?: string;
+  toolSlug?: string;
   href: string;
   kind: AffiliateCtaKind;
   label: string;
@@ -21,11 +26,13 @@ const variants: Record<AffiliateCtaKind, string> = {
 };
 
 export function AffiliateCta({
+  analyticsLocation = "public_cta",
   className,
   href,
   kind,
   label,
   target,
+  toolSlug = "unknown",
   ...props
 }: AffiliateCtaProps) {
   const isAffiliate = kind === "affiliate";
@@ -42,6 +49,25 @@ export function AffiliateCta({
       rel={isAffiliate ? "sponsored nofollow" : undefined}
       target={target}
       {...props}
+      onClick={(event) => {
+        props.onClick?.(event);
+
+        if (event.defaultPrevented) {
+          return;
+        }
+
+        if (isAffiliate) {
+          analytics.track("affiliate_link_clicked", {
+            location: analyticsLocation,
+            tool_slug: toolSlug,
+          });
+        } else {
+          analytics.track("outbound_link_clicked", {
+            href,
+            location: analyticsLocation,
+          });
+        }
+      }}
     >
       {label}
     </a>

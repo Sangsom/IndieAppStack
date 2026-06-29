@@ -229,15 +229,19 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
           <div className="mt-5 grid gap-3">
             {tool.affiliateLink ? (
               <AffiliateCta
+                analyticsLocation={`tool:${tool.slug}:hero`}
                 href={tool.affiliateLink.href}
                 kind="affiliate"
                 label="Try partner offer"
+                toolSlug={tool.slug}
               />
             ) : null}
             <AffiliateCta
+              analyticsLocation={`tool:${tool.slug}:hero`}
               href={tool.officialHref}
               kind="official"
               label="Official site"
+              toolSlug={tool.slug}
             />
           </div>
         </aside>
