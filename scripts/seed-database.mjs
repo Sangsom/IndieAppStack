@@ -864,7 +864,23 @@ const stack = ["RevenueCat", "Supabase", "TelemetryDeck"];
 \`\`\`
 
 ## What to revisit later
-Revisit paywall testing, lifecycle email, and attribution once the app has real subscription traffic.`,
+Revisit paywall testing, lifecycle email, and attribution once the app has real subscription traffic.
+
+## Best for
+- Solo builders launching subscriptions with [RevenueCat](/tools/revenuecat).
+- Apps that need a simple backend like [Supabase](/tools/supabase).
+- Teams that want lightweight analytics before adding a larger growth stack.
+
+## Not good for
+- Apps that only sell one-time web purchases.
+- Teams that already have a mature payment and entitlement backend.
+
+## Internal links
+- Compare the full [monetization tools category](/categories/monetization).
+- Review [paywall tools](/categories/paywalls) before running experiments.
+- Pair this with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
+
+Last checked: 2026-06-29.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -945,7 +961,23 @@ TelemetryDeck is a strong starting point for privacy-conscious app analytics, es
 > A clear five-event taxonomy is better than a noisy dashboard nobody trusts.
 
 ## Review cadence
-Review events monthly and remove anything that does not change product decisions.`,
+Review events monthly and remove anything that does not change product decisions.
+
+## Best for
+- Apps that need activation, retention, and conversion signal.
+- Teams choosing between [TelemetryDeck](/tools/telemetrydeck), [PostHog](/tools/posthog), and [Amplitude](/tools/amplitude).
+- Builders who want to keep the first event taxonomy small.
+
+## Not good for
+- Apps that need full paid-ad attribution before product analytics.
+- Teams that cannot maintain consistent event names.
+
+## Internal links
+- Compare more [analytics tools](/categories/analytics).
+- Connect analytics to [monetization decisions](/categories/monetization).
+- Use this with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+
+Last checked: 2026-06-29.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -982,7 +1014,23 @@ ASO work is easier when the app's core promise is specific enough to become keyw
 :::
 
 ## Review cadence
-Re-check rankings, screenshots, and review language monthly while the app is still learning what converts.`,
+Re-check rankings, screenshots, and review language monthly while the app is still learning what converts.
+
+## Best for
+- Teams preparing metadata, screenshots, and keyword updates.
+- Indie developers comparing [AppTweak](/tools/apptweak), [Appfigures](/tools/appfigures), and [AppScreens](/tools/appscreens).
+- Apps that need a repeatable store-listing review cadence.
+
+## Not good for
+- Products that have not yet clarified their target user or app promise.
+- Teams expecting ASO software to replace positioning work.
+
+## Internal links
+- Compare the full [ASO tools category](/categories/aso).
+- Use screenshots from the [screenshots category](/categories/screenshots).
+- Pair the work with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+
+Last checked: 2026-06-29.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1019,7 +1067,23 @@ The first launch stack should explain the app, capture interest, and make the st
 :::
 
 ## What to revisit
-After launch, compare which source drives clicks, installs, subscribers, or paid conversions before adding more channels.`,
+After launch, compare which source drives clicks, installs, subscribers, or paid conversions before adding more channels.
+
+## Best for
+- Solo developers planning a first App Store or Google Play release.
+- Apps that need a page, waitlist, screenshots, and an update channel.
+- Teams choosing between [Framer](/tools/framer), [beehiiv](/tools/beehiiv), and [AppScreens](/tools/appscreens).
+
+## Not good for
+- Teams that already have a mature marketing site and CRM workflow.
+- Apps that need enterprise campaign orchestration on day one.
+
+## Internal links
+- Compare more [launch tools](/categories/launch).
+- Build the page with [landing page tools](/categories/landing-pages).
+- Prepare store visuals with [screenshot tools](/categories/screenshots).
+
+Last checked: 2026-06-29.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1027,6 +1091,187 @@ After launch, compare which source drives clicks, installs, subscribers, or paid
           seo_title: "Mobile app launch stack checklist",
           seo_description:
             "A mobile app launch checklist for landing pages, waitlists, newsletters, screenshots, and early distribution workflows.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "Best paywall tools for iOS apps",
+          slug: "best-paywall-tools-ios-apps",
+          subtitle:
+            "How to choose a paywall stack for subscriptions, experiments, and entitlement handling.",
+          excerpt:
+            "Compare practical paywall tools for iOS subscription apps without pretending one option fits every business model.",
+          body_markdown: `## Search intent
+This guide is for builders comparing paywall and subscription tools before implementing or replacing an iOS subscription flow.
+
+## Shortlist
+- [RevenueCat](/tools/revenuecat) is a strong default when receipt validation, entitlement sync, and subscription infrastructure matter.
+- [Adapty](/tools/adapty) is useful when no-code paywalls, experiments, and subscription analytics are central.
+- [Superwall](/tools/superwall) fits teams that want remote paywall presentation and iteration without frequent app releases.
+
+:::comparison Paywall tools
+| Decision | RevenueCat | Adapty | Superwall |
+| --- | --- | --- | --- |
+| Best fit | Entitlements and purchases | Paywalls plus analytics | Remote paywall iteration |
+| Good stage | MVP to scale | MVP to scale | MVP to scale |
+| Check before choosing | Revenue model fit | Revenue threshold and SDK fit | Platform and experiment needs |
+:::
+
+## Best for
+- Subscription apps that need reliable paywalls and entitlement state.
+- Teams comparing [monetization tools](/categories/monetization) before launch.
+- Builders who want to test pricing, layout, or upgrade prompts over time.
+
+## Not good for
+- Apps that only sell one-time web products.
+- Teams that cannot define the subscription promise or upgrade moment yet.
+
+## Internal links
+- Compare the broader [paywalls category](/categories/paywalls).
+- Start with [Best monetization tools for solo mobile developers](/guides/best-monetization-tools-solo-mobile-developers).
+- Add measurement with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
+
+Last checked: 2026-06-29.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("paywalls").id,
+          seo_title: "Best paywall tools for iOS apps",
+          seo_description:
+            "Compare paywall tools for iOS apps including RevenueCat, Adapty, and Superwall for subscriptions, experiments, and entitlements.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "Best ASO tools for indie developers",
+          slug: "best-aso-tools-for-indie-developers",
+          subtitle:
+            "A practical shortlist for keywords, rankings, reviews, and screenshot workflows.",
+          excerpt:
+            "Choose ASO tools based on the part of the store listing you can improve this month.",
+          body_markdown: `## Search intent
+This guide is for indie developers who want a practical ASO tool shortlist without buying a large market-intelligence stack too early.
+
+## Tool fit
+- [AppTweak](/tools/apptweak) is strongest when keyword research and competitor metadata are the main work.
+- [Appfigures](/tools/appfigures) is useful for rankings, reviews, app intelligence, and store performance monitoring.
+- [AppFollow](/tools/appfollow) fits teams that care about review workflows and reputation monitoring.
+- [AppScreens](/tools/appscreens) supports the creative side: screenshots, captions, exports, and localization.
+
+## Best for
+- Apps preparing a launch, relaunch, or metadata refresh.
+- Teams comparing the [ASO category](/categories/aso) before committing to a workflow.
+- Builders who need store insights and screenshot production to work together.
+
+## Not good for
+- Apps that have not settled the target audience or positioning.
+- Teams expecting ASO tools to guarantee installs without better store copy.
+
+## Internal links
+- Start with the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps).
+- Prepare creative assets with [screenshot tools](/categories/screenshots).
+- Connect launch planning through the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+
+Last checked: 2026-06-29.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("aso").id,
+          seo_title: "Best ASO tools for indie developers",
+          seo_description:
+            "Compare ASO tools for indie developers, including keyword research, rankings, reviews, screenshots, and app store listing workflows.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "Best landing page builders for mobile apps",
+          slug: "best-landing-page-builders-mobile-apps",
+          subtitle:
+            "Pick a launch page builder based on speed, CMS needs, and audience capture.",
+          excerpt:
+            "Compare Framer, Webflow, and email-first options for mobile app landing pages.",
+          body_markdown: `## Search intent
+This guide is for app builders choosing a landing page tool before launch, waitlist collection, or a store-listing refresh.
+
+## Shortlist
+- [Framer](/tools/framer) is strong for fast visual launch pages with polished interaction.
+- [Webflow](/tools/webflow) fits more structured marketing sites and CMS-backed pages.
+- [Kit](/tools/kit) is useful when the landing page mainly exists to grow an email list.
+
+:::comparison Landing page builders
+| Decision | Framer | Webflow | Kit |
+| --- | --- | --- | --- |
+| Best fit | Fast visual launch page | CMS marketing site | Email-first waitlist |
+| Platform | Web | Web | Web |
+| Watch out for | Site plan needs | Build complexity | Design flexibility |
+:::
+
+## Best for
+- Apps validating positioning before paid acquisition.
+- Teams building a waitlist or beta signup page.
+- Builders comparing [landing page tools](/categories/landing-pages) and [launch tools](/categories/launch).
+
+## Not good for
+- Teams that need a full CRM or enterprise lifecycle platform on day one.
+- Native UI prototyping work that belongs inside the app.
+
+## Internal links
+- Use the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+- Compare the broader [email and waitlist category](/categories/email-waitlists).
+- Prepare store visuals with [AppScreens](/tools/appscreens).
+
+Last checked: 2026-06-29.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("landing-pages").id,
+          seo_title: "Best landing page builders for mobile apps",
+          seo_description:
+            "Compare landing page builders for mobile apps, including Framer, Webflow, and email-first waitlist workflows.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "Crash reporting setup for indie mobile apps",
+          slug: "crash-reporting-setup-indie-mobile-apps",
+          subtitle:
+            "A lightweight monitoring setup for crashes, errors, releases, and regressions.",
+          excerpt:
+            "Choose a crash reporting workflow that helps you fix production issues without adding unnecessary process.",
+          body_markdown: `## Search intent
+This guide is for indie app developers setting up production monitoring before or shortly after launch.
+
+## Practical setup
+- [Sentry](/tools/sentry) is a strong default for error monitoring, releases, stack traces, and alerts.
+- [Firebase](/tools/firebase) is useful if the app already relies on Firebase and wants Crashlytics in the same ecosystem.
+- [Emerge Tools](/tools/emerge-tools) is useful when binary size, startup time, and performance regressions become important.
+
+## Best for
+- Apps preparing a production launch or first serious release cycle.
+- Teams that need to connect crashes with versions and release quality.
+- Builders comparing [crash reporting tools](/categories/crash-reporting) with broader [developer productivity tools](/categories/dev-productivity).
+
+## Not good for
+- Pure prototypes that are not in TestFlight, Play testing, or production yet.
+- Teams that cannot make time to triage alerts after installing tooling.
+
+## Internal links
+- Compare [Sentry](/tools/sentry), [Firebase](/tools/firebase), and [Emerge Tools](/tools/emerge-tools).
+- Connect this to [Codemagic](/tools/codemagic) or [Bitrise](/tools/bitrise) once releases are automated.
+- Use the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist) before public launch.
+
+Last checked: 2026-06-29.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("crash-reporting").id,
+          seo_title: "Crash reporting setup for indie mobile apps",
+          seo_description:
+            "Set up crash reporting for indie mobile apps with practical guidance for Sentry, Firebase Crashlytics, release tracking, and regressions.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
@@ -1114,6 +1359,84 @@ After launch, compare which source drives clicks, installs, subscribers, or paid
       {
         article_id: articles.get("mobile-app-launch-stack-checklist").id,
         tool_id: tools.get("appscreens").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("best-paywall-tools-ios-apps").id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("best-paywall-tools-ios-apps").id,
+        tool_id: tools.get("adapty").id,
+        relationship: "recommended",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("best-paywall-tools-ios-apps").id,
+        tool_id: tools.get("superwall").id,
+        relationship: "recommended",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("best-aso-tools-for-indie-developers").id,
+        tool_id: tools.get("apptweak").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("best-aso-tools-for-indie-developers").id,
+        tool_id: tools.get("appfigures").id,
+        relationship: "recommended",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("best-aso-tools-for-indie-developers").id,
+        tool_id: tools.get("appfollow").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("best-aso-tools-for-indie-developers").id,
+        tool_id: tools.get("appscreens").id,
+        relationship: "supporting",
+        sort_order: 40,
+      },
+      {
+        article_id: articles.get("best-landing-page-builders-mobile-apps").id,
+        tool_id: tools.get("framer").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("best-landing-page-builders-mobile-apps").id,
+        tool_id: tools.get("webflow").id,
+        relationship: "recommended",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("best-landing-page-builders-mobile-apps").id,
+        tool_id: tools.get("kit").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("crash-reporting-setup-indie-mobile-apps").id,
+        tool_id: tools.get("sentry").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("crash-reporting-setup-indie-mobile-apps").id,
+        tool_id: tools.get("firebase").id,
+        relationship: "supporting",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("crash-reporting-setup-indie-mobile-apps").id,
+        tool_id: tools.get("emerge-tools").id,
         relationship: "supporting",
         sort_order: 30,
       },
