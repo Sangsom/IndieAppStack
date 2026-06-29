@@ -89,11 +89,13 @@ export type GuideDetail = {
   metaDescription: string;
   metaTitle: string;
   publishedAt: string;
+  publishedAtIso: string | null;
   relatedTools: GuideTool[];
   slug: string;
   subtitle: string;
   title: string;
   updatedAt: string;
+  updatedAtIso: string;
 };
 
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -341,11 +343,13 @@ export const getGuideDetail = cache(
         "A practical IndieAppStack field guide.",
       metaTitle: typedArticle.seo_title ?? typedArticle.title,
       publishedAt: formatDate(typedArticle.published_at),
+      publishedAtIso: typedArticle.published_at,
       relatedTools,
       slug: typedArticle.slug,
       subtitle: typedArticle.subtitle ?? typedArticle.excerpt ?? "",
       title: typedArticle.title,
       updatedAt: formatDate(typedArticle.updated_at),
+      updatedAtIso: typedArticle.updated_at,
     };
   },
 );

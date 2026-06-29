@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { PlausibleAnalytics } from "@/components/analytics/plausible-analytics";
+import { absoluteUrl } from "@/lib/seo";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const sourceSerif = localFont({
@@ -26,11 +28,33 @@ const sourceSerif = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "IndieAppStack",
+    default: siteConfig.name,
     template: "%s | IndieAppStack",
   },
-  description: "A field guide for solo mobile developers building indie apps.",
+  description: siteConfig.description,
+  openGraph: {
+    description: siteConfig.description,
+    images: [
+      {
+        alt: `${siteConfig.name} preview`,
+        height: 630,
+        url: absoluteUrl("/opengraph-image"),
+        width: 1200,
+      },
+    ],
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    type: "website",
+    url: siteConfig.url,
+  },
+  twitter: {
+    card: "summary_large_image",
+    description: siteConfig.description,
+    images: [absoluteUrl("/opengraph-image")],
+    title: siteConfig.name,
+  },
 };
 
 export default function RootLayout({

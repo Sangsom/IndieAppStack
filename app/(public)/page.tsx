@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CategoryCard } from "@/components/public/category-card";
@@ -6,6 +7,14 @@ import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ToolCard } from "@/components/public/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { getHomepageData, type HomepageArticle } from "@/lib/homepage-data";
+import { createSeoMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createSeoMetadata({
+  description:
+    "Choose the right tools for your mobile app with curated categories, comparisons, guides, and stack recommendations.",
+  path: "/",
+  title: "Choose the right tools for your mobile app",
+});
 
 export const revalidate = 3600;
 

@@ -2,16 +2,14 @@ import type { Metadata } from "next";
 
 import { CategoryCard } from "@/components/public/category-card";
 import { getHomepageData } from "@/lib/homepage-data";
-import { siteConfig } from "@/lib/site";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: new URL("/categories", siteConfig.url).toString(),
-  },
+export const metadata: Metadata = createSeoMetadata({
   description:
     "Browse IndieAppStack categories for monetization, backend, analytics, and other mobile app tool decisions.",
+  path: "/categories",
   title: "Tool categories",
-};
+});
 
 export const revalidate = 3600;
 

@@ -10,6 +10,7 @@ import {
   getPublishedCategorySlugs,
   type CategoryFaq,
 } from "@/lib/category-page-data";
+import { createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 type CategoryPageProps = {
@@ -121,19 +122,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    alternates: {
-      canonical: canonicalUrl(data.category.slug),
-    },
+  return createSeoMetadata({
     description: data.category.metaDescription,
-    openGraph: {
-      description: data.category.metaDescription,
-      title: data.category.metaTitle,
-      type: "article",
-      url: canonicalUrl(data.category.slug),
-    },
+    path: `/categories/${data.category.slug}`,
     title: data.category.metaTitle,
-  };
+    type: "article",
+  });
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

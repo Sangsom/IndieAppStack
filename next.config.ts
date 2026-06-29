@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {/* config options here */};
+import { redirectRules } from "./lib/redirects";
+
+const nextConfig: NextConfig = {
+  async redirects() {
+    return redirectRules;
+  },
+};
 
 export default nextConfig;

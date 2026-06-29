@@ -13,6 +13,7 @@ import {
   getPublishedGuideSlugs,
   type GuideDetail,
 } from "@/lib/guide-data";
+import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 type GuidePageProps = {
@@ -30,16 +31,49 @@ function canonicalUrl(slug: string) {
 function ArticleStructuredData({ guide }: { guide: GuideDetail }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    author: {
-      "@type": "Organization",
-      name: guide.author,
-    },
-    dateModified: guide.updatedAt,
-    datePublished: guide.publishedAt,
-    description: guide.description,
-    headline: guide.title,
-    mainEntityOfPage: canonicalUrl(guide.slug),
+    "@graph": [
+      {
+        "@type": "Article",
+        author: {
+          "@type": "Organization",
+          name: guide.author,
+        },
+        dateModified: guide.updatedAtIso,
+        datePublished: guide.publishedAtIso ?? guide.updatedAtIso,
+        description: guide.description,
+        headline: guide.title,
+        image: absoluteUrl("/opengraph-image"),
+        mainEntityOfPage: canonicalUrl(guide.slug),
+        publisher: {
+          "@type": "Organization",
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            item: siteConfig.url,
+            name: "Home",
+            position: 1,
+          },
+          {
+            "@type": "ListItem",
+            item: new URL("/guides", siteConfig.url).toString(),
+            name: "Guides",
+            position: 2,
+          },
+          {
+            "@type": "ListItem",
+            item: canonicalUrl(guide.slug),
+            name: guide.title,
+            position: 3,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -72,19 +106,12 @@ export async function generateMetadata({
     };
   }
 
-  return {
-    alternates: {
-      canonical: canonicalUrl(guide.slug),
-    },
+  return createSeoMetadata({
     description: guide.metaDescription,
-    openGraph: {
-      description: guide.metaDescription,
-      title: guide.metaTitle,
-      type: "article",
-      url: canonicalUrl(guide.slug),
-    },
+    path: `/guides/${guide.slug}`,
     title: guide.metaTitle,
-  };
+    type: "article",
+  });
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {

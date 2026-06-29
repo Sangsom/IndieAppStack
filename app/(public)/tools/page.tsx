@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ToolFilterForm } from "@/components/public/tool-filter-form";
@@ -8,12 +9,20 @@ import {
   type FilterGroup,
   type ToolDirectoryFilters,
 } from "@/lib/tool-directory-data";
+import { createSeoMetadata } from "@/lib/seo";
 
 type ToolsPageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export const revalidate = 3600;
+
+export const metadata: Metadata = createSeoMetadata({
+  description:
+    "Browse published mobile app tools by category, platform, pricing model, app stage, and tool type.",
+  path: "/tools",
+  title: "Mobile app tools directory",
+});
 
 function getActiveFilterCount(filters: ToolDirectoryFilters) {
   return Object.values(filters).reduce(

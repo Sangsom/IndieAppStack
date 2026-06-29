@@ -8,6 +8,7 @@ import { FitList } from "@/components/public/fit-list";
 import { ProsCons } from "@/components/public/pros-cons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
+import { createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import {
   getPublishedToolSlugs,
@@ -93,13 +94,40 @@ function RelatedArticles({
 function StructuredData({ tool }: { tool: ToolDetail }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    applicationCategory:
-      tool.categories[0]?.name ?? "Mobile app development tool",
-    description: tool.description,
-    name: tool.name,
-    operatingSystem: tool.platforms.join(", "),
-    url: tool.websiteUrl ?? canonicalUrl(tool.slug),
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        applicationCategory:
+          tool.categories[0]?.name ?? "Mobile app development tool",
+        description: tool.description,
+        name: tool.name,
+        operatingSystem: tool.platforms.join(", "),
+        url: tool.websiteUrl ?? canonicalUrl(tool.slug),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            item: siteConfig.url,
+            name: "Home",
+            position: 1,
+          },
+          {
+            "@type": "ListItem",
+            item: new URL("/tools", siteConfig.url).toString(),
+            name: "Tools",
+            position: 2,
+          },
+          {
+            "@type": "ListItem",
+            item: canonicalUrl(tool.slug),
+            name: tool.name,
+            position: 3,
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -130,19 +158,12 @@ export async function generateMetadata({
 
   const description = `${tool.tagline} Pricing checked ${tool.lastChecked}.`;
 
-  return {
-    alternates: {
-      canonical: canonicalUrl(tool.slug),
-    },
+  return createSeoMetadata({
     description,
-    openGraph: {
-      description,
-      title: `${tool.name} review`,
-      type: "article",
-      url: canonicalUrl(tool.slug),
-    },
+    path: `/tools/${tool.slug}`,
     title: `${tool.name} review, pricing, alternatives, and fit`,
-  };
+    type: "article",
+  });
 }
 
 export default async function ToolDetailPage({ params }: ToolDetailPageProps) {

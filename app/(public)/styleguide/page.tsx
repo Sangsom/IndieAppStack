@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { AffiliateCta } from "@/components/public/affiliate-cta";
@@ -15,6 +16,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Callout } from "@/components/ui/callout";
 import { designTokens } from "@/lib/design-tokens";
+import { createSeoMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createSeoMetadata({
+  description: "Development-only IndieAppStack design system reference.",
+  noindex: true,
+  path: "/styleguide",
+  title: "Design system",
+});
 
 const comparisonColumns = [
   { key: "solo", label: "Solo app" },

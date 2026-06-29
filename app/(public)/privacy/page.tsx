@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
+
 import { LandingSection } from "@/components/public/landing-section";
+import { createSeoMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createSeoMetadata({
+  description:
+    "IndieAppStack privacy policy for lightweight measurement and reader-submitted information.",
+  path: "/privacy",
+  title: "Privacy policy",
+});
 
 export default function PrivacyPage() {
   return (

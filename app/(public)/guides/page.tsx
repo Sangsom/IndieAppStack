@@ -3,16 +3,14 @@ import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
 import { getGuideList } from "@/lib/guide-data";
-import { siteConfig } from "@/lib/site";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: new URL("/guides", siteConfig.url).toString(),
-  },
+export const metadata: Metadata = createSeoMetadata({
   description:
     "Practical guides, comparisons, and operating notes for indie mobile app builders choosing tools and workflows.",
+  path: "/guides",
   title: "Guides and articles",
-};
+});
 
 export const revalidate = 3600;
 
