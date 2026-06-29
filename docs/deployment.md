@@ -77,3 +77,14 @@ Target domain: `indieappstack.com`
 5. Set `NEXT_PUBLIC_SITE_URL=https://indieappstack.com` in Production.
 6. Verify homepage, Supabase healthcheck, Plausible page views, and Search Console ownership.
 7. Set the preferred domain redirect in Vercel once both apex and `www` resolve.
+
+## Launch Verification
+
+Run the launch gate before go-live and after production deployment:
+
+```bash
+npm run launch:verify
+LAUNCH_VERIFY_URL=https://indieappstack.com npm run launch:verify
+```
+
+Keep the detailed checklist in `docs/launch-checklist.md`.
