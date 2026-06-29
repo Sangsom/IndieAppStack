@@ -1,18 +1,65 @@
-import { siteConfig } from "@/lib/site";
+import Link from "next/link";
+
+import { AdminPageShell } from "@/components/admin/admin-page-shell";
+import { AdminState } from "@/components/admin/admin-states";
+import { AdminTable } from "@/components/admin/admin-table";
+import { adminNavigationItems } from "@/lib/admin-navigation";
 
 export default function AdminPage() {
   return (
-    <main className="flex flex-1 flex-col justify-center py-12">
-      <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.18em] text-accent-soft">
-        Private workspace
-      </p>
-      <h1 className="mt-4 font-serif text-4xl font-semibold">
-        {siteConfig.name}
-      </h1>
-      <p className="mt-4 max-w-xl text-body-md text-accent-soft">
-        The admin shell is protected by Supabase Auth, middleware redirects, and
-        an explicit admin role check.
-      </p>
-    </main>
+    <AdminPageShell
+      description="Protected workspace for managing the IndieAppStack directory, editorial workflow, affiliate links, and tracking data."
+      eyebrow="Private workspace"
+      title="Admin overview"
+    >
+      <AdminTable
+        caption="Admin sections"
+        columns={[
+          {
+            key: "section",
+            label: "Section",
+          },
+          {
+            key: "description",
+            label: "Purpose",
+          },
+          {
+            key: "action",
+            label: "Open",
+          },
+        ]}
+        emptyDescription="Admin sections will appear here once navigation is configured."
+        emptyTitle="No admin sections"
+        rows={adminNavigationItems.map((item) => ({
+          action: (
+            <Link
+              className="inline-flex h-9 items-center justify-center rounded-button border border-rule px-3 text-sm font-semibold text-pine transition-colors hover:border-pine hover:bg-accent-soft"
+              href={item.href}
+            >
+              Open
+            </Link>
+          ),
+          description: item.description,
+          section: <span className="font-semibold">{item.label}</span>,
+        }))}
+      />
+
+      <div className="grid gap-4 lg:grid-cols-3">
+        <AdminState
+          description="Used when a list or relation has no records yet."
+          title="Reusable empty state"
+        />
+        <AdminState
+          description="Used by route loading boundaries while protected data resolves."
+          title="Reusable loading state"
+          tone="loading"
+        />
+        <AdminState
+          description="Used by admin error boundaries with a retry action."
+          title="Reusable error state"
+          tone="error"
+        />
+      </div>
+    </AdminPageShell>
   );
 }

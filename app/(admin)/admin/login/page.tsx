@@ -45,7 +45,7 @@ export default async function AdminLoginPage({
       : undefined;
 
   return (
-    <main className="flex flex-1 items-center justify-center py-12">
+    <main className="flex min-h-dvh items-center justify-center px-4 py-12">
       <section className="w-full max-w-md rounded-card border border-rule bg-paper p-6 text-ink shadow-field">
         <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.18em] text-pine">
           Admin
