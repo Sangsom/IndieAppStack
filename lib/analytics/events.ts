@@ -27,6 +27,14 @@ export const analyticsEvents = {
     description: "Visitor views a stack recommendation.",
     goal: false,
   },
+  tool_created: {
+    description: "Admin creates a tool record.",
+    goal: false,
+  },
+  tool_updated: {
+    description: "Admin updates a tool record.",
+    goal: false,
+  },
 } as const;
 
 export type AnalyticsEventName = keyof typeof analyticsEvents;
@@ -59,6 +67,15 @@ export type AnalyticsEventProperties = {
   };
   stack_recommendation_viewed: {
     stack_slug: string;
+  };
+  tool_created: {
+    tool_id: string;
+    tool_slug: string;
+  };
+  tool_updated: {
+    tool_id: string;
+    tool_slug: string;
+    update_type: "archive" | "save";
   };
 };
 
