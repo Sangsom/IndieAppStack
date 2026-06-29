@@ -43,6 +43,10 @@ export const analyticsEvents = {
     description: "Visitor starts the stack finder quiz.",
     goal: true,
   },
+  stack_finder_completion: {
+    description: "Visitor completes the stack finder and views results.",
+    goal: true,
+  },
   tool_created: {
     description: "Admin creates a tool record.",
     goal: false,
@@ -104,6 +108,11 @@ export type AnalyticsEventProperties = {
   };
   stack_finder_start: {
     first_step: string;
+  };
+  stack_finder_completion: {
+    result_url: string;
+    stack_slug: string;
+    tool_count: number;
   };
   tool_created: {
     tool_id: string;

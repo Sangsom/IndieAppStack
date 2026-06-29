@@ -40,6 +40,9 @@ Create matching Plausible custom event goals for:
 - `cta_clicked`
 - `newsletter_signup`
 - `search_submitted`
+- `stack_finder_start`
+- `stack_finder_completion`
+- `stack_recommendation_viewed`
 
 Page views are recorded automatically by the Plausible script.
 
