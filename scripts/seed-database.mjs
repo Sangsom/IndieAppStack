@@ -430,7 +430,7 @@ const seedTools = [
     platforms: ["Web"],
     app_stages: ["Prototype", "MVP", "Growth"],
     alternatives: ["Webflow", "Carrd", "Typedream"],
-    categorySlugs: ["landing-pages"],
+    categorySlugs: ["launch", "landing-pages"],
     internal_notes:
       "Pricing/features checked 2026-06-29 from https://www.framer.com/pricing",
   },
@@ -450,7 +450,7 @@ const seedTools = [
     platforms: ["Web"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["Framer", "WordPress", "Squarespace"],
-    categorySlugs: ["landing-pages"],
+    categorySlugs: ["launch", "landing-pages"],
     internal_notes:
       "Pricing/features checked 2026-06-29 from https://webflow.com/pricing",
   },
@@ -470,7 +470,7 @@ const seedTools = [
     platforms: ["Web"],
     app_stages: ["Prototype", "MVP", "Growth"],
     alternatives: ["Kit", "Substack", "Mailchimp"],
-    categorySlugs: ["email-waitlists"],
+    categorySlugs: ["launch", "email-waitlists"],
     internal_notes:
       "Pricing/features checked 2026-06-29 from https://www.beehiiv.com/pricing",
   },
@@ -490,7 +490,7 @@ const seedTools = [
     platforms: ["Web"],
     app_stages: ["Prototype", "MVP", "Growth"],
     alternatives: ["beehiiv", "Mailchimp", "ConvertKit"],
-    categorySlugs: ["email-waitlists", "landing-pages"],
+    categorySlugs: ["launch", "email-waitlists", "landing-pages"],
     internal_notes:
       "Pricing/features checked 2026-06-29 from https://kit.com/pricing",
   },
@@ -510,7 +510,7 @@ const seedTools = [
     platforms: ["iOS", "Android", "Web"],
     app_stages: ["MVP", "Growth"],
     alternatives: ["Screenshots Pro", "AppLaunchpad", "Previewed"],
-    categorySlugs: ["screenshots", "aso"],
+    categorySlugs: ["launch", "screenshots", "aso"],
     internal_notes:
       "Pricing/features checked 2026-06-29 from https://appscreens.com/pricing",
   },
@@ -529,7 +529,7 @@ const seedTools = [
     platforms: ["iOS", "Android", "Web"],
     app_stages: ["MVP", "Growth"],
     alternatives: ["AppScreens", "Previewed", "AppLaunchpad"],
-    categorySlugs: ["screenshots"],
+    categorySlugs: ["launch", "screenshots"],
     internal_notes:
       "Pricing/features checked 2026-06-29 from https://screenshots.pro/pricing",
   },
@@ -627,99 +627,132 @@ try {
           name: "Monetization",
           slug: "monetization",
           description:
-            "Revenue, subscriptions, paywalls, and affiliate-friendly app business tools.",
+            "Compare subscription, paywall, purchase, and revenue tooling for mobile apps that need to charge confidently from the first release.",
           sort_order: 10,
           status: "published",
+          seo_description:
+            "Compare mobile app monetization tools for subscriptions, paywalls, entitlements, revenue analytics, and pricing experiments.",
           seo_title: "Mobile App Monetization Tools",
         },
         {
           name: "Paywalls",
           slug: "paywalls",
           description:
-            "Paywall builders, subscription screens, and pricing tests.",
+            "Pick paywall builders and testing tools for mobile subscription flows, remote configuration, and pricing experiments.",
           sort_order: 20,
           status: "published",
+          seo_description:
+            "Compare mobile paywall tools for subscription screens, remote config, A/B testing, and conversion analytics.",
           seo_title: "Paywall Tools for Mobile Apps",
         },
         {
           name: "ASO",
           slug: "aso",
           description:
-            "App Store Optimization research, metadata, and launch assets.",
+            "Research keywords, competitors, reviews, rankings, and creative assets that help mobile apps earn qualified store traffic.",
           sort_order: 30,
           status: "published",
+          seo_description:
+            "Compare ASO tools for app keyword research, rankings, reviews, competitor tracking, and store listing optimization.",
           seo_title: "ASO Tools for Mobile Apps",
         },
         {
           name: "Analytics",
           slug: "analytics",
           description:
-            "Privacy-conscious analytics, event tracking, and product insights.",
+            "Choose analytics tools that explain onboarding, retention, feature adoption, and revenue without burying indie teams in noise.",
           sort_order: 40,
           status: "published",
+          seo_description:
+            "Compare mobile analytics tools for event tracking, funnels, retention, privacy-friendly dashboards, and product decisions.",
           seo_title: "Analytics Tools for Mobile Apps",
         },
         {
           name: "Crash Reporting",
           slug: "crash-reporting",
           description:
-            "Crash reporting, diagnostics, and production issue monitoring.",
+            "Monitor crashes, errors, regressions, and production quality so releases stay trustworthy after app store approval.",
           sort_order: 50,
           status: "published",
+          seo_description:
+            "Compare crash reporting and error monitoring tools for mobile apps, production diagnostics, alerts, and release quality.",
           seo_title: "Crash Reporting Tools for Mobile Apps",
         },
         {
           name: "Backend",
           slug: "backend",
           description:
-            "Databases, auth, APIs, storage, and server infrastructure for mobile apps.",
+            "Find backend platforms for auth, databases, APIs, storage, server-side logic, and app data that needs to sync across devices.",
           sort_order: 60,
           status: "published",
+          seo_description:
+            "Compare backend tools for mobile apps, including auth, databases, APIs, storage, serverless functions, and realtime data.",
           seo_title: "Backend Tools for Mobile Apps",
         },
         {
           name: "Push",
           slug: "push",
           description:
-            "Push notification infrastructure and lifecycle messaging.",
+            "Send push notifications and lifecycle messages that bring users back without turning your app into a notification machine.",
           sort_order: 70,
           status: "published",
+          seo_description:
+            "Compare push notification tools for mobile apps, lifecycle messaging, segmentation, in-app messages, and campaigns.",
           seo_title: "Push Notification Tools for Mobile Apps",
+        },
+        {
+          name: "Launch",
+          slug: "launch",
+          description:
+            "Plan launch pages, waitlists, newsletters, screenshots, and early distribution channels before and after app store release.",
+          sort_order: 75,
+          status: "published",
+          seo_description:
+            "Compare launch tools for mobile apps, including landing pages, waitlists, newsletters, screenshots, and early marketing workflows.",
+          seo_title: "Mobile App Launch Tools",
         },
         {
           name: "Landing Pages",
           slug: "landing-pages",
           description:
-            "Landing page builders, launch pages, and waitlist sites.",
+            "Build launch pages, product websites, CMS pages, and waitlist funnels that explain the app before someone installs it.",
           sort_order: 80,
           status: "published",
+          seo_description:
+            "Compare landing page tools for mobile app launch pages, product sites, waitlists, forms, and CMS-backed marketing pages.",
           seo_title: "Landing Page Tools for Mobile Apps",
         },
         {
           name: "Email/Waitlists",
           slug: "email-waitlists",
           description:
-            "Email capture, waitlists, newsletters, and lifecycle email.",
+            "Capture early demand, send launch updates, and keep users warm with waitlists, newsletters, and simple lifecycle email.",
           sort_order: 90,
           status: "published",
+          seo_description:
+            "Compare email and waitlist tools for mobile app launches, newsletters, automations, signup forms, and audience growth.",
           seo_title: "Email and Waitlist Tools for Mobile Apps",
         },
         {
           name: "Screenshots",
           slug: "screenshots",
           description:
-            "App Store screenshots, preview assets, and visual listing tools.",
+            "Create app store screenshots, preview assets, localized captions, and visual listing updates that support ASO and launches.",
           sort_order: 100,
           status: "published",
+          seo_description:
+            "Compare screenshot tools for App Store and Google Play images, device frames, localization, captions, and export workflows.",
           seo_title: "App Screenshot Tools for Mobile Apps",
         },
         {
           name: "Dev Productivity",
           slug: "dev-productivity",
           description:
-            "Developer productivity, release workflow, QA, and automation tools.",
+            "Automate mobile builds, releases, QA, performance checks, screenshots, and repetitive launch work as your app matures.",
           sort_order: 110,
           status: "published",
+          seo_description:
+            "Compare developer productivity tools for mobile CI/CD, release automation, QA, app performance, and build workflows.",
           seo_title: "Developer Productivity Tools for Mobile Apps",
         },
       ],
@@ -925,6 +958,80 @@ Review events monthly and remove anything that does not change product decisions
           published_at: new Date().toISOString(),
         },
         {
+          title: "ASO starter checklist for indie mobile apps",
+          slug: "aso-starter-checklist-indie-mobile-apps",
+          subtitle:
+            "A practical first pass for keywords, screenshots, reviews, and competitor monitoring.",
+          excerpt:
+            "Use this ASO checklist to tighten an app store listing before launch or the next metadata update.",
+          body_markdown: `## Start with the searchable promise
+ASO work is easier when the app's core promise is specific enough to become keywords, screenshots, and comparison copy.
+
+## First checklist
+- Pick a small set of primary and secondary keywords.
+- Compare three direct competitors for title, subtitle, screenshots, and reviews.
+- Check whether your first screenshots explain the app before showing UI detail.
+- Set a recurring review-monitoring habit.
+
+:::comparison ASO starter tools
+| Job | AppTweak | Appfigures | AppScreens |
+| --- | --- | --- | --- |
+| Keyword research | Strong | Useful | Not primary |
+| Review/ranking monitoring | Useful | Strong | Not primary |
+| Screenshot production | Not primary | Not primary | Strong |
+:::
+
+## Review cadence
+Re-check rankings, screenshots, and review language monthly while the app is still learning what converts.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("aso").id,
+          seo_title: "ASO starter checklist for indie mobile apps",
+          seo_description:
+            "A practical ASO checklist for indie mobile apps covering keywords, competitors, reviews, screenshots, and store listing updates.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
+          title: "Mobile app launch stack checklist",
+          slug: "mobile-app-launch-stack-checklist",
+          subtitle:
+            "A lean launch workflow for landing pages, waitlists, screenshots, and audience capture.",
+          excerpt:
+            "Plan the first public launch with a focused stack for product pages, email capture, screenshots, and follow-up.",
+          body_markdown: `## Keep the launch stack small
+The first launch stack should explain the app, capture interest, and make the store listing look credible.
+
+## Recommended launch flow
+- Build a landing page that names the problem and target user.
+- Add waitlist or newsletter capture before release.
+- Prepare store screenshots before sending traffic.
+- Keep a lightweight update channel for beta users and early subscribers.
+
+:::comparison Launch starter tools
+| Job | Framer | beehiiv | AppScreens |
+| --- | --- | --- | --- |
+| Landing page | Strong | Basic | Not primary |
+| Audience capture | Basic | Strong | Not primary |
+| Store creative | Not primary | Not primary | Strong |
+:::
+
+## What to revisit
+After launch, compare which source drives clicks, installs, subscribers, or paid conversions before adding more channels.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("launch").id,
+          seo_title: "Mobile app launch stack checklist",
+          seo_description:
+            "A mobile app launch checklist for landing pages, waitlists, newsletters, screenshots, and early distribution workflows.",
+          human_reviewed: true,
+          ai_assisted: false,
+          published_at: new Date().toISOString(),
+        },
+        {
           title: "Draft guide that should stay private",
           slug: "draft-guide-private",
           subtitle: "This seed record proves drafts stay out of public routes.",
@@ -973,6 +1080,42 @@ Review events monthly and remove anything that does not change product decisions
         tool_id: tools.get("telemetrydeck").id,
         relationship: "recommended",
         sort_order: 10,
+      },
+      {
+        article_id: articles.get("aso-starter-checklist-indie-mobile-apps").id,
+        tool_id: tools.get("apptweak").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("aso-starter-checklist-indie-mobile-apps").id,
+        tool_id: tools.get("appfigures").id,
+        relationship: "supporting",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("aso-starter-checklist-indie-mobile-apps").id,
+        tool_id: tools.get("appscreens").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("mobile-app-launch-stack-checklist").id,
+        tool_id: tools.get("framer").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("mobile-app-launch-stack-checklist").id,
+        tool_id: tools.get("beehiiv").id,
+        relationship: "supporting",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("mobile-app-launch-stack-checklist").id,
+        tool_id: tools.get("appscreens").id,
+        relationship: "supporting",
+        sort_order: 30,
       },
     ],
     { onConflict: "article_id,tool_id" },

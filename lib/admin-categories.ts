@@ -31,84 +31,120 @@ export const categoryStatusOptions: Array<{
 export const defaultPrdCategories = [
   {
     description:
-      "Revenue, subscriptions, paywalls, and affiliate-friendly app business tools.",
+      "Compare subscription, paywall, purchase, and revenue tooling for mobile apps that need to charge confidently from the first release.",
     name: "Monetization",
+    seoDescription:
+      "Compare mobile app monetization tools for subscriptions, paywalls, entitlements, revenue analytics, and pricing experiments.",
     seoTitle: "Mobile App Monetization Tools",
     slug: "monetization",
     sortOrder: 10,
   },
   {
-    description: "Paywall builders, subscription screens, and pricing tests.",
+    description:
+      "Pick paywall builders and testing tools for mobile subscription flows, remote configuration, and pricing experiments.",
     name: "Paywalls",
+    seoDescription:
+      "Compare mobile paywall tools for subscription screens, remote config, A/B testing, and conversion analytics.",
     seoTitle: "Paywall Tools for Mobile Apps",
     slug: "paywalls",
     sortOrder: 20,
   },
   {
     description:
-      "App Store Optimization research, metadata, and launch assets.",
+      "Research keywords, competitors, reviews, rankings, and creative assets that help mobile apps earn qualified store traffic.",
     name: "ASO",
+    seoDescription:
+      "Compare ASO tools for app keyword research, rankings, reviews, competitor tracking, and store listing optimization.",
     seoTitle: "ASO Tools for Mobile Apps",
     slug: "aso",
     sortOrder: 30,
   },
   {
     description:
-      "Privacy-conscious analytics, event tracking, and product insights.",
+      "Choose analytics tools that explain onboarding, retention, feature adoption, and revenue without burying indie teams in noise.",
     name: "Analytics",
+    seoDescription:
+      "Compare mobile analytics tools for event tracking, funnels, retention, privacy-friendly dashboards, and product decisions.",
     seoTitle: "Analytics Tools for Mobile Apps",
     slug: "analytics",
     sortOrder: 40,
   },
   {
     description:
-      "Crash reporting, diagnostics, and production issue monitoring.",
+      "Monitor crashes, errors, regressions, and production quality so releases stay trustworthy after app store approval.",
     name: "Crash Reporting",
+    seoDescription:
+      "Compare crash reporting and error monitoring tools for mobile apps, production diagnostics, alerts, and release quality.",
     seoTitle: "Crash Reporting Tools for Mobile Apps",
     slug: "crash-reporting",
     sortOrder: 50,
   },
   {
     description:
-      "Databases, auth, APIs, storage, and server infrastructure for mobile apps.",
+      "Find backend platforms for auth, databases, APIs, storage, server-side logic, and app data that needs to sync across devices.",
     name: "Backend",
+    seoDescription:
+      "Compare backend tools for mobile apps, including auth, databases, APIs, storage, serverless functions, and realtime data.",
     seoTitle: "Backend Tools for Mobile Apps",
     slug: "backend",
     sortOrder: 60,
   },
   {
-    description: "Push notification infrastructure and lifecycle messaging.",
+    description:
+      "Send push notifications and lifecycle messages that bring users back without turning your app into a notification machine.",
     name: "Push",
+    seoDescription:
+      "Compare push notification tools for mobile apps, lifecycle messaging, segmentation, in-app messages, and campaigns.",
     seoTitle: "Push Notification Tools for Mobile Apps",
     slug: "push",
     sortOrder: 70,
   },
   {
-    description: "Landing page builders, launch pages, and waitlist sites.",
+    description:
+      "Plan launch pages, waitlists, newsletters, screenshots, and early distribution channels before and after app store release.",
+    name: "Launch",
+    seoDescription:
+      "Compare launch tools for mobile apps, including landing pages, waitlists, newsletters, screenshots, and early marketing workflows.",
+    seoTitle: "Mobile App Launch Tools",
+    slug: "launch",
+    sortOrder: 75,
+  },
+  {
+    description:
+      "Build launch pages, product websites, CMS pages, and waitlist funnels that explain the app before someone installs it.",
     name: "Landing Pages",
+    seoDescription:
+      "Compare landing page tools for mobile app launch pages, product sites, waitlists, forms, and CMS-backed marketing pages.",
     seoTitle: "Landing Page Tools for Mobile Apps",
     slug: "landing-pages",
     sortOrder: 80,
   },
   {
-    description: "Email capture, waitlists, newsletters, and lifecycle email.",
+    description:
+      "Capture early demand, send launch updates, and keep users warm with waitlists, newsletters, and simple lifecycle email.",
     name: "Email/Waitlists",
+    seoDescription:
+      "Compare email and waitlist tools for mobile app launches, newsletters, automations, signup forms, and audience growth.",
     seoTitle: "Email and Waitlist Tools for Mobile Apps",
     slug: "email-waitlists",
     sortOrder: 90,
   },
   {
     description:
-      "App Store screenshots, preview assets, and visual listing tools.",
+      "Create app store screenshots, preview assets, localized captions, and visual listing updates that support ASO and launches.",
     name: "Screenshots",
+    seoDescription:
+      "Compare screenshot tools for App Store and Google Play images, device frames, localization, captions, and export workflows.",
     seoTitle: "App Screenshot Tools for Mobile Apps",
     slug: "screenshots",
     sortOrder: 100,
   },
   {
     description:
-      "Developer productivity, release workflow, QA, and automation tools.",
+      "Automate mobile builds, releases, QA, performance checks, screenshots, and repetitive launch work as your app matures.",
     name: "Dev Productivity",
+    seoDescription:
+      "Compare developer productivity tools for mobile CI/CD, release automation, QA, app performance, and build workflows.",
     seoTitle: "Developer Productivity Tools for Mobile Apps",
     slug: "dev-productivity",
     sortOrder: 110,

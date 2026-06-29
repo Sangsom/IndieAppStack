@@ -209,6 +209,7 @@ export async function ensureDefaultCategories() {
     defaultPrdCategories.map((category) => ({
       description: category.description,
       name: category.name,
+      seo_description: category.seoDescription,
       seo_title: category.seoTitle,
       slug: category.slug,
       sort_order: category.sortOrder,

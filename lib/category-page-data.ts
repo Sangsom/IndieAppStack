@@ -142,6 +142,30 @@ const categoryCopy: Record<
       "Teams that prefer privacy-conscious measurement.",
     ],
   },
+  aso: {
+    faq: [
+      {
+        answer:
+          "Start with keyword research, competitor tracking, screenshots, and review monitoring before investing in advanced market-intelligence workflows.",
+        question: "Which ASO tools should an indie app use first?",
+      },
+      {
+        answer:
+          "Yes. ASO tools help reveal search demand, ranking changes, review patterns, and creative opportunities that are hard to see from App Store Connect alone.",
+        question: "Do small apps need ASO software?",
+      },
+    ],
+    whenToUse: [
+      "You are preparing a launch, relaunch, or major metadata update.",
+      "You need to compare keywords, competitors, rankings, reviews, or store creatives.",
+      "You want a repeatable way to improve qualified store traffic over time.",
+    ],
+    whoNeedsThis: [
+      "Indie developers trying to earn organic app store traffic.",
+      "Subscription apps that need better keyword and screenshot conversion.",
+      "Teams planning regular metadata, review, or competitor audits.",
+    ],
+  },
   backend: {
     faq: [
       {
@@ -164,6 +188,30 @@ const categoryCopy: Record<
       "Apps with accounts or shared data.",
       "Builders who need auth and database infrastructure quickly.",
       "Teams that expect the data model to evolve after launch.",
+    ],
+  },
+  launch: {
+    faq: [
+      {
+        answer:
+          "A focused launch stack usually includes a landing page, waitlist or newsletter capture, screenshot production, and a lightweight way to publish updates.",
+        question: "What tools do I need before launching a mobile app?",
+      },
+      {
+        answer:
+          "Yes. A landing page can validate positioning, capture early demand, and give reviewers or potential users a clear place to understand the app.",
+        question: "Is a landing page useful before the app is live?",
+      },
+    ],
+    whenToUse: [
+      "You are validating positioning before App Store or Google Play release.",
+      "You need a waitlist, newsletter, launch page, or screenshot workflow.",
+      "You want to coordinate app store assets and marketing pages before a release.",
+    ],
+    whoNeedsThis: [
+      "Solo developers preparing a first public launch.",
+      "Apps that need a waitlist, audience, or beta-user pipeline.",
+      "Teams refreshing screenshots, landing pages, and messaging for a relaunch.",
     ],
   },
   monetization: {
