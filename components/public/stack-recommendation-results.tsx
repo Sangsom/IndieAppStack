@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
+import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ShareResultsButton } from "@/components/public/share-results-button";
 import { StackFinderCompletionTracker } from "@/components/public/stack-finder-completion-tracker";
 import { StackCard } from "@/components/public/stack-card";
@@ -125,6 +126,15 @@ export function StackRecommendationResults({
           }))}
         />
       </div>
+
+      <section className="mt-8">
+        <NewsletterSignup
+          ctaLabel="Send stack"
+          description="Get this exact recommendation link in your inbox so you can revisit the roles, alternatives, and cost notes when you are comparing tools."
+          source="stack-finder"
+          title="Send this stack to me"
+        />
+      </section>
 
       <section className="mt-8">
         <h2 className="font-serif text-3xl font-semibold text-ink">

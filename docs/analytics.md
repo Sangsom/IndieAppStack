@@ -46,6 +46,9 @@ Create matching Plausible custom event goals for:
 
 Page views are recorded automatically by the Plausible script.
 
+Stack Finder result email capture reuses `newsletter_signup` with
+`source=stack-finder`.
+
 ## Validation
 
 1. Deploy a preview with `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` configured.
