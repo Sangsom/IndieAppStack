@@ -11,6 +11,14 @@ type AdminArticlesPageProps = {
 };
 
 const messages: Record<string, { tone: "error" | "info"; text: string }> = {
+  accept_failed: {
+    tone: "error",
+    text: "The AI draft could not be accepted.",
+  },
+  accepted: {
+    tone: "info",
+    text: "AI draft accepted and marked human-reviewed.",
+  },
   archive_failed: {
     tone: "error",
     text: "The article could not be archived.",
@@ -50,6 +58,46 @@ const messages: Record<string, { tone: "error" | "info"; text: string }> = {
   publish_requires_review: {
     tone: "error",
     text: "Publishing requires the human-reviewed flag.",
+  },
+  publish_affiliate_disclosure: {
+    tone: "error",
+    text: "Publishing requires visible affiliate disclosure when affiliate CTAs or redirect links are present.",
+  },
+  publish_fit_guidance: {
+    tone: "error",
+    text: "Publishing requires both best-for and not-good-for recommendation guidance.",
+  },
+  publish_internal_links: {
+    tone: "error",
+    text: "Publishing requires at least three internal links.",
+  },
+  publish_last_checked: {
+    tone: "error",
+    text: "Publishing requires a pricing/features last-checked date.",
+  },
+  publish_quality_checklist: {
+    tone: "error",
+    text: "Complete every pre-publish quality checklist item before publishing.",
+  },
+  publish_testing_claims: {
+    tone: "error",
+    text: "AI drafts cannot publish with unsupported personal testing claims.",
+  },
+  reject_failed: {
+    tone: "error",
+    text: "The AI draft could not be rejected.",
+  },
+  reject_feedback_required: {
+    tone: "error",
+    text: "Rejecting an AI draft requires feedback.",
+  },
+  reject_topic_failed: {
+    tone: "error",
+    text: "The draft was rejected, but topic queue feedback could not be saved.",
+  },
+  rejected: {
+    tone: "info",
+    text: "AI draft rejected and feedback returned to the topic queue.",
   },
   update_failed: {
     tone: "error",

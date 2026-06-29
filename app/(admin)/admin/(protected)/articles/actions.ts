@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { emitAdminAnalyticsEvent } from "@/lib/analytics/admin";
 import {
+  articleQualityChecklistItems,
   articleContentTypeOptions,
   articleStatusOptions,
   type ArticleContentType,
@@ -20,6 +21,12 @@ type ArticleFormResult = {
 };
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const internalLinkPattern =
+  /\]\((\/(?:guides|tools|categories|comparisons|stack-finder)(?:\/[a-z0-9/-]+)?)(?:[)#?])/g;
+const lastCheckedPattern =
+  /(last[-\s]?checked|pricing\/features checked|pricing checked|features checked)[^\n]{0,120}\d{4}-\d{2}-\d{2}/i;
+const testingClaimPattern =
+  /\b(?:i|we)\s+(?:personally\s+)?(?:tested|used|tried|installed|benchmarked)\b|hands-on testing|in our testing/i;
 
 function textValue(formData: FormData, name: string) {
   const value = formData.get(name);
@@ -75,6 +82,88 @@ function parseJson(value: string, errors: string[]): Json {
   }
 }
 
+function requiresAffiliateDisclosure(
+  bodyMarkdown: string | null,
+  blocks: Json,
+) {
+  const hasAffiliateBlocks = Array.isArray(blocks) && blocks.length > 0;
+  const hasRedirectLinks = bodyMarkdown?.includes("](/go/") ?? false;
+
+  return hasAffiliateBlocks || hasRedirectLinks;
+}
+
+function hasAffiliateDisclosure(bodyMarkdown: string | null) {
+  return /affiliate|commission|disclosure/i.test(bodyMarkdown ?? "");
+}
+
+function countInternalLinks(bodyMarkdown: string | null) {
+  return new Set(
+    [...(bodyMarkdown ?? "").matchAll(internalLinkPattern)].map(
+      (match) => match[1],
+    ),
+  ).size;
+}
+
+function hasFitGuidance(bodyMarkdown: string | null) {
+  const body = bodyMarkdown ?? "";
+
+  return (
+    /(best for|best-fit|best fit)/i.test(body) &&
+    /(not good for|not-good-for|poor fit|not a fit)/i.test(body)
+  );
+}
+
+function validatePublishChecklist(
+  formData: FormData,
+  payload: TablesInsert<"articles">,
+  relatedToolIds: string[],
+  errors: string[],
+) {
+  if (payload.status !== "published") {
+    return;
+  }
+
+  const bodyMarkdown = payload.body_markdown ?? null;
+  const affiliateBlocks = payload.affiliate_cta_blocks ?? [];
+
+  articleQualityChecklistItems.forEach((item) => {
+    if (!isChecked(formData, item.name)) {
+      errors.push(
+        `${item.label} checklist item is required before publishing.`,
+      );
+    }
+  });
+
+  if (!bodyMarkdown) {
+    errors.push("Publishing requires body markdown.");
+  }
+
+  if (payload.ai_assisted && testingClaimPattern.test(bodyMarkdown ?? "")) {
+    errors.push(
+      "AI drafts cannot publish with unsupported personal testing claims.",
+    );
+  }
+
+  if (
+    requiresAffiliateDisclosure(bodyMarkdown, affiliateBlocks) &&
+    !hasAffiliateDisclosure(bodyMarkdown)
+  ) {
+    errors.push("Affiliate disclosure is required before publishing.");
+  }
+
+  if (relatedToolIds.length > 0 && !hasFitGuidance(bodyMarkdown)) {
+    errors.push("Publishing requires best-for and not-good-for guidance.");
+  }
+
+  if (countInternalLinks(bodyMarkdown) < 3) {
+    errors.push("Publishing requires at least three internal links.");
+  }
+
+  if (!lastCheckedPattern.test(bodyMarkdown ?? "")) {
+    errors.push("Publishing requires a pricing/features last-checked date.");
+  }
+}
+
 function parseArticleForm(formData: FormData): ArticleFormResult {
   const errors: string[] = [];
   const title = textValue(formData, "title");
@@ -124,16 +213,20 @@ function parseArticleForm(formData: FormData): ArticleFormResult {
     title,
   } satisfies TablesInsert<"articles">;
 
+  const relatedToolIds = [
+    ...new Set(
+      formData
+        .getAll("related_tool_ids")
+        .filter((value): value is string => typeof value === "string"),
+    ),
+  ];
+
+  validatePublishChecklist(formData, payload, relatedToolIds, errors);
+
   return {
     errors,
     payload,
-    relatedToolIds: [
-      ...new Set(
-        formData
-          .getAll("related_tool_ids")
-          .filter((value): value is string => typeof value === "string"),
-      ),
-    ],
+    relatedToolIds,
   };
 }
 
@@ -201,6 +294,30 @@ function redirectForValidation(errors: string[]): never {
 
   if (errors.some((error) => error.includes("explicit confirmation"))) {
     redirect(adminArticlesUrl({ error: "publish_requires_confirmation" }));
+  }
+
+  if (errors.some((error) => error.includes("testing claims"))) {
+    redirect(adminArticlesUrl({ error: "publish_testing_claims" }));
+  }
+
+  if (errors.some((error) => error.includes("Affiliate disclosure"))) {
+    redirect(adminArticlesUrl({ error: "publish_affiliate_disclosure" }));
+  }
+
+  if (errors.some((error) => error.includes("best-for"))) {
+    redirect(adminArticlesUrl({ error: "publish_fit_guidance" }));
+  }
+
+  if (errors.some((error) => error.includes("internal links"))) {
+    redirect(adminArticlesUrl({ error: "publish_internal_links" }));
+  }
+
+  if (errors.some((error) => error.includes("last-checked"))) {
+    redirect(adminArticlesUrl({ error: "publish_last_checked" }));
+  }
+
+  if (errors.some((error) => error.includes("checklist item"))) {
+    redirect(adminArticlesUrl({ error: "publish_quality_checklist" }));
   }
 
   if (errors.some((error) => error.includes("valid JSON"))) {
@@ -321,4 +438,76 @@ export async function archiveArticle(formData: FormData) {
 
   revalidateArticlePaths(slug);
   redirect(adminArticlesUrl({ status: "archived" }));
+}
+
+export async function acceptAiDraft(formData: FormData) {
+  const { supabase } = await requireAdmin();
+  const articleId = textValue(formData, "article_id");
+  const slug = textValue(formData, "slug");
+
+  if (!articleId || !slug) {
+    redirect(adminArticlesUrl({ error: "missing_article" }));
+  }
+
+  const { error } = await supabase
+    .from("articles")
+    .update({
+      human_reviewed: true,
+      published_at: null,
+      status: "review",
+    })
+    .eq("id", articleId)
+    .eq("ai_assisted", true);
+
+  if (error) {
+    redirect(adminArticlesUrl({ error: "accept_failed" }));
+  }
+
+  revalidateArticlePaths(slug);
+  redirect(adminArticlesUrl({ status: "accepted" }));
+}
+
+export async function rejectAiDraft(formData: FormData) {
+  const { supabase } = await requireAdmin();
+  const articleId = textValue(formData, "article_id");
+  const slug = textValue(formData, "slug");
+  const feedback = textValue(formData, "feedback");
+
+  if (!articleId || !slug) {
+    redirect(adminArticlesUrl({ error: "missing_article" }));
+  }
+
+  if (!feedback) {
+    redirect(adminArticlesUrl({ error: "reject_feedback_required" }));
+  }
+
+  const { error } = await supabase
+    .from("articles")
+    .update({
+      human_reviewed: false,
+      published_at: null,
+      status: "rejected",
+    })
+    .eq("id", articleId)
+    .eq("ai_assisted", true);
+
+  if (error) {
+    redirect(adminArticlesUrl({ error: "reject_failed" }));
+  }
+
+  const { error: topicError } = await supabase
+    .from("topic_queue")
+    .update({
+      feedback,
+      status: "rejected",
+    })
+    .eq("slug", slug);
+
+  if (topicError) {
+    redirect(adminArticlesUrl({ error: "reject_topic_failed" }));
+  }
+
+  revalidateArticlePaths(slug);
+  revalidatePath("/admin/topics");
+  redirect(adminArticlesUrl({ status: "rejected" }));
 }

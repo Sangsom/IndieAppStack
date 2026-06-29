@@ -1,6 +1,7 @@
 import { AdminField, AdminForm } from "@/components/admin/admin-form";
 import {
   articleContentTypeOptions,
+  articleQualityChecklistItems,
   articleStatusOptions,
   formatJsonForTextarea,
   type AdminArticleCategory,
@@ -18,6 +19,9 @@ type AdminArticleFormProps = {
 
 const inputClass =
   "min-h-11 rounded-button border border-rule bg-paper px-3 text-base text-ink outline-none transition-colors focus:border-pine";
+
+const publishedChecklistDefault = (article?: AdminArticleEditor) =>
+  article?.status === "published";
 
 export function AdminArticleForm({
   action,
@@ -232,6 +236,39 @@ export function AdminArticleForm({
               </span>
             </span>
           </label>
+
+          <div className="rounded-card border border-rule bg-surface p-3">
+            <p className="text-sm font-semibold text-ink">
+              Pre-publish quality checklist
+            </p>
+            <p className="mt-1 text-sm leading-6 text-muted">
+              Required when saving with Published status. The server also checks
+              for internal links, last-checked dates, affiliate disclosure, fit
+              guidance, and unsupported AI testing claims.
+            </p>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {articleQualityChecklistItems.map((item) => (
+                <label
+                  className="flex items-start gap-3 rounded-button border border-rule bg-paper p-3 text-sm font-semibold text-ink"
+                  key={item.name}
+                >
+                  <input
+                    className="mt-1 size-4 accent-pine"
+                    defaultChecked={publishedChecklistDefault(article)}
+                    name={item.name}
+                    type="checkbox"
+                    value="true"
+                  />
+                  <span>
+                    {item.label}
+                    <span className="mt-1 block font-normal leading-6 text-muted">
+                      {item.description}
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
 
           <label className="flex items-start gap-3 text-sm font-semibold text-ink">
             <input

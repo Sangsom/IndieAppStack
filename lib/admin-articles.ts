@@ -64,6 +64,57 @@ export const articleContentTypeOptions: Array<{
   { label: "News", value: "news" },
 ];
 
+export const articleQualityChecklistItems = [
+  {
+    description:
+      "The article answers one clear search intent and avoids drifting into unrelated keywords.",
+    label: "Clear search intent",
+    name: "quality_clear_search_intent",
+  },
+  {
+    description:
+      "Any personal testing or hands-on language is removed unless the source notes prove it.",
+    label: "No fake testing claims",
+    name: "quality_no_fake_testing_claims",
+  },
+  {
+    description:
+      "Pricing and feature statements are supported by admin data and current source checks.",
+    label: "No unsupported pricing claims",
+    name: "quality_no_unsupported_pricing",
+  },
+  {
+    description:
+      "Affiliate disclosure is visible wherever affiliate CTAs or redirect links appear.",
+    label: "Affiliate disclosure visible if needed",
+    name: "quality_affiliate_disclosure",
+  },
+  {
+    description:
+      "Tool recommendations include both best-for and not-good-for guidance.",
+    label: "Best-for and not-good-for included",
+    name: "quality_fit_guidance",
+  },
+  {
+    description:
+      "The draft has at least three relevant internal links to existing IndieAppStack pages.",
+    label: "At least three internal links",
+    name: "quality_internal_links",
+  },
+  {
+    description:
+      "Pricing or feature claims include a last-checked date before publishing.",
+    label: "Last-checked date present",
+    name: "quality_last_checked",
+  },
+  {
+    description:
+      "The copy is written for humans and does not repeat target phrases unnaturally.",
+    label: "No keyword stuffing",
+    name: "quality_no_keyword_stuffing",
+  },
+] as const;
+
 export function formatArticleType(value: string) {
   return value.replaceAll("_", " ");
 }
