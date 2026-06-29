@@ -8,14 +8,20 @@ type QuizStepProps = {
   description: string;
   legend: string;
   name: string;
+  onChange?: (value: string) => void;
   options: QuizOption[];
+  required?: boolean;
+  value?: string;
 };
 
 export function QuizStep({
   description,
   legend,
   name,
+  onChange,
   options,
+  required = false,
+  value,
 }: QuizStepProps) {
   return (
     <fieldset className="rounded-card border border-rule bg-surface p-5 shadow-field">
@@ -31,8 +37,13 @@ export function QuizStep({
           >
             <span className="flex items-center gap-3">
               <input
+                checked={value ? value === option.value : undefined}
                 className="size-4 accent-pine"
                 name={name}
+                onChange={() => {
+                  onChange?.(option.value);
+                }}
+                required={required}
                 type="radio"
                 value={option.value}
               />
