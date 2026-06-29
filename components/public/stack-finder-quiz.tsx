@@ -1,24 +1,22 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { QuizStep, type QuizOption } from "@/components/public/quiz-step";
 import { Badge } from "@/components/ui/badge";
 import { analytics } from "@/lib/analytics/client";
+import {
+  getStackRecommendation,
+  type StackFinderAnswers,
+  type StackFinderRulesConfig,
+  type StackFinderTool,
+} from "@/lib/stack-finder/recommendation-engine";
 
 type QuizStepDefinition = {
   description: string;
   legend: string;
   name: keyof StackFinderAnswers;
   options: QuizOption[];
-};
-
-type StackFinderAnswers = {
-  appType?: string;
-  budget?: string;
-  helpWith?: string;
-  platform?: string;
-  stage?: string;
 };
 
 const steps: QuizStepDefinition[] = [
@@ -188,16 +186,26 @@ function optionLabel(step: QuizStepDefinition, value?: string) {
   return step.options.find((option) => option.value === value)?.label ?? "";
 }
 
-export function StackFinderQuiz() {
+type StackFinderQuizProps = {
+  rulesConfig: StackFinderRulesConfig;
+  tools: StackFinderTool[];
+};
+
+export function StackFinderQuiz({ rulesConfig, tools }: StackFinderQuizProps) {
   const [answers, setAnswers] = useState<StackFinderAnswers>({});
   const [stepIndex, setStepIndex] = useState(0);
   const [completed, setCompleted] = useState(false);
   const hasStartedRef = useRef(false);
+  const viewedRecommendationRef = useRef<string | null>(null);
 
   const activeStep = steps[stepIndex];
   const activeAnswer = answers[activeStep.name];
   const answeredCount = steps.filter((step) => answers[step.name]).length;
   const progressPercent = Math.round((answeredCount / steps.length) * 100);
+  const recommendation = useMemo(
+    () => getStackRecommendation(answers, tools, rulesConfig),
+    [answers, rulesConfig, tools],
+  );
 
   const answerSummary = useMemo(
     () =>
@@ -255,7 +263,23 @@ export function StackFinderQuiz() {
     setCompleted(false);
     setStepIndex(0);
     hasStartedRef.current = false;
+    viewedRecommendationRef.current = null;
   }
+
+  useEffect(() => {
+    if (!completed || !recommendation) {
+      return;
+    }
+
+    if (viewedRecommendationRef.current === recommendation.slug) {
+      return;
+    }
+
+    viewedRecommendationRef.current = recommendation.slug;
+    analytics.track("stack_recommendation_viewed", {
+      stack_slug: recommendation.slug,
+    });
+  }, [completed, recommendation]);
 
   return (
     <section
@@ -275,7 +299,8 @@ export function StackFinderQuiz() {
           </h1>
           <p className="mt-3 text-body-md leading-7 text-muted">
             Five quick choices. No account required. Your answers stay in this
-            browser until the results engine is wired in.
+            browser and produce a rules-based recommendation from the published
+            tool catalog.
           </p>
 
           <div className="mt-6" aria-label="Quiz progress">
@@ -326,15 +351,27 @@ export function StackFinderQuiz() {
           {completed ? (
             <section className="rounded-card border border-pine bg-accent-soft p-5 shadow-field">
               <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
-                Answers saved
+                Recommended stack
               </p>
               <h2 className="mt-2 font-serif text-3xl font-semibold text-ink">
-                Your recommendation inputs are ready.
+                {recommendation?.name ?? "No published stack tools found yet."}
               </h2>
               <p className="mt-3 max-w-2xl text-body-md leading-7 text-muted">
-                The rules engine comes next. For now, this confirms the complete
-                quiz flow, answer preservation, and accessible navigation.
+                {recommendation?.description ??
+                  "The rules matched your answers, but the published tool catalog does not currently contain a usable recommendation. Add or publish tools, then rerun the quiz."}
               </p>
+
+              {recommendation ? (
+                <div className="mt-5 rounded-card border border-rule bg-surface p-4">
+                  <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-muted">
+                    Cost notes
+                  </p>
+                  <p className="mt-2 text-body-md leading-7 text-ink">
+                    {recommendation.costNotes}
+                  </p>
+                </div>
+              ) : null}
+
               <dl className="mt-6 grid gap-3 md:grid-cols-2">
                 {answerSummary.map((item) => (
                   <div
@@ -350,6 +387,100 @@ export function StackFinderQuiz() {
                   </div>
                 ))}
               </dl>
+
+              {recommendation?.tools.length ? (
+                <div className="mt-6 grid gap-4">
+                  {recommendation.tools.map((item) => (
+                    <article
+                      className="rounded-card border border-rule bg-surface p-5 shadow-field"
+                      key={`${item.role}-${item.tool.slug}`}
+                    >
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <Badge variant="category">{item.role}</Badge>
+                          <h3 className="mt-3 font-serif text-2xl font-semibold text-ink">
+                            {item.tool.name}
+                          </h3>
+                          <p className="mt-2 text-body-md leading-7 text-muted">
+                            {item.reason}
+                          </p>
+                        </div>
+                        <Badge variant="pricing">{item.tool.pricing}</Badge>
+                      </div>
+
+                      <div className="mt-4 grid gap-3 border-t border-rule pt-4 md:grid-cols-[1fr_1fr]">
+                        <div>
+                          <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-muted">
+                            Why this role matters
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-muted">
+                            {item.tool.tagline}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-muted">
+                            Cost note
+                          </p>
+                          <p className="mt-2 text-sm leading-6 text-muted">
+                            {item.costNote}
+                          </p>
+                        </div>
+                      </div>
+
+                      {item.alternatives.length ? (
+                        <div className="mt-4">
+                          <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-muted">
+                            Alternatives
+                          </p>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {item.alternatives.map((alternative) => (
+                              <a
+                                className="rounded-badge border border-rule bg-paper px-2 py-1 font-mono text-label-sm font-semibold uppercase text-pine transition-colors hover:border-pine hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                                href={alternative.detailsHref}
+                                key={alternative.slug}
+                              >
+                                {alternative.name}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
+
+                      <div className="mt-5 flex flex-wrap gap-3">
+                        <a
+                          className="inline-flex h-10 items-center justify-center rounded-button border border-pine bg-pine px-4 text-sm font-semibold text-surface shadow-field transition-colors hover:border-ink hover:bg-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                          href={
+                            item.tool.affiliateHref ?? item.tool.officialHref
+                          }
+                        >
+                          {item.tool.affiliateHref
+                            ? "Open partner link"
+                            : "Visit tool"}
+                        </a>
+                        <a
+                          className="inline-flex h-10 items-center justify-center rounded-button border border-rule px-4 text-sm font-semibold text-pine transition-colors hover:border-pine hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                          href={item.tool.detailsHref}
+                        >
+                          View details
+                        </a>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+
+              {recommendation?.missingRoles.length ? (
+                <div className="mt-5 rounded-card border border-rule bg-surface p-4">
+                  <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-muted">
+                    Gaps
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-muted">
+                    No published tool is available yet for{" "}
+                    {recommendation.missingRoles.join(", ")}. Publish a matching
+                    tool or adjust the rules config to fill this role.
+                  </p>
+                </div>
+              ) : null}
             </section>
           ) : (
             <QuizStep

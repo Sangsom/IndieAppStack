@@ -1,0 +1,297 @@
+{
+  "version": 1,
+  "defaultDescription": "A practical starter stack selected from your quiz answers and the currently published tool catalog.",
+  "defaultCostNotes": "Start on free tiers where possible, then upgrade the tools attached to revenue, retention, or release confidence first.",
+  "roleOrder": [
+    "Subscriptions",
+    "Backend",
+    "Analytics",
+    "Crash reporting",
+    "ASO",
+    "Launch page",
+    "Email and waitlist",
+    "Release automation",
+    "Push messaging"
+  ],
+  "rules": [
+    {
+      "id": "default-backend",
+      "when": {},
+      "recommendations": [
+        {
+          "role": "Backend",
+          "toolSlug": "supabase",
+          "weight": 20,
+          "reason": "A portable Postgres-backed backend covers auth, database, storage, and APIs without building infrastructure first.",
+          "alternatives": ["firebase", "appwrite"],
+          "costNote": "Free tier is usually enough for MVP validation; usage-based costs become clearer after launch."
+        }
+      ]
+    },
+    {
+      "id": "default-analytics",
+      "when": {},
+      "recommendations": [
+        {
+          "role": "Analytics",
+          "toolSlug": "telemetrydeck",
+          "weight": 16,
+          "reason": "Privacy-friendly product analytics keep the first stack lightweight while still showing activation and retention signals.",
+          "alternatives": ["posthog", "amplitude", "mixpanel"],
+          "costNote": "Start with the free or indie-friendly plan; upgrade when funnels and cohorts become weekly operating metrics."
+        }
+      ]
+    },
+    {
+      "id": "monetization-priority",
+      "when": {
+        "helpWith": ["monetization"]
+      },
+      "recommendations": [
+        {
+          "role": "Subscriptions",
+          "toolSlug": "revenuecat",
+          "weight": 55,
+          "reason": "RevenueCat is the safest default for subscriptions because it handles entitlements, receipt validation, and revenue reporting across app stores.",
+          "alternatives": ["adapty", "superwall", "qonversion"],
+          "costNote": "Good fit for free-to-start or under-$50 MVP budgets because the paid plan can wait until revenue exists."
+        },
+        {
+          "role": "Analytics",
+          "toolSlug": "telemetrydeck",
+          "weight": 12,
+          "reason": "A monetization stack still needs clean activation and retention events before paywall tests are meaningful.",
+          "alternatives": ["posthog", "amplitude"],
+          "costNote": "Keep analytics lean until paywall traffic is large enough for experiments."
+        }
+      ]
+    },
+    {
+      "id": "paywall-experiment-stage",
+      "when": {
+        "helpWith": ["monetization"],
+        "stage": ["launched", "scaling"]
+      },
+      "recommendations": [
+        {
+          "role": "Subscriptions",
+          "toolSlug": "adapty",
+          "weight": 62,
+          "reason": "Adapty becomes more attractive once the app is live because paywall experiments and subscription analytics can compound quickly.",
+          "alternatives": ["revenuecat", "superwall", "qonversion"],
+          "costNote": "Worth considering when subscription optimization is already part of the weekly growth loop."
+        }
+      ]
+    },
+    {
+      "id": "backend-priority",
+      "when": {
+        "helpWith": ["backend"]
+      },
+      "recommendations": [
+        {
+          "role": "Backend",
+          "toolSlug": "supabase",
+          "weight": 60,
+          "reason": "Supabase gives an indie team a real database, auth, storage, and server functions while keeping data portable.",
+          "alternatives": ["firebase", "appwrite"],
+          "costNote": "Free tier works well for prototypes and MVPs; paid usage scales with database and edge function needs."
+        }
+      ]
+    },
+    {
+      "id": "web-or-react-native-backend",
+      "when": {
+        "platform": ["web", "react-native", "flutter"]
+      },
+      "recommendations": [
+        {
+          "role": "Backend",
+          "toolSlug": "firebase",
+          "weight": 30,
+          "reason": "Firebase remains a strong cross-platform default when realtime sync, auth, and hosted app infrastructure matter more than SQL portability.",
+          "alternatives": ["supabase", "appwrite"],
+          "costNote": "Free tier is useful, but watch usage-based costs before scale."
+        }
+      ]
+    },
+    {
+      "id": "analytics-priority",
+      "when": {
+        "helpWith": ["analytics"]
+      },
+      "recommendations": [
+        {
+          "role": "Analytics",
+          "toolSlug": "posthog",
+          "weight": 55,
+          "reason": "PostHog covers product analytics, funnels, feature flags, and experiments in one stack for teams ready to learn from behavior.",
+          "alternatives": ["telemetrydeck", "amplitude", "mixpanel"],
+          "costNote": "Use the generous free tier first; tighten event volume before growth traffic arrives."
+        }
+      ]
+    },
+    {
+      "id": "scale-analytics",
+      "when": {
+        "stage": ["scaling"]
+      },
+      "recommendations": [
+        {
+          "role": "Analytics",
+          "toolSlug": "amplitude",
+          "weight": 42,
+          "reason": "Amplitude is a better fit once product analytics becomes a shared decision system across acquisition, activation, and retention.",
+          "alternatives": ["posthog", "mixpanel", "telemetrydeck"],
+          "costNote": "Best when the app has enough usage to justify a more sophisticated analytics workspace."
+        }
+      ]
+    },
+    {
+      "id": "quality-priority",
+      "when": {
+        "helpWith": ["quality-release"]
+      },
+      "recommendations": [
+        {
+          "role": "Crash reporting",
+          "toolSlug": "sentry",
+          "weight": 55,
+          "reason": "Sentry gives clear crash and error visibility before release issues turn into support and review problems.",
+          "alternatives": ["firebase", "emerge-tools"],
+          "costNote": "Start on the free tier, then upgrade when alerting and release health become operationally important."
+        },
+        {
+          "role": "Release automation",
+          "toolSlug": "fastlane",
+          "weight": 36,
+          "reason": "fastlane removes repetitive screenshot, metadata, and release tasks without adding another paid SaaS subscription.",
+          "alternatives": ["codemagic", "bitrise"],
+          "costNote": "Open-source tooling keeps the monthly bill low; hosted CI may add cost later."
+        }
+      ]
+    },
+    {
+      "id": "aso-launch-priority",
+      "when": {
+        "helpWith": ["aso-launch"]
+      },
+      "recommendations": [
+        {
+          "role": "ASO",
+          "toolSlug": "appfigures",
+          "weight": 50,
+          "reason": "Appfigures is a practical ASO and competitor-tracking starting point for launch research and early store visibility.",
+          "alternatives": ["apptweak", "appfollow"],
+          "costNote": "Use focused research windows before committing to a higher monthly ASO plan."
+        },
+        {
+          "role": "Launch page",
+          "toolSlug": "framer",
+          "weight": 34,
+          "reason": "Framer is quick for polished app landing pages, waitlist messaging, and launch assets without a full CMS build.",
+          "alternatives": ["webflow"],
+          "costNote": "A lightweight landing page plan is usually enough before serious paid acquisition."
+        },
+        {
+          "role": "Email and waitlist",
+          "toolSlug": "beehiiv",
+          "weight": 28,
+          "reason": "beehiiv keeps launch subscribers and product updates in one simple channel while the app is still finding demand.",
+          "alternatives": ["kit"],
+          "costNote": "Begin with the free tier and pay only when the audience becomes a growth asset."
+        }
+      ]
+    },
+    {
+      "id": "zero-budget-release",
+      "when": {
+        "budget": ["zero"]
+      },
+      "recommendations": [
+        {
+          "role": "Release automation",
+          "toolSlug": "fastlane",
+          "weight": 40,
+          "reason": "fastlane is open source and helps automate release chores without adding SaaS spend.",
+          "alternatives": ["codemagic", "bitrise"],
+          "costNote": "Monthly software cost can stay at $0 if you run automations locally or on free CI minutes."
+        },
+        {
+          "role": "Backend",
+          "toolSlug": "appwrite",
+          "weight": 24,
+          "reason": "Appwrite is a good open-source-friendly backend option when keeping spend near zero matters most.",
+          "alternatives": ["supabase", "firebase"],
+          "costNote": "Self-hosting can reduce SaaS bills but adds maintenance time."
+        }
+      ]
+    },
+    {
+      "id": "ios-mvp-under-50",
+      "when": {
+        "platform": ["ios"],
+        "stage": ["mvp"],
+        "budget": ["under-50"]
+      },
+      "recommendations": [
+        {
+          "role": "Subscriptions",
+          "toolSlug": "revenuecat",
+          "weight": 14,
+          "reason": "For an iOS MVP, RevenueCat avoids custom StoreKit receipt and entitlement work.",
+          "alternatives": ["adapty", "qonversion"],
+          "costNote": "Keep subscription infrastructure free-to-start until revenue validates the app."
+        },
+        {
+          "role": "Analytics",
+          "toolSlug": "telemetrydeck",
+          "weight": 18,
+          "reason": "TelemetryDeck is a lean analytics default for iOS teams that want signal without a heavy setup.",
+          "alternatives": ["posthog", "amplitude"],
+          "costNote": "A sensible fit for a sub-$50 software stack."
+        }
+      ]
+    },
+    {
+      "id": "launched-or-scaling-push",
+      "when": {
+        "stage": ["launched", "scaling"]
+      },
+      "recommendations": [
+        {
+          "role": "Push messaging",
+          "toolSlug": "onesignal",
+          "weight": 26,
+          "reason": "OneSignal is useful once lifecycle messaging can bring real users back into the app.",
+          "alternatives": ["braze"],
+          "costNote": "Delay paid messaging complexity until retention channels are worth optimizing."
+        }
+      ]
+    },
+    {
+      "id": "scale-budget-growth",
+      "when": {
+        "budget": ["200-500", "500-plus"]
+      },
+      "recommendations": [
+        {
+          "role": "Push messaging",
+          "toolSlug": "braze",
+          "weight": 32,
+          "reason": "Braze makes sense when lifecycle messaging, segmentation, and campaign orchestration justify a larger operating budget.",
+          "alternatives": ["onesignal"],
+          "costNote": "Only consider this once retention and lifecycle campaigns are a real growth lever."
+        },
+        {
+          "role": "Release automation",
+          "toolSlug": "codemagic",
+          "weight": 24,
+          "reason": "Codemagic is a strong hosted CI/CD fit when release reliability is worth more than minimizing monthly cost.",
+          "alternatives": ["bitrise", "fastlane"],
+          "costNote": "Hosted build minutes are easier to justify once releases are frequent."
+        }
+      ]
+    }
+  ]
+}
