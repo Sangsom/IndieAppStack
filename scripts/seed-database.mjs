@@ -76,22 +76,94 @@ try {
           seo_title: "Mobile App Monetization Tools",
         },
         {
-          name: "Backend",
-          slug: "backend",
+          name: "Paywalls",
+          slug: "paywalls",
           description:
-            "Databases, auth, APIs, storage, and server infrastructure for mobile apps.",
+            "Paywall builders, subscription screens, and pricing tests.",
           sort_order: 20,
           status: "published",
-          seo_title: "Backend Tools for Mobile Apps",
+          seo_title: "Paywall Tools for Mobile Apps",
+        },
+        {
+          name: "ASO",
+          slug: "aso",
+          description:
+            "App Store Optimization research, metadata, and launch assets.",
+          sort_order: 30,
+          status: "published",
+          seo_title: "ASO Tools for Mobile Apps",
         },
         {
           name: "Analytics",
           slug: "analytics",
           description:
             "Privacy-conscious analytics, event tracking, and product insights.",
-          sort_order: 30,
+          sort_order: 40,
           status: "published",
           seo_title: "Analytics Tools for Mobile Apps",
+        },
+        {
+          name: "Crash Reporting",
+          slug: "crash-reporting",
+          description:
+            "Crash reporting, diagnostics, and production issue monitoring.",
+          sort_order: 50,
+          status: "published",
+          seo_title: "Crash Reporting Tools for Mobile Apps",
+        },
+        {
+          name: "Backend",
+          slug: "backend",
+          description:
+            "Databases, auth, APIs, storage, and server infrastructure for mobile apps.",
+          sort_order: 60,
+          status: "published",
+          seo_title: "Backend Tools for Mobile Apps",
+        },
+        {
+          name: "Push",
+          slug: "push",
+          description:
+            "Push notification infrastructure and lifecycle messaging.",
+          sort_order: 70,
+          status: "published",
+          seo_title: "Push Notification Tools for Mobile Apps",
+        },
+        {
+          name: "Landing Pages",
+          slug: "landing-pages",
+          description:
+            "Landing page builders, launch pages, and waitlist sites.",
+          sort_order: 80,
+          status: "published",
+          seo_title: "Landing Page Tools for Mobile Apps",
+        },
+        {
+          name: "Email/Waitlists",
+          slug: "email-waitlists",
+          description:
+            "Email capture, waitlists, newsletters, and lifecycle email.",
+          sort_order: 90,
+          status: "published",
+          seo_title: "Email and Waitlist Tools for Mobile Apps",
+        },
+        {
+          name: "Screenshots",
+          slug: "screenshots",
+          description:
+            "App Store screenshots, preview assets, and visual listing tools.",
+          sort_order: 100,
+          status: "published",
+          seo_title: "App Screenshot Tools for Mobile Apps",
+        },
+        {
+          name: "Dev Productivity",
+          slug: "dev-productivity",
+          description:
+            "Developer productivity, release workflow, QA, and automation tools.",
+          sort_order: 110,
+          status: "published",
+          seo_title: "Developer Productivity Tools for Mobile Apps",
         },
       ],
       { onConflict: "slug" },
