@@ -649,6 +649,16 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
+      admin_click_analytics: {
+        Args: { p_start_at: string };
+        Returns: {
+          click_count: number;
+          group_key: string;
+          group_type: string;
+          label: string;
+          last_clicked_at: string | null;
+        }[];
+      };
       has_admin_role: { Args: { target_user_id?: string }; Returns: boolean };
       healthcheck: { Args: never; Returns: number };
     };
