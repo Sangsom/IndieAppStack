@@ -7,6 +7,14 @@ export const analyticsEvents = {
     description: "Visitor reaches a meaningful article-read milestone.",
     goal: false,
   },
+  article_drafted: {
+    description: "Admin creates or saves an article draft.",
+    goal: false,
+  },
+  article_published: {
+    description: "Admin publishes a human-reviewed article.",
+    goal: false,
+  },
   cta_clicked: {
     description: "Visitor clicks a primary call to action.",
     goal: true,
@@ -48,6 +56,14 @@ export type AnalyticsEventProperties = {
   article_read: {
     article_slug: string;
     milestone: "started" | "halfway" | "completed";
+  };
+  article_drafted: {
+    article_id: string;
+    article_slug: string;
+  };
+  article_published: {
+    article_id: string;
+    article_slug: string;
   };
   cta_clicked: {
     href?: string;

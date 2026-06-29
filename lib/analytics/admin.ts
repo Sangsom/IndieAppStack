@@ -2,7 +2,8 @@ import "server-only";
 
 import type { AnalyticsPropertyValue } from "@/lib/analytics/events";
 
-export type AdminAnalyticsEventName = "tool_created" | "tool_updated";
+export type AdminAnalyticsEventName =
+  "article_drafted" | "article_published" | "tool_created" | "tool_updated";
 
 export async function emitAdminAnalyticsEvent(
   eventName: AdminAnalyticsEventName,
