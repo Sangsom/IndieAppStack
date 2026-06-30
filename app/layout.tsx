@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { PlausibleAnalytics } from "@/components/analytics/plausible-analytics";
 import { absoluteUrl } from "@/lib/seo";
@@ -34,6 +34,43 @@ export const metadata: Metadata = {
     template: "%s | IndieAppStack",
   },
   description: siteConfig.description,
+  icons: {
+    icon: [
+      { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+      {
+        rel: "icon",
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/favicon-48x48.png",
+        sizes: "48x48",
+        type: "image/png",
+      },
+      {
+        rel: "icon",
+        url: "/favicon-64x64.png",
+        sizes: "64x64",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     description: siteConfig.description,
     images: [
@@ -55,6 +92,10 @@ export const metadata: Metadata = {
     images: [absoluteUrl("/opengraph-image")],
     title: siteConfig.name,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0F172A",
 };
 
 export default function RootLayout({
