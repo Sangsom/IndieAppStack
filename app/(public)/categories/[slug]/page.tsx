@@ -42,7 +42,7 @@ function BulletList({ items }: { items: string[] }) {
 }
 
 function FaqStructuredData({ faq }: { faq: CategoryFaq[] }) {
-  if (!faq.length) {
+  if (faq.length < 2) {
     return null;
   }
 
