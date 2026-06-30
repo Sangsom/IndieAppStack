@@ -1,0 +1,38 @@
+{
+  "version": "2026-06-30",
+  "topic_score_fields": [
+    {
+      "name": "reader_pain",
+      "weight": 0.3,
+      "description": "How urgent and common the reader problem is."
+    },
+    {
+      "name": "search_intent",
+      "weight": 0.2,
+      "description": "How clearly the article can satisfy a search query."
+    },
+    {
+      "name": "monetization_fit",
+      "weight": 0.15,
+      "description": "How naturally affiliate or partner links fit the article."
+    },
+    {
+      "name": "evidence_readiness",
+      "weight": 0.2,
+      "description": "How ready the sources, screenshots, examples, or hands-on notes are."
+    },
+    {
+      "name": "internal_link_value",
+      "weight": 0.15,
+      "description": "How much the article strengthens site architecture and conversion paths."
+    }
+  ],
+  "minimum_publish_requirements": [
+    "clear_search_intent",
+    "human_reviewed",
+    "source_check_dates",
+    "internal_links",
+    "visual_plan",
+    "affiliate_disclosure_when_needed"
+  ]
+}

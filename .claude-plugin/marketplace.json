@@ -1,0 +1,22 @@
+{
+  "name": "indieappstack-local",
+  "description": "Local IndieAppStack content and affiliate operations plugins",
+  "owner": {
+    "name": "IndieAppStack"
+  },
+  "plugins": [
+    {
+      "name": "indieappstack-content-affiliate",
+      "version": "0.1.0",
+      "description": "Editorial, affiliate, and analytics operating system for IndieAppStack.",
+      "source": "./plugins/indieappstack-content-affiliate",
+      "category": "marketing",
+      "tags": [
+        "content-strategy",
+        "affiliate-ops",
+        "seo",
+        "editorial"
+      ]
+    }
+  ]
+}

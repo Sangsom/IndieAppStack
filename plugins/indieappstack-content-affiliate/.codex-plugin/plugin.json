@@ -1,0 +1,36 @@
+{
+  "name": "indieappstack-content-affiliate",
+  "version": "0.1.0",
+  "description": "Editorial, affiliate, and analytics operating system for IndieAppStack.",
+  "author": {
+    "name": "IndieAppStack"
+  },
+  "homepage": "https://indieappstack.com",
+  "keywords": [
+    "content-strategy",
+    "affiliate-ops",
+    "seo",
+    "editorial",
+    "indie-app-stack"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "IndieAppStack Content Affiliate",
+    "shortDescription": "Plan, write, monetize, and improve IndieAppStack content.",
+    "longDescription": "A dedicated operating plugin for IndieAppStack that coordinates editorial planning, high-quality article production, affiliate program intake, link placement, and performance review.",
+    "developerName": "IndieAppStack",
+    "category": "Marketing",
+    "capabilities": [
+      "Content Strategy",
+      "Affiliate Operations",
+      "SEO",
+      "Analytics Review"
+    ],
+    "defaultPrompt": [
+      "Plan the next IndieAppStack publishing sprint.",
+      "Create an article brief for a tool comparison.",
+      "Review affiliate performance and recommend updates."
+    ],
+    "brandColor": "#2563EB"
+  }
+}
