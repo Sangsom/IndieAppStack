@@ -804,10 +804,55 @@ try {
             status: "not_applied",
             application_url: "https://www.revenuecat.com/partners/",
             commission_notes:
-              "Official partner page mentions referral incentives; apply or start outreach before using monetized links.",
-            cookie_notes: "TBD",
+              "Program type: partner. Official page mentions referral revenue and various referral incentives, but exact commission terms are not public.",
+            cookie_notes:
+              "No public cookie window found on the official partner page checked 2026-07-01.",
             allowed_promotion_notes:
-              "Use direct editorial links until the program is approved and terms are reviewed.",
+              "Apply as a subscription-app content partner. Use direct editorial links only until approval, terms, and disclosure requirements are recorded.",
+            internal_notes:
+              "Checked 2026-07-01. Strongest fit for subscription MVP stack, monetization tools, paywall tools, and RevenueCat vs Adapty vs Superwall pages. Outreach angle: IndieAppStack is a source-checked field guide for solo mobile builders choosing subscription infrastructure.",
+          },
+          {
+            name: "Framer Creator Program",
+            network: "direct",
+            status: "not_applied",
+            application_url: "https://www.framer.com/creators",
+            commission_notes:
+              "Program type: affiliate/creator. Official page says creators can refer users and get up to 50% commission; it also says 50% of a referred user's subscription is paid for 12 months when they upgrade.",
+            cookie_notes:
+              "No public cookie window found on the official creator page checked 2026-07-01.",
+            allowed_promotion_notes:
+              "Best fit for landing page builder, launch page, template, and no-code marketing site content. Use direct editorial links only until approval and terms are recorded.",
+            internal_notes:
+              "Checked 2026-07-01. Application should emphasize Framer content for solo app landing pages, web-to-app launches, template workflows, and polished marketing sites.",
+          },
+          {
+            name: "Appwrite Partner Program",
+            network: "direct",
+            status: "not_applied",
+            application_url: "https://appwrite.io/partners",
+            commission_notes:
+              "Program type: partner. Official page describes partner tiers, experts, integrations, co-marketing style benefits, and application review; no public affiliate commission was found.",
+            cookie_notes:
+              "No public cookie window found on the official partner page checked 2026-07-01.",
+            allowed_promotion_notes:
+              "Treat as partner/outreach, not a content affiliate program. Use direct editorial links only unless Appwrite approves a monetized partner path and terms are recorded.",
+            internal_notes:
+              "Checked 2026-07-01. Best fit after backend comparison content gains credibility. Outreach angle: Appwrite is represented as the open-source/self-hosting backend option for indie mobile builders.",
+          },
+          {
+            name: "Webflow Affiliate Program",
+            network: "partnerstack",
+            status: "not_applied",
+            application_url: "https://webflow.com/solutions/affiliates",
+            commission_notes:
+              "Program type: affiliate. Official page says affiliates earn commission on a new customer's first eligible subscription for up to 12 months; exact rate and qualifications require program terms/dashboard.",
+            cookie_notes:
+              "Official page lists first-touch attribution and a 90-day cookie window.",
+            allowed_promotion_notes:
+              "Apply only for relevant content channels with sample content and traffic context. Client implementation work belongs in Webflow's Certified Partner Program, not the affiliate program.",
+            internal_notes:
+              "Checked 2026-07-01. Official source now verified. Keep status not_applied until application is submitted; do not claim approval or use Webflow monetized links before acceptance.",
           },
         ],
         { onConflict: "name" },

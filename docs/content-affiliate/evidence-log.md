@@ -107,7 +107,10 @@ These rows were seeded into Notion on 2026-07-01.
 | Appfigures                                   | pricing      | aso-workflow-for-indie-apps                    | verified     | https://appfigures.com/pricing                                            |
 | Appfigures                                   | feature      | aso-workflow-for-indie-apps                    | verified     | https://appfigures.com/                                                   |
 | Framer                                       | pricing      | framer-vs-webflow-for-saas-marketing           | verified     | https://www.framer.com/pricing/                                           |
-| Framer                                       | partner      | affiliate-link-governance                      | needs_review | https://www.framer.com/creators                                           |
+| Framer                                       | affiliate    | affiliate-batch-1                              | verified     | https://www.framer.com/creators                                           |
+| RevenueCat                                   | partner      | affiliate-batch-1                              | verified     | https://www.revenuecat.com/partners/                                      |
+| Appwrite                                     | partner      | affiliate-batch-1                              | verified     | https://appwrite.io/partners                                              |
+| Webflow                                      | affiliate    | affiliate-batch-1                              | verified     | https://webflow.com/solutions/affiliates                                  |
 | All first-sprint tools                       | hands_on     | all-first-sprint-articles                      | evidence_gap | Internal hands-on notes missing.                                          |
 | All affiliate targets                        | affiliate    | all-affiliate-mentions                         | evidence_gap | Affiliate dashboard or acceptance email missing.                          |
 
