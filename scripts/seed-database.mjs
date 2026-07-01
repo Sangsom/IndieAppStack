@@ -1143,44 +1143,38 @@ The wrong choice is usually not one of these tools. It is adding a backend befor
 :::
 
 ## Tool-by-tool breakdown
-### Supabase
+### Supabase fit
 [Supabase](/tools/supabase) is the clean default when the mobile app has structured entities: users, projects, purchases, teams, permissions, saved objects, audit rows, or anything you expect to query with joins later. The official docs present it around Postgres, Auth, Storage, Realtime, Edge Functions, and APIs, which makes it feel close to a conventional product backend without starting from blank infrastructure.
 
-### Good fit
-- Your app data is relational or will need reporting later.
-- You want SQL, migrations, row-level security, and clearer portability.
-- You expect a web admin surface, customer portal, or server-owned records later.
+:::comparison Supabase fit guide
+| Fit signal | Good fit for Supabase | Poor fit for Supabase |
+| --- | --- | --- |
+| Data shape | Your app data is relational or will need reporting later. | Your product naturally thinks in client-synced document trees. |
+| Operating need | You want SQL, migrations, row-level security, and clearer portability. | You want Firebase Analytics, Crashlytics, FCM, Remote Config, and Test Lab in the same operating surface. |
+| Readiness | You expect a web admin surface, customer portal, or server-owned records later. | You do not want to think about schema design yet. |
+:::
 
-### Poor fit
-- Your product naturally thinks in client-synced document trees.
-- You want Firebase Analytics, Crashlytics, FCM, Remote Config, and Test Lab in the same operating surface.
-- You do not want to think about schema design yet.
-
-### Firebase
+### Firebase fit
 [Firebase](/tools/firebase) is strongest when the app already wants Google's mobile operating stack. The docs group Firebase around Authentication, Firestore, Realtime Database, Storage, Hosting, Cloud Functions, Analytics, Crashlytics, Remote Config, Cloud Messaging, and more. That breadth is useful when a solo builder wants app infrastructure and app operations in one familiar console.
 
-### Good fit
-- Your app data is document-shaped and benefits from realtime sync.
-- You already want Crashlytics, Analytics, Remote Config, Cloud Messaging, or Test Lab.
-- Your app is Android-heavy or already close to Google Cloud patterns.
+:::comparison Firebase fit guide
+| Fit signal | Good fit for Firebase | Poor fit for Firebase |
+| --- | --- | --- |
+| Data shape | Your app data is document-shaped and benefits from realtime sync. | You want SQL-first reporting and relational data modeling. |
+| Operating need | You already want Crashlytics, Analytics, Remote Config, Cloud Messaging, or Test Lab. | You want to keep the backend portable away from Google services. |
+| Readiness | Your app is Android-heavy or already close to Google Cloud patterns. | You dislike pricing spread across many product-specific usage meters. |
+:::
 
-### Poor fit
-- You want SQL-first reporting and relational data modeling.
-- You want to keep the backend portable away from Google services.
-- You dislike pricing spread across many product-specific usage meters.
-
-### Appwrite
+### Appwrite fit
 [Appwrite](/tools/appwrite) is the strongest fit when ownership and backend breadth matter. Its docs describe an open-source backend with Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites, available through Appwrite Cloud or self-hosting. For a solo mobile developer, Appwrite is most interesting when the app needs common backend primitives but the builder does not want to commit to a Google-first or Postgres-only mental model.
 
-### Good fit
-- You care about open-source infrastructure and self-hosting optionality.
-- You want one backend surface for auth, files, functions, realtime, messaging, and hosting.
-- You prefer a productized backend platform over assembling separate services early.
-
-### Poor fit
-- You specifically need Postgres and SQL as the center of the app.
-- You already rely on Firebase's mobile analytics, crash, messaging, and config tools.
-- You want the largest possible ecosystem of tutorials, examples, and third-party integrations.
+:::comparison Appwrite fit guide
+| Fit signal | Good fit for Appwrite | Poor fit for Appwrite |
+| --- | --- | --- |
+| Ownership | You care about open-source infrastructure and self-hosting optionality. | You specifically need Postgres and SQL as the center of the app. |
+| Operating need | You want one backend surface for auth, files, functions, realtime, messaging, and hosting. | You already rely on Firebase's mobile analytics, crash, messaging, and config tools. |
+| Readiness | You prefer a productized backend platform over assembling separate services early. | You want the largest possible ecosystem of tutorials, examples, and third-party integrations. |
+:::
 
 ## Data model fit
 :::comparison Pick by the shape of your app data
@@ -1240,9 +1234,6 @@ Pricing and product claims were checked on 2026-07-01 against official sources:
 - Appwrite pricing and docs: https://appwrite.io/pricing and https://appwrite.io/docs
 
 No hands-on testing claims are made in this article. The architecture map is an owned conceptual visual created for IndieAppStack.
-
-## Affiliate disclosure
-Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
 
 ## Related tools and guides
 - Compare [Supabase](/tools/supabase), [Firebase](/tools/firebase), and [Appwrite](/tools/appwrite).
@@ -1365,9 +1356,6 @@ Pricing and product claims were checked on 2026-07-01 against official sources:
 
 No hands-on testing claims are made in this article. The comparison graphic is an owned conceptual visual created for IndieAppStack.
 
-## Affiliate disclosure
-Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
-
 ## Related tools and guides
 - Compare [RevenueCat](/tools/revenuecat), [Adapty](/tools/adapty), and [Superwall](/tools/superwall).
 - Review the [paywalls category](/categories/paywalls) and [monetization category](/categories/monetization).
@@ -1434,9 +1422,6 @@ Both are relevant to App Store and Google Play research workflows. Confirm curre
 ## Recommendation
 Pick AppTweak when you are actively rewriting the listing around keywords. Pick Appfigures when you need a broader monitoring habit around rankings, reviews, and market signal.
 
-## Affiliate disclosure
-Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
-
 ## Related tools and guides
 - Compare [Appfigures](/tools/appfigures) and [AppTweak](/tools/apptweak).
 - Review the [ASO category](/categories/aso).
@@ -1500,9 +1485,6 @@ Both are relevant for mobile crash monitoring. Sentry also covers broader applic
 
 ## Recommendation
 Use Crashlytics if Firebase is already the center of the app stack. Use Sentry if you want error monitoring that can grow beyond mobile crash reports.
-
-## Affiliate disclosure
-Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
 
 ## Related tools and guides
 - Compare [Sentry](/tools/sentry) and [Firebase](/tools/firebase).
