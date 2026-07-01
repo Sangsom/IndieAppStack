@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Monetization tools decision tree for solo mobile developers</title>
+  <desc id="desc">A conceptual decision tree routing solo mobile developers from revenue model to subscription stack, paywall tools, backend, and analytics choices.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="#1d2a36" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#4a6472"/>
+    </marker>
+    <style>
+      .title { font: 760 40px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #16202a; }
+      .subtitle { font: 500 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5e6c77; }
+      .nodeTitle { font: 740 20px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17212a; }
+      .nodeText { font: 520 15px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #50606b; }
+      .small { font: 520 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #65737d; }
+      .edge { stroke: #4a6472; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="#f5f7f8"/>
+  <rect x="58" y="46" width="1084" height="583" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="96" y="110" class="title">Monetization Tool Decision Tree</text>
+  <text x="98" y="146" class="subtitle">Route readers to the smallest tool choice that matches the revenue job.</text>
+
+  <rect x="453" y="190" width="294" height="92" rx="24" fill="#e9f4ff" stroke="#8bb7e5" stroke-width="2"/>
+  <text x="493" y="228" class="nodeTitle">What earns money?</text>
+  <text x="493" y="255" class="nodeText">Subscription, one-time, ads, or leads?</text>
+
+  <path d="M515 282 C430 330,352 330,267 376" class="edge"/>
+  <path d="M600 282 V360" class="edge"/>
+  <path d="M685 282 C770 330,848 330,933 376" class="edge"/>
+
+  <rect x="106" y="374" width="278" height="110" rx="22" fill="#fff1d4" stroke="#e6b95a" stroke-width="2"/>
+  <text x="137" y="415" class="nodeTitle">Subscriptions first</text>
+  <text x="137" y="444" class="nodeText">Start with purchase and</text>
+  <text x="137" y="468" class="nodeText">entitlement infrastructure.</text>
+
+  <rect x="461" y="374" width="278" height="110" rx="22" fill="#ecf7ee" stroke="#80c28b" stroke-width="2"/>
+  <text x="492" y="415" class="nodeTitle">Need to improve paywalls?</text>
+  <text x="492" y="444" class="nodeText">Evaluate paywall workflow,</text>
+  <text x="492" y="468" class="nodeText">experiments, and analytics.</text>
+
+  <rect x="816" y="374" width="278" height="110" rx="22" fill="#f2ebff" stroke="#b89ce8" stroke-width="2"/>
+  <text x="847" y="415" class="nodeTitle">Need account data?</text>
+  <text x="847" y="444" class="nodeText">Add backend only when user</text>
+  <text x="847" y="468" class="nodeText">state must sync or persist.</text>
+
+  <path d="M245 484 V535" class="edge"/>
+  <path d="M600 484 V535" class="edge"/>
+  <path d="M955 484 V535" class="edge"/>
+
+  <rect x="107" y="538" width="277" height="56" rx="18" fill="#ffffff" stroke="#d7dde2" stroke-width="2"/>
+  <text x="137" y="573" class="nodeText">Subscription MVP stack guide</text>
+  <rect x="462" y="538" width="277" height="56" rx="18" fill="#ffffff" stroke="#d7dde2" stroke-width="2"/>
+  <text x="492" y="573" class="nodeText">Paywall tool comparison</text>
+  <rect x="817" y="538" width="277" height="56" rx="18" fill="#ffffff" stroke="#d7dde2" stroke-width="2"/>
+  <text x="847" y="573" class="nodeText">Backend platform comparison</text>
+
+  <text x="96" y="618" class="small">Visual rule: this is a routing aid, not a ranking. Recommendations still need source checks and must work without affiliate links.</text>
+</svg>

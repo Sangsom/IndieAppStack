@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Subscription MVP stack map for a solo iOS app</title>
+  <desc id="desc">A conceptual map of purchase, entitlement, backend, analytics, and crash reporting responsibilities for a solo iOS subscription app.</desc>
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#14213d" flood-opacity="0.16"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#365a6d"/>
+    </marker>
+    <style>
+      .bg { fill: #f6f7f3; }
+      .headline { font: 700 42px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17212b; }
+      .subhead { font: 500 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5a6872; }
+      .label { font: 700 19px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17212b; }
+      .small { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #52616b; }
+      .tiny { font: 700 12px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #61717c; letter-spacing: 1px; }
+      .line { stroke: #365a6d; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .softLine { stroke: #8ca2ad; stroke-width: 2; stroke-dasharray: 8 8; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="675"/>
+  <circle cx="1015" cy="116" r="86" fill="#cde7df" opacity="0.65"/>
+  <circle cx="111" cy="541" r="112" fill="#f4c76b" opacity="0.22"/>
+  <rect x="56" y="50" width="1088" height="575" rx="32" fill="#ffffff" filter="url(#softShadow)"/>
+  <text x="96" y="112" class="headline">Smallest Useful Subscription MVP Stack</text>
+  <text x="98" y="148" class="subhead">Keep purchase truth, app state, product signal, and crash recovery separate.</text>
+
+  <rect x="96" y="238" width="172" height="112" rx="22" fill="#e5f0ff" stroke="#8db3ea" stroke-width="2"/>
+  <text x="124" y="272" class="tiny">USER TOUCHPOINT</text>
+  <text x="124" y="304" class="label">iOS App</text>
+  <text x="124" y="329" class="small">Paywall screen</text>
+
+  <rect x="336" y="218" width="190" height="152" rx="22" fill="#f9e8c7" stroke="#e7b84f" stroke-width="2"/>
+  <text x="364" y="252" class="tiny">PURCHASE TRUTH</text>
+  <text x="364" y="284" class="label">RevenueCat</text>
+  <text x="364" y="312" class="small">Purchases</text>
+  <text x="364" y="335" class="small">Receipts</text>
+  <text x="364" y="358" class="small">Entitlements</text>
+
+  <rect x="595" y="238" width="178" height="112" rx="22" fill="#e3f3ea" stroke="#6bb889" stroke-width="2"/>
+  <text x="623" y="272" class="tiny">APP DECISION</text>
+  <text x="623" y="304" class="label">Entitlement</text>
+  <text x="623" y="329" class="small">Unlock or upsell</text>
+
+  <rect x="842" y="208" width="218" height="172" rx="22" fill="#f0e8ff" stroke="#b79be8" stroke-width="2"/>
+  <text x="872" y="248" class="tiny">ONLY WHEN NEEDED</text>
+  <text x="872" y="280" class="label">Supabase</text>
+  <text x="872" y="309" class="small">Accounts</text>
+  <text x="872" y="332" class="small">Synced data</text>
+  <text x="872" y="355" class="small">Server-owned records</text>
+
+  <path d="M268 294 H330" class="line"/>
+  <path d="M526 294 H588" class="line"/>
+  <path d="M774 294 H835" class="softLine"/>
+
+  <rect x="213" y="446" width="215" height="95" rx="20" fill="#e8f3f5" stroke="#7fb1bf" stroke-width="2"/>
+  <text x="242" y="487" class="label">TelemetryDeck</text>
+  <text x="242" y="515" class="small">Few events you can act on</text>
+
+  <rect x="489" y="446" width="215" height="95" rx="20" fill="#fff0ee" stroke="#dd8a7a" stroke-width="2"/>
+  <text x="518" y="487" class="label">Sentry</text>
+  <text x="518" y="515" class="small">Crash signal before launch</text>
+
+  <rect x="765" y="446" width="215" height="95" rx="20" fill="#eef0f3" stroke="#a7b1ba" stroke-width="2"/>
+  <text x="794" y="482" class="label">Delay the Rest</text>
+  <text x="794" y="509" class="small">CRM, warehouse, BI</text>
+  <text x="794" y="529" class="small">and automations</text>
+
+  <path d="M182 350 C210 426,250 430,300 446" class="softLine"/>
+  <path d="M682 350 C675 408,650 421,607 446" class="softLine"/>
+  <path d="M951 380 C945 414,923 426,891 446" class="softLine"/>
+
+  <rect x="96" y="570" width="1008" height="1" fill="#d9e0e4"/>
+  <text x="98" y="598" class="small">Visual rule: each block has one job. Do not add backend or analytics until the article explains why.</text>
+</svg>

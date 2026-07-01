@@ -58,8 +58,8 @@ Every article needs:
 - A short answer near the top.
 - Decision framework or setup checklist.
 - Internal links.
-- Source-check dates.
-- Image brief or actual custom visual.
+- Source-check dates recorded in `docs/content-affiliate/evidence-log.md` and the Notion Editorial Evidence Log.
+- Image brief or actual custom visual tracked in `docs/content-affiliate/visual-production-workflow.md` and the Notion Visual Production Board.
 - Human review notes.
 - Disclosure if affiliate links are present or planned.
 

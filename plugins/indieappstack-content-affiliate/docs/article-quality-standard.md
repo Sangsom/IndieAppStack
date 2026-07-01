@@ -11,6 +11,7 @@ Use this standard before an IndieAppStack article is published.
 
 ## Evidence
 
+- Claims are checked against `docs/content-affiliate/evidence-log.md` and the Notion Editorial Evidence Log.
 - Pricing and feature claims have a source-check date.
 - Tool facts come from admin data, official pages, docs, or hands-on notes.
 - Hands-on language is supported by notes or removed.
@@ -20,6 +21,7 @@ Use this standard before an IndieAppStack article is published.
 
 - Hero visual is relevant to the article, not generic decoration.
 - At least one in-article visual helps the reader decide or act.
+- Visuals are tracked in `docs/content-affiliate/visual-production-workflow.md` and the Notion Visual Production Board.
 - Screenshots are either owned, captured during real review, or clearly allowed.
 - Alt text describes the image meaningfully.
 
