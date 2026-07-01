@@ -169,7 +169,7 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
     supabase
       .from("affiliate_links")
       .select("tool_id,slug")
-      .in("status", ["active", "pending"]),
+      .eq("status", "active"),
     supabase
       .from("articles")
       .select(

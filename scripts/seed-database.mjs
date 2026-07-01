@@ -73,6 +73,7 @@ const seedTools = [
     description:
       "RevenueCat helps solo developers ship reliable subscriptions, receipt validation, entitlements, paywalls, and revenue analytics without building purchase infrastructure from scratch.",
     website_url: "https://www.revenuecat.com/",
+    pricing_last_checked: "2026-07-01",
     pricing_summary:
       "Starts free up to a tracked-revenue threshold, then takes a percentage of tracked revenue; enterprise pricing is custom.",
     pricing_model: "usage_based",
@@ -83,7 +84,7 @@ const seedTools = [
     alternatives: ["Adapty", "Superwall", "Qonversion"],
     categorySlugs: ["monetization", "paywalls"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://www.revenuecat.com/pricing/",
+      "Pricing/features checked 2026-07-01 from https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/",
   },
   {
     name: "Adapty",
@@ -93,6 +94,7 @@ const seedTools = [
     description:
       "Adapty combines purchase infrastructure with no-code paywalls, A/B testing, subscription analytics, and integrations for apps optimizing recurring revenue.",
     website_url: "https://adapty.io/",
+    pricing_last_checked: "2026-07-01",
     pricing_summary:
       "Free while under a monthly revenue threshold, then percentage-of-revenue pricing; enterprise is custom.",
     pricing_model: "usage_based",
@@ -103,7 +105,7 @@ const seedTools = [
     alternatives: ["RevenueCat", "Superwall", "Qonversion"],
     categorySlugs: ["monetization", "paywalls"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://adapty.io/pricing/",
+      "Pricing/features checked 2026-07-01 from https://adapty.io/pricing/ and https://adapty.io/docs/",
   },
   {
     name: "Superwall",
@@ -113,9 +115,10 @@ const seedTools = [
     description:
       "Superwall helps teams design, target, and test native paywalls without app releases, with analytics for conversion experiments.",
     website_url: "https://superwall.com/",
+    pricing_last_checked: "2026-07-01",
     pricing_summary:
-      "Paid plans with a startup path and sales-led options; check current pricing page before purchase.",
-    pricing_model: "paid",
+      "Free and paid tiers based on monthly attributed revenue, plus custom enterprise pricing.",
+    pricing_model: "usage_based",
     best_for: [
       "Remote paywalls",
       "Paywall A/B tests",
@@ -127,7 +130,7 @@ const seedTools = [
     alternatives: ["RevenueCat", "Adapty", "Qonversion"],
     categorySlugs: ["paywalls", "monetization"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://superwall.com/pricing",
+      "Pricing/features checked 2026-07-01 from https://superwall.com/pricing and https://docs.superwall.com/",
   },
   {
     name: "Qonversion",
@@ -769,7 +772,8 @@ try {
 
         return {
           ...row,
-          pricing_last_checked: pricingLastChecked,
+          pricing_last_checked:
+            row.pricing_last_checked ?? pricingLastChecked,
           published_at: publishedAt,
           status: "published",
         };
@@ -799,12 +803,12 @@ try {
             name: "RevenueCat Partner Program",
             network: "direct",
             status: "not_applied",
-            application_url: "https://www.revenuecat.com/",
+            application_url: "https://www.revenuecat.com/partners/",
             commission_notes:
-              "Research affiliate availability before public promotion.",
+              "Official partner page mentions referral incentives; apply or start outreach before using monetized links.",
             cookie_notes: "TBD",
             allowed_promotion_notes:
-              "Use honest editorial recommendations only.",
+              "Use direct editorial links until the program is approved and terms are reviewed.",
           },
         ],
         { onConflict: "name" },
@@ -927,7 +931,8 @@ Revisit these after the app has real subscription traffic:
 ## Internal links
 - Start with the [monetization tools category](/categories/monetization) for the full tool list.
 - Use the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app) when the app is subscription-first.
-- Compare [paywall tools](/categories/paywalls) before adding experiments.
+- Compare [RevenueCat vs Adapty vs Superwall](/comparisons/revenuecat-vs-adapty-ios-subscriptions) before adding paywall experiments.
+- Browse the broader [paywall tools category](/categories/paywalls) when you need more options.
 - Pair this with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
 - Use the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps) before public launch.
 - Review [backend tools](/categories/backend) before adding synced data.
@@ -1078,7 +1083,7 @@ Postpone anything that needs traffic, operational discipline, or team bandwidth 
 
 ## Internal links
 - Start with the [best monetization tools guide](/guides/best-monetization-tools-solo-mobile-developers) for the broader landscape.
-- Compare subscription infrastructure in [RevenueCat vs Adapty for iOS subscriptions](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
+- Compare subscription infrastructure in [RevenueCat vs Adapty vs Superwall](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
 - Review the [monetization category](/categories/monetization) and [paywall tools](/categories/paywalls).
 - Compare backend choices in [Supabase vs Firebase for indie mobile apps](/comparisons/supabase-vs-firebase-indie-mobile-apps) and the [backend category](/categories/backend).
 - Add measurement with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack) and the [analytics category](/categories/analytics).
@@ -1184,68 +1189,138 @@ This comparison may link to tools that could become partner relationships in the
           published_at: new Date().toISOString(),
         },
         {
-          title: "RevenueCat vs Adapty for iOS subscriptions",
+          title: "RevenueCat vs Adapty vs Superwall for subscription apps",
           slug: "revenuecat-vs-adapty-ios-subscriptions",
           subtitle:
-            "A practical comparison for subscription infrastructure, paywalls, experiments, and analytics.",
+            "Choose subscription infrastructure, paywall analytics, or remote paywall iteration based on the job your app needs done.",
           excerpt:
-            "Compare RevenueCat and Adapty before choosing a subscription and paywall stack for an iOS app.",
+            "Compare RevenueCat, Adapty, and Superwall before choosing a subscription and paywall stack for an iOS app.",
           body_markdown: `## Short answer
-Choose [RevenueCat](/tools/revenuecat) when subscription infrastructure, receipt validation, and entitlement reliability are the core job. Choose [Adapty](/tools/adapty) when no-code paywalls, experiments, and subscription analytics are a larger part of the workflow.
+Choose [RevenueCat](/tools/revenuecat) when purchase infrastructure, receipt validation, entitlements, and subscription data are the core risk. Choose [Adapty](/tools/adapty) when the operating problem is paywall workflow plus subscription analytics. Choose [Superwall](/tools/superwall) when the team mainly needs remote paywall presentation, campaigns, and fast creative iteration.
 
-## Comparison table
-:::comparison Subscription tool fit
-| Decision | RevenueCat | Adapty |
-| --- | --- | --- |
-| Primary job | Purchases and entitlements | Paywalls, experiments, and subscription analytics |
-| Strongest fit | Infrastructure-first subscription apps | Growth workflow around paywalls |
-| Team stage | MVP to scale | MVP to scale |
-| Source | [RevenueCat pricing](https://www.revenuecat.com/pricing/) | [Adapty pricing](https://adapty.io/pricing/) |
+There is no universal winner here. The right first choice depends on which part of the subscription system must be dependable before the next release: the purchase truth, the paywall improvement loop, or the remote presentation layer.
+
+![RevenueCat, Adapty, and Superwall comparison graphic showing each tool's strongest decision job.](/content-visuals/articles/revenuecat-adapty-superwall-comparison.svg "Choose by the job: purchase truth, paywall analytics, or remote paywall iteration.")
+
+## Decision table
+:::comparison RevenueCat vs Adapty vs Superwall
+| Decision | RevenueCat | Adapty | Superwall |
+| --- | --- | --- | --- |
+| Choose it when... | Purchase infrastructure and entitlements need to be reliable first | Paywall workflow, subscription analytics, and experiments are one operating loop | Remote paywall presentation and creative iteration are the bottleneck |
+| Primary job | In-app purchase infrastructure, entitlement state, customer data, revenue reporting | Subscription infrastructure, paywall builder, experiments, analytics, predictions | Paywall editor, campaigns, audiences, experiments, analytics, integrations |
+| Strongest solo-builder fit | First subscription MVP or migration away from custom receipt work | App with meaningful paywall traffic and a need to improve conversion over time | App that wants frequent paywall changes without waiting on app releases |
+| Watch-outs | It can be more infrastructure-centered than a pure paywall design tool | It may be more system than needed if you only need entitlement checks | It is not a full backend database or generic analytics warehouse |
+| Pricing model to verify | Tracked-revenue based pricing plus enterprise path | Revenue-based pricing and enterprise path | Monthly attributed revenue model plus listed tiers and enterprise path |
+| Official sources | [Pricing](https://www.revenuecat.com/pricing/) and [docs](https://www.revenuecat.com/docs/) | [Pricing](https://adapty.io/pricing/) and [docs](https://adapty.io/docs/) | [Pricing](https://superwall.com/pricing) and [docs](https://docs.superwall.com/) |
 :::
 
-## Tool-by-tool breakdown
-### RevenueCat
-[RevenueCat](/tools/revenuecat) is the stronger default when the team wants a reliable subscription backend first: products, purchases, receipt validation, entitlements, and cross-platform customer state.
+## Choose RevenueCat when purchase truth is the job
+[RevenueCat](/tools/revenuecat) is the strongest default when the app needs a dependable subscription layer before it needs a sophisticated paywall operating system. That usually means product configuration, SDK integration, receipt validation, restore purchases, entitlement checks, customer state, webhooks, integrations, and revenue reporting.
 
-### Adapty
-[Adapty](/tools/adapty) is a better fit when the paywall workflow itself is the main operating surface, especially if the team wants visual paywall iteration, experiments, and analytics in one place.
+For a solo iOS app, RevenueCat is especially attractive when you want the purchase path to be boring and trustworthy. The app can focus on the paywall promise and paid experience while RevenueCat owns the subscription state you should not improvise.
 
-## Recommendation matrix
+### Not good for
+- A team that only wants a browser-based visual paywall builder and already has purchase infrastructure.
+- A content site or web product that does not need App Store or Google Play in-app purchase handling.
+- A builder looking for a generic backend database, authentication layer, or full product analytics warehouse.
+
+## Choose Adapty when paywall analytics are the job
+[Adapty](/tools/adapty) is a better fit when the question is not just "can users buy?" but "which paywall, offer, onboarding flow, and segment should we show?" Its public materials emphasize subscription infrastructure, revenue analytics, a browser-based paywall and onboarding builder, experiments, segmentation, predictions, and integrations.
+
+Adapty is worth evaluating when your app has enough traffic or launch confidence that paywall iteration is part of the core workflow. It can be too much if all you need this week is a reliable entitlement check.
+
+### Not good for
+- A tiny MVP where every extra dashboard and workflow creates more decisions than value.
+- A team that already has a dedicated analytics and experimentation setup and only wants receipt validation.
+- A builder who cannot yet define a paid promise, upgrade moment, or success metric for a paywall test.
+
+## Choose Superwall when remote paywall iteration is the job
+[Superwall](/tools/superwall) fits teams that want to change paywalls, campaigns, audiences, and upgrade prompts without shipping a new app version each time. Its pricing page frames billing around monthly attributed revenue through Superwall paywalls, while the docs surface paywalls, campaigns, charts, subscriptions, localization, web checkout, and SDKs.
+
+For a solo developer, Superwall is most compelling after the paid product is clear but paywall presentation is still changing. If your biggest bottleneck is "I need to try a new paywall screen, audience, or campaign quickly," it deserves a serious look.
+
+### Not good for
+- Apps that have not validated why anyone should pay.
+- Teams that need a full purchase infrastructure decision before paywall presentation.
+- Builders who want one general analytics tool for product behavior beyond paywall and revenue flows.
+
+## Decision matrix
 :::comparison Best choice by use case
-| Use case | Recommended choice | Why |
+| Use case | Choose | Why |
 | --- | --- | --- |
 | Subscription backend first | RevenueCat | Entitlements and purchase infrastructure are the center |
-| Paywall experimentation first | Adapty | Paywall iteration and analytics are more prominent |
-| Small solo app launching subscriptions | RevenueCat | Fewer moving parts for the core purchase path |
-| Growth team optimizing upgrade screens | Adapty | More emphasis on paywall and experiment workflows |
+| First paid iOS MVP | RevenueCat | The riskiest early job is usually reliable purchase and restore behavior |
+| Paywall analytics plus experiments | Adapty | The tool is shaped around paywalls, subscription metrics, tests, predictions, and segments |
+| Frequent remote paywall changes | Superwall | The workflow is centered on paywall presentation, campaigns, audiences, and iteration |
+| Growth team optimizing offers | Adapty or Superwall | Choose Adapty if analytics and subscription workflow matter more; choose Superwall if remote presentation and campaigns matter more |
+| App with existing RevenueCat setup | Superwall or Adapty | Evaluate whether the missing job is paywall presentation or a broader paywall analytics loop |
+| App with no clear paid promise | None yet | Define the paid promise and activation path before adding a paywall tool |
 :::
 
-## Pricing comparison
-Last checked: 2026-06-29. Check [RevenueCat pricing](https://www.revenuecat.com/pricing/) and [Adapty pricing](https://adapty.io/pricing/) before choosing. Do not rely on copied plan names or thresholds without checking the official pricing pages.
-
 ## Setup complexity
-RevenueCat setup complexity is usually around product configuration, SDK integration, and entitlement modeling. Adapty setup complexity is similar for purchases, then adds paywall configuration and experiment workflow decisions.
+RevenueCat setup complexity is usually product mapping, SDK integration, entitlement modeling, customer identity, restores, and deciding which downstream tools receive purchase events.
 
-## Platform support
-Both are relevant for iOS subscription apps and broader mobile subscription workflows. Confirm current SDK coverage and store support in official docs before implementing.
+Adapty setup starts in similar subscription territory, then adds the operating surface for paywalls, onboarding flows, analytics, experiments, segments, and integrations. That is useful if those workflows are part of the growth loop, and distracting if they are not.
+
+Superwall setup should be judged by how much paywall presentation you want to control remotely: paywall editor, campaigns, audiences, SDK calls, charts, web checkout, and integrations. It can make iteration faster, but only if your team is ready to run that loop.
+
+## Pricing comparison
+Pricing was source-checked on 2026-07-01 from official pages. Do not choose from copied plan names alone:
+
+- RevenueCat publishes tracked-revenue based pricing and an enterprise path.
+- Adapty publishes revenue-based pricing and an enterprise path.
+- Superwall publishes monthly attributed revenue based pricing, listed plan tiers, and an enterprise path.
+
+Before implementing, open the official pricing pages and check the current thresholds, included features, and whether your app's revenue model matches how the vendor measures revenue.
+
+## Affiliate and partner status
+:::comparison Link governance
+| Tool | Status checked | Current link rule |
+| --- | --- | --- |
+| RevenueCat | Public partner program page found; not applied or approved yet | Use direct/editorial links only until approval and terms review |
+| Adapty | Public pricing/docs found; no approved public affiliate page found during this review | Use direct/editorial links and mark partner status pending |
+| Superwall | Public pricing/docs found; no approved public affiliate page found during this review | Use direct/editorial links and mark partner status pending |
+:::
+
+No affiliate CTA should appear on this comparison until a program is approved, terms are recorded, and the disclosure remains visible.
+
+## What to verify before switching
+- Whether your current purchase identifiers, subscription groups, and entitlement names can map cleanly.
+- Whether restore purchase, grace period, refunds, cancellations, and account deletion flows are covered.
+- Whether the tool integrates with the analytics, attribution, customer messaging, or backend systems you already use.
+- Whether exported data and webhooks are enough for your reporting needs.
+- Whether the paywall workflow requires a new app release for the changes you care about.
 
 ## Recommendation
-Start with RevenueCat if you mainly need durable purchase infrastructure. Choose Adapty if the team expects frequent paywall iteration to be the primary operating loop.
+Start with RevenueCat if the app is subscription-first and you need purchase truth before growth tooling. Evaluate Adapty if your next bottleneck is understanding and improving the whole paywall and subscription analytics loop. Evaluate Superwall if your next bottleneck is changing paywall presentation, campaigns, and audiences quickly.
+
+## Source checks
+Pricing, product, and partner claims were checked on 2026-07-01 against official sources:
+
+- RevenueCat pricing, docs, and partner page: https://www.revenuecat.com/pricing/, https://www.revenuecat.com/docs/, and https://www.revenuecat.com/partners/
+- Adapty pricing and docs: https://adapty.io/pricing/ and https://adapty.io/docs/
+- Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
+- Adapty partner/affiliate status: no approved public program page found during this review; use direct links until outreach confirms a path.
+- Superwall partner/affiliate status: no approved public program page found during this review; use direct links until outreach confirms a path.
+
+No hands-on testing claims are made in this article. The comparison graphic is an owned conceptual visual created for IndieAppStack.
 
 ## Affiliate disclosure
-This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+This comparison may link to tools that could become partner relationships in the future. Today, recommendations are editorial and based on fit, not commission.
 
 ## Related tools and guides
-- Compare [RevenueCat](/tools/revenuecat) and [Adapty](/tools/adapty).
-- Review the [paywalls category](/categories/paywalls).
-- Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).`,
+- Compare [RevenueCat](/tools/revenuecat), [Adapty](/tools/adapty), and [Superwall](/tools/superwall).
+- Review the [paywalls category](/categories/paywalls) and [monetization category](/categories/monetization).
+- Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
+- Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Use the [monetization tools hub](/guides/best-monetization-tools-solo-mobile-developers) if you are still deciding the broader stack.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "comparison",
           primary_category_id: categories.get("paywalls").id,
-          seo_title: "RevenueCat vs Adapty for iOS subscriptions",
+          seo_title: "RevenueCat vs Adapty vs Superwall",
           seo_description:
-            "Compare RevenueCat and Adapty for iOS subscriptions, paywalls, entitlements, setup complexity, pricing checks, and best use cases.",
+            "Compare RevenueCat, Adapty, and Superwall for subscriptions, paywalls, entitlements, experiments, pricing model checks, and best use cases.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
@@ -1581,6 +1656,7 @@ This guide is for builders comparing paywall and subscription tools before imple
 
 ## Internal links
 - Compare the broader [paywalls category](/categories/paywalls).
+- Read the deeper [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
 - Start with [Best monetization tools for solo mobile developers](/guides/best-monetization-tools-solo-mobile-developers).
 - Add measurement with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
 
@@ -1865,6 +1941,12 @@ Last checked: 2026-06-29.`,
         tool_id: tools.get("adapty").id,
         relationship: "featured",
         sort_order: 20,
+      },
+      {
+        article_id: articles.get("revenuecat-vs-adapty-ios-subscriptions").id,
+        tool_id: tools.get("superwall").id,
+        relationship: "featured",
+        sort_order: 30,
       },
       {
         article_id: articles.get("appfigures-vs-apptweak-aso-tools").id,

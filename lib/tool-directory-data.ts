@@ -314,7 +314,7 @@ export const getToolDirectoryData = cache(
         supabase
           .from("affiliate_links")
           .select("tool_id,slug,status")
-          .in("status", ["active", "pending"]),
+          .eq("status", "active"),
       ]);
 
     const firstError = [

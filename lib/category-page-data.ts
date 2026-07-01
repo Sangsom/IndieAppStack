@@ -410,7 +410,7 @@ export const getCategoryPageData = cache(
             .from("affiliate_links")
             .select("tool_id,slug")
             .in("tool_id", toolIds)
-            .in("status", ["active", "pending"])
+            .eq("status", "active")
         : Promise.resolve({ data: [], error: null }),
     ]);
 

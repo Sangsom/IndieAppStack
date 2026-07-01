@@ -170,7 +170,7 @@ export async function GET(
     .eq("slug", slug)
     .maybeSingle();
 
-  if (error || !link || !["active", "pending"].includes(link.status)) {
+  if (error || !link || link.status !== "active") {
     return new Response("Affiliate link not found.", { status: 404 });
   }
 

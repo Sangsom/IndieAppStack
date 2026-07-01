@@ -221,7 +221,7 @@ export const getToolDetail = cache(
         .from("affiliate_links")
         .select("slug,status,disclosure_required")
         .eq("tool_id", tool.id)
-        .in("status", ["active", "pending"])
+        .eq("status", "active")
         .limit(1),
       supabase
         .from("article_tools")

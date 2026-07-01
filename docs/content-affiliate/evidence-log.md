@@ -59,11 +59,16 @@ These rows were seeded into Notion on 2026-07-01.
 | --- | --- | --- | --- | --- |
 | RevenueCat | pricing | revenuecat-vs-adapty-vs-superwall | verified | https://www.revenuecat.com/pricing/ |
 | RevenueCat | feature | revenuecat-vs-adapty-vs-superwall | verified | https://www.revenuecat.com/docs/ |
-| RevenueCat | partner | affiliate-link-governance | needs_review | https://www.revenuecat.com/partners/ |
+| RevenueCat | partner | revenuecat-vs-adapty-vs-superwall | needs_review | https://www.revenuecat.com/partners/ |
 | Adapty | pricing | revenuecat-vs-adapty-vs-superwall | verified | https://adapty.io/pricing/ |
 | Adapty | feature | revenuecat-vs-adapty-vs-superwall | verified | https://adapty.io/docs/ |
+| Adapty | affiliate | revenuecat-vs-adapty-vs-superwall | evidence_gap | https://adapty.io/affiliate-program/ |
+| Adapty | partner | revenuecat-vs-adapty-vs-superwall | evidence_gap | https://adapty.io/partners/ |
 | Superwall | pricing | revenuecat-vs-adapty-vs-superwall | verified | https://superwall.com/pricing |
 | Superwall | feature | revenuecat-vs-adapty-vs-superwall | verified | https://docs.superwall.com/ |
+| Superwall | affiliate | revenuecat-vs-adapty-vs-superwall | evidence_gap | https://superwall.com/affiliate-program |
+| Superwall | partner | revenuecat-vs-adapty-vs-superwall | evidence_gap | https://superwall.com/partners |
+| RevenueCat vs Adapty vs Superwall comparison | visual_asset | revenuecat-vs-adapty-vs-superwall | verified | /content-visuals/articles/revenuecat-adapty-superwall-comparison.svg |
 | Supabase | pricing | supabase-vs-firebase-vs-appwrite | verified | https://supabase.com/pricing |
 | Supabase | platform | supabase-vs-firebase-vs-appwrite | verified | https://supabase.com/docs |
 | Firebase | pricing | supabase-vs-firebase-vs-appwrite | verified | https://firebase.google.com/pricing |
@@ -100,6 +105,8 @@ These rows were seeded into Notion on 2026-07-01.
 | Framer | partner | affiliate-link-governance | needs_review | https://www.framer.com/creators |
 | All first-sprint tools | hands_on | all-first-sprint-articles | evidence_gap | Internal hands-on notes missing. |
 | All affiliate targets | affiliate | all-affiliate-mentions | evidence_gap | Affiliate dashboard or acceptance email missing. |
+
+Partner status note for `revenuecat-vs-adapty-vs-superwall`: RevenueCat has a public partner page but no approved IndieAppStack relationship yet. Adapty and Superwall obvious partner/affiliate URLs returned 404 on 2026-07-01, so use direct links and treat outreach as pending.
 
 ## Article Review Note Template
 

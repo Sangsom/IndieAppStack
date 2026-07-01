@@ -53,7 +53,7 @@ export const getStackFinderTools = cache(
       supabase
         .from("affiliate_links")
         .select("tool_id,slug")
-        .in("status", ["active", "pending"]),
+        .eq("status", "active"),
     ]);
 
     const firstError = [toolsResult.error, linksResult.error].find(Boolean);
