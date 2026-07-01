@@ -11,12 +11,7 @@
       "description": "Editorial, affiliate, and analytics operating system for IndieAppStack.",
       "source": "./plugins/indieappstack-content-affiliate",
       "category": "marketing",
-      "tags": [
-        "content-strategy",
-        "affiliate-ops",
-        "seo",
-        "editorial"
-      ]
+      "tags": ["content-strategy", "affiliate-ops", "seo", "editorial"]
     }
   ]
 }

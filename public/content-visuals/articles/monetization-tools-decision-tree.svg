@@ -56,5 +56,5 @@
   <rect x="817" y="538" width="277" height="56" rx="18" fill="#ffffff" stroke="#d7dde2" stroke-width="2"/>
   <text x="847" y="573" class="nodeText">Backend platform comparison</text>
 
-  <text x="96" y="618" class="small">Visual rule: this is a routing aid, not a ranking. Recommendations still need source checks and must work without affiliate links.</text>
+  <text x="96" y="618" class="small">Use this as a routing aid, then verify current docs and pricing before committing.</text>
 </svg>

@@ -772,8 +772,7 @@ try {
 
         return {
           ...row,
-          pricing_last_checked:
-            row.pricing_last_checked ?? pricingLastChecked,
+          pricing_last_checked: row.pricing_last_checked ?? pricingLastChecked,
           published_at: publishedAt,
           status: "published",
         };
@@ -848,8 +847,8 @@ If you are launching a solo mobile app, start with the smallest stack that can s
 
 Do not add paywall experimentation, attribution, CRM, or a data warehouse before the app has enough traffic for those tools to change decisions.
 
-> [!NOTE] Editorial note
-> This page is a decision framework, not a commission ranking. RevenueCat is a partner target for IndieAppStack, but the recommendation must still make sense without affiliate links.
+> [!NOTE] How to read this guide
+> Treat this as a decision framework, not a universal ranking. Start with the job your app needs done, then verify current pricing and docs before committing.
 
 ## Use the visual first
 The decision tree for this guide is available at [Monetization tool decision tree](/content-visuals/articles/monetization-tools-decision-tree.svg). It routes the choice by revenue model, paywall iteration needs, backend needs, and analytics maturity.
@@ -974,7 +973,7 @@ For a solo iOS subscription MVP, keep the stack boring: App Store Connect owns t
 
 Add a backend only when paid value depends on account-backed data, synced history, credits, teams, or server-owned records. If the first version can unlock premium features from a verified entitlement, postpone the backend until the product proves it needs one.
 
-> [!NOTE] Editorial note
+> [!NOTE] Solo builder scope
 > This guide is for a solo builder shipping a real subscription MVP, not a mature growth team. The goal is fewer moving parts, clearer failure modes, and enough measurement to make the next release smarter.
 
 ## Stack map
@@ -1103,12 +1102,7 @@ Pricing, product, and platform claims were checked on 2026-07-01 against officia
 
 No hands-on testing claims are made in this article. No screenshots are used. The stack map is an owned conceptual visual created for IndieAppStack.
 
-## Human review notes
-- Claim scope reviewed against the evidence log on 2026-07-01.
-- Exact pricing thresholds are intentionally avoided unless the reader checks official pages.
-- RevenueCat may become an affiliate relationship, but the recommendation is based on fit for a solo subscription MVP.
-
-Last checked: 2026-07-01.`,
+Last checked: 2026-07-01. Pricing thresholds are summarized at a high level; check official pages before committing.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1171,7 +1165,7 @@ Both can support iOS, Android, and web apps. The practical difference is not pla
 For most indie apps with structured app data, Supabase is the cleaner default. Choose Firebase when the app benefits from staying inside Firebase's mobile product suite.
 
 ## Affiliate disclosure
-This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
 
 ## Related tools and guides
 - Compare [Supabase](/tools/supabase) and [Firebase](/tools/firebase).
@@ -1293,7 +1287,7 @@ Pricing and product claims were checked on 2026-07-01 against official sources:
 No hands-on testing claims are made in this article. The comparison graphic is an owned conceptual visual created for IndieAppStack.
 
 ## Affiliate disclosure
-Some IndieAppStack links may become partner links in the future. This comparison currently uses direct/editorial links. Recommendations are based on fit for solo mobile developers, not commission.
+Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
 
 ## Related tools and guides
 - Compare [RevenueCat](/tools/revenuecat), [Adapty](/tools/adapty), and [Superwall](/tools/superwall).
@@ -1362,7 +1356,7 @@ Both are relevant to App Store and Google Play research workflows. Confirm curre
 Pick AppTweak when you are actively rewriting the listing around keywords. Pick Appfigures when you need a broader monitoring habit around rankings, reviews, and market signal.
 
 ## Affiliate disclosure
-This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
 
 ## Related tools and guides
 - Compare [Appfigures](/tools/appfigures) and [AppTweak](/tools/apptweak).
@@ -1429,7 +1423,7 @@ Both are relevant for mobile crash monitoring. Sentry also covers broader applic
 Use Crashlytics if Firebase is already the center of the app stack. Use Sentry if you want error monitoring that can grow beyond mobile crash reports.
 
 ## Affiliate disclosure
-This comparison may link to tools that could become partner relationships in the future. Editorial recommendations are based on fit, not commission.
+Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
 
 ## Related tools and guides
 - Compare [Sentry](/tools/sentry) and [Firebase](/tools/firebase).

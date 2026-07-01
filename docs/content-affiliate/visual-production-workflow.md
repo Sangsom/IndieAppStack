@@ -18,27 +18,27 @@ Every active brief needs:
 
 ## Standard Visual Types
 
-| Type | Best use | Notes |
-| --- | --- | --- |
-| Stack map | Show which tool owns which responsibility. | Good for stack guides and backend choices. |
-| Decision tree | Route the reader to the right next action. | Avoid ranking by commission or preference alone. |
-| Setup checklist | Make implementation steps scannable. | Use only steps that the article can support. |
-| Comparison table graphic | Summarize tradeoffs across tools. | Do not include exact prices unless source-checked. |
-| Workflow diagram | Show events moving through a system. | Useful for paywalls, analytics, ASO, launch, and crash reporting. |
-| Annotated screenshot | Explain a real UI or screen. | Requires owned capture, allowed official source, or synthetic mockup. |
+| Type                     | Best use                                   | Notes                                                                 |
+| ------------------------ | ------------------------------------------ | --------------------------------------------------------------------- |
+| Stack map                | Show which tool owns which responsibility. | Good for stack guides and backend choices.                            |
+| Decision tree            | Route the reader to the right next action. | Avoid ranking by commission or preference alone.                      |
+| Setup checklist          | Make implementation steps scannable.       | Use only steps that the article can support.                          |
+| Comparison table graphic | Summarize tradeoffs across tools.          | Do not include exact prices unless source-checked.                    |
+| Workflow diagram         | Show events moving through a system.       | Useful for paywalls, analytics, ASO, launch, and crash reporting.     |
+| Annotated screenshot     | Explain a real UI or screen.               | Requires owned capture, allowed official source, or synthetic mockup. |
 
 ## Provenance Rules
 
 Use these labels in the Notion Visual Production Board:
 
-| Provenance | Meaning | Publishing rule |
-| --- | --- | --- |
-| generated_concept | Custom illustration, diagram, or abstract mockup. | Safe when it does not imply hands-on testing. |
-| owned_capture | Screenshot captured from our own app, site, or controlled test account. | Safe if no private data is visible. |
-| official_allowed | Screenshot or image from an official page with clear permission or acceptable editorial use. | Must include source URL in review notes. |
-| internal_screenshot | Internal admin/product screenshot. | Strip secrets and avoid publishing unless approved. |
-| requires_testing | Would imply hands-on usage or product UI behavior. | Block until testing notes exist. |
-| do_not_use | Risky, unsupported, unclear license, or misleading. | Do not publish. |
+| Provenance          | Meaning                                                                                      | Publishing rule                                     |
+| ------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| generated_concept   | Custom illustration, diagram, or abstract mockup.                                            | Safe when it does not imply hands-on testing.       |
+| owned_capture       | Screenshot captured from our own app, site, or controlled test account.                      | Safe if no private data is visible.                 |
+| official_allowed    | Screenshot or image from an official page with clear permission or acceptable editorial use. | Must include source URL in review notes.            |
+| internal_screenshot | Internal admin/product screenshot.                                                           | Strip secrets and avoid publishing unless approved. |
+| requires_testing    | Would imply hands-on usage or product UI behavior.                                           | Block until testing notes exist.                    |
+| do_not_use          | Risky, unsupported, unclear license, or misleading.                                          | Do not publish.                                     |
 
 ## Asset Naming
 
@@ -78,12 +78,12 @@ Avoid empty or decorative alt text unless the image is truly decorative. Avoid "
 
 The Visual Production Board now tracks 18 visual requirements across the active topic set. The first four custom visuals have been created:
 
-| Article | Asset | Type | Path |
-| --- | --- | --- | --- |
-| Subscription MVP stack for a solo iOS app | Stack map | stack_map | `/content-visuals/articles/subscription-mvp-stack-map.svg` |
-| RevenueCat vs Adapty vs Superwall | Comparison hero | comparison_table_graphic | `/content-visuals/articles/revenuecat-adapty-superwall-comparison.svg` |
-| Best monetization tools for solo mobile developers | Decision tree | decision_tree | `/content-visuals/articles/monetization-tools-decision-tree.svg` |
-| Supabase vs Firebase vs Appwrite | Backend architecture map | stack_map | `/content-visuals/articles/backend-choice-architecture-map.svg` |
+| Article                                            | Asset                    | Type                     | Path                                                                   |
+| -------------------------------------------------- | ------------------------ | ------------------------ | ---------------------------------------------------------------------- |
+| Subscription MVP stack for a solo iOS app          | Stack map                | stack_map                | `/content-visuals/articles/subscription-mvp-stack-map.svg`             |
+| RevenueCat vs Adapty vs Superwall                  | Comparison hero          | comparison_table_graphic | `/content-visuals/articles/revenuecat-adapty-superwall-comparison.svg` |
+| Best monetization tools for solo mobile developers | Decision tree            | decision_tree            | `/content-visuals/articles/monetization-tools-decision-tree.svg`       |
+| Supabase vs Firebase vs Appwrite                   | Backend architecture map | stack_map                | `/content-visuals/articles/backend-choice-architecture-map.svg`        |
 
 ## Article Review Template
 

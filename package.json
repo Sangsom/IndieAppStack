@@ -16,6 +16,7 @@
     "supabase:types": "supabase gen types typescript --project-id \"$SUPABASE_PROJECT_ID\" --schema public > lib/database.types.ts",
     "supabase:types:local": "supabase gen types typescript --local --schema public > lib/database.types.ts",
     "security:check-supabase-key": "node scripts/assert-service-role-not-client.mjs",
+    "content:safety": "node scripts/assert-public-content-safe.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
     "db:seed": "node scripts/seed-database.mjs",
     "subscribers:delete": "node scripts/delete-subscriber.mjs",

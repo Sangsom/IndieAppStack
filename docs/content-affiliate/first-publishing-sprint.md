@@ -22,22 +22,22 @@ This keeps week one focused on monetization trust before heavier affiliate work.
 
 Scores use 1 to 5 for reader pain, search intent, monetization fit, evidence readiness, and internal-link value.
 
-| Priority | Topic | Work Type | Reader Job | Reader Pain | Search Intent | Monetization Fit | Evidence Readiness | Internal-Link Value | Weighted Score | Rationale |
-| --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| P0 | RevenueCat vs Adapty vs Superwall | Substantial refresh | Choose subscription infrastructure and paywall workflow | 5 | 5 | 5 | 4 | 5 | 4.8 | Highest buying intent, already has a RevenueCat vs Adapty seed, and strengthens paywalls plus monetization paths. Superwall needs source checks before claims are expanded. |
-| P0 | Subscription MVP stack for a solo iOS app | New flagship guide | Choose payment, entitlement, backend, analytics, and crash defaults | 5 | 5 | 4 | 4 | 5 | 4.65 | Best authority builder from the 90-day plan. It should become the page that explains the smallest useful stack before readers compare tools. |
-| P1 | Best monetization tools for solo mobile developers | Hub refresh | Understand the monetization tool landscape before choosing a stack | 4 | 4 | 4 | 5 | 5 | 4.35 | Already published as a seed page. Refreshing it prevents thin content from weakening trust and creates a strong internal-link hub. |
+| Priority | Topic                                              | Work Type           | Reader Job                                                          | Reader Pain | Search Intent | Monetization Fit | Evidence Readiness | Internal-Link Value | Weighted Score | Rationale                                                                                                                                                                   |
+| -------- | -------------------------------------------------- | ------------------- | ------------------------------------------------------------------- | ----------: | ------------: | ---------------: | -----------------: | ------------------: | -------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P0       | RevenueCat vs Adapty vs Superwall                  | Substantial refresh | Choose subscription infrastructure and paywall workflow             |           5 |             5 |                5 |                  4 |                   5 |            4.8 | Highest buying intent, already has a RevenueCat vs Adapty seed, and strengthens paywalls plus monetization paths. Superwall needs source checks before claims are expanded. |
+| P0       | Subscription MVP stack for a solo iOS app          | New flagship guide  | Choose payment, entitlement, backend, analytics, and crash defaults |           5 |             5 |                4 |                  4 |                   5 |           4.65 | Best authority builder from the 90-day plan. It should become the page that explains the smallest useful stack before readers compare tools.                                |
+| P1       | Best monetization tools for solo mobile developers | Hub refresh         | Understand the monetization tool landscape before choosing a stack  |           4 |             4 |                4 |                  5 |                   5 |           4.35 | Already published as a seed page. Refreshing it prevents thin content from weakening trust and creates a strong internal-link hub.                                          |
 
 ## Publishing Calendar
 
 Use this as a short kickoff sprint from Tuesday, 2026-06-30 through Friday, 2026-07-03. If the team wants a full Monday-to-Friday sprint, shift the same sequence to 2026-07-06 through 2026-07-10.
 
-| Date | Owner Role | Work | Output |
-| --- | --- | --- | --- |
-| 2026-06-30 | Content strategist | Finalize sprint briefs, search intent, topic-queue records, internal-link targets, and evidence list. | Three brief-ready topics and visual briefs. |
-| 2026-07-01 | Editorial writer | Draft the subscription MVP stack flagship guide. Build the stack map and decision table. | Draft flagship article plus image brief. |
-| 2026-07-02 | Editorial writer | Refresh the RevenueCat vs Adapty comparison into a three-way RevenueCat, Adapty, Superwall comparison. Refresh the monetization hub outline and links. | Comparison refresh draft and hub refresh draft. |
-| 2026-07-03 | Affiliate operator and editor | Source-check pricing/features, verify affiliate status, add disclosures where needed, QA internal links, publish or schedule. | Two publishable articles, one refreshed hub, and updated topic queue. |
+| Date       | Owner Role                    | Work                                                                                                                                                   | Output                                                                |
+| ---------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
+| 2026-06-30 | Content strategist            | Finalize sprint briefs, search intent, topic-queue records, internal-link targets, and evidence list.                                                  | Three brief-ready topics and visual briefs.                           |
+| 2026-07-01 | Editorial writer              | Draft the subscription MVP stack flagship guide. Build the stack map and decision table.                                                               | Draft flagship article plus image brief.                              |
+| 2026-07-02 | Editorial writer              | Refresh the RevenueCat vs Adapty comparison into a three-way RevenueCat, Adapty, Superwall comparison. Refresh the monetization hub outline and links. | Comparison refresh draft and hub refresh draft.                       |
+| 2026-07-03 | Affiliate operator and editor | Source-check pricing/features, verify affiliate status, add disclosures where needed, QA internal links, publish or schedule.                          | Two publishable articles, one refreshed hub, and updated topic queue. |
 
 ## Brief-Ready Notes
 
@@ -92,11 +92,11 @@ Use this as a short kickoff sprint from Tuesday, 2026-06-30 through Friday, 2026
 
 ## Topic Queue Inputs
 
-| Title | Slug | Target Keyword | Search Intent | Category | Related Tools | Priority | Status | Notes |
-| --- | --- | --- | --- | --- | --- | ---: | --- | --- |
-| Subscription MVP stack for a solo iOS app | `subscription-mvp-stack-solo-ios-app` | `subscription MVP stack iOS app` | practical investigation | Monetization | RevenueCat, Supabase, TelemetryDeck, Sentry | 100 | briefed | New flagship guide for sprint 1. Needs stack map and official source checks. |
-| RevenueCat vs Adapty vs Superwall | `revenuecat-vs-adapty-vs-superwall` | `RevenueCat vs Adapty vs Superwall` | commercial investigation | Paywalls | RevenueCat, Adapty, Superwall | 95 | briefed | Refresh existing RevenueCat vs Adapty page unless redirects are ready. Needs Superwall source checks. |
-| Best monetization tools for solo mobile developers | `best-monetization-tools-solo-mobile-developers` | `mobile app monetization tools` | commercial investigation | Monetization | RevenueCat, Adapty, Superwall, Supabase, TelemetryDeck | 80 | briefed | Hub refresh for existing public page. Add decision framework and route to sprint articles. |
+| Title                                              | Slug                                             | Target Keyword                      | Search Intent            | Category     | Related Tools                                          | Priority | Status  | Notes                                                                                                 |
+| -------------------------------------------------- | ------------------------------------------------ | ----------------------------------- | ------------------------ | ------------ | ------------------------------------------------------ | -------: | ------- | ----------------------------------------------------------------------------------------------------- |
+| Subscription MVP stack for a solo iOS app          | `subscription-mvp-stack-solo-ios-app`            | `subscription MVP stack iOS app`    | practical investigation  | Monetization | RevenueCat, Supabase, TelemetryDeck, Sentry            |      100 | briefed | New flagship guide for sprint 1. Needs stack map and official source checks.                          |
+| RevenueCat vs Adapty vs Superwall                  | `revenuecat-vs-adapty-vs-superwall`              | `RevenueCat vs Adapty vs Superwall` | commercial investigation | Paywalls     | RevenueCat, Adapty, Superwall                          |       95 | briefed | Refresh existing RevenueCat vs Adapty page unless redirects are ready. Needs Superwall source checks. |
+| Best monetization tools for solo mobile developers | `best-monetization-tools-solo-mobile-developers` | `mobile app monetization tools`     | commercial investigation | Monetization | RevenueCat, Adapty, Superwall, Supabase, TelemetryDeck |       80 | briefed | Hub refresh for existing public page. Add decision framework and route to sprint articles.            |
 
 ## Internal-Link Cluster
 
@@ -107,11 +107,11 @@ Use this as a short kickoff sprint from Tuesday, 2026-06-30 through Friday, 2026
 
 ## Required Evidence And Visuals
 
-| Article | Evidence | Visuals |
-| --- | --- | --- |
-| Subscription MVP stack | Official docs/pricing for RevenueCat, Supabase, TelemetryDeck, Sentry, and Apple subscriptions. Confirm source-check dates in article notes. | Hero stack map, implementation order diagram, decision table. |
-| RevenueCat vs Adapty vs Superwall | Official pricing, docs, SDK/platform support, paywall, analytics, and experiment claims for all three tools. | Three-way decision table, paywall workflow diagram. |
-| Monetization tools hub | Current tool records, updated source-check dates, and links to new sprint content. | Decision tree, starter stack comparison table. |
+| Article                           | Evidence                                                                                                                                     | Visuals                                                       |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Subscription MVP stack            | Official docs/pricing for RevenueCat, Supabase, TelemetryDeck, Sentry, and Apple subscriptions. Confirm source-check dates in article notes. | Hero stack map, implementation order diagram, decision table. |
+| RevenueCat vs Adapty vs Superwall | Official pricing, docs, SDK/platform support, paywall, analytics, and experiment claims for all three tools.                                 | Three-way decision table, paywall workflow diagram.           |
+| Monetization tools hub            | Current tool records, updated source-check dates, and links to new sprint content.                                                           | Decision tree, starter stack comparison table.                |
 
 ## Risks And Guardrails
 

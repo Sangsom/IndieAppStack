@@ -40,6 +40,9 @@ jobs:
       - name: Design contrast
         run: npm run design:contrast
 
+      - name: Public content safety
+        run: npm run content:safety
+
       - name: Build
         run: npm run build
 

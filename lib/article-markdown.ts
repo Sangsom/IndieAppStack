@@ -165,8 +165,9 @@ export function parseArticleMarkdown(markdown: string) {
       continue;
     }
 
-    const imageMatch =
-      /^!\[([^\]]*)\]\((\/[^)\s]+)(?:\s+"([^"]+)")?\)$/.exec(line.trim());
+    const imageMatch = /^!\[([^\]]*)\]\((\/[^)\s]+)(?:\s+"([^"]+)")?\)$/.exec(
+      line.trim(),
+    );
 
     if (imageMatch) {
       blocks.push({
