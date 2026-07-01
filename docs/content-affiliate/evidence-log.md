@@ -75,6 +75,9 @@ These rows were seeded into Notion on 2026-07-01.
 | Sentry | feature | crash-reporting-for-indie-apps | verified | https://docs.sentry.io/ |
 | TelemetryDeck | pricing | app-analytics-for-indie-apps | needs_review | https://dashboard.telemetrydeck.com/plans |
 | TelemetryDeck | feature | app-analytics-for-indie-apps | verified | https://telemetrydeck.com/docs/ |
+| Qonversion | pricing | best-monetization-tools-solo-mobile-developers | verified | https://qonversion.io/pricing |
+| PostHog | pricing | best-monetization-tools-solo-mobile-developers | verified | https://posthog.com/pricing |
+| PostHog | feature | best-monetization-tools-solo-mobile-developers | verified | https://posthog.com/docs |
 | AppTweak | pricing | aso-workflow-for-indie-apps | verified | https://www.apptweak.com/pricing |
 | AppTweak | feature | aso-workflow-for-indie-apps | verified | https://www.apptweak.com/ |
 | Appfigures | pricing | aso-workflow-for-indie-apps | verified | https://appfigures.com/pricing |

@@ -836,58 +836,122 @@ try {
           title: "Best monetization tools for solo mobile developers",
           slug: "best-monetization-tools-solo-mobile-developers",
           subtitle:
-            "A starter guide for choosing subscriptions, paywalls, and analytics tools.",
+            "A practical decision guide for choosing subscription, paywall, backend, and analytics tools without overbuilding.",
           excerpt:
-            "A practical starting stack for indie mobile developers who need revenue infrastructure.",
-          body_markdown: `## Start with the revenue workflow
-RevenueCat, Supabase, and TelemetryDeck make a strong first stack for subscription apps because each tool owns a clear job.
+            "A source-checked guide to choosing the smallest useful monetization stack for a solo mobile app.",
+          body_markdown: `## Short answer
+If you are launching a solo mobile app, start with the smallest stack that can safely sell, unlock, and measure the product. For most subscription apps, that means [RevenueCat](/tools/revenuecat) for purchases and entitlements, one analytics layer such as [TelemetryDeck](/tools/telemetrydeck) or [PostHog](/tools/posthog), crash reporting before public launch, and [Supabase](/tools/supabase) only if the app needs accounts, synced data, or server-owned records.
+
+Do not add paywall experimentation, attribution, CRM, or a data warehouse before the app has enough traffic for those tools to change decisions.
 
 > [!NOTE] Editorial note
-> Choose the smallest stack that lets you validate payment, entitlement, and retention signals.
+> This page is a decision framework, not a commission ranking. RevenueCat is a partner target for IndieAppStack, but the recommendation must still make sense without affiliate links.
 
-## Recommended stack
-- RevenueCat for subscriptions and entitlement sync.
-- Supabase for auth, Postgres, and app data.
-- TelemetryDeck for privacy-friendly product analytics.
+## Use the visual first
+The decision tree for this guide is available at [Monetization tool decision tree](/content-visuals/articles/monetization-tools-decision-tree.svg). It routes the choice by revenue model, paywall iteration needs, backend needs, and analytics maturity.
 
-:::comparison Monetization starter comparison
-| Decision | RevenueCat | Supabase | TelemetryDeck |
-| --- | --- | --- | --- |
-| Primary job | Subscriptions | Backend | Analytics |
-| Best stage | MVP to scale | Prototype to growth | MVP to growth |
-| Pricing shape | Free tier, usage-based | Free tier, project-based | Free tier, event-volume |
+Alt text: Decision tree routing solo mobile developers from revenue model to subscription stack, paywall tools, backend, and analytics choices.
+
+## The decision framework
+Before choosing tools, answer these four questions in order:
+
+- What takes payment: subscriptions, one-time purchases, ads, leads, or a mixed model?
+- What must unlock immediately after payment: premium screens, credits, synced data, or server-side access?
+- What decision will analytics change this month?
+- What can wait until there is real traffic?
+
+If a tool does not answer one of those questions, it is probably a later-stage tool.
+
+:::comparison Monetization stack decisions
+| Decision | Best first move | Add later when |
+| --- | --- | --- |
+| Selling subscriptions | RevenueCat for purchases, receipt validation, and entitlements | Paywall tests need a dedicated workflow |
+| Improving paywalls | Keep copy and price tests manual at first | You have enough paywall traffic to learn from experiments |
+| Storing user data | Skip a backend unless accounts or synced data are needed | Server-owned records, teams, history, or cross-device sync matter |
+| Reading product signal | Track a small event set | Funnels, cohorts, and experiments change weekly decisions |
+| Growing acquisition | Use simple source notes and App Store data | Paid acquisition or attribution spend becomes meaningful |
 :::
 
-## Implementation note
-\`\`\`ts
-const stack = ["RevenueCat", "Supabase", "TelemetryDeck"];
-\`\`\`
+## Tool-by-tool fit
+### RevenueCat
+Use [RevenueCat](/tools/revenuecat) when subscriptions, receipt validation, entitlement state, and cross-platform customer data are the core job. It is the cleanest default for a solo subscription MVP because it keeps purchase infrastructure separate from the rest of the app.
+
+Delay deeper growth tooling until the first purchase path, restore flow, entitlement checks, and refund edge cases are boring.
+
+### Adapty
+Use [Adapty](/tools/adapty) when the operating problem is not just selling subscriptions, but changing paywalls, watching subscription analytics, and running experiments from a marketing or growth workflow.
+
+For a brand-new solo app, Adapty is worth evaluating if paywall iteration is central from day one. If the first goal is simply durable purchase infrastructure, it may be more tool than the first sprint needs.
+
+### Superwall
+Use [Superwall](/tools/superwall) when remote paywall presentation and fast creative iteration are the main bottleneck. It fits teams that expect to change paywall layouts, targeting, and tests without waiting on app releases.
+
+For a low-traffic MVP, keep paywall assumptions simple first. Add a dedicated paywall workflow when experiments have enough volume to teach you something.
+
+### Qonversion
+Use [Qonversion](/tools/qonversion) when you want subscription SDKs, paywalls, customer data, analytics, and integrations in one subscription-focused operating surface. It is most interesting as an alternative to compare against RevenueCat, Adapty, and Superwall when you want a bundled workflow.
+
+Check the current Qonversion pricing page before committing because its public pricing and included features can change.
+
+### Supabase
+Use [Supabase](/tools/supabase) only when monetization depends on account-backed data: saved projects, team access, server-owned credits, cross-device history, or a customer portal backed by your own records.
+
+If the app can unlock premium features locally after a verified entitlement, Supabase can wait. A backend adds power, but it also adds migrations, privacy decisions, and failure modes.
+
+### Analytics tools
+Use [TelemetryDeck](/tools/telemetrydeck) when you want a lightweight, privacy-friendly app analytics layer. Use [PostHog](/tools/posthog) when the app or web funnel needs product analytics, funnels, feature flags, experiments, or session replay in one broader system. Use Firebase Analytics when the app is already deeply in the Firebase ecosystem.
+
+The first analytics plan should be tiny: activation, paywall view, purchase started, purchase completed, restore attempted, key feature used, and churn-risk signals the developer can actually act on.
+
+## Starter stacks by stage
+:::comparison Starter stacks
+| Stage | Stack | Why |
+| --- | --- | --- |
+| Validate willingness to pay | Manual landing page, waitlist, App Store pricing research | Learn the offer before installing a growth stack |
+| First subscription MVP | RevenueCat, crash reporting, small analytics taxonomy | Sell and unlock reliably before optimizing |
+| Account-backed subscription app | RevenueCat, Supabase, analytics, crash reporting | Add backend only when user data must persist or sync |
+| Paywall optimization | RevenueCat or Adapty plus Superwall or native experiments | Add tests when traffic can support decisions |
+| Growth stage | Analytics, attribution, lifecycle email, reporting | Add complexity once acquisition and retention loops exist |
+:::
 
 ## What to revisit later
-Revisit paywall testing, lifecycle email, and attribution once the app has real subscription traffic.
+Revisit these after the app has real subscription traffic:
 
-## Best for
-- Solo builders launching subscriptions with [RevenueCat](/tools/revenuecat).
-- Apps that need a simple backend like [Supabase](/tools/supabase).
-- Teams that want lightweight analytics before adding a larger growth stack.
-
-## Not good for
-- Apps that only sell one-time web purchases.
-- Teams that already have a mature payment and entitlement backend.
+- Paywall A/B testing and remote targeting.
+- Lifecycle email and winback flows.
+- Attribution and paid acquisition reporting.
+- Data warehouse exports.
+- CRM and customer support automation.
+- Pricing localization and advanced segmentation.
 
 ## Internal links
-- Compare the full [monetization tools category](/categories/monetization).
-- Review [paywall tools](/categories/paywalls) before running experiments.
+- Start with the [monetization tools category](/categories/monetization) for the full tool list.
+- Compare [paywall tools](/categories/paywalls) before adding experiments.
 - Pair this with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
+- Use the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps) before public launch.
+- Review [backend tools](/categories/backend) before adding synced data.
 
-Last checked: 2026-06-29.`,
+## Source checks
+Pricing and feature claims were checked on 2026-07-01 against official sources:
+
+- RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
+- Adapty pricing and docs: https://adapty.io/pricing/ and https://adapty.io/docs/
+- Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
+- Qonversion pricing: https://qonversion.io/pricing
+- Supabase pricing and docs: https://supabase.com/pricing and https://supabase.com/docs
+- TelemetryDeck docs and plans: https://telemetrydeck.com/docs/ and https://dashboard.telemetrydeck.com/plans
+- PostHog pricing and docs: https://posthog.com/pricing and https://posthog.com/docs
+
+No hands-on testing claims are made in this article. Screenshots are not used. The visual is a generated conceptual decision tree.
+
+Last checked: 2026-07-01.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("monetization").id,
           seo_title: "Best monetization tools for solo mobile developers",
           seo_description:
-            "A practical starter stack for mobile app monetization with subscriptions, backend, and analytics tools.",
+            "Choose mobile app monetization tools for subscriptions, paywalls, backend, and analytics without overbuilding your solo developer stack.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
@@ -1539,9 +1603,49 @@ Last checked: 2026-06-29.`,
         article_id: articles.get(
           "best-monetization-tools-solo-mobile-developers",
         ).id,
-        tool_id: tools.get("supabase").id,
+        tool_id: tools.get("adapty").id,
         relationship: "supporting",
         sort_order: 20,
+      },
+      {
+        article_id: articles.get(
+          "best-monetization-tools-solo-mobile-developers",
+        ).id,
+        tool_id: tools.get("superwall").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get(
+          "best-monetization-tools-solo-mobile-developers",
+        ).id,
+        tool_id: tools.get("qonversion").id,
+        relationship: "supporting",
+        sort_order: 40,
+      },
+      {
+        article_id: articles.get(
+          "best-monetization-tools-solo-mobile-developers",
+        ).id,
+        tool_id: tools.get("supabase").id,
+        relationship: "supporting",
+        sort_order: 50,
+      },
+      {
+        article_id: articles.get(
+          "best-monetization-tools-solo-mobile-developers",
+        ).id,
+        tool_id: tools.get("telemetrydeck").id,
+        relationship: "supporting",
+        sort_order: 60,
+      },
+      {
+        article_id: articles.get(
+          "best-monetization-tools-solo-mobile-developers",
+        ).id,
+        tool_id: tools.get("posthog").id,
+        relationship: "supporting",
+        sort_order: 70,
       },
       {
         article_id: articles.get("supabase-vs-firebase-indie-mobile-apps").id,
