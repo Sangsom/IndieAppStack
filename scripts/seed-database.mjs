@@ -1806,42 +1806,135 @@ Last checked: 2026-06-29.`,
           published_at: new Date().toISOString(),
         },
         {
-          title: "Crash reporting setup for indie mobile apps",
+          title: "Crash reporting setup for a solo app launch",
           slug: "crash-reporting-setup-indie-mobile-apps",
           subtitle:
-            "A lightweight monitoring setup for crashes, errors, releases, and regressions.",
+            "A practical pre-launch recipe for crashes, releases, alerts, and first-week triage.",
           excerpt:
-            "Choose a crash reporting workflow that helps you fix production issues without adding unnecessary process.",
-          body_markdown: `## Search intent
-This guide is for indie app developers setting up production monitoring before or shortly after launch.
+            "Set up crash reporting before launch with a minimum metadata checklist, release monitoring flow, and Sentry vs Firebase Crashlytics decision path.",
+          body_markdown: `## Short answer
+Set up crash reporting before the first external build, not after the first public crash review. For a solo app launch, the minimum useful system is one crash tool, one release naming convention, uploaded symbols or source maps, one alert route, and a short weekly triage habit.
 
-## Practical setup
-- [Sentry](/tools/sentry) is a strong default for error monitoring, releases, stack traces, and alerts.
-- [Firebase](/tools/firebase) is useful if the app already relies on Firebase and wants Crashlytics in the same ecosystem.
-- [Emerge Tools](/tools/emerge-tools) is useful when binary size, startup time, and performance regressions become important.
+[Sentry](/tools/sentry) is the better default when you want crash and error monitoring that can grow across iOS, Android, React Native, Flutter, web, and backend surfaces. [Firebase](/tools/firebase) Crashlytics is the better default when the app already uses Firebase and you want mobile crash reporting close to Firebase Analytics, Remote Config, and the rest of that console.
 
-## Best for
-- Apps preparing a production launch or first serious release cycle.
-- Teams that need to connect crashes with versions and release quality.
-- Builders comparing [crash reporting tools](/categories/crash-reporting) with broader [developer productivity tools](/categories/dev-productivity).
+![Crash reporting release monitoring flow for a solo app launch, from pre-launch setup through first-week triage.](/content-visuals/articles/crash-reporting-launch-flow.svg "Install crash reporting before launch, tag every release, upload symbols, route alerts, then triage crashes by impact.")
 
-## Not good for
-- Pure prototypes that are not in TestFlight, Play testing, or production yet.
-- Teams that cannot make time to triage alerts after installing tooling.
+## What to install before launch
+Do not start with a large observability stack. Start with the failure paths that can ruin a launch:
 
-## Internal links
-- Compare [Sentry](/tools/sentry), [Firebase](/tools/firebase), and [Emerge Tools](/tools/emerge-tools).
-- Connect this to [Codemagic](/tools/codemagic) or [Bitrise](/tools/bitrise) once releases are automated.
+- Fatal crashes, app hangs, and watchdog terminations where the SDK supports them.
+- Non-fatal errors for purchase, login, sync, onboarding, and data-loss paths.
+- Release and environment tags so crashes can be tied to a specific build.
+- Readable stack traces, which usually means dSYMs for iOS, mapping files for Android, and source maps for React Native or web code.
+- One alert route you will actually see during launch week.
+
+This is enough to answer the first serious operating question: did the latest build create a new problem for real users?
+
+:::comparison Setup path for a solo launch
+| Decision | Sentry | Firebase Crashlytics |
+| --- | --- | --- |
+| Best first fit | Cross-platform app, backend errors, web errors, or broader release monitoring | Firebase-first mobile app that wants crash reporting in the same console |
+| Setup focus | SDK install, DSN, release naming, debug symbols or source maps, alerts | Firebase app setup, Crashlytics SDK, Google config files, build scripts, alerts |
+| Strong operating habit | Review new issues and regressions by release | Review crash-free users, issue impact, velocity alerts, and Firebase context |
+| Watch out for | Keep sampling, PII, projects, and alert noise intentional | Do not add Firebase only for Crashlytics if you want to avoid a Google-centered stack |
+| Current pricing check | Free Developer plan is available for one user; paid plans expand usage and users | Firebase pricing lists Crashlytics as no-cost |
+:::
+
+## Minimum metadata to configure
+Crash reports become valuable when they carry enough context to make a decision without guessing. For a solo launch, configure this minimum set:
+
+| Metadata | Why it matters |
+| --- | --- |
+| Release name | Tells you whether a crash was introduced by the current build. Use a stable pattern such as bundle id, app version, and build number. |
+| Environment | Separates development, TestFlight or beta, and production events. |
+| Platform and OS version | Helps isolate iOS-only, Android-only, or OS-specific failures. |
+| App version and build number | Makes support replies and hotfix decisions concrete. |
+| Device model | Useful when crashes cluster around memory, camera, media, or low-end devices. |
+| User id or anonymous install id | Helps count affected users without exposing personal data. |
+| Critical feature tags | Mark purchase, onboarding, sync, recording, export, or other core flows. |
+| Breadcrumbs or logs | Shows the path before the crash, but keep private data out. |
+
+For Sentry, releases and release health connect errors to deployed code and can show regressions introduced in a new release. For Firebase Crashlytics, logs, keys, non-fatal events, and analytics context can make a crash easier to understand.
+
+## Pre-launch setup checklist
+- Pick one owner: Sentry or Firebase Crashlytics. Do not install both unless there is a specific reason.
+- Create separate projects or environments for development, beta, and production if the tool workflow supports it cleanly.
+- Add the SDK and verify a test error reaches the dashboard.
+- Verify a real crash without a debugger attached where the platform requires that.
+- Confirm dSYMs, Android mapping files, or source maps upload from local release builds and CI.
+- Set release naming to include app version and build number.
+- Add custom metadata for paywall, auth, onboarding, sync, media, export, or any feature that can block the user.
+- Turn on one urgent alert for new high-impact crashes or regressions.
+- Write a tiny triage rule: fix crashes that affect onboarding, payment, data loss, or more than a small cluster of users before adding new features.
+
+## Release monitoring flow
+Use the crash tool as a launch loop, not a passive dashboard.
+
+1. Before submitting the build, check that the new release appears in the dashboard.
+2. Upload symbols or source maps as part of the release build.
+3. Run a smoke test and confirm the event carries release, environment, app version, and build number.
+4. During the first 24 hours, check new issues twice: once after the first real users arrive and once after the daily usage peak.
+5. During days 2-7, review new, regressed, and high-user-impact issues once per day.
+6. After week one, keep a weekly review unless a release goes out, an alert fires, or support reports a pattern.
+
+The decision is not "did any crash happen?" A small app can survive some low-impact crashes. The better question is "did this release introduce a crash that blocks activation, payment, core usage, or trust?"
+
+## Sentry setup path
+Choose [Sentry](/tools/sentry) when your app is likely to need one error workflow across the mobile app, backend jobs, web landing pages, API routes, or React Native/Flutter layers. For iOS, Sentry's Apple SDK docs cover automatic error and crash reporting, app hangs, watchdog terminations, setup through the Sentry Wizard, and debug symbol upload. Its release documentation explains how release names help connect issues and regressions to deployed code.
+
+The solo-builder path is:
+
+- Create one Sentry project per platform or app surface that needs separate ownership.
+- Install the SDK for iOS, React Native, Flutter, Android, or the relevant platform.
+- Add the DSN at runtime and keep auth tokens only in local secrets or CI secrets.
+- Configure release name, environment, and the minimum metadata above.
+- Upload debug symbols or source maps for release builds.
+- Add an alert for new high-impact crashes or regressions.
+- Keep tracing, profiling, replay, and logs conservative until the crash workflow is stable.
+
+## Firebase Crashlytics setup path
+Choose [Firebase](/tools/firebase) Crashlytics when Firebase is already part of the app stack or when you want a mobile-first crash dashboard inside the Firebase console. Firebase describes Crashlytics as a lightweight realtime crash reporter for Apple, Android, Flutter, and Unity, with grouping, impact context, alerts, logs, keys, non-fatal events, and custom events.
+
+The solo-builder path is:
+
+- Add the app to Firebase and install the Firebase SDK pieces required for Crashlytics.
+- Add Crashlytics to iOS, Android, Flutter, or Unity using the current Firebase docs.
+- Verify a test crash and confirm it appears under the expected app and release.
+- Add custom keys for critical app state, such as entitlement status, onboarding step, sync mode, or export format.
+- Confirm dSYM or mapping file upload in the release build process.
+- Use Firebase alerts for new, regressed, or increasing issues.
+- Keep analytics context useful, but avoid logging private user content.
+
+## After the first week
+Once launch stability is under control, decide what to add next:
+
+- If crashes are readable but performance is unclear, evaluate tracing or performance monitoring.
+- If binary size, startup time, or build regressions are hurting releases, review [Emerge Tools](/tools/emerge-tools).
+- If release mistakes are frequent, connect crash reporting to CI with [Codemagic](/tools/codemagic), [Bitrise](/tools/bitrise), or the build system you already use.
+- If you are still choosing a crash tool, compare [Sentry vs Firebase Crashlytics for mobile apps](/comparisons/sentry-vs-firebase-crashlytics-mobile-apps).
+
+## Source checks
+Tool facts in this guide were checked against official pages on 2026-07-01:
+
+- Sentry pricing: https://sentry.io/pricing/
+- Sentry iOS SDK docs: https://docs.sentry.io/platforms/apple/guides/ios/
+- Sentry release health docs: https://docs.sentry.io/platforms/apple/guides/ios/configuration/releases/
+- Firebase Crashlytics docs: https://firebase.google.com/docs/crashlytics
+- Firebase Crashlytics product page: https://firebase.google.com/products/crashlytics
+- Firebase pricing: https://firebase.google.com/pricing
+
+## Related IndieAppStack pages
+- Browse the [crash reporting category](/categories/crash-reporting).
+- Compare [Sentry](/tools/sentry) and [Firebase](/tools/firebase).
 - Use the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist) before public launch.
-
-Last checked: 2026-06-29.`,
+- Pair this with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app) if the launch depends on paid subscriptions.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("crash-reporting").id,
-          seo_title: "Crash reporting setup for indie mobile apps",
+          seo_title: "Crash reporting setup for a solo app launch",
           seo_description:
-            "Set up crash reporting for indie mobile apps with practical guidance for Sentry, Firebase Crashlytics, release tracking, and regressions.",
+            "Set up crash reporting before launch with a Sentry vs Firebase Crashlytics decision path, release metadata checklist, alerts, and first-week triage flow.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),

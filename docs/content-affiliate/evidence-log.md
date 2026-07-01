@@ -55,56 +55,61 @@ Use these fields in Notion and in article review notes:
 
 These rows were seeded into Notion on 2026-07-01.
 
-| Tool                                         | Claim type   | Article slug                                   | Status       | Source                                                                   |
-| -------------------------------------------- | ------------ | ---------------------------------------------- | ------------ | ------------------------------------------------------------------------ |
-| RevenueCat                                   | pricing      | revenuecat-vs-adapty-vs-superwall              | verified     | https://www.revenuecat.com/pricing/                                      |
-| RevenueCat                                   | feature      | revenuecat-vs-adapty-vs-superwall              | verified     | https://www.revenuecat.com/docs/                                         |
-| RevenueCat                                   | partner      | revenuecat-vs-adapty-vs-superwall              | needs_review | https://www.revenuecat.com/partners/                                     |
-| Adapty                                       | pricing      | revenuecat-vs-adapty-vs-superwall              | verified     | https://adapty.io/pricing/                                               |
-| Adapty                                       | feature      | revenuecat-vs-adapty-vs-superwall              | verified     | https://adapty.io/docs/                                                  |
-| Adapty                                       | affiliate    | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://adapty.io/affiliate-program/                                     |
-| Adapty                                       | partner      | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://adapty.io/partners/                                              |
-| Superwall                                    | pricing      | revenuecat-vs-adapty-vs-superwall              | verified     | https://superwall.com/pricing                                            |
-| Superwall                                    | feature      | revenuecat-vs-adapty-vs-superwall              | verified     | https://docs.superwall.com/                                              |
-| Superwall                                    | affiliate    | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://superwall.com/affiliate-program                                  |
-| Superwall                                    | partner      | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://superwall.com/partners                                           |
-| RevenueCat vs Adapty vs Superwall comparison | visual_asset | revenuecat-vs-adapty-vs-superwall              | verified     | /content-visuals/articles/revenuecat-adapty-superwall-comparison.svg     |
-| Supabase                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://supabase.com/pricing                                             |
-| Supabase                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://supabase.com/docs                                                |
-| Firebase                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://firebase.google.com/pricing                                      |
-| Firebase                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://firebase.google.com/docs                                         |
-| Appwrite                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://appwrite.io/pricing                                              |
-| Appwrite                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://appwrite.io/docs                                                 |
-| Appwrite                                     | partner      | affiliate-link-governance                      | needs_review | https://appwrite.io/partners                                             |
-| Sentry                                       | pricing      | crash-reporting-for-indie-apps                 | verified     | https://sentry.io/pricing/                                               |
-| Sentry                                       | feature      | crash-reporting-for-indie-apps                 | verified     | https://docs.sentry.io/                                                  |
-| TelemetryDeck                                | pricing      | app-analytics-for-indie-apps                   | needs_review | https://dashboard.telemetrydeck.com/plans                                |
-| TelemetryDeck                                | feature      | app-analytics-for-indie-apps                   | verified     | https://telemetrydeck.com/docs/                                          |
-| Qonversion                                   | pricing      | best-monetization-tools-solo-mobile-developers | verified     | https://qonversion.io/pricing                                            |
-| PostHog                                      | pricing      | best-monetization-tools-solo-mobile-developers | verified     | https://posthog.com/pricing                                              |
-| PostHog                                      | feature      | best-monetization-tools-solo-mobile-developers | verified     | https://posthog.com/docs                                                 |
-| Apple App Store Connect                      | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://developer.apple.com/help/app-store-connect/manage-subscriptions/ |
-| RevenueCat                                   | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://www.revenuecat.com/pricing/                                      |
-| RevenueCat                                   | feature      | subscription-mvp-stack-solo-ios-app            | verified     | https://www.revenuecat.com/docs/                                         |
-| Supabase                                     | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://supabase.com/pricing                                             |
-| Supabase                                     | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://supabase.com/docs                                                |
-| Firebase                                     | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://firebase.google.com/pricing                                      |
-| Firebase                                     | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://firebase.google.com/docs                                         |
-| Appwrite                                     | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://appwrite.io/pricing                                              |
-| Appwrite                                     | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://appwrite.io/docs                                                 |
-| TelemetryDeck                                | pricing      | subscription-mvp-stack-solo-ios-app            | needs_review | https://dashboard.telemetrydeck.com/plans                                |
-| TelemetryDeck                                | feature      | subscription-mvp-stack-solo-ios-app            | verified     | https://telemetrydeck.com/docs/                                          |
-| Sentry                                       | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://sentry.io/pricing/                                               |
-| Sentry                                       | feature      | subscription-mvp-stack-solo-ios-app            | verified     | https://docs.sentry.io/platforms/apple/                                  |
-| Subscription MVP stack map                   | visual_asset | subscription-mvp-stack-solo-ios-app            | verified     | /content-visuals/articles/subscription-mvp-stack-map.svg                 |
-| AppTweak                                     | pricing      | aso-workflow-for-indie-apps                    | verified     | https://www.apptweak.com/pricing                                         |
-| AppTweak                                     | feature      | aso-workflow-for-indie-apps                    | verified     | https://www.apptweak.com/                                                |
-| Appfigures                                   | pricing      | aso-workflow-for-indie-apps                    | verified     | https://appfigures.com/pricing                                           |
-| Appfigures                                   | feature      | aso-workflow-for-indie-apps                    | verified     | https://appfigures.com/                                                  |
-| Framer                                       | pricing      | framer-vs-webflow-for-saas-marketing           | verified     | https://www.framer.com/pricing/                                          |
-| Framer                                       | partner      | affiliate-link-governance                      | needs_review | https://www.framer.com/creators                                          |
-| All first-sprint tools                       | hands_on     | all-first-sprint-articles                      | evidence_gap | Internal hands-on notes missing.                                         |
-| All affiliate targets                        | affiliate    | all-affiliate-mentions                         | evidence_gap | Affiliate dashboard or acceptance email missing.                         |
+| Tool                                         | Claim type   | Article slug                                   | Status       | Source                                                                    |
+| -------------------------------------------- | ------------ | ---------------------------------------------- | ------------ | ------------------------------------------------------------------------- |
+| RevenueCat                                   | pricing      | revenuecat-vs-adapty-vs-superwall              | verified     | https://www.revenuecat.com/pricing/                                       |
+| RevenueCat                                   | feature      | revenuecat-vs-adapty-vs-superwall              | verified     | https://www.revenuecat.com/docs/                                          |
+| RevenueCat                                   | partner      | revenuecat-vs-adapty-vs-superwall              | needs_review | https://www.revenuecat.com/partners/                                      |
+| Adapty                                       | pricing      | revenuecat-vs-adapty-vs-superwall              | verified     | https://adapty.io/pricing/                                                |
+| Adapty                                       | feature      | revenuecat-vs-adapty-vs-superwall              | verified     | https://adapty.io/docs/                                                   |
+| Adapty                                       | affiliate    | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://adapty.io/affiliate-program/                                      |
+| Adapty                                       | partner      | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://adapty.io/partners/                                               |
+| Superwall                                    | pricing      | revenuecat-vs-adapty-vs-superwall              | verified     | https://superwall.com/pricing                                             |
+| Superwall                                    | feature      | revenuecat-vs-adapty-vs-superwall              | verified     | https://docs.superwall.com/                                               |
+| Superwall                                    | affiliate    | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://superwall.com/affiliate-program                                   |
+| Superwall                                    | partner      | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://superwall.com/partners                                            |
+| RevenueCat vs Adapty vs Superwall comparison | visual_asset | revenuecat-vs-adapty-vs-superwall              | verified     | /content-visuals/articles/revenuecat-adapty-superwall-comparison.svg      |
+| Supabase                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://supabase.com/pricing                                              |
+| Supabase                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://supabase.com/docs                                                 |
+| Firebase                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://firebase.google.com/pricing                                       |
+| Firebase                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://firebase.google.com/docs                                          |
+| Appwrite                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://appwrite.io/pricing                                               |
+| Appwrite                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://appwrite.io/docs                                                  |
+| Appwrite                                     | partner      | affiliate-link-governance                      | needs_review | https://appwrite.io/partners                                              |
+| Sentry                                       | pricing      | crash-reporting-setup-indie-mobile-apps        | verified     | https://sentry.io/pricing/                                                |
+| Sentry                                       | feature      | crash-reporting-setup-indie-mobile-apps        | verified     | https://docs.sentry.io/platforms/apple/guides/ios/                        |
+| Sentry                                       | release      | crash-reporting-setup-indie-mobile-apps        | verified     | https://docs.sentry.io/platforms/apple/guides/ios/configuration/releases/ |
+| Firebase Crashlytics                         | feature      | crash-reporting-setup-indie-mobile-apps        | verified     | https://firebase.google.com/docs/crashlytics                              |
+| Firebase Crashlytics                         | product      | crash-reporting-setup-indie-mobile-apps        | verified     | https://firebase.google.com/products/crashlytics                          |
+| Firebase                                     | pricing      | crash-reporting-setup-indie-mobile-apps        | verified     | https://firebase.google.com/pricing                                       |
+| Crash reporting launch flow                  | visual_asset | crash-reporting-setup-indie-mobile-apps        | verified     | /content-visuals/articles/crash-reporting-launch-flow.svg                 |
+| TelemetryDeck                                | pricing      | app-analytics-for-indie-apps                   | needs_review | https://dashboard.telemetrydeck.com/plans                                 |
+| TelemetryDeck                                | feature      | app-analytics-for-indie-apps                   | verified     | https://telemetrydeck.com/docs/                                           |
+| Qonversion                                   | pricing      | best-monetization-tools-solo-mobile-developers | verified     | https://qonversion.io/pricing                                             |
+| PostHog                                      | pricing      | best-monetization-tools-solo-mobile-developers | verified     | https://posthog.com/pricing                                               |
+| PostHog                                      | feature      | best-monetization-tools-solo-mobile-developers | verified     | https://posthog.com/docs                                                  |
+| Apple App Store Connect                      | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://developer.apple.com/help/app-store-connect/manage-subscriptions/  |
+| RevenueCat                                   | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://www.revenuecat.com/pricing/                                       |
+| RevenueCat                                   | feature      | subscription-mvp-stack-solo-ios-app            | verified     | https://www.revenuecat.com/docs/                                          |
+| Supabase                                     | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://supabase.com/pricing                                              |
+| Supabase                                     | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://supabase.com/docs                                                 |
+| Firebase                                     | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://firebase.google.com/pricing                                       |
+| Firebase                                     | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://firebase.google.com/docs                                          |
+| Appwrite                                     | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://appwrite.io/pricing                                               |
+| Appwrite                                     | platform     | subscription-mvp-stack-solo-ios-app            | verified     | https://appwrite.io/docs                                                  |
+| TelemetryDeck                                | pricing      | subscription-mvp-stack-solo-ios-app            | needs_review | https://dashboard.telemetrydeck.com/plans                                 |
+| TelemetryDeck                                | feature      | subscription-mvp-stack-solo-ios-app            | verified     | https://telemetrydeck.com/docs/                                           |
+| Sentry                                       | pricing      | subscription-mvp-stack-solo-ios-app            | verified     | https://sentry.io/pricing/                                                |
+| Sentry                                       | feature      | subscription-mvp-stack-solo-ios-app            | verified     | https://docs.sentry.io/platforms/apple/                                   |
+| Subscription MVP stack map                   | visual_asset | subscription-mvp-stack-solo-ios-app            | verified     | /content-visuals/articles/subscription-mvp-stack-map.svg                  |
+| AppTweak                                     | pricing      | aso-workflow-for-indie-apps                    | verified     | https://www.apptweak.com/pricing                                          |
+| AppTweak                                     | feature      | aso-workflow-for-indie-apps                    | verified     | https://www.apptweak.com/                                                 |
+| Appfigures                                   | pricing      | aso-workflow-for-indie-apps                    | verified     | https://appfigures.com/pricing                                            |
+| Appfigures                                   | feature      | aso-workflow-for-indie-apps                    | verified     | https://appfigures.com/                                                   |
+| Framer                                       | pricing      | framer-vs-webflow-for-saas-marketing           | verified     | https://www.framer.com/pricing/                                           |
+| Framer                                       | partner      | affiliate-link-governance                      | needs_review | https://www.framer.com/creators                                           |
+| All first-sprint tools                       | hands_on     | all-first-sprint-articles                      | evidence_gap | Internal hands-on notes missing.                                          |
+| All affiliate targets                        | affiliate    | all-affiliate-mentions                         | evidence_gap | Affiliate dashboard or acceptance email missing.                          |
 
 Partner status note for `revenuecat-vs-adapty-vs-superwall`: RevenueCat has a public partner page but no approved IndieAppStack relationship yet. Adapty and Superwall obvious partner/affiliate URLs returned 404 on 2026-07-01, so use direct links and treat outreach as pending.
 
