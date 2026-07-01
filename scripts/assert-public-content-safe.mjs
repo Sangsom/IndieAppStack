@@ -104,6 +104,7 @@ const forbiddenTextRules = [
   ["human review notes heading", /Human review notes/i],
   ["human review process wording", /\bhuman[- ]review(?:ed)? notes?\b/i],
   ["production-note process wording", /Production note/i],
+  ["visual-rule process wording", /\bVisual rule\b/i],
   ["evidence-log process wording", /Claim scope reviewed|evidence[- ]log/i],
   ["review-status process wording", /\bReview status\b/i],
   ["evidence-gap process wording", /\bevidence[-_ ]gap\b/i],

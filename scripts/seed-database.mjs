@@ -1084,7 +1084,7 @@ Postpone anything that needs traffic, operational discipline, or team bandwidth 
 - Start with the [best monetization tools guide](/guides/best-monetization-tools-solo-mobile-developers) for the broader landscape.
 - Compare subscription infrastructure in [RevenueCat vs Adapty vs Superwall](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
 - Review the [monetization category](/categories/monetization) and [paywall tools](/categories/paywalls).
-- Compare backend choices in [Supabase vs Firebase for indie mobile apps](/comparisons/supabase-vs-firebase-indie-mobile-apps) and the [backend category](/categories/backend).
+- Compare backend choices in [Supabase vs Firebase vs Appwrite for mobile backends](/comparisons/supabase-vs-firebase-indie-mobile-apps) and the [backend category](/categories/backend).
 - Add measurement with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack) and the [analytics category](/categories/analytics).
 - Install crash monitoring with the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps) and the [crash reporting category](/categories/crash-reporting).
 - Use the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist) before submitting.
@@ -1115,32 +1115,85 @@ Last checked: 2026-07-01. Pricing thresholds are summarized at a high level; che
           published_at: new Date().toISOString(),
         },
         {
-          title: "Supabase vs Firebase for indie mobile apps",
+          title: "Supabase vs Firebase vs Appwrite for mobile app backends",
           slug: "supabase-vs-firebase-indie-mobile-apps",
           subtitle:
-            "A practical comparison for solo builders choosing their first backend.",
+            "A practical comparison for solo builders choosing their first auth, data, storage, and functions stack.",
           excerpt:
-            "How to compare portability, auth, database fit, and launch speed when picking a mobile backend.",
+            "How to choose between Postgres-first Supabase, Google-native Firebase, and open-source Appwrite for an indie mobile app backend.",
           body_markdown: `## Short answer
-Choose [Supabase](/tools/supabase) when your app data is relational, you want SQL visibility, and portability matters. Choose [Firebase](/tools/firebase) when you already want Google's mobile backend ecosystem, document-style data, and Crashlytics/Analytics nearby.
+Choose [Supabase](/tools/supabase) when the app needs relational data, SQL visibility, Postgres portability, and a backend that can grow into a normal database-backed product. Choose [Firebase](/tools/firebase) when the app fits Google's mobile platform, document sync, Analytics, Crashlytics, Remote Config, and Cloud Messaging. Choose [Appwrite](/tools/appwrite) when ownership, open-source infrastructure, self-hosting optionality, or one backend surface for Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites matters more.
+
+The wrong choice is usually not one of these tools. It is adding a backend before the paid feature, account model, or synced data actually needs one.
+
+## Architecture map
+![Backend choice architecture map comparing Supabase, Firebase, and Appwrite responsibilities for mobile app backend decisions.](/content-visuals/articles/backend-choice-architecture-map.svg "Pick the backend by the responsibility it should own: relational app data, Google app services, or open-source backend surface.")
 
 ## Comparison table
-:::comparison Backend fit
-| Decision | Supabase | Firebase |
-| --- | --- | --- |
-| Data model | Relational Postgres | Document-first NoSQL |
-| Auth | Built in | Built in |
-| Best fit | SQL-backed app data | Google ecosystem mobile apps |
-| Portability | Strong SQL portability | Strong Google platform fit |
-| Source | [Supabase pricing](https://supabase.com/pricing) | [Firebase pricing](https://firebase.google.com/pricing) |
+:::comparison Backend fit for solo mobile apps
+| Decision | Supabase | Firebase | Appwrite |
+| --- | --- | --- | --- |
+| Core mental model | Postgres-backed app backend | Google mobile app platform | Open-source app backend surface |
+| Data model | Relational SQL tables | Firestore or Realtime Database documents | Appwrite Databases collections and documents |
+| Auth | Supabase Auth with Postgres/RLS nearby | Firebase Authentication with Google services nearby | Appwrite Auth with cloud or self-hosted deployment |
+| Storage and files | Supabase Storage with database-backed policies | Cloud Storage for Firebase | Appwrite Storage |
+| Server-side logic | Edge Functions and database APIs | Cloud Functions and broader Google Cloud paths | Appwrite Functions |
+| Best fit | Structured app data, SQL reporting, portability | Google-native mobile stack, realtime document sync, app operations | Ownership-minded builders who want cloud or self-hosted backend primitives |
+| Watch-out | You still need database design discipline | Usage is spread across many Google/Firebase products | Smaller ecosystem than Firebase and more platform ownership than a managed-only choice |
 :::
 
 ## Tool-by-tool breakdown
 ### Supabase
-[Supabase](/tools/supabase) fits apps that want Postgres, SQL reporting, Auth, Storage, and a backend that feels close to a normal database-backed product.
+[Supabase](/tools/supabase) is the clean default when the mobile app has structured entities: users, projects, purchases, teams, permissions, saved objects, audit rows, or anything you expect to query with joins later. The official docs present it around Postgres, Auth, Storage, Realtime, Edge Functions, and APIs, which makes it feel close to a conventional product backend without starting from blank infrastructure.
+
+### Good fit
+- Your app data is relational or will need reporting later.
+- You want SQL, migrations, row-level security, and clearer portability.
+- You expect a web admin surface, customer portal, or server-owned records later.
+
+### Poor fit
+- Your product naturally thinks in client-synced document trees.
+- You want Firebase Analytics, Crashlytics, FCM, Remote Config, and Test Lab in the same operating surface.
+- You do not want to think about schema design yet.
 
 ### Firebase
-[Firebase](/tools/firebase) fits apps that want a broad mobile backend suite, fast setup, Google ecosystem integrations, and a document-first data model.
+[Firebase](/tools/firebase) is strongest when the app already wants Google's mobile operating stack. The docs group Firebase around Authentication, Firestore, Realtime Database, Storage, Hosting, Cloud Functions, Analytics, Crashlytics, Remote Config, Cloud Messaging, and more. That breadth is useful when a solo builder wants app infrastructure and app operations in one familiar console.
+
+### Good fit
+- Your app data is document-shaped and benefits from realtime sync.
+- You already want Crashlytics, Analytics, Remote Config, Cloud Messaging, or Test Lab.
+- Your app is Android-heavy or already close to Google Cloud patterns.
+
+### Poor fit
+- You want SQL-first reporting and relational data modeling.
+- You want to keep the backend portable away from Google services.
+- You dislike pricing spread across many product-specific usage meters.
+
+### Appwrite
+[Appwrite](/tools/appwrite) is the strongest fit when ownership and backend breadth matter. Its docs describe an open-source backend with Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites, available through Appwrite Cloud or self-hosting. For a solo mobile developer, Appwrite is most interesting when the app needs common backend primitives but the builder does not want to commit to a Google-first or Postgres-only mental model.
+
+### Good fit
+- You care about open-source infrastructure and self-hosting optionality.
+- You want one backend surface for auth, files, functions, realtime, messaging, and hosting.
+- You prefer a productized backend platform over assembling separate services early.
+
+### Poor fit
+- You specifically need Postgres and SQL as the center of the app.
+- You already rely on Firebase's mobile analytics, crash, messaging, and config tools.
+- You want the largest possible ecosystem of tutorials, examples, and third-party integrations.
+
+## Data model fit
+:::comparison Pick by the shape of your app data
+| Reader job | Best default | Why |
+| --- | --- | --- |
+| Account-backed records with relations | Supabase | Tables, joins, RLS, and SQL reporting stay understandable |
+| Realtime document sync | Firebase | Firestore and Realtime Database are built around document or tree-style sync |
+| Open-source backend ownership | Appwrite | Cloud or self-hosted deployment keeps more ownership paths open |
+| Mobile ops near backend | Firebase | Crashlytics, Analytics, Remote Config, FCM, and Test Lab are nearby |
+| Customer portal or admin reporting later | Supabase | SQL and Postgres tooling make later operational views easier |
+| One broad backend API surface | Appwrite | Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites sit together |
+| No account-backed data yet | No backend | If the first paid value is local-only, delay backend work until the product needs it |
+:::
 
 ## Recommendation matrix
 :::comparison Best choice by use case
@@ -1148,36 +1201,62 @@ Choose [Supabase](/tools/supabase) when your app data is relational, you want SQ
 | --- | --- | --- |
 | Relational app data | Supabase | Postgres keeps joins, reporting, and migrations familiar |
 | Google-first mobile stack | Firebase | Firebase keeps auth, analytics, messaging, and Crashlytics close together |
-| SQL reporting needs | Supabase | Direct SQL access is easier to reason about |
-| Document sync mental model | Firebase | Firestore is designed around document collections |
+| Open-source or self-hosting preference | Appwrite | Appwrite keeps cloud and ownership paths closer together |
+| SQL reporting and admin views | Supabase | Direct SQL access is easier to reason about |
+| Document sync mental model | Firebase | Firestore and Realtime Database are designed around document or tree-style sync |
+| Broad backend primitives without Google lock-in | Appwrite | Auth, Databases, Storage, Functions, Realtime, Messaging, and Sites cover common needs |
+| Firebase app already in production | Firebase | Staying inside the existing stack is often lower risk than migrating too early |
 :::
 
 ## Pricing comparison
-Last checked: 2026-06-29. Use the official [Supabase pricing](https://supabase.com/pricing) and [Firebase pricing](https://firebase.google.com/pricing) pages before committing, because usage limits and product packaging can change.
+Pricing and product scope were checked on 2026-07-01 from official pages. Do not pick from plan names alone:
+
+- Supabase publishes plan-based pricing with usage limits and add-ons around database, storage, bandwidth, functions, and project resources.
+- Firebase publishes Spark and Blaze paths, with many product-specific quotas and usage meters across Authentication, Firestore, Realtime Database, Storage, Cloud Functions, Hosting, and other Firebase/Google Cloud products.
+- Appwrite publishes Free, Pro, and Enterprise paths, with resource limits for bandwidth, storage, executions, users, projects, backups, and support.
+
+Before committing, estimate five things: monthly active users, database storage, read/write or query volume, file storage and bandwidth, and function executions. A backend that looks cheap for prototypes can become hard to reason about if your main cost driver is hidden in storage egress, document reads, or serverless execution.
 
 ## Setup complexity
-Supabase is simple when the team is comfortable with SQL, schema design, and migrations. Firebase is simple when the app fits Firebase defaults and the team wants less database administration.
+Supabase setup complexity is mostly schema design, auth policies, migrations, API shape, and deciding how much logic belongs in the database versus functions.
+
+Firebase setup complexity is spread across product choices: Authentication, Firestore or Realtime Database, Security Rules, Storage, Cloud Functions, Analytics, Crashlytics, Remote Config, and Cloud Messaging. It can be fast when you follow Firebase defaults, but it is not one small product.
+
+Appwrite setup complexity is choosing whether Appwrite Cloud or self-hosting is the right path, then modeling Auth, Databases, Storage, Functions, Realtime, Messaging, and permissions inside one platform.
 
 ## Platform support
-Both can support iOS, Android, and web apps. The practical difference is not platform availability; it is whether your future product logic is easier as relational SQL or Firebase documents.
+All three can support mobile app backends. The practical decision is not "does it support iOS or Android?" It is whether the future product logic is easiest as SQL tables, Firebase documents and app services, or Appwrite's open-source backend primitives.
 
 ## Recommendation
-For most indie apps with structured app data, Supabase is the cleaner default. Choose Firebase when the app benefits from staying inside Firebase's mobile product suite.
+For most solo mobile apps with structured, account-backed data, start by evaluating Supabase. Choose Firebase when the app benefits from staying inside Firebase's mobile product suite. Choose Appwrite when open-source ownership, self-hosting optionality, or a single broad backend surface is a meaningful product requirement.
+
+If the app does not yet need accounts, synced records, server-owned credits, file storage, or shared state, wait. The simplest backend decision is still no backend until the app's paid promise requires one.
+
+## Source checks
+Pricing and product claims were checked on 2026-07-01 against official sources:
+
+- Supabase pricing and docs: https://supabase.com/pricing and https://supabase.com/docs
+- Firebase pricing and docs: https://firebase.google.com/pricing and https://firebase.google.com/docs
+- Appwrite pricing and docs: https://appwrite.io/pricing and https://appwrite.io/docs
+
+No hands-on testing claims are made in this article. The architecture map is an owned conceptual visual created for IndieAppStack.
 
 ## Affiliate disclosure
 Editorial recommendations are based on fit for solo builders, not commission. If a page includes monetized links, IndieAppStack will disclose them clearly.
 
 ## Related tools and guides
-- Compare [Supabase](/tools/supabase) and [Firebase](/tools/firebase).
+- Compare [Supabase](/tools/supabase), [Firebase](/tools/firebase), and [Appwrite](/tools/appwrite).
 - Review the [backend category](/categories/backend).
+- Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Use the [monetization tools hub](/guides/best-monetization-tools-solo-mobile-developers) if the backend is part of a paid-app stack decision.
 - Pair this with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).`,
           author: "IndieAppStack",
           status: "published",
           content_type: "comparison",
           primary_category_id: categories.get("backend").id,
-          seo_title: "Supabase vs Firebase for indie mobile apps",
+          seo_title: "Supabase vs Firebase vs Appwrite for mobile app backends",
           seo_description:
-            "A practical Supabase versus Firebase comparison for solo mobile app builders.",
+            "Compare Supabase, Firebase, and Appwrite for auth, databases, storage, functions, pricing model fit, and indie mobile app backend decisions.",
           human_reviewed: true,
           ai_assisted: false,
           published_at: new Date().toISOString(),
@@ -1910,6 +1989,12 @@ Last checked: 2026-06-29.`,
         tool_id: tools.get("firebase").id,
         relationship: "featured",
         sort_order: 20,
+      },
+      {
+        article_id: articles.get("supabase-vs-firebase-indie-mobile-apps").id,
+        tool_id: tools.get("appwrite").id,
+        relationship: "featured",
+        sort_order: 30,
       },
       {
         article_id: articles.get("revenuecat-vs-adapty-ios-subscriptions").id,

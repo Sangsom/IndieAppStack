@@ -72,5 +72,5 @@
   <path d="M951 380 C945 414,923 426,891 446" class="softLine"/>
 
   <rect x="96" y="570" width="1008" height="1" fill="#d9e0e4"/>
-  <text x="98" y="598" class="small">Visual rule: each block has one job. Do not add backend or analytics until the article explains why.</text>
+  <text x="98" y="598" class="small">Each block has one job. Add backend or analytics only when the app has a real decision to support.</text>
 </svg>

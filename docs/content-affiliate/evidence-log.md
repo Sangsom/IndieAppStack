@@ -69,12 +69,12 @@ These rows were seeded into Notion on 2026-07-01.
 | Superwall                                    | affiliate    | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://superwall.com/affiliate-program                                  |
 | Superwall                                    | partner      | revenuecat-vs-adapty-vs-superwall              | evidence_gap | https://superwall.com/partners                                           |
 | RevenueCat vs Adapty vs Superwall comparison | visual_asset | revenuecat-vs-adapty-vs-superwall              | verified     | /content-visuals/articles/revenuecat-adapty-superwall-comparison.svg     |
-| Supabase                                     | pricing      | supabase-vs-firebase-vs-appwrite               | verified     | https://supabase.com/pricing                                             |
-| Supabase                                     | platform     | supabase-vs-firebase-vs-appwrite               | verified     | https://supabase.com/docs                                                |
-| Firebase                                     | pricing      | supabase-vs-firebase-vs-appwrite               | verified     | https://firebase.google.com/pricing                                      |
-| Firebase                                     | platform     | supabase-vs-firebase-vs-appwrite               | verified     | https://firebase.google.com/docs                                         |
-| Appwrite                                     | pricing      | supabase-vs-firebase-vs-appwrite               | verified     | https://appwrite.io/pricing                                              |
-| Appwrite                                     | platform     | supabase-vs-firebase-vs-appwrite               | verified     | https://appwrite.io/docs                                                 |
+| Supabase                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://supabase.com/pricing                                             |
+| Supabase                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://supabase.com/docs                                                |
+| Firebase                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://firebase.google.com/pricing                                      |
+| Firebase                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://firebase.google.com/docs                                         |
+| Appwrite                                     | pricing      | supabase-vs-firebase-indie-mobile-apps         | verified     | https://appwrite.io/pricing                                              |
+| Appwrite                                     | platform     | supabase-vs-firebase-indie-mobile-apps         | verified     | https://appwrite.io/docs                                                 |
 | Appwrite                                     | partner      | affiliate-link-governance                      | needs_review | https://appwrite.io/partners                                             |
 | Sentry                                       | pricing      | crash-reporting-for-indie-apps                 | verified     | https://sentry.io/pricing/                                               |
 | Sentry                                       | feature      | crash-reporting-for-indie-apps                 | verified     | https://docs.sentry.io/                                                  |
@@ -107,6 +107,14 @@ These rows were seeded into Notion on 2026-07-01.
 | All affiliate targets                        | affiliate    | all-affiliate-mentions                         | evidence_gap | Affiliate dashboard or acceptance email missing.                         |
 
 Partner status note for `revenuecat-vs-adapty-vs-superwall`: RevenueCat has a public partner page but no approved IndieAppStack relationship yet. Adapty and Superwall obvious partner/affiliate URLs returned 404 on 2026-07-01, so use direct links and treat outreach as pending.
+
+Task 08 review notes for `supabase-vs-firebase-indie-mobile-apps`:
+
+- Official pricing and product scope pages were checked on 2026-07-01 for Supabase, Firebase, and Appwrite.
+- Exact pricing thresholds are intentionally summarized at a high level because plan packaging and usage limits change.
+- No hands-on integration or benchmark claims are made.
+- Appwrite partner status remains an outreach item, not a confirmed affiliate relationship. No Appwrite affiliate CTA should appear until terms are approved and recorded.
+- Public article keeps these review notes out of the body; unresolved claims stay in this evidence log.
 
 ## Article Review Note Template
 
