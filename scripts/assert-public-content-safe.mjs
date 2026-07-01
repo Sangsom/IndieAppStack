@@ -55,15 +55,30 @@ const seedPublicFields = [
 ];
 
 const forbiddenTextRules = [
+  // Internal affiliate/link governance should stay in admin tools, docs, or
+  // evidence logs. Public pages should only show reader-facing disclosures.
   ["internal affiliate status heading", /Affiliate and partner status/i],
   ["internal link governance heading", /Link governance/i],
   ["internal affiliate CTA instruction", /No affiliate CTA should appear/i],
   ["internal partner status wording", /partner\/affiliate status/i],
   ["internal current link rule wording", /Current link rule/i],
   ["internal status checked wording", /Status checked/i],
+  ["partner status label", /\bpartner status\b/i],
+  ["affiliate status label", /\baffiliate status\b/i],
+  ["program status label", /\bprogram status\b/i],
+  ["application status label", /\bapplication status\b/i],
+  ["link rule label", /\blink rule\b/i],
   ["unapproved program wording", /not applied or approved/i],
+  ["unapproved program wording", /\bnot approved\b/i],
+  ["not-applied status wording", /\bnot[-_ ]applied\b/i],
+  ["pending approval wording", /\bpending approval\b|\bapproval pending\b/i],
   ["pending partner instruction", /mark partner status pending/i],
+  [
+    "pending outreach wording",
+    /\bpending outreach\b|\boutreach (?:is )?pending\b/i,
+  ],
   ["approval and terms instruction", /until approval and terms review/i],
+  ["terms-review instruction", /\bterms review\b|\bterms are reviewed\b/i],
   ["approved affiliate-page research note", /approved public affiliate/i],
   ["direct editorial link instruction", /uses? direct\/editorial links/i],
   ["direct editorial link instruction", /use direct editorial links until/i],
@@ -82,10 +97,25 @@ const forbiddenTextRules = [
     /could become partner relationships/i,
   ],
   ["future partner link wording", /partner links in the future/i],
+
+  // Internal editorial/research workflow language should not be rendered.
+  ["editorial-note process heading", /\bEditorial note\b/i],
   ["commission-ranking process wording", /commission ranking/i],
   ["human review notes heading", /Human review notes/i],
+  ["human review process wording", /\bhuman[- ]review(?:ed)? notes?\b/i],
   ["production-note process wording", /Production note/i],
   ["evidence-log process wording", /Claim scope reviewed|evidence[- ]log/i],
+  ["review-status process wording", /\bReview status\b/i],
+  ["evidence-gap process wording", /\bevidence[-_ ]gap\b/i],
+  ["do-not-publish process status", /\bdo[-_ ]not[-_ ]publish\b/i],
+  ["needs-review process status", /\bneeds[-_ ]review\b/i],
+  ["reviewer process label", /\bReviewer\b/i],
+  ["publishing blocker process wording", /\bpublishing blocker\b/i],
+  ["allowed wording process note", /\ballowed wording\b/i],
+  [
+    "source-check workflow note",
+    /\bsource[- ]check(?:ed|ing)? (?:workflow|notes?)\b/i,
+  ],
   ["placeholder status", /\bTBD\b/i],
   ["internal notes label", /internal notes/i],
   ["monetized-link operations note", /before using monetized links/i],
