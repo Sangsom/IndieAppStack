@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { ComparisonTable } from "@/components/public/comparison-table";
 import { InlineMarkdown } from "@/components/public/inline-markdown";
 import { Callout } from "@/components/ui/callout";
@@ -34,6 +36,26 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
             <p className="text-body-md leading-8 text-muted" key={index}>
               <InlineMarkdown text={block.text} />
             </p>
+          );
+        }
+
+        if (block.type === "image") {
+          return (
+            <figure className="grid gap-2" key={index}>
+              <Image
+                alt={block.alt}
+                className="h-auto w-full"
+                height={675}
+                src={block.src}
+                unoptimized={block.src.endsWith(".svg")}
+                width={1200}
+              />
+              {block.caption ? (
+                <figcaption className="text-sm leading-6 text-muted">
+                  <InlineMarkdown text={block.caption} />
+                </figcaption>
+              ) : null}
+            </figure>
           );
         }
 

@@ -78,6 +78,20 @@ These rows were seeded into Notion on 2026-07-01.
 | Qonversion | pricing | best-monetization-tools-solo-mobile-developers | verified | https://qonversion.io/pricing |
 | PostHog | pricing | best-monetization-tools-solo-mobile-developers | verified | https://posthog.com/pricing |
 | PostHog | feature | best-monetization-tools-solo-mobile-developers | verified | https://posthog.com/docs |
+| Apple App Store Connect | platform | subscription-mvp-stack-solo-ios-app | verified | https://developer.apple.com/help/app-store-connect/manage-subscriptions/ |
+| RevenueCat | pricing | subscription-mvp-stack-solo-ios-app | verified | https://www.revenuecat.com/pricing/ |
+| RevenueCat | feature | subscription-mvp-stack-solo-ios-app | verified | https://www.revenuecat.com/docs/ |
+| Supabase | pricing | subscription-mvp-stack-solo-ios-app | verified | https://supabase.com/pricing |
+| Supabase | platform | subscription-mvp-stack-solo-ios-app | verified | https://supabase.com/docs |
+| Firebase | pricing | subscription-mvp-stack-solo-ios-app | verified | https://firebase.google.com/pricing |
+| Firebase | platform | subscription-mvp-stack-solo-ios-app | verified | https://firebase.google.com/docs |
+| Appwrite | pricing | subscription-mvp-stack-solo-ios-app | verified | https://appwrite.io/pricing |
+| Appwrite | platform | subscription-mvp-stack-solo-ios-app | verified | https://appwrite.io/docs |
+| TelemetryDeck | pricing | subscription-mvp-stack-solo-ios-app | needs_review | https://dashboard.telemetrydeck.com/plans |
+| TelemetryDeck | feature | subscription-mvp-stack-solo-ios-app | verified | https://telemetrydeck.com/docs/ |
+| Sentry | pricing | subscription-mvp-stack-solo-ios-app | verified | https://sentry.io/pricing/ |
+| Sentry | feature | subscription-mvp-stack-solo-ios-app | verified | https://docs.sentry.io/platforms/apple/ |
+| Subscription MVP stack map | visual_asset | subscription-mvp-stack-solo-ios-app | verified | /content-visuals/articles/subscription-mvp-stack-map.svg |
 | AppTweak | pricing | aso-workflow-for-indie-apps | verified | https://www.apptweak.com/pricing |
 | AppTweak | feature | aso-workflow-for-indie-apps | verified | https://www.apptweak.com/ |
 | Appfigures | pricing | aso-workflow-for-indie-apps | verified | https://appfigures.com/pricing |

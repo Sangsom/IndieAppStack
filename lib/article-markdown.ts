@@ -40,10 +40,18 @@ type CalloutBlock = {
   type: "callout";
 };
 
+type ImageBlock = {
+  alt: string;
+  caption?: string;
+  src: string;
+  type: "image";
+};
+
 export type ArticleMarkdownBlock =
   | CalloutBlock
   | CodeBlock
   | HeadingBlock
+  | ImageBlock
   | ListBlock
   | ParagraphBlock
   | TableBlock;
@@ -157,6 +165,20 @@ export function parseArticleMarkdown(markdown: string) {
       continue;
     }
 
+    const imageMatch =
+      /^!\[([^\]]*)\]\((\/[^)\s]+)(?:\s+"([^"]+)")?\)$/.exec(line.trim());
+
+    if (imageMatch) {
+      blocks.push({
+        alt: imageMatch[1].trim(),
+        caption: imageMatch[3]?.trim(),
+        src: imageMatch[2],
+        type: "image",
+      });
+      index += 1;
+      continue;
+    }
+
     const headingMatch = /^(#{2,3})\s+(.+)$/.exec(line);
 
     if (headingMatch) {
@@ -229,6 +251,9 @@ export function parseArticleMarkdown(markdown: string) {
       lines[index].trim() &&
       !/^(#{2,3})\s+/.test(lines[index]) &&
       !lines[index].startsWith("```") &&
+      !/^!\[([^\]]*)\]\(\/[^)\s]+(?:\s+"[^"]+")?\)$/.test(
+        lines[index].trim(),
+      ) &&
       !lines[index].startsWith(":::comparison") &&
       !lines[index].trim().startsWith(">") &&
       !lines[index].trim().startsWith("- ") &&
