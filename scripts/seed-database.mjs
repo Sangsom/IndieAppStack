@@ -1273,17 +1273,6 @@ Pricing was source-checked on 2026-07-01 from official pages. Do not choose from
 
 Before implementing, open the official pricing pages and check the current thresholds, included features, and whether your app's revenue model matches how the vendor measures revenue.
 
-## Affiliate and partner status
-:::comparison Link governance
-| Tool | Status checked | Current link rule |
-| --- | --- | --- |
-| RevenueCat | Public partner program page found; not applied or approved yet | Use direct/editorial links only until approval and terms review |
-| Adapty | Public pricing/docs found; no approved public affiliate page found during this review | Use direct/editorial links and mark partner status pending |
-| Superwall | Public pricing/docs found; no approved public affiliate page found during this review | Use direct/editorial links and mark partner status pending |
-:::
-
-No affiliate CTA should appear on this comparison until a program is approved, terms are recorded, and the disclosure remains visible.
-
 ## What to verify before switching
 - Whether your current purchase identifiers, subscription groups, and entitlement names can map cleanly.
 - Whether restore purchase, grace period, refunds, cancellations, and account deletion flows are covered.
@@ -1295,18 +1284,16 @@ No affiliate CTA should appear on this comparison until a program is approved, t
 Start with RevenueCat if the app is subscription-first and you need purchase truth before growth tooling. Evaluate Adapty if your next bottleneck is understanding and improving the whole paywall and subscription analytics loop. Evaluate Superwall if your next bottleneck is changing paywall presentation, campaigns, and audiences quickly.
 
 ## Source checks
-Pricing, product, and partner claims were checked on 2026-07-01 against official sources:
+Pricing and product claims were checked on 2026-07-01 against official sources:
 
-- RevenueCat pricing, docs, and partner page: https://www.revenuecat.com/pricing/, https://www.revenuecat.com/docs/, and https://www.revenuecat.com/partners/
+- RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
 - Adapty pricing and docs: https://adapty.io/pricing/ and https://adapty.io/docs/
 - Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
-- Adapty partner/affiliate status: no approved public program page found during this review; use direct links until outreach confirms a path.
-- Superwall partner/affiliate status: no approved public program page found during this review; use direct links until outreach confirms a path.
 
 No hands-on testing claims are made in this article. The comparison graphic is an owned conceptual visual created for IndieAppStack.
 
 ## Affiliate disclosure
-This comparison may link to tools that could become partner relationships in the future. Today, recommendations are editorial and based on fit, not commission.
+Some IndieAppStack links may become partner links in the future. This comparison currently uses direct/editorial links. Recommendations are based on fit for solo mobile developers, not commission.
 
 ## Related tools and guides
 - Compare [RevenueCat](/tools/revenuecat), [Adapty](/tools/adapty), and [Superwall](/tools/superwall).

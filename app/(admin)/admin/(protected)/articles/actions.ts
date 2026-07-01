@@ -277,6 +277,9 @@ function revalidateArticlePaths(slug: string, previousSlug?: string) {
   revalidatePath("/guides");
   revalidatePath("/guides/[slug]", "page");
   revalidatePath(`/guides/${slug}`);
+  revalidatePath("/comparisons");
+  revalidatePath("/comparisons/[slug]", "page");
+  revalidatePath(`/comparisons/${slug}`);
   revalidatePath("/categories");
   revalidatePath("/categories/[slug]", "page");
   revalidatePath("/tools");
@@ -284,6 +287,7 @@ function revalidateArticlePaths(slug: string, previousSlug?: string) {
 
   if (previousSlug && previousSlug !== slug) {
     revalidatePath(`/guides/${previousSlug}`);
+    revalidatePath(`/comparisons/${previousSlug}`);
   }
 }
 
