@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">iOS paywall stack decision guide</title>
+  <desc id="desc">A decision guide routing an iOS paywall stack choice by whether purchase infrastructure, remote paywall iteration, or paywall analytics is the bottleneck.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#15202b" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerHeight="12" markerWidth="12" orient="auto" refX="9" refY="3" viewBox="0 0 10 6">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#7f8d96"/>
+    </marker>
+    <style>
+      .title { font: 760 40px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17202a; }
+      .subtitle { font: 500 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #60707a; }
+      .prompt { font: 720 22px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17202a; }
+      .step { font: 760 25px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #17202a; }
+      .tag { font: 740 12px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5f6c76; letter-spacing: 1px; }
+      .copy { font: 520 16px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #374550; }
+      .small { font: 520 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #66737d; }
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="#f6f8f7"/>
+  <rect x="58" y="46" width="1084" height="583" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="96" y="110" class="title">Choosing an iOS Paywall Stack</text>
+  <text x="98" y="146" class="subtitle">Each tool now covers both purchase infrastructure and paywalls. Choose by your bottleneck.</text>
+
+  <rect x="356" y="192" width="488" height="66" rx="20" fill="#eef2f4" stroke="#d3dde2"/>
+  <text x="600" y="232" class="prompt" text-anchor="middle">What is your bottleneck?</text>
+
+  <line x1="560" y1="258" x2="258" y2="332" stroke="#7f8d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="600" y1="258" x2="600" y2="332" stroke="#7f8d96" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="640" y1="258" x2="942" y2="332" stroke="#7f8d96" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="96" y="338" width="320" height="230" rx="26" fill="#e8f5ef" stroke="#76bd8c" stroke-width="2"/>
+  <circle cx="130" cy="378" r="9" fill="#2f8f63"/>
+  <text x="150" y="383" class="tag">INFRASTRUCTURE FIRST</text>
+  <text x="126" y="424" class="step">RevenueCat</text>
+  <text x="126" y="460" class="copy">Durable purchases and</text>
+  <text x="126" y="484" class="copy">entitlement truth.</text>
+  <text x="126" y="528" class="small">Paywall tests are a bonus.</text>
+
+  <rect x="440" y="338" width="320" height="230" rx="26" fill="#e9f2ff" stroke="#91b8e8" stroke-width="2"/>
+  <circle cx="474" cy="378" r="9" fill="#407db9"/>
+  <text x="494" y="383" class="tag">ITERATION FIRST</text>
+  <text x="470" y="424" class="step">Superwall</text>
+  <text x="470" y="460" class="copy">Change paywalls without</text>
+  <text x="470" y="484" class="copy">an app release.</text>
+  <text x="470" y="528" class="small">Charges only paywall revenue.</text>
+
+  <rect x="784" y="338" width="320" height="230" rx="26" fill="#fff2dc" stroke="#e3b762" stroke-width="2"/>
+  <circle cx="818" cy="378" r="9" fill="#bf8430"/>
+  <text x="838" y="383" class="tag">ANALYTICS FIRST</text>
+  <text x="814" y="424" class="step">Adapty</text>
+  <text x="814" y="460" class="copy">Paywall building plus</text>
+  <text x="814" y="484" class="copy">subscription analytics.</text>
+  <text x="814" y="528" class="small">Built for regular tests.</text>
+
+  <rect x="100" y="592" width="1000" height="1" fill="#dde4e8"/>
+  <text x="100" y="618" class="small">Simplest apps can ship a native StoreKit paywall first. Add a platform when you can name the experiment you want to run.</text>
+</svg>

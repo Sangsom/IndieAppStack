@@ -124,6 +124,33 @@ Task 08 review notes for `supabase-vs-firebase-indie-mobile-apps`:
 - Appwrite partner status remains an outreach item, not a confirmed affiliate relationship. No Appwrite affiliate CTA should appear until terms are approved and recorded.
 - Public article keeps these review notes out of the body; unresolved claims stay in this evidence log.
 
+## Trust Reset Sprint Re-Checks (2026-07-09)
+
+The eight sample-thin articles were upgraded to substantial pieces during the Days 1-30 trust reset sprint. Pricing and product claims for the primary tools were re-checked against official pages on 2026-07-09. All claims are kept high-level (no exact prices), and no hands-on testing is claimed.
+
+| Tool                 | Claim type | Article slug(s)                                                              | Status   | Source                                                              |
+| -------------------- | ---------- | ---------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------- |
+| Framer               | pricing    | best-landing-page-builders-mobile-apps, mobile-app-launch-stack-checklist    | verified | https://www.framer.com/pricing/                                     |
+| Webflow              | pricing    | best-landing-page-builders-mobile-apps, mobile-app-launch-stack-checklist    | verified | https://webflow.com/pricing (May 2026 simplified plans confirmed)   |
+| Kit                  | pricing    | best-landing-page-builders-mobile-apps, mobile-app-launch-stack-checklist    | verified | https://kit.com/pricing                                             |
+| RevenueCat           | pricing    | best-paywall-tools-ios-apps                                                  | verified | https://www.revenuecat.com/pricing/                                 |
+| Superwall            | pricing    | best-paywall-tools-ios-apps                                                  | verified | https://superwall.com/pricing                                       |
+| Adapty               | pricing    | best-paywall-tools-ios-apps                                                  | verified | https://adapty.io/pricing/                                          |
+| PostHog              | pricing    | privacy-friendly-analytics-starter-stack                                     | verified | https://posthog.com/pricing                                         |
+| TelemetryDeck        | pricing    | privacy-friendly-analytics-starter-stack                                     | stale    | Pricing page 404 on 2026-07-09; kept high-level, docs cited instead |
+| AppTweak             | pricing    | best-aso-tools-for-indie-developers, appfigures-vs-apptweak-aso-tools        | verified | https://www.apptweak.com/en/pricing                                 |
+| Appfigures           | pricing    | best-aso-tools-for-indie-developers, appfigures-vs-apptweak-aso-tools        | verified | https://appfigures.com/pricing                                      |
+| AppFollow            | pricing    | best-aso-tools-for-indie-developers, aso-starter-checklist-indie-mobile-apps | verified | https://appfollow.io/pricing (quote-based; no public tiers)         |
+| Sentry               | pricing    | sentry-vs-firebase-crashlytics-mobile-apps                                   | verified | https://sentry.io/pricing/                                          |
+| Firebase Crashlytics | pricing    | sentry-vs-firebase-crashlytics-mobile-apps                                   | verified | https://firebase.google.com/pricing (listed as no-cost)             |
+
+Notes:
+
+- Webflow simplified its site plans in May 2026 (Starter free, Basic, Premium replacing CMS/Business, plus a Team plan and separate Workspace seats). Articles describe this at a high level.
+- The paywall tools (RevenueCat, Superwall, Adapty) have converged on revenue-based pricing above a free threshold; articles summarize the meter without quoting exact percentages.
+- TelemetryDeck's public pricing URL returned 404 on 2026-07-09; the analytics article keeps its claims high-level and cites the docs, and defers exact plan details to the live site.
+- All eight upgraded articles carry at least three internal links, an owned hero visual, and a dated `## Source checks` section. `human_reviewed` stays true in the seed, but a human should re-read the new bodies before the next `db:seed` to production.
+
 ## Article Review Note Template
 
 Add this block to each draft before it moves from draft to review:

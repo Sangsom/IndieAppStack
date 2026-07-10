@@ -76,7 +76,7 @@ Avoid empty or decorative alt text unless the image is truly decorative. Avoid "
 
 ## First 30 Days
 
-The Visual Production Board now tracks 18 visual requirements across the active topic set. The first four custom visuals have been created:
+The Visual Production Board tracks visual requirements across the active topic set. As of the Days 1-30 trust reset sprint, thirteen owned custom visuals have been created. The first five:
 
 | Article                                            | Asset                    | Type                     | Path                                                                   |
 | -------------------------------------------------- | ------------------------ | ------------------------ | ---------------------------------------------------------------------- |
@@ -84,6 +84,20 @@ The Visual Production Board now tracks 18 visual requirements across the active 
 | RevenueCat vs Adapty vs Superwall                  | Comparison hero          | comparison_table_graphic | `/content-visuals/articles/revenuecat-adapty-superwall-comparison.svg` |
 | Best monetization tools for solo mobile developers | Decision tree            | decision_tree            | `/content-visuals/articles/monetization-tools-decision-tree.svg`       |
 | Supabase vs Firebase vs Appwrite                   | Backend architecture map | stack_map                | `/content-visuals/articles/backend-choice-architecture-map.svg`        |
+| Crash reporting setup for a solo app launch        | Release monitoring flow  | workflow_diagram         | `/content-visuals/articles/crash-reporting-launch-flow.svg`            |
+
+Eight more were created during the trust reset sprint, one hero per upgraded thin article (all `generated_concept` provenance, no hands-on implication):
+
+| Article                                     | Asset                  | Type                     | Path                                                                |
+| ------------------------------------------- | ---------------------- | ------------------------ | ------------------------------------------------------------------- |
+| Best landing page builders for mobile apps  | Builder decision guide | decision_tree            | `/content-visuals/articles/best-landing-page-builders-decision.svg` |
+| Mobile app launch stack checklist           | Launch stack timeline  | workflow_diagram         | `/content-visuals/articles/mobile-app-launch-stack-timeline.svg`    |
+| Best paywall tools for iOS apps             | Paywall decision guide | decision_tree            | `/content-visuals/articles/paywall-tools-decision.svg`              |
+| A privacy-friendly analytics starter stack  | Starter event map      | workflow_diagram         | `/content-visuals/articles/analytics-starter-event-map.svg`         |
+| Best ASO tools for indie developers         | ASO jobs map           | stack_map                | `/content-visuals/articles/best-aso-tools-map.svg`                  |
+| ASO starter checklist for indie mobile apps | ASO starter workflow   | workflow_diagram         | `/content-visuals/articles/aso-starter-workflow.svg`                |
+| Appfigures vs AppTweak for ASO research     | Comparison hero        | comparison_table_graphic | `/content-visuals/articles/appfigures-vs-apptweak-comparison.svg`   |
+| Sentry vs Firebase Crashlytics              | Comparison hero        | comparison_table_graphic | `/content-visuals/articles/sentry-vs-crashlytics-comparison.svg`    |
 
 ## Article Review Template
 
