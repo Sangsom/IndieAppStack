@@ -1426,51 +1426,68 @@ No hands-on testing claims are made in this article. The comparison graphic is a
           excerpt:
             "Compare Appfigures and AppTweak for indie app store optimization and competitor research.",
           body_markdown: `## Short answer
-Choose [AppTweak](/tools/apptweak) when keyword research and ASO planning are the main jobs. Choose [Appfigures](/tools/appfigures) when app intelligence, rankings, reviews, and ongoing store monitoring are the bigger need.
+Both [Appfigures](/tools/appfigures) and [AppTweak](/tools/apptweak) help you understand and improve an app store listing, but they lead with different jobs. Choose [AppTweak](/tools/apptweak) when keyword research, metadata optimization, and competitor ASO are the center of the work. Choose [Appfigures](/tools/appfigures) when downloads, revenue, rankings, and review monitoring across one or more apps are the bigger need. Many teams keep one as the primary tool and treat the other as optional.
 
-## Comparison table
-:::comparison ASO workflow fit
-| Decision | Appfigures | AppTweak |
-| --- | --- | --- |
-| Primary job | App intelligence and monitoring | ASO research and optimization |
-| Strongest fit | Rankings, reviews, market signal | Keywords, metadata, competitor ASO |
-| Team stage | Launch to growth | Launch to growth |
-| Source | [Appfigures pricing](https://appfigures.com/pricing) | [AppTweak pricing](https://www.apptweak.com/pricing) |
-:::
+![Two-column comparison of Appfigures and AppTweak, showing that Appfigures leads with analytics and monitoring while AppTweak leads with ASO research.](/content-visuals/articles/appfigures-vs-apptweak-comparison.svg "Appfigures leads with analytics and monitoring; AppTweak leads with keyword and metadata optimization.")
 
-## Tool-by-tool breakdown
+## What each tool is really for
 ### Appfigures
-[Appfigures](/tools/appfigures) is useful when the team wants a broad read on store performance, rankings, review changes, and market intelligence over time.
+[Appfigures](/tools/appfigures) is analytics-first. It brings downloads, revenue, subscription metrics, ad performance, rankings, reviews, and keyword tracking into one reporting surface across iOS and Android. It is strongest as an ongoing monitoring habit, especially if you track more than one app. It offers a free trial, and paid tiers scale by tracked apps, keyword counts, and update frequency.
 
 ### AppTweak
-[AppTweak](/tools/apptweak) is a stronger fit when the next job is picking keywords, auditing metadata, and improving the search side of an app listing.
+[AppTweak](/tools/apptweak) is ASO-first. It is built around keyword research, metadata optimization, competitor and creative analysis, and Apple Ads support across many countries. It is strongest when the next task is choosing keywords and rewriting the listing around search intent. It offers a free trial, and paid tiers scale mainly by tracked keywords, historical data range, and seats.
 
-## Recommendation matrix
+## Decision table
+:::comparison Appfigures vs AppTweak
+| Decision | Appfigures | AppTweak |
+| --- | --- | --- |
+| Leads with | Analytics and monitoring | ASO research and optimization |
+| Strongest fit | Rankings, downloads, revenue, reviews | Keywords, metadata, competitor ASO |
+| Portfolio view | Strong across multiple apps | Focused on ASO depth per app |
+| Creative analysis | Lighter | Deeper creative and competitor analysis |
+| Free entry | Free trial | Free trial |
+| Scales by | Apps, keywords, update frequency | Keywords, history range, seats |
+:::
+
+## Best choice by use case
 :::comparison Best choice by use case
 | Use case | Recommended choice | Why |
 | --- | --- | --- |
 | Keyword research sprint | AppTweak | ASO planning is the center of the workflow |
 | Ongoing rank and review monitoring | Appfigures | Broader app intelligence is the core job |
-| Metadata refresh before launch | AppTweak | Better fit for search intent and competitor metadata work |
+| Metadata refresh before launch | AppTweak | Better fit for search intent and competitor metadata |
 | Portfolio-level store tracking | Appfigures | Better fit for monitoring multiple apps over time |
+| Downloads and revenue reporting | Appfigures | Analytics reporting is its native strength |
 :::
 
-## Pricing comparison
-Last checked: 2026-06-29. Check [Appfigures pricing](https://appfigures.com/pricing) and [AppTweak pricing](https://www.apptweak.com/pricing) directly before buying, especially if you need multiple apps, countries, keywords, seats, or advanced intelligence features.
+## Pricing model
+Both use tiered subscriptions with a free trial rather than a permanent free tier. Costs scale on different axes: Appfigures by tracked apps, keywords, and update frequency; AppTweak by keywords, historical data range, and seats. Confirm current pricing on [Appfigures pricing](https://appfigures.com/pricing) and [AppTweak pricing](https://www.apptweak.com/en/pricing) before buying, especially if you need multiple apps, countries, keywords, or seats.
 
-## Setup complexity
-Both tools are lighter to adopt than engineering tools. The real setup cost is deciding which apps, countries, keywords, and competitors to track so the dashboard does not become noise.
+## Setup and effort
+Neither is hard to adopt; both are dashboards, not SDKs. The real setup cost is deciding which apps, countries, keywords, and competitors to track so the dashboard stays signal, not noise. Start narrow and expand.
 
 ## Platform support
-Both are relevant to App Store and Google Play research workflows. Confirm current country, keyword, and store coverage on the official product pages before committing.
+Both cover App Store and Google Play research. Confirm current country, keyword, and store coverage on the official product pages before committing, since coverage and limits change.
 
 ## Recommendation
-Pick AppTweak when you are actively rewriting the listing around keywords. Pick Appfigures when you need a broader monitoring habit around rankings, reviews, and market signal.
+Pick AppTweak when you are actively rewriting a listing around keywords and competitor ASO. Pick Appfigures when you want an ongoing monitoring habit around rankings, reviews, downloads, and revenue, especially across multiple apps. If budget allows only one and your immediate job is launch metadata, start with AppTweak; if it is understanding performance over time, start with Appfigures.
 
-## Related tools and guides
-- Compare [Appfigures](/tools/appfigures) and [AppTweak](/tools/apptweak).
-- Review the [ASO category](/categories/aso).
-- Read [Best ASO tools for indie developers](/guides/best-aso-tools-for-indie-developers).`,
+## Internal links
+- Start with [best ASO tools for indie developers](/guides/best-aso-tools-for-indie-developers).
+- Work the listing with the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps).
+- Open the [Appfigures](/tools/appfigures) and [AppTweak](/tools/apptweak) tool pages.
+- Browse the [ASO category](/categories/aso) and the [screenshots category](/categories/screenshots).
+- Connect launch timing with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+
+## Source checks
+Pricing and product claims were checked against official sources on 2026-07-09:
+
+- Appfigures pricing: https://appfigures.com/pricing
+- AppTweak pricing: https://www.apptweak.com/en/pricing
+
+Exact tier numbers change, so pricing is summarized at a high level. No hands-on testing claims are made in this comparison. The comparison visual is an owned conceptual graphic created for IndieAppStack.
+
+Last checked: 2026-07-09.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "comparison",
@@ -1490,51 +1507,76 @@ Pick AppTweak when you are actively rewriting the listing around keywords. Pick 
           excerpt:
             "Compare Sentry and Firebase Crashlytics for crash reporting, errors, setup complexity, and release monitoring.",
           body_markdown: `## Short answer
-Choose [Sentry](/tools/sentry) when you want error monitoring that can span mobile, backend, and web surfaces. Choose [Firebase](/tools/firebase) Crashlytics when your app already uses Firebase and you want crash reporting inside that mobile stack.
+Both catch crashes and make them fixable; they differ in scope and where they live. Choose [Sentry](/tools/sentry) when you want one error-monitoring workflow that can span the mobile app, backend, and web, with releases, tracing, and alerts. Choose [Firebase](/tools/firebase) Crashlytics when the app already uses Firebase and you want lightweight, mobile-first crash reporting in the same console as Analytics and Remote Config.
 
-## Comparison table
-:::comparison Crash reporting fit
-| Decision | Sentry | Firebase Crashlytics |
-| --- | --- | --- |
-| Primary job | Error monitoring across app surfaces | Mobile crash reporting in Firebase |
-| Strongest fit | Cross-platform error visibility | Firebase-native mobile apps |
-| Team stage | MVP to scale | MVP to scale |
-| Source | [Sentry pricing](https://sentry.io/pricing/) | [Firebase Crashlytics](https://firebase.google.com/products/crashlytics) |
-:::
+For a first solo launch, either is a fine choice. Pick one, install it before the first external build, and do not run both without a specific reason.
 
-## Tool-by-tool breakdown
+![Two-column comparison of Sentry and Firebase Crashlytics, showing Sentry spanning mobile, backend, and web while Crashlytics focuses on mobile crashes inside Firebase.](/content-visuals/articles/sentry-vs-crashlytics-comparison.svg "Sentry spans mobile, backend, and web errors; Crashlytics is mobile-first inside the Firebase console.")
+
+## What each tool is really for
 ### Sentry
-[Sentry](/tools/sentry) is useful when crashes, handled errors, releases, and traces need to be visible across more than the mobile app.
+[Sentry](/tools/sentry) is an error- and performance-monitoring platform that spans iOS, Android, React Native, Flutter, web, and backend code. Beyond crashes it captures handled errors, releases and release health, tracing, and session replay. It has a free Developer tier for a single user, and paid tiers add unlimited users and scale by event volume across error, span, and replay quotas. Choose it when errors cross app boundaries or you expect to monitor more than the mobile app.
 
 ### Firebase Crashlytics
-[Firebase](/tools/firebase) Crashlytics fits teams already using Firebase who want native mobile crash reporting close to Firebase Analytics and other Firebase services.
+[Firebase](/tools/firebase) Crashlytics is a lightweight, realtime mobile crash reporter for Apple, Android, Flutter, and Unity, grouped by impact and sitting beside Firebase Analytics, Remote Config, and the rest of that console. Firebase lists Crashlytics as a no-cost product. Choose it when Firebase is already the center of the app stack and you want crash reporting without adding another vendor.
 
-## Recommendation matrix
+## Decision table
+:::comparison Sentry vs Firebase Crashlytics
+| Decision | Sentry | Firebase Crashlytics |
+| --- | --- | --- |
+| Center of gravity | Errors across mobile, backend, and web | Mobile crash reporting inside Firebase |
+| Beyond crashes | Handled errors, tracing, session replay | Crash-focused, with logs, keys, non-fatals |
+| Release monitoring | Releases and release health across services | Crash-free users and velocity in Firebase |
+| Pricing | Free Developer tier; paid scales by users and event volume | Listed as a no-cost Firebase product |
+| Ecosystem | Vendor-neutral across platforms | Tightly integrated with Firebase and Google |
+| Watch out for | Keep sampling, PII, and alert noise intentional | Adopting Firebase only for Crashlytics pulls in a Google-centered stack |
+:::
+
+## Best choice by use case
 :::comparison Best choice by use case
 | Use case | Recommended choice | Why |
 | --- | --- | --- |
 | Firebase app already in production | Firebase Crashlytics | Keeps crash reporting in the same operational stack |
-| Mobile plus backend/web monitoring | Sentry | One error-monitoring workflow can span surfaces |
+| Mobile plus backend or web monitoring | Sentry | One error workflow can span surfaces |
 | First lightweight mobile crash setup | Firebase Crashlytics | Especially simple if Firebase is already installed |
-| Release regression analysis across services | Sentry | Stronger fit when errors cross app boundaries |
+| Release regression analysis across services | Sentry | Stronger when errors cross app boundaries |
+| Avoiding a Google-centered stack | Sentry | Vendor-neutral across platforms |
+| Cost-sensitive and mobile-only | Firebase Crashlytics | Listed as a no-cost product |
 :::
 
-## Pricing comparison
-Last checked: 2026-06-29. Check [Sentry pricing](https://sentry.io/pricing/) and [Firebase pricing](https://firebase.google.com/pricing) before deciding. Also review [Firebase Crashlytics](https://firebase.google.com/products/crashlytics) for current product scope.
+## Pricing model
+Confirm current terms before deciding, because both change. Sentry offers a free Developer tier for one user, then Team and Business tiers that add unlimited users and scale by event volume across errors, spans, and replays. Firebase lists Crashlytics as a no-cost product, though other Firebase services you add can carry their own pricing. See [Sentry pricing](https://sentry.io/pricing/) and [Firebase pricing](https://firebase.google.com/pricing).
 
-## Setup complexity
-Crashlytics is usually simplest when Firebase is already in the app. Sentry can still be straightforward, but the team should decide what platforms, releases, environments, and alerts belong in the same project.
+## Setup and effort
+Crashlytics is usually simplest when Firebase is already in the app: add the SDK, drop in the config files, and verify a test crash. Sentry is also straightforward with its wizard, but the real decision is scoping the project: which platforms, releases, environments, and alerts belong together. Either way, upload debug symbols, meaning dSYMs for iOS, mapping files for Android, and source maps for React Native or web, so stack traces are readable.
+
+The detailed, step-by-step setup for both lives in the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps).
 
 ## Platform support
-Both are relevant for mobile crash monitoring. Sentry also covers broader application surfaces, while Crashlytics is centered on Firebase's mobile app workflow.
+Both cover the major mobile platforms. Sentry additionally covers backend and web surfaces in the same workflow, while Crashlytics is centered on Firebase's mobile app model. Confirm current platform and framework support on the official docs before committing.
 
 ## Recommendation
-Use Crashlytics if Firebase is already the center of the app stack. Use Sentry if you want error monitoring that can grow beyond mobile crash reports.
+Use Firebase Crashlytics if Firebase is already the center of the app stack, or if you want the simplest, no-cost mobile crash reporting for a first launch. Use Sentry if you want error monitoring that can grow beyond mobile crashes into backend, web, and tracing, or if you want to stay vendor-neutral. Whichever you choose, install it before the first external build and wire it to release names so a crash points at a specific version.
 
-## Related tools and guides
-- Compare [Sentry](/tools/sentry) and [Firebase](/tools/firebase).
-- Review the [crash reporting category](/categories/crash-reporting).
-- Read [Crash reporting setup for indie mobile apps](/guides/crash-reporting-setup-indie-mobile-apps).`,
+## Internal links
+- Follow the step-by-step [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps).
+- Open the [Sentry](/tools/sentry) and [Firebase](/tools/firebase) tool pages.
+- Browse the [crash reporting category](/categories/crash-reporting).
+- Fit crash reporting into the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Wire it in during the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+
+## Source checks
+Pricing and product claims were checked against official sources. Sentry pricing was re-checked on 2026-07-09:
+
+- Sentry pricing: https://sentry.io/pricing/
+- Sentry Apple SDK docs: https://docs.sentry.io/platforms/apple/guides/ios/
+- Firebase Crashlytics product page: https://firebase.google.com/products/crashlytics
+- Firebase Crashlytics docs: https://firebase.google.com/docs/crashlytics
+- Firebase pricing: https://firebase.google.com/pricing
+
+Pricing details and quotas change, so they are summarized at a high level. No hands-on testing claims are made in this comparison. The comparison visual is an owned conceptual graphic created for IndieAppStack.
+
+Last checked: 2026-07-09.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "comparison",
@@ -1553,45 +1595,99 @@ Use Crashlytics if Firebase is already the center of the app stack. Use Sentry i
             "Useful defaults for measuring product behavior without heavy tracking.",
           excerpt:
             "A lightweight analytics approach for mobile apps that need signal without invasive data collection.",
-          body_markdown: `## Start with fewer events
-TelemetryDeck is a strong starting point for privacy-conscious app analytics, especially when paired with a small event taxonomy.
+          body_markdown: `## Short answer
+Start with a tiny event taxonomy and one privacy-first analytics tool, not a data platform. For an Apple-first indie app, [TelemetryDeck](/tools/telemetrydeck) is a strong default because it is built around anonymized, aggregate signals and keeps the App Store privacy story clean. Reach for [PostHog](/tools/posthog) when you genuinely need funnels, feature flags, experiments, or session replay in one broader system. Use Firebase Analytics only when the app already lives in Firebase.
 
-## Starter taxonomy
+The tool matters less than the discipline: measure a handful of events tied to decisions you will actually make, keep the names consistent, and delete anything that never changes a choice.
+
+> [!NOTE] Solo builder scope
+> This guide is for a solo builder who wants product signal without invasive tracking. Privacy-friendly here means anonymized and aggregate by default, minimal personal data, and App Store privacy labels that stay simple.
+
+![Analytics starter event map showing a small taxonomy from activation through paywall view, purchase, and retention signals.](/content-visuals/articles/analytics-starter-event-map.svg "A small, decision-linked event set beats a noisy dashboard nobody trusts.")
+
+## Why privacy-first is the practical default
+Privacy-friendly analytics is not only an ethics choice; it is the lower-friction path for a solo app:
+
+- App Store privacy labels and the tracking prompt are simpler when you do not collect identifiers or track across apps.
+- Anonymized, aggregate metrics still answer the early questions that matter: are people activating, viewing the paywall, and converting?
+- Less personal data means less to secure, disclose, and worry about.
+
+You can always add deeper analysis later. It is much harder to walk back a data model that quietly collected everything.
+
+## Start with fewer events
+A clear five-to-eight event taxonomy beats a noisy dashboard nobody trusts. For most subscription MVPs, start here:
+
+:::comparison Starter event taxonomy
 | Event | Why it matters |
 | --- | --- |
-| onboarding_completed | Activation |
-| paywall_viewed | Monetization intent |
-| subscription_started | Revenue conversion |
+| onboarding_completed | Activation: did the user reach first value? |
+| core_feature_used | Engagement: did they do the main job? |
+| paywall_viewed | Monetization intent: did they reach the offer? |
+| purchase_started | Funnel: did they begin checkout? |
+| purchase_completed | Revenue conversion |
+| restore_attempted | Support and reinstall friction |
+| subscription_status_changed | Retention and churn signal, where available |
+:::
 
-## Example naming
+Keep names lowercase and stable, and prefer a few well-defined properties over free-form blobs:
+
 \`\`\`json
 {
   "event": "paywall_viewed",
-  "source": "settings"
+  "properties": { "source": "onboarding", "offering": "annual_default" }
 }
 \`\`\`
 
-> [!NOTE] Keep it small
-> A clear five-event taxonomy is better than a noisy dashboard nobody trusts.
+## Choosing the tool
+:::comparison Analytics tool fit
+| Decision | TelemetryDeck | PostHog | Firebase Analytics |
+| --- | --- | --- | --- |
+| Best fit | Privacy-first Apple app analytics | Broad product analytics in one system | Apps already inside Firebase |
+| Data model | Anonymized, aggregate signals | Events, funnels, flags, replay | Events tied to the Firebase console |
+| Strengths | Simple, privacy-friendly, SwiftUI-friendly | Funnels, feature flags, experiments, session replay | Sits beside Crashlytics and Remote Config |
+| Watch out for | Less deep for complex funnels | More surface area than an MVP needs | Ties analytics to the Google ecosystem |
+:::
 
-## Review cadence
-Review events monthly and remove anything that does not change product decisions.
+- Use [TelemetryDeck](/tools/telemetrydeck) when you want privacy-friendly signal fast, especially on Apple platforms.
+- Use [PostHog](/tools/posthog) when funnels, flags, experiments, or replay will change weekly decisions; it has a generous free tier and usage-based pricing.
+- Use Firebase Analytics when the app is already in Firebase and you want analytics beside crash reporting.
+- Consider [Mixpanel](/tools/mixpanel) or [Amplitude](/tools/amplitude) only when product analytics is a core, ongoing workflow rather than a launch need.
+
+## What to skip early
+- Cross-app tracking and advertising identifiers before you run paid acquisition.
+- Attribution platforms before there is spend to attribute.
+- Session replay and heatmaps before there is enough traffic to look at.
+- A data warehouse or BI dashboards before one simple view changes a release decision.
+
+## Keep the taxonomy honest
+Re-read the event list monthly. If an event has not changed a single decision, remove it. A small, trusted set of metrics you actually act on is the goal, not coverage.
 
 ## Best for
-- Apps that need activation, retention, and conversion signal.
-- Teams choosing between [TelemetryDeck](/tools/telemetrydeck), [PostHog](/tools/posthog), and [Amplitude](/tools/amplitude).
-- Builders who want to keep the first event taxonomy small.
+- Apps that need activation, engagement, and conversion signal without heavy tracking.
+- Builders choosing between [TelemetryDeck](/tools/telemetrydeck), [PostHog](/tools/posthog), and Firebase Analytics.
+- Teams that want App Store privacy labels to stay simple.
 
 ## Not good for
-- Apps that need full paid-ad attribution before product analytics.
-- Teams that cannot maintain consistent event names.
+- Apps that require paid-acquisition attribution before product analytics.
+- Teams that cannot keep event names consistent across releases.
 
 ## Internal links
-- Compare more [analytics tools](/categories/analytics).
-- Connect analytics to [monetization decisions](/categories/monetization).
-- Use this with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+- Browse more [analytics tools](/categories/analytics).
+- Connect measurement to [monetization decisions](/categories/monetization) and the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Instrument the paywall funnel from [best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
+- Add reliability signal with the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps).
+- Wire analytics in during the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
 
-Last checked: 2026-06-29.`,
+## Source checks
+Product and pricing claims were checked against official sources. PostHog pricing was re-checked on 2026-07-09:
+
+- PostHog pricing and docs: https://posthog.com/pricing and https://posthog.com/docs
+- TelemetryDeck docs: https://telemetrydeck.com/docs/
+- Firebase Analytics docs: https://firebase.google.com/docs/analytics
+
+TelemetryDeck plan details were last confirmed on 2026-07-01; check the current plans on the TelemetryDeck site before committing. Pricing thresholds are summarized at a high level. No hands-on testing claims are made in this guide. The event map is an owned conceptual visual created for IndieAppStack.
+
+Last checked: 2026-07-09.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1610,41 +1706,81 @@ Last checked: 2026-06-29.`,
             "A practical first pass for keywords, screenshots, reviews, and competitor monitoring.",
           excerpt:
             "Use this ASO checklist to tighten an app store listing before launch or the next metadata update.",
-          body_markdown: `## Start with the searchable promise
-ASO work is easier when the app's core promise is specific enough to become keywords, screenshots, and comparison copy.
+          body_markdown: `## Short answer
+A first ASO pass is not a growth-hacking project. It is four jobs done honestly before you submit: turn the app's promise into keywords, tighten the metadata the stores index, make the first screenshots explain the app, and set a habit of watching reviews and rankings. Do these before spending on acquisition, because paid traffic magnifies a weak listing instead of fixing it.
 
-## First checklist
-- Pick a small set of primary and secondary keywords.
-- Compare three direct competitors for title, subtitle, screenshots, and reviews.
-- Check whether your first screenshots explain the app before showing UI detail.
-- Set a recurring review-monitoring habit.
+> [!NOTE] Solo builder scope
+> This checklist is for a solo builder preparing a first listing or a metadata refresh. You can complete the first pass with the free trials of the tools mentioned; a paid plan is only worth it once you have a listing to optimize.
 
-:::comparison ASO starter tools
-| Job | AppTweak | Appfigures | AppScreens |
-| --- | --- | --- | --- |
-| Keyword research | Strong | Useful | Not primary |
-| Review/ranking monitoring | Useful | Strong | Not primary |
-| Screenshot production | Not primary | Not primary | Strong |
+![ASO starter workflow moving from keyword research to metadata, then store creative, then ongoing monitoring.](/content-visuals/articles/aso-starter-workflow.svg "Four jobs in order: research keywords, tighten metadata, make screenshots explain the app, then monitor.")
+
+## Step 1: Turn the promise into keywords
+Start from a specific promise. "A running app" is not searchable; "interval running coach for beginners" becomes keywords, screenshot captions, and comparison copy.
+
+- List the words a target user would actually type.
+- Separate primary terms, high intent and realistic to rank, from secondary terms.
+- Use [AppTweak](/tools/apptweak) or [Appfigures](/tools/appfigures) to check volume and difficulty before committing.
+
+## Step 2: Tighten the metadata the stores index
+The store fields do most of the ranking work. Get them right:
+
+:::comparison Store metadata that matters
+| Field | Job | Watch out for |
+| --- | --- | --- |
+| App name or title | Highest-weight keywords plus brand | Keyword stuffing that hurts readability |
+| Subtitle (iOS) or short description (Android) | Secondary keywords and the promise | Repeating the title verbatim |
+| Keyword field (iOS) | Extra terms not in the name or subtitle | Wasting space on duplicates or spaces |
+| Description | Conversion and clarity; Google Play indexes it | Burying the value below the fold |
 :::
 
-## Review cadence
-Re-check rankings, screenshots, and review language monthly while the app is still learning what converts.
+Confirm the current field rules on the official App Store Connect and Google Play Console help pages, since limits and indexing differ by store.
+
+## Step 3: Make the first screenshots explain the app
+Most installs are decided on the first two screenshots. Lead with the core value, then show detail.
+
+- Frames one and two: what the app does and who it is for, in words plus a visual.
+- Later frames: proof, key features, and differentiation.
+- Produce and localize them with [AppScreens](/tools/appscreens) or the [screenshots category](/categories/screenshots).
+
+## Step 4: Watch reviews, ratings, and rankings
+Set a light monitoring habit so you notice movement without living in a dashboard.
+
+- Track a handful of primary keywords and your rank on them.
+- Read new reviews for recurring complaints and the words users use.
+- Respond to reviews where the store allows it; [AppFollow](/tools/appfollow) or [Appfigures](/tools/appfigures) help here.
+
+## Scan three competitors by hand
+Pick three direct competitors and read, by hand, their title, subtitle, first screenshots, and top reviews. You are looking for the words they own, the promises they make, and the complaints you can beat.
+
+## Cadence
+Re-check keywords, screenshots, and review language monthly while the app is still learning what converts. Change one variable at a time so you can tell what moved the metric.
 
 ## Best for
-- Teams preparing metadata, screenshots, and keyword updates.
-- Indie developers comparing [AppTweak](/tools/apptweak), [Appfigures](/tools/appfigures), and [AppScreens](/tools/appscreens).
-- Apps that need a repeatable store-listing review cadence.
+- Teams preparing metadata, screenshots, and keyword updates before or after launch.
+- Indie developers who want a repeatable, low-cost store-listing routine.
+- Apps that have a clear promise to turn into keywords.
 
 ## Not good for
-- Products that have not yet clarified their target user or app promise.
-- Teams expecting ASO software to replace positioning work.
+- Products that have not clarified their target user or positioning.
+- Teams expecting ASO software to replace better copy and creative.
 
 ## Internal links
-- Compare the full [ASO tools category](/categories/aso).
-- Use screenshots from the [screenshots category](/categories/screenshots).
-- Pair the work with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+- Choose tools with [best ASO tools for indie developers](/guides/best-aso-tools-for-indie-developers).
+- Compare the two research tools in [Appfigures vs AppTweak for ASO research](/comparisons/appfigures-vs-apptweak-aso-tools).
+- Produce creative via the [screenshots category](/categories/screenshots).
+- Fit ASO into launch timing with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+- Browse the full [ASO category](/categories/aso).
 
-Last checked: 2026-06-29.`,
+## Source checks
+Product claims were checked against official sources on 2026-07-09:
+
+- AppTweak: https://www.apptweak.com/en/pricing
+- Appfigures: https://appfigures.com/pricing
+- AppFollow: https://appfollow.io/pricing
+
+Store metadata field rules should be confirmed on the official App Store Connect and Google Play Console help pages, since they change and differ by store. No hands-on testing claims are made in this guide. The workflow visual is an owned conceptual graphic created for IndieAppStack.
+
+Last checked: 2026-07-09.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1663,41 +1799,89 @@ Last checked: 2026-06-29.`,
             "A lean launch workflow for landing pages, waitlists, screenshots, and audience capture.",
           excerpt:
             "Plan the first public launch with a focused stack for product pages, email capture, screenshots, and follow-up.",
-          body_markdown: `## Keep the launch stack small
-The first launch stack should explain the app, capture interest, and make the store listing look credible.
+          body_markdown: `## Short answer
+A first mobile app launch does not need a big marketing stack. It needs a page that explains the app, a way to capture interest before release, credible store creative, crash and basic analytics coverage so launch day is observable, and one channel to keep early users updated. Everything else can wait until you know which source actually drives installs and paying users.
 
-## Recommended launch flow
-- Build a landing page that names the problem and target user.
-- Add waitlist or newsletter capture before release.
-- Prepare store screenshots before sending traffic.
-- Keep a lightweight update channel for beta users and early subscribers.
+Treat the launch stack as five jobs, each owned by one tool you can set up in a day, not a platform you have to learn for a week.
 
-:::comparison Launch starter tools
-| Job | Framer | beehiiv | AppScreens |
+> [!NOTE] Solo builder scope
+> This checklist is for a solo developer shipping a first or early public launch. The goal is a lean, observable launch, not a growth-team playbook. Add channels only after the first launch shows you where attention comes from.
+
+![Mobile app launch stack timeline moving from pre-launch page and waitlist, through store creative, to launch-week monitoring and post-launch iteration.](/content-visuals/articles/mobile-app-launch-stack-timeline.svg "Five launch jobs across four phases: explain, capture, look credible, stay observable, and keep early users close.")
+
+## The five launch jobs
+:::comparison Launch stack by job
+| Job | Owns | Default choice | Can wait |
 | --- | --- | --- | --- |
-| Landing page | Strong | Basic | Not primary |
-| Audience capture | Basic | Strong | Not primary |
-| Store creative | Not primary | Not primary | Strong |
+| Explain the app | Landing or launch page | Framer or Webflow | A multi-page marketing site |
+| Capture interest | Waitlist and email list | Kit or beehiiv | Lifecycle and CRM automation |
+| Look credible in the store | Screenshots and listing creative | AppScreens plus ASO basics | Localized creative for every market |
+| Stay observable | Crash reporting and light analytics | Sentry plus TelemetryDeck | Full product analytics and attribution |
+| Keep early users close | One update channel | Email, or push with OneSignal | Multi-channel messaging |
 :::
 
-## What to revisit
-After launch, compare which source drives clicks, installs, subscribers, or paid conversions before adding more channels.
+## Job 1: Explain the app
+Build one page that names the target user, the problem, and what changes after they use the app. Use [Framer](/tools/framer) for a fast, design-led page, or [Webflow](/tools/webflow) if the page will grow into a real marketing site. The full comparison is in [best landing page builders for mobile apps](/guides/best-landing-page-builders-mobile-apps) and the [landing pages category](/categories/landing-pages).
+
+Keep the page honest: one promise, a short demo or hero visual, a few benefit points tied to real jobs, and one primary call to action.
+
+## Job 2: Capture interest before launch
+Start collecting emails before release so launch day begins with a warm list instead of silence. Use [Kit](/tools/kit) or [beehiiv](/tools/beehiiv), or browse the [email and waitlist category](/categories/email-waitlists). A small, engaged list you can message on launch day is worth more than a large cold audience you cannot reach.
+
+## Job 3: Look credible in the store
+Store creative decides whether the traffic you send actually converts. Prepare screenshots that show the core value in the first two frames, then get more specific. Use [AppScreens](/tools/appscreens) or another tool in the [screenshots category](/categories/screenshots). Pair the creative with basic store optimization: a title, subtitle, and keywords that match how people actually search. Work through the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps) before you submit.
+
+## Job 4: Stay observable on launch day
+A launch you cannot observe is a launch you cannot fix. Install [crash reporting](/tools/sentry) before the first external build and a tiny analytics layer such as [TelemetryDeck](/tools/telemetrydeck) for activation and a few key events. Follow the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps) and the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack) so launch day has a signal, not a guess.
+
+## Job 5: Keep early users close
+Pick one channel to talk to early users: the email list you already started, or push with [OneSignal](/tools/onesignal) if in-app moments are the point. Skip multi-channel messaging until you actually have people to message and something worth saying.
+
+## Phased checklist
+:::comparison Launch phases
+| Phase | Do this | Done when |
+| --- | --- | --- |
+| 3 to 4 weeks out | Landing page live, waitlist capturing emails, positioning drafted | A stranger understands the app in ten seconds |
+| 1 to 2 weeks out | Store screenshots, title, subtitle, keywords, crash and analytics wired, beta feedback gathered | The purchase or core flow works and is observable |
+| Launch week | Announce to the list, check crashes daily, watch activation and store conversion | New crashes are triaged and no trust-blocking bug is live |
+| Weeks 2 to 4 | Compare which source drove installs and paying users, then double down on one | You know your best channel and your next bottleneck |
+:::
+
+## What to postpone
+- Paid acquisition and attribution before you know your organic conversion rate.
+- Multi-channel lifecycle messaging before one channel reliably works.
+- A large marketing site before a single page converts.
+- CI and release automation with [Codemagic](/tools/codemagic) or [Bitrise](/tools/bitrise) before release friction is real. Automate once it hurts, not before.
+- Localized store creative before one market converts.
 
 ## Best for
 - Solo developers planning a first App Store or Google Play release.
-- Apps that need a page, waitlist, screenshots, and an update channel.
-- Teams choosing between [Framer](/tools/framer), [beehiiv](/tools/beehiiv), and [AppScreens](/tools/appscreens).
+- Apps that need a page, a list, credible store creative, and launch-day observability.
+- Builders who want a lean, sequenced launch instead of a big-bang marketing push.
 
 ## Not good for
-- Teams that already have a mature marketing site and CRM workflow.
-- Apps that need enterprise campaign orchestration on day one.
+- Teams that already run a mature marketing site, CRM, and release pipeline.
+- Apps that require enterprise campaign orchestration or heavy paid acquisition from day one.
 
 ## Internal links
-- Compare more [launch tools](/categories/launch).
-- Build the page with [landing page tools](/categories/landing-pages).
-- Prepare store visuals with [screenshot tools](/categories/screenshots).
+- Choose the page builder in [best landing page builders for mobile apps](/guides/best-landing-page-builders-mobile-apps).
+- Prepare store creative via the [screenshots category](/categories/screenshots) and the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps).
+- Wire launch-day observability with the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps) and the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
+- Grow the list through the [email and waitlist category](/categories/email-waitlists).
+- If the app is subscription-first, pair this with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Browse more [launch tools](/categories/launch).
 
-Last checked: 2026-06-29.`,
+## Source checks
+Tool facts were checked against official pages. Landing page and email tools were re-checked on 2026-07-09:
+
+- Framer pricing: https://www.framer.com/pricing/
+- Webflow pricing and 2026 plan changes: https://webflow.com/pricing
+- Kit pricing: https://kit.com/pricing
+- Apple App Store Connect: https://developer.apple.com/help/app-store-connect/
+
+Per-tool pricing and feature details for crash, analytics, ASO, and push tools live in the linked guides and categories, each carrying its own review date. No hands-on testing claims are made in this guide. The launch timeline is an owned conceptual visual created for IndieAppStack.
+
+Last checked: 2026-07-09. Pricing thresholds are summarized at a high level; check official pages before committing.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1716,38 +1900,100 @@ Last checked: 2026-06-29.`,
             "How to choose a paywall stack for subscriptions, experiments, and entitlement handling.",
           excerpt:
             "Compare practical paywall tools for iOS subscription apps without pretending one option fits every business model.",
-          body_markdown: `## Search intent
-This guide is for builders comparing paywall and subscription tools before implementing or replacing an iOS subscription flow.
+          body_markdown: `## Short answer
+A modern "paywall tool" now does two jobs at once: it owns purchase and entitlement infrastructure, and it renders and tests the paywall itself. [RevenueCat](/tools/revenuecat), [Superwall](/tools/superwall), and [Adapty](/tools/adapty) all cover both jobs today, so choose by where your product's center of gravity is:
 
-## Shortlist
-- [RevenueCat](/tools/revenuecat) is a strong default when receipt validation, entitlement sync, and subscription infrastructure matter.
-- [Adapty](/tools/adapty) is useful when no-code paywalls, experiments, and subscription analytics are central.
-- [Superwall](/tools/superwall) fits teams that want remote paywall presentation and iteration without frequent app releases.
+- Choose [RevenueCat](/tools/revenuecat) when durable purchase infrastructure and entitlement truth are the priority, and remote paywall testing is a bonus.
+- Choose [Superwall](/tools/superwall) when remote paywall presentation and fast creative iteration are the main bottleneck.
+- Choose [Adapty](/tools/adapty) when paywall building sits next to subscription analytics and experiments in a daily workflow.
 
-:::comparison Paywall tools
-| Decision | RevenueCat | Adapty | Superwall |
+For the simplest apps, a native StoreKit paywall with no third-party tool is still a valid launch choice. Add a paywall platform when you will actually iterate on paywalls, not just to have one.
+
+> [!NOTE] Solo builder scope
+> This guide is for a solo builder choosing a paywall stack for an iOS subscription app. The goal is to sell and unlock reliably first, then iterate on the paywall once there is enough traffic to learn from.
+
+![Decision guide for choosing an iOS paywall stack, routing by whether purchase infrastructure, remote paywall iteration, or paywall analytics is the bottleneck.](/content-visuals/articles/paywall-tools-decision.svg "Choose by your bottleneck: infrastructure first, iteration first, or analytics first.")
+
+## A paywall tool is really two jobs
+"Paywall tool" used to mean the screen that sells the subscription. The category has since converged, and each major option can now:
+
+- Own purchase infrastructure: StoreKit handling, receipt validation, restore, and cross-platform customer state.
+- Own the entitlement decision: should this user see paid features right now?
+- Render the paywall remotely: change layout, copy, price display, and targeting without an app release.
+- Run experiments: A/B/n test paywalls and read conversion.
+
+Because they overlap so much, the real question is not "which tool has paywalls," but "which job is my bottleneck, and how does the pricing meter match my revenue?"
+
+## How they price, and why it matters
+A useful modern detail for a solo budget: the leading tools mostly charge a small percentage of the revenue they touch, above a free threshold, instead of a flat monthly fee. That keeps the entry cost near zero for a new app and scales only as you earn.
+
+- RevenueCat has a free tier up to a monthly tracked-revenue threshold, then charges a small percentage of tracked revenue; its growth tools such as paywalls can also be used with pay-per-conversion pricing.
+- Superwall keeps its infrastructure layer free at any scale and charges a small percentage of revenue attributed specifically to Superwall-rendered paywalls, above a free threshold.
+- Adapty offers a free tier under a monthly revenue threshold, then charges a small percentage of revenue above it.
+
+Confirm the current thresholds and percentages on each official pricing page before committing, because these numbers change.
+
+## Decision table
+:::comparison Paywall stack fit
+| Decision | RevenueCat | Superwall | Adapty |
 | --- | --- | --- | --- |
-| Best fit | Entitlements and purchases | Paywalls plus analytics | Remote paywall iteration |
-| Good stage | MVP to scale | MVP to scale | MVP to scale |
-| Check before choosing | Revenue model fit | Revenue threshold and SDK fit | Platform and experiment needs |
+| Center of gravity | Purchase and entitlement infrastructure | Remote paywall presentation and iteration | Paywall building plus subscription analytics |
+| Paywall experiments | Built in, plus growth tools | Core strength, fast iteration | Core strength, tied to analytics |
+| Best when | You want durable infrastructure first | You will change paywalls often without releases | You run paywall and pricing tests as a habit |
+| Pricing meter | Percent of tracked revenue above a free tier | Percent of paywall-attributed revenue above a free tier | Percent of revenue above a free tier |
+| Watch out for | Decide which growth tools you actually need | Attribute only paywall-driven revenue | Confirm which features are in the free tier |
 :::
 
+## Tool-by-tool fit
+### RevenueCat
+Choose [RevenueCat](/tools/revenuecat) when the priority is durable purchase infrastructure: StoreKit handling, receipt validation, restore, entitlement state, and cross-platform customer data. It renders and tests paywalls too, but the reason to start here is that the purchase layer stays reliable and vendor-neutral. Pick it when you want the subscription plumbing to be boring before you optimize the paywall.
+
+### Superwall
+Choose [Superwall](/tools/superwall) when remote paywall presentation and fast creative iteration are the bottleneck. You can change paywall layout, copy, targeting, and tests without shipping an app release, and its meter only charges on revenue its paywalls drive. Pick it when the paywall is something you plan to change often and you want that iteration decoupled from the App Store review cycle.
+
+### Adapty
+Choose [Adapty](/tools/adapty) when paywall building sits beside subscription analytics and experiments in one workflow. It combines a paywall and onboarding builder with A/B testing and revenue analytics such as MRR, LTV, and churn. Pick it when a growth or marketing workflow, not just engineering, will run paywall and pricing experiments regularly.
+
+### Qonversion
+[Qonversion](/tools/qonversion) bundles subscription SDKs, paywalls, customer data, and analytics into one subscription-focused surface. It is most interesting as an alternative to compare against the three above when you want a single bundled workflow. Check its current pricing and included features before committing.
+
+### Native StoreKit, no third-party tool
+For the simplest apps, one product and one paywall with no plans to experiment, a native StoreKit 2 paywall is a legitimate launch choice. You trade remote iteration and cross-platform customer state for fewer dependencies. Add a paywall platform when you can name the experiment you actually want to run.
+
+## When you do not need a paywall platform yet
+A paywall experimentation tool earns its place when there is enough paywall traffic to learn from a test. Before that point:
+
+- Ship one clear paywall and make the purchase and restore paths reliable.
+- Keep pricing and copy decisions manual and deliberate.
+- Instrument the funnel with a few events, using the analytics starter stack below.
+- Add remote paywall testing when weekly traffic can move a metric you trust.
+
 ## Best for
-- Subscription apps that need reliable paywalls and entitlement state.
-- Teams comparing [monetization tools](/categories/monetization) before launch.
-- Builders who want to test pricing, layout, or upgrade prompts over time.
+- iOS subscription apps choosing purchase infrastructure and a paywall workflow together.
+- Builders who want to sell and unlock reliably before optimizing the paywall.
+- Teams deciding between infrastructure-first, iteration-first, or analytics-first tools.
 
 ## Not good for
-- Apps that only sell one-time web products.
-- Teams that cannot define the subscription promise or upgrade moment yet.
+- Apps that only sell one-time web products or run on ads alone.
+- Teams that cannot yet state the subscription promise or the upgrade moment.
 
 ## Internal links
-- Compare the broader [paywalls category](/categories/paywalls).
-- Read the deeper [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
-- Start with [Best monetization tools for solo mobile developers](/guides/best-monetization-tools-solo-mobile-developers).
-- Add measurement with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
+- Read the deep, head-to-head [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
+- Fit the paywall into the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Start broad with [best monetization tools for solo mobile developers](/guides/best-monetization-tools-solo-mobile-developers).
+- Browse the [paywalls category](/categories/paywalls) and the [monetization category](/categories/monetization).
+- Instrument conversion with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
 
-Last checked: 2026-06-29.`,
+## Source checks
+Pricing and product claims were checked against official sources on 2026-07-09:
+
+- RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
+- Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
+- Adapty pricing and docs: https://adapty.io/pricing/ and https://adapty.io/docs/
+
+Qonversion pricing was last confirmed on 2026-07-01: https://qonversion.io/pricing. Pricing meters and free thresholds change often, so exact percentages and thresholds are summarized at a high level here. The detailed head-to-head lives in the RevenueCat vs Adapty vs Superwall comparison. No hands-on testing claims are made in this guide. The decision visual is an owned conceptual graphic created for IndieAppStack.
+
+Last checked: 2026-07-09.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1766,30 +2012,82 @@ Last checked: 2026-06-29.`,
             "A practical shortlist for keywords, rankings, reviews, and screenshot workflows.",
           excerpt:
             "Choose ASO tools based on the part of the store listing you can improve this month.",
-          body_markdown: `## Search intent
-This guide is for indie developers who want a practical ASO tool shortlist without buying a large market-intelligence stack too early.
+          body_markdown: `## Short answer
+Do not buy a large app-intelligence stack before launch. Choose one ASO tool for the job you can improve this month, then add others only when the work demands it. For most indie developers:
 
-## Tool fit
-- [AppTweak](/tools/apptweak) is strongest when keyword research and competitor metadata are the main work.
-- [Appfigures](/tools/appfigures) is useful for rankings, reviews, app intelligence, and store performance monitoring.
-- [AppFollow](/tools/appfollow) fits teams that care about review workflows and reputation monitoring.
-- [AppScreens](/tools/appscreens) supports the creative side: screenshots, captions, exports, and localization.
+- Choose [AppTweak](/tools/apptweak) when keyword research, metadata, and competitor ASO are the main work.
+- Choose [Appfigures](/tools/appfigures) when rankings, reviews, downloads, and revenue monitoring across a portfolio are the bigger need.
+- Choose [AppFollow](/tools/appfollow) when replying to reviews and protecting store reputation is the daily job.
+- Use [AppScreens](/tools/appscreens) for the creative side: screenshots, captions, exports, and localization.
+
+ASO tools inform decisions; they do not make installs happen. The listing copy, the screenshots, and the app's promise do most of the work. Buy the tool that sharpens the specific decision you are stuck on.
+
+> [!NOTE] Solo builder scope
+> This guide is for a solo or small indie team optimizing an App Store or Google Play listing, not an agency running many clients. Start with the free trials and one clear job before committing to a paid tier.
+
+![Map of the four main ASO jobs, keyword research, rank and market monitoring, reviews and reputation, and store creative, matched to tools.](/content-visuals/articles/best-aso-tools-map.svg "Match the tool to the ASO job you need done this month, not to the brand.")
+
+## The four ASO jobs
+Most ASO work falls into four jobs. Match the tool to the job, not the brand:
+
+:::comparison ASO jobs and tools
+| Job | What it answers | Reach for |
+| --- | --- | --- |
+| Keyword research | Which terms can this app realistically rank and convert for? | AppTweak, Appfigures |
+| Rank and market monitoring | Are rankings, downloads, and revenue moving, and why? | Appfigures |
+| Reviews and reputation | What are users saying, and are we responding? | AppFollow, Appfigures |
+| Store creative | Do the screenshots and captions explain the app fast? | AppScreens |
+:::
+
+## Tool-by-tool fit
+### AppTweak
+[AppTweak](/tools/apptweak) is an ASO and app-intelligence platform built around keyword research, metadata optimization, competitor monitoring, and creative analysis across many countries. It is the strongest fit when the next task is picking keywords and rewriting the listing around search intent. It offers a free trial, and paid tiers scale mainly by tracked keywords, historical data range, and seats.
+
+### Appfigures
+[Appfigures](/tools/appfigures) is analytics-first and also does ASO: downloads and revenue, rankings, review monitoring, and keyword tracking across iOS and Android. It is the better fit when you want an ongoing read on store performance, especially across more than one app. It offers a free trial, and paid tiers scale by tracked apps, keyword counts, and update frequency.
+
+### AppFollow
+[AppFollow](/tools/appfollow) centers on review management and reputation: monitoring ratings, replying to reviews, and routing feedback, with ASO features alongside. Choose it when responding to reviews and protecting store reputation is a recurring job. Its pricing is quote-based, so confirm current terms directly.
+
+### AppScreens
+[AppScreens](/tools/appscreens) is a creative tool for producing store screenshots, captions, device frames, exports, and localized variants. It does not do keyword research; it makes the listing look credible once the positioning is set. See the [screenshots category](/categories/screenshots) for alternatives.
+
+## When you do not need a paid ASO tool yet
+If the app has not launched or the positioning is still moving, a paid ASO subscription is premature. Before paying:
+
+- Write a specific promise you can turn into keywords.
+- Read competitor titles, subtitles, and top reviews by hand.
+- Draft screenshots that explain the app in the first two frames.
+- Use the free trials to sanity-check keyword ideas.
+
+Add a paid plan when you have a listing to optimize and a decision the tool will actually change.
 
 ## Best for
 - Apps preparing a launch, relaunch, or metadata refresh.
-- Teams comparing the [ASO category](/categories/aso) before committing to a workflow.
-- Builders who need store insights and screenshot production to work together.
+- Builders who want store insight and creative production to work together.
+- Teams choosing one ASO job to improve this month.
 
 ## Not good for
-- Apps that have not settled the target audience or positioning.
-- Teams expecting ASO tools to guarantee installs without better store copy.
+- Apps that have not settled the target user or positioning.
+- Teams expecting ASO tools to guarantee installs without better copy and creative.
 
 ## Internal links
-- Start with the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps).
-- Prepare creative assets with [screenshot tools](/categories/screenshots).
-- Connect launch planning through the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+- Work through the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps) first.
+- Compare the two research tools head-to-head in [Appfigures vs AppTweak for ASO research](/comparisons/appfigures-vs-apptweak-aso-tools).
+- Prepare creative with the [screenshots category](/categories/screenshots) and [AppScreens](/tools/appscreens).
+- Browse the full [ASO category](/categories/aso).
+- Connect launch timing through the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
 
-Last checked: 2026-06-29.`,
+## Source checks
+Product and pricing claims were checked against official sources on 2026-07-09:
+
+- AppTweak pricing: https://www.apptweak.com/en/pricing
+- Appfigures pricing: https://appfigures.com/pricing
+- AppFollow pricing: https://appfollow.io/pricing
+
+Pricing tiers and limits change often, so exact numbers are summarized at a high level. No hands-on testing claims are made in this guide. The ASO tools map is an owned conceptual visual created for IndieAppStack.
+
+Last checked: 2026-07-09.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -1808,37 +2106,91 @@ Last checked: 2026-06-29.`,
             "Pick a launch page builder based on speed, CMS needs, and audience capture.",
           excerpt:
             "Compare Framer, Webflow, and email-first options for mobile app landing pages.",
-          body_markdown: `## Search intent
-This guide is for app builders choosing a landing page tool before launch, waitlist collection, or a store-listing refresh.
+          body_markdown: `## Short answer
+For a mobile app landing page, match the builder to the page's real job. Choose [Framer](/tools/framer) when you want a fast, visually polished launch or waitlist page and design speed matters more than a large content system. Choose [Webflow](/tools/webflow) when the page will grow into a structured, CMS-backed marketing site with many pages and regular publishing. Choose [Kit](/tools/kit) when the page mainly exists to collect emails and warm up a launch list, and the design can stay simple.
 
-## Shortlist
-- [Framer](/tools/framer) is strong for fast visual launch pages with polished interaction.
-- [Webflow](/tools/webflow) fits more structured marketing sites and CMS-backed pages.
-- [Kit](/tools/kit) is useful when the landing page mainly exists to grow an email list.
+If you are unsure, start with the smallest page that clearly explains the app and captures interest. A launch page rarely fails because of the builder. It fails when the promise, the target user, and the call to action are vague.
 
-:::comparison Landing page builders
+> [!NOTE] Solo builder scope
+> This guide is for a solo developer shipping an app landing page, waitlist, or beta signup page, not a marketing team running a large content operation. Optimize for time-to-live and clarity first, then upgrade the tooling if the page earns it.
+
+![Decision guide for choosing a mobile app landing page builder, routing from the page's main job to Framer, Webflow, or Kit.](/content-visuals/articles/best-landing-page-builders-decision.svg "Route the choice by the page's real job: a design-led launch page, a growing marketing site, or an email-first waitlist.")
+
+## Decide what the page is for
+Before comparing builders, answer three questions in order:
+
+- Is this a single launch or waitlist page, or the first step of a multi-page marketing site?
+- Will you publish new content, such as posts, a changelog, or comparison pages, on a schedule?
+- Is the page's main job to look great and explain the app, or to grow an email list you will message later?
+
+If the honest answer is "one page, no regular content, just explain the app and capture interest," you do not need a heavy platform. If the answer is "this becomes our marketing site," lean toward a real CMS. If the answer is "the list is the point," lead with an email-first tool.
+
+## The three main options
+:::comparison Landing page builder fit
 | Decision | Framer | Webflow | Kit |
 | --- | --- | --- | --- |
-| Best fit | Fast visual launch page | CMS marketing site | Email-first waitlist |
-| Platform | Web | Web | Web |
-| Watch out for | Site plan needs | Build complexity | Design flexibility |
+| Best fit | Fast, design-led launch or waitlist page | Structured, CMS-backed marketing site | Email-first waitlist and launch sequence |
+| Content system | Built-in CMS collections on paid plans | Strong CMS with collections and dynamic content | Broadcasts, sequences, and simple pages |
+| Ongoing publishing | Fine for occasional pages | Best when publishing regularly | Best when the output is email, not pages |
+| Learning curve | Low to moderate | Moderate to high | Low |
+| Audience capture | Forms plus your email tool | Forms plus your email tool | Native list, tagging, and automations |
+| Watch out for | Plan limits on bandwidth and CMS collections | Separate workspace and per-site plans to budget | Design flexibility is intentionally limited |
 :::
 
+### Framer
+Choose [Framer](/tools/framer) when you want a launch page live quickly with strong visual polish. It has a free starter tier on a Framer subdomain, and paid tiers add a custom domain plus more CMS collections and bandwidth as the site grows. Higher tiers add options such as staging, preview branches, and A/B testing.
+
+It is the fastest path to a credible page for most solo launches. The main thing to watch is plan limits: bandwidth and CMS collection counts scale with the paid tier, so check the current plan against how much traffic and content you expect.
+
+### Webflow
+Choose [Webflow](/tools/webflow) when the launch page is step one of a real marketing site with a blog, changelog, docs, or many landing pages. It is closer to a full web design and CMS platform than a single-page builder.
+
+Webflow separates account or workspace plans from per-site plans, and in 2026 it simplified its site-plan lineup: a permanently free Starter tier on a webflow.io subdomain, then paid site plans that scale CMS items, collections, and bandwidth, plus a higher team tier. That flexibility is powerful, but it also means more plan decisions and a steeper learning curve than a single-page tool. Pick it when that power will actually be used.
+
+### Kit
+Choose [Kit](/tools/kit), formerly ConvertKit, when the launch is really an audience-building play: collect emails now, launch to a warm list later. Kit is a creator-focused email platform with landing pages, forms, sequences, and automations. It has a free newsletter tier, and paid tiers unlock unlimited automations, sequences, and deeper subscriber tooling.
+
+Its pages are simpler than Framer or Webflow by design. That is the tradeoff: less visual control, but a much stronger email, tagging, and automation workflow once someone subscribes.
+
+## The landing page is not the store listing
+A web landing page and the App Store or Google Play listing are different surfaces with different rules. Keep the positioning aligned, but do not treat one as the other. Prepare store creative with [AppScreens](/tools/appscreens) or another tool in the [screenshots category](/categories/screenshots), and reuse the same hero message and target-user language across both so the funnel feels consistent.
+
+## A minimal launch page that converts
+Whatever builder you choose, the page needs the same core:
+
+- A one-sentence promise: who it is for and what changes after they use the app.
+- A hero visual or short demo that shows the app in use.
+- Three to five benefit points tied to real jobs, not feature lists.
+- One primary call to action: download, join the waitlist, or start.
+- Honest social proof if you have it, and none if you do not.
+- Working email capture connected to the tool you will actually send from.
+
 ## Best for
-- Apps validating positioning before paid acquisition.
-- Teams building a waitlist or beta signup page.
-- Builders comparing [landing page tools](/categories/landing-pages) and [launch tools](/categories/launch).
+- Solo developers who need a launch, waitlist, or beta signup page quickly.
+- Apps validating positioning before spending on acquisition.
+- Builders choosing between design-led pages, a growing marketing site, or an email-first list.
 
 ## Not good for
-- Teams that need a full CRM or enterprise lifecycle platform on day one.
-- Native UI prototyping work that belongs inside the app.
+- Teams that already run a mature marketing site and CRM and just need another page inside it.
+- Native in-app UI prototyping, which belongs in your app and design tools, not a web builder.
 
 ## Internal links
-- Use the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
-- Compare the broader [email and waitlist category](/categories/email-waitlists).
-- Prepare store visuals with [AppScreens](/tools/appscreens).
+- Put the page to work with the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+- Compare list-building options in the [email and waitlist category](/categories/email-waitlists).
+- Browse more [landing page tools](/categories/landing-pages) and [launch tools](/categories/launch).
+- Prepare store creative via the [screenshots category](/categories/screenshots) and [AppScreens](/tools/appscreens).
+- If the app sells subscriptions, connect the page to the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
 
-Last checked: 2026-06-29.`,
+## Source checks
+Pricing and product claims were checked against official sources on 2026-07-09:
+
+- Framer pricing: https://www.framer.com/pricing/
+- Webflow pricing and 2026 plan changes: https://webflow.com/pricing
+- Kit pricing: https://kit.com/pricing
+
+Pricing tiers and limits change often, so exact thresholds are summarized at a high level here. No hands-on testing claims are made in this guide. The decision visual is an owned conceptual graphic created for IndieAppStack.
+
+Last checked: 2026-07-09.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -2354,11 +2706,127 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
         slug: "best-paywall-tools-ios-apps",
         target_keyword: "best paywall tools for iOS apps",
         search_intent: "commercial investigation",
-        target_category_id: categories.get("monetization").id,
-        related_tool_ids: [tools.get("revenuecat").id],
+        target_category_id: categories.get("paywalls").id,
+        related_tool_ids: [
+          tools.get("revenuecat").id,
+          tools.get("superwall").id,
+          tools.get("adapty").id,
+        ],
         priority: 10,
+        status: "published",
+        notes:
+          "Upgraded and published during the Days 1-30 trust reset sprint.",
+      },
+      {
+        title: "Framer vs Webflow for mobile app landing pages",
+        slug: "framer-vs-webflow-mobile-app-landing-pages",
+        target_keyword: "Framer vs Webflow landing page",
+        search_intent: "commercial investigation",
+        target_category_id: categories.get("landing-pages").id,
+        related_tool_ids: [tools.get("framer").id, tools.get("webflow").id],
+        priority: 100,
         status: "briefed",
-        notes: "Seed topic for the future AI draft workflow.",
+        notes:
+          "Next 30 days. Head-to-head to complete the landing-page cluster and support landing-page tool evaluation.",
+      },
+      {
+        title: "Email and waitlist stack for a mobile app launch",
+        slug: "email-waitlist-stack-mobile-app-launch",
+        target_keyword: "email waitlist stack app launch",
+        search_intent: "practical investigation",
+        target_category_id: categories.get("email-waitlists").id,
+        related_tool_ids: [tools.get("kit").id, tools.get("beehiiv").id],
+        priority: 95,
+        status: "briefed",
+        notes:
+          "Next 30 days. Fills the thin email-and-waitlist category and pairs with the launch checklist.",
+      },
+      {
+        title: "App screenshots workflow for non-designers",
+        slug: "app-screenshots-workflow-non-designers",
+        target_keyword: "app store screenshots workflow",
+        search_intent: "practical investigation",
+        target_category_id: categories.get("screenshots").id,
+        related_tool_ids: [
+          tools.get("appscreens").id,
+          tools.get("screenshots-pro").id,
+        ],
+        priority: 90,
+        status: "briefed",
+        notes:
+          "Next 30 days. Store-creative recipe that the ASO and launch content links into.",
+      },
+      {
+        title: "Push notification starter stack for indie apps",
+        slug: "push-notification-starter-stack-indie-apps",
+        target_keyword: "push notification tools indie apps",
+        search_intent: "practical investigation",
+        target_category_id: categories.get("push").id,
+        related_tool_ids: [tools.get("onesignal").id],
+        priority: 80,
+        status: "briefed",
+        notes:
+          "Next 30 days. Covers the thin push category with a lean, opt-in-friendly setup.",
+      },
+      {
+        title:
+          "CI/CD for solo mobile developers: Codemagic vs Bitrise vs fastlane",
+        slug: "cicd-for-solo-mobile-developers",
+        target_keyword: "mobile CI CD for solo developers",
+        search_intent: "commercial investigation",
+        target_category_id: categories.get("dev-productivity").id,
+        related_tool_ids: [
+          tools.get("codemagic").id,
+          tools.get("bitrise").id,
+          tools.get("fastlane").id,
+        ],
+        priority: 75,
+        status: "briefed",
+        notes:
+          "Next 30 days. Release automation comparison; links from the launch checklist postpone list.",
+      },
+      {
+        title: "TelemetryDeck vs PostHog for indie app analytics",
+        slug: "telemetrydeck-vs-posthog-indie-analytics",
+        target_keyword: "TelemetryDeck vs PostHog",
+        search_intent: "commercial investigation",
+        target_category_id: categories.get("analytics").id,
+        related_tool_ids: [
+          tools.get("telemetrydeck").id,
+          tools.get("posthog").id,
+        ],
+        priority: 70,
+        status: "briefed",
+        notes:
+          "Next 30 days. Deep head-to-head that the analytics starter stack links into.",
+      },
+      {
+        title: "Beehiiv vs Kit for indie app newsletters",
+        slug: "beehiiv-vs-kit-indie-app-newsletters",
+        target_keyword: "beehiiv vs Kit newsletter",
+        search_intent: "commercial investigation",
+        target_category_id: categories.get("email-waitlists").id,
+        related_tool_ids: [tools.get("beehiiv").id, tools.get("kit").id],
+        priority: 65,
+        status: "briefed",
+        notes:
+          "Next 30 days. Supports the email cluster and the Kit/beehiiv choice in the launch content.",
+      },
+      {
+        title: "When a solo app actually needs a backend",
+        slug: "when-a-solo-app-needs-a-backend",
+        target_keyword: "does my app need a backend",
+        search_intent: "practical investigation",
+        target_category_id: categories.get("backend").id,
+        related_tool_ids: [
+          tools.get("supabase").id,
+          tools.get("firebase").id,
+          tools.get("appwrite").id,
+        ],
+        priority: 60,
+        status: "briefed",
+        notes:
+          "Next 30 days. Decision guide that routes into the Supabase vs Firebase vs Appwrite comparison.",
       },
     ],
     { onConflict: "slug" },
