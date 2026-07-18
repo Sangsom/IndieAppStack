@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ComparisonTable } from "@/components/public/comparison-table";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
+import { JsonLd } from "@/components/public/json-ld";
 import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ToolCard } from "@/components/public/tool-card";
 import { Callout } from "@/components/ui/callout";
@@ -13,7 +14,7 @@ import {
   type CategoryFaq,
 } from "@/lib/category-page-data";
 import { affiliateDisclosureCopy } from "@/lib/compliance";
-import { createSeoMetadata } from "@/lib/seo";
+import { createSeoMetadata, itemListJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 type CategoryPageProps = {
@@ -150,6 +151,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         slug={data.category.slug}
       />
       <FaqStructuredData faq={data.faq} />
+      <JsonLd
+        data={itemListJsonLd({
+          items: data.tools.map((tool) => ({
+            name: tool.name,
+            url: tool.detailsHref,
+          })),
+          name: `${data.category.name} tools`,
+        })}
+      />
 
       <nav aria-label="Breadcrumb" className="flex gap-2 text-sm text-muted">
         <Link className="font-semibold text-pine hover:text-ink" href="/">

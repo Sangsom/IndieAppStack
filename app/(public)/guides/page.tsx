@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { JsonLd } from "@/components/public/json-ld";
 import { Badge } from "@/components/ui/badge";
 import { getGuideList } from "@/lib/guide-data";
-import { createSeoMetadata } from "@/lib/seo";
+import { createSeoMetadata, itemListJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
   description:
@@ -19,6 +20,16 @@ export default async function GuidesPage() {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+      <JsonLd
+        data={itemListJsonLd({
+          items: guides.map((guide) => ({
+            name: guide.title,
+            url: guide.href,
+          })),
+          name: "Guides and articles",
+        })}
+      />
+
       <section className="max-w-4xl">
         <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
           Guides

@@ -70,6 +70,40 @@ export function createSeoMetadata({
   };
 }
 
+type ItemListEntry = {
+  name: string;
+  // A relative path (e.g. `/tools/foo`) or an absolute URL.
+  url: string;
+};
+
+// Builds ItemList structured data for a listing page so search engines can
+// surface list/carousel rich results and understand the directory structure.
+// Returns null for an empty list so callers can render nothing.
+export function itemListJsonLd({
+  items,
+  name,
+}: {
+  items: ItemListEntry[];
+  name: string;
+}) {
+  if (items.length === 0) {
+    return null;
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      name: item.name,
+      position: index + 1,
+      url: item.url.startsWith("http") ? item.url : absoluteUrl(item.url),
+    })),
+    name,
+    numberOfItems: items.length,
+  };
+}
+
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",

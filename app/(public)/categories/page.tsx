@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 import { CategoryCard } from "@/components/public/category-card";
+import { JsonLd } from "@/components/public/json-ld";
 import { getHomepageData } from "@/lib/homepage-data";
-import { createSeoMetadata } from "@/lib/seo";
+import { createSeoMetadata, itemListJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
   description:
@@ -18,6 +19,16 @@ export default async function CategoriesPage() {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+      <JsonLd
+        data={itemListJsonLd({
+          items: categories.map((category) => ({
+            name: category.name,
+            url: category.href,
+          })),
+          name: "Tool categories",
+        })}
+      />
+
       <section className="max-w-4xl">
         <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
           Categories

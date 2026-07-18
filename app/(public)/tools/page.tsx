@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
+import { JsonLd } from "@/components/public/json-ld";
 import { ToolFilterForm } from "@/components/public/tool-filter-form";
 import { ToolCard } from "@/components/public/tool-card";
 import { affiliateDisclosureCopy } from "@/lib/compliance";
@@ -11,7 +12,7 @@ import {
   type FilterGroup,
   type ToolDirectoryFilters,
 } from "@/lib/tool-directory-data";
-import { createSeoMetadata } from "@/lib/seo";
+import { createSeoMetadata, itemListJsonLd } from "@/lib/seo";
 
 type ToolsPageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
@@ -83,6 +84,16 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+      <JsonLd
+        data={itemListJsonLd({
+          items: tools.map((tool) => ({
+            name: tool.name,
+            url: tool.detailsHref,
+          })),
+          name: "Mobile app tools directory",
+        })}
+      />
+
       <section className="max-w-4xl">
         <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
           Tools directory
