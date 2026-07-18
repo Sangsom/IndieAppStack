@@ -44,7 +44,7 @@ function ComparisonStructuredData({ comparison }: { comparison: GuideDetail }) {
         datePublished: comparison.publishedAtIso ?? comparison.updatedAtIso,
         description: comparison.description,
         headline: comparison.title,
-        image: absoluteUrl("/opengraph-image"),
+        image: absoluteUrl(`/comparisons/${comparison.slug}/opengraph-image`),
         mainEntityOfPage: canonicalUrl(comparison.slug),
         publisher: {
           "@type": "Organization",
@@ -110,6 +110,8 @@ export async function generateMetadata({
 
   return createSeoMetadata({
     description: comparison.metaDescription,
+    // null → use the colocated per-article opengraph-image route
+    imagePath: null,
     path: `/comparisons/${comparison.slug}`,
     title: comparison.metaTitle,
     type: "article",
