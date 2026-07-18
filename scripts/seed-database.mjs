@@ -62,7 +62,8 @@ function bySlug(rows) {
 }
 
 const pricingLastChecked = "2026-06-29";
-const publishedAt = new Date().toISOString();
+const publishedAt = "2026-07-10T02:08:13.410Z";
+const warpPublishedAt = "2026-07-18T09:00:00.000Z";
 
 const seedTools = [
   {
@@ -628,7 +629,7 @@ const seedTools = [
       "Warp is a modern, Rust-based terminal with an AI assistant, command blocks, autocomplete, and saved workflows that help developers run git, build, and release commands faster from the command line. It runs on macOS, Windows, and Linux and supports bash, zsh, fish, PowerShell, and WSL2.",
     website_url: "https://www.warp.dev/",
     pricing_summary:
-      "Free plan with a monthly AI-credit allowance (75 credits/month after an intro period); paid Build ($20/user/month) and Business ($50/user/month) plans add more credits and team features, with bring-your-own-API-key on every plan. Verify current credits and prices before relying on them.",
+      "Freemium, with AI usage metered in monthly credits. Free ($0) has limited AI and cloud-agent usage and lets you bring your own AI inference; paid plans are Build ($20/user/month, 1,500 credits), Max ($200/user/month, 18,000 credits), and Business ($50/user/month per seat, with SAML SSO); Enterprise is custom. Checked 2026-07-18; verify current numbers before relying on them.",
     pricing_model: "freemium",
     best_for: [
       "Faster command-line workflows",
@@ -644,8 +645,9 @@ const seedTools = [
     alternatives: ["iTerm2", "Ghostty", "Alacritty"],
     categorySlugs: ["dev-productivity"],
     pricing_last_checked: "2026-07-18",
+    published_at: warpPublishedAt,
     internal_notes:
-      "Pricing/features checked 2026-07-18 from https://www.warp.dev/pricing and https://www.warp.dev/download (Free 75 credits/month after intro, Build $20, Business $50; runs on macOS/Windows/Linux; credit metering began 2026-07-01). Affiliate: self-serve referral link https://app.warp.dev/referral/L6LWW.",
+      "Pricing/features checked 2026-07-18 from https://www.warp.dev/pricing and https://www.warp.dev/download (Free $0 limited AI + bring-your-own inference; Build $20/1,500 credits; Max $200/18,000 credits; Business $50/seat + SAML SSO; runs on macOS/Windows/Linux). Affiliate: self-serve referral link https://app.warp.dev/referral/L6LWW.",
   },
 ];
 
@@ -801,7 +803,7 @@ try {
         return {
           ...row,
           pricing_last_checked: row.pricing_last_checked ?? pricingLastChecked,
-          published_at: publishedAt,
+          published_at: row.published_at ?? publishedAt,
           status: "published",
         };
       }),
@@ -947,6 +949,8 @@ Most mobile-tool decisions are about SDKs you embed in the app. Warp is differen
 > [!NOTE] Affiliate disclosure
 > The Warp link on this page is a referral link. If you start with Warp through it, IndieAppStack may receive referral credit at no extra cost to you. It does not change our read on the tool: Warp is here because it fits the command-line side of indie mobile work, not because of the link.
 
+![Two-column decision graphic: Warp earns a place in a solo mobile developer's stack when you forget rarely-used commands, read a lot of build output, or repeat multi-step commands; skip it for now when your terminal already disappears, you want minimal and lightweight, you expect a mobile build tool, or you are wary of usage-based AI pricing.](/content-visuals/articles/warp-terminal-decision.svg "Does Warp earn a place in your stack?")
+
 ## What Warp is
 Warp is a terminal that adds an AI assistant, command blocks, autocompletion, and saved workflows on top of a normal shell. It calls itself an agentic development environment, and it runs on macOS, Windows, and Linux, working with bash, zsh, fish, PowerShell, and WSL2. You keep your existing shell and commands, and Warp layers a faster, more readable interface, plus AI, over them.
 
@@ -1033,7 +1037,7 @@ Last checked: 2026-07-18.`,
             "An honest guide to Warp, the AI terminal, for solo mobile developers: what it does, when it earns a place in your stack, when to skip it, and current pricing (checked July 2026).",
           human_reviewed: true,
           ai_assisted: true,
-          published_at: new Date().toISOString(),
+          published_at: warpPublishedAt,
         },
         {
           title: "Best monetization tools for solo mobile developers",
@@ -1159,7 +1163,7 @@ Last checked: 2026-07-01.`,
             "Choose mobile app monetization tools for subscriptions, paywalls, backend, and analytics without overbuilding your solo developer stack.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Subscription MVP stack for a solo iOS app",
@@ -1312,7 +1316,7 @@ Last checked: 2026-07-01. Pricing thresholds are summarized at a high level; che
             "Build the smallest useful subscription MVP stack for a solo iOS app with payments, entitlements, backend, analytics, crash reporting, and launch basics.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Supabase vs Firebase vs Appwrite for mobile app backends",
@@ -1450,7 +1454,7 @@ No hands-on testing claims are made in this article. The architecture map is an 
             "Compare Supabase, Firebase, and Appwrite for auth, databases, storage, functions, pricing model fit, and indie mobile app backend decisions.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "RevenueCat vs Adapty vs Superwall for subscription apps",
@@ -1571,7 +1575,7 @@ No hands-on testing claims are made in this article. The comparison graphic is a
             "Compare RevenueCat, Adapty, and Superwall for subscriptions, paywalls, entitlements, experiments, pricing model checks, and best use cases.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Appfigures vs AppTweak for ASO research",
@@ -1652,7 +1656,7 @@ Last checked: 2026-07-09.`,
             "Compare Appfigures and AppTweak for ASO research, rankings, reviews, keyword workflows, setup complexity, pricing checks, and best use cases.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Sentry vs Firebase Crashlytics for mobile apps",
@@ -1741,7 +1745,7 @@ Last checked: 2026-07-09.`,
             "Compare Sentry and Firebase Crashlytics for mobile crash reporting, setup complexity, platform support, pricing checks, and best use cases.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "A privacy-friendly analytics starter stack",
@@ -1852,7 +1856,7 @@ Last checked: 2026-07-09.`,
             "A lightweight analytics setup for mobile apps that need useful product signal without invasive tracking.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "ASO starter checklist for indie mobile apps",
@@ -1945,7 +1949,7 @@ Last checked: 2026-07-09.`,
             "A practical ASO checklist for indie mobile apps covering keywords, competitors, reviews, screenshots, and store listing updates.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Mobile app launch stack checklist",
@@ -2046,7 +2050,7 @@ Last checked: 2026-07-09. Pricing thresholds are summarized at a high level; che
             "A mobile app launch checklist for landing pages, waitlists, newsletters, screenshots, and early distribution workflows.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Best paywall tools for iOS apps",
@@ -2158,7 +2162,7 @@ Last checked: 2026-07-09.`,
             "Compare paywall tools for iOS apps including RevenueCat, Adapty, and Superwall for subscriptions, experiments, and entitlements.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Best ASO tools for indie developers",
@@ -2252,7 +2256,7 @@ Last checked: 2026-07-09.`,
             "Compare ASO tools for indie developers, including keyword research, rankings, reviews, screenshots, and app store listing workflows.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Best landing page builders for mobile apps",
@@ -2355,7 +2359,7 @@ Last checked: 2026-07-09.`,
             "Compare landing page builders for mobile apps, including Framer, Webflow, and email-first waitlist workflows.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Crash reporting setup for a solo app launch",
@@ -2489,7 +2493,7 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
             "Set up crash reporting before launch with a Sentry vs Firebase Crashlytics decision path, release metadata checklist, alerts, and first-week triage flow.",
           human_reviewed: true,
           ai_assisted: false,
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
         {
           title: "Draft guide that should stay private",
@@ -2808,7 +2812,7 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
           },
           status: "published",
           cost_notes: "Starts on free tiers; paid plans scale with usage.",
-          published_at: new Date().toISOString(),
+          published_at: publishedAt,
         },
       ],
       { onConflict: "slug" },
