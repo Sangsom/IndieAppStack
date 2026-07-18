@@ -10,7 +10,7 @@ import { ProsCons } from "@/components/public/pros-cons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
 import { affiliateDisclosureCopy } from "@/lib/compliance";
-import { createSeoMetadata } from "@/lib/seo";
+import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import {
   getPublishedToolSlugs,
@@ -102,6 +102,7 @@ function StructuredData({ tool }: { tool: ToolDetail }) {
         applicationCategory:
           tool.categories[0]?.name ?? "Mobile app development tool",
         description: tool.description,
+        image: absoluteUrl(`/tools/${tool.slug}/opengraph-image`),
         name: tool.name,
         operatingSystem: tool.platforms.join(", "),
         url: tool.websiteUrl ?? canonicalUrl(tool.slug),
@@ -162,6 +163,8 @@ export async function generateMetadata({
 
   return createSeoMetadata({
     description,
+    // null → use the colocated per-tool opengraph-image route
+    imagePath: null,
     path: `/tools/${tool.slug}`,
     title: `${tool.name} review, pricing, alternatives, and fit`,
     type: "article",

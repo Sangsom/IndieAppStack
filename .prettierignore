@@ -5,3 +5,6 @@ build
 coverage
 package-lock.json
 next-env.d.ts
+
+# dm-hub tooling data (machine-written brand profiles, per engagement)
+.dm-hub
