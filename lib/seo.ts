@@ -4,7 +4,9 @@ import { siteConfig } from "@/lib/site";
 
 type SeoMetadataInput = {
   description: string;
-  imagePath?: string;
+  // A path to an image, or `null` to defer to a colocated opengraph-image
+  // file convention (e.g. a per-article generated card).
+  imagePath?: string | null;
   noindex?: boolean;
   path: string;
   title: string;
@@ -24,7 +26,9 @@ export function createSeoMetadata({
   type = "website",
 }: SeoMetadataInput): Metadata {
   const url = absoluteUrl(path);
-  const image = absoluteUrl(imagePath);
+  // When imagePath is null, omit explicit images so a colocated
+  // opengraph-image route populates og:image (Twitter falls back to it).
+  const image = imagePath === null ? null : absoluteUrl(imagePath);
 
   return {
     alternates: {
@@ -33,14 +37,18 @@ export function createSeoMetadata({
     description,
     openGraph: {
       description,
-      images: [
-        {
-          alt: `${siteConfig.name} preview`,
-          height: 630,
-          url: image,
-          width: 1200,
-        },
-      ],
+      ...(image
+        ? {
+            images: [
+              {
+                alt: `${siteConfig.name} preview`,
+                height: 630,
+                url: image,
+                width: 1200,
+              },
+            ],
+          }
+        : {}),
       siteName: siteConfig.name,
       title,
       type,
@@ -56,7 +64,7 @@ export function createSeoMetadata({
     twitter: {
       card: "summary_large_image",
       description,
-      images: [image],
+      ...(image ? { images: [image] } : {}),
       title,
     },
   };

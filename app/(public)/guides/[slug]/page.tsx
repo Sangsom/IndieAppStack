@@ -44,7 +44,7 @@ function ArticleStructuredData({ guide }: { guide: GuideDetail }) {
         datePublished: guide.publishedAtIso ?? guide.updatedAtIso,
         description: guide.description,
         headline: guide.title,
-        image: absoluteUrl("/opengraph-image"),
+        image: absoluteUrl(`/guides/${guide.slug}/opengraph-image`),
         mainEntityOfPage: canonicalUrl(guide.slug),
         publisher: {
           "@type": "Organization",
@@ -110,6 +110,8 @@ export async function generateMetadata({
 
   return createSeoMetadata({
     description: guide.metaDescription,
+    // null → use the colocated per-article opengraph-image route
+    imagePath: null,
     path: `/guides/${guide.slug}`,
     title: guide.metaTitle,
     type: "article",
