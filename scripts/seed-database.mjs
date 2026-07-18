@@ -619,6 +619,34 @@ const seedTools = [
     internal_notes:
       "Pricing/features checked 2026-06-29 from https://fastlane.tools/",
   },
+  {
+    name: "Warp",
+    slug: "warp",
+    tagline:
+      "AI-powered terminal and agentic development environment for the command line.",
+    description:
+      "Warp is a modern, Rust-based terminal with an AI assistant, command blocks, autocomplete, and saved workflows that help developers run git, build, and release commands faster from the command line. It runs on macOS, Windows, and Linux and supports bash, zsh, fish, PowerShell, and WSL2.",
+    website_url: "https://www.warp.dev/",
+    pricing_summary:
+      "Free plan with a monthly AI-credit allowance (75 credits/month after an intro period); paid Build ($20/user/month) and Business ($50/user/month) plans add more credits and team features, with bring-your-own-API-key on every plan. Verify current credits and prices before relying on them.",
+    pricing_model: "freemium",
+    best_for: [
+      "Faster command-line workflows",
+      "AI help for shell and git commands",
+      "Running fastlane, build, and release scripts",
+    ],
+    not_good_for: [
+      "Developers who prefer a minimal, resource-light terminal",
+      "Anyone wanting a mobile-specific build or release tool (Warp is a general desktop terminal, not mobile-only)",
+    ],
+    platforms: ["macOS", "Windows", "Linux"],
+    app_stages: ["MVP", "Growth", "Scale"],
+    alternatives: ["iTerm2", "Ghostty", "Alacritty"],
+    categorySlugs: ["dev-productivity"],
+    pricing_last_checked: "2026-07-18",
+    internal_notes:
+      "Pricing/features checked 2026-07-18 from https://www.warp.dev/pricing and https://www.warp.dev/download (Free 75 credits/month after intro, Build $20, Business $50; runs on macOS/Windows/Linux; credit metering began 2026-07-01). Affiliate: self-serve referral link https://app.warp.dev/referral/L6LWW.",
+  },
 ];
 
 try {
@@ -854,6 +882,20 @@ try {
             internal_notes:
               "Checked 2026-07-01. Official source now verified. Keep status not_applied until application is submitted; do not claim approval or use Webflow monetized links before acceptance.",
           },
+          {
+            name: "Warp Referral Program",
+            network: "direct",
+            status: "approved",
+            application_url: "https://app.warp.dev/referral/L6LWW",
+            commission_notes:
+              "Self-serve referral program (no application required). Warp's referral typically grants Warp AI credits to both the referrer and the new user; exact current reward amounts are not verified against an official terms page — confirm before publishing specific reward claims.",
+            cookie_notes:
+              "Attribution is handled by Warp's referral link; no public cookie window documented. Checked 2026-07-18.",
+            allowed_promotion_notes:
+              "Referral link is live and usable now. Best fit for developer-productivity and terminal/CLI content for indie mobile builders. Always disclose as a referral/affiliate link.",
+            internal_notes:
+              "Checked 2026-07-18. First live affiliate link on the site. Referral URL: https://app.warp.dev/referral/L6LWW.",
+          },
         ],
         { onConflict: "name" },
       )
@@ -872,6 +914,15 @@ try {
         default_rel: "sponsored nofollow",
         disclosure_required: true,
       },
+      {
+        tool_id: tools.get("warp").id,
+        affiliate_program_id: programs.get("Warp Referral Program").id,
+        destination_url: "https://app.warp.dev/referral/L6LWW",
+        slug: "warp",
+        status: "active",
+        default_rel: "sponsored nofollow",
+        disclosure_required: true,
+      },
     ],
     { onConflict: "slug" },
   );
@@ -880,6 +931,110 @@ try {
     await upsert(
       "articles",
       [
+        {
+          title:
+            "Warp for indie mobile developers: do you actually need an AI terminal?",
+          slug: "warp-terminal-for-indie-mobile-developers",
+          subtitle:
+            "A source-checked look at where an AI terminal fits a solo mobile app workflow, and where it does not.",
+          excerpt:
+            "Warp is an AI terminal for macOS, Windows, and Linux. Here is an honest read on when it earns a place in a solo mobile developer's setup, when to skip it, and what it costs.",
+          body_markdown: `## Short answer
+Warp is worth trying if you spend real time on the command line, running fastlane, git, and build scripts, and want AI help plus cleaner output without leaving the terminal. It is a general desktop terminal, not a mobile-specific tool, so it changes how you work rather than what you can ship. If your current terminal already stays out of your way, Warp is a nice-to-have, not a fix.
+
+Most mobile-tool decisions are about SDKs you embed in the app. Warp is different: it is part of your workstation, not your app. So the question is less "which is best" and more "does this remove enough command-line friction to be worth a new habit."
+
+> [!NOTE] Affiliate disclosure
+> The Warp link on this page is a referral link. If you start with Warp through it, IndieAppStack may receive referral credit at no extra cost to you. It does not change our read on the tool: Warp is here because it fits the command-line side of indie mobile work, not because of the link.
+
+## What Warp is
+Warp is a terminal that adds an AI assistant, command blocks, autocompletion, and saved workflows on top of a normal shell. It calls itself an agentic development environment, and it runs on macOS, Windows, and Linux, working with bash, zsh, fish, PowerShell, and WSL2. You keep your existing shell and commands, and Warp layers a faster, more readable interface, plus AI, over them.
+
+## Where a terminal actually matters in mobile development
+If you build a mobile app on your own, the command line shows up in a few predictable places:
+
+- Release automation: running [fastlane](/tools/fastlane) lanes for screenshots, signing, TestFlight, and Play uploads.
+- Version control: git branches, rebases, and the occasional recovery when something goes wrong.
+- Build and dependency work: xcodebuild, Gradle, CocoaPods or Swift Package Manager, and reading long, noisy build logs.
+- CI wrangling: reproducing a [Bitrise](/tools/bitrise) or GitHub Actions failure locally.
+
+None of this needs a special terminal. But it is exactly the work where AI suggestions and cleaner output can save the minutes you would otherwise spend reading a wall of log text or looking up a flag.
+
+## When Warp earns its place
+:::comparison When Warp helps a solo mobile developer
+| Situation | Why Warp helps |
+| --- | --- |
+| You forget commands you use rarely | Ask the terminal for the fastlane flag or git recovery step instead of switching to a browser |
+| You read a lot of build output | Blocks separate each command and its output, so scanning a failed build beats endless scrollback |
+| You repeat multi-step commands | Saved workflows keep parameterized commands close instead of retyped |
+:::
+
+The theme is consistency and recall. For a solo developer wearing every hat, shaving friction off routine command-line work is a real, if modest, gain.
+
+## When to skip it
+- Your terminal already disappears. If you rarely fight your current setup, Warp solves a problem you do not have.
+- You want minimal and lightweight. Warp is a full-featured app, not a bare terminal.
+- You expect a mobile build tool. Warp does not build, sign, or ship your app; that still belongs to fastlane, Xcode, and your CI.
+- You are wary of usage-based AI pricing. Warp's AI runs on a monthly credit allowance, so plan around the free tier or bring your own AI inference.
+
+## Pricing
+Warp is freemium, and its AI features run on a monthly credit allowance. These figures were checked on 2026-07-18 against the official pricing page. Warp uses a credit-based model and adjusts it, so confirm current numbers before relying on them.
+
+:::comparison Warp plans (checked 2026-07-18)
+| Plan | Price | Notes |
+| --- | --- | --- |
+| Free | $0 | Limited AI and cloud-agent usage; bring your own AI inference |
+| Build | $20 per user per month | 1,500 credits (about $20 of included agent usage at API rates) |
+| Max | $200 per user per month | 18,000 credits |
+| Business | $50 per user per month | 1,500 credits per seat; SAML-based SSO |
+| Enterprise | Custom | Admin controls; contact sales |
+:::
+
+The Free plan lets you bring your own AI inference, so you can point Warp at your own model access instead of spending Warp credits. Because the AI is credit-metered, the practical question is whether the free allowance covers a normal week of your work.
+
+## How to try Warp without overcommitting
+- Install the free plan and use it as your daily terminal for a week of real work: a release, a few merges, a gnarly build failure.
+- Lean on the AI for the commands you usually look up, and save two or three workflows you run often.
+- Watch your credit use. If the free allowance covers a normal week, you have your answer. If you hit the ceiling and the time saved is real, Build is the next step; if not, keep the free tier or your old terminal.
+
+Ready to try it? [Start with Warp](/go/warp), then see the full [Warp tool page](/tools/warp) and the rest of the [developer productivity category](/categories/dev-productivity).
+
+## Frequently asked questions
+### Is Warp free for indie developers?
+Yes. Warp has a free plan with a limited monthly AI allowance and support for bringing your own AI inference, which is enough for many solo developers. Paid plans start at $20 per user per month (checked 2026-07-18) and add more credits and team features.
+
+### Does Warp work for iOS and Android development?
+Warp is a general desktop terminal for macOS, Windows, and Linux; it is not iOS or Android specific. It helps with the command-line work around mobile development, such as git, fastlane, and build and release scripts, but it does not build or ship the app itself.
+
+### Do I need Warp if I already use fastlane?
+No. They solve different problems. [fastlane](/tools/fastlane) automates the release steps; Warp is the terminal you run those steps in. Warp can make fastlane commands easier to recall and rerun, but fastlane does the actual work.
+
+### Is an AI terminal safe to use on a work machine?
+Warp's Business plan adds SAML-based SSO for teams, and the Free plan lets you bring your own AI inference. If data handling matters, review Warp's current privacy and data-retention terms before connecting it to sensitive repositories.
+
+## The recommendation
+For a solo mobile developer, Warp is a reasonable pick in the [developer productivity category](/categories/dev-productivity) if command-line work is a daily part of your build-and-release loop and you want AI recall plus cleaner output. Start on the free plan, judge it on one real release cycle, and only pay once the time saved is obvious. If your current terminal already stays out of your way, there is no urgency to switch.
+
+## Source checks
+Pricing, platform, and product claims were checked on 2026-07-18 against official sources:
+
+- Warp pricing: https://www.warp.dev/pricing
+- Warp downloads and platform support: https://www.warp.dev/download
+
+No hands-on testing claims are made in this article. No screenshots are used. Affiliate links are disclosed and use the site's /go redirect.
+
+Last checked: 2026-07-18.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("dev-productivity").id,
+          seo_title: "Warp for Indie Mobile Developers: Worth It?",
+          seo_description:
+            "An honest guide to Warp, the AI terminal, for solo mobile developers: what it does, when it earns a place in your stack, when to skip it, and current pricing (checked July 2026).",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: new Date().toISOString(),
+        },
         {
           title: "Best monetization tools for solo mobile developers",
           slug: "best-monetization-tools-solo-mobile-developers",
