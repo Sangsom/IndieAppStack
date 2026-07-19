@@ -2791,6 +2791,27 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
         relationship: "supporting",
         sort_order: 30,
       },
+      {
+        article_id: articles.get("warp-terminal-for-indie-mobile-developers")
+          .id,
+        tool_id: tools.get("warp").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("warp-terminal-for-indie-mobile-developers")
+          .id,
+        tool_id: tools.get("fastlane").id,
+        relationship: "supporting",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("warp-terminal-for-indie-mobile-developers")
+          .id,
+        tool_id: tools.get("bitrise").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
     ],
     { onConflict: "article_id,tool_id" },
   );

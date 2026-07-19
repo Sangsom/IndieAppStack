@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AffiliateCta } from "@/components/public/affiliate-cta";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ShareResultsButton } from "@/components/public/share-results-button";
@@ -220,12 +221,22 @@ export function StackRecommendationResults({
               ) : null}
 
               <div className="mt-5 flex flex-wrap gap-3">
-                <a
-                  className="inline-flex h-10 items-center justify-center rounded-button border border-pine bg-pine px-4 text-sm font-semibold text-surface shadow-field transition-colors hover:border-ink hover:bg-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
-                  href={item.tool.affiliateHref ?? item.tool.officialHref}
-                >
-                  {item.tool.affiliateHref ? "Open partner link" : "Visit tool"}
-                </a>
+                {item.tool.affiliateHref ? (
+                  <AffiliateCta
+                    analyticsLocation="stack-finder"
+                    href={item.tool.affiliateHref}
+                    kind="affiliate"
+                    label="Open partner link"
+                    toolSlug={item.tool.slug}
+                  />
+                ) : (
+                  <a
+                    className="inline-flex h-10 items-center justify-center rounded-button border border-pine bg-pine px-4 text-sm font-semibold text-surface shadow-field transition-colors hover:border-ink hover:bg-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                    href={item.tool.officialHref}
+                  >
+                    Visit tool
+                  </a>
+                )}
                 <Link
                   className="inline-flex h-10 items-center justify-center rounded-button border border-rule px-4 text-sm font-semibold text-pine transition-colors hover:border-pine hover:bg-accent-soft focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   href={item.tool.detailsHref}

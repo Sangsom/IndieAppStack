@@ -21,8 +21,9 @@ export default function AffiliateDisclosurePage() {
         {
           title: "How affiliate links work",
           body: [
-            "Some outbound links may route through IndieAppStack affiliate redirects. If you buy or sign up through one of those links, IndieAppStack may receive a commission or partner credit at no extra cost to you.",
-            "Affiliate links are marked with sponsored nofollow link attributes where they are rendered as affiliate calls to action.",
+            "Most outbound links on IndieAppStack are plain editorial links that point straight to a tool's own website. IndieAppStack earns nothing when you use them.",
+            "A small number of tools have an affiliate or referral relationship. Those calls to action are labeled as partner links and route through an IndieAppStack redirect that records the click and forwards you to the partner. If you buy or sign up through one, IndieAppStack may receive a commission or partner credit at no extra cost to you.",
+            "Affiliate calls to action carry sponsored nofollow link attributes, and the redirect paths are excluded from search engine indexing, so they never pass search ranking credit.",
           ],
         },
         {
