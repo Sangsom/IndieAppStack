@@ -1,0 +1,476 @@
+{
+  "version": 1,
+  "lastReviewed": "2026-07-19",
+  "archetypes": [
+    {
+      "slug": "subscription-consumer-app",
+      "name": "Subscription consumer app",
+      "eyebrow": "Indie iOS stack",
+      "metaTitle": "The indie iOS stack for a subscription consumer app",
+      "metaDescription": "An opinionated, maintained tool stack for a subscription iOS app — RevenueCat, Superwall, Supabase, TelemetryDeck, Sentry, and fastlane — with notes on how they fit together.",
+      "tagline": "The paywall-first stack for a habit, health, or journaling app that lives on recurring revenue.",
+      "summary": [
+        "Most solo iOS apps that make money do it with a subscription, and the fastest way to lose the plot is to hand-roll StoreKit receipts and paywall logic yourself. This stack keeps the money layer boring and reliable so you can spend your energy on the app itself.",
+        "It starts free or near-free and only grows a bill where the bill is attached to revenue: subscriptions, paywall tests, and the analytics that tell you whether either is working. Everything else stays on a free tier until the app earns its way off it."
+      ],
+      "whoItsFor": [
+        "A single developer shipping a consumer app that converts to a weekly or yearly subscription.",
+        "You want paywall experiments without building an experiment framework.",
+        "You care about activation and retention signals but do not want a heavyweight analytics contract yet."
+      ],
+      "budgetBand": "$0–$50/mo to start; scales with revenue",
+      "upgradeNote": "Move Superwall and RevenueCat onto paid tiers only once paywall traffic is large enough to make an A/B test conclusive.",
+      "quizAnswers": {
+        "appType": "consumer-mobile-app",
+        "platform": "ios",
+        "stage": "mvp",
+        "helpWith": "monetization",
+        "budget": "under-50"
+      },
+      "stack": [
+        {
+          "role": "Subscriptions & entitlements",
+          "toolSlug": "revenuecat",
+          "why": "RevenueCat owns receipt validation, entitlements, and cross-store revenue reporting so you never touch raw StoreKit receipts. It is the safe default the moment an app has a subscription.",
+          "alternatives": ["adapty", "qonversion", "superwall"]
+        },
+        {
+          "role": "Paywall optimization",
+          "toolSlug": "superwall",
+          "why": "Superwall lets you design and A/B test paywalls remotely without shipping an App Store update for every price or layout change. It drives presentation while RevenueCat settles the purchase.",
+          "alternatives": ["adapty"]
+        },
+        {
+          "role": "Backend & auth",
+          "toolSlug": "supabase",
+          "why": "Supabase gives you Postgres, auth, storage, and edge functions with data you can export, which matters when your subscription state needs a server-side source of truth.",
+          "alternatives": ["firebase", "appwrite"]
+        },
+        {
+          "role": "Product analytics",
+          "toolSlug": "telemetrydeck",
+          "why": "TelemetryDeck is privacy-first and Swift-native, so you get activation and retention signals without a consent banner or a heavy SDK weighing down launch.",
+          "alternatives": ["posthog", "amplitude"]
+        },
+        {
+          "role": "Crash & error monitoring",
+          "toolSlug": "sentry",
+          "why": "Sentry surfaces crashes and errors with symbolicated stack traces before a one-star review does. Release health tracking tells you fast if a build is regressing.",
+          "alternatives": ["firebase"]
+        },
+        {
+          "role": "Release automation",
+          "toolSlug": "fastlane",
+          "why": "fastlane scripts the repetitive TestFlight and App Store chores — screenshots, metadata, signing — without adding another paid SaaS to the stack.",
+          "alternatives": ["codemagic", "bitrise"]
+        }
+      ],
+      "compatibilityNotes": [
+        {
+          "title": "RevenueCat is the source of truth for entitlements",
+          "body": "Forward RevenueCat webhooks into a Supabase edge function so your database mirrors subscription state. Gate premium features on RevenueCat's entitlement, not on a flag you set yourself, and Supabase stays a read-only mirror for server-side checks."
+        },
+        {
+          "title": "Wire Superwall's purchase handler to RevenueCat",
+          "body": "Superwall presents and tests the paywall, but let RevenueCat complete the purchase and report the entitlement. If both tools try to own the transaction they will disagree about who is subscribed."
+        },
+        {
+          "title": "Line up TelemetryDeck with RevenueCat using a shared id",
+          "body": "TelemetryDeck sees behavior and RevenueCat sees revenue. Send a shared, hashed app-instance id to both so you can join activation events to trial starts and conversions without shipping any PII."
+        },
+        {
+          "title": "Symbolicate Sentry crashes from your fastlane lane",
+          "body": "Add a dSYM upload step to the same fastlane lane that ships the build, so every TestFlight and App Store release arrives in Sentry already symbolicated."
+        }
+      ]
+    },
+    {
+      "slug": "content-community-app",
+      "name": "Content & community app",
+      "eyebrow": "Indie iOS stack",
+      "metaTitle": "The indie iOS stack for a content or community app",
+      "metaDescription": "An opinionated, maintained tool stack for a content or community iOS app — Supabase, PostHog, OneSignal, Sentry, fastlane, and RevenueCat — with notes on how they fit together.",
+      "tagline": "The feed-and-notifications stack for an app whose value grows with its users and their content.",
+      "summary": [
+        "A content or community app lives or dies on two loops: fresh content showing up, and people being pulled back when it does. That means a real backend, behavioral analytics you can act on, and lifecycle messaging — before you worry about monetization.",
+        "This stack favors tools that scale from your first hundred users to your first hundred thousand without a re-platform, and keeps analytics and push on generous free tiers until engagement is worth paying to grow."
+      ],
+      "whoItsFor": [
+        "You are building a feed, forum, UGC, or social app on iOS.",
+        "Retention and re-engagement matter more than a paywall on day one.",
+        "You want product analytics and feature flags in one place so you can ship and measure fast."
+      ],
+      "budgetBand": "$50–$200/mo as engagement grows",
+      "upgradeNote": "Add RevenueCat when you introduce a subscription tier, and watch PostHog event volume before free-tier limits bite at scale.",
+      "quizAnswers": {
+        "appType": "content-community-app",
+        "platform": "ios",
+        "stage": "mvp",
+        "helpWith": "backend",
+        "budget": "50-200"
+      },
+      "stack": [
+        {
+          "role": "Backend & realtime",
+          "toolSlug": "supabase",
+          "why": "Supabase gives you Postgres with row-level security, auth, storage for user media, and realtime subscriptions — the exact primitives a feed or community app needs, with portable data.",
+          "alternatives": ["firebase", "appwrite"]
+        },
+        {
+          "role": "Product analytics & flags",
+          "toolSlug": "posthog",
+          "why": "PostHog combines funnels, retention, session insights, and feature flags in one tool, so you can ship a feature behind a flag and measure its effect without stitching two SDKs together.",
+          "alternatives": ["amplitude", "telemetrydeck", "mixpanel"]
+        },
+        {
+          "role": "Lifecycle messaging",
+          "toolSlug": "onesignal",
+          "why": "OneSignal handles push, in-app messages, and basic segmentation on a free tier that comfortably covers an early community app's re-engagement needs.",
+          "alternatives": ["braze"]
+        },
+        {
+          "role": "Crash & error monitoring",
+          "toolSlug": "sentry",
+          "why": "Sentry catches the backend-plus-client errors that community apps are prone to — failed uploads, sync conflicts, feed edge cases — with traces across both.",
+          "alternatives": ["firebase"]
+        },
+        {
+          "role": "Release automation",
+          "toolSlug": "fastlane",
+          "why": "fastlane keeps your release cadence fast and cheap, which matters when you are iterating on engagement features weekly.",
+          "alternatives": ["codemagic", "bitrise"]
+        },
+        {
+          "role": "Subscriptions (when you monetize)",
+          "toolSlug": "revenuecat",
+          "why": "When a community app adds a paid tier or supporter subscription, RevenueCat drops in without you rebuilding purchase handling. Add it the day you have something worth charging for.",
+          "alternatives": ["adapty", "qonversion"]
+        }
+      ],
+      "compatibilityNotes": [
+        {
+          "title": "Trigger OneSignal pushes from Supabase events",
+          "body": "Call OneSignal's REST API from a Supabase edge function or database webhook when new content lands, so 'someone replied' or 'new post in your topic' notifications fire from your data layer rather than a cron job guessing."
+        },
+        {
+          "title": "Identify PostHog with your Supabase auth id",
+          "body": "Use the Supabase user id as the PostHog distinct id so behavioral funnels, retention cohorts, and feature-flag targeting all key off the same identity across sessions and devices."
+        },
+        {
+          "title": "Gate features with PostHog flags, not app releases",
+          "body": "Ship risky community features behind a PostHog feature flag and roll them out to a percentage of users. You measure impact and can kill a bad feature without waiting on App Store review."
+        },
+        {
+          "title": "Send Supabase auth ids to Sentry for user-scoped errors",
+          "body": "Set the Sentry user context from your Supabase session so a spike in sync errors can be traced to affected accounts instead of anonymous noise."
+        }
+      ]
+    },
+    {
+      "slug": "b2b-productivity-app",
+      "name": "B2B & productivity app",
+      "eyebrow": "Indie iOS stack",
+      "metaTitle": "The indie iOS stack for a B2B or productivity app",
+      "metaDescription": "An opinionated, maintained tool stack for a B2B or productivity iOS app — Supabase, RevenueCat, Amplitude, Sentry, and Codemagic — with notes on how they fit together.",
+      "tagline": "The reliability-first stack for a productivity app people run their work on and expect to just work.",
+      "summary": [
+        "When people use your app for work, the bar shifts from novelty to trust. Data has to be correct and portable, releases have to be reliable, and you need to understand which features actually drive retention and expansion — because a churned business account is expensive to replace.",
+        "This stack spends a little more than a hobby app would, deliberately, on the parts that protect trust: a real database, dependable CI/CD, and analytics mature enough to answer product questions across a whole team's usage."
+      ],
+      "whoItsFor": [
+        "You are building a productivity, workflow, or B2B companion app on iOS.",
+        "The app is past MVP and reliability now matters more than raw speed of iteration.",
+        "You need analytics that a future teammate or advisor can reason about, not just event counts."
+      ],
+      "budgetBand": "$200–$500/mo for reliability and depth",
+      "upgradeNote": "Amplitude and Codemagic are the two lines worth paying for first here; keep everything else lean until team seats or build minutes force the question.",
+      "quizAnswers": {
+        "appType": "b2b-productivity-app",
+        "platform": "ios",
+        "stage": "launched",
+        "helpWith": "analytics",
+        "budget": "200-500"
+      },
+      "stack": [
+        {
+          "role": "Backend & auth",
+          "toolSlug": "supabase",
+          "why": "Supabase gives you Postgres with row-level security and SQL you can audit — the right foundation when customer data correctness and export are non-negotiable.",
+          "alternatives": ["firebase", "appwrite"]
+        },
+        {
+          "role": "Subscriptions & billing",
+          "toolSlug": "revenuecat",
+          "why": "RevenueCat manages entitlements and renewals across plans and platforms, so tiered or seat-based pricing does not become a receipt-validation project.",
+          "alternatives": ["adapty", "qonversion"]
+        },
+        {
+          "role": "Product analytics",
+          "toolSlug": "amplitude",
+          "why": "Amplitude is built for shared, cross-functional decision-making — cohorts, retention, and feature adoption that hold up when the app is a serious part of someone's workflow.",
+          "alternatives": ["posthog", "mixpanel"]
+        },
+        {
+          "role": "Crash & error monitoring",
+          "toolSlug": "sentry",
+          "why": "Sentry's release health and alerting matter more when a crash interrupts someone's paid work; you want to know before the support email arrives.",
+          "alternatives": ["firebase"]
+        },
+        {
+          "role": "CI/CD & release",
+          "toolSlug": "codemagic",
+          "why": "Codemagic gives you hosted, reproducible builds and reliable signing, which is worth the cost once releases are frequent and a broken build blocks paying customers.",
+          "alternatives": ["bitrise", "fastlane"]
+        }
+      ],
+      "compatibilityNotes": [
+        {
+          "title": "Mirror RevenueCat plans into Supabase for feature gating",
+          "body": "Forward RevenueCat webhooks to Supabase so each account's plan and seat count live next to your data. Server-side feature gates then read from Supabase, which keeps enforcement consistent even when the client is offline or stale."
+        },
+        {
+          "title": "Key Amplitude to accounts, not just devices",
+          "body": "Use group analytics with your Supabase account id so Amplitude reports adoption and retention per organization. For B2B, the account is the unit that renews or churns, not the individual device."
+        },
+        {
+          "title": "Run fastlane lanes inside Codemagic",
+          "body": "Codemagic can execute your existing fastlane lanes, so you keep scripted metadata and signing steps while gaining hosted, reproducible build machines — no need to choose one or the other."
+        },
+        {
+          "title": "Tie Sentry releases to your Codemagic build number",
+          "body": "Stamp the Sentry release with the Codemagic build id and upload dSYMs from the build, so a regression alert points straight back to the exact CI build that shipped it."
+        }
+      ]
+    },
+    {
+      "slug": "casual-game-app",
+      "name": "Casual game & entertainment app",
+      "eyebrow": "Indie iOS stack",
+      "metaTitle": "The indie iOS stack for a casual game or entertainment app",
+      "metaDescription": "An opinionated, maintained tool stack for a casual game or entertainment iOS app — Firebase, RevenueCat, Superwall, Braze, Sentry, and Codemagic — with notes on how they fit together.",
+      "tagline": "The tune-it-live stack for a game that monetizes on IAP and lives on retention loops.",
+      "summary": [
+        "Games and entertainment apps win on retention and moment-to-moment tuning. You want to change difficulty, offers, and events without shipping a build, monetize with a mix of subscriptions and one-off purchases, and pull lapsing players back with well-timed messaging.",
+        "This stack leans on remote configuration and lifecycle messaging as first-class citizens, and treats the paywall as something you tune continuously rather than set once."
+      ],
+      "whoItsFor": [
+        "You are shipping a casual game, entertainment, or novelty app on iOS.",
+        "You monetize with a blend of IAP and subscriptions and want to test offers live.",
+        "Retention is your growth engine, so re-engagement messaging is core, not optional."
+      ],
+      "budgetBand": "$200–$500/mo across LiveOps and messaging",
+      "upgradeNote": "Braze is the deliberate splurge here; start on OneSignal if lifecycle campaigns are still simple and graduate when segmentation becomes a growth lever.",
+      "quizAnswers": {
+        "appType": "game-entertainment-app",
+        "platform": "ios",
+        "stage": "launched",
+        "helpWith": "monetization",
+        "budget": "200-500"
+      },
+      "stack": [
+        {
+          "role": "Backend & remote config",
+          "toolSlug": "firebase",
+          "why": "Firebase Remote Config and realtime data let you retune difficulty, events, and offers live, which is exactly the LiveOps loop a casual game runs on.",
+          "alternatives": ["supabase"]
+        },
+        {
+          "role": "Subscriptions & IAP",
+          "toolSlug": "revenuecat",
+          "why": "RevenueCat handles both subscriptions and one-off in-app purchases with unified revenue reporting, so a mixed monetization model stays legible.",
+          "alternatives": ["adapty", "qonversion"]
+        },
+        {
+          "role": "Paywall & offer testing",
+          "toolSlug": "superwall",
+          "why": "Superwall makes offers and paywalls remotely configurable and testable, so you can run limited-time offers and price tests without an App Store release.",
+          "alternatives": ["adapty"]
+        },
+        {
+          "role": "Lifecycle messaging",
+          "toolSlug": "braze",
+          "why": "Braze orchestrates segmented, cross-channel re-engagement campaigns — the difference between a player lapsing and coming back for the next event.",
+          "alternatives": ["onesignal"]
+        },
+        {
+          "role": "Crash & error monitoring",
+          "toolSlug": "sentry",
+          "why": "Sentry keeps crash rates visible across rapid content updates, so a LiveOps change that breaks a device class gets caught before reviews tank.",
+          "alternatives": ["firebase"]
+        },
+        {
+          "role": "CI/CD & release",
+          "toolSlug": "codemagic",
+          "why": "Codemagic's hosted builds handle frequent content releases and larger game binaries without you babysitting a local build machine.",
+          "alternatives": ["bitrise", "fastlane"]
+        }
+      ],
+      "compatibilityNotes": [
+        {
+          "title": "Let RevenueCat entitlements drive Firebase Remote Config targeting",
+          "body": "Pass the player's RevenueCat entitlement into Firebase as a user property so Remote Config can serve different events, offers, and difficulty to subscribers versus free players from one config."
+        },
+        {
+          "title": "Feed Braze with purchase and lifecycle events",
+          "body": "Forward RevenueCat webhooks and key gameplay milestones into Braze so re-engagement campaigns can target lapsed spenders differently from lapsed free players. Segmentation is only as good as the events you send it."
+        },
+        {
+          "title": "Test offers in Superwall, settle them in RevenueCat",
+          "body": "Superwall decides which offer a player sees and measures the test; RevenueCat completes the purchase and reports revenue. Keep RevenueCat as the single ledger so your A/B results and your books agree."
+        },
+        {
+          "title": "Watch Sentry release health per content update",
+          "body": "Cut a new Sentry release for each content push from Codemagic, so a spike in crashes maps to the specific LiveOps update rather than blurring across the week."
+        }
+      ]
+    },
+    {
+      "slug": "free-utility-app",
+      "name": "Free & utility app",
+      "eyebrow": "Indie iOS stack",
+      "metaTitle": "The indie iOS stack for a free or utility app",
+      "metaDescription": "An opinionated, maintained tool stack for a free or utility iOS app — TelemetryDeck, Supabase, Sentry, fastlane, and optional RevenueCat — kept lean and near-zero cost.",
+      "tagline": "The near-zero-cost stack for a lightweight utility where quality and reputation matter more than a paywall.",
+      "summary": [
+        "A free utility competes on reliability and word of mouth, not on a funnel. The goal is a stack that costs almost nothing to run, gives you enough signal to know the app works, and catches crashes before they become one-star reviews — without dragging a privacy liability or a monthly bill behind it.",
+        "Everything here has a real free tier or is open source. You add paid pieces only if and when the utility earns a tip jar or a one-time unlock."
+      ],
+      "whoItsFor": [
+        "You are shipping a focused single-purpose utility on iOS.",
+        "You want to keep monthly software cost at or near zero.",
+        "Quality, stability, and privacy matter more than monetization right now."
+      ],
+      "budgetBand": "$0/mo to run; add money only when you monetize",
+      "upgradeNote": "Add RevenueCat only if you introduce a tip jar or a one-time pro unlock; until then this stack should cost nothing.",
+      "quizAnswers": {
+        "appType": "consumer-mobile-app",
+        "platform": "ios",
+        "stage": "mvp",
+        "helpWith": "quality-release",
+        "budget": "zero"
+      },
+      "stack": [
+        {
+          "role": "Product analytics",
+          "toolSlug": "telemetrydeck",
+          "why": "TelemetryDeck gives you privacy-first usage signals with no consent banner and a free tier, which is the right weight for a utility that should feel invisible.",
+          "alternatives": ["posthog"]
+        },
+        {
+          "role": "Backend (only if needed)",
+          "toolSlug": "supabase",
+          "why": "If the utility needs sync, accounts, or a shared store, Supabase's free tier covers it. Many utilities can skip this entirely and stay fully on-device.",
+          "alternatives": ["firebase", "appwrite"]
+        },
+        {
+          "role": "Crash & error monitoring",
+          "toolSlug": "sentry",
+          "why": "Sentry's free tier is enough to catch the crashes that would otherwise show up as bad reviews, and it symbolicates traces so you can fix them fast.",
+          "alternatives": ["firebase"]
+        },
+        {
+          "role": "Release automation",
+          "toolSlug": "fastlane",
+          "why": "fastlane is open source and automates screenshots, metadata, and signing, keeping the monthly cost of shipping at zero.",
+          "alternatives": ["codemagic", "bitrise"]
+        },
+        {
+          "role": "Monetization (optional)",
+          "toolSlug": "revenuecat",
+          "why": "If you add a tip jar or a one-time pro unlock later, RevenueCat handles the purchase without a rewrite. Its free tier lasts well past what a utility typically earns.",
+          "alternatives": ["qonversion"]
+        }
+      ],
+      "compatibilityNotes": [
+        {
+          "title": "Keep TelemetryDeck signals anonymous by design",
+          "body": "TelemetryDeck hashes identifiers for you, so you can measure feature usage and retention without a consent prompt — the right trade for a utility where any friction costs you the install."
+        },
+        {
+          "title": "Ship crash-free before you add a backend",
+          "body": "For a fully on-device utility, Sentry plus fastlane is the whole stack. Only add Supabase when a feature genuinely needs the network, so you are not paying complexity for a backend you do not use."
+        },
+        {
+          "title": "Add RevenueCat without disturbing the free experience",
+          "body": "Drop RevenueCat in behind a single 'unlock pro' or 'leave a tip' entry point. Because it manages entitlements independently, the free path keeps working untouched and you avoid a monetization rewrite."
+        }
+      ]
+    },
+    {
+      "slug": "prelaunch-waitlist-app",
+      "name": "Pre-launch & waitlist app",
+      "eyebrow": "Indie iOS stack",
+      "metaTitle": "The indie iOS stack for a pre-launch or waitlist app",
+      "metaDescription": "An opinionated, maintained tool stack for the pre-launch phase of an iOS app — Framer, beehiiv, Appfigures, Screenshots Pro, and TelemetryDeck — to build demand before you ship.",
+      "tagline": "The build-demand-first stack for the weeks before your iOS app hits the App Store.",
+      "summary": [
+        "Before an app exists, the work is demand and positioning: a landing page that converts, an audience you can email on launch day, keyword research that decides what you build metadata around, and store assets that earn the tap. This stack is about arriving on launch day with an audience instead of hoping for one.",
+        "It is intentionally light and cheap, because the pre-launch phase should not carry a SaaS bill. You graduate to a runtime stack — subscriptions, backend, analytics — the moment the app ships."
+      ],
+      "whoItsFor": [
+        "You have an iOS app in design or development and no users yet.",
+        "You want a waitlist and launch-day audience before you submit to the App Store.",
+        "You are doing ASO research early so it shapes the product, not just the listing."
+      ],
+      "budgetBand": "$0–$50/mo of mostly free tiers",
+      "upgradeNote": "Once you ship, move to a runtime stack — the subscription consumer or content-and-community stacks are the usual next step.",
+      "quizAnswers": {
+        "appType": "consumer-mobile-app",
+        "platform": "ios",
+        "stage": "idea",
+        "helpWith": "aso-launch",
+        "budget": "under-50"
+      },
+      "stack": [
+        {
+          "role": "Landing page",
+          "toolSlug": "framer",
+          "why": "Framer gets a polished, fast landing page and waitlist form live in an afternoon, with no CMS to maintain while the product is still moving.",
+          "alternatives": ["webflow"]
+        },
+        {
+          "role": "Waitlist & email",
+          "toolSlug": "beehiiv",
+          "why": "beehiiv captures signups and keeps your launch audience warm with updates, on a free tier that is plenty before you have a product to sell.",
+          "alternatives": ["kit"]
+        },
+        {
+          "role": "ASO research",
+          "toolSlug": "appfigures",
+          "why": "Appfigures shows the keywords and competitors in your category early, so you can shape the product and its metadata around real search demand.",
+          "alternatives": ["apptweak", "appfollow"]
+        },
+        {
+          "role": "Store screenshots",
+          "toolSlug": "screenshots-pro",
+          "why": "Screenshots Pro turns your designs into App Store-ready screenshot sets, which are the single biggest lever on store conversion before anyone reads a word.",
+          "alternatives": ["appscreens"]
+        },
+        {
+          "role": "Early analytics",
+          "toolSlug": "telemetrydeck",
+          "why": "Drop TelemetryDeck into your TestFlight build so you have baseline usage signals from day one of launch, with no consent banner to slow onboarding.",
+          "alternatives": ["posthog"]
+        }
+      ],
+      "compatibilityNotes": [
+        {
+          "title": "Feed Appfigures keyword research into your Framer copy",
+          "body": "Use the terms Appfigures surfaces as the headline and subtitle language on your Framer page, so the same keywords you target in App Store metadata also earn you organic search and match visitor intent."
+        },
+        {
+          "title": "Connect the Framer form to beehiiv",
+          "body": "Wire your Framer waitlist form straight into a beehiiv audience so every signup lands in the list you will email on launch day — no manual CSV shuffling between tools."
+        },
+        {
+          "title": "Design Screenshots Pro sets around your researched keywords",
+          "body": "Let the value props you validated in Appfigures drive the captions in your Screenshots Pro sets, so your store listing tells one coherent story from keyword to screenshot to landing page."
+        },
+        {
+          "title": "Instrument TestFlight before public launch",
+          "body": "Add TelemetryDeck to the TestFlight build so you enter launch day already knowing your baseline activation, rather than flying blind through the most important week."
+        }
+      ]
+    }
+  ]
+}

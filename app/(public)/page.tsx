@@ -125,6 +125,7 @@ export default async function Home() {
               ["Categories", "/categories"],
               ["Comparisons", "/comparisons"],
               ["Guides", "/guides"],
+              ["Indie iOS stacks", "/stacks"],
               ["Stack Finder", "/stack-finder"],
             ].map(([label, href]) => (
               <Link

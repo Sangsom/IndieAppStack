@@ -16,8 +16,8 @@ export const primaryNavigation = [
     href: "/guides",
   },
   {
-    label: "Stack Finder",
-    href: "/stack-finder",
+    label: "Stacks",
+    href: "/stacks",
   },
 ] as const;
 

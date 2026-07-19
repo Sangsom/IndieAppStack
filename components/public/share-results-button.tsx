@@ -3,10 +3,16 @@
 import { useState } from "react";
 
 type ShareResultsButtonProps = {
+  copiedLabel?: string;
+  label?: string;
   path: string;
 };
 
-export function ShareResultsButton({ path }: ShareResultsButtonProps) {
+export function ShareResultsButton({
+  copiedLabel = "Copied",
+  label = "Copy results URL",
+  path,
+}: ShareResultsButtonProps) {
   const [copied, setCopied] = useState(false);
 
   async function copyUrl() {
@@ -25,7 +31,7 @@ export function ShareResultsButton({ path }: ShareResultsButtonProps) {
       onClick={copyUrl}
       type="button"
     >
-      {copied ? "Copied" : "Copy results URL"}
+      {copied ? copiedLabel : label}
     </button>
   );
 }

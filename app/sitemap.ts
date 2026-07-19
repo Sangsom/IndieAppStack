@@ -2,6 +2,10 @@ import type { MetadataRoute } from "next";
 
 import { absoluteUrl } from "@/lib/seo";
 import { getSitemapContentRoutes } from "@/lib/sitemap-data";
+import {
+  getStackArchetypeSlugs,
+  getStacksLastReviewedIso,
+} from "@/lib/stacks/archetypes";
 
 type SitemapEntryInput = {
   lastModified: Date;
@@ -26,6 +30,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { categories, comparisons, guides, latestModified, tools } =
     await getSitemapContentRoutes();
 
+  const stacksLastModified = new Date(getStacksLastReviewedIso());
+
   return [
     entry({ lastModified: latestModified, path: "/", priority: 1 }),
     entry({ lastModified: latestModified, path: "/tools", priority: 0.9 }),
@@ -45,6 +51,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       path: "/stack-finder",
       priority: 0.7,
     }),
+    entry({
+      lastModified: stacksLastModified,
+      path: "/stacks",
+      priority: 0.8,
+    }),
+    ...getStackArchetypeSlugs().map((slug) =>
+      entry({
+        lastModified: stacksLastModified,
+        path: `/stacks/${slug}`,
+        priority: 0.75,
+      }),
+    ),
     entry({ lastModified: latestModified, path: "/about", priority: 0.4 }),
     entry({
       lastModified: latestModified,
