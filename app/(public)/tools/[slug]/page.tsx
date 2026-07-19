@@ -3,13 +3,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { AffiliateCta } from "@/components/public/affiliate-cta";
+import { ArticleBody } from "@/components/public/article-body";
+import { ArticleToc } from "@/components/public/article-toc";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { FitList } from "@/components/public/fit-list";
+import { JsonLd } from "@/components/public/json-ld";
 import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ProsCons } from "@/components/public/pros-cons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
+import { getTocItems, parseArticleMarkdown } from "@/lib/article-markdown";
 import { affiliateDisclosureShort } from "@/lib/compliance";
+import { extractFaqItems, faqPageJsonLd } from "@/lib/faq-schema";
 import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import {
@@ -43,19 +48,6 @@ function Section({
       <h2 className="font-serif text-3xl font-semibold text-ink">{title}</h2>
       <div className="mt-4">{children}</div>
     </section>
-  );
-}
-
-function BulletList({ items }: { items: string[] }) {
-  return (
-    <ul className="grid gap-2 text-body-md text-muted">
-      {items.map((item) => (
-        <li className="flex gap-2" key={item}>
-          <span aria-hidden="true">-</span>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -165,6 +157,9 @@ export async function generateMetadata({
     description,
     // null → use the colocated per-tool opengraph-image route
     imagePath: null,
+    // Weak/off-audience tools stay published and internally linked, but are kept
+    // out of the search index (links still followed).
+    noindex: tool.noindex,
     path: `/tools/${tool.slug}`,
     title: `${tool.name} review, pricing, alternatives, and fit`,
     type: "article",
@@ -179,9 +174,17 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
     notFound();
   }
 
+  const blocks = tool.bodyMarkdown ? parseArticleMarkdown(tool.bodyMarkdown) : [];
+  const tocItems = getTocItems(blocks);
+  const faqItems = extractFaqItems(blocks);
+  const hasProsCons = tool.pros.length > 0 || tool.cons.length > 0;
+
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
       <StructuredData tool={tool} />
+      {faqItems.length >= 2 ? (
+        <JsonLd data={faqPageJsonLd(faqItems)} />
+      ) : null}
 
       <Link
         className="inline-flex text-sm font-semibold text-pine transition-colors hover:text-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
@@ -206,12 +209,6 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
             </p>
           </div>
 
-          <Section title="Summary">
-            <p className="text-body-md leading-7 text-muted">
-              {tool.description}
-            </p>
-          </Section>
-
           <div className="grid gap-4 md:grid-cols-2">
             <FitList items={tool.bestFor} title="Best for" tone="best" />
             <FitList
@@ -225,31 +222,33 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
             />
           </div>
 
-          <Section title="Core features">
-            <BulletList items={tool.coreFeatures} />
-          </Section>
+          {hasProsCons ? (
+            <Section title="Pros and cons">
+              <ProsCons cons={tool.cons} pros={tool.pros} />
+            </Section>
+          ) : null}
 
-          <Section title="Pricing summary">
-            <p className="text-body-md leading-7 text-muted">{tool.pricing}</p>
-            <p className="mt-3 text-sm text-muted">
-              Last checked {tool.lastChecked}.
-            </p>
-          </Section>
-
-          <Section title="Pros and cons">
-            <ProsCons
-              cons={
-                tool.notGoodFor.length
-                  ? tool.notGoodFor
-                  : ["May not fit every app stage or team workflow"]
-              }
-              pros={
-                tool.bestFor.length
-                  ? tool.bestFor
-                  : ["Useful for solo mobile developers"]
-              }
-            />
-          </Section>
+          {blocks.length ? (
+            <section className="rounded-card border border-rule bg-surface p-5 shadow-field">
+              <ArticleBody blocks={blocks} />
+            </section>
+          ) : (
+            <>
+              <Section title="Summary">
+                <p className="text-body-md leading-7 text-muted">
+                  {tool.description}
+                </p>
+              </Section>
+              <Section title="Pricing summary">
+                <p className="text-body-md leading-7 text-muted">
+                  {tool.pricing}
+                </p>
+                <p className="mt-3 text-sm text-muted">
+                  Last checked {tool.lastChecked}.
+                </p>
+              </Section>
+            </>
+          )}
 
           <Section title="Alternatives">
             {tool.alternatives.length ? (
@@ -319,6 +318,16 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
                   ))}
                 </dd>
               </div>
+              <div>
+                <dt className="font-semibold text-ink">App stages</dt>
+                <dd className="mt-2 flex flex-wrap gap-2">
+                  {tool.appStages.map((stage) => (
+                    <Badge key={stage} variant="pricing">
+                      {stage}
+                    </Badge>
+                  ))}
+                </dd>
+              </div>
             </dl>
             <div className="mt-5 grid gap-3">
               {tool.affiliateLink ? (
@@ -344,6 +353,9 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
               />
             </div>
           </section>
+          {tocItems.length ? (
+            <ArticleToc items={tocItems} title="On this page" />
+          ) : null}
           <NewsletterSignup
             ctaLabel="Subscribe"
             description={`Get practical stack notes and pricing checks like this ${tool.name} profile.`}
@@ -354,28 +366,6 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
             This profile was last updated {tool.updatedAt}. Pricing was last
             checked {tool.lastChecked}.
           </Callout>
-          <section className="rounded-card border border-rule bg-surface p-5 shadow-field">
-            <h2 className="font-serif text-2xl font-semibold text-ink">
-              Supported platforms
-            </h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {tool.platforms.map((platform) => (
-                <Badge key={platform} variant="platform">
-                  {platform}
-                </Badge>
-              ))}
-            </div>
-            <h3 className="mt-6 font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-muted">
-              App stages
-            </h3>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {tool.appStages.map((stage) => (
-                <Badge key={stage} variant="pricing">
-                  {stage}
-                </Badge>
-              ))}
-            </div>
-          </section>
         </aside>
       </div>
     </div>

@@ -11,6 +11,7 @@ type SitemapContentRoute = {
 };
 
 type ToolSitemapRow = {
+  noindex: boolean;
   pricing_last_checked: string | null;
   published_at: string | null;
   slug: string;
@@ -68,8 +69,9 @@ export async function getSitemapContentRoutes() {
   const [toolsResult, categoriesResult, articlesResult] = await Promise.all([
     supabase
       .from("tools")
-      .select("slug,updated_at,published_at,pricing_last_checked")
+      .select("slug,updated_at,published_at,pricing_last_checked,noindex")
       .eq("status", "published")
+      .eq("noindex", false)
       .order("slug", { ascending: true }),
     supabase
       .from("categories")

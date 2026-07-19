@@ -66,6 +66,15 @@ const publishedAt = "2026-07-10T02:08:13.410Z";
 const warpPublishedAt = "2026-07-18T09:00:00.000Z";
 const comparisonsPublishedAt = "2026-07-19T09:00:00.000Z";
 
+// Rebuilt long-form tool content (body_markdown, pros, cons, pricing_summary,
+// noindex) lives in a JSON data file so multi-paragraph Markdown does not have
+// to be hand-escaped inside this module. Merged over each tool below by slug.
+// The public content-safety gate scans this file (see assert-public-content-safe.mjs).
+const toolContentPath = path.join(cwd(), "scripts/tool-content.json");
+const toolContentBySlug = fs.existsSync(toolContentPath)
+  ? JSON.parse(fs.readFileSync(toolContentPath, "utf8"))
+  : {};
+
 const seedTools = [
   {
     name: "RevenueCat",
@@ -75,18 +84,62 @@ const seedTools = [
     description:
       "RevenueCat helps solo developers ship reliable subscriptions, receipt validation, entitlements, paywalls, and revenue analytics without building purchase infrastructure from scratch.",
     website_url: "https://www.revenuecat.com/",
-    pricing_last_checked: "2026-07-01",
+    pricing_last_checked: "2026-07-19",
     pricing_summary:
-      "Starts free up to a tracked-revenue threshold, then takes a percentage of tracked revenue; enterprise pricing is custom.",
+      "Free up to $2,500 monthly tracked revenue, then 1% of tracked revenue; Enterprise is custom.",
     pricing_model: "usage_based",
     best_for: ["Subscriptions", "In-app purchases", "Entitlement sync"],
     not_good_for: ["Apps that only need one-time web checkout"],
+    pros: [
+      "Removes the most error-prone parts of subscriptions: receipt validation, entitlement checks, and cross-platform purchase state.",
+      "Free until $2,500 in monthly tracked revenue, so a small app pays nothing until it earns (checked July 19, 2026).",
+      "Open-source SDKs cover iOS, Android, React Native, and Flutter, which helps if you ship on more than one platform.",
+      "The remotely configurable paywall editor lets you change paywalls and run A/B tests without an app release.",
+    ],
+    cons: [
+      "Pricing is a percentage of tracked revenue, so at higher revenue a flat fee or a self-built approach can become cheaper.",
+      "Entitlement logic runs through the SDK, which adds a dependency you would need to unwind to migrate away.",
+      "You still create products, prices, and subscription groups in App Store Connect yourself.",
+      "It is more infrastructure than an app with a single one-time unlock needs.",
+    ],
+    body_markdown: `RevenueCat is subscription and in-app purchase infrastructure for mobile apps. It sits between your app and the App Store and Google Play billing systems, handling receipt validation, entitlements, and cross-platform purchase state so you do not maintain that code yourself. For a solo iOS developer, the appeal is direct: you ship a paywall and reliable subscriptions in days instead of weeks, and you get revenue analytics without wiring up your own reporting.
+
+It fits best once the app actually charges money. If you are pre-revenue or only need a single one-time unlock, the SDK and its reporting are more than you need on day one. Most indie apps adopt it at the point they add their first subscription and keep it as they grow.
+
+## Pricing
+:::comparison RevenueCat plans (checked July 19, 2026)
+| Plan | Price | What is included |
+| --- | --- | --- |
+| Pro | Free up to $2,500 monthly tracked revenue, then 1% of tracked revenue | All SDKs, entitlements, the paywall editor, A/B testing, the REST API, and 40+ integrations |
+| Growth tools | 1% of monthly tracked revenue on tool conversions | Paywalls, web-to-app funnels, and A/B/n testing while you keep your own purchase backend |
+| Enterprise | Custom | Volume discounts, dedicated support, and custom SLAs for high-volume apps |
+:::
+
+The percentage applies to the revenue RevenueCat tracks, so your cost scales with what the app makes rather than a flat monthly fee. Pricing last checked July 19, 2026; confirm the current threshold and rate on the official pricing page before you rely on them.
+
+## Setup and integration
+RevenueCat provides open-source SDKs for iOS in Swift, plus Android, React Native, Flutter, and a REST API. On iOS you add the SDK through Swift Package Manager, create your products in App Store Connect, and map them to entitlements in the RevenueCat dashboard. The SDK then reports purchase and subscription state you can check with a single call.
+
+Plan for the parts RevenueCat does not remove. You still create products and subscription groups in App Store Connect, handle App Store review of the purchase flow, and design the paywall itself. The remotely configurable paywall editor lets you change paywall copy and layout without an app release, which matters once you start testing conversion. Sandbox testing on a real device is the slow part of any subscription integration, and that is true here too.
+
+## Frequently asked questions
+### Is RevenueCat free for a small app?
+Yes, within a limit. The Pro plan is free up to $2,500 in monthly tracked revenue, then costs 1% of tracked revenue (checked July 19, 2026). A pre-revenue or low-revenue app can run on it at no cost.
+
+### Do I still need App Store Connect if I use RevenueCat?
+Yes. You create your subscription products, prices, and subscription groups in App Store Connect and Google Play. RevenueCat maps those products to entitlements and manages purchase state; it does not replace the stores' own product setup or review.
+
+### How is RevenueCat different from Adapty?
+Both are subscription infrastructure with paywalls and analytics. [Adapty](/tools/adapty) leans harder into paywall A/B testing and no-code paywalls, while RevenueCat is broad subscription infrastructure with entitlements, analytics, and its own paywall editor. See the [RevenueCat vs Adapty comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions) for the head-to-head.
+
+### Can I switch away from RevenueCat later?
+You can, but plan for it. Because entitlement checks and purchase state run through the SDK, migrating means reworking that logic and re-validating receipts yourself or through another provider. It is a manageable change, not a trivial one, so weigh the lock-in against the time it saves early.`,
     platforms: ["iOS", "Android", "React Native", "Flutter", "Web"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["Adapty", "Superwall", "Qonversion"],
     categorySlugs: ["monetization", "paywalls"],
     internal_notes:
-      "Pricing/features checked 2026-07-01 from https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/",
+      "Pricing/features checked 2026-07-19 from https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/",
   },
   {
     name: "Adapty",
@@ -161,17 +214,63 @@ const seedTools = [
     description:
       "Supabase is a pragmatic backend default for indie apps that need relational data, auth, storage, APIs, and serverless functions quickly.",
     website_url: "https://supabase.com/",
+    pricing_last_checked: "2026-07-19",
     pricing_summary:
-      "Free tier, then project-based paid plans and usage add-ons.",
+      "Free tier for small projects; Pro is $25 per month with usage-based overages; Team is $599 per month; Enterprise is custom.",
     pricing_model: "freemium",
     best_for: ["Auth", "Postgres", "Rapid backend setup"],
     not_good_for: ["Teams that require fully managed Oracle or SQL Server"],
+    pros: [
+      "Built on standard Postgres, so your data model is relational and portable rather than locked to a proprietary store.",
+      "Row-level security lets you enforce access rules in the database, close to the data.",
+      "A usable free tier and a $25 Pro plan make it affordable to start (checked July 19, 2026).",
+      "Open source, with a Swift client and auto-generated APIs that mobile apps can call directly.",
+    ],
+    cons: [
+      "Free projects pause after about a week of inactivity, which does not suit an always-on low-traffic app.",
+      "Getting the most from it means learning SQL and writing row-level security policies carefully.",
+      "Usage above the plan limits is billed on top of the base price, so cost grows with traffic.",
+      "Realtime sync and offline support are less turnkey than Firebase's.",
+    ],
+    body_markdown: `Supabase is an open-source backend platform built on Postgres. It gives a solo developer a hosted Postgres database, authentication, file storage, auto-generated APIs, and edge functions behind one dashboard, so you can stand up a real backend without running servers. For mobile, the draw is a proper relational database with row-level security you control, plus client libraries that talk to it directly.
+
+It fits builders who want SQL and a relational data model, or who expect to query and join data in ways a document store makes awkward. If you are deep in the Google ecosystem or want the most hands-off realtime sync, [Firebase](/tools/firebase) is the more natural default; the choice is mostly Postgres versus a document database rather than one tool being better than the other.
+
+## Pricing
+:::comparison Supabase plans (checked July 19, 2026)
+| Plan | Price | What is included |
+| --- | --- | --- |
+| Free | $0 | 500 MB database, 50,000 monthly active users, 5 GB egress, 1 GB file storage, and up to 2 projects; projects pause after a week of inactivity |
+| Pro | $25 per month | 8 GB database, 100,000 monthly active users, 250 GB egress, 100 GB storage, 7-day backups, and $10 of compute credit; projects do not pause |
+| Team | $599 per month | Pro limits plus SOC 2 and ISO 27001, 14-day backups, 28-day log retention, and priority support |
+| Enterprise | Custom | Custom resources, 24/7 support, uptime SLAs, and bring-your-own-cloud deployment |
+:::
+
+Pro and Team bill usage above the included limits, so heavy traffic or storage adds metered cost on top of the base price. The Free plan pausing projects after a week of inactivity is the detail that surprises new projects most often. Pricing last checked July 19, 2026; confirm current limits on the official pricing page.
+
+## Setup and integration
+Supabase gives you client libraries for Swift and JavaScript, plus auto-generated REST and realtime APIs over your Postgres schema. On iOS you add the supabase-swift package through Swift Package Manager, connect with your project URL and anon key, and query tables or call auth directly from the app. Because it is Postgres, you design tables and relationships in SQL and enforce access with row-level security policies.
+
+The row-level security model is the part to plan for: your data is only as safe as the policies you write, so budget time to get them right before launch. Auth covers email, magic links, and common OAuth providers; storage handles user uploads; and edge functions cover server-side logic when a direct query is not enough. The learning curve is mostly SQL and policy design rather than infrastructure.
+
+## Frequently asked questions
+### Is Supabase free for a small mobile app?
+Yes. The Free plan includes a 500 MB Postgres database, 50,000 monthly active users, and 1 GB of file storage (checked July 19, 2026), which covers many early apps. The main caveat is that free projects pause after about a week of inactivity, so a low-traffic project may need a paid plan to stay always-on.
+
+### Supabase or Firebase for an iOS app?
+Choose [Supabase](/tools/supabase) if you want a relational Postgres database, SQL, and row-level security you control. Choose [Firebase](/tools/firebase) if you want a document database, the tightest Google ecosystem integration, and the most hands-off realtime sync. The decision is mostly relational versus document data.
+
+### Can I use Supabase without writing SQL?
+Partly. The dashboard, table editor, and client libraries let you do a lot without hand-writing queries, but Supabase rewards knowing SQL, especially for row-level security policies and more complex reads. Expect to learn some Postgres to get the most from it.
+
+### Does Supabase lock me in?
+Less than most managed backends, because it is standard Postgres underneath. You can export your database and move it elsewhere, though auth, storage, and edge functions are Supabase-specific and would need replacing. The relational data itself is portable.`,
     platforms: ["iOS", "Android", "Web", "React Native", "Flutter"],
     app_stages: ["Prototype", "MVP", "Growth"],
     alternatives: ["Firebase", "Appwrite", "Xano"],
     categorySlugs: ["backend"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://supabase.com/pricing",
+      "Pricing/features checked 2026-07-19 from https://supabase.com/pricing",
   },
   {
     name: "Firebase",
@@ -247,19 +346,68 @@ const seedTools = [
     description:
       "PostHog is an open-source product analytics platform with event analytics, web analytics, session replay, feature flags, experimentation, and error tracking.",
     website_url: "https://posthog.com/",
+    pricing_last_checked: "2026-07-19",
     pricing_summary:
-      "Generous free tier, then usage-based pricing by product once free limits are exceeded.",
+      "Usage-based with a large monthly free tier and no base fee; you pay per event, recording, or flag request above the free allowances.",
     pricing_model: "usage_based",
     best_for: ["Product analytics", "Feature flags", "Session replay"],
     not_good_for: [
       "Teams that only need simple privacy-first aggregate metrics",
     ],
+    pros: [
+      "Combines analytics, session replay, feature flags, experiments, and surveys in one account, which reduces the number of tools to run.",
+      "Usage-based pricing with no base fee and large free allowances, so a small app can use several products for free (checked July 19, 2026).",
+      "Open source, with EU hosting and data-collection controls that help privacy-sensitive apps.",
+      "One SDK and dashboard, so adopting a second product is incremental rather than a new integration.",
+    ],
+    cons: [
+      "The breadth is wasted if you only need simple event counts; a focused tool is simpler.",
+      "Getting value depends on maintaining a clean, consistent event taxonomy.",
+      "Usage-based pricing can become hard to predict as a high-traffic app grows across several products.",
+      "Session replay adds data-collection and privacy considerations you must configure.",
+    ],
+    body_markdown: `PostHog is an open-source product analytics platform that bundles event analytics, session replay, feature flags, experiments, and surveys into one tool. For a solo mobile developer, the appeal is getting most of a product-analytics stack from a single account, with a large free tier, instead of stitching together separate services.
+
+It fits builders who want to understand behavior in the app, such as funnels, retention, and where users drop off, and who like the idea of running feature flags and A/B tests from the same place. If all you need is lightweight, privacy-first counts, a smaller tool such as [TelemetryDeck](/tools/telemetrydeck) is a simpler fit; PostHog is a larger platform that rewards actually using its breadth.
+
+## Pricing
+PostHog uses usage-based pricing with no platform or base fee: each product has a monthly free allowance, and you pay per unit only above it, with the per-unit rate dropping at higher volume.
+
+:::comparison PostHog free monthly allowances (checked July 19, 2026)
+| Product | Free each month | Above the free tier |
+| --- | --- | --- |
+| Product analytics | 1,000,000 events | Usage-based per event, cheaper at volume |
+| Session replay | 5,000 web and 2,500 mobile recordings | Usage-based per recording |
+| Feature flags | 1,000,000 requests | Usage-based per request |
+| Error tracking | 100,000 exceptions | Usage-based per exception |
+| Surveys | 1,500 responses | Usage-based per response |
+:::
+
+Because there is no base fee, a small app can use several products entirely inside the free tiers. A paid account adds more projects, longer data retention, and email support. Pricing last checked July 19, 2026; confirm current allowances and rates on the official pricing page.
+
+## Setup and integration
+PostHog provides SDKs for iOS in Swift, plus Android, React Native, Flutter, and the web, along with a REST API. On iOS you add the posthog-ios package through Swift Package Manager, initialize it with your project API key, and start sending events; autocapture and screen tracking reduce how much you instrument by hand.
+
+The work is mostly deciding what to track. A clean, consistent event taxonomy is what makes the funnels, retention, and replays useful later, so it is worth planning event names before you scatter them through the app. Session replay and feature flags each need their own setup steps, but they share the same SDK and dashboard, so adopting a second product is incremental rather than a fresh integration.
+
+## Frequently asked questions
+### Is PostHog really free?
+For many small apps, yes. PostHog has no base fee and gives each product a monthly free allowance, such as 1,000,000 analytics events and 5,000 web session replays (checked July 19, 2026). You pay only for usage above those allowances, so a low-traffic app can stay free while using several products.
+
+### Is PostHog a good fit for a privacy-first app?
+It can be. PostHog is open source and offers EU hosting and options to reduce data collection, which helps for privacy-sensitive apps. If you want the simplest privacy-first analytics with minimal setup, [TelemetryDeck](/tools/telemetrydeck) is narrower and easier; PostHog trades some simplicity for far more capability.
+
+### How is PostHog different from Mixpanel or Amplitude?
+[Mixpanel](/tools/mixpanel) and [Amplitude](/tools/amplitude) focus on event analytics. PostHog covers analytics too but adds session replay, feature flags, experiments, and surveys in one platform, and it is open source. If you only want funnels and retention, the focused tools are simpler; if you want the wider toolkit from one account, PostHog consolidates it.
+
+### Do I need a separate feature-flag tool with PostHog?
+Usually not. Feature flags and experiments are built into PostHog and share its SDK, with a large free request allowance (checked July 19, 2026). For most indie apps that removes the need for a separate flagging service.`,
     platforms: ["iOS", "Android", "Web", "React Native", "Backend"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["Amplitude", "Mixpanel", "TelemetryDeck"],
     categorySlugs: ["analytics"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://posthog.com/pricing",
+      "Pricing/features checked 2026-07-19 from https://posthog.com/pricing",
   },
   {
     name: "Amplitude",
@@ -641,6 +789,54 @@ const seedTools = [
       "Developers who prefer a minimal, resource-light terminal",
       "Anyone wanting a mobile-specific build or release tool (Warp is a general desktop terminal, not mobile-only)",
     ],
+    pros: [
+      "Adds AI recall, command blocks, and saved workflows on top of your existing shell, so routine command-line work has less friction.",
+      "Works across macOS, Windows, and Linux with common shells, and needs no changes to your app or SDKs.",
+      "A free plan with a monthly AI allowance and bring-your-own inference can keep a solo developer at no cost (checked July 18, 2026).",
+      "Command blocks make reading and rerunning failed builds faster than scrolling raw output.",
+    ],
+    cons: [
+      "It is a general terminal, not a mobile tool; it does not build, sign, or ship your app.",
+      "The AI runs on metered credits, so heavy use can push you onto a paid plan.",
+      "If your current terminal already stays out of your way, it solves a problem you may not have.",
+      "It is a full-featured app rather than a minimal, lightweight terminal.",
+    ],
+    body_markdown: `Warp is a terminal for macOS, Windows, and Linux that adds an AI assistant, command blocks, autocompletion, and saved workflows on top of your existing shell. It is part of your workstation rather than something you embed in your app, so for a mobile developer it changes how you run git, fastlane, and build scripts rather than what you can ship.
+
+It earns a place if command-line work is a daily part of your build-and-release loop and you want AI recall plus cleaner, more readable output. If your current terminal already stays out of your way, Warp is a nice-to-have rather than a fix. For the longer decision, see the [Warp guide for indie mobile developers](/guides/warp-terminal-for-indie-mobile-developers).
+
+## Pricing
+Warp is freemium, and its AI features run on a monthly credit allowance rather than unlimited use, so the practical question is whether the free credits cover a normal week of your work.
+
+:::comparison Warp plans (checked July 18, 2026)
+| Plan | Price | Notes |
+| --- | --- | --- |
+| Free | $0 | Limited AI and cloud-agent usage; bring your own AI inference |
+| Build | $20 per user per month | About 1,500 credits of included agent usage |
+| Max | $200 per user per month | About 18,000 credits |
+| Business | $50 per user per month | 1,500 credits per seat with SAML-based single sign-on |
+| Enterprise | Custom | Admin controls; contact sales |
+:::
+
+The Free plan lets you point Warp at your own AI inference instead of spending Warp credits, which can keep a solo developer on the free tier. Pricing last checked July 18, 2026; Warp adjusts its credit model, so confirm current numbers on the official pricing page.
+
+## Setup and integration
+Warp installs as a desktop app and works with bash, zsh, fish, PowerShell, and WSL2, so you keep your existing shell, aliases, and commands. There is no SDK and nothing to add to your app; setup is installing it and using it as your daily terminal.
+
+The adjustment is habit rather than configuration. The gains come from leaning on the AI for commands you usually look up, using blocks to scan a failed build instead of endless scrollback, and saving two or three workflows you run often, such as a fastlane lane or a release checklist. Because the AI is credit-metered, watch your usage during the first week to judge whether the free allowance fits your workflow.
+
+## Frequently asked questions
+### Is Warp free for indie developers?
+Yes. Warp has a free plan with a limited monthly AI allowance and support for bringing your own AI inference, which is enough for many solo developers. Paid plans start at $20 per user per month (checked July 18, 2026) and add more credits and team features.
+
+### Does Warp work for iOS development?
+Warp is a general desktop terminal for macOS, Windows, and Linux; it is not iOS specific. It helps with the command-line work around mobile development, such as git, [fastlane](/tools/fastlane), and build and release scripts, but it does not build or ship the app itself.
+
+### Do I need Warp if I already use fastlane?
+No. They solve different problems. [fastlane](/tools/fastlane) automates the release steps, and Warp is the terminal you run those steps in. Warp can make fastlane commands easier to recall and rerun, but fastlane does the actual work.
+
+### How does Warp's AI pricing work?
+Warp's AI runs on a monthly credit allowance rather than unlimited use. The Free plan includes limited credits and lets you bring your own AI inference, while paid plans add more credits (checked July 18, 2026). If you expect heavy AI use, plan around the credit model.`,
     platforms: ["macOS", "Windows", "Linux"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["iTerm2", "Ghostty", "Alacritty"],
@@ -801,9 +997,22 @@ try {
         const row = { ...tool };
         delete row.categorySlugs;
 
+        // Rebuilt content from tool-content.json overrides the inline defaults.
+        const content = toolContentBySlug[tool.slug] ?? {};
+
         return {
           ...row,
-          pricing_last_checked: row.pricing_last_checked ?? pricingLastChecked,
+          ...content,
+          // Bulk upsert unions keys across all rows, filling missing keys with
+          // null. pros/cons/noindex are NOT NULL, so default them here for tools
+          // that do not yet carry rewritten content.
+          cons: content.cons ?? row.cons ?? [],
+          noindex: content.noindex ?? row.noindex ?? false,
+          pricing_last_checked:
+            content.pricing_last_checked ??
+            row.pricing_last_checked ??
+            pricingLastChecked,
+          pros: content.pros ?? row.pros ?? [],
           published_at: row.published_at ?? publishedAt,
           status: "published",
         };

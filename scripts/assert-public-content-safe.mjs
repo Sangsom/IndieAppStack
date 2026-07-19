@@ -261,6 +261,38 @@ function extractSeedPublicContent() {
   return entries;
 }
 
+// Rebuilt tool bodies, pros, cons, and pricing summaries live in a JSON data
+// file (scripts/tool-content.json) that is merged into the seed. Scan every
+// string it contains, including array items, which the seed string scanner
+// above cannot reach.
+function extractToolContentJson() {
+  const contentPath = path.join(repoRoot, "scripts/tool-content.json");
+  if (!fs.existsSync(contentPath)) {
+    return [];
+  }
+
+  const data = JSON.parse(readTextFile(contentPath));
+  const entries = [];
+
+  for (const [slug, fields] of Object.entries(data)) {
+    for (const [field, value] of Object.entries(fields ?? {})) {
+      const values = Array.isArray(value) ? value : [value];
+      values.forEach((item, index) => {
+        if (typeof item !== "string") {
+          return;
+        }
+        const suffix = Array.isArray(value) ? `[${index}]` : "";
+        entries.push({
+          label: `scripts/tool-content.json ${slug}.${field}${suffix}`,
+          text: item,
+        });
+      });
+    }
+  }
+
+  return entries;
+}
+
 async function auditLiveSite(siteUrl) {
   const normalizedUrl = siteUrl.replace(/\/$/, "");
   const sitemapResponse = await fetch(`${normalizedUrl}/sitemap.xml`, {
@@ -333,6 +365,11 @@ async function main() {
     findings.push(...findRuleMatches(entry, forbiddenTextRules));
   }
 
+  const toolContentEntries = extractToolContentJson();
+  for (const entry of toolContentEntries) {
+    findings.push(...findRuleMatches(entry, forbiddenTextRules));
+  }
+
   const siteUrlArg = process.argv.find((arg) => arg.startsWith("--url="));
   const siteUrl =
     siteUrlArg?.slice("--url=".length) ?? process.env.PUBLIC_CONTENT_SAFETY_URL;
@@ -351,7 +388,7 @@ async function main() {
 
   const liveSummary = siteUrl ? ` and ${liveChecked} live URLs` : "";
   console.log(
-    `Public content safety check passed for ${publicFiles.length} source files, ${seedPublicFields.length} seed field groups${liveSummary}.`,
+    `Public content safety check passed for ${publicFiles.length} source files, ${seedPublicFields.length} seed field groups, ${toolContentEntries.length} tool-content strings${liveSummary}.`,
   );
 }
 

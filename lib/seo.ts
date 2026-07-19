@@ -7,7 +7,11 @@ type SeoMetadataInput = {
   // A path to an image, or `null` to defer to a colocated opengraph-image
   // file convention (e.g. a per-article generated card).
   imagePath?: string | null;
+  // When true, the page is excluded from the search index but links are still
+  // followed so it keeps passing equity to stronger pages. Set `nofollow` too
+  // for a fully-excluded page.
   noindex?: boolean;
+  nofollow?: boolean;
   path: string;
   title: string;
   type?: "article" | "website";
@@ -21,6 +25,7 @@ export function createSeoMetadata({
   description,
   imagePath = "/opengraph-image",
   noindex = false,
+  nofollow = false,
   path,
   title,
   type = "website",
@@ -56,7 +61,7 @@ export function createSeoMetadata({
     },
     robots: noindex
       ? {
-          follow: false,
+          follow: !nofollow,
           index: false,
         }
       : undefined,

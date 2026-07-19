@@ -100,6 +100,7 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
           <ComparisonTable
             caption={block.title ?? "Comparison"}
             columns={block.columns}
+            featureLabel={block.featureLabel}
             key={index}
             rows={block.rows}
           />

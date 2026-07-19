@@ -12,16 +12,20 @@ type ToolRow = {
   alternatives: string[];
   app_stages: string[];
   best_for: string[];
+  body_markdown: string | null;
+  cons: string[];
   created_at: string;
   description: string | null;
   id: string;
   logo_url: string | null;
   name: string;
+  noindex: boolean;
   not_good_for: string[];
   platforms: string[];
   pricing_last_checked: string | null;
   pricing_model: string;
   pricing_summary: string | null;
+  pros: string[];
   published_at: string | null;
   slug: string;
   tagline: string | null;
@@ -83,18 +87,21 @@ export type ToolDetail = {
   alternatives: ToolDetailAlternative[];
   appStages: string[];
   bestFor: string[];
+  bodyMarkdown: string | null;
   categories: CategoryRow[];
-  coreFeatures: string[];
+  cons: string[];
   description: string;
   id: string;
   lastChecked: string;
   logoUrl?: string;
   name: string;
+  noindex: boolean;
   notGoodFor: string[];
   officialHref: string;
   platforms: string[];
   pricing: string;
   pricingModel: string;
+  pros: string[];
   publishedAt: string;
   relatedComparisons: ToolDetailArticle[];
   relatedGuides: ToolDetailArticle[];
@@ -149,20 +156,6 @@ function formatArticle(article: ArticleRow): ToolDetailArticle {
   };
 }
 
-function buildCoreFeatures(tool: ToolRow) {
-  const features = [
-    ...tool.best_for,
-    tool.platforms.length
-      ? `Supports ${tool.platforms.slice(0, 4).join(", ")}`
-      : undefined,
-    tool.app_stages.length
-      ? `Fits ${tool.app_stages.slice(0, 3).join(", ")} stage apps`
-      : undefined,
-  ].filter((item): item is string => Boolean(item));
-
-  return [...new Set(features)].slice(0, 6);
-}
-
 export const getPublishedToolSlugs = cache(async () => {
   if (!hasSupabaseServerConfig()) {
     return [];
@@ -192,7 +185,7 @@ export const getToolDetail = cache(
     const { data: tool, error: toolError } = await supabase
       .from("tools")
       .select(
-        "id,name,slug,tagline,description,website_url,pricing_summary,pricing_model,best_for,not_good_for,platforms,app_stages,alternatives,pricing_last_checked,logo_url,published_at,created_at,updated_at",
+        "id,name,slug,tagline,description,website_url,pricing_summary,pricing_model,best_for,not_good_for,platforms,app_stages,alternatives,pricing_last_checked,logo_url,published_at,created_at,updated_at,body_markdown,pros,cons,noindex",
       )
       .eq("slug", slug)
       .eq("status", "published")
@@ -330,8 +323,9 @@ export const getToolDetail = cache(
       }),
       appStages: typedTool.app_stages,
       bestFor: typedTool.best_for,
+      bodyMarkdown: typedTool.body_markdown,
       categories,
-      coreFeatures: buildCoreFeatures(typedTool),
+      cons: typedTool.cons,
       description:
         typedTool.description ??
         typedTool.tagline ??
@@ -340,6 +334,7 @@ export const getToolDetail = cache(
       lastChecked: formatDate(typedTool.pricing_last_checked),
       logoUrl: typedTool.logo_url ?? undefined,
       name: typedTool.name,
+      noindex: typedTool.noindex,
       notGoodFor: typedTool.not_good_for,
       officialHref: typedTool.website_url ?? "#",
       platforms: typedTool.platforms,
@@ -348,6 +343,7 @@ export const getToolDetail = cache(
         typedTool.pricing_summary,
       ),
       pricingModel: typedTool.pricing_model,
+      pros: typedTool.pros,
       publishedAt: formatDate(typedTool.published_at),
       relatedComparisons: articles
         .filter((article) => article.content_type === "comparison")

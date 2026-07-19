@@ -29,6 +29,8 @@ type CodeBlock = {
 
 type TableBlock = {
   columns: ComparisonColumn[];
+  // Header label for the first (row-header) column, e.g. "Plan" or "Feature".
+  featureLabel: string;
   rows: ComparisonRow[];
   title?: string;
   type: "table";
@@ -98,6 +100,7 @@ function parseTable(lines: string[], title?: string): TableBlock {
 
   return {
     columns: columns.slice(1),
+    featureLabel: columns[0]?.label ?? "Feature",
     rows,
     title,
     type: "table",

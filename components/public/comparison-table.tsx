@@ -20,6 +20,9 @@ type ComparisonTableProps = {
   caption: string;
   className?: string;
   columns: ComparisonColumn[];
+  // Header for the first (row-header) column. Defaults to "Feature" for
+  // comparison matrices; a pricing table passes "Plan", etc.
+  featureLabel?: string;
   rows: ComparisonRow[];
 };
 
@@ -35,6 +38,7 @@ export function ComparisonTable({
   caption,
   className,
   columns,
+  featureLabel = "Feature",
   rows,
 }: ComparisonTableProps) {
   return (
@@ -57,7 +61,7 @@ export function ComparisonTable({
                 className="w-48 bg-paper px-4 py-3 font-mono text-label-sm font-semibold uppercase text-muted"
                 scope="col"
               >
-                Feature
+                {featureLabel}
               </th>
               {columns.map((column) => (
                 <th
