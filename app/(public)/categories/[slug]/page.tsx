@@ -16,6 +16,7 @@ import {
 import { affiliateDisclosureCopy } from "@/lib/compliance";
 import { createSeoMetadata, itemListJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
+import { singularizeNoun } from "@/lib/utils";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -157,7 +158,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             name: tool.name,
             url: tool.detailsHref,
           })),
-          name: `${data.category.name} tools`,
+          name: `${singularizeNoun(data.category.name)} tools`,
         })}
       />
 
@@ -181,7 +182,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           Category guide
         </p>
         <h1 className="mt-3 font-serif text-5xl font-semibold leading-tight text-ink sm:text-6xl">
-          {data.category.name} tools for mobile apps
+          {singularizeNoun(data.category.name)} tools for mobile apps
         </h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
           {data.category.description}
@@ -242,7 +243,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <div className="mt-12">
         <NewsletterSignup
           ctaLabel="Get updates"
-          description={`Get new ${data.category.name.toLowerCase()} tool notes, comparison updates, and pricing checks.`}
+          description={`Get new ${singularizeNoun(data.category.name).toLowerCase()} tool notes, comparison updates, and pricing checks.`}
           source={`category:${data.category.slug}`}
           title={`Follow ${data.category.name} updates`}
         />

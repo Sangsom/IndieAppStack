@@ -11,6 +11,7 @@ import {
   hasSupabaseServerConfig,
 } from "@/lib/supabase/server";
 import { getAffiliateRedirectPath } from "@/lib/affiliate-links";
+import { singularizeNoun } from "@/lib/utils";
 
 type CategoryRow = {
   description: string | null;
@@ -260,12 +261,12 @@ function defaultCopy(category: CategoryRow) {
   return {
     faq: [
       {
-        answer: `${category.name} tools are useful when this job becomes important enough to compare tradeoffs, pricing, and workflow fit.`,
-        question: `How do I choose a ${category.name.toLowerCase()} tool?`,
+        answer: `${singularizeNoun(category.name)} tools are useful when this job becomes important enough to compare tradeoffs, pricing, and workflow fit.`,
+        question: `How do I choose a ${singularizeNoun(category.name).toLowerCase()} tool?`,
       },
     ],
     whenToUse: [
-      `Use ${category.name.toLowerCase()} tools when this workflow becomes repeated or business-critical.`,
+      `Use ${singularizeNoun(category.name).toLowerCase()} tools when this workflow becomes repeated or business-critical.`,
       "Compare pricing, platform support, and operational fit before committing.",
     ],
     whoNeedsThis: [
@@ -454,7 +455,7 @@ export const getCategoryPageData = cache(
         tagline:
           tool.tagline ??
           tool.description ??
-          `A practical ${category.name.toLowerCase()} tool.`,
+          `A practical ${singularizeNoun(category.name).toLowerCase()} tool.`,
       }));
 
     const copy = categoryCopy[category.slug] ?? defaultCopy(category);
@@ -463,14 +464,15 @@ export const getCategoryPageData = cache(
       category: {
         description:
           category.description ??
-          `A practical guide to ${category.name.toLowerCase()} tools for mobile apps.`,
+          `A practical guide to ${singularizeNoun(category.name).toLowerCase()} tools for mobile apps.`,
         id: category.id,
         metaDescription:
           category.seo_description ??
           category.description ??
-          `Compare ${category.name.toLowerCase()} tools for indie mobile apps.`,
+          `Compare ${singularizeNoun(category.name).toLowerCase()} tools for indie mobile apps.`,
         metaTitle:
-          category.seo_title ?? `${category.name} tools for indie mobile apps`,
+          category.seo_title ??
+          `${singularizeNoun(category.name)} tools for indie mobile apps`,
         name: category.name,
         slug: category.slug,
       },

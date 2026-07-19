@@ -7,6 +7,7 @@ import {
   hasSupabaseServerConfig,
 } from "@/lib/supabase/server";
 import { getAffiliateRedirectPath } from "@/lib/affiliate-links";
+import { singularizeNoun } from "@/lib/utils";
 
 type CategoryRow = {
   description: string | null;
@@ -276,7 +277,9 @@ export const getHomepageData = cache(async (): Promise<HomepageData> => {
         pricing: formatPricing(tool),
         tagline:
           tool.tagline ??
-          `A practical ${category?.name ?? monetization?.name ?? "mobile app"} tool.`,
+          `A practical ${singularizeNoun(
+            category?.name ?? monetization?.name ?? "mobile app",
+          ).toLowerCase()} tool.`,
       };
     }),
   };

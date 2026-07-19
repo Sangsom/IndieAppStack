@@ -9,7 +9,7 @@ export const metadata: Metadata = createSeoMetadata({
   description:
     "About IndieAppStack, an editorial field guide for choosing mobile app tools and workflows.",
   path: "/about",
-  title: "About IndieAppStack",
+  title: "About",
 });
 
 export default function AboutPage() {
