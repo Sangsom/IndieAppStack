@@ -252,7 +252,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       <section className="mt-12 grid gap-5 lg:grid-cols-[1fr_360px]">
         <div className="rounded-card border border-rule bg-surface p-5 shadow-field">
           <h2 className="font-serif text-3xl font-semibold text-ink">
-            Related guides
+            Related guides and comparisons
           </h2>
           {data.guides.length ? (
             <div className="mt-5 grid gap-3">
@@ -260,9 +260,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 <Link
                   className="rounded-card border border-rule bg-paper p-4 transition-colors hover:border-pine focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                   href={guide.href}
-                  key={guide.title}
+                  key={guide.href}
                 >
-                  <h3 className="font-serif text-2xl font-semibold text-ink">
+                  <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
+                    {guide.label}
+                  </p>
+                  <h3 className="mt-2 font-serif text-2xl font-semibold text-ink">
                     {guide.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-muted">
@@ -273,7 +276,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </div>
           ) : (
             <p className="mt-4 text-body-md text-muted">
-              No related guides are published yet.
+              No related guides or comparisons are published yet.
             </p>
           )}
         </div>

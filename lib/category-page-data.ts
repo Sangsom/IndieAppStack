@@ -49,6 +49,7 @@ type AffiliateLinkRow = {
 };
 
 type ArticleRow = {
+  content_type: string;
   excerpt: string | null;
   id: string;
   published_at: string | null;
@@ -75,6 +76,7 @@ export type CategoryTool = {
 export type CategoryGuide = {
   description: string;
   href: string;
+  label: string;
   title: string;
 };
 
@@ -377,7 +379,7 @@ export const getCategoryPageData = cache(
         .order("sort_order", { ascending: true }),
       supabase
         .from("articles")
-        .select("id,title,slug,subtitle,excerpt,published_at")
+        .select("id,title,slug,subtitle,excerpt,content_type,published_at")
         .eq("primary_category_id", category.id)
         .eq("status", "published")
         .eq("human_reviewed", true)
@@ -481,7 +483,11 @@ export const getCategoryPageData = cache(
       guides: ((guidesResult.data ?? []) as ArticleRow[]).map((guide) => ({
         description:
           guide.excerpt ?? guide.subtitle ?? "A related category guide.",
-        href: `/guides/${guide.slug}`,
+        href:
+          guide.content_type === "comparison"
+            ? `/comparisons/${guide.slug}`
+            : `/guides/${guide.slug}`,
+        label: guide.content_type.replaceAll("_", " "),
         title: guide.title,
       })),
       tools,

@@ -6,6 +6,7 @@ import { ArticleBody } from "@/components/public/article-body";
 import { ArticleToc } from "@/components/public/article-toc";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
 import { NewsletterSignup } from "@/components/public/newsletter-signup";
+import { RelatedReading } from "@/components/public/related-reading";
 import { ToolCard } from "@/components/public/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { getTocItems, parseArticleMarkdown } from "@/lib/article-markdown";
@@ -212,6 +213,8 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
           </div>
         </section>
       ) : null}
+
+      <RelatedReading articles={comparison.relatedArticles} />
     </div>
   );
 }

@@ -65,6 +65,14 @@ export type GuideListItem = {
   title: string;
 };
 
+export type RelatedArticle = {
+  category: string;
+  description: string;
+  href: string;
+  label: string;
+  title: string;
+};
+
 export type GuideTool = {
   affiliateHref?: string;
   bestFor: string[];
@@ -91,6 +99,7 @@ export type GuideDetail = {
   metaTitle: string;
   publishedAt: string;
   publishedAtIso: string | null;
+  relatedArticles: RelatedArticle[];
   relatedTools: GuideTool[];
   slug: string;
   subtitle: string;
@@ -240,6 +249,160 @@ export const getPublishedComparisonSlugs = cache(async () => {
   return getPublishedSlugsByType("comparison");
 });
 
+type SupabaseServiceRoleClient = ReturnType<
+  typeof createSupabaseServiceRoleClient
+>;
+
+// Related articles are ranked by shared tools (strongest topical signal we
+// have), then whether they sit in the same category, then recency. This gives
+// every article detail page a cross-link mesh into other flagship guides and
+// comparisons instead of dead-ending at the related-tools list.
+async function getRelatedArticles(
+  supabase: SupabaseServiceRoleClient,
+  {
+    categoryId,
+    excludeId,
+    toolIds,
+  }: { categoryId: string | null; excludeId: string; toolIds: string[] },
+): Promise<RelatedArticle[]> {
+  const sharedToolCountByArticle = new Map<string, number>();
+
+  if (toolIds.length) {
+    const { data, error } = await supabase
+      .from("article_tools")
+      .select("article_id,tool_id")
+      .in("tool_id", toolIds);
+
+    if (error) {
+      throw new Error(`Related article tools query failed: ${error.message}`);
+    }
+
+    ((data ?? []) as Pick<ArticleToolRow, "article_id">[]).forEach((row) => {
+      if (row.article_id === excludeId) {
+        return;
+      }
+
+      sharedToolCountByArticle.set(
+        row.article_id,
+        (sharedToolCountByArticle.get(row.article_id) ?? 0) + 1,
+      );
+    });
+  }
+
+  const sharedArticleIds = [...sharedToolCountByArticle.keys()];
+  const articleColumns =
+    "id,title,slug,subtitle,excerpt,content_type,primary_category_id,published_at";
+
+  const [sharedResult, categoryResult] = await Promise.all([
+    sharedArticleIds.length
+      ? supabase
+          .from("articles")
+          .select(articleColumns)
+          .in("id", sharedArticleIds)
+          .eq("status", "published")
+          .eq("human_reviewed", true)
+      : Promise.resolve({ data: [], error: null }),
+    categoryId
+      ? supabase
+          .from("articles")
+          .select(articleColumns)
+          .eq("primary_category_id", categoryId)
+          .eq("status", "published")
+          .eq("human_reviewed", true)
+          .neq("id", excludeId)
+          .order("published_at", { ascending: false, nullsFirst: false })
+          .limit(6)
+      : Promise.resolve({ data: [], error: null }),
+  ]);
+
+  const firstError = [sharedResult.error, categoryResult.error].find(Boolean);
+
+  if (firstError) {
+    throw new Error(`Related articles query failed: ${firstError.message}`);
+  }
+
+  const candidatesById = new Map<string, ArticleRow>();
+
+  [
+    ...((sharedResult.data ?? []) as ArticleRow[]),
+    ...((categoryResult.data ?? []) as ArticleRow[]),
+  ].forEach((row) => {
+    if (row.id !== excludeId && !candidatesById.has(row.id)) {
+      candidatesById.set(row.id, row);
+    }
+  });
+
+  const candidates = [...candidatesById.values()];
+
+  if (!candidates.length) {
+    return [];
+  }
+
+  const candidateCategoryIds = [
+    ...new Set(
+      candidates
+        .map((row) => row.primary_category_id)
+        .filter((id): id is string => Boolean(id)),
+    ),
+  ];
+
+  const { data: categoryData, error: categoryError } =
+    candidateCategoryIds.length
+      ? await supabase
+          .from("categories")
+          .select("id,name,slug")
+          .in("id", candidateCategoryIds)
+          .eq("status", "published")
+      : { data: [], error: null };
+
+  if (categoryError) {
+    throw new Error(
+      `Related article categories query failed: ${categoryError.message}`,
+    );
+  }
+
+  const categoryById = new Map(
+    ((categoryData ?? []) as CategoryRow[]).map((category) => [
+      category.id,
+      category,
+    ]),
+  );
+
+  return candidates
+    .map((row) => {
+      const sharedTools = sharedToolCountByArticle.get(row.id) ?? 0;
+      const sameCategory =
+        categoryId && row.primary_category_id === categoryId ? 1 : 0;
+      const publishedTime = row.published_at
+        ? new Date(row.published_at).getTime()
+        : 0;
+
+      return {
+        publishedTime,
+        row,
+        score: sharedTools * 10 + sameCategory * 3,
+      };
+    })
+    .sort(
+      (a, b) => b.score - a.score || b.publishedTime - a.publishedTime,
+    )
+    .slice(0, 4)
+    .map(({ row }) => {
+      const category = row.primary_category_id
+        ? categoryById.get(row.primary_category_id)?.name
+        : undefined;
+
+      return {
+        category: category ?? formatType(row.content_type),
+        description:
+          row.excerpt ?? row.subtitle ?? "A related IndieAppStack field guide.",
+        href: articleHref(row),
+        label: formatType(row.content_type),
+        title: row.title,
+      };
+    });
+}
+
 export const getGuideDetail = cache(
   async (
     slug: string,
@@ -357,6 +520,12 @@ export const getGuideDetail = cache(
         tagline: tool.tagline ?? `${tool.name} for mobile app teams.`,
       }));
 
+    const relatedArticles = await getRelatedArticles(supabase, {
+      categoryId: typedArticle.primary_category_id,
+      excludeId: typedArticle.id,
+      toolIds,
+    });
+
     return {
       author: typedArticle.author ?? "IndieAppStack",
       bodyMarkdown:
@@ -378,6 +547,7 @@ export const getGuideDetail = cache(
       metaTitle: typedArticle.seo_title ?? typedArticle.title,
       publishedAt: formatDate(typedArticle.published_at),
       publishedAtIso: typedArticle.published_at,
+      relatedArticles,
       relatedTools,
       slug: typedArticle.slug,
       subtitle: typedArticle.subtitle ?? typedArticle.excerpt ?? "",
