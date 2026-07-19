@@ -18,6 +18,7 @@
     "security:check-supabase-key": "node scripts/assert-service-role-not-client.mjs",
     "content:safety": "node scripts/assert-public-content-safe.mjs",
     "launch:verify": "node scripts/verify-launch-readiness.mjs",
+    "seo:indexnow": "node scripts/indexnow-submit.mjs",
     "db:seed": "node scripts/seed-database.mjs",
     "subscribers:delete": "node scripts/delete-subscriber.mjs",
     "admin:grant": "node scripts/grant-admin.mjs",

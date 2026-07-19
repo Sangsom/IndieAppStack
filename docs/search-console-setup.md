@@ -65,6 +65,21 @@ Open [Bing Webmaster Tools](https://www.bing.com/webmasters).
 
 1. Open **Sitemaps**, enter `https://indieappstack.com/sitemap.xml`, **Submit**.
 
+### IndexNow — automated URL submission (Bing, Yandex, and others)
+
+Unlike Google, Bing and Yandex accept programmatic crawl requests via
+[IndexNow](https://www.indexnow.org/). This repo implements it:
+
+- The verification key is a public file at `public/<key>.txt`, served at
+  `https://indieappstack.com/<key>.txt`. It is not a secret — IndexNow keys are
+  meant to be public.
+- `npm run seo:indexnow` submits every URL in the live sitemap (which already
+  excludes `noindex` tools). Pass URLs to submit only those, e.g.
+  `node scripts/indexnow-submit.mjs https://indieappstack.com/tools/revenuecat`.
+- Run it after a content deploy. The key file must already be live so the engines
+  can verify ownership. Google does not participate in IndexNow, so Google still
+  needs the manual Search Console step in `seo-indexing-request.md`.
+
 ## 3. Success metric to watch
 
 - **GSC → Pages**: indexed URL count climbs toward full coverage of the sitemap.
