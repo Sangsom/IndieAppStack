@@ -177,11 +177,6 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
 
           <aside className="grid gap-5">
             {tocItems.length ? <ArticleToc items={tocItems} /> : null}
-            {comparison.hasAffiliateDisclosure ? (
-              <DisclosureCallout title="Affiliate disclosure">
-                {affiliateDisclosureCopy}
-              </DisclosureCallout>
-            ) : null}
           </aside>
         </div>
       </article>
@@ -205,6 +200,11 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
               Tools in this comparison
             </h2>
           </div>
+          {comparison.hasAffiliateDisclosure ? (
+            <DisclosureCallout className="mt-6" title="Affiliate disclosure">
+              {affiliateDisclosureCopy}
+            </DisclosureCallout>
+          ) : null}
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
             {comparison.relatedTools.map((tool) => (
               <ToolCard key={tool.name} {...tool} />

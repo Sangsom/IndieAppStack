@@ -34,8 +34,8 @@ function NewsletterSignupForm({
   const inputId = `newsletter-email-${source.replace(/[^a-z0-9_-]+/gi, "-")}`;
 
   return (
-    <section className="rounded-card border border-pine bg-accent-soft p-5 shadow-field">
-      <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
+    <section className="@container rounded-card border border-pine bg-accent-soft p-5 shadow-field">
+      <div className="grid gap-5 @2xl:grid-cols-[1fr_auto] @2xl:items-end">
         <div>
           <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
             Newsletter
@@ -49,7 +49,7 @@ function NewsletterSignupForm({
         </div>
         <form
           action={action}
-          className="flex w-full flex-col gap-2 sm:flex-row"
+          className="flex w-full flex-col gap-2 @sm:flex-row"
           method="post"
         >
           <input name="source" type="hidden" value={source} />
@@ -58,7 +58,7 @@ function NewsletterSignupForm({
           </label>
           <input
             aria-describedby={message ? `${inputId}-status` : undefined}
-            className="h-11 min-w-0 rounded-button border border-rule bg-surface px-3 text-base text-ink shadow-field outline-none transition-colors focus:border-pine focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-accent-soft sm:w-72"
+            className="h-11 min-w-0 rounded-button border border-rule bg-surface px-3 text-base text-ink shadow-field outline-none transition-colors focus:border-pine focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-accent-soft @sm:w-72"
             id={inputId}
             name="email"
             placeholder="you@example.com"

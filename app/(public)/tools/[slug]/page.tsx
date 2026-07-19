@@ -9,7 +9,7 @@ import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ProsCons } from "@/components/public/pros-cons";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "@/components/ui/callout";
-import { affiliateDisclosureCopy } from "@/lib/compliance";
+import { affiliateDisclosureShort } from "@/lib/compliance";
 import { absoluteUrl, createSeoMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import {
@@ -190,68 +190,22 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
         Back to tools
       </Link>
 
-      <section className="mt-8 grid gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
-        <div>
-          <div className="flex flex-wrap gap-2">
-            {tool.categories.map((category) => (
-              <Badge key={category.slug}>{category.name}</Badge>
-            ))}
+      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_320px] lg:items-start">
+        <main className="grid min-w-0 gap-6">
+          <div>
+            <div className="flex flex-wrap gap-2">
+              {tool.categories.map((category) => (
+                <Badge key={category.slug}>{category.name}</Badge>
+              ))}
+            </div>
+            <h1 className="mt-4 font-serif text-5xl font-semibold leading-tight text-ink sm:text-6xl">
+              {tool.name}
+            </h1>
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
+              {tool.tagline}
+            </p>
           </div>
-          <h1 className="mt-4 font-serif text-5xl font-semibold leading-tight text-ink sm:text-6xl">
-            {tool.name}
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
-            {tool.tagline}
-          </p>
-        </div>
 
-        <aside className="rounded-card border border-rule bg-surface p-5 shadow-field">
-          <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
-            Decision snapshot
-          </p>
-          <dl className="mt-4 grid gap-4 text-sm">
-            <div>
-              <dt className="font-semibold text-ink">Pricing</dt>
-              <dd className="mt-1 text-muted">{tool.pricing}</dd>
-            </div>
-            <div>
-              <dt className="font-semibold text-ink">Last checked</dt>
-              <dd className="mt-1 text-muted">{tool.lastChecked}</dd>
-            </div>
-            <div>
-              <dt className="font-semibold text-ink">Platforms</dt>
-              <dd className="mt-2 flex flex-wrap gap-2">
-                {tool.platforms.map((platform) => (
-                  <Badge key={platform} variant="platform">
-                    {platform}
-                  </Badge>
-                ))}
-              </dd>
-            </div>
-          </dl>
-          <div className="mt-5 grid gap-3">
-            {tool.affiliateLink ? (
-              <AffiliateCta
-                analyticsLocation={`tool:${tool.slug}:hero`}
-                href={tool.affiliateLink.href}
-                kind="affiliate"
-                label="Try partner offer"
-                toolSlug={tool.slug}
-              />
-            ) : null}
-            <AffiliateCta
-              analyticsLocation={`tool:${tool.slug}:hero`}
-              href={tool.officialHref}
-              kind="official"
-              label="Official site"
-              toolSlug={tool.slug}
-            />
-          </div>
-        </aside>
-      </section>
-
-      <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px] lg:items-start">
-        <main className="grid gap-6">
           <Section title="Summary">
             <p className="text-body-md leading-7 text-muted">
               {tool.description}
@@ -281,13 +235,6 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
               Last checked {tool.lastChecked}.
             </p>
           </Section>
-
-          {tool.affiliateLink?.disclosureRequired ? (
-            <DisclosureCallout title="Affiliate disclosure">
-              {affiliateDisclosureCopy} The affiliate CTA uses sponsored
-              nofollow link attributes.
-            </DisclosureCallout>
-          ) : null}
 
           <Section title="Pros and cons">
             <ProsCons
@@ -348,7 +295,55 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
           </Section>
         </main>
 
-        <aside className="grid gap-5 lg:sticky lg:top-24">
+        <aside className="grid min-w-0 gap-5 lg:sticky lg:top-24">
+          <section className="rounded-card border border-rule bg-surface p-5 shadow-field">
+            <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
+              Decision snapshot
+            </p>
+            <dl className="mt-4 grid gap-4 text-sm">
+              <div>
+                <dt className="font-semibold text-ink">Pricing</dt>
+                <dd className="mt-1 text-muted">{tool.pricing}</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-ink">Last checked</dt>
+                <dd className="mt-1 text-muted">{tool.lastChecked}</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-ink">Platforms</dt>
+                <dd className="mt-2 flex flex-wrap gap-2">
+                  {tool.platforms.map((platform) => (
+                    <Badge key={platform} variant="platform">
+                      {platform}
+                    </Badge>
+                  ))}
+                </dd>
+              </div>
+            </dl>
+            <div className="mt-5 grid gap-3">
+              {tool.affiliateLink ? (
+                <>
+                  <DisclosureCallout title="Affiliate disclosure">
+                    {affiliateDisclosureShort}
+                  </DisclosureCallout>
+                  <AffiliateCta
+                    analyticsLocation={`tool:${tool.slug}:hero`}
+                    href={tool.affiliateLink.href}
+                    kind="affiliate"
+                    label="Try partner offer"
+                    toolSlug={tool.slug}
+                  />
+                </>
+              ) : null}
+              <AffiliateCta
+                analyticsLocation={`tool:${tool.slug}:hero`}
+                href={tool.officialHref}
+                kind="official"
+                label="Official site"
+                toolSlug={tool.slug}
+              />
+            </div>
+          </section>
           <NewsletterSignup
             ctaLabel="Subscribe"
             description={`Get practical stack notes and pricing checks like this ${tool.name} profile.`}

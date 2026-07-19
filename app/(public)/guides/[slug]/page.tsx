@@ -177,11 +177,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
           <aside className="grid gap-5">
             {tocItems.length ? <ArticleToc items={tocItems} /> : null}
-            {guide.hasAffiliateDisclosure ? (
-              <DisclosureCallout title="Affiliate disclosure">
-                {affiliateDisclosureCopy}
-              </DisclosureCallout>
-            ) : null}
           </aside>
         </div>
       </article>
@@ -205,6 +200,11 @@ export default async function GuidePage({ params }: GuidePageProps) {
               Tools mentioned in this article
             </h2>
           </div>
+          {guide.hasAffiliateDisclosure ? (
+            <DisclosureCallout className="mt-6" title="Affiliate disclosure">
+              {affiliateDisclosureCopy}
+            </DisclosureCallout>
+          ) : null}
           <div className="mt-6 grid gap-5 lg:grid-cols-2">
             {guide.relatedTools.map((tool) => (
               <ToolCard key={tool.name} {...tool} />
