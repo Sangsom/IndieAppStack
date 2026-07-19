@@ -1,0 +1,40 @@
+name: IndexNow
+
+# Vercel reports every deployment to GitHub as a deployment_status. When the
+# Production deployment reports success, the pages and the IndexNow key file are
+# live, so we ping IndexNow to have Bing, Yandex, and other participating engines
+# re-crawl. Google does not participate in IndexNow — it stays a manual Search
+# Console step (docs/seo-indexing-request.md).
+#
+# workflow_dispatch lets you run it by hand from the Actions tab to verify it.
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    name: Submit sitemap URLs to IndexNow
+    # Manual runs always proceed; automatic runs only on a successful Production
+    # deployment (not previews).
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+      github.event.deployment_status.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      # The script uses only Node built-ins (fetch, fs), so no install is needed.
+      # It targets the canonical production site by default.
+      - name: Submit to IndexNow
+        run: node scripts/indexnow-submit.mjs

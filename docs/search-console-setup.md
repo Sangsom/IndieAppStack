@@ -80,6 +80,12 @@ Unlike Google, Bing and Yandex accept programmatic crawl requests via
   can verify ownership. Google does not participate in IndexNow, so Google still
   needs the manual Search Console step in `seo-indexing-request.md`.
 
+**Automated on deploy.** `.github/workflows/indexnow.yml` runs the submission
+automatically whenever Vercel reports a successful **Production** deployment
+(`deployment_status`), so Bing/Yandex are pinged on every publish with no manual
+step. It targets the canonical production URL and needs no secrets. You can also
+run it on demand from the **Actions** tab (**Run workflow**) to verify it.
+
 ## 3. Success metric to watch
 
 - **GSC → Pages**: indexed URL count climbs toward full coverage of the sitemap.

@@ -17,28 +17,16 @@ import { cwd, argv, exit } from "node:process";
 
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 
-function readEnvLocal() {
-  const envPath = path.join(cwd(), ".env.local");
-  if (!fs.existsSync(envPath)) {
-    return {};
-  }
-  return Object.fromEntries(
-    fs
-      .readFileSync(envPath, "utf8")
-      .split(/\r?\n/)
-      .filter((line) => line && !line.startsWith("#"))
-      .map((line) => {
-        const [key, ...rest] = line.split("=");
-        return [key, rest.join("=")];
-      }),
-  );
-}
-
-const envLocal = readEnvLocal();
+// IndexNow always targets the live canonical site (deployed pages plus the
+// hosted key file), never a local dev URL. NEXT_PUBLIC_SITE_URL is intentionally
+// NOT used here because it is http://localhost:3000 in development. Override with
+// `--site=<url>` or INDEXNOW_SITE_URL only for testing another environment.
+const SITE_CANONICAL = "https://indieappstack.com";
+const siteArg = argv.slice(2).find((arg) => arg.startsWith("--site="));
 const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  envLocal.NEXT_PUBLIC_SITE_URL ??
-  "https://indieappstack.com"
+  siteArg?.slice("--site=".length) ??
+  process.env.INDEXNOW_SITE_URL ??
+  SITE_CANONICAL
 ).replace(/\/$/, "");
 const host = new URL(siteUrl).host;
 
@@ -78,7 +66,9 @@ async function urlsFromSitemap() {
     throw new Error(`Could not fetch sitemap: ${response.status}`);
   }
   const xml = await response.text();
-  return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1].trim());
+  return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) =>
+    match[1].trim(),
+  );
 }
 
 async function main() {
@@ -118,7 +108,9 @@ async function main() {
   if (response.status === 200 || response.status === 202) {
     console.log(`IndexNow accepted the submission (HTTP ${response.status}).`);
   } else {
-    console.error(`IndexNow rejected the submission (HTTP ${response.status}).`);
+    console.error(
+      `IndexNow rejected the submission (HTTP ${response.status}).`,
+    );
     if (body) {
       console.error(body.slice(0, 500));
     }

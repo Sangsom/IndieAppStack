@@ -174,7 +174,9 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
     notFound();
   }
 
-  const blocks = tool.bodyMarkdown ? parseArticleMarkdown(tool.bodyMarkdown) : [];
+  const blocks = tool.bodyMarkdown
+    ? parseArticleMarkdown(tool.bodyMarkdown)
+    : [];
   const tocItems = getTocItems(blocks);
   const faqItems = extractFaqItems(blocks);
   const hasProsCons = tool.pros.length > 0 || tool.cons.length > 0;
@@ -182,9 +184,7 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
       <StructuredData tool={tool} />
-      {faqItems.length >= 2 ? (
-        <JsonLd data={faqPageJsonLd(faqItems)} />
-      ) : null}
+      {faqItems.length >= 2 ? <JsonLd data={faqPageJsonLd(faqItems)} /> : null}
 
       <Link
         className="inline-flex text-sm font-semibold text-pine transition-colors hover:text-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
