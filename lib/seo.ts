@@ -105,19 +105,46 @@ export function itemListJsonLd({
 }
 
 export function organizationJsonLd() {
+  const organizationId = `${siteConfig.url}/#organization`;
+
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@id": organizationId,
         "@type": "Organization",
         description: siteConfig.description,
+        logo: {
+          "@id": `${siteConfig.url}/#logo`,
+          "@type": "ImageObject",
+          caption: siteConfig.name,
+          height: 512,
+          url: absoluteUrl("/android-chrome-512x512.png"),
+          width: 512,
+        },
         name: siteConfig.name,
         url: siteConfig.url,
       },
       {
+        "@id": `${siteConfig.url}/#website`,
         "@type": "WebSite",
         description: siteConfig.description,
         name: siteConfig.name,
+        // Sitelinks searchbox: the target must be a working search endpoint.
+        // Braces stay literal (Google fills in the query), so build the
+        // template by hand rather than via absoluteUrl(), which would
+        // percent-encode `{` and `}` and break the template.
+        potentialAction: {
+          "@type": "SearchAction",
+          "query-input": "required name=search_term_string",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${siteConfig.url}/tools?q={search_term_string}`,
+          },
+        },
+        publisher: {
+          "@id": organizationId,
+        },
         url: siteConfig.url,
       },
     ],

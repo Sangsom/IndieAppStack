@@ -165,6 +165,15 @@ export function parseToolDirectoryFilters(
   };
 }
 
+// Parses the free-text `q` param that backs the WebSite SearchAction target
+// (`/tools?q={search_term_string}`) and the directory's search box.
+export function parseToolDirectoryQuery(
+  searchParams: ToolDirectorySearchParams,
+): string {
+  const [value] = toArray(searchParams.q);
+  return (value ?? "").trim();
+}
+
 function formatDate(value: string | null) {
   if (!value) {
     return "recently";
@@ -285,8 +294,29 @@ function matchesFilters(tool: DirectoryTool, filters: ToolDirectoryFilters) {
   );
 }
 
+function matchesQuery(tool: DirectoryTool, query: string) {
+  if (!query) {
+    return true;
+  }
+
+  const haystack = [
+    tool.name,
+    tool.tagline,
+    tool.description,
+    tool.category,
+    ...tool.bestFor,
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return haystack.includes(query.toLowerCase());
+}
+
 export const getToolDirectoryData = cache(
-  async (filters: ToolDirectoryFilters): Promise<ToolDirectoryData> => {
+  async (
+    filters: ToolDirectoryFilters,
+    query = "",
+  ): Promise<ToolDirectoryData> => {
     if (!hasSupabaseServerConfig()) {
       return { ...emptyDirectoryData, filters };
     }
@@ -384,7 +414,9 @@ export const getToolDirectoryData = cache(
       };
     });
 
-    const filteredTools = tools.filter((tool) => matchesFilters(tool, filters));
+    const filteredTools = tools.filter(
+      (tool) => matchesFilters(tool, filters) && matchesQuery(tool, query),
+    );
 
     return {
       filterGroups: buildFilterGroups(categories, tools),

@@ -1,3 +1,4 @@
+import { JsonLd } from "@/components/public/json-ld";
 import { PublicShell } from "@/components/public/public-shell";
 import { organizationJsonLd } from "@/lib/seo";
 
@@ -8,12 +9,7 @@ export default function PublicLayout({
 }>) {
   return (
     <PublicShell>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationJsonLd()),
-        }}
-        type="application/ld+json"
-      />
+      <JsonLd data={organizationJsonLd()} />
       {children}
     </PublicShell>
   );

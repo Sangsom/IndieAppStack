@@ -9,6 +9,7 @@ import { affiliateDisclosureCopy } from "@/lib/compliance";
 import {
   getToolDirectoryData,
   parseToolDirectoryFilters,
+  parseToolDirectoryQuery,
   type FilterGroup,
   type ToolDirectoryFilters,
 } from "@/lib/tool-directory-data";
@@ -77,9 +78,11 @@ function FilterFieldset({
 export default async function ToolsPage({ searchParams }: ToolsPageProps) {
   const resolvedSearchParams = searchParams ? await searchParams : {};
   const filters = parseToolDirectoryFilters(resolvedSearchParams);
+  const query = parseToolDirectoryQuery(resolvedSearchParams);
   const { filterGroups, resultCount, totalCount, tools } =
-    await getToolDirectoryData(filters);
+    await getToolDirectoryData(filters, query);
   const activeFilterCount = getActiveFilterCount(filters);
+  const hasActiveState = activeFilterCount > 0 || query.length > 0;
   const hasAffiliateLinks = tools.some((tool) => tool.affiliateHref);
 
   return (
@@ -120,7 +123,7 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
             <h2 className="font-serif text-2xl font-semibold text-ink">
               Filters
             </h2>
-            {activeFilterCount ? (
+            {hasActiveState ? (
               <Link
                 className="text-sm font-semibold text-pine transition-colors hover:text-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
                 href="/tools"
@@ -128,6 +131,24 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                 Clear
               </Link>
             ) : null}
+          </div>
+
+          <div className="mt-5">
+            <label
+              className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine"
+              htmlFor="tool-search"
+            >
+              Search
+            </label>
+            <input
+              autoComplete="off"
+              className="mt-3 h-11 w-full rounded-button border border-rule bg-paper px-3 text-sm text-ink placeholder:text-muted transition-colors hover:border-pine focus-visible:border-pine focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+              defaultValue={query}
+              id="tool-search"
+              name="q"
+              placeholder="Search by name or keyword…"
+              type="search"
+            />
           </div>
 
           <div className="mt-5 grid gap-5">
@@ -151,7 +172,7 @@ export default async function ToolsPage({ searchParams }: ToolsPageProps) {
                 {resultCount} of {totalCount} tools
               </p>
               <h2 className="mt-2 font-serif text-3xl font-semibold text-ink">
-                {activeFilterCount ? "Filtered results" : "All published tools"}
+                {hasActiveState ? "Filtered results" : "All published tools"}
               </h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted">
