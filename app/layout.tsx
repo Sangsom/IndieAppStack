@@ -27,8 +27,26 @@ const sourceSerif = localFont({
   display: "swap",
 });
 
+// Search-engine ownership verification via the HTML meta-tag method. Tokens are
+// issued by Google Search Console / Bing Webmaster Tools during the "add
+// property" flow; set them in the deployment env and redeploy. When unset,
+// no verification tags are emitted (DNS/domain verification needs no code).
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION;
+const bingSiteVerification = process.env.BING_SITE_VERIFICATION;
+
+const verification: Metadata["verification"] | undefined =
+  googleSiteVerification || bingSiteVerification
+    ? {
+        ...(googleSiteVerification ? { google: googleSiteVerification } : {}),
+        ...(bingSiteVerification
+          ? { other: { "msvalidate.01": bingSiteVerification } }
+          : {}),
+      }
+    : undefined;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  verification,
   title: {
     default: siteConfig.name,
     template: "%s | IndieAppStack",
