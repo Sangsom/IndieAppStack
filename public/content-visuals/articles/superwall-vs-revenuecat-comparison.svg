@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Superwall vs RevenueCat comparison graphic</title>
+  <desc id="desc">A two-column decision graphic contrasting RevenueCat as the purchase and entitlement infrastructure layer with Superwall as the remote paywall presentation layer, with a center note that many apps run both.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1b2430" flood-opacity="0.14"/>
+    </filter>
+    <style>
+      .bg { fill: #f7f8fb; }
+      .title { font: 760 39px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #171f29; }
+      .subtitle { font: 500 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #60707d; }
+      .tool { font: 760 28px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #171f29; }
+      .role { font: 700 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #5c6873; letter-spacing: 1.1px; }
+      .copy { font: 520 17px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #34424d; }
+      .small { font: 520 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #65737d; }
+      .both { font: 760 15px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #ffffff; letter-spacing: 0.6px; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="675"/>
+  <rect x="58" y="46" width="1084" height="583" rx="34" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="96" y="110" class="title">Two Layers, Not One Winner</text>
+  <text x="98" y="146" class="subtitle">RevenueCat owns purchase truth; Superwall owns remote paywall iteration. Many apps run both.</text>
+
+  <rect x="96" y="204" width="448" height="332" rx="28" fill="#fff3d8" stroke="#e8bb54" stroke-width="2"/>
+  <circle cx="142" cy="252" r="19" fill="#e8bb54"/>
+  <text x="175" y="259" class="role">PURCHASE INFRASTRUCTURE</text>
+  <text x="128" y="312" class="tool">RevenueCat</text>
+  <text x="128" y="355" class="copy">Owns purchases, receipts,</text>
+  <text x="128" y="382" class="copy">entitlements, and cross-platform</text>
+  <text x="128" y="409" class="copy">customer state. Start here when</text>
+  <text x="128" y="436" class="copy">purchase truth must be reliable.</text>
+  <rect x="128" y="470" width="288" height="38" rx="19" fill="#ffffff" opacity="0.86"/>
+  <text x="150" y="494" class="small">Question: who owns truth?</text>
+
+  <rect x="656" y="204" width="448" height="332" rx="28" fill="#edf7ee" stroke="#7dc58b" stroke-width="2"/>
+  <circle cx="702" cy="252" r="19" fill="#72bd82"/>
+  <text x="735" y="259" class="role">REMOTE PAYWALL ITERATION</text>
+  <text x="688" y="312" class="tool">Superwall</text>
+  <text x="688" y="355" class="copy">Edits and tests paywalls</text>
+  <text x="688" y="382" class="copy">remotely, shipping changes</text>
+  <text x="688" y="409" class="copy">without an App Store release.</text>
+  <text x="688" y="436" class="copy">Infrastructure free at any scale.</text>
+  <rect x="688" y="470" width="288" height="38" rx="19" fill="#ffffff" opacity="0.86"/>
+  <text x="710" y="494" class="small">Question: how fast to test?</text>
+
+  <line x1="544" y1="370" x2="566" y2="370" stroke="#c7ced5" stroke-width="3"/>
+  <line x1="634" y1="370" x2="656" y2="370" stroke="#c7ced5" stroke-width="3"/>
+  <circle cx="600" cy="370" r="37" fill="#171f29"/>
+  <text x="600" y="366" class="both" text-anchor="middle">RUN</text>
+  <text x="600" y="385" class="both" text-anchor="middle">BOTH</text>
+
+  <rect x="100" y="568" width="1000" height="1" fill="#dfe5ea"/>
+  <text x="100" y="599" class="small">Choose the layer your bottleneck lives in, or run both. Verify current docs and pricing before implementing.</text>
+</svg>

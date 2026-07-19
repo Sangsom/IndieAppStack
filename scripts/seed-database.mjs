@@ -64,6 +64,7 @@ function bySlug(rows) {
 const pricingLastChecked = "2026-06-29";
 const publishedAt = "2026-07-10T02:08:13.410Z";
 const warpPublishedAt = "2026-07-18T09:00:00.000Z";
+const comparisonsPublishedAt = "2026-07-19T09:00:00.000Z";
 
 const seedTools = [
   {
@@ -1505,7 +1506,7 @@ Adapty is worth evaluating when your app has enough traffic or launch confidence
 ## Choose Superwall when remote paywall iteration is the job
 [Superwall](/tools/superwall) fits teams that want to change paywalls, campaigns, audiences, and upgrade prompts without shipping a new app version each time. Its pricing page frames billing around monthly attributed revenue through Superwall paywalls, while the docs surface paywalls, campaigns, charts, subscriptions, localization, web checkout, and SDKs.
 
-For a solo developer, Superwall is most compelling after the paid product is clear but paywall presentation is still changing. If your biggest bottleneck is "I need to try a new paywall screen, audience, or campaign quickly," it deserves a serious look.
+For a solo developer, Superwall is most compelling after the paid product is clear but paywall presentation is still changing. If your biggest bottleneck is "I need to try a new paywall screen, audience, or campaign quickly," it deserves a serious look. For that two-way decision in depth, read [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
 
 ### Not good for
 - Apps that have not validated why anyone should pay.
@@ -1533,11 +1534,11 @@ Adapty setup starts in similar subscription territory, then adds the operating s
 Superwall setup should be judged by how much paywall presentation you want to control remotely: paywall editor, campaigns, audiences, SDK calls, charts, web checkout, and integrations. It can make iteration faster, but only if your team is ready to run that loop.
 
 ## Pricing comparison
-Pricing was source-checked on 2026-07-01 from official pages. Do not choose from copied plan names alone:
+Pricing was source-checked on 2026-07-19 from official pages. Do not choose from copied plan names alone:
 
-- RevenueCat publishes tracked-revenue based pricing and an enterprise path.
-- Adapty publishes revenue-based pricing and an enterprise path.
-- Superwall publishes monthly attributed revenue based pricing, listed plan tiers, and an enterprise path.
+- RevenueCat is free up to a monthly tracked-revenue threshold, then charges a small percentage of tracked revenue, with an enterprise path. At the last check the free tier covered up to $2,500 in monthly tracked revenue, then about 1%.
+- Adapty is free up to a monthly tracked-revenue threshold, then charges a small percentage of revenue, with an enterprise path. At the last check the free tier covered up to $5,000 in monthly tracked revenue, then about 1%.
+- Superwall keeps its subscription infrastructure free at any scale and charges only on revenue its paywalls convert, above a free threshold. At the last check the paywall product was free up to $10,000 in monthly paywall-attributed revenue, then about 1% of that attributed revenue.
 
 Before implementing, open the official pricing pages and check the current thresholds, included features, and whether your app's revenue model matches how the vendor measures revenue.
 
@@ -1551,17 +1552,35 @@ Before implementing, open the official pricing pages and check the current thres
 ## Recommendation
 Start with RevenueCat if the app is subscription-first and you need purchase truth before growth tooling. Evaluate Adapty if your next bottleneck is understanding and improving the whole paywall and subscription analytics loop. Evaluate Superwall if your next bottleneck is changing paywall presentation, campaigns, and audiences quickly.
 
+## Common questions
+
+### Should I choose RevenueCat or Adapty?
+Choose RevenueCat when reliable purchase infrastructure and entitlement truth are the priority, especially for a first subscription MVP or a migration away from custom receipt work. Choose Adapty when paywall analytics, experiments, and subscription metrics are a daily workflow. RevenueCat leads with infrastructure; Adapty leads with the paywall and analytics loop.
+
+### Is Adapty better than RevenueCat for a solo app?
+Not universally. Adapty is a better fit once paywall iteration and analytics are part of your routine and there is enough traffic to learn from tests. For a solo app that mainly needs dependable purchases and entitlements, RevenueCat is usually the simpler first choice.
+
+### Where does Superwall fit against RevenueCat and Adapty?
+Superwall leads with remote paywall presentation and fast iteration, and its infrastructure layer is now free at any scale. See the dedicated [Superwall vs RevenueCat comparison](/comparisons/superwall-vs-revenuecat) for that two-way decision, and [RevenueCat alternatives](/comparisons/revenuecat-alternatives) for the wider set of options.
+
+### Can I switch between these tools later?
+Yes, with care. Map your product identifiers, subscription groups, and entitlement names, and confirm restore, refunds, grace periods, and account deletion before switching. Test on a small cohort before moving all traffic.
+
 ## Source checks
-Pricing and product claims were checked on 2026-07-01 against official sources:
+Pricing and product claims were checked on 2026-07-19 against official sources:
 
 - RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
 - Adapty pricing and docs: https://adapty.io/pricing/ and https://adapty.io/docs/
 - Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
 
-No hands-on testing claims are made in this article. The comparison graphic is an owned conceptual visual created for IndieAppStack.
+Pricing meters and free thresholds change often, so confirm the current numbers on each official pricing page before committing. No hands-on testing claims are made in this article. The comparison graphic is an owned conceptual visual created for IndieAppStack.
+
+Last checked: 2026-07-19.
 
 ## Related tools and guides
 - Compare [RevenueCat](/tools/revenuecat), [Adapty](/tools/adapty), and [Superwall](/tools/superwall).
+- Go deeper on one matchup in [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
+- See the wider set in [RevenueCat alternatives](/comparisons/revenuecat-alternatives).
 - Review the [paywalls category](/categories/paywalls) and [monetization category](/categories/monetization).
 - Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
 - Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
@@ -1576,6 +1595,342 @@ No hands-on testing claims are made in this article. The comparison graphic is a
           human_reviewed: true,
           ai_assisted: false,
           published_at: publishedAt,
+        },
+        {
+          title: "Superwall vs RevenueCat for iOS subscription apps",
+          slug: "superwall-vs-revenuecat",
+          subtitle:
+            "Compare the remote paywall layer with the purchase-infrastructure layer, and decide whether to run one or both.",
+          excerpt:
+            "Compare Superwall and RevenueCat for iOS subscriptions, paywalls, entitlements, and pricing before choosing one or running both.",
+          body_markdown: `## Short answer
+[RevenueCat](/tools/revenuecat) and [Superwall](/tools/superwall) are often framed as rivals, but they lead with different jobs. Choose [RevenueCat](/tools/revenuecat) when the priority is durable purchase infrastructure: receipt validation, entitlement truth, and cross-platform customer state. Choose [Superwall](/tools/superwall) when the bottleneck is remote paywall presentation and fast creative iteration without shipping an app release. Many teams run both, because Superwall now keeps its subscription infrastructure free at any scale.
+
+There is no single winner. The right first choice depends on whether purchase truth or paywall iteration is the part of your system that must be dependable before the next release.
+
+> [!NOTE] Solo builder scope
+> This comparison is for a solo builder choosing a subscription and paywall stack for an iOS app. The goal is to sell and unlock reliably first, then iterate on the paywall once there is enough traffic to learn from.
+
+![Comparison graphic contrasting RevenueCat as the purchase and entitlement infrastructure layer with Superwall as the remote paywall presentation layer.](/content-visuals/articles/superwall-vs-revenuecat-comparison.svg "RevenueCat owns purchase truth; Superwall owns remote paywall iteration.")
+
+## Superwall vs RevenueCat at a glance
+:::comparison Superwall vs RevenueCat
+| Decision | RevenueCat | Superwall |
+| --- | --- | --- |
+| Center of gravity | Purchase infrastructure, entitlements, and customer state | Remote paywall presentation, campaigns, and experiments |
+| Choose it when... | Purchase truth must be reliable before anything else | You will change paywalls often without waiting on app review |
+| Paywall iteration | Built in, plus growth tools | Core strength; edit and test paywalls remotely |
+| Entitlement source of truth | Yes, its primary job | Its free infrastructure layer can also own this |
+| Cross-platform customer state | Strong focus across iOS, Android, and web | Available through its infrastructure layer |
+| Pricing meter (checked 2026-07-19) | Free up to $2,500 monthly tracked revenue, then about 1% of tracked revenue | Infrastructure free at any scale; paywall product free up to $10,000 monthly paywall-attributed revenue, then about 1% of that revenue |
+| Official sources | [Pricing](https://www.revenuecat.com/pricing/) and [docs](https://www.revenuecat.com/docs/) | [Pricing](https://superwall.com/pricing) and [docs](https://docs.superwall.com/) |
+:::
+
+## They solve two different jobs
+The category has converged, so both tools can technically handle purchases, entitlements, paywalls, and experiments. The useful way to tell them apart is by the job each one leads with.
+
+RevenueCat leads with purchase infrastructure. It handles StoreKit, receipt validation, restore, entitlement checks, webhooks, and cross-platform customer data, then adds paywall and growth tools on top. Superwall leads with the paywall itself: a remote editor, campaigns, audiences, and experiments, with a subscription infrastructure layer underneath that is now free at any scale.
+
+That overlap is why the choice feels confusing. The question is not "which one has paywalls," because both do. The question is which job is your bottleneck this month.
+
+## Choose RevenueCat when purchase truth is the job
+Choose [RevenueCat](/tools/revenuecat) when the subscription layer has to be dependable before the paywall gets sophisticated. For a solo iOS app, that usually means product mapping, SDK integration, receipt validation, restore purchases, entitlement checks, customer state, and revenue reporting that you do not want to improvise.
+
+RevenueCat is the strongest default when you want the purchase path to be boring and trustworthy, and when cross-platform customer state matters because the app already runs, or will run, on more than one platform.
+
+### Not good for
+- A team that only needs a remote paywall editor and already has reliable purchase infrastructure.
+- A web-only product that does not touch App Store or Google Play in-app purchases.
+- A builder who wants a generic backend database or a full product analytics warehouse.
+
+## Choose Superwall when paywall iteration is the job
+Choose [Superwall](/tools/superwall) when the bottleneck is changing the paywall, not proving that purchases work. You can edit paywall layout, copy, price display, targeting, and tests, then ship those changes without waiting on an App Store review cycle.
+
+Superwall is most compelling once the paid product is clear but the paywall is still moving. Its meter charges only on revenue its own paywalls convert, so infrastructure-only use stays free. That makes it reasonable to adopt Superwall for presentation while another tool, or Superwall's own free layer, owns entitlements.
+
+### Not good for
+- Apps that have not yet validated why anyone should pay.
+- Teams that need to settle purchase infrastructure and cross-platform state before touching presentation.
+- Builders who want one general analytics tool for product behavior beyond paywall and revenue flows.
+
+## Can you use RevenueCat and Superwall together?
+Yes, and many teams do. A common setup uses RevenueCat as the entitlement source of truth and Superwall as the remote paywall layer, wired together so paywall events and purchases stay in sync. This gives you durable purchase infrastructure and fast paywall iteration at the same time.
+
+The trade-off is two systems to integrate, reconcile, and reason about instead of one. Run both when paywall iteration and purchase truth are each real, active workloads. If you only need one job done well right now, start with the single tool that matches it and add the second later.
+
+Because Superwall keeps its infrastructure free at any scale, you can also run Superwall alone and let it own entitlements. Confirm that its infrastructure layer covers the platforms and reporting you need before you commit to that path.
+
+## Pricing comparison
+Pricing was source-checked on 2026-07-19 from official pages. Do not choose on pricing alone, and confirm the current numbers before you implement:
+
+- RevenueCat is free up to a monthly tracked-revenue threshold, then charges a small percentage of tracked revenue, with an enterprise path. At the last check the free tier covered up to $2,500 in monthly tracked revenue, then about 1%.
+- Superwall keeps its subscription infrastructure free at any scale and charges only on revenue its paywalls convert, above a free threshold. At the last check the paywall product was free up to $10,000 in monthly paywall-attributed revenue, then about 1% of that attributed revenue.
+
+The meters measure different things. RevenueCat's percentage applies to tracked revenue it processes; Superwall's applies only to revenue its paywalls drive. Match the meter to how your revenue actually flows.
+
+## What to verify before switching
+- Whether your product identifiers, subscription groups, and entitlement names map cleanly to the new tool.
+- Whether restore, grace periods, refunds, cancellations, and account deletion are covered.
+- Whether the tool integrates with the analytics, attribution, and backend systems you already use.
+- Whether the paywall changes you care about truly avoid an app release.
+- Whether exported data and webhooks meet your reporting needs.
+
+## Common questions
+
+### Is Superwall a replacement for RevenueCat?
+It can be, but they lead with different jobs. Superwall's infrastructure layer is free at any scale and can own entitlements, so a paywall-first team can run Superwall alone. Teams that want purchase truth and cross-platform customer state as the priority usually keep RevenueCat, and some run both.
+
+### Can RevenueCat and Superwall work together?
+Yes. A common pattern uses RevenueCat as the entitlement source of truth and Superwall as the remote paywall layer, kept in sync so purchases and paywall events agree. Expect to integrate and reconcile two systems rather than one.
+
+### Which is cheaper for a small app?
+Both start free. As of the 2026-07-19 check, RevenueCat is free up to $2,500 in monthly tracked revenue and Superwall's paywall product is free up to $10,000 in paywall-attributed revenue, with infrastructure free at any scale. The cheaper option depends on your revenue mix, so confirm the current thresholds on each pricing page.
+
+### Do I need either tool to launch a paywall?
+No. A native StoreKit 2 paywall with no third-party tool is a valid launch choice for a simple app. Add a paywall or infrastructure platform when you can name the experiment or the reliability problem it solves.
+
+## Source checks
+Pricing and product claims were checked on 2026-07-19 against official sources:
+
+- RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
+- Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
+
+Pricing meters and free thresholds change often, so confirm the current numbers on each official pricing page before committing. No hands-on testing claims are made in this comparison. The comparison graphic is an owned conceptual visual created for IndieAppStack.
+
+Last checked: 2026-07-19.
+
+## Related tools and guides
+- Compare all three options in the [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
+- Weigh other options in [RevenueCat alternatives for subscription apps](/comparisons/revenuecat-alternatives).
+- Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
+- Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Review the [paywalls category](/categories/paywalls) and [monetization category](/categories/monetization).`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("paywalls").id,
+          seo_title: "Superwall vs RevenueCat for iOS apps",
+          seo_description:
+            "Compare Superwall and RevenueCat for iOS subscriptions, paywalls, entitlements, pricing model, and when to run both.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: comparisonsPublishedAt,
+        },
+        {
+          title: "RevenueCat alternatives for subscription apps",
+          slug: "revenuecat-alternatives",
+          subtitle:
+            "Adapty, Superwall, Qonversion, and native StoreKit compared, with the reason each one beats the default.",
+          excerpt:
+            "Compare the strongest RevenueCat alternatives for a solo iOS app: Adapty, Superwall, Qonversion, and native StoreKit 2.",
+          body_markdown: `## Short answer
+The strongest [RevenueCat](/tools/revenuecat) alternatives for a solo iOS app are [Adapty](/tools/adapty) for paywall analytics and experiments, [Superwall](/tools/superwall) for remote paywall iteration, [Qonversion](/tools/qonversion) for a lower-percentage subscription meter, and native StoreKit 2 for the simplest apps that want no third-party dependency. RevenueCat remains a reliable default; look past it when pricing, paywall workflow, or dependency concerns give another tool a clear edge.
+
+Pick the alternative that matches the job you actually need done, not the one with the longest feature list.
+
+> [!NOTE] Solo builder scope
+> This comparison is for a solo builder who already knows what RevenueCat does and wants to know when another subscription or paywall tool fits better. The goal is a reliable purchase path first, then the workflow that helps you improve revenue.
+
+![Decision guide routing solo builders from RevenueCat to Adapty, Superwall, Qonversion, or native StoreKit based on whether paywall analytics, remote iteration, pricing, or simplicity is the priority.](/content-visuals/articles/revenuecat-alternatives-decision.svg "Route by your reason for switching: analytics, iteration, pricing, or simplicity.")
+
+## Why look past RevenueCat?
+[RevenueCat](/tools/revenuecat) is a common default for subscription infrastructure because it makes purchases, entitlements, and customer state dependable across platforms. Most builders do not need an alternative. You do when one of these is true:
+
+- Pricing: you want a lower percentage meter or a different free threshold.
+- Paywall workflow: you want deeper paywall analytics and experiments, or faster remote iteration, as the daily job.
+- Dependency: you want fewer third-party services and are willing to own more yourself.
+
+The rest of this comparison maps each reason to the tool that fits it.
+
+## RevenueCat alternatives compared
+:::comparison RevenueCat alternatives at a glance
+| Option | Leads with | Best for | Pricing meter (checked 2026-07-19) |
+| --- | --- | --- | --- |
+| [Adapty](/tools/adapty) | Paywall builder plus subscription analytics and experiments | Apps running paywall and pricing tests as a habit | Free up to $5,000 monthly tracked revenue, then about 1% |
+| [Superwall](/tools/superwall) | Remote paywall presentation and iteration | Apps that change paywalls often without app releases | Infrastructure free at any scale; paywall product free up to $10,000 attributed revenue, then about 1% |
+| [Qonversion](/tools/qonversion) | Bundled subscription SDK, paywalls, and analytics | Apps that want a lower-percentage meter in one bundle | Free up to $10,000 monthly tracked revenue, then roughly 0.6% to 0.8% |
+| Native StoreKit 2 | Apple's own purchase APIs, no third-party tool | The simplest apps with one product and no experiments | No third-party fee; you own the integration |
+:::
+
+## Adapty: when paywall analytics are the job
+Choose [Adapty](/tools/adapty) when the question is not just "can users buy?" but "which paywall, offer, and segment should we show?" It combines a browser-based paywall and onboarding builder with A/B testing and subscription analytics such as revenue, retention, and churn. Adapty is a strong RevenueCat alternative when paywall iteration and analytics are part of your weekly workflow, and it is more than you need if all you want is a reliable entitlement check.
+
+## Superwall: when remote iteration is the job
+Choose [Superwall](/tools/superwall) when the bottleneck is changing paywalls quickly, not proving that purchases work. You edit and test paywalls remotely and ship changes without an App Store review cycle. Its meter charges only on revenue its paywalls convert, and its infrastructure layer is free at any scale, so it can even replace RevenueCat's entitlement role for a paywall-first team. See the dedicated [Superwall vs RevenueCat comparison](/comparisons/superwall-vs-revenuecat) for that decision in depth.
+
+## Qonversion: when the meter matters
+Choose [Qonversion](/tools/qonversion) when you want subscription SDKs, a no-code paywall builder, and analytics in one bundle at a lower percentage meter. As of the 2026-07-19 check, its paid tiers charged roughly 0.6% to 0.8% of revenue above a free threshold, which can matter as revenue grows. Confirm which features sit in each tier before you commit, because the lower percentage comes with tiered feature gates.
+
+## Native StoreKit 2: when you want no dependency
+For the simplest apps, one product and one paywall with no plans to experiment, Apple's native StoreKit 2 is a legitimate choice with no third-party fee. You trade remote paywall iteration, cross-platform customer state, and prebuilt analytics for fewer dependencies and full control. Add a subscription platform later, when you can name the reliability problem or the experiment you want to run.
+
+## How to choose
+- Choose RevenueCat when durable, cross-platform purchase infrastructure is the priority and you want a boring, reliable purchase path.
+- Choose Adapty when paywall analytics and experiments are a daily workflow.
+- Choose Superwall when remote paywall iteration is the bottleneck.
+- Choose Qonversion when a lower-percentage bundled meter is the deciding factor.
+- Choose native StoreKit 2 when the app is simple and you want no third-party dependency.
+
+## What to verify before migrating
+- Whether product identifiers, subscription groups, and entitlement names map cleanly to the new tool.
+- Whether restore, grace periods, refunds, cancellations, and account deletion are covered.
+- Whether the tool covers every platform your app targets now or soon.
+- Whether exported data and webhooks meet your reporting needs.
+- Whether the pricing meter matches how your revenue is actually measured.
+
+## Common questions
+
+### What is the best RevenueCat alternative?
+There is no single best one. Adapty leads for paywall analytics and experiments, Superwall for remote paywall iteration, Qonversion for a lower-percentage bundled meter, and native StoreKit 2 for the simplest apps that want no dependency. Match the tool to your reason for switching.
+
+### Is there a free alternative to RevenueCat?
+RevenueCat itself is free up to a monthly tracked-revenue threshold. Among alternatives, Superwall keeps its infrastructure free at any scale, and native StoreKit 2 has no third-party fee at all. Adapty and Qonversion also have free tiers up to a threshold. Confirm the current thresholds on each pricing page.
+
+### Can I migrate off RevenueCat without losing subscribers?
+Migrations are possible but require care. Map your product identifiers, subscription groups, and entitlements, and confirm that restore, refunds, and grace periods are handled before switching. Test on a small cohort before moving all traffic.
+
+### Do I need any of these tools to sell subscriptions?
+No. Native StoreKit 2 lets you sell subscriptions with no third-party tool. A subscription platform earns its place when you need cross-platform state, prebuilt analytics, or remote paywall iteration.
+
+## Source checks
+Pricing and product claims were checked on 2026-07-19 against official sources:
+
+- RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
+- Adapty pricing and docs: https://adapty.io/pricing/ and https://adapty.io/docs/
+- Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
+- Qonversion pricing: https://qonversion.io/pricing
+
+Pricing meters and free thresholds change often, so confirm the current numbers on each official pricing page before committing. Native StoreKit details are Apple platform features, checked against Apple developer documentation. No hands-on testing claims are made in this comparison. The decision visual is an owned conceptual graphic created for IndieAppStack.
+
+Last checked: 2026-07-19.
+
+## Related tools and guides
+- Read the head-to-head [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
+- Go deeper on one matchup in [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
+- Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
+- Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- Review the [monetization category](/categories/monetization) and [paywalls category](/categories/paywalls).`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("monetization").id,
+          seo_title: "RevenueCat alternatives for iOS apps",
+          seo_description:
+            "The strongest RevenueCat alternatives for solo iOS apps: Adapty, Superwall, Qonversion, and native StoreKit, with when each one fits.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: comparisonsPublishedAt,
+        },
+        {
+          title: "Mixpanel vs Amplitude for mobile app analytics",
+          slug: "mixpanel-vs-amplitude",
+          subtitle:
+            "Choose a lean event-analytics workflow or a broader product platform, or decide you do not need either yet.",
+          excerpt:
+            "Compare Mixpanel and Amplitude for mobile product analytics: funnels, retention, experiments, pricing, and whether a solo app needs either.",
+          body_markdown: `## Short answer
+Choose [Mixpanel](/tools/mixpanel) when you want a lean, approachable event-analytics workflow for funnels, retention, and cohorts, priced by event volume. Choose [Amplitude](/tools/amplitude) when you want a broader product platform that adds experimentation, surveys, and activation on top of behavioral analytics, with a larger free event allowance and unlimited seats. Both cover the core product-analytics jobs well; the decision is scope and pricing model, not raw capability.
+
+For many solo iOS apps, the honest answer is that neither is needed on day one. A lighter, privacy-friendly tool covers the first questions.
+
+> [!NOTE] Solo builder scope
+> This comparison is for a solo builder deciding how to measure product usage in a mobile app. The goal is to answer real questions about activation and retention, not to install the largest analytics platform available.
+
+![Comparison graphic contrasting Mixpanel as a lean event-analytics workflow with Amplitude as a broader product platform that adds experiments, surveys, and activation.](/content-visuals/articles/mixpanel-vs-amplitude-comparison.svg "Mixpanel leads with lean event analytics; Amplitude leads with a broader product platform.")
+
+## Mixpanel vs Amplitude at a glance
+:::comparison Mixpanel vs Amplitude
+| Decision | Mixpanel | Amplitude |
+| --- | --- | --- |
+| Center of gravity | Event analytics: funnels, retention, flows, and cohorts | Product platform: analytics plus experiments, surveys, and activation |
+| Best for | A lean, approachable analytics workflow | A broad platform you can grow into |
+| Free tier (checked 2026-07-19) | Up to 1 million monthly events | Up to 2 million monthly events, full platform at limited volumes |
+| Paid model | About $0.28 per 1,000 events above the free tier on the growth plan | Event-based pricing that scales with volume; unlimited seats on every plan |
+| Extras beyond analytics | Session replay | Experimentation, guides and surveys, session replay, activation and data sync |
+| Best when | You want to answer usage questions without extra surface | You want experiments and activation in the same tool |
+| Official sources | [Pricing](https://mixpanel.com/pricing/) | [Pricing](https://amplitude.com/pricing) |
+:::
+
+## What both tools do well
+Mixpanel and Amplitude overlap heavily, and both are mature choices. Each gives you event tracking, funnels, retention analysis, behavioral cohorts, dashboards, and session replay. For the core question most builders start with, "where do people drop off, and who comes back," either tool will answer it.
+
+Because the capability overlap is large, the real decision is scope and pricing model, not a checklist of features neither of you will use in the first year.
+
+## Choose Mixpanel when you want a lean workflow
+Choose [Mixpanel](/tools/mixpanel) when you want to answer product-usage questions quickly without adopting a large platform. Its funnels, retention, and flows reports are approachable, and its pricing is metered by event volume, which is easy to reason about for a small app. As of the 2026-07-19 check, the free plan covered up to 1 million monthly events, and the growth plan charged about $0.28 per 1,000 events above the first million.
+
+Mixpanel is a good fit when analytics is a supporting tool, not a platform you plan to build a growth team around. Early-stage apps may also qualify for its startup program; confirm the current terms before relying on it.
+
+### Not good for
+- Teams that want experimentation, surveys, and activation inside the same tool.
+- Apps that cannot maintain a clean, consistent event taxonomy.
+
+## Choose Amplitude when you want a broader platform
+Choose [Amplitude](/tools/amplitude) when you expect analytics to sit next to experimentation, surveys, and activation in one place. Beyond behavioral analytics and cohorts, it includes feature and web experiments, in-product guides and surveys, and data syncing to other tools. As of the 2026-07-19 check, its free plan allowed up to 2 million monthly events with access to the full platform at limited volumes, and every plan included unlimited seats.
+
+Amplitude is a good fit when you want room to grow into experimentation and activation without switching tools later, and when unlimited seats matter because more than one person will use the data.
+
+### Not good for
+- A solo builder who only needs basic funnels and retention this quarter.
+- Apps that want the leanest possible analytics surface.
+
+## Do you even need either yet?
+For many solo iOS apps, the honest answer early on is no. Before adopting a full product-analytics platform:
+
+- Ship a few well-chosen events that map to activation and retention.
+- Consider a lighter, privacy-friendly tool first. See the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack) and tools such as [TelemetryDeck](/tools/telemetrydeck) or [PostHog](/tools/posthog).
+- Add Mixpanel or Amplitude when you have enough traffic that a funnel or retention test can actually move a decision.
+
+Adopting a heavy analytics platform before there is traffic to learn from creates dashboards nobody reads. Match the tool to the questions you can act on.
+
+## Instrumentation notes
+Both tools depend on a clean event taxonomy. Before you integrate either:
+
+- Name a small set of events tied to activation, engagement, and conversion.
+- Keep event and property names consistent so funnels and cohorts stay trustworthy.
+- Decide what you will do with each metric before you track it.
+- Confirm how each tool handles privacy, data retention, and any consent requirements for your audience.
+
+## Common questions
+
+### Is Mixpanel or Amplitude better for a small app?
+For a small app that only needs funnels and retention, Mixpanel's lean workflow is often the faster start. Amplitude fits better when you want experiments and activation in the same tool, or when unlimited seats and a larger free event allowance matter. Both cover the core analytics jobs.
+
+### Is Mixpanel cheaper than Amplitude?
+It depends on event volume. As of the 2026-07-19 check, Mixpanel's free plan covered up to 1 million monthly events and Amplitude's covered up to 2 million, so Amplitude's free tier is larger by event count. Above the free tier, both scale with usage. Confirm the current limits on each pricing page.
+
+### Can I switch from Mixpanel to Amplitude later?
+Yes, but you re-instrument. Because both rely on your event taxonomy, a clean, consistent set of event names makes a later switch far less painful. Plan the taxonomy first so it survives a tool change.
+
+### What are privacy-friendly alternatives to Mixpanel and Amplitude?
+[TelemetryDeck](/tools/telemetrydeck) and [PostHog](/tools/posthog) are common lighter or privacy-focused options for indie apps. See the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack) for how to instrument a small app without a heavy platform.
+
+## Source checks
+Pricing and product claims were checked on 2026-07-19 against official sources:
+
+- Mixpanel pricing: https://mixpanel.com/pricing/
+- Amplitude pricing: https://amplitude.com/pricing
+
+Plan limits and pricing change often, so confirm the current event allowances and rates on each official pricing page before committing. No hands-on testing claims are made in this comparison. The comparison graphic is an owned conceptual visual created for IndieAppStack.
+
+Last checked: 2026-07-19.
+
+## Related tools and guides
+- Read the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
+- Compare backends in [Supabase vs Firebase vs Appwrite](/comparisons/supabase-vs-firebase-indie-mobile-apps).
+- Review the [analytics category](/categories/analytics).
+- Fit analytics into the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
+- Instrument conversion alongside the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("analytics").id,
+          seo_title: "Mixpanel vs Amplitude for mobile apps",
+          seo_description:
+            "Compare Mixpanel and Amplitude for mobile product analytics: funnels, retention, experiments, pricing, and whether a solo app needs either.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: comparisonsPublishedAt,
         },
         {
           title: "Appfigures vs AppTweak for ASO research",
@@ -2644,6 +2999,66 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
         tool_id: tools.get("superwall").id,
         relationship: "featured",
         sort_order: 30,
+      },
+      {
+        article_id: articles.get("superwall-vs-revenuecat").id,
+        tool_id: tools.get("superwall").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("superwall-vs-revenuecat").id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("revenuecat-alternatives").id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("revenuecat-alternatives").id,
+        tool_id: tools.get("adapty").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("revenuecat-alternatives").id,
+        tool_id: tools.get("superwall").id,
+        relationship: "featured",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("revenuecat-alternatives").id,
+        tool_id: tools.get("qonversion").id,
+        relationship: "featured",
+        sort_order: 40,
+      },
+      {
+        article_id: articles.get("mixpanel-vs-amplitude").id,
+        tool_id: tools.get("mixpanel").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("mixpanel-vs-amplitude").id,
+        tool_id: tools.get("amplitude").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("mixpanel-vs-amplitude").id,
+        tool_id: tools.get("posthog").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("mixpanel-vs-amplitude").id,
+        tool_id: tools.get("telemetrydeck").id,
+        relationship: "supporting",
+        sort_order: 40,
       },
       {
         article_id: articles.get("appfigures-vs-apptweak-aso-tools").id,

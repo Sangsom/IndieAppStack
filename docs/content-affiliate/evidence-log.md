@@ -151,6 +151,32 @@ Notes:
 - TelemetryDeck's public pricing URL returned 404 on 2026-07-09; the analytics article keeps its claims high-level and cites the docs, and defers exact plan details to the live site.
 - All eight upgraded articles carry at least three internal links, an owned hero visual, and a dated `## Source checks` section. `human_reviewed` stays true in the seed, but a human should re-read the new bodies before the next `db:seed` to production.
 
+## Head-to-Head Comparison Build (2026-07-19)
+
+New and updated comparison pages targeting the neutral-comparison keywords the brand claims as its edge (RevenueCat vs Adapty, Superwall vs RevenueCat, RevenueCat alternatives, Mixpanel vs Amplitude). Pricing and positioning re-checked against official pages on 2026-07-19.
+
+| Tool                                   | Claim type   | Article slug(s)                                                                          | Status   | Source                                                                                                       |
+| -------------------------------------- | ------------ | --------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| RevenueCat                             | pricing      | superwall-vs-revenuecat, revenuecat-alternatives, revenuecat-vs-adapty-ios-subscriptions | verified | https://www.revenuecat.com/pricing/ (free to $2,500 MTR, then ~1% tracked revenue)                          |
+| Superwall                              | pricing      | superwall-vs-revenuecat, revenuecat-alternatives, revenuecat-vs-adapty-ios-subscriptions | verified | https://superwall.com/pricing (infra free at any scale; paywall product free to $10,000 attributed, then ~1%) |
+| Adapty                                 | pricing      | revenuecat-alternatives, revenuecat-vs-adapty-ios-subscriptions                          | verified | https://adapty.io/pricing/ (free to $5,000 MTR, then ~1%)                                                    |
+| Qonversion                             | pricing      | revenuecat-alternatives                                                                  | verified | https://qonversion.io/pricing (free to $10,000 MTR; paid ~0.6%–0.8%)                                         |
+| Mixpanel                               | pricing      | mixpanel-vs-amplitude                                                                    | verified | https://mixpanel.com/pricing/ (free to ~1M events/mo; growth ~$0.28 per 1k events)                          |
+| Amplitude                              | pricing      | mixpanel-vs-amplitude                                                                    | verified | https://amplitude.com/pricing (free to ~2M events/mo; unlimited seats on every plan)                        |
+| Mixpanel, Amplitude                    | feature      | mixpanel-vs-amplitude                                                                    | verified | Official pricing/product pages (funnels, retention, cohorts, replay; Amplitude adds experiments/surveys/activation) |
+| Native StoreKit 2                      | feature      | revenuecat-alternatives                                                                  | verified | Apple developer documentation (native purchase APIs, no third-party fee)                                     |
+| Superwall vs RevenueCat comparison     | visual_asset | superwall-vs-revenuecat                                                                  | verified | /content-visuals/articles/superwall-vs-revenuecat-comparison.svg (generated_concept)                         |
+| RevenueCat alternatives decision guide | visual_asset | revenuecat-alternatives                                                                  | verified | /content-visuals/articles/revenuecat-alternatives-decision.svg (generated_concept)                          |
+| Mixpanel vs Amplitude comparison       | visual_asset | mixpanel-vs-amplitude                                                                    | verified | /content-visuals/articles/mixpanel-vs-amplitude-comparison.svg (generated_concept)                          |
+
+Notes:
+
+- Pricing meters and free thresholds change often. Exact figures are dated in-body as "checked 2026-07-19", each article links the official pricing page, and the copy tells the reader to confirm current numbers before committing.
+- No hands-on or testing claims are made; all three heroes are owned `generated_concept` visuals with no product screenshots, and copy stays qualitative in the images so undated figures do not go stale.
+- Product-UI screenshots remain a capture-or-source asset request (do not generate); pages ship with owned conceptual diagrams per the site's visual convention.
+- Internal links were checked against published guide/comparison slugs. `telemetrydeck-vs-posthog-indie-analytics` is still briefed (unpublished), so it is referenced only via the analytics category and the privacy-friendly analytics starter stack, not linked directly.
+- These four articles are `ai_assisted` in the seed and `human_reviewed` true so they publish; re-read the bodies and re-run `db:seed` if any wording changes.
+
 ## Article Review Note Template
 
 Add this block to each draft before it moves from draft to review:

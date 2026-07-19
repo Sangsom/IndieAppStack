@@ -5,11 +5,13 @@ import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/public/article-body";
 import { ArticleToc } from "@/components/public/article-toc";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
+import { JsonLd } from "@/components/public/json-ld";
 import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { RelatedReading } from "@/components/public/related-reading";
 import { ToolCard } from "@/components/public/tool-card";
 import { Badge } from "@/components/ui/badge";
 import { getTocItems, parseArticleMarkdown } from "@/lib/article-markdown";
+import { extractFaqItems, faqPageJsonLd } from "@/lib/faq-schema";
 import { affiliateDisclosureCopy } from "@/lib/compliance";
 import {
   getComparisonDetail,
@@ -129,10 +131,14 @@ export default async function ComparisonPage({ params }: ComparisonPageProps) {
 
   const blocks = parseArticleMarkdown(comparison.bodyMarkdown);
   const tocItems = getTocItems(blocks);
+  const faqItems = extractFaqItems(blocks);
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
       <ComparisonStructuredData comparison={comparison} />
+      {faqItems.length >= 2 ? (
+        <JsonLd data={faqPageJsonLd(faqItems)} />
+      ) : null}
 
       <Link
         className="inline-flex text-sm font-semibold text-pine transition-colors hover:text-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
