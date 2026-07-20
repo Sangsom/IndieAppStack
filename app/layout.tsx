@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
-import { PlausibleAnalytics } from "@/components/analytics/plausible-analytics";
 import { absoluteUrl } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -126,7 +125,6 @@ export default function RootLayout({
     <html lang="en" className={sourceSerif.variable}>
       <body>
         {children}
-        <PlausibleAnalytics />
         <GoogleAnalytics />
       </body>
     </html>

@@ -48,7 +48,6 @@ const requiredFiles = [
   "app/go/[slug]/route.ts",
   "app/sitemap.ts",
   "app/robots.ts",
-  "components/analytics/plausible-analytics.tsx",
   "components/analytics/google-analytics.tsx",
 ];
 

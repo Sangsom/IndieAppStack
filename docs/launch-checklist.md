@@ -51,7 +51,7 @@ Confirm these in production:
 - Vercel shows valid configuration and SSL certificate for apex and `www`.
 - Google Search Console domain property is verified.
 - Submit `https://indieappstack.com/sitemap.xml` in Google Search Console.
-- Plausible page view appears for a production page visit.
+- GA4 Realtime shows a page view for a production page visit.
 - Newsletter capture creates a subscriber row and returns to the source page.
 - `/go/[slug]` redirects to the destination and writes a click event.
 - Mobile walkthrough passes for browse -> tool -> `/go`, comparison -> CTA, and quiz -> results -> email.

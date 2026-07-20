@@ -39,8 +39,7 @@ Configure these in Vercel Project Settings for Production and Preview. Do not co
 | `AI_DRAFT_WEBHOOK_SECRET`          | Random server secret        | Random server secret             | Authenticates `/api/ai/drafts`. Server-only. |
 | `ANTHROPIC_API_KEY`                | Anthropic API key           | Anthropic API key                | Server-only key for AI brief/draft flow.     |
 | `ANTHROPIC_MODEL`                  | Current Claude model ID     | Current Claude model ID          | Keep current with Anthropic model docs.      |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`     | `indieappstack.com`         | Optional preview domain          | Enables page-view analytics.                 |
-| `NEXT_PUBLIC_PLAUSIBLE_SCRIPT_SRC` | Optional                    | Optional                         | Use only for Plausible proxy/self-hosting.   |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID`    | `G-XXXXXXXXXX`              | Optional (own property)          | GA4 analytics. Inlined at build — redeploy after changing.   |
 
 ## CI
 
@@ -75,7 +74,7 @@ Target domain: `indieappstack.com`
 3. In DNS, point the apex domain to Vercel's apex record and `www` to Vercel's CNAME target shown in the Vercel dashboard.
 4. Wait for Vercel domain verification and certificate issuance.
 5. Set `NEXT_PUBLIC_SITE_URL=https://indieappstack.com` in Production.
-6. Verify homepage, Supabase healthcheck, Plausible page views, and Search Console ownership.
+6. Verify homepage, Supabase healthcheck, GA4 page views (Realtime), and Search Console ownership.
 7. Set the preferred domain redirect in Vercel once both apex and `www` resolve.
 
 ## Launch Verification
