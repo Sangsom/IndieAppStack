@@ -29,7 +29,7 @@ export const analyticsEvents = {
   },
   outbound_link_clicked: {
     description: "Visitor clicks a non-affiliate outbound link.",
-    goal: false,
+    goal: true,
   },
   search_submitted: {
     description: "Visitor submits an onsite search query.",

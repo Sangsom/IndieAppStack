@@ -39,24 +39,42 @@ analytics.track("cta_clicked", {
 
 Do not send names, email addresses, raw search queries, auth IDs, or any other personally identifiable information in analytics properties.
 
-## Initial Goals
+## Goals
 
-Create matching Plausible custom event goals for:
+The `goal: true` flag in `lib/analytics/events.ts` is the source of truth for
+which events should have a matching Plausible **custom-event goal** (goal name
+must equal the event name exactly). An event only shows up as a conversion in
+Plausible once its goal exists. The current goal set is:
 
-- `affiliate_link_clicked`
-- `outbound_link_clicked`
-- `tool_card_clicked`
-- `cta_clicked`
-- `newsletter_signup`
-- `search_submitted`
-- `stack_finder_start`
-- `stack_finder_completion`
-- `stack_recommendation_viewed`
+- `affiliate_link_clicked` — partner click-out (monetizing)
+- `outbound_link_clicked` — non-partner external click-out
+- `tool_card_clicked` — clicked into a tool's detail page (engagement step)
+- `cta_clicked` — primary call-to-action
+- `newsletter_signup` — newsletter subscription
+- `stack_finder_start` — started the stack-finder quiz
+- `stack_finder_completion` — completed the stack finder
 
-Page views are recorded automatically by the Plausible script.
+Tracked but intentionally **not** goals (engagement signals, not conversions):
+`search_submitted`, `stack_recommendation_viewed`, and all admin-only events.
+Flip the `goal` flag in `events.ts` if that changes.
 
-Stack Finder result email capture reuses `newsletter_signup` with
-`source=stack-finder`.
+Page views are recorded automatically by the Plausible script. Stack Finder
+result email capture reuses `newsletter_signup` with `source=stack-finder`.
+
+## Click-out funnel
+
+"Click-out" = a visitor leaving to an external destination, i.e.
+`affiliate_link_clicked` (partner) or `outbound_link_clicked` (official site).
+Plausible funnel steps are single goals, so the primary funnel tracks the
+monetizing path:
+
+1. **Pageview** — a tool detail page (`/tools/**`)
+2. **`affiliate_link_clicked`**
+
+Per-tool / per-guide click-out rate (the task's success metric) comes from the
+`affiliate_link_clicked` and `outbound_link_clicked` goals viewed with a page
+breakdown, rather than from the funnel itself. Funnels require a paid Plausible
+plan.
 
 ## Validation
 
