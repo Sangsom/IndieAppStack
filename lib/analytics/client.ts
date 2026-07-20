@@ -19,6 +19,14 @@ declare global {
       eventName: AnalyticsEventName | "pageview",
       options?: PlausibleOptions,
     ) => void;
+    // gtag.js, injected by components/analytics/google-analytics.tsx. Absent
+    // until GA4 is configured, so every call site guards with `?.`.
+    gtag?: (
+      command: "config" | "event" | "js" | "set",
+      targetOrEventName: string,
+      params?: Record<string, AnalyticsPropertyValue>,
+    ) => void;
+    dataLayer?: unknown[];
   }
 }
 
@@ -40,6 +48,9 @@ export const analytics = {
     }
 
     window.plausible?.("pageview", url ? { url } : undefined);
+    // GA4 also auto-records pageviews via the `config` call and Enhanced
+    // Measurement; this manual forward keeps parity for any explicit call.
+    window.gtag?.("event", "page_view", url ? { page_location: url } : {});
   },
 
   track<EventName extends AnalyticsEventName>(
@@ -50,8 +61,11 @@ export const analytics = {
       return;
     }
 
-    window.plausible?.(eventName, {
-      props: cleanProperties(properties),
-    });
+    const props = cleanProperties(properties);
+
+    window.plausible?.(eventName, { props });
+    // Event names are already snake_case, matching GA4's convention, and the
+    // cleaned props (string | number | boolean) are valid GA4 event params.
+    window.gtag?.("event", eventName, props);
   },
 };

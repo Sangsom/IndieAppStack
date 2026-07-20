@@ -49,6 +49,7 @@ const requiredFiles = [
   "app/sitemap.ts",
   "app/robots.ts",
   "components/analytics/plausible-analytics.tsx",
+  "components/analytics/google-analytics.tsx",
 ];
 
 const livePaths = [
