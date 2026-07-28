@@ -30,6 +30,14 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# firebase-tools. This is not a Firebase project (no firebase.json), but the
+# Firebase MCP server ships with a Claude Code plugin and launches as
+# `npx -y firebase-tools mcp --dir .`, so it writes its debug log into
+# whichever repo root the editor session is open in — including this one.
+firebase-debug.log
+firebase-debug.*.log
+.firebase/
+
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example
