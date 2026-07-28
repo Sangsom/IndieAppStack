@@ -104,6 +104,17 @@ function emitNewsletterSignupEvent(properties: {
   console.info("[analytics]", "newsletter_signup", properties);
 }
 
+// `/newsletter` is a form target, not a page — but the signup form's
+// `action="/newsletter"` is in the crawlable HTML of nearly every public page,
+// so Googlebot GETs it. Without this handler Next.js answers unrouted methods
+// with 405, which Search Console reports as "Blocked due to other 4xx issue".
+// A permanent redirect to the homepage reclassifies it as a (non-error) page
+// with a redirect. Robots.txt is deliberately left open here: blocking the path
+// would stop Google fetching it and just move the report to the other bucket.
+export async function GET(request: NextRequest) {
+  return NextResponse.redirect(new URL("/", request.url), 308);
+}
+
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const source = normalizeSource(textParam(formData.get("source")));
