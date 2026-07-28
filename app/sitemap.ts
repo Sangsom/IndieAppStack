@@ -57,7 +57,9 @@ function latestOf(routes: ContentRoute[], fallback: Date): Date {
     return fallback;
   }
 
-  return new Date(Math.max(...routes.map((route) => route.lastModified.getTime())));
+  return new Date(
+    Math.max(...routes.map((route) => route.lastModified.getTime())),
+  );
 }
 
 function staticDate(path: string, fallback: Date): Date {

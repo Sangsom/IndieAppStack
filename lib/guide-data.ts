@@ -383,9 +383,7 @@ async function getRelatedArticles(
         score: sharedTools * 10 + sameCategory * 3,
       };
     })
-    .sort(
-      (a, b) => b.score - a.score || b.publishedTime - a.publishedTime,
-    )
+    .sort((a, b) => b.score - a.score || b.publishedTime - a.publishedTime)
     .slice(0, 4)
     .map(({ row }) => {
       const category = row.primary_category_id

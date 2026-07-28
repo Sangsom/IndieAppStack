@@ -103,11 +103,11 @@ Eight more were created during the trust reset sprint, one hero per upgraded thi
 
 Three owned hero visuals created for the comparison-page build, all `generated_concept` provenance with no hands-on implication and no product screenshots. Copy inside each SVG stays qualitative so undated figures cannot go stale.
 
-| Article                             | Asset                   | Type                     | Path                                                                 |
-| ----------------------------------- | ----------------------- | ------------------------ | ------------------------------------------------------------------- |
-| Superwall vs RevenueCat             | Two-layer comparison    | comparison_table_graphic | `/content-visuals/articles/superwall-vs-revenuecat-comparison.svg`   |
-| RevenueCat alternatives             | Reason-to-switch guide  | decision_tree            | `/content-visuals/articles/revenuecat-alternatives-decision.svg`     |
-| Mixpanel vs Amplitude               | Scope comparison        | comparison_table_graphic | `/content-visuals/articles/mixpanel-vs-amplitude-comparison.svg`     |
+| Article                 | Asset                  | Type                     | Path                                                               |
+| ----------------------- | ---------------------- | ------------------------ | ------------------------------------------------------------------ |
+| Superwall vs RevenueCat | Two-layer comparison   | comparison_table_graphic | `/content-visuals/articles/superwall-vs-revenuecat-comparison.svg` |
+| RevenueCat alternatives | Reason-to-switch guide | decision_tree            | `/content-visuals/articles/revenuecat-alternatives-decision.svg`   |
+| Mixpanel vs Amplitude   | Scope comparison       | comparison_table_graphic | `/content-visuals/articles/mixpanel-vs-amplitude-comparison.svg`   |
 
 Product-UI screenshots for these tools remain a capture-or-source asset request (do not generate). Each page ships the owned conceptual diagram above and defers real product screenshots until a hands-on capture exists.
 

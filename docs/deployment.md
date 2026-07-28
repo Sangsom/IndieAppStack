@@ -29,17 +29,17 @@ Local `.env` files are excluded from deployment uploads by `.vercelignore`; use 
 
 Configure these in Vercel Project Settings for Production and Preview. Do not commit real values.
 
-| Variable                           | Production                  | Preview                          | Notes                                        |
-| ---------------------------------- | --------------------------- | -------------------------------- | -------------------------------------------- |
-| `NEXT_PUBLIC_SITE_URL`             | `https://indieappstack.com` | Vercel preview URL or branch URL | Used for metadata and canonical links.       |
-| `NEXT_PUBLIC_SUPABASE_URL`         | Supabase project URL        | Supabase project URL             | Public anon client URL.                      |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY`    | Supabase anon key           | Supabase anon key                | Public browser key.                          |
-| `SUPABASE_SERVICE_ROLE_KEY`        | Service role key            | Service role key                 | Server-only. Never expose to client code.    |
-| `SUPABASE_PROJECT_ID`              | Supabase project ref        | Supabase project ref             | Used by maintenance scripts.                 |
-| `AI_DRAFT_WEBHOOK_SECRET`          | Random server secret        | Random server secret             | Authenticates `/api/ai/drafts`. Server-only. |
-| `ANTHROPIC_API_KEY`                | Anthropic API key           | Anthropic API key                | Server-only key for AI brief/draft flow.     |
-| `ANTHROPIC_MODEL`                  | Current Claude model ID     | Current Claude model ID          | Keep current with Anthropic model docs.      |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID`    | `G-XXXXXXXXXX`              | Optional (own property)          | GA4 analytics. Inlined at build — redeploy after changing.   |
+| Variable                        | Production                  | Preview                          | Notes                                                      |
+| ------------------------------- | --------------------------- | -------------------------------- | ---------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`          | `https://indieappstack.com` | Vercel preview URL or branch URL | Used for metadata and canonical links.                     |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Supabase project URL        | Supabase project URL             | Public anon client URL.                                    |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key           | Supabase anon key                | Public browser key.                                        |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Service role key            | Service role key                 | Server-only. Never expose to client code.                  |
+| `SUPABASE_PROJECT_ID`           | Supabase project ref        | Supabase project ref             | Used by maintenance scripts.                               |
+| `AI_DRAFT_WEBHOOK_SECRET`       | Random server secret        | Random server secret             | Authenticates `/api/ai/drafts`. Server-only.               |
+| `ANTHROPIC_API_KEY`             | Anthropic API key           | Anthropic API key                | Server-only key for AI brief/draft flow.                   |
+| `ANTHROPIC_MODEL`               | Current Claude model ID     | Current Claude model ID          | Keep current with Anthropic model docs.                    |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-XXXXXXXXXX`              | Optional (own property)          | GA4 analytics. Inlined at build — redeploy after changing. |
 
 ## CI
 
