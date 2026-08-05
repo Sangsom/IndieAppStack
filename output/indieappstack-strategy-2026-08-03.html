@@ -1,0 +1,1298 @@
+<title>Marketing Strategy — IndieAppStack</title>
+<style>
+  :root {
+    --bg: #f0efeb;
+    --surface: #ffffff;
+    --surface-2: #e6e4dd;
+    --border: #d8d4c9;
+    --hair: #e4e1d8;
+    --text: #1e211c;
+    --muted: #65675d;
+    --accent: #2c5f4f;
+    --core: #2c5f4f;
+    --bet: #8a5f1f;
+    --exp: #5b6470;
+    --neg: #9e4434;
+    --track: #dedbd2;
+    --shadow:
+      0 1px 2px rgba(35, 32, 20, 0.05), 0 10px 30px rgba(35, 32, 20, 0.05);
+    --sans:
+      system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161814;
+      --surface: #1e211c;
+      --surface-2: #272a24;
+      --border: #353a32;
+      --hair: #2c3029;
+      --text: #e8e7df;
+      --muted: #9b9c92;
+      --accent: #7fb9a2;
+      --core: #7fb9a2;
+      --bet: #d6a851;
+      --exp: #93a0ad;
+      --neg: #e08a76;
+      --track: #2e332c;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 12px 32px rgba(0, 0, 0, 0.32);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #f0efeb;
+    --surface: #fff;
+    --surface-2: #e6e4dd;
+    --border: #d8d4c9;
+    --hair: #e4e1d8;
+    --text: #1e211c;
+    --muted: #65675d;
+    --accent: #2c5f4f;
+    --core: #2c5f4f;
+    --bet: #8a5f1f;
+    --exp: #5b6470;
+    --neg: #9e4434;
+    --track: #dedbd2;
+  }
+  :root[data-theme="dark"] {
+    --bg: #161814;
+    --surface: #1e211c;
+    --surface-2: #272a24;
+    --border: #353a32;
+    --hair: #2c3029;
+    --text: #e8e7df;
+    --muted: #9b9c92;
+    --accent: #7fb9a2;
+    --core: #7fb9a2;
+    --bet: #d6a851;
+    --exp: #93a0ad;
+    --neg: #e08a76;
+    --track: #2e332c;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.62 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .page {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 42px 22px 72px;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  p {
+    margin: 0;
+  }
+  .muted {
+    color: var(--muted);
+  }
+
+  .masthead {
+    padding-bottom: 22px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .masthead h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+  }
+  .masthead .domain {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .metarow {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 18px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .metarow b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .play {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 24px 26px;
+    margin-top: 24px;
+  }
+  .lab {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 11px;
+  }
+  .play h2 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.012em;
+    line-height: 1.3;
+  }
+  .play p {
+    margin-top: 12px;
+    font-size: 15.5px;
+  }
+  .play p + p {
+    margin-top: 10px;
+  }
+  .goals {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--hair);
+    font-size: 13.4px;
+    color: var(--muted);
+  }
+  .goals b {
+    color: var(--text);
+  }
+
+  .alert {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--neg);
+    border-radius: 0 13px 13px 0;
+    box-shadow: var(--shadow);
+    padding: 18px 22px;
+    margin-top: 16px;
+  }
+  .alert .lab {
+    color: var(--neg);
+  }
+  .alert h3 {
+    font-size: 16.5px;
+    margin-bottom: 8px;
+  }
+  .alert p {
+    font-size: 13.9px;
+    line-height: 1.6;
+  }
+  .alert p + p {
+    margin-top: 9px;
+  }
+  .alert code {
+    font-family: var(--mono);
+    font-size: 12.4px;
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  h2.sec {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 44px 0 15px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .posgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+  }
+  .card h3 {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+  .card p {
+    font-size: 13.6px;
+    line-height: 1.55;
+  }
+  .msg {
+    margin-top: 12px;
+  }
+  .msg-h {
+    margin: 8px 0 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 7px;
+    font-size: 13.8px;
+  }
+
+  /* the ritual spine */
+  .spine {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+    padding: 20px 22px;
+  }
+  .spine .hub {
+    background: var(--surface-2);
+    border: 1px dashed color-mix(in srgb, var(--accent) 50%, transparent);
+    border-radius: 10px;
+    padding: 13px 16px;
+    text-align: center;
+  }
+  .spine .hub b {
+    color: var(--accent);
+    font-size: 15px;
+  }
+  .spine .hub span {
+    display: block;
+    font-size: 12.8px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .fanout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 11px;
+    margin-top: 14px;
+  }
+  .fan {
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 9px;
+    padding: 12px 14px;
+    font-size: 13.1px;
+    line-height: 1.5;
+  }
+  .fan b {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 5px;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 11px;
+    margin-bottom: 15px;
+  }
+  .sbox {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 17px;
+    box-shadow: var(--shadow);
+  }
+  .sbox .pct {
+    font-size: 29px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .sbox .cap {
+    font-size: 12.4px;
+    color: var(--muted);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+  .sbox.core {
+    border-top: 3px solid var(--core);
+  }
+  .sbox.core .pct {
+    color: var(--core);
+  }
+  .sbox.bet {
+    border-top: 3px solid var(--bet);
+  }
+  .sbox.bet .pct {
+    color: var(--bet);
+  }
+  .sbox.exp {
+    border-top: 3px solid var(--exp);
+  }
+  .sbox.exp .pct {
+    color: var(--exp);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 720px;
+    background: var(--surface);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--hair);
+    vertical-align: top;
+    font-size: 13.1px;
+    line-height: 1.5;
+  }
+  thead th {
+    background: var(--surface-2);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  td.role {
+    color: var(--muted);
+    font-size: 12.4px;
+  }
+  .tier {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 5px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .tier.core {
+    color: var(--core);
+    background: color-mix(in srgb, var(--core) 15%, transparent);
+  }
+  .tier.bet {
+    color: var(--bet);
+    background: color-mix(in srgb, var(--bet) 17%, transparent);
+  }
+  .tier.exp {
+    color: var(--exp);
+    background: color-mix(in srgb, var(--exp) 17%, transparent);
+  }
+  .tier.skip {
+    color: var(--neg);
+    background: color-mix(in srgb, var(--neg) 14%, transparent);
+  }
+  .allocbar {
+    height: 7px;
+    border-radius: 4px;
+    background: var(--track);
+    overflow: hidden;
+    margin-top: 5px;
+    min-width: 70px;
+  }
+  .allocbar > span {
+    display: block;
+    height: 100%;
+    border-radius: 4px;
+    background: var(--accent);
+    width: calc(var(--pct) * 1%);
+  }
+  .hrs {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .wave {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+    padding: 18px 21px;
+    margin-bottom: 13px;
+  }
+  .wave .whead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: baseline;
+    padding-bottom: 11px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .wave .wtag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .wave h3 {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+  }
+  .wave .whrs {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .wave ul {
+    margin: 12px 0 0;
+    padding-left: 19px;
+    display: grid;
+    gap: 7px;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .wave ul b {
+    font-weight: 600;
+  }
+  .wave.now {
+    border-left: 3px solid var(--neg);
+  }
+  .wave.now .wtag {
+    color: var(--neg);
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+    padding: 18px 21px;
+  }
+  .panel h3 {
+    font-size: 15.5px;
+    margin-bottom: 5px;
+  }
+  .panel > p {
+    font-size: 13.3px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  ul.plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  ul.plain li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 9px;
+    font-size: 13.5px;
+    line-height: 1.58;
+  }
+  .ico {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .notdoing {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+    padding: 18px 21px;
+  }
+  .notdoing .ico {
+    color: var(--neg);
+  }
+  .notdoing li b {
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 46px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.4px;
+    line-height: 1.65;
+  }
+  footer b {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .footer-src {
+    margin-top: 9px;
+  }
+  .chip {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 1.5px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+    font-family: var(--mono);
+  }
+  .chip.m {
+    color: var(--text);
+  }
+  .chip.u {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  .chip.n {
+    border-style: dashed;
+  }
+  .chip.ts {
+    color: var(--bet);
+    border-color: color-mix(in srgb, var(--bet) 50%, transparent);
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    font-size: 12.4px;
+    color: var(--muted);
+    margin: 22px 2px 0;
+    align-items: center;
+  }
+
+  @media (max-width: 720px) {
+    .wave .whrs {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow">
+      Go-to-market strategy · 12 months in quarterly waves
+    </div>
+    <h1>IndieAppStack</h1>
+    <a
+      class="domain"
+      href="https://indieappstack.com"
+      target="_blank"
+      rel="noopener"
+      >indieappstack.com</a
+    >
+    <div class="metarow">
+      <span
+        ><b>Budget basis:</b> $0 cash — hours are the currency
+        <span class="chip u">user-provided</span></span
+      >
+      <span
+        ><b>Capacity:</b> 6–12 h/week, one operator
+        <span class="chip u">user-provided</span></span
+      >
+      <span><b>Date:</b> <span class="mono">2026-08-03</span></span>
+    </div>
+  </header>
+
+  <section class="play">
+    <div class="lab">♟ The play</div>
+    <h2>
+      Your differentiator is a maintenance ritual. Industrialise it, and let one
+      ritual feed four channels.
+    </h2>
+    <p>
+      IndieAppStack's wedge is the dated price check. Right now that wedge is
+      three things it should not be: <b>a one-off sweep</b> (every tool page and
+      guide carries the same Jul 19, 2026 date),
+      <b>invisible to machines</b> (tool-page JSON-LD contains no date fields at
+      all, so the claim exists only as prose), and
+      <b>unowned by any human</b> (everything is bylined to an Organization).
+    </p>
+    <p>
+      Turn it into a rolling weekly ritual — re-check two tools a week, snapshot
+      each price with its source and date — and the same hours produce four
+      outputs: fresh, machine-readable pages for AI retrieval; the monthly
+      newsletter; a price-change log other publications can cite; and, after two
+      quarters of accumulation, the one piece of original research a 28-tool
+      directory can legitimately own.
+      <b>That is how a person with a day job runs four channels honestly.</b>
+    </p>
+    <p>
+      The strategic unlock behind it: a low-authority site cannot outrank rivals
+      with 1,900 URLs, but it does not have to. Only ~17% of AI Overview
+      citations now overlap the organic top 10, so
+      <b>retrieval can be won without the ranking</b> — and freshness is the
+      cheapest lever you own.
+    </p>
+    <div class="goals">
+      <b>Laddering to:</b> working goal set (no
+      <span class="mono">smart-goals</span> plan exists) — North Star
+      <b>non-branded organic + AI-cited sessions</b>, sequenced authority →
+      traffic → revenue. Affiliate programs require traffic proof before
+      approval, so revenue is a lagging outcome, not a Q1 target.
+    </div>
+  </section>
+
+  <div class="alert">
+    <div class="lab">Ship this week — before any of the below</div>
+    <h3>The Stack Finder promises an email that cannot be sent</h3>
+    <p>
+      Your highest-intent surface renders the CTA
+      <b>"Send this stack to me"</b> with the description
+      <b>"Get this exact recommendation link in your inbox."</b> I verified the
+      code: <code>package.json</code> contains
+      <b>no email-sending dependency of any kind</b> — no Resend, Postmark,
+      SendGrid, Nodemailer, SES. Signups write straight to a Supabase table.
+      Nothing has ever been sent, and deductively nothing ever could have been.
+    </p>
+    <p>
+      Three consequences. It is a
+      <b>direct contradiction of the verifiability wedge</b> on the one page
+      where a reader has most invested. There is
+      <b>no unsubscribe route anywhere</b> in <code>app/</code>, and
+      <code>NEWSLETTER_DOUBLE_OPT_IN</code> is unset so every address is stored
+      as active with consent undemonstrable — live GDPR and ePrivacy exposure
+      that begins breaching the moment a first email sends. And the capture
+      surface is built <b>nine times over</b> while send capability is zero.
+    </p>
+    <p>
+      The copy fix is half an hour and does not wait for the ESP. Everything
+      else in this plan assumes the brand does not make claims it cannot keep —
+      so this is fixed first, on principle as much as on law.
+    </p>
+  </div>
+
+  <h2 class="sec">Positioning</h2>
+  <div class="posgrid">
+    <div class="card">
+      <h3>Who we're for</h3>
+      <p>
+        Solo and indie iOS developers choosing tools for a small app. Trigger:
+        about to ship, or just shipped, an MVP and must pick monetization,
+        backend, analytics and crash reporting without over-buying.
+      </p>
+    </div>
+    <div class="card">
+      <h3>The wedge</h3>
+      <p>
+        <b>Verifiability, not neutrality.</b> The competitor study found honest
+        "when not to use" verdicts are already published by a rival. What nobody
+        does is make claims checkable: no competitor sources a price or dates a
+        figure.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Value proposition</h3>
+      <p>
+        The only indie tool guide where every price carries a source and a check
+        date — and where the answer is sometimes "do not buy this", including
+        when the affiliate link pays.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Category frame</h3>
+      <p>
+        Existing category, new standard. Do not invent a category; instead
+        define the bar for the one that exists — an audited guide in a market of
+        undated listicles.
+      </p>
+    </div>
+  </div>
+  <div class="card msg">
+    <h3>Message hierarchy</h3>
+    <ol class="msg-h">
+      <li>
+        <b>Primary promise:</b> Every price dated. Every claim sourced.
+        Including when the answer is "don't buy".
+      </li>
+      <li>
+        <b>Proof:</b> a visible check date and source link on all 26 indexable
+        tool pages; a public methodology page; a named human author; a published
+        correction log; at least one verdict against a tool that pays
+        commission.
+      </li>
+      <li>
+        <b>Per-persona angles:</b> <em>Pre-launch</em> — what is the minimum
+        stack, and what can wait? <em>Just shipped</em> — what do I add now, and
+        at what real cost? <em>Cost-conscious</em> — which tier am I over-paying
+        for, and when does the free tier end?
+      </li>
+    </ol>
+  </div>
+
+  <h2 class="sec">The spine — one ritual, four channels</h2>
+  <div class="spine">
+    <div class="hub">
+      <b>Re-check 2 tools per week · snapshot price + source + date</b>
+      <span
+        >~35 min/week · the maintenance the wedge already owes, done rolling
+        instead of as one annual sweep</span
+      >
+    </div>
+    <div class="fanout">
+      <div class="fan">
+        <b>SEO / GEO</b>Rolling <span class="mono">dateModified</span> keeps the
+        corpus permanently inside the ~13-week window where roughly half of
+        AI-cited content sits.
+      </div>
+      <div class="fan">
+        <b>Content</b>Each re-check is a page refresh. Feeds the 70:30
+        refresh-to-new ratio without inventing new topics.
+      </div>
+      <div class="fan">
+        <b>Email</b>The monthly verification log writes itself: prices checked,
+        prices moved, one honest do-not-buy note.
+      </div>
+      <div class="fan">
+        <b>Earned / PR</b>A dated price-change log is genuinely citable — and
+        after two quarters it becomes the Pricing Index, the one original
+        dataset you can own.
+      </div>
+    </div>
+  </div>
+  <p class="muted" style="font-size: 12.8px; margin-top: 11px">
+    <b style="color: var(--text)">Why this matters operationally:</b> every
+    specialist independently warned against double-counting these hours. The
+    ritual is the reason they need not be counted twice — four channels drawing
+    on one recurring task, not four parallel workstreams.
+  </p>
+
+  <div class="legend">
+    <span>Provenance:</span>
+    <span class="chip m">measured</span><span class="chip u">user-provided</span
+    ><span class="chip n">n/a</span><span class="chip ts">time-sensitive</span>
+    <span>Benchmarks are single-source and dated — re-verify each cycle.</span>
+  </div>
+
+  <h2 class="sec">Channel mix &amp; allocation — of hours, not dollars</h2>
+  <div class="split">
+    <div class="sbox core">
+      <div class="pct mono">65%</div>
+      <div class="cap">
+        Proven — Content + SEO/GEO. The #1 paywall ranking is the proof the
+        format works.
+      </div>
+    </div>
+    <div class="sbox bet">
+      <div class="pct mono">25%</div>
+      <div class="cap">
+        Emerging bet — Earned/PR. Untested here, but the measured binding
+        constraint.
+      </div>
+    </div>
+    <div class="sbox exp">
+      <div class="pct mono">10%</div>
+      <div class="cap">
+        Experiment — Lifecycle email. Half-built, currently a liability; fix
+        then let it accrue.
+      </div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Tier</th>
+          <th>Funnel role</th>
+          <th>Share</th>
+          <th>Lean 6h</th>
+          <th>Base 9h</th>
+          <th>Full 12h</th>
+          <th>Key KPI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <b>Content &amp; SEO/GEO</b>
+            <div class="role">fit 92 / 80 · treated as one hour-pool</div>
+          </td>
+          <td><span class="tier core">CORE</span></td>
+          <td class="role">Awareness · consideration · decision</td>
+          <td>
+            <span class="mono">65%</span>
+            <div class="allocbar"><span style="--pct: 65"></span></div>
+          </td>
+          <td class="hrs">4.0 h/wk</td>
+          <td class="hrs">6.0 h/wk</td>
+          <td class="hrs">8.0 h/wk</td>
+          <td>
+            Prompt-panel citation rate (baseline 1/8); % of tool pages fresh
+            &lt;13 weeks (baseline 0% machine-readable)
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Earned / PR &amp; distribution</b>
+            <div class="role">fit 80 · the binding constraint</div>
+          </td>
+          <td><span class="tier bet">BET</span></td>
+          <td class="role">
+            Authority · AI retrieval surface · branded-SERP defence
+          </td>
+          <td>
+            <span class="mono">25%</span>
+            <div class="allocbar"><span style="--pct: 25"></span></div>
+          </td>
+          <td class="hrs">1.5 h/wk</td>
+          <td class="hrs">2.25 h/wk</td>
+          <td class="hrs">3.0 h/wk</td>
+          <td>
+            Distinct third-party domains mentioning IndieAppStack (baseline
+            <b>0</b>); newsletter inclusions/quarter
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Lifecycle / email</b>
+            <div class="role">fit 50 · fix-then-accrue</div>
+          </td>
+          <td><span class="tier exp">EXPERIMENT</span></td>
+          <td class="role">Retention · owned-audience insurance</td>
+          <td>
+            <span class="mono">10%</span>
+            <div class="allocbar"><span style="--pct: 10"></span></div>
+          </td>
+          <td class="hrs">0.5 h/wk</td>
+          <td class="hrs">0.75 h/wk</td>
+          <td class="hrs">1.0 h/wk</td>
+          <td>
+            Double opt-in confirmation rate; issues shipped on schedule (3 of
+            3/quarter)
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Organic social</b>
+            <div class="role">fit 20</div>
+          </td>
+          <td><span class="tier skip">SKIP</span></td>
+          <td class="role">—</td>
+          <td>
+            <span class="mono">0%</span>
+            <div class="allocbar"><span style="--pct: 0"></span></div>
+          </td>
+          <td class="hrs">0</td>
+          <td class="hrs">0</td>
+          <td class="hrs">0</td>
+          <td>
+            Hours logged stays at 0 — the channel succeeds by not consuming
+            budget
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Paid media</b>
+            <div class="role">not assessed — cut at scoping</div>
+          </td>
+          <td><span class="tier skip">SKIP</span></td>
+          <td class="role">—</td>
+          <td>
+            <span class="mono">0%</span>
+            <div class="allocbar"><span style="--pct: 0"></span></div>
+          </td>
+          <td class="hrs">0</td>
+          <td class="hrs">0</td>
+          <td class="hrs">0</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted" style="font-size: 12.6px; margin-top: 11px">
+    <b style="color: var(--text)">A note on the fit scores.</b> The five
+    specialists returned scores on inconsistent scales (one used 0–100, the
+    others 0–10). I normalised to /100 rather than presenting them as directly
+    comparable. Treat them as ordinal, not precise.
+  </p>
+
+  <h2 class="sec">Roadmap</h2>
+
+  <div class="wave now">
+    <div class="whead">
+      <span class="wtag">Wave 0 · next 2 weeks</span>
+      <h3>Stop the bleeding, unblock the channel</h3>
+      <span class="whrs">~8 h total</span>
+    </div>
+    <ul>
+      <li>
+        <b>Fix the Stack Finder copy</b> so it no longer promises an email that
+        cannot be sent. <span class="mono">0.5 h</span> — do this first.
+      </li>
+      <li>
+        <b>Ship an RSS feed.</b> Seven candidate paths were probed and all 404.
+        Without a feed the single best distribution play below is inert.
+        <span class="mono">2–3 h</span>
+      </li>
+      <li>
+        <b>Put a named human on the site</b> — an
+        <span class="mono">/about</span> that names you, links an app you
+        shipped, and describes how the price-check process actually works.
+        <span class="mono">2–3 h</span>
+      </li>
+      <li>
+        <b>One GitHub PR to the iOS Dev Directory.</b>
+        <span class="mono">1–2 h</span> — the highest-leverage hour in the
+        entire plan; see below.
+      </li>
+    </ul>
+  </div>
+
+  <div class="wave">
+    <div class="whead">
+      <span class="wtag">Wave 1 · Q3 2026</span>
+      <h3>Make the wedge checkable by machines — and measurable</h3>
+      <span class="whrs">~45–60 h</span>
+    </div>
+    <ul>
+      <li>
+        <b>Stand up the measurement rig before anything else:</b> a 25-prompt
+        panel re-run monthly, a GA4 custom channel group isolating ChatGPT /
+        Perplexity / Claude / Gemini / Copilot referrals, and Bing Webmaster
+        verification to unlock its free AI Performance Report. Without this
+        every later initiative is unfalsifiable.
+      </li>
+      <li>
+        <b>Add a <span class="mono">pricing_snapshots</span> table.</b> Urgent
+        purely because of the clock: the schema currently holds a single
+        overwritable <span class="mono">pricing_last_checked</span>, so
+        <em>price history is being destroyed on every edit</em> and the
+        original-research asset cannot begin accumulating until this lands.
+      </li>
+      <li>
+        <b>Emit the wedge as structured data</b> —
+        <span class="mono">offers</span> /
+        <span class="mono">PriceSpecification</span> with the check date, and an
+        honest <span class="mono">dateModified</span>, across all 26 indexable
+        tool pages.
+      </li>
+      <li>
+        <b>Begin the rolling re-check ritual</b> — 2 tools/week, so the whole
+        catalog cycles inside ~13 weeks.
+      </li>
+      <li>
+        <b>Refresh the four published-but-invisible pages</b> (ASO tools,
+        Supabase vs Firebase, Superwall vs RevenueCat, privacy analytics) into
+        answer-shaped pages with a Short answer block, a dated sourced price
+        table and an explicit when-not-to-use verdict. Refresh, do not write a
+        fifth.
+      </li>
+      <li>
+        <b>Wire a real ESP</b> with double opt-in, one-click unsubscribe, and a
+        re-permission pass over the existing list; update the privacy policy to
+        name GA4 and every processor.
+      </li>
+      <li>
+        <b>Self-list where the brand is absent</b> — AlternativeTo, SaaSHub,
+        Indie Hackers — and separately <b>correct the record</b>: create the
+        missing Superwall entry on AlternativeTo (its page is a genuine 404) and
+        add StoreKit-native alternatives above Stripe on the RevenueCat page.
+      </li>
+    </ul>
+  </div>
+
+  <div class="wave">
+    <div class="whead">
+      <span class="wtag">Wave 2 · Q4 2026</span>
+      <h3>Own the queries the incumbents get wrong</h3>
+      <span class="whrs">~40–50 h</span>
+    </div>
+    <ul>
+      <li>
+        <b>Publish the uncontested pages:</b> "Superwall alternatives" (nobody
+        owns it) and "why Stripe is not a RevenueCat alternative on iOS" — a
+        checkable factual correction, since Apple mandates StoreKit IAP for
+        in-app digital goods.
+      </li>
+      <li>
+        <b>Retro-fit prompt-shaped Q&amp;A blocks and FAQPage schema</b> onto
+        the 10 guides and 7 comparisons, sourced verbatim from the prompt panel.
+        ~2 pages/week, not as a block.
+      </li>
+      <li>
+        <b>Ship the monthly verification log</b> — framed as "prices checked,
+        prices moved", so a month where nothing changed is still a credible
+        issue rather than padding.
+      </li>
+      <li>
+        <b>Run the newsletter submission loop</b> — iOS Dev Weekly's form
+        explicitly accepts "you wrote it", which removes the self-promotion
+        problem entirely.
+      </li>
+      <li>
+        <b>Vendor fact-check outreach</b> to all 28 vendors: "we list your price
+        as X, checked on Y — confirm or correct." The only vendor motion that
+        <em>strengthens</em> editorial standing rather than spending it.
+      </li>
+      <li>
+        <b>Product Hunt launch</b> — but email them first; eligibility for a
+        curated content site is genuinely ambiguous in their published guidance
+        and it is a one-shot.
+      </li>
+    </ul>
+  </div>
+
+  <div class="wave">
+    <div class="whead">
+      <span class="wtag">Wave 3 · Q1–Q2 2027</span>
+      <h3>Convert the ritual into a compounding asset</h3>
+      <span class="whrs">~35–45 h</span>
+    </div>
+    <ul>
+      <li>
+        <b>Publish the Indie iOS Tool Pricing Index</b> — two quarters of
+        snapshots become the only original research a directory can legitimately
+        own: what indie tooling actually costs and how it moved, every figure
+        dated and sourced. Ship as a page plus versioned CSV/JSON on GitHub with
+        <span class="mono">Dataset</span> schema; the public git history is
+        itself the proof of the claim.
+      </li>
+      <li>
+        <b>Internal-link and hub consolidation</b> so the 12 category hubs
+        become the canonical head-term targets once authority arrives.
+      </li>
+      <li>
+        <b>Practitioner features</b> — pitch yourself as an indie developer, not
+        the site. Indie Dev Monday and Empower Apps both feature practitioners;
+        the site gets mentioned as a consequence, not as the ask.
+      </li>
+    </ul>
+  </div>
+
+  <h2 class="sec">Measurement plan</h2>
+  <div class="panel">
+    <h3>How we'll know it's working — and rebalance</h3>
+    <p>
+      Reviewed weekly on leading inputs, rebalanced quarterly on lagging
+      outcomes.
+    </p>
+    <ul class="plain">
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Foundation.</b> GA4 (<span class="mono">G-Y7CVEVCJ7H</span>) is
+          the sole provider and currently runs with no consent banner — a live
+          GDPR exposure that should be resolved before this plan drives new
+          traffic. Note the consequence for measurement: once a banner lands,
+          the <span class="mono">newsletter_signup</span> event will undercount,
+          so the <b>ESP becomes the system of record for signups</b>, not GA4.
+          Record a pre-banner baseline now.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Triangulation — and an honest limit.</b> The standard three-lens
+          model (platform attribution + incrementality + MMM)
+          <b>does not apply here.</b> There is no spend to model and nothing to
+          hold out. The correct tier is platform attribution only: GA4 + Search
+          Console + Bing Webmaster Tools, plus the manual prompt panel. Anyone
+          proposing MMM for a $0 plan is selling something.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>GEO / AI answer engines.</b> A fixed 25-prompt panel run monthly
+          and logged, scored <b>per engine rather than blended</b> — only ~11%
+          of domains are cited by both ChatGPT and Perplexity, so one engine
+          does not proxy the others. Baseline: cited in 1 of 8 category prompts
+          (2026-08-03). Deliberately manual: every AI-visibility tracker found
+          costs $99–500/month, which buys nothing 25 prompts a month does
+          not.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Cadence &amp; rebalancing rule.</b> Weekly: pieces shipped vs the
+          2-new + 4-refresh plan, tools re-checked. Quarterly: if third-party
+          mentions are still zero after two quarters, PR has failed and its
+          hours move to content. If the prompt-panel rate has not moved after
+          two quarters of fresh, structured pages, the freshness thesis is wrong
+          and the plan needs re-basing. <b>Social tripwires:</b> reopen the skip
+          only if iosdev.space activity roughly quadruples, or any social domain
+          organically sends &gt;2% of sessions with zero posting.</span
+        >
+      </li>
+    </ul>
+  </div>
+
+  <h2 class="sec">Deliberately not doing this cycle</h2>
+  <div class="notdoing">
+    <ul class="plain">
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>Paid media.</b> No budget — and it fails on effectiveness
+          independently of cost: Muck Rack's May 2026 analysis of 25M+ links
+          found paid and advertorial content drives just
+          <b>0.3% of AI citations</b> against 84% from earned media. There is no
+          version of this with money that would change the recommendation
+          much.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>Brand social accounts, on any platform.</b> The measured ceiling
+          is the argument: iosdev.space has 259 monthly active users, the
+          best-known Apple-platform Bluesky accounts sit at 1–5k followers, and
+          the iOS-dev starter packs show 0–2 all-time joins. A brand account
+          needs 2–4 h/week to not look abandoned — 20–50% of the entire budget
+          on the lowest-ceiling channel, in a voice (no contractions, no emoji,
+          no superlatives) that feed algorithms actively suppress. Skipping
+          <em>buys back</em> those hours.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>The <span class="mono">sameAs</span> social-schema ticket</b> —
+          descope it. It is a recommended, not required, property and its
+          absence costs approximately nothing. The real entity problem is zero
+          third-party mentions, which <span class="mono">sameAs</span> cannot
+          fix because it is self-assertion, not corroboration. If an anchor is
+          wanted, point it at a GitHub org or Wikidata, never at a dormant
+          social profile.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>New tool pages or catalog expansion.</b> 72 URLs at zero authority
+          already risks thin-content dilution. Rivals have 339–1,926 URLs;
+          volume is a race you cannot win and should not enter.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>Show HN for the directory.</b> Its published rules explicitly
+          exclude "blog posts, sign-up pages, newsletters, lists, and other
+          reading material" — submitting it invites flagging and risks the
+          domain. The open pricing dataset is the artifact that
+          <em>would</em> qualify, later.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>Gating the six stack-archetype pages behind email.</b> They are
+          indexed, crawlable, AI-citable assets serving the North Star directly.
+          Gating them trades the primary goal for a handful of addresses.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>More email capture surfaces.</b> Capture already renders on nine
+          surfaces; send capability is zero. Nothing about this is a capture
+          problem.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>Any vendor co-marketing that trades editorial independence</b> —
+          link-for-affiliate-rate deals, paid featured placement,
+          pre-publication vendor review. In a small, technical, sceptical niche
+          the damage is irreversible, and the wedge is the only differentiated
+          asset the site has. Rule to adopt: never hold an affiliate
+          relationship <em>and</em> a co-marketing arrangement with the same
+          vendor.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>Chasing RevenueCat's data moat</b> (115,000 apps of telemetry) or
+          localising. Neither is reachable, and the Pricing Index is the version
+          of "original research" that actually is.</span
+        >
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <b>Method.</b> Positioning inherited from the Brand Profile (refreshed
+    2026-08-03) and the Competitive Landscape study (2026-08-03) rather than
+    re-derived. Five channel specialists planned in parallel against a shared
+    brief, each gathering live evidence and current cited benchmarks; paid media
+    was cut at scoping rather than assessed. Goals are a lightweight working set
+    — no <span class="mono">smart-goals</span> plan exists, so this strategy
+    rests on a lighter baseline than ideal and the audit it references
+    (2026-07-18, 33/100) predates both the GA4 switch and the comparison/stacks
+    clusters. Figures tagged <em>user-provided</em> came from the operator;
+    <em>n/a</em> was not obtained and not guessed.
+    <div class="footer-src">
+      <b>Key benchmarks, all time-sensitive and single-source:</b> AI-citation
+      source mix — Muck Rack "What Is AI Reading?", 2026-05-07, 25M+ links
+      (earned 84%, paid/advertorial 0.3%). Citation/rank overlap — BrightEdge,
+      Feb 2026 (~17% of AI Overview citations overlap organic top 10, down from
+      ~76% in Ahrefs, Jul 2025). Freshness — 7,683 LLM-cited pages, Mar–Jun 2026
+      (~50% under 13 weeks old). Engine divergence — 680M citations, 2026 (only
+      ~11% of domains cited by both ChatGPT and Perplexity). Most are vendor- or
+      agency-published rather than peer-reviewed: treat magnitudes as
+      directional and re-verify before each quarterly re-plan.
+    </div>
+    <div class="footer-src">
+      <b>Known gaps.</b> No Search Console, GA4 or Vercel log access, so there
+      is no rank, click or crawler baseline anywhere in this plan and refresh
+      targets were chosen from the competitor study rather than measured
+      impressions. Reddit was inaccessible to every specialist. No
+      keyword-volume or backlink data at $0. Current subscriber count could not
+      be retrieved.
+    </div>
+    <div class="footer-src">
+      Internal planning prepared with the <b>dm-hub</b> Digital Marketing
+      Strategy skill. The "how" following the goals; initiatives ready to ship
+      as tracked tasks.
+    </div>
+  </footer>
+</div>

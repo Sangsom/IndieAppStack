@@ -1,0 +1,1630 @@
+<title>Competitive Landscape — IndieAppStack</title>
+<style>
+  :root {
+    --bg: #eef0ee;
+    --surface: #ffffff;
+    --surface-2: #e3e7e3;
+    --border: #d3d9d3;
+    --hair: #e0e5e0;
+    --text: #1b1f1c;
+    --muted: #61665f;
+    --accent: #2c5f4f;
+    --pos: #2c5f4f;
+    --neg: #9e4434;
+    --mix: #8a5f1f;
+    --track: #dbe0da;
+    --shadow:
+      0 1px 2px rgba(25, 35, 28, 0.05), 0 10px 30px rgba(25, 35, 28, 0.05);
+    --sans:
+      system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141715;
+      --surface: #1c201d;
+      --surface-2: #242925;
+      --border: #333a34;
+      --hair: #2a302b;
+      --text: #e6eae6;
+      --muted: #98a09a;
+      --accent: #7fb9a2;
+      --pos: #7fb9a2;
+      --neg: #e08a76;
+      --mix: #d6a851;
+      --track: #2c332d;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 12px 32px rgba(0, 0, 0, 0.32);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #eef0ee;
+    --surface: #fff;
+    --surface-2: #e3e7e3;
+    --border: #d3d9d3;
+    --hair: #e0e5e0;
+    --text: #1b1f1c;
+    --muted: #61665f;
+    --accent: #2c5f4f;
+    --pos: #2c5f4f;
+    --neg: #9e4434;
+    --mix: #8a5f1f;
+    --track: #dbe0da;
+  }
+  :root[data-theme="dark"] {
+    --bg: #141715;
+    --surface: #1c201d;
+    --surface-2: #242925;
+    --border: #333a34;
+    --hair: #2a302b;
+    --text: #e6eae6;
+    --muted: #98a09a;
+    --accent: #7fb9a2;
+    --pos: #7fb9a2;
+    --neg: #e08a76;
+    --mix: #d6a851;
+    --track: #2c332d;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.62 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .page {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 42px 22px 72px;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  p {
+    margin: 0;
+  }
+  .muted {
+    color: var(--muted);
+  }
+
+  .masthead {
+    padding-bottom: 22px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .masthead h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+  }
+  .masthead .domain {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .metarow {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 18px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .metarow b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .exec {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 22px 25px;
+    margin: 24px 0 0;
+  }
+  .exec h2 {
+    font-size: 15px;
+    margin-bottom: 11px;
+    font-family: var(--mono);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .lead {
+    font-size: 16.5px;
+  }
+  .lead + .lead {
+    margin-top: 11px;
+  }
+  .onething {
+    margin-top: 17px;
+    border-left: 3px solid var(--accent);
+    background: var(--surface-2);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 18px;
+  }
+  .onething .lbl {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .onething .q {
+    font-family: var(--serif);
+    font-size: 18.5px;
+    line-height: 1.42;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    font-size: 12.4px;
+    color: var(--muted);
+    margin: 22px 2px 0;
+    align-items: center;
+  }
+  .chip {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 1.5px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+    font-family: var(--mono);
+  }
+  .chip.m {
+    color: var(--text);
+  }
+  .chip.u {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  .chip.n {
+    color: var(--muted);
+    border-style: dashed;
+  }
+  .chip.type {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  h2.sec {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 44px 0 15px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .mapwrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    align-items: center;
+  }
+  .pmap {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1/1;
+    flex: 1 1 300px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    margin: 26px 40px;
+  }
+  .pmap::before,
+  .pmap::after {
+    content: "";
+    position: absolute;
+    background: var(--hair);
+  }
+  .pmap::before {
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+  }
+  .pmap::after {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+  }
+  .ax {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .ax.xl {
+    left: -34px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+  .ax.xr {
+    right: -36px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+  .ax.yt {
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .ax.yb {
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .zone {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 46%;
+    height: 46%;
+    background: color-mix(in srgb, var(--accent) 9%, transparent);
+    border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 10px;
+  }
+  .dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: calc(var(--x) * 1%);
+    top: calc((100 - var(--y)) * 1%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+  .dot i {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--muted);
+    display: block;
+    box-shadow: 0 0 0 3px var(--surface);
+  }
+  .dot span {
+    font-size: 10.5px;
+    color: var(--muted);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .dot.me i {
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+  }
+  .dot.me span {
+    color: var(--accent);
+    font-size: 11.5px;
+  }
+  .dot.rival i {
+    background: var(--neg);
+  }
+  .maplead {
+    flex: 1 1 250px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .maplead b {
+    color: var(--text);
+  }
+  .maplead p + p {
+    margin-top: 10px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 780px;
+    background: var(--surface);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--hair);
+    vertical-align: top;
+    font-size: 13.1px;
+    line-height: 1.5;
+  }
+  thead th {
+    background: var(--surface-2);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  th.rowh,
+  td.rowh {
+    position: sticky;
+    left: 0;
+    background: var(--surface-2);
+    font-weight: 600;
+    color: var(--text);
+    min-width: 132px;
+  }
+  td.me,
+  thead th.me {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .sov {
+    display: grid;
+    gap: 9px;
+    margin-top: 4px;
+  }
+  .sovrow {
+    display: grid;
+    grid-template-columns: 150px 1fr 40px;
+    gap: 12px;
+    align-items: center;
+    font-size: 13px;
+  }
+  .sovbar {
+    height: 9px;
+    border-radius: 5px;
+    background: var(--track);
+    overflow: hidden;
+  }
+  .sovbar > span {
+    display: block;
+    height: 100%;
+    border-radius: 5px;
+    background: var(--muted);
+    width: calc(var(--pct) * 1%);
+  }
+  .sovrow.me .sovbar > span {
+    background: var(--accent);
+  }
+  .sovrow.me {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .sovrow .v {
+    font-family: var(--mono);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-size: 12.4px;
+  }
+
+  .profile {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+    padding: 19px 22px;
+    margin-bottom: 15px;
+  }
+  .profile .head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 11px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .profile h3 {
+    font-size: 17.5px;
+  }
+  .profile .head a {
+    font-size: 12.4px;
+    font-family: var(--mono);
+  }
+  .dl {
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 7px 14px;
+    margin-top: 13px;
+    font-size: 13.4px;
+  }
+  .dl dt {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .dl dd {
+    margin: 0;
+  }
+  .sw {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+    margin-top: 15px;
+  }
+  .sw div {
+    border-radius: 9px;
+    padding: 11px 14px;
+    font-size: 12.7px;
+  }
+  .sw .s {
+    background: color-mix(in srgb, var(--pos) 11%, transparent);
+  }
+  .sw .s b {
+    color: var(--pos);
+  }
+  .sw .w {
+    background: color-mix(in srgb, var(--neg) 11%, transparent);
+  }
+  .sw .w b {
+    color: var(--neg);
+  }
+  .sw b {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .sw ul {
+    margin: 7px 0 0;
+    padding-left: 16px;
+    display: grid;
+    gap: 5px;
+  }
+
+  .white {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    box-shadow: var(--shadow);
+    padding: 16px 21px;
+    margin-bottom: 13px;
+  }
+  .white h3 {
+    font-size: 15.5px;
+    margin-bottom: 6px;
+  }
+  .white .rank {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .white p {
+    font-size: 13.7px;
+    color: var(--muted);
+  }
+  .white p + p {
+    margin-top: 8px;
+  }
+  .white em {
+    color: var(--text);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .pri {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    display: inline-block;
+    letter-spacing: 0.05em;
+  }
+  .pri.win {
+    color: var(--pos);
+    background: color-mix(in srgb, var(--pos) 15%, transparent);
+  }
+  .pri.proj {
+    color: var(--mix);
+    background: color-mix(in srgb, var(--mix) 17%, transparent);
+  }
+  .eff {
+    font-size: 12.2px;
+    color: var(--muted);
+  }
+
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--neg);
+    border-radius: 0 12px 12px 0;
+    padding: 15px 20px;
+    box-shadow: var(--shadow);
+    margin-top: 15px;
+  }
+  .callout h3 {
+    font-size: 14px;
+    color: var(--neg);
+    margin-bottom: 7px;
+  }
+  .callout p {
+    font-size: 13.6px;
+    line-height: 1.6;
+  }
+  .callout p + p {
+    margin-top: 8px;
+  }
+
+  footer {
+    margin-top: 46px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.4px;
+    line-height: 1.65;
+  }
+  footer b {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .footer-src {
+    margin-top: 9px;
+  }
+
+  @media (max-width: 720px) {
+    .sw,
+    .dl {
+      grid-template-columns: 1fr;
+    }
+    .dl dt {
+      margin-top: 8px;
+    }
+    .sovrow {
+      grid-template-columns: 112px 1fr 38px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow">
+      Competitive Landscape · Global English / US-centric · Indie iOS tooling
+    </div>
+    <h1>IndieAppStack</h1>
+    <a
+      class="domain"
+      href="https://indieappstack.com"
+      target="_blank"
+      rel="noopener"
+      >indieappstack.com</a
+    >
+    <div class="metarow">
+      <span><b>Model:</b> Content/media affiliate directory, pre-revenue</span>
+      <span><b>Profiled:</b> 5 deep · 20+ mapped</span>
+      <span><b>Date:</b> <span class="mono">2026-08-03</span></span>
+    </div>
+  </header>
+
+  <section class="exec">
+    <h2>The competitive read</h2>
+    <p class="lead">
+      IndieAppStack does not compete with the tools it covers — it competes with
+      everyone publishing about them. That set is dominated by
+      <b>tool vendors running content marketing</b> (AppDrift, Adapty,
+      RevenueCat, and a long tail of boilerplate and ASO vendors), plus
+      <b>demand aggregators</b> (AlternativeTo, Product Hunt) with domain
+      authority no new site can outrank soon.
+    </p>
+    <p class="lead">
+      The uncomfortable finding:
+      <b>the quadrant IndieAppStack assumes is empty is not empty.</b> Its
+      stated wedge is "honest 'when not to use this' calls a vendor cannot
+      credibly publish" — but BuildMVPFast already publishes exactly that, and
+      does it well, naming reliability problems, deprecations and pricing traps
+      by vendor, then telling readers they may need none of the three.
+      Neutrality of verdict is therefore <em>not</em> a defensible
+      differentiator on its own.
+    </p>
+    <p class="lead">
+      What no competitor in this set does — not one — is make its claims
+      <b>checkable</b>. Nobody sources a price. Nobody dates a figure. AppDrift
+      prices the same competitor at $300, $500 and $5,000 per month on three of
+      its own pages. AlternativeTo shows a six-week-old "last updated" stamp
+      over a listing untouched for 22 months, and tells iOS developers the best
+      RevenueCat alternative is Stripe — which Apple's IAP rules forbid.
+      IndieAppStack already stamps every price with a check date. It has the
+      differentiator built and is not claiming it.
+    </p>
+    <div class="onething">
+      <span class="lbl">If you own one thing</span>
+      <span class="q"
+        >Own <b>verifiability</b>, not neutrality. Be the only guide where every
+        price is dated, sourced and auditable — written by a named human who
+        will tell you not to buy, including when the affiliate link pays.</span
+      >
+    </div>
+  </section>
+
+  <div class="legend">
+    <span>Provenance:</span>
+    <span class="chip m">measured</span><span class="chip u">user-provided</span
+    ><span class="chip n">n/a</span>
+    <span>Competitor claims are attributed, not endorsed.</span>
+  </div>
+
+  <h2 class="sec">Positioning map</h2>
+  <div class="mapwrap">
+    <div class="pmap">
+      <div class="zone"></div>
+      <span class="ax xl">Vendor-owned</span
+      ><span class="ax xr">Independent</span>
+      <span class="ax yt">Gives a verdict</span
+      ><span class="ax yb">Gives a list</span>
+      <div class="dot rival" style="--x: 8; --y: 10">
+        <i></i><span>RevenueCat</span>
+      </div>
+      <div class="dot rival" style="--x: 13; --y: 32">
+        <i></i><span>Adapty</span>
+      </div>
+      <div class="dot rival" style="--x: 23; --y: 56">
+        <i></i><span>AppDrift</span>
+      </div>
+      <div class="dot rival" style="--x: 50; --y: 78">
+        <i></i><span>BuildMVPFast</span>
+      </div>
+      <div class="dot" style="--x: 66; --y: 34">
+        <i></i><span>Product Hunt</span>
+      </div>
+      <div class="dot" style="--x: 75; --y: 9">
+        <i></i><span>AlternativeTo</span>
+      </div>
+      <div class="dot me" style="--x: 80; --y: 74">
+        <i></i><span>IndieAppStack</span>
+      </div>
+    </div>
+    <div class="maplead">
+      <p>
+        The two axes that actually decide who a solo developer trusts for a tool
+        call: <b>independence from the tools covered</b> (horizontal) and
+        <b>willingness to reach a verdict</b> rather than hand over a list
+        (vertical).
+      </p>
+      <p>
+        The bottom-left is crowded and structurally stuck — vendors can publish
+        deep content but never a verdict against themselves. The top-left is
+        empty and uninhabitable. The top-right is the valuable ground, and
+        <b
+          >IndieAppStack is not alone in it: BuildMVPFast sits right next to
+          it</b
+        >, arriving from the services side.
+      </p>
+      <p>
+        The separation that remains is quality of evidence, not presence of
+        opinion — which is why the recommended wedge moves from "we're neutral"
+        to "we're checkable."
+      </p>
+      <p>
+        <em
+          >Positions are evidence-based analyst estimates, not measured
+          coordinates.</em
+        >
+      </p>
+    </div>
+  </div>
+
+  <h2 class="sec">Share of voice — AI answers &amp; search</h2>
+  <div class="sov">
+    <div class="sovrow">
+      <span>BuildMVPFast</span>
+      <div class="sovbar"><span style="--pct: 38"></span></div>
+      <span class="v">3/8</span>
+    </div>
+    <div class="sovrow">
+      <span>The Swift Kit</span>
+      <div class="sovbar"><span style="--pct: 38"></span></div>
+      <span class="v">3/8</span>
+    </div>
+    <div class="sovrow">
+      <span>neoads.tech</span>
+      <div class="sovbar"><span style="--pct: 38"></span></div>
+      <span class="v">3/8</span>
+    </div>
+    <div class="sovrow">
+      <span>Adapty</span>
+      <div class="sovbar"><span style="--pct: 25"></span></div>
+      <span class="v">2/8</span>
+    </div>
+    <div class="sovrow me">
+      <span>IndieAppStack</span>
+      <div class="sovbar"><span style="--pct: 13"></span></div>
+      <span class="v">1/8</span>
+    </div>
+    <div class="sovrow">
+      <span>AppDrift</span>
+      <div class="sovbar"><span style="--pct: 13"></span></div>
+      <span class="v">1/8</span>
+    </div>
+    <div class="sovrow">
+      <span>AlternativeTo</span>
+      <div class="sovbar"><span style="--pct: 13"></span></div>
+      <span class="v">1/8</span>
+    </div>
+    <div class="sovrow">
+      <span>RevenueCat</span>
+      <div class="sovbar"><span style="--pct: 13"></span></div>
+      <span class="v">1/8</span>
+    </div>
+  </div>
+  <p class="muted" style="font-size: 12.7px; margin-top: 12px">
+    <b style="color: var(--text)">Method:</b> 8 category prompts run 2026-08-03
+    (paywall tools, RevenueCat alternatives, ASO tools for indies, Supabase vs
+    Firebase, Superwall vs RevenueCat, privacy-friendly analytics, indie stack
+    directory, indie comparison sites). Score = share of prompts where the site
+    was cited as a source. Single run, one engine — a snapshot, not a
+    rank-tracked average. <span class="chip n">time-sensitive</span>
+  </p>
+
+  <div class="callout">
+    <h3>
+      The real SOV finding is not the score — it is where the one hit sits
+    </h3>
+    <p>
+      IndieAppStack's single citation is
+      <b>"best paywall tools for iOS apps," where it ranks #1</b>. That is a
+      genuine, defensible win and proof the model works.
+    </p>
+    <p>
+      Everything else is the problem. IndieAppStack has
+      <em>published competing content</em> for ASO tools, Supabase vs Firebase,
+      Superwall vs RevenueCat and privacy-friendly analytics — and was cited in
+      none of them. The content exists; the visibility does not. This is a
+      distribution and authority gap, not a content gap, and it changes what the
+      next quarter should be spent on.
+    </p>
+    <p>
+      Worse, a branded search for <b>"IndieAppStack"</b> returns almost nothing
+      it owns — the results fill with unrelated brands (IndieFeed, Indieflix,
+      IndieGala, Indie App Santa, Indie App Catalog) and surface a single deep
+      tool page. There are <b>no third-party mentions at all</b>. Since most AI
+      citations come from earned sources rather than owned pages, this is the
+      binding constraint on AI share of voice.
+    </p>
+  </div>
+
+  <h2 class="sec">At-a-glance comparison</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="rowh">Dimension</th>
+          <th class="me">IndieAppStack</th>
+          <th>AppDrift</th>
+          <th>BuildMVPFast</th>
+          <th>RevenueCat</th>
+          <th>Adapty</th>
+          <th>AlternativeTo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rowh">Type</td>
+          <td class="me">Independent affiliate directory</td>
+          <td>ASO SaaS vendor</td>
+          <td>MVP dev agency</td>
+          <td>Subscription SDK vendor</td>
+          <td>Paywall SDK vendor</td>
+          <td>Crowdsourced aggregator</td>
+        </tr>
+        <tr>
+          <td class="rowh">Business model</td>
+          <td class="me">Affiliate (1 program live, pre-revenue)</td>
+          <td>SaaS $0–$399/yr + Enterprise</td>
+          <td>Builds from $1,999 + $999/mo</td>
+          <td>1% of tracked revenue</td>
+          <td>1% above $5K/mo</td>
+          <td>Display ads + sponsorships</td>
+        </tr>
+        <tr>
+          <td class="rowh">Content scale</td>
+          <td class="me">72 URLs</td>
+          <td>339 URLs in 13 months</td>
+          <td>~1,926 URLs</td>
+          <td>704 posts, 9-yr archive</td>
+          <td>406 EN posts, 12 locales</td>
+          <td>~100k tool entries</td>
+        </tr>
+        <tr>
+          <td class="rowh">Names a bad fit?</td>
+          <td class="me">Yes — core method</td>
+          <td>Yes, but never against itself</td>
+          <td>Yes — genuinely</td>
+          <td>No — zero found in 1,182 URLs</td>
+          <td>No — 0 of 56 competitive URLs</td>
+          <td>No editorial judgement at all</td>
+        </tr>
+        <tr>
+          <td class="rowh">Sources its prices?</td>
+          <td class="me">Yes — visible check date</td>
+          <td>No — and contradicts itself 16×</td>
+          <td>No per-figure source or date</td>
+          <td>Report methodology only</td>
+          <td>Self-run, unaudited benchmarks</td>
+          <td>Publishes no prices at all</td>
+        </tr>
+        <tr>
+          <td class="rowh">Named authors?</td>
+          <td class="me">No — "IndieAppStack" byline</td>
+          <td>No — "AppDrift Team"</td>
+          <td>One person, presented as a team</td>
+          <td>Yes — 116 named authors</td>
+          <td>Named, employer hidden at byline</td>
+          <td>None</td>
+        </tr>
+        <tr>
+          <td class="rowh">Conflict disclosed?</td>
+          <td class="me">Yes — inline + policy page</td>
+          <td>Yes — ownership, prominently</td>
+          <td>No — undisclosed self-sponsorship</td>
+          <td>Methodology only, not editorial</td>
+          <td>Partial — foot of article only</td>
+          <td>n/a — no affiliate model</td>
+        </tr>
+        <tr>
+          <td class="rowh">Third-party proof</td>
+          <td class="me">None found</td>
+          <td>13 Trustpilot reviews, 92% 5★</td>
+          <td>None found on any platform</td>
+          <td>G2 4.8 (211) · press pickup</td>
+          <td>G2 4.7 (252) <span class="chip n">attributed</span></td>
+          <td>~2.9M visits/mo · Wikipedia</td>
+        </tr>
+        <tr>
+          <td class="rowh">AI-citation setup</td>
+          <td class="me">None — no llms.txt</td>
+          <td>None found</td>
+          <td>llms.txt + tiered robots.txt</td>
+          <td>Data moat drives citation</td>
+          <td>llms.txt + crawler allowlist</td>
+          <td>Entity presence in Wikipedia</td>
+        </tr>
+        <tr>
+          <td class="rowh">Prompts cited in</td>
+          <td class="me">1 of 8</td>
+          <td>1 of 8</td>
+          <td>3 of 8</td>
+          <td>1 of 8</td>
+          <td>2 of 8</td>
+          <td>1 of 8</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec">Competitor profiles</h2>
+
+  <div class="profile">
+    <div class="head">
+      <h3>
+        BuildMVPFast
+        <span class="chip type">adjacent-entrant · the real rival</span>
+      </h3>
+      <a href="https://www.buildmvpfast.com" target="_blank" rel="noopener"
+        >buildmvpfast.com</a
+      >
+    </div>
+    <dl class="dl">
+      <dt>Mission</dt>
+      <dd>
+        No about page (404). Footer only: "Helping entrepreneurs and startups
+        quickly build and launch SaaS MVPs using modern tools." No editorial
+        mission, masthead or methodology anywhere.
+      </dd>
+      <dt>USP</dt>
+      <dd>
+        "Skip the $15K/Month Dev Team — One flat payment. Your MVP live in 21
+        days." <span class="chip m">measured</span>
+      </dd>
+      <dt>Price</dt>
+      <dd>
+        Content free. Builds $1,999–$2,500 one-time, then $999/mo support.
+        Budget tier with discount-urgency signals ("2 spots left").
+      </dd>
+      <dt>Perception</dt>
+      <dd>
+        <b>No reviews found anywhere</b> — Clutch, Trustpilot, G2, Product Hunt,
+        Reddit, Indie Hackers all empty. Credibility rests on unattributed
+        self-published testimonials. <span class="chip n">none found</span>
+      </dd>
+      <dt>Messaging</dt>
+      <dd>
+        Strong technical editorial voice welded to conversion copy. Presents as
+        a multi-expert agency; only one human is identifiable.
+      </dd>
+      <dt>Niche</dt>
+      <dd>
+        Founders outsourcing builds — web/SaaS/AI skewed, 20-city local matrix.
+        Indie iOS is a thin slice of ~1,900 pages.
+      </dd>
+      <dt>Presence</dt>
+      <dd>
+        Cited in <b>3 of 8</b> category prompts — the highest in the set. Dual
+        SERP occupancy (hub + blog on one query). Tiered robots.txt admits
+        citation bots, blocks training bots; publishes llms.txt.
+      </dd>
+    </dl>
+    <div class="sw">
+      <div class="s">
+        <b>Strengths</b>
+        <ul>
+          <li>
+            Already does the honest negative verdict — sourced developer
+            criticism, exact latency figures, staged recommendations, and a "you
+            may just need StoreKit 2" section
+          </li>
+          <li>~1,926 URLs vs IndieAppStack's 72</li>
+          <li>
+            Deliberate AI-citation engineering that demonstrably works — AI
+            answers reproduce its figures and phrasing verbatim
+          </li>
+          <li>
+            Content funds itself from $1,999 builds, not affiliate pennies
+          </li>
+        </ul>
+      </div>
+      <div class="w">
+        <b>Weaknesses (openings)</b>
+        <ul>
+          <li>
+            <b>Undisclosed self-sponsorship:</b> "Sponsored" banners inside its
+            RevenueCat comparison point to RankControl — a product the same
+            founder promotes and the site lists as its own portfolio win
+          </li>
+          <li>
+            A "Get Featured" CTA in the nav openly solicits vendors into
+            comparison content, with no published policy
+          </li>
+          <li>
+            Sells the build every comparison funnels into — a conflict
+            IndieAppStack does not have
+          </li>
+          <li>
+            No source or date on any price; 41% of the sitemap bulk re-stamped
+            to one day while the newest post is four weeks old
+          </li>
+          <li>
+            Blocking GPTBot/ClaudeBot forecloses long-run presence in model
+            weights
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="head">
+      <h3>AppDrift <span class="chip type">adjacent-entrant</span></h3>
+      <a href="https://appdrift.co" target="_blank" rel="noopener"
+        >appdrift.co</a
+      >
+    </div>
+    <dl class="dl">
+      <dt>Mission</dt>
+      <dd>
+        Vendor mission, not editorial: "make it as easy to launch your app in
+        Tokyo as it is in San Francisco." No editorial-standards page
+        (/editorial-policy 404s).
+      </dd>
+      <dt>USP</dt>
+      <dd>
+        "Enterprise ASO at indie prices — $9.99/mo, not $300." Borrows
+        IndieAppStack's own vocabulary — "honest", "real prices", "which to
+        skip", "no sponsorships" — while selling a product on the same page.
+        <span class="chip m">measured</span>
+      </dd>
+      <dt>Price</dt>
+      <dd>
+        Free forever tier; $9.99 / $19.99 / $39.99 per month, plus Enterprise.
+        Token-metered.
+      </dd>
+      <dt>Perception</dt>
+      <dd>
+        Trustpilot 4.4/5 — but only
+        <b>13 reviews, 92% five-star, zero below 4</b>, and Trustpilot itself
+        warns they "may not be representative." No G2, no Product Hunt, no
+        organic community discussion.
+        <span class="chip n">Capterra 403-gated</span>
+      </dd>
+      <dt>Messaging</dt>
+      <dd>
+        Underdog pricing with an incumbent villain. Inconsistent: three
+        registers, and three different prices for the same competitor.
+      </dd>
+      <dt>Niche</dt>
+      <dd>
+        ASO, localization and publishing only — no backend, analytics, payments
+        or CI. iOS depth diluted by Android and 150-country breadth.
+      </dd>
+      <dt>Presence</dt>
+      <dd>
+        Beats IndieAppStack head-to-head on ASO SERPs (2 of 8 results vs 0).
+        Caveat: its "3× in one SERP" is partly one article on two byte-identical
+        URLs.
+      </dd>
+    </dl>
+    <div class="sw">
+      <div class="s">
+        <b>Strengths</b>
+        <ul>
+          <li>339 URLs in 13 months, funded by a real product</li>
+          <li>
+            15 free ungated tools as a top-of-funnel wedge a directory cannot
+            match
+          </li>
+          <li>
+            Handles self-interest better than most: repeated, explicit ownership
+            disclosure plus a stated ranking methodology
+          </li>
+          <li>
+            Owns original first-party research (ASO scores of 123 real apps)
+          </li>
+        </ul>
+      </div>
+      <div class="w">
+        <b>Weaknesses (openings)</b>
+        <ul>
+          <li>
+            <b>The 16× contradiction:</b> Sensor Tower is priced at $300+, $500+
+            and $5,000+ per month on three of its own pages — all undated, none
+            sourced
+          </li>
+          <li>
+            Its unsourced $5,000 figure is already being repeated verbatim
+            inside AI answers as fact
+          </li>
+          <li>
+            Ranks itself #1 on every list and scores itself 8/8 on a matrix it
+            authored; rivals get 2–5/8
+          </li>
+          <li>
+            Zero outbound links to any tool it reviews — an extraction asset,
+            not a guide
+          </li>
+          <li>No named human anywhere — no author, no reviewer, no founder</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="head">
+      <h3>Adapty <span class="chip type">indirect · vendor content</span></h3>
+      <a href="https://adapty.io/blog" target="_blank" rel="noopener"
+        >adapty.io/blog</a
+      >
+    </div>
+    <dl class="dl">
+      <dt>USP</dt>
+      <dd>
+        "The RevenueCat alternative that actually grows your revenue… RevenueCat
+        tracks your subscriptions. Adapty grows them." Authority-by-dataset,
+        never by independence. <span class="chip m">measured</span>
+      </dd>
+      <dt>Perception</dt>
+      <dd>
+        G2 4.7 across 252 reviews
+        <span class="chip n">attributed, 403-gated</span>. Near-zero organic
+        community discussion — ~6 Hacker News items ever.
+      </dd>
+      <dt>Niche</dt>
+      <dd>
+        Indie is one of four stage segments; much growth content presumes
+        paywall traffic a solo dev does not have.
+      </dd>
+      <dt>Presence</dt>
+      <dd>
+        Ranks <b>#1 for "RevenueCat alternatives for indie iOS apps"</b> — the
+        query IndieAppStack wants. Best-in-class AI engineering: explicit
+        ClaudeBot/PerplexityBot/CCBot allowlist, curated llms.txt, dedicated
+        llms-sitemap.
+      </dd>
+    </dl>
+    <div class="sw">
+      <div class="s">
+        <b>Strengths</b>
+        <ul>
+          <li>
+            Owns the exact long-tail query, using indie-practitioner framing
+            rather than vendor framing
+          </li>
+          <li>
+            Proprietary data moat: State of In-App Subscriptions, Pricing Index,
+            State of Apple Ads
+          </li>
+          <li>
+            12 locales, 57 bylined authors, weekly newsletter, podcast, Discord
+          </li>
+        </ul>
+      </div>
+      <div class="w">
+        <b>Weaknesses (openings)</b>
+        <ul>
+          <li>
+            <b
+              >The flagship "why I switched" post is written by Adapty's own
+              Developer Advocate</b
+            >
+            — who had been publishing on Adapty's blog since Aug 2021, years
+            before the switch it narrates. The prior relationship is never
+            mentioned
+          </li>
+          <li>
+            Top byline shows no employer; zero disclosure keywords in the body.
+            Adapty's own newsletter page labels the same person "DevRel at
+            Adapty" — the better standard exists in-house and is not applied to
+            the post that ranks
+          </li>
+          <li>
+            Asset filenames still read "From-StoreKit-to-Adapty" — a
+            customer-journey post retargeted at a neutral-intent keyword
+          </li>
+          <li>
+            Byline shows the modified date, not the publish date, making it look
+            fresher than it is
+          </li>
+          <li>Across 56 competitive URLs, not one advises choosing a rival</li>
+          <li>
+            "30,000+ apps" and "20,000+ apps" live simultaneously on different
+            pages
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="head">
+      <h3>
+        RevenueCat
+        <span class="chip type">aspirational · cite, don't fight</span>
+      </h3>
+      <a href="https://www.revenuecat.com/blog" target="_blank" rel="noopener"
+        >revenuecat.com/blog</a
+      >
+    </div>
+    <dl class="dl">
+      <dt>USP</dt>
+      <dd>
+        "Built on the world's largest in-app subscription data set — over
+        115,000 apps, representing more than $16 billion in revenue." Never
+        claims neutrality. <span class="chip m">measured</span>
+      </dd>
+      <dt>Perception</dt>
+      <dd>
+        G2 4.8 (211 reviews) · Capterra 4.7 (47). Earned press: 9to5Mac twice in
+        2026, SaaStr, Subscription Insider.
+      </dd>
+      <dt>Service</dt>
+      <dd>
+        Far ahead of anyone: 112 event pages, Sub Club podcast, a $1M+ hackathon
+        with global IRL parties, newsletter, docs, open-source SDKs, Japanese
+        localization.
+      </dd>
+      <dt>Presence</dt>
+      <dd>
+        Dominant on benchmark intent, <b>absent on tool-selection intent</b> —
+        does not appear at all for "best paywall tools" or "best tools for indie
+        iOS developers," where IndieAppStack does.
+      </dd>
+    </dl>
+    <div class="sw">
+      <div class="s">
+        <b>Strengths</b>
+        <ul>
+          <li>
+            Unreplicable dataset, four annual editions live, cited until its
+            numbers become the category's default facts
+          </li>
+          <li>
+            704 posts, 116 named human authors, ~15 posts/month, zero anonymous
+            content
+          </li>
+          <li>
+            Genuinely distinctive editorial voice that reads like a trade
+            publication
+          </li>
+        </ul>
+      </div>
+      <div class="w">
+        <b>Weaknesses (openings)</b>
+        <ul>
+          <li>
+            <b>Verified structural absence:</b> zero vendor-vs-vendor pages,
+            zero "alternatives" pages, zero "when not to use" across all 1,182
+            URLs
+          </li>
+          <li>
+            The 1% fee objection — the top finding of every third-party
+            comparison — never appears in its own content
+          </li>
+          <li>
+            No editorial conflict disclosure; the sample self-selects for
+            developers who already pay for managed infrastructure
+          </li>
+          <li>
+            Never acknowledges that Adapty's competing report reaches
+            conflicting conclusions
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile">
+    <div class="head">
+      <h3>
+        AlternativeTo
+        <span class="chip type">indirect · channel competitor</span>
+      </h3>
+      <a href="https://alternativeto.net" target="_blank" rel="noopener"
+        >alternativeto.net</a
+      >
+    </div>
+    <dl class="dl">
+      <dt>USP</dt>
+      <dd>
+        "All the lists of alternatives are crowd-sourced, and that's what makes
+        the data powerful and relevant." Claims relevance — never accuracy,
+        currency or fitness. <span class="chip m">measured</span>
+      </dd>
+      <dt>Price</dt>
+      <dd>
+        Free, ad-funded. Monetises impressions, not conversions — so it has no
+        incentive to end the reader's search.
+      </dd>
+      <dt>Perception</dt>
+      <dd>
+        ~2.9M visits/mo but almost no advocacy: 6 reviews on SmartCustomer
+        (3.0/5), 0 on SaaSHub. Used, not loved.
+        <span class="chip n">Trustpilot 403-gated</span>
+      </dd>
+      <dt>Niche</dt>
+      <dd>
+        Horizontal. <b>No iOS development category exists at all</b> — 203
+        Mobile Dev Tools, 71 Android, 0 iOS. No IAP or mobile-analytics buckets.
+      </dd>
+      <dt>Presence</dt>
+      <dd>
+        Page one for "&lt;tool&gt; alternatives" across the board on domain
+        authority. Its verdicts are cited by name inside AI answers.
+      </dd>
+    </dl>
+    <div class="sw">
+      <div class="s">
+        <b>Strengths</b>
+        <ul>
+          <li>
+            ~100k entries, near-total URL coverage of the "&lt;tool&gt;
+            alternatives" query space at zero marginal cost
+          </li>
+          <li>
+            17-year-old brand with Wikipedia entity presence reinforcing LLM
+            retrieval
+          </li>
+          <li>Perceived neutrality — no affiliate links</li>
+        </ul>
+      </div>
+      <div class="w">
+        <b>Weaknesses (openings)</b>
+        <ul>
+          <li>
+            <b>"The best RevenueCat alternative is Stripe"</b> — a category
+            error for iOS, where Apple mandates StoreKit IAP. Site-wide vote
+            totals leak into per-page ranking, pushing generic billing giants
+            above purpose-built mobile tools
+          </li>
+          <li>
+            <b>Superwall does not exist in its database</b> (404) — an
+            uncontested SERP gap on a top-tier indie paywall tool
+          </li>
+          <li>
+            TelemetryDeck is filed as a "Web Analytics Service," so its
+            alternatives are Google Analytics and Matomo
+          </li>
+          <li>
+            Publishes zero prices, so it cannot compete on the dimension
+            IndieAppStack has chosen
+          </li>
+          <li>
+            A Jun-2026 "last updated" stamp over a RevenueCat entry untouched
+            since Oct 2024
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec">Whitespace &amp; how to differentiate</h2>
+
+  <div class="white">
+    <span class="rank">01 — THE SHARPEST</span>
+    <h3>Verifiability: the dimension nobody contests</h3>
+    <p>
+      Every player fails the same test. AppDrift contradicts its own competitor
+      pricing by 16×, undated and unsourced. BuildMVPFast attaches no source or
+      date to any figure. Adapty presents self-run, unaudited benchmarks and
+      shows modified dates as publish dates. AlternativeTo publishes no prices
+      at all, under a freshness stamp that misrepresents 22-month-old data.
+      RevenueCat is methodologically transparent but refuses vendor comparison
+      entirely.
+    </p>
+    <p>
+      <em>IndieAppStack already ships the answer</em> — every tool card carries
+      "Pricing checked Jul 19, 2026" — and does not market it. Make it the
+      masthead claim, publish a methodology page that commits to it, and link
+      every price to its source.
+    </p>
+  </div>
+
+  <div class="white">
+    <span class="rank">02</span>
+    <h3>Named human accountability</h3>
+    <p>
+      Of six players, exactly one does this well: RevenueCat, with 116 named
+      authors. AppDrift bylines everything "AppDrift Team" with no founder named
+      anywhere. AlternativeTo has no authors. BuildMVPFast presents one person
+      as "multiple experts." Adapty names authors but hides the employer at the
+      top byline.
+    </p>
+    <p>
+      IndieAppStack currently bylines "IndieAppStack" — sharing the weakest
+      players' gap. This is the cheapest credibility upgrade available: a real
+      name, a real reviewer, and <em>Person</em> schema instead of
+      <em>Organization</em>.
+    </p>
+  </div>
+
+  <div class="white">
+    <span class="rank">03</span>
+    <h3>The verdict nobody can write: "don't buy this"</h3>
+    <p>
+      Vendors structurally cannot say don't use us. BuildMVPFast cannot say
+      don't hire us. Aggregators say nothing at all. But IndieAppStack can do
+      something none of them can —
+      <em>advise against a tool it earns commission on</em>, and say so
+      explicitly on the page. That is the one editorial move in this market that
+      cannot be copied, and it converts the affiliate model from a liability
+      into proof.
+    </p>
+  </div>
+
+  <div class="white">
+    <span class="rank">04</span>
+    <h3>Correct the errors the incumbents have left standing</h3>
+    <p>
+      AlternativeTo tells iOS developers the best RevenueCat alternative is
+      Stripe, which App Store rules forbid for digital subscriptions. It has no
+      Superwall entry at all, so nobody owns "Superwall alternatives." It files
+      TelemetryDeck under web analytics. AppDrift's fabricated-looking $5,000
+      Sensor Tower figure is already circulating in AI answers.
+    </p>
+    <p>
+      Each is a high-intent, uncontested page with a built-in reason to be cited
+      — and correcting a widely-repeated error is exactly the kind of content
+      that earns links.
+    </p>
+  </div>
+
+  <div class="white">
+    <span class="rank">05</span>
+    <h3>Earned mentions — the binding constraint on AI visibility</h3>
+    <p>
+      Most AI citations come from third-party sources, not owned pages.
+      IndieAppStack has <em>zero</em>: a branded search returns unrelated
+      companies and no press, no forum threads, no directory entries. Meanwhile
+      BuildMVPFast and Adapty have engineered llms.txt and crawler policy, and
+      IndieAppStack has neither.
+    </p>
+    <p>
+      One quiet advantage worth keeping: IndieAppStack's permissive robots.txt
+      allows training crawlers that BuildMVPFast blocks. If assistants lean on
+      parametric knowledge for tool recommendations, that is a long-run edge —
+      do not copy BuildMVPFast's block.
+    </p>
+  </div>
+
+  <div class="white">
+    <span class="rank">06</span>
+    <h3>Published-but-invisible: fix distribution before writing more</h3>
+    <p>
+      IndieAppStack has guides for ASO tools, Supabase vs Firebase, Superwall vs
+      RevenueCat and privacy-friendly analytics, and was cited for none of them.
+      Its one citation, "best paywall tools for iOS apps," is a #1 ranking — so
+      the format works when it lands.
+      <em>The gap is authority and distribution, not output.</em> Publishing
+      more before fixing this compounds the problem.
+    </p>
+  </div>
+
+  <h2 class="sec">Differentiation action plan</h2>
+  <div class="table-wrap">
+    <table style="min-width: 700px">
+      <thead>
+        <tr>
+          <th>Priority</th>
+          <th>Action</th>
+          <th>Effort</th>
+          <th>KPI / serves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pri win">DO NOW</span></td>
+          <td>
+            <b>Publish an editorial methodology page</b> and link every price to
+            its source. Problem: the strongest differentiator is invisible. Fix:
+            a public standard — every price dated, sourced, re-checked on a
+            stated cadence — linked from every tool page.
+          </td>
+          <td class="eff">M</td>
+          <td class="eff">Differentiation · trust</td>
+        </tr>
+        <tr>
+          <td><span class="pri win">DO NOW</span></td>
+          <td>
+            <b>Put a named human on every guide and comparison</b>, with
+            <span class="mono">Person</span> schema and a reviewer line,
+            replacing the "IndieAppStack" org byline.
+          </td>
+          <td class="eff">S</td>
+          <td class="eff">E-E-A-T · AI citation</td>
+        </tr>
+        <tr>
+          <td><span class="pri win">DO NOW</span></td>
+          <td>
+            <b
+              >Ship <span class="mono">llms.txt</span> and
+              <span class="mono">llms-full.txt</span></b
+            >; keep robots.txt permissive to training crawlers. Two rivals have
+            this infrastructure and it demonstrably works for them.
+          </td>
+          <td class="eff">S</td>
+          <td class="eff">AI share of voice</td>
+        </tr>
+        <tr>
+          <td><span class="pri win">DO NOW</span></td>
+          <td>
+            <b>Fix the branded-search void.</b> No third-party mention of
+            IndieAppStack exists. Seed legitimate presence: directory listings,
+            a Product Hunt launch, indie-dev community participation.
+          </td>
+          <td class="eff">M</td>
+          <td class="eff">AI SOV · brand</td>
+        </tr>
+        <tr>
+          <td><span class="pri proj">PROJECT</span></td>
+          <td>
+            <b>Build the "when not to buy" content type</b> — including at least
+            one verdict against a tool IndieAppStack earns commission on,
+            labelled as such. The one move no competitor can copy.
+          </td>
+          <td class="eff">M</td>
+          <td class="eff">Wedge · authority</td>
+        </tr>
+        <tr>
+          <td><span class="pri proj">PROJECT</span></td>
+          <td>
+            <b>Claim the uncontested error pages:</b> "Superwall alternatives"
+            (absent from AlternativeTo entirely), and why Stripe is not a
+            RevenueCat alternative on iOS.
+          </td>
+          <td class="eff">M</td>
+          <td class="eff">Organic · earned links</td>
+        </tr>
+        <tr>
+          <td><span class="pri proj">PROJECT</span></td>
+          <td>
+            <b>Re-attack the four published-but-invisible clusters</b> (ASO,
+            backend, Superwall vs RevenueCat, privacy analytics) with internal
+            linking and earned mentions before writing anything new.
+          </td>
+          <td class="eff">L</td>
+          <td class="eff">Distribution</td>
+        </tr>
+        <tr>
+          <td><span class="pri proj">PROJECT</span></td>
+          <td>
+            <b>Turn price freshness into a public artifact</b> — a "prices
+            checked this week" index that makes the claim continuously
+            verifiable and gives the site a recurring reason to be cited.
+          </td>
+          <td class="eff">L</td>
+          <td class="eff">Differentiation · repeat traffic</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <b>Method.</b> Competitive set discovered from 10 live search and AI-answer
+    queries; five competitors profiled in depth by independent analysts working
+    from live evidence — sites, sitemaps, robots.txt, review platforms, archive
+    snapshots and SERP observation — across mission, USP, price, perception,
+    service, messaging, niche and presence. Figures tagged
+    <em>attributed</em> were read from search summaries of bot-blocked pages and
+    are not independently verified; <em>n/a</em> could not be obtained and was
+    not guessed. Competitor claims are quoted and attributed, never asserted as
+    fact. <b>The set and AI share of voice move fast</b> — a single-run snapshot
+    on one engine, not a rank-tracked average. Refresh each cycle and consider
+    alerts on competitor names.
+    <div class="footer-src">
+      <b>Key limits:</b> Reddit was inaccessible to every agent, so community
+      sentiment is thin throughout. Trustpilot, G2, Capterra and Grokipedia
+      returned 403 to direct fetch. No paid rank-tracking, traffic or backlink
+      data was available, so all SERP claims are observed positions from
+      2026-08-03 on a US-centric index.
+    </div>
+    <div class="footer-src">
+      Internal analysis prepared with the <b>dm-hub</b> Competitor Research
+      skill, anchored to the IndieAppStack Brand Profile (refreshed 2026-08-03).
+      Feeds the positioning wedge for strategy and benchmarks for goals.
+    </div>
+  </footer>
+</div>

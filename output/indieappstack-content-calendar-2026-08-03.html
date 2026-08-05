@@ -1,0 +1,2204 @@
+<title>Content Calendar — IndieAppStack</title>
+<style>
+  :root {
+    --bg: #eff0ec;
+    --surface: #ffffff;
+    --surface-2: #e5e7e0;
+    --border: #d6d9cf;
+    --hair: #e3e5dd;
+    --text: #1d201b;
+    --muted: #63665d;
+    --accent: #2c5f4f;
+    --p1: #2c5f4f;
+    --p2: #9e4434;
+    --p3: #8a5f1f;
+    --p4: #4a5f6e;
+    --track: #dcdfd5;
+    --shadow:
+      0 1px 2px rgba(30, 34, 26, 0.05), 0 10px 30px rgba(30, 34, 26, 0.05);
+    --sans:
+      system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151713;
+      --surface: #1d201b;
+      --surface-2: #262922;
+      --border: #343830;
+      --hair: #2b2f28;
+      --text: #e7e9e2;
+      --muted: #999c93;
+      --accent: #7fb9a2;
+      --p1: #7fb9a2;
+      --p2: #e08a76;
+      --p3: #d6a851;
+      --p4: #8fa6b8;
+      --track: #2d322b;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 12px 32px rgba(0, 0, 0, 0.32);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #eff0ec;
+    --surface: #fff;
+    --surface-2: #e5e7e0;
+    --border: #d6d9cf;
+    --hair: #e3e5dd;
+    --text: #1d201b;
+    --muted: #63665d;
+    --accent: #2c5f4f;
+    --p1: #2c5f4f;
+    --p2: #9e4434;
+    --p3: #8a5f1f;
+    --p4: #4a5f6e;
+    --track: #dcdfd5;
+  }
+  :root[data-theme="dark"] {
+    --bg: #151713;
+    --surface: #1d201b;
+    --surface-2: #262922;
+    --border: #343830;
+    --hair: #2b2f28;
+    --text: #e7e9e2;
+    --muted: #999c93;
+    --accent: #7fb9a2;
+    --p1: #7fb9a2;
+    --p2: #e08a76;
+    --p3: #d6a851;
+    --p4: #8fa6b8;
+    --track: #2d322b;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.62 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 42px 22px 72px;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  p {
+    margin: 0;
+  }
+  .muted {
+    color: var(--muted);
+  }
+
+  .masthead {
+    padding-bottom: 22px;
+    border-bottom: 3px solid var(--accent);
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .masthead h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+  }
+  .metarow {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 18px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .metarow b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 24px 26px;
+    margin-top: 24px;
+  }
+  .lab {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 11px;
+  }
+  .hero h2 {
+    font-family: var(--serif);
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    margin-top: 12px;
+    font-size: 15.4px;
+  }
+  .hero p + p {
+    margin-top: 10px;
+  }
+
+  .note {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--p3);
+    border-radius: 0 13px 13px 0;
+    box-shadow: var(--shadow);
+    padding: 17px 21px;
+    margin-top: 15px;
+  }
+  .note .lab {
+    color: var(--p3);
+  }
+  .note h3 {
+    font-size: 16px;
+    margin-bottom: 7px;
+  }
+  .note p {
+    font-size: 13.8px;
+    line-height: 1.6;
+  }
+  .note p + p {
+    margin-top: 8px;
+  }
+
+  h2.sec {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 44px 0 15px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--hair);
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+    gap: 12px;
+  }
+  .pil {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--pc);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+  }
+  .pil h3 {
+    font-size: 15.5px;
+    color: var(--pc);
+    margin-bottom: 4px;
+  }
+  .pil .meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 9px;
+  }
+  .pil p {
+    font-size: 13.2px;
+    line-height: 1.55;
+  }
+  .pil p + p {
+    margin-top: 7px;
+  }
+  .pil .win {
+    margin-top: 9px;
+    padding-top: 9px;
+    border-top: 1px solid var(--hair);
+    font-size: 12.4px;
+    color: var(--muted);
+  }
+  .pil .win b {
+    color: var(--text);
+  }
+
+  .cad {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 11px;
+    margin-bottom: 14px;
+  }
+  .cbox {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 17px;
+    box-shadow: var(--shadow);
+  }
+  .cbox .n {
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .cbox .c {
+    font-size: 12.3px;
+    color: var(--muted);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  .month {
+    margin-top: 22px;
+  }
+  .mhead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: baseline;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 14px;
+  }
+  .mhead h3 {
+    font-family: var(--serif);
+    font-size: 23px;
+    font-weight: 600;
+  }
+  .mhead .theme {
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .mhead .count {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 15px 18px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 16px;
+  }
+  .item.flag {
+    border-left: 3px solid var(--accent);
+  }
+  .dt {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .dt b {
+    display: block;
+    font-size: 20px;
+    color: var(--text);
+    font-weight: 700;
+  }
+  .body h4 {
+    font-size: 15.5px;
+    line-height: 1.32;
+    margin-bottom: 7px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 9px;
+  }
+  .tg {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2.5px 7px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .tg.pill {
+    color: var(--pc);
+    border-color: color-mix(in srgb, var(--pc) 45%, transparent);
+    background: color-mix(in srgb, var(--pc) 10%, transparent);
+  }
+  .tg.new {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  .tg.ref {
+    border-style: dashed;
+  }
+  .tg.ts {
+    color: var(--p3);
+    border-color: color-mix(in srgb, var(--p3) 50%, transparent);
+  }
+  .bf {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 5px 12px;
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 4px;
+  }
+  .bf dt {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .bf dd {
+    margin: 0;
+  }
+  .bf ul {
+    margin: 0;
+    padding-left: 16px;
+    display: grid;
+    gap: 3px;
+  }
+  .q {
+    font-family: var(--mono);
+    font-size: 12.2px;
+    background: var(--surface-2);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  .rtemplate {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 19px;
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+  }
+  .rtemplate h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .rtemplate ol {
+    margin: 8px 0 0;
+    padding-left: 19px;
+    display: grid;
+    gap: 5px;
+    font-size: 13.3px;
+    line-height: 1.5;
+  }
+
+  .chain {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+    padding: 19px 22px;
+  }
+  .chain .src {
+    background: var(--surface-2);
+    border: 1px dashed color-mix(in srgb, var(--accent) 50%, transparent);
+    border-radius: 10px;
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .chain .src b {
+    color: var(--accent);
+  }
+  .derivs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 13px;
+  }
+  .dv {
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 9px;
+    padding: 11px 13px;
+    font-size: 12.8px;
+    line-height: 1.5;
+  }
+  .dv b {
+    display: block;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+    padding: 18px 21px;
+  }
+  .panel h3 {
+    font-size: 15.5px;
+    margin-bottom: 9px;
+  }
+  ul.plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  ul.plain li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 9px;
+    font-size: 13.4px;
+    line-height: 1.58;
+  }
+  .ico {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .pipe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin: 10px 0 14px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pipe span {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 9px;
+  }
+  .pipe i {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: var(--shadow);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    background: var(--surface);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--hair);
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  thead th {
+    background: var(--surface-2);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .seams {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 18px 21px;
+    box-shadow: var(--shadow);
+  }
+  .seams .ico {
+    color: var(--muted);
+  }
+
+  footer {
+    margin-top: 46px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.4px;
+    line-height: 1.65;
+  }
+  footer b {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .footer-src {
+    margin-top: 9px;
+  }
+  .chip {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 1.5px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+    font-family: var(--mono);
+  }
+  .chip.u {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  .chip.n {
+    border-style: dashed;
+  }
+
+  @media (max-width: 720px) {
+    .item {
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+    .dt {
+      display: flex;
+      gap: 7px;
+      align-items: baseline;
+    }
+    .dt b {
+      display: inline;
+    }
+    .bf {
+      grid-template-columns: 1fr;
+    }
+    .bf dt {
+      margin-top: 6px;
+    }
+    .mhead .count {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <div class="eyebrow">
+      Editorial calendar · 90-day rolling quarter · Aug–Oct 2026
+    </div>
+    <h1>IndieAppStack</h1>
+    <div class="metarow">
+      <span
+        ><b>Cadence:</b> 2 new + 4 refreshes / month
+        <span class="chip u">user-provided</span></span
+      >
+      <span><b>Channels:</b> Blog/SEO-GEO · Newsletter</span>
+      <span
+        ><b>Byline:</b> Organization
+        <span class="chip u">user-provided</span></span
+      >
+      <span><b>Date:</b> <span class="mono">2026-08-03</span></span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="lab">🗓 If you publish only one thing this quarter</div>
+    <h2>
+      “What the September 2026 App Store business terms actually cost a solo
+      developer” — priced, dated, sourced, and shipped before the change lands.
+    </h2>
+    <p>
+      From September 2026, App Store apps that communicate and promote offers
+      for digital goods or services become subject to new business terms — an
+      <b>initial acquisition fee</b>, a <b>store services fee</b>, and for apps
+      on the EU External Purchase Link Entitlement, the
+      <b>Core Technology Commission</b>. iOS 27 ships around the same date.
+      Every vendor in your catalog will cover this with a spin toward their own
+      product.
+      <b
+        >Nobody will publish neutral arithmetic for a solo developer at three
+        concrete revenue levels, with every figure sourced to Apple's own terms
+        and stamped with a check date.</b
+      >
+    </p>
+    <p>
+      That is your wedge applied to the single highest-intent moment in the
+      quarter, and it is the piece most likely to earn the first third-party
+      citation — because it will be the only version a reader can verify. Ship
+      it <b>ahead</b> of the peak, on Sep 3, then update it once the terms take
+      effect.
+    </p>
+  </section>
+
+  <div class="note">
+    <div class="lab">Adaptation — you chose to stay anonymous</div>
+    <h3>Swap personal authority for institutional authority</h3>
+    <p>
+      Four specialists recommended a named human author; you have decided
+      against it, and this calendar respects that — every byline-dependent task
+      is dropped, not left hanging. But the competitor study identified named
+      accountability as a real differentiator, so it needs replacing rather than
+      ignoring.
+    </p>
+    <p>
+      The substitute is the model unsigned publications have always used:
+      <b>accountability vested in a published process rather than a person.</b>
+      Three concrete assets do that work, and all three are scheduled below — a
+      <b>public methodology page</b> stating exactly how prices are checked and
+      how often, a <b>versioned correction log</b> that admits when a figure was
+      wrong, and an <b>open dataset</b> whose git history is itself the audit
+      trail. An anonymous site that shows its working is more credible than a
+      named one that does not.
+    </p>
+    <p>
+      <b>The honest cost:</b> the podcast and practitioner-feature plays from
+      the PR channel are now largely closed, and personal E-E-A-T signals are
+      off the table. Those hours move to the methodology and dataset assets
+      instead.
+    </p>
+  </div>
+
+  <div class="note" style="border-left-color: var(--p2)">
+    <div class="lab" style="color: var(--p2)">
+      Correction — Search Console data received 2026-08-03
+    </div>
+    <h3>
+      The "#1 for best paywall tools" claim was wrong. And the data moves the
+      whole refresh queue.
+    </h3>
+    <p>
+      <b>The correction first.</b> I previously reported that IndieAppStack
+      ranks #1 for "best paywall tools for iOS apps," in both the competitor
+      study and the strategy. Search Console says that page sits at
+      <b>average position 25.5</b>, with 191 impressions and 1 click over 90
+      days. My claim came from a search tool returning the page as its first
+      result — that is result ordering for one long-tail phrasing, not a Google
+      ranking. It should not have been stated as a ranking, and the "the format
+      already works" framing built on it was overconfident.
+    </p>
+    <p>
+      <b>What the data actually shows.</b> 90 days,
+      <span class="mono">4,048</span> page impressions,
+      <span class="mono">4</span> clicks, average position
+      <span class="mono">33.4</span>. This is a site being seen and not clicked
+      — which at position 33 is exactly what you would expect, and is a
+      positioning problem rather than a content-quality one.
+    </p>
+    <p>
+      <b>The finding that matters most, and it is good news:</b> the single
+      largest intent cluster is <b>pricing</b> —
+      <span class="mono">387</span> impressions across
+      <span class="mono">85</span> queries (23% of all query impressions), best
+      position <b>4.8</b>. Real examples: <em>codemagic pricing</em> (50 impr,
+      pos 10.7), <em>superwall pricing</em> (22, pos 10.9),
+      <em>fastlane pricing</em> (32, pos 18.1), <em>is fastlane free</em> (13,
+      pos 8.1).
+      <b
+        >The market is already asking this site what things cost, and it is
+        nearly ranking for it.</b
+      >
+      That is empirical validation of the verifiability wedge — not a
+      strategist's inference.
+    </p>
+    <p>
+      <b>The inverse finding.</b> "best / top" queries total just
+      <span class="mono">50</span> impressions across 15 queries. The calendar I
+      built was weighted toward "best X tools" guides. That was wrong, and the
+      queue below is re-ordered around where impressions actually are:
+      <b>tool pages and comparisons, not guides</b>. Comparisons earned 3 of the
+      4 total clicks, best position 9.0.
+    </p>
+    <p>
+      <b>One technical issue the data surfaced:</b> 16
+      <span class="mono">www.indieappstack.com</span> URLs are still accruing
+      impressions — 368 of them, 9% of the site total, including
+      <span class="mono">www/tools/fastlane</span> at 156 and
+      <span class="mono">www/categories/paywalls</span> at 148 while the apex
+      version of that category page does not appear at all. The www→apex 301
+      exists in the repo, so this is either propagation lag or a gap worth
+      verifying. Either way it is splitting signal on real pages. Not a content
+      task — flagging it for the technical backlog.
+    </p>
+  </div>
+
+  <h2 class="sec">Content pillars</h2>
+  <div class="pillars">
+    <div class="pil" style="--pc: var(--p1)">
+      <h3>The Price Ledger</h3>
+      <div class="meta">Awareness + decision · North Star</div>
+      <p>
+        The wedge, made continuous and public. Every price checked, dated,
+        sourced — and the record of what moved.
+      </p>
+      <p class="muted">Hub: the methodology page → the Pricing Index.</p>
+      <div class="win">
+        <b>Why we can win it:</b> we already do the maintenance; no competitor
+        sources or dates a single price.
+      </div>
+    </div>
+    <div class="pil" style="--pc: var(--p2)">
+      <h3>When Not To Buy</h3>
+      <div class="meta">Decision · affiliate credibility</div>
+      <p>
+        The verdict that costs us money. Per-tool honest calls on when a tool is
+        premature, over-scoped, or simply not for a solo build.
+      </p>
+      <p class="muted">Hub: the archetype stacks.</p>
+      <div class="win">
+        <b>Why we can win it:</b> vendors structurally cannot say "don't buy
+        us"; the agency rival cannot say "don't hire us".
+      </div>
+    </div>
+    <div class="pil" style="--pc: var(--p3)">
+      <h3>Correct The Record</h3>
+      <div class="meta">Awareness · earned links</div>
+      <p>
+        Checkable corrections of errors the incumbents have left standing — and
+        the platform rules that make them errors.
+      </p>
+      <p class="muted">Hub: the alternatives cluster.</p>
+      <div class="win">
+        <b>Why we can win it:</b> a correction is novel information, not a 27th
+        restatement — the cheapest route to being the retrieved source.
+      </div>
+    </div>
+    <div class="pil" style="--pc: var(--p4)">
+      <h3>The Lean Stack</h3>
+      <div class="meta">Consideration · existing corpus</div>
+      <p>
+        What to use, what to defer, what to skip entirely — by app archetype and
+        by stage.
+      </p>
+      <p class="muted">Hub: the 6 stack archetype pages.</p>
+      <div class="win">
+        <b>Why we can win it:</b> 28 tools already catalogued across 12
+        categories; this pillar mostly refreshes rather than writes.
+      </div>
+    </div>
+  </div>
+
+  <p class="muted" style="font-size: 12.9px; margin-top: 13px">
+    <b style="color: var(--text)"
+      >A balance caveat, stated rather than hidden.</b
+    >
+    Across the 20 scheduled items the split is Lean Stack 11 · Price Ledger 5 ·
+    Correct The Record 3 · <b>When Not To Buy 1</b>. On a strict "every pillar
+    recurs" reading that last one is under-served. It is deliberate: the
+    do-not-buy verdict is <em>step 3 of the refresh template</em>, so it ships
+    inside all 12 refreshes as a component rather than as standalone pieces. If
+    it has not produced a distinctive, quotable verdict by the end of the
+    quarter, promote it to its own piece in the next cycle rather than leaving
+    it embedded.
+  </p>
+
+  <h2 class="sec">Cadence &amp; capacity</h2>
+  <div class="cad">
+    <div class="cbox">
+      <div class="n">2</div>
+      <div class="c">new pieces / month</div>
+    </div>
+    <div class="cbox">
+      <div class="n">4</div>
+      <div class="c">substantial refreshes / month</div>
+    </div>
+    <div class="cbox">
+      <div class="n">1</div>
+      <div class="c">newsletter / month, once the ESP is live</div>
+    </div>
+    <div class="cbox">
+      <div class="n">0</div>
+      <div class="c">social posts — channel deliberately unfunded</div>
+    </div>
+  </div>
+  <p class="muted" style="font-size: 13px">
+    Built to <b style="color: var(--text)">confirmed</b> capacity of 6–12 h/week
+    across all channels, of which content takes roughly 60%. That is ~18–32
+    h/month: a new sourced comparison costs 6–10 h at this quality bar, a
+    substantial refresh 1.5–3 h.
+    <b style="color: var(--text)"
+      >Honest floor in a crunch month: 1 new + 2 refreshes</b
+    >
+    — drop a refresh before you drop the newsletter, and drop the newsletter
+    before you ship an unsourced price.
+  </p>
+
+  <h2 class="sec">The refresh template — definition of done</h2>
+  <div class="rtemplate">
+    <h3>Every one of the 12 refreshes below follows the same five moves</h3>
+    <p class="muted" style="font-size: 13.2px">
+      This is why a refresh costs 1.5–3 h rather than a rewrite. The per-piece
+      entries state only what is <em>specific</em> to that page.
+    </p>
+    <ol>
+      <li>
+        <b>Short answer block up top</b> — restate the target query verbatim and
+        answer it self-containedly in the first ~200 words, so it can be lifted
+        by a retrieval engine.
+      </li>
+      <li>
+        <b>Dated, sourced price table</b> — every figure links to the vendor's
+        own pricing page and carries its own check date, not a page-level one.
+      </li>
+      <li>
+        <b>An explicit "when this is not the right fit" verdict</b> — named
+        conditions, not hedging.
+      </li>
+      <li>
+        <b>FAQPage schema + prompt-shaped Q&amp;A</b>, drawn verbatim from the
+        25-prompt panel the strategy stands up.
+      </li>
+      <li>
+        <b>Internal links</b> up to the category hub and across to the related
+        comparison, then re-seed Supabase and redeploy so the change is actually
+        live.
+      </li>
+    </ol>
+  </div>
+
+  <h2 class="sec">The schedule</h2>
+
+  <div class="month">
+    <div class="mhead">
+      <h3>August 2026</h3>
+      <span class="theme">Chase the pricing intent that already exists</span
+      ><span class="count">2 new · 4 refresh</span>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>06</b>Thu</div>
+      <div class="body">
+        <h4>
+          Refresh — Codemagic tool page
+          <span class="muted" style="font-weight: 400; font-size: 13px"
+            >(the best single opportunity on the site)</span
+          >
+        </h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg ref">Refresh</span><span class="tg">Decision</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >277 impr · pos 13.6</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why first</dt>
+          <dd>
+            <b>Measured:</b> 277 impressions at average position 13.6 — page
+            two, and the closest thing on the site to a page-one breakthrough.
+            <span class="q">codemagic pricing</span> alone is 50 impressions at
+            position 10.7, and one long-tail variant sits at
+            <b>position 4.8</b>. Pure pricing intent, which is exactly the
+            wedge.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Rebuild the pricing section as the hero of the page: build-minute
+            costs, what the free tier actually includes, and the crossover point
+            versus Xcode Cloud and Bitrise — every figure sourced and dated.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">codemagic pricing</span> ·
+            <span class="q">code magic pricing</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Average position on <em>codemagic pricing</em> (baseline 10.7 →
+            target page one); first clicks on the page (baseline 0).
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>13</b>Thu</div>
+      <div class="body">
+        <h4>Refresh — Sentry vs Firebase Crashlytics for mobile apps</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p4)">Lean Stack</span
+          ><span class="tg ref">Refresh</span
+          ><span class="tg">Consideration</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >233 impr · pos 20.6</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> 233 impressions; the query
+            <span class="q">sentry vs firebase</span> sits at
+            <b>position 9.2</b> and has already earned a click. Comparisons are
+            this site's strongest format — they took 3 of the 4 total clicks in
+            90 days, best position 9.0.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Add the dated cost comparison at solo scale —
+            <span class="q">crashlytics pricing</span> is a live query at 20
+            impressions, so price is the unmet part of this comparison.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">sentry vs firebase</span> ·
+            <span class="q">sentry vs firebase crashlytics</span> ·
+            <span class="q">crashlytics pricing</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Hold position 9.2 and convert impressions to clicks; CTR on the page
+            (baseline 0.4%).
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item flag">
+      <div class="dt"><b>18</b>Tue</div>
+      <div class="body">
+        <h4>NEW · Superwall alternatives for indie iOS apps</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p3)">Correct The Record</span
+          ><span class="tg new">New · Flagship</span
+          ><span class="tg">Decision</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            Nobody owns this query. AlternativeTo — which ranks page one for
+            almost every <em>“&lt;tool&gt; alternatives”</em> search — returns a
+            genuine <b>404 for Superwall</b>; it does not exist in their
+            database. This is an uncontested, high-intent page with a built-in
+            reason to be cited.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">superwall alternatives</span> — decision intent,
+            actively shopping.
+          </dd>
+          <dt>Outline</dt>
+          <dd>
+            <ul>
+              <li>
+                Short answer: the three real alternatives by job-to-be-done, not
+                by popularity.
+              </li>
+              <li>
+                Why the generic lists get this wrong — billing suites are not
+                paywall SDKs.
+              </li>
+              <li>
+                Dated price table: Superwall, RevenueCat, Adapty, Qonversion,
+                native StoreKit 2.
+              </li>
+              <li>
+                When you need none of them: the StoreKit-only case, stated
+                plainly.
+              </li>
+              <li>When to run two together rather than switch.</li>
+            </ul>
+          </dd>
+          <dt>Assets</dt>
+          <dd>
+            Live price check of all five, each with source URL + check date.
+            Screenshot evidence of the AlternativeTo 404 for the correction
+            claim.
+          </dd>
+          <dt>CTA</dt>
+          <dd>Stack Finder → the subscription-consumer archetype.</dd>
+          <dt>KPI</dt>
+          <dd>
+            Non-branded clicks on <em>superwall alternatives</em>; referring
+            domains earned; prompt-panel citation.
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>20</b>Thu</div>
+      <div class="body">
+        <h4>Refresh — RevenueCat vs Adapty for iOS subscriptions</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p4)">Lean Stack</span
+          ><span class="tg ref">Refresh</span
+          ><span class="tg">Consideration</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >257 impr · 4 clicks</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> the site's <b>top click-earning page</b> — 257
+            impressions and 4 clicks, more than every other page combined.
+            Whatever this page does, it works; deepen rather than restructure.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Add the dated price table at three revenue levels.
+            <span class="q">adapty vs superwall</span> (18 impr, pos 20.2) shows
+            the three-way comparison is being sought — add a short section
+            pointing to the Superwall comparison rather than splitting the page.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">revenuecat vs adapty</span> ·
+            <span class="q">adapty vs superwall</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Clicks (baseline 4 — the page to beat); average position (baseline
+            26.9).
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>27</b>Thu</div>
+      <div class="body">
+        <h4>Refresh — Superwall tool page</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg ref">Refresh</span><span class="tg">Decision</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >149 impr · pos 23.3</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> <span class="q">superwall pricing</span> is 22
+            impressions at <b>position 10.9</b> — another pricing query on the
+            edge of page one. Sequenced immediately after the Aug 18
+            alternatives flagship so the two interlink while both are fresh.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Lead with the pricing model most people get wrong — Superwall
+            charging only on revenue through its own paywalls, versus RevenueCat
+            charging on all tracked revenue. That distinction is the actual
+            buying decision and it is a pricing fact, dated and sourced.
+          </dd>
+          <dt>Query</dt>
+          <dd><span class="q">superwall pricing</span></dd>
+          <dt>KPI</dt>
+          <dd>
+            Position on <em>superwall pricing</em> (baseline 10.9 → page one).
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>28</b>Fri</div>
+      <div class="body">
+        <h4>NEW · Why Stripe is not a RevenueCat alternative on iOS</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p3)">Correct The Record</span
+          ><span class="tg new">New</span><span class="tg">Awareness</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            AlternativeTo tells iOS developers
+            <b>"The best RevenueCat alternative is Stripe"</b> — ranked #1 on 68
+            crowd votes. For in-app digital subscriptions this is not a matter
+            of opinion: Apple requires StoreKit in-app purchase, so Stripe
+            cannot fill that role. A checkable factual correction of a
+            widely-mirrored error, which is exactly the content type that earns
+            links.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">can I use stripe instead of revenuecat ios</span> —
+            question-shaped, the format AI engines synthesise.
+          </dd>
+          <dt>Outline</dt>
+          <dd>
+            <ul>
+              <li>
+                Short answer: no, for in-app digital goods — and here is the
+                rule that says so.
+              </li>
+              <li>
+                Where the wrong answer comes from: how vote-ranked directories
+                produce category errors.
+              </li>
+              <li>
+                The narrow cases where Stripe <em>is</em> correct (physical
+                goods, real-world services, web/Mac outside the store).
+              </li>
+              <li>What to actually compare instead.</li>
+            </ul>
+          </dd>
+          <dt>Assets</dt>
+          <dd>
+            Citation to Apple's current App Store guidelines on in-app purchase;
+            dated screenshot of the AlternativeTo ranking.
+          </dd>
+          <dt>CTA</dt>
+          <dd>Read the Superwall/RevenueCat alternatives cluster.</dd>
+          <dt>KPI</dt>
+          <dd>
+            Referring domains; prompt-panel appearance on
+            RevenueCat-alternatives prompts.
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="month">
+    <div class="mhead">
+      <h3>September 2026</h3>
+      <span class="theme"
+        >The App Store fee change — the quarter's tentpole</span
+      ><span class="count">2 new · 4 refresh · 1 newsletter</span>
+    </div>
+
+    <div class="item flag">
+      <div class="dt"><b>03</b>Thu</div>
+      <div class="body">
+        <h4>
+          NEW · What the September 2026 App Store business terms actually cost a
+          solo developer
+        </h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg new">New · Flagship</span
+          ><span class="tg">Awareness + decision</span
+          ><span class="tg ts">Time-sensitive</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            Neutral arithmetic at three concrete revenue levels, every figure
+            sourced to Apple's own published terms with a check date. Every
+            vendor will cover this change with a spin toward their product;
+            <b>nobody will publish verifiable math for a one-person app.</b>
+            Publish ahead of the peak, then update when the terms take effect.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">app store new business terms 2026 cost</span> ·
+            <span class="q">core technology commission solo developer</span>
+          </dd>
+          <dt>Outline</dt>
+          <dd>
+            <ul>
+              <li>
+                Short answer: what changed, who it applies to, and roughly what
+                it costs.
+              </li>
+              <li>
+                The three fees, defined plainly — initial acquisition, store
+                services, and the EU Core Technology Commission.
+              </li>
+              <li>
+                Worked math at three monthly revenue levels, with the
+                assumptions stated.
+              </li>
+              <li>
+                What it changes about tool choice — and, honestly, what it does
+                not.
+              </li>
+              <li>
+                What to verify yourself before acting, with links to the primary
+                source.
+              </li>
+            </ul>
+          </dd>
+          <dt>Assets</dt>
+          <dd>
+            <b>Primary sources only</b> — Apple Developer news and the App Store
+            business-terms pages, each cited with a check date. Do not source
+            this from vendor blogs. Flag any figure you cannot verify as n/a
+            rather than estimating.
+          </dd>
+          <dt>CTA</dt>
+          <dd>Newsletter — "we re-check this when the terms land".</dd>
+          <dt>KPI</dt>
+          <dd>
+            Referring domains (primary); prompt-panel citation; non-branded
+            clicks.
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>10</b>Thu</div>
+      <div class="body">
+        <h4>
+          Refresh — RevenueCat tool page
+          <span class="muted" style="font-weight: 400; font-size: 13px"
+            >(highest-impression page on the site)</span
+          >
+        </h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg ref">Refresh</span><span class="tg">Decision</span
+          ><span class="tg ts">Time-sensitive</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >349 impr · pos 32.7</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> 349 impressions, the most of any page — and
+            <b>zero clicks</b> at position 32.7. Maximum latent demand, worst
+            conversion. Also the tool most directly affected by the September
+            terms, so it becomes the spoke that makes the Sep 3 flagship a
+            cluster.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Fold the new fee math into the cost section and link up to the
+            flagship. <span class="q">revenuecat pricing</span> (13 impr, pos
+            35.2) and <span class="q">revenuecat</span> (24 impr, pos 27.8) are
+            both live queries the page is losing.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">revenuecat</span> ·
+            <span class="q">revenuecat pricing</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            First clicks on the page (baseline 0 from 349 impressions); average
+            position (baseline 32.7).
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>17</b>Thu</div>
+      <div class="body">
+        <h4>Refresh — Monetization category hub</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p4)">Lean Stack</span
+          ><span class="tg ref">Refresh</span
+          ><span class="tg">Consideration</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >189 impr · cluster pos 13–18</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured, and the biggest surprise in the data:</b> a category
+            hub, not a guide, is carrying the monetization demand.
+            <span class="q">app monetization tool</span> (32 impr, pos 13.4),
+            <span class="q">app monetization tools</span> (28, pos 14.4) and
+            <span class="q">monetization tools application</span> (46, pos 18.6)
+            total <b>106 impressions between position 13 and 19</b> — a page-one
+            cluster the hub is nearly winning.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Treat the hub as the canonical answer to "what monetization tools
+            exist for a mobile app": a dated, sourced comparison table across
+            the category rather than a list of cards. Re-price everything
+            against the September terms.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">app monetization tools</span> ·
+            <span class="q">monetization tools application</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Position on the monetization-tools cluster (baseline 13–19 → page
+            one).
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>22</b>Tue</div>
+      <div class="body">
+        <h4>
+          NEW · iOS 27 and your stack: what actually changed for a solo
+          developer
+        </h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p2)">When Not To Buy</span
+          ><span class="tg new">New</span><span class="tg">Awareness</span
+          ><span class="tg ts">Time-sensitive</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            Published <em>after</em> the ~Sep 15 release so it can be factual
+            rather than speculative. The contrarian, on-brand take: for most
+            solo apps the honest answer is
+            <b>"nothing you need to act on this month"</b> — and saying so is
+            more useful than a feature list. Names the specific cases where it
+            does matter.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">ios 27 what indie developers need to do</span>
+          </dd>
+          <dt>Outline</dt>
+          <dd>
+            <ul>
+              <li>
+                Short answer: the two or three things that genuinely affect a
+                small app.
+              </li>
+              <li>What changed in the store and purchase surface.</li>
+              <li>What you can safely defer, and for how long.</li>
+              <li>Which catalog tools shipped an update, with dates.</li>
+            </ul>
+          </dd>
+          <dt>Assets</dt>
+          <dd>
+            Apple's release notes and developer news, cited.
+            <b>No speculation</b> — anything unverified at publish time is
+            marked n/a and revisited.
+          </dd>
+          <dt>CTA</dt>
+          <dd>Newsletter.</dd>
+          <dt>KPI</dt>
+          <dd>
+            Non-branded clicks in the launch window; prompt-panel citation.
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>24</b>Thu</div>
+      <div class="body">
+        <h4>Refresh — Superwall vs RevenueCat for iOS subscription apps</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p4)">Lean Stack</span
+          ><span class="tg ref">Refresh</span
+          ><span class="tg">Consideration</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >141 impr · pos 13.9 best</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> the query
+            <span class="q">revenuecat vs superwall</span> (14 impr,
+            <b>pos 13.9</b>) has earned <b>2 clicks — half the site's total</b>.
+            The reversed phrasing
+            <span class="q">superwall vs revenuecat</span> sits at 22
+            impressions and position 21.4, so the same page ranks very
+            differently by word order. Worth covering both phrasings explicitly.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Add the dated price comparison and the revenue-base distinction.
+            Completes the Superwall cluster with Aug 18 and Aug 27.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">revenuecat vs superwall</span> ·
+            <span class="q">superwall vs revenuecat</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Clicks (baseline 2); position on the weaker phrasing (baseline
+            21.4).
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>29</b>Tue</div>
+      <div class="body">
+        <h4>Refresh — Adapty tool page</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg ref">Refresh</span><span class="tg">Decision</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >187 impr · pos 21.8</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> 187 impressions at position 21.8 with 1 click.
+            Notably <span class="q">adapty price radar</span> earned a click
+            from just 6 impressions at position 7.8 — a narrow, high-intent
+            pricing query already converting.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Re-price against the September terms and the free-tier threshold.
+            Completes the monetization cluster begun on Sep 10 and Sep 17.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">adapty pricing</span> ·
+            <span class="q">adapty price radar</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>Clicks (baseline 1); position (baseline 21.8).</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>30</b>Wed</div>
+      <div class="body">
+        <h4>Newsletter 01 · The verification log — September</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg new">New</span><span class="tg">Retention</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            Framed as <b>"prices checked, prices moved"</b>, not "what's new". A
+            month where nothing moved is still a credible issue —
+            <em>"16 prices re-checked, none changed"</em> is itself proof of the
+            process. That framing is what makes the cadence survivable.
+          </dd>
+          <dt>Gate</dt>
+          <dd>
+            <b>Blocked until the ESP is live</b>, double opt-in is on, one-click
+            unsubscribe works, and the legacy list has been re-permissioned. Do
+            not send before all four. Honour the "calm monthly note" already
+            promised on the site — do not escalate to weekly.
+          </dd>
+          <dt>Outline</dt>
+          <dd>
+            <ul>
+              <li>Count re-checked and count moved, with the diffs.</li>
+              <li>
+                The App Store terms change in two paragraphs, linking the
+                flagship.
+              </li>
+              <li>One honest do-not-buy note.</li>
+              <li>Any correction to a figure we previously published.</li>
+            </ul>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Confirmation-completion rate; reply rate; spam-complaint rate held
+            under 0.1%.
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="month">
+    <div class="mhead">
+      <h3>October 2026</h3>
+      <span class="theme">Institutional accountability + Index groundwork</span
+      ><span class="count">2 new · 4 refresh · 1 newsletter</span>
+    </div>
+
+    <div class="item flag">
+      <div class="dt"><b>07</b>Wed</div>
+      <div class="body">
+        <h4>
+          NEW · How we check prices — the methodology and the correction log
+        </h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg new">New · Flagship</span
+          ><span class="tg">Awareness</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            <b>The direct replacement for a named author.</b> A permanent page
+            stating exactly how every price is verified, on what cadence, from
+            which source, and what happens when we get one wrong — with a
+            running, dated list of corrections already made. Nobody in this
+            category publishes an editorial standard; two rivals return 404 on
+            <span class="q">/editorial-policy</span>. This is the page that
+            makes an anonymous site trustworthy.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            Low direct volume — this is a <b>trust and citation asset</b>,
+            linked from every tool page, not a traffic play. Judge it
+            accordingly.
+          </dd>
+          <dt>Outline</dt>
+          <dd>
+            <ul>
+              <li>
+                The check cycle: 2 tools/week, full catalog inside ~13 weeks.
+              </li>
+              <li>
+                What counts as a source, and what does not (never a vendor blog
+                for a price).
+              </li>
+              <li>
+                The affiliate rule, stated plainly: relationships never decide
+                inclusion, and we publish do-not-buy verdicts on tools that pay
+                us.
+              </li>
+              <li>
+                The correction log — every figure we got wrong, when, and what
+                it is now.
+              </li>
+              <li>How to report an error to us.</li>
+            </ul>
+          </dd>
+          <dt>Assets</dt>
+          <dd>
+            Requires the <span class="q">pricing_snapshots</span> table to be
+            live so the log has real history to show.
+          </dd>
+          <dt>CTA</dt>
+          <dd>Report a price change.</dd>
+          <dt>KPI</dt>
+          <dd>
+            Referring domains; citations referencing the methodology;
+            internal-link coverage from all 26 tool pages.
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>08</b>Thu</div>
+      <div class="body">
+        <h4>
+          Refresh — fastlane tool page
+          <span class="muted" style="font-weight: 400; font-size: 13px"
+            >(also clears a www duplicate)</span
+          >
+        </h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg ref">Refresh</span><span class="tg">Decision</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >249 impr split · pos 8.1 best</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> demand is split across two URLs — 93 impressions on
+            the apex page and <b>156 on the www duplicate</b>.
+            <span class="q">is fastlane free</span> sits at
+            <b>position 8.1</b> and <span class="q">fastlane pricing</span> at
+            18.1. A free open-source tool generating pricing queries is a
+            perfect fit for a page that answers "what does this actually cost
+            you" honestly.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Answer <em>is fastlane free</em> directly in the Short answer block
+            — free tool, real cost in CI minutes and maintenance. Pair with the
+            Aug 6 Codemagic page as the CI cost cluster.
+            <b>Flag the www duplicate to the technical backlog</b> when doing
+            this one.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">is fastlane free</span> ·
+            <span class="q">fastlane pricing</span> ·
+            <span class="q">fastlane software</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Position on <em>is fastlane free</em> (baseline 8.1 → top 5); www
+            impressions consolidating to apex.
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>15</b>Thu</div>
+      <div class="body">
+        <h4>Refresh — Best paywall tools for iOS apps</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p4)">Lean Stack</span
+          ><span class="tg ref">Refresh</span
+          ><span class="tg">Consideration</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >191 impr · pos 25.5</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Corrected:</b> this page is at average position <b>25.5</b> with
+            1 click from 191 impressions — <em>not</em> ranked #1 as previously
+            reported. It is a decent page that has not broken through, and it is
+            scheduled on merit rather than as a title defence.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            The data points at the real opening:
+            <span class="q">paywall apps ios</span> (30 impr, <b>pos 14.8</b>)
+            and <span class="q">custom paywall solution</span> variants (76 impr
+            combined, positions 55–63) are unserved phrasings. Broaden the page
+            to cover them, and lead with dated pricing.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">paywall apps ios</span> ·
+            <span class="q">custom paywall solution</span> ·
+            <span class="q">best ios paywalls</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>Average position (baseline 25.5); clicks (baseline 1).</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>20</b>Tue</div>
+      <div class="body">
+        <h4>Refresh — Appfigures tool page</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p4)">Lean Stack</span
+          ><span class="tg ref">Refresh</span><span class="tg">Decision</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >155 impr · pos 32.1</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> <span class="q">appfigures</span> is the single
+            highest-impression query on the site at 64 impressions — pure
+            brand-navigational intent, position 33.7. People are searching the
+            tool by name and finding this page in the third page of results.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Brand-navigational intent needs the answer up front: what it is,
+            what it costs, who it suits, who it does not. This is the ASO
+            category's highest-demand page — a better bet than the ASO guides,
+            which sit at positions 69–70.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">appfigures</span> ·
+            <span class="q">appfigures pricing</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>
+            Position on <em>appfigures</em> (baseline 33.7); first clicks.
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>22</b>Thu</div>
+      <div class="body">
+        <h4>NEW · The real annual cost of a solo iOS subscription stack</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg new">New</span><span class="tg">Decision</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            The first public output of the price ledger: every line item in a
+            realistic solo stack, totalled, dated, sourced — including the App
+            Store fees. <b>The dry run for the Pricing Index</b>, and the proof
+            that two quarters of snapshots will be worth publishing.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">how much does it cost to run an indie ios app</span>
+            — question-shaped, high commercial intent.
+          </dd>
+          <dt>Outline</dt>
+          <dd>
+            <ul>
+              <li>Short answer: the total at three app sizes.</li>
+              <li>Line-by-line, each with source and check date.</li>
+              <li>The free tiers that end, and at what threshold.</li>
+              <li>What to cut first when the total gets uncomfortable.</li>
+            </ul>
+          </dd>
+          <dt>Assets</dt>
+          <dd>
+            Ledger data. Publish the table as CSV alongside the page — the first
+            step toward the open dataset.
+          </dd>
+          <dt>CTA</dt>
+          <dd>Stack Finder; newsletter.</dd>
+          <dt>KPI</dt>
+          <dd>
+            Referring domains; affiliate clicks per 1,000 non-branded sessions.
+          </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>27</b>Tue</div>
+      <div class="body">
+        <h4>Refresh — AppFollow tool page</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p4)">Lean Stack</span
+          ><span class="tg ref">Refresh</span><span class="tg">Decision</span
+          ><span class="tg" style="color: var(--p1); border-color: currentColor"
+            >171 impr · pos 30.5</span
+          >
+        </div>
+        <dl class="bf">
+          <dt>Why here</dt>
+          <dd>
+            <b>Measured:</b> 171 impressions, and
+            <span class="q">appfollow</span> is 44 impressions of
+            brand-navigational intent at position 28.9. Same pattern as
+            Appfigures — real name-searches landing on a page that is not
+            answering them fast enough.
+          </dd>
+          <dt>Specific</dt>
+          <dd>
+            Lowest priority of the quarter and the
+            <b>first item to drop in a crunch month</b> — but still ahead of
+            every guide the data deprioritised. Answer-up-front treatment plus
+            dated pricing; no structural work.
+          </dd>
+          <dt>Query</dt>
+          <dd>
+            <span class="q">appfollow</span> ·
+            <span class="q">appfollow connector</span>
+          </dd>
+          <dt>KPI</dt>
+          <dd>Position (baseline 28.9); first clicks.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="dt"><b>31</b>Sat</div>
+      <div class="body">
+        <h4>Newsletter 02 · The verification log — October</h4>
+        <div class="tags">
+          <span class="tg pill" style="--pc: var(--p1)">Price Ledger</span
+          ><span class="tg new">New</span><span class="tg">Retention</span
+          ><span class="tg" style="border-style: dashed">repurposed</span>
+        </div>
+        <dl class="bf">
+          <dt>Angle</dt>
+          <dd>
+            Same format as Issue 01, led by the annual-cost piece and the new
+            methodology page. First issue that can point at a correction log
+            with real entries.
+          </dd>
+          <dt>KPI</dt>
+          <dd>Open and reply rate vs Issue 01; unsubscribe rate.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <div class="lab">Deferred by the data — and the tension it creates</div>
+    <h3>Eight guides came off the refresh queue</h3>
+    <p>
+      Dropped, with their measured 90-day impressions: crash-reporting setup
+      <b>(1)</b>, privacy-friendly analytics <b>(7)</b>, best monetization tools
+      <b>(11)</b>, ASO starter checklist <b>(17, pos 69)</b>, Supabase vs
+      Firebase <b>(28, pos 41)</b>, best ASO tools <b>(44, pos 70)</b>,
+      launch-stack checklist <b>(48, pos 71)</b>, landing page builders
+      <b>(87, pos 41)</b>. Spending four refreshes a month on pages drawing 1–48
+      impressions while tool pages at 150–350 impressions sit unattended at
+      position 20–33 is not a defensible use of a 6–12 hour week.
+    </p>
+    <p>
+      <b>The honest tension:</b> four of these are exactly the clusters the
+      competitor study said IndieAppStack is invisible for in
+      <em>AI answers</em> — ASO, backend, analytics. Search Console measures
+      classic search only, so it cannot see the AI half of the North Star. I am
+      not claiming those pages do not matter; I am saying
+      <b
+        >there is currently no evidence they do, and there is hard evidence the
+        tool pages do.</b
+      >
+    </p>
+    <p>
+      <b>Resolution:</b> defer, do not delete. The 25-prompt panel in the
+      strategy is the instrument that would justify them. Once it has run for a
+      quarter and gives an AI-citation baseline per cluster, revisit — if those
+      pages are being cited despite low search impressions, they earn their slot
+      back on evidence rather than on inference.
+    </p>
+  </div>
+
+  <h2 class="sec">Repurposing — the chain without social</h2>
+  <div class="chain">
+    <div class="src">
+      <b>One flagship article</b> → and note what is <em>missing</em>: with
+      organic social deliberately unfunded, the usual "8–12 social posts" leg
+      does not exist.
+    </div>
+    <div class="derivs">
+      <div class="dv">
+        <b>On-site</b>FAQ / prompt-shaped Q&amp;A block retro-fitted onto the
+        page — the derivative that actually feeds AI retrieval.
+      </div>
+      <div class="dv">
+        <b>Newsletter</b>Lead item in the next monthly verification log.
+      </div>
+      <div class="dv">
+        <b>Earned</b>Submission to iOS Dev Weekly via its sanctioned form, which
+        explicitly accepts "you wrote it".
+      </div>
+      <div class="dv">
+        <b>Data</b>A dated row in the price ledger, accumulating toward the
+        Pricing Index and the open CSV.
+      </div>
+      <div class="dv">
+        <b>Internal</b>Links from the category hub and the sibling comparison —
+        the cluster, not the post, is the unit.
+      </div>
+    </div>
+    <p class="muted" style="font-size: 12.9px; margin-top: 13px">
+      <b style="color: var(--text)">Read this honestly:</b> the standard
+      atomisation engine assumes a social channel. Yours runs through
+      <em>distribution submissions and on-site structure</em> instead. That
+      means fewer derivatives per flagship, which is precisely why the calendar
+      is 6 new pieces rather than 20 — and why each one has to be worth
+      submitting.
+    </p>
+  </div>
+
+  <h2 class="sec">Distribution — planned, not assumed</h2>
+  <div class="panel">
+    <ul class="plain">
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Prerequisite, blocking:</b> ship the RSS feed. Seven candidate
+          paths currently 404. Until it exists the iOS Dev Directory listing is
+          inert and nothing below works.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Every new piece</b> → submitted to iOS Dev Weekly (~20–30 min).
+          Once listed in the iOS Dev Directory, articles enter the reading pool
+          passively and this becomes optional rather than required.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>The two correction pieces</b> (Aug 18, Aug 28) → also fix the
+          underlying record on AlternativeTo: create the missing Superwall entry
+          and add StoreKit-native alternatives above Stripe. Correct the source,
+          not just your own page.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>The Sep 3 flagship</b> → the quarter's one genuine pitch moment.
+          It is dated, factual and useful to every indie iOS newsletter in the
+          niche.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>The Oct 7 methodology page</b> → linked from all 26 tool pages,
+          permanently. This is internal distribution and it compounds.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Not doing:</b> Show HN for any of these — its rules explicitly
+          exclude "blog posts… lists, and other reading material". The open
+          dataset later is the artifact that qualifies.</span
+        >
+      </li>
+    </ul>
+  </div>
+
+  <h2 class="sec">Governance</h2>
+  <div class="pipe">
+    <span>Idea</span><i>→</i><span>Brief</span><i>→</i><span>Drafting</span
+    ><i>→</i><span>Review</span><i>→</i><span>Scheduled</span><i>→</i
+    ><span>Published</span>
+  </div>
+  <div class="panel">
+    <ul class="plain">
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Definition of done (new piece):</b> Short answer block up top ·
+          every price linked to its source with its own check date · explicit
+          when-not-to-use verdict · FAQ schema · internal links up to hub and
+          across to sibling · <b>banned-claim check passed</b> · seeded to
+          Supabase and redeployed · distribution action queued.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Banned-claim gate — non-negotiable.</b> No unsubstantiated
+          superlatives, no fake hands-on claims, no price without a date or
+          source, no implication that commission drove a recommendation, and
+          <b
+            >no "privacy-first / cookieless / no cookie banner" claim about this
+            site</b
+          >
+          (false since 2026-07-20). One reviewer pass per piece, against the
+          brand profile.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Review SLA, solo-adapted:</b> there is no second reviewer, so
+          substitute time — draft, sleep on it, review cold the next morning
+          before publish. Never publish same-day; a rushed price figure is the
+          one error the wedge cannot survive.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Refresh cadence:</b> 2 tools re-checked weekly so the full catalog
+          cycles inside ~13 weeks, plus the 4 monthly page refreshes above. The
+          rolling ritual <em>is</em> the content engine — not a chore alongside
+          it.</span
+        >
+      </li>
+      <li>
+        <span class="ico">▸</span
+        ><span
+          ><b>Prune:</b> Braze and Emerge Tools are already noindexed as the
+          weakest fits. Revisit at quarter end — either invest to make them
+          substantive or remove them; a permanent noindex limbo helps
+          nobody.</span
+        >
+      </li>
+    </ul>
+  </div>
+
+  <h2 class="sec">Measurement</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Pillar</th>
+          <th>Leading (weekly)</th>
+          <th>Lagging (quarterly)</th>
+          <th>Baseline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>The Price Ledger</b></td>
+          <td>
+            Tools re-checked per week (target 2); % of catalog fresh &lt;13
+            weeks
+          </td>
+          <td>
+            <b>Position on the pricing-query cluster</b> — the clearest proof
+            the wedge converts; referring domains to the methodology page
+          </td>
+          <td>
+            <b>Measured 90d:</b> 387 impressions across 85 pricing queries, best
+            pos 4.8, 1 click
+          </td>
+        </tr>
+        <tr>
+          <td><b>Correct The Record</b></td>
+          <td>
+            Corrections published; source records fixed on third-party sites
+          </td>
+          <td>
+            Referring domains; prompt-panel citation on alternatives prompts
+          </td>
+          <td>0 third-party mentions <span class="chip">measured</span></td>
+        </tr>
+        <tr>
+          <td><b>The Lean Stack</b></td>
+          <td>Refreshes shipped vs 4/month</td>
+          <td>
+            Average position and clicks on the 12 refreshed pages; prompt-panel
+            citations
+          </td>
+          <td>
+            <b>Measured 90d:</b> 4,048 impressions · 4 clicks · avg pos 33.4
+          </td>
+        </tr>
+        <tr>
+          <td><b>When Not To Buy</b></td>
+          <td>Do-not-buy verdicts published</td>
+          <td>
+            Affiliate clicks per 1,000 non-branded sessions on pages carrying a
+            verdict vs pages without
+          </td>
+          <td>n/a — no baseline exists <span class="chip n">n/a</span></td>
+        </tr>
+        <tr>
+          <td colspan="4" class="muted" style="font-size: 12.5px">
+            <b>Across all pillars — the honesty metric:</b> % of planned pieces
+            published on time. Consistency compounds; a heroic month followed by
+            silence does not. If this drops below ~70% for two consecutive
+            months, the cadence is wrong and should be cut to the lean floor
+            rather than defended.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="sec">Seams — what this calendar does not decide</h2>
+  <div class="seams">
+    <ul class="plain">
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>The finished copy.</b> These are briefs, not drafts. Drafting is
+          <span class="q">content-writer</span>'s job and the briefs are already
+          in the shape it consumes.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>Channel mix and hours allocation.</b> Owned by the strategy
+          (2026-08-03). This calendar spends the content share of those hours;
+          it does not re-open the decision to skip social and paid.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>The goals themselves.</b> No
+          <span class="q">smart-goals</span> plan exists — the North Star used
+          here is the working set from the strategy. Run
+          <span class="q">smart-goals</span> to formalise targets and
+          thresholds.</span
+        >
+      </li>
+      <li>
+        <span class="ico">✕</span
+        ><span
+          ><b>The technical prerequisites.</b> The measurement rig,
+          <span class="q">pricing_snapshots</span> table, schema work and ESP
+          wiring are strategy-roadmap items. Several pieces here are gated on
+          them and say so.</span
+        >
+      </li>
+    </ul>
+  </div>
+
+  <footer>
+    <b>Method.</b> Pillars derived from the Brand Profile (refreshed
+    2026-08-03), the Competitive Landscape study (2026-08-03) and the Marketing
+    Strategy (2026-08-03) rather than re-derived. Planned inline rather than by
+    channel-track fan-out: at two channels and 20 items this is a small calendar
+    and the upstream research was already in hand. Cadence is
+    <em>user-provided</em> and built to confirmed throughput, not ambition.
+    Nothing here forecasts traffic, rankings or subscriber numbers — no baseline
+    exists for any of them and none was invented.
+    <div class="footer-src">
+      <b>Tentpole, time-sensitive:</b> iOS 27 expected on or around Sep 15,
+      2026; from September 2026, App Store apps promoting offers for digital
+      goods or services become subject to new business terms (initial
+      acquisition fee, store services fee, and the EU Core Technology
+      Commission). Verified via search 2026-08-03 against Apple Developer news
+      and secondary coverage —
+      <b
+        >re-verify against Apple's primary sources before the Sep 3 flagship
+        publishes</b
+      >, and treat any figure not found there as n/a.
+    </div>
+    <div class="footer-src">
+      <b>Data basis.</b> Refresh queue re-ordered 2026-08-03 against a Search
+      Console export (Web, last 3 months: 69 pages, 390 queries, 4,048 page
+      impressions, 4 clicks, avg position 33.4). Every impression, position and
+      click figure quoted per piece comes from that export and is
+      <em>measured</em>. Note its limits: 90 days on a young site,
+      desktop-dominated (3,616 of 3,948 device impressions), and query-level
+      totals are lower than page-level totals because Google anonymises rare
+      queries.
+    </div>
+    <div class="footer-src">
+      <b>Remaining gaps.</b> No AI-citation baseline per page exists yet — the
+      25-prompt panel is the instrument that would supply one, and eight
+      deferred guides should be reconsidered once it has. No keyword-volume data
+      (no paid tool at $0), so cluster sizing uses impressions as a proxy.
+      Current subscriber count unknown, so Newsletter 01 has no size target.
+    </div>
+    <div class="footer-src">
+      Internal planning prepared with the <b>dm-hub</b> Content Calendar skill.
+      Briefs are ready to hand to <span class="q">content-writer</span>; rows
+      are ready to push to a Notion Content Calendar database.
+    </div>
+  </footer>
+</div>

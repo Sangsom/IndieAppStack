@@ -1,0 +1,557 @@
+[
+  {
+    "title": "Refresh — Codemagic tool page (best single opportunity on the site)",
+    "publish_date": "2026-08-06",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Decision",
+    "target_keyword": "codemagic pricing",
+    "cta": "Explore the dev-productivity category",
+    "goal": "Non-branded organic + AI-cited sessions (working North Star)",
+    "kpi": "Average position on 'codemagic pricing' (measured baseline 10.7 → target page one); first clicks on the page (baseline 0)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: 277 impressions at average position 13.6 — page two, and the closest thing on the site to a page-one breakthrough. 'codemagic pricing' alone is 50 impressions at position 10.7, and one long-tail variant sits at position 4.8. Pure pricing intent, which is exactly the wedge.",
+      "intent": "Pricing intent — a solo developer working out what CI will cost.",
+      "outline": [
+        "Short answer block answering what Codemagic costs, up top",
+        "Rebuild the pricing section as the hero: build-minute costs, what the free tier actually includes",
+        "The crossover point versus Xcode Cloud and Bitrise, priced and dated",
+        "Explicit when-not-to-use verdict",
+        "FAQPage schema and internal links to the CI cluster (pair with the Oct 8 fastlane page)"
+      ],
+      "assets": "Live price check of Codemagic, Xcode Cloud and Bitrise with source URLs and per-figure check dates.",
+      "notes": "GSC-measured priority. Baseline: 277 impressions, 0 clicks, pos 13.63 over 90 days to 2026-08-03. Refresh-template piece."
+    }
+  },
+  {
+    "title": "Refresh — Sentry vs Firebase Crashlytics for mobile apps",
+    "publish_date": "2026-08-13",
+    "channel": ["Blog"],
+    "format": "Comparison / alternatives",
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Consideration",
+    "target_keyword": "sentry vs firebase",
+    "cta": "Explore the crash-reporting category",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Hold position 9.2 and convert impressions to clicks; page CTR (measured baseline 0.4%)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: 233 impressions; the query 'sentry vs firebase' sits at position 9.2 and has already earned a click. Comparisons are this site's strongest format — they took 3 of the 4 total clicks in 90 days, best position 9.0.",
+      "intent": "Comparison intent, reader choosing crash reporting pre-launch.",
+      "outline": [
+        "Short answer block",
+        "Dated cost comparison at solo scale — 'crashlytics pricing' is a live query at 20 impressions, so price is the unmet part",
+        "Explicit when-not-to-use verdict for each",
+        "FAQPage schema and prompt-shaped Q&A",
+        "Internal links to the crash-reporting hub"
+      ],
+      "assets": "Live price check of Sentry and Firebase Crashlytics with sources and dates.",
+      "notes": "GSC-measured priority. Baseline: 233 impressions, 1 click, pos 20.58. Refresh-template piece."
+    }
+  },
+  {
+    "title": "Superwall alternatives for indie iOS apps",
+    "publish_date": "2026-08-18",
+    "channel": ["Blog"],
+    "format": "Comparison / alternatives",
+    "pillar": "Correct The Record",
+    "funnel_stage": "Decision",
+    "target_keyword": "superwall alternatives",
+    "cta": "Stack Finder — subscription-consumer archetype",
+    "goal": "Non-branded organic + AI-cited sessions; first earned citations",
+    "kpi": "Non-branded clicks on 'superwall alternatives'; referring domains earned; prompt-panel citation",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "Nobody owns this query. AlternativeTo — which ranks page one for almost every '<tool> alternatives' search — returns a genuine 404 for Superwall; it does not exist in their database. An uncontested, high-intent page with a built-in reason to be cited.",
+      "intent": "Decision intent — reader is actively shopping for a paywall tool.",
+      "outline": [
+        "Short answer: the three real alternatives by job-to-be-done, not by popularity",
+        "Why the generic lists get this wrong — billing suites are not paywall SDKs",
+        "Dated price table: Superwall, RevenueCat, Adapty, Qonversion, native StoreKit 2",
+        "When you need none of them: the StoreKit-only case, stated plainly",
+        "When to run two together rather than switch"
+      ],
+      "assets": "Live price check of all five with source URL and check date each. Dated screenshot evidence of the AlternativeTo 404 to support the correction claim.",
+      "notes": "FLAGSHIP. Justified on competitor evidence, not GSC — the 'alternatives' cluster is only 72 impressions site-wide, so this is an earned-links and AI-citation play rather than a traffic play. Judge it accordingly. Pair with creating the missing Superwall entry on AlternativeTo itself."
+    }
+  },
+  {
+    "title": "Refresh — RevenueCat vs Adapty for iOS subscriptions",
+    "publish_date": "2026-08-20",
+    "channel": ["Blog"],
+    "format": "Comparison / alternatives",
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Consideration",
+    "target_keyword": "revenuecat vs adapty",
+    "cta": "Stack Finder",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Clicks (measured baseline 4 — the page to beat); average position (baseline 26.9)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: the site's top click-earning page — 257 impressions and 4 clicks, more than every other page combined. Whatever this page does, it works; deepen rather than restructure.",
+      "intent": "Comparison intent, mid-decision.",
+      "outline": [
+        "Preserve what is already working — do not restructure",
+        "Add the dated price table at three revenue levels",
+        "Short section pointing to the Superwall comparison rather than splitting the page ('adapty vs superwall' is 18 impressions at pos 20.2)",
+        "Explicit when-not-to-use verdicts",
+        "FAQPage schema"
+      ],
+      "assets": "Live price check of RevenueCat and Adapty with sources and dates.",
+      "notes": "GSC-measured priority. Baseline: 257 impressions, 4 clicks, pos 26.93. Record pre-edit position so regression is detectable."
+    }
+  },
+  {
+    "title": "Refresh — Superwall tool page",
+    "publish_date": "2026-08-27",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Decision",
+    "target_keyword": "superwall pricing",
+    "cta": "Read the Superwall alternatives page",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Position on 'superwall pricing' (measured baseline 10.9 → page one)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: 'superwall pricing' is 22 impressions at position 10.9 — another pricing query on the edge of page one. Sequenced immediately after the Aug 18 alternatives flagship so the two interlink while both are fresh.",
+      "intent": "Pricing intent on a specific named tool.",
+      "outline": [
+        "Short answer: what Superwall costs and on what revenue base",
+        "Lead with the pricing model most people get wrong — Superwall charges only on revenue through its own paywalls, versus RevenueCat charging on all tracked revenue",
+        "Dated tier table with sources",
+        "When Superwall is the wrong choice",
+        "Internal links to the alternatives page and the comparison"
+      ],
+      "assets": "Live price check with source URL and check date. Verify the revenue-base distinction against Superwall's own pricing page before stating it.",
+      "notes": "GSC-measured priority. Baseline: 149 impressions, 0 clicks, pos 23.3. Refresh-template piece."
+    }
+  },
+  {
+    "title": "Why Stripe is not a RevenueCat alternative on iOS",
+    "publish_date": "2026-08-28",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "Correct The Record",
+    "funnel_stage": "Awareness",
+    "target_keyword": "can I use stripe instead of revenuecat ios",
+    "cta": "Read the alternatives cluster",
+    "goal": "Non-branded organic + AI-cited sessions; earned links",
+    "kpi": "Referring domains; prompt-panel appearance on RevenueCat-alternatives prompts",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "AlternativeTo tells iOS developers 'The best RevenueCat alternative is Stripe', ranked #1 on 68 crowd votes. For in-app digital subscriptions this is not a matter of opinion: Apple requires StoreKit in-app purchase, so Stripe cannot fill that role. A checkable factual correction of a widely-mirrored error — the content type that earns links.",
+      "intent": "Question-shaped query, the format AI answer engines synthesise and cite.",
+      "outline": [
+        "Short answer: no, for in-app digital goods — and here is the rule that says so",
+        "Where the wrong answer comes from: how vote-ranked directories produce category errors",
+        "The narrow cases where Stripe is correct — physical goods, real-world services, web and Mac outside the store",
+        "What to actually compare instead"
+      ],
+      "assets": "Citation to Apple's current App Store guidelines on in-app purchase. Dated screenshot of the AlternativeTo ranking.",
+      "notes": "Earned-links play, not a traffic play — justified on competitor evidence rather than GSC. Correct the error without naming and attacking the rival; a first earned impression should not be adversarial."
+    }
+  },
+  {
+    "title": "What the September 2026 App Store business terms actually cost a solo developer",
+    "publish_date": "2026-09-03",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Awareness",
+    "target_keyword": "app store new business terms 2026 cost",
+    "cta": "Newsletter — we re-check this when the terms land",
+    "goal": "Non-branded organic + AI-cited sessions; first third-party citation",
+    "kpi": "Referring domains (primary); prompt-panel citation; non-branded clicks",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "Neutral arithmetic at three concrete revenue levels, every figure sourced to Apple's own published terms with a check date. Every vendor will cover this change with a spin toward their product; nobody will publish verifiable math for a one-person app. Publish ahead of the peak, then update when the terms take effect. NOW EMPIRICALLY VALIDATED: pricing is the site's largest intent cluster at 387 impressions across 85 queries.",
+      "intent": "High-intent, time-sensitive — solo developers working out what a fee change costs them.",
+      "outline": [
+        "Short answer: what changed, who it applies to, and roughly what it costs",
+        "The three fees defined plainly — initial acquisition, store services, and the EU Core Technology Commission",
+        "Worked math at three monthly revenue levels, with assumptions stated",
+        "What it changes about tool choice — and honestly, what it does not",
+        "What to verify yourself before acting, with links to the primary source"
+      ],
+      "assets": "PRIMARY SOURCES ONLY — Apple Developer news and App Store business-terms pages, each cited with a check date. Do not source from vendor blogs. Any figure not verifiable at Apple's own source is marked n/a, not estimated.",
+      "notes": "FLAGSHIP OF THE QUARTER and the one genuine pitch moment. TIME-SENSITIVE: re-verify all terms against Apple primary sources immediately before publishing. Schedule a follow-up update once the terms take effect."
+    }
+  },
+  {
+    "title": "Refresh — RevenueCat tool page (highest-impression page on the site)",
+    "publish_date": "2026-09-10",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Decision",
+    "target_keyword": "revenuecat pricing",
+    "cta": "Read the App Store terms flagship",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "First clicks on the page (measured baseline 0 from 349 impressions); average position (baseline 32.7)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": "What the September 2026 App Store business terms actually cost a solo developer",
+    "brief": {
+      "angle": "MEASURED: 349 impressions, the most of any page — and zero clicks at position 32.7. Maximum latent demand, worst conversion. Also the tool most directly affected by the September terms, so it becomes the spoke that makes the Sep 3 flagship a cluster.",
+      "intent": "Mixed brand-navigational and pricing intent.",
+      "outline": [
+        "Short answer up top — what RevenueCat is and what it costs",
+        "Fold the new September fee math into the cost section and link up to the flagship",
+        "Dated tier table with the 1% MTR threshold explained",
+        "When RevenueCat is premature — the StoreKit-only case",
+        "FAQPage schema"
+      ],
+      "assets": "Live price check with sources and dates; fee figures carried from the Sep 3 flagship.",
+      "notes": "GSC-measured priority. Baseline: 349 impressions, 0 clicks, pos 32.7. TIME-SENSITIVE — gated on the Sep 3 flagship publishing first."
+    }
+  },
+  {
+    "title": "Refresh — Monetization category hub",
+    "publish_date": "2026-09-17",
+    "channel": ["Blog"],
+    "format": "Pillar page",
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Consideration",
+    "target_keyword": "app monetization tools",
+    "cta": "Stack Finder",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Position on the monetization-tools cluster (measured baseline 13–19 → page one)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED, and the biggest surprise in the data: a category hub, not a guide, is carrying the monetization demand. 'app monetization tool' (32 impr, pos 13.4), 'app monetization tools' (28, pos 14.4) and 'monetization tools application' (46, pos 18.6) total 106 impressions between position 13 and 19 — a page-one cluster the hub is nearly winning.",
+      "intent": "Category-shortlist intent — 'what monetization tools exist for a mobile app'.",
+      "outline": [
+        "Short answer block treating the hub as the canonical answer to the category question",
+        "A dated, sourced comparison table across the category rather than a list of cards",
+        "Re-price everything against the September terms",
+        "Which to pick by app archetype, linking the stack pages",
+        "ItemList plus FAQPage schema"
+      ],
+      "assets": "Full live re-price of the monetization category with sources and dates.",
+      "notes": "GSC-measured priority. Baseline: 189 impressions, 0 clicks, pos 37.72. Note the finding that category hubs outperform guides here — it may generalise to other categories next cycle."
+    }
+  },
+  {
+    "title": "iOS 27 and your stack: what actually changed for a solo developer",
+    "publish_date": "2026-09-22",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "When Not To Buy",
+    "funnel_stage": "Awareness",
+    "target_keyword": "ios 27 what indie developers need to do",
+    "cta": "Newsletter",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Non-branded clicks in the launch window; prompt-panel citation",
+    "owner": "IndieAppStack",
+    "stage": "Idea",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "Published after the ~Sep 15 release so it can be factual rather than speculative. The contrarian, on-brand take: for most solo apps the honest answer is 'nothing you need to act on this month' — and saying so is more useful than a feature list. Names the specific cases where it does matter.",
+      "intent": "Post-launch orientation — what a solo developer must actually do.",
+      "outline": [
+        "Short answer: the two or three things that genuinely affect a small app",
+        "What changed in the store and purchase surface",
+        "What you can safely defer, and for how long",
+        "Which catalog tools shipped an update, with dates"
+      ],
+      "assets": "Apple release notes and developer news, cited with dates.",
+      "notes": "NO SPECULATION. Anything unverified at publish time is marked n/a and revisited. TIME-SENSITIVE: date depends on the actual iOS 27 release; shift if Apple shifts."
+    }
+  },
+  {
+    "title": "Refresh — Superwall vs RevenueCat for iOS subscription apps",
+    "publish_date": "2026-09-24",
+    "channel": ["Blog"],
+    "format": "Comparison / alternatives",
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Consideration",
+    "target_keyword": "revenuecat vs superwall",
+    "cta": "Stack Finder",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Clicks (measured baseline 2); position on the weaker phrasing (baseline 21.4)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: the query 'revenuecat vs superwall' (14 impr, pos 13.9) has earned 2 clicks — half the site's total. The reversed phrasing 'superwall vs revenuecat' sits at 22 impressions and position 21.4, so the same page ranks very differently by word order. Worth covering both phrasings explicitly in headings and FAQ.",
+      "intent": "Comparison intent, mid-decision.",
+      "outline": [
+        "Short answer block covering both phrasings",
+        "Dated price comparison and the revenue-base distinction",
+        "When to run both rather than choose",
+        "Explicit when-not-to-use verdicts",
+        "Internal links completing the Superwall cluster with Aug 18 and Aug 27"
+      ],
+      "assets": "Live price check with sources and dates.",
+      "notes": "GSC-measured priority. Baseline: 141 impressions, 0 clicks on the page, pos 26.87; best query pos 13.9 with 2 clicks."
+    }
+  },
+  {
+    "title": "Refresh — Adapty tool page",
+    "publish_date": "2026-09-29",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Decision",
+    "target_keyword": "adapty pricing",
+    "cta": "Read the RevenueCat vs Adapty comparison",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Clicks (measured baseline 1); position (baseline 21.8)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: 187 impressions at position 21.8 with 1 click. Notably 'adapty price radar' earned a click from just 6 impressions at position 7.8 — a narrow, high-intent pricing query already converting.",
+      "intent": "Pricing intent on a named tool.",
+      "outline": [
+        "Short answer: what Adapty costs and where the free tier ends",
+        "Re-price against the September terms and the free-tier threshold",
+        "Cover the Price Radar feature explicitly — it is already converting",
+        "When Adapty is the wrong choice",
+        "Internal links completing the monetization cluster begun Sep 10 and Sep 17"
+      ],
+      "assets": "Live price check with sources and dates.",
+      "notes": "GSC-measured priority. Baseline: 187 impressions, 1 click, pos 21.78."
+    }
+  },
+  {
+    "title": "Newsletter 01 — The verification log, September",
+    "publish_date": "2026-09-30",
+    "channel": ["Newsletter"],
+    "format": "Newsletter",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Retention",
+    "target_keyword": "n/a",
+    "cta": "Read the App Store terms flagship",
+    "goal": "Owned-audience insurance against AI-referral volatility",
+    "kpi": "Double opt-in confirmation rate; reply rate; spam-complaint rate held under 0.1%",
+    "owner": "IndieAppStack",
+    "stage": "Idea",
+    "repurposed_from": "What the September 2026 App Store business terms actually cost a solo developer",
+    "brief": {
+      "angle": "Framed as 'prices checked, prices moved', not 'what's new'. A month where nothing moved is still a credible issue — '16 prices re-checked, none changed' is itself proof of the process. That framing is what makes the cadence survivable at this capacity.",
+      "intent": "Retention and proof-of-rigour for an existing reader.",
+      "outline": [
+        "Count re-checked and count moved, with the diffs",
+        "The App Store terms change in two paragraphs, linking the flagship",
+        "One honest do-not-buy note",
+        "Any correction to a figure previously published"
+      ],
+      "assets": "Price ledger data for the month.",
+      "notes": "HARD GATE — blocked until all four are true: ESP live, double opt-in on, one-click unsubscribe working, legacy list re-permissioned. Do not send before then. Honour the 'calm monthly note' already promised on the site; do not escalate to weekly."
+    }
+  },
+  {
+    "title": "How we check prices — the methodology and the correction log",
+    "publish_date": "2026-10-07",
+    "channel": ["Blog"],
+    "format": "Pillar page",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Awareness",
+    "target_keyword": "n/a — trust and citation asset, not a traffic play",
+    "cta": "Report a price change",
+    "goal": "Institutional accountability substituting for named authorship",
+    "kpi": "Referring domains; citations referencing the methodology; internal-link coverage from all 26 tool pages",
+    "owner": "IndieAppStack",
+    "stage": "Idea",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "The direct replacement for a named author. A permanent page stating exactly how every price is verified, on what cadence, from which source, and what happens when we get one wrong — with a running, dated list of corrections already made. Two rivals return 404 on /editorial-policy. This is the page that makes an anonymous site trustworthy.",
+      "intent": "Trust verification — a sceptical reader or a potential citer checking whether the claims hold.",
+      "outline": [
+        "The check cycle: 2 tools per week, full catalog inside ~13 weeks",
+        "What counts as a source and what does not — never a vendor blog for a price",
+        "The affiliate rule stated plainly: relationships never decide inclusion, and we publish do-not-buy verdicts on tools that pay us",
+        "The correction log — every figure we got wrong, when, and what it is now",
+        "How to report an error to us"
+      ],
+      "assets": "Requires the pricing_snapshots table to be live so the log has real history to show.",
+      "notes": "FLAGSHIP. Judge on citations and trust, not traffic. Link from all 26 tool pages permanently — internal distribution that compounds. Extra weight now that the byline stays anonymous."
+    }
+  },
+  {
+    "title": "Refresh — fastlane tool page (also clears a www duplicate)",
+    "publish_date": "2026-10-08",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Decision",
+    "target_keyword": "is fastlane free",
+    "cta": "Explore the dev-productivity category",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Position on 'is fastlane free' (measured baseline 8.1 → top 5); www impressions consolidating to apex",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: demand is split across two URLs — 93 impressions on the apex page and 156 on the www duplicate. 'is fastlane free' sits at position 8.1 and 'fastlane pricing' at 18.1. A free open-source tool generating pricing queries is a perfect fit for a page that answers 'what does this actually cost you' honestly.",
+      "intent": "Pricing/cost intent on a free tool — the real question is total cost of ownership.",
+      "outline": [
+        "Short answer: yes it is free, and here is what it actually costs you in CI minutes and maintenance",
+        "Dated CI-minute costs across the common runners",
+        "Pair with the Aug 6 Codemagic page as the CI cost cluster",
+        "When a managed CI service is worth paying for instead",
+        "FAQPage schema"
+      ],
+      "assets": "Live CI pricing check with sources and dates.",
+      "notes": "GSC-measured priority. Baseline: 93 apex + 156 www impressions, pos 28.23 / 38.92. ALSO: flag the www duplicate to the technical backlog when doing this one — 16 www URLs hold 368 impressions site-wide."
+    }
+  },
+  {
+    "title": "Refresh — Best paywall tools for iOS apps",
+    "publish_date": "2026-10-15",
+    "channel": ["Blog"],
+    "format": "Guide",
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Consideration",
+    "target_keyword": "paywall apps ios",
+    "cta": "Stack Finder",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Average position (measured baseline 25.5); clicks (baseline 1)",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "CORRECTED: this page is at average position 25.5 with 1 click from 191 impressions — NOT ranked #1 as previously reported in the competitor study and strategy. It is a decent page that has not broken through, scheduled on merit rather than as a title defence.",
+      "intent": "Shortlist intent, plus several unserved phrasings.",
+      "outline": [
+        "Short answer block",
+        "Broaden to cover 'paywall apps ios' (30 impr, pos 14.8) and the 'custom paywall solution' variants (76 impr combined, positions 55–63) — both currently unserved phrasings",
+        "Lead with dated pricing across the tools",
+        "Explicit when-not-to-use verdicts",
+        "FAQPage schema"
+      ],
+      "assets": "Live price check with sources and dates.",
+      "notes": "GSC-measured. Baseline: 191 impressions, 1 click, pos 25.5. The 'custom paywall solution' cluster at pos 55–63 is the clearest untapped opening on this page."
+    }
+  },
+  {
+    "title": "Refresh — Appfigures tool page",
+    "publish_date": "2026-10-20",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Decision",
+    "target_keyword": "appfigures",
+    "cta": "Explore the ASO category",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Position on 'appfigures' (measured baseline 33.7); first clicks",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: 'appfigures' is the single highest-impression query on the site at 64 impressions — pure brand-navigational intent, position 33.7. People are searching the tool by name and finding this page on the third page of results.",
+      "intent": "Brand-navigational — needs the answer up front, not a slow build.",
+      "outline": [
+        "Short answer: what it is, what it costs, who it suits, who it does not",
+        "Dated tier table with sources",
+        "Honest comparison against AppTweak (the existing comparison page) and the free alternatives",
+        "When Appfigures is over-scoped for a solo app",
+        "FAQPage schema"
+      ],
+      "assets": "Live price check with sources and dates.",
+      "notes": "GSC-measured priority. Baseline: 155 impressions, 0 clicks, pos 32.08. Chosen over the ASO guides deliberately — those sit at positions 69–70 with 17–44 impressions."
+    }
+  },
+  {
+    "title": "The real annual cost of a solo iOS subscription stack",
+    "publish_date": "2026-10-22",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Decision",
+    "target_keyword": "how much does it cost to run an indie ios app",
+    "cta": "Stack Finder; newsletter",
+    "goal": "Non-branded organic + AI-cited sessions; affiliate credibility",
+    "kpi": "Referring domains; affiliate clicks per 1,000 non-branded sessions",
+    "owner": "IndieAppStack",
+    "stage": "Idea",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "The first public output of the price ledger: every line item in a realistic solo stack, totalled, dated, sourced — including the App Store fees. The dry run for the Pricing Index, and the proof that two quarters of snapshots will be worth publishing. Directly serves the site's largest measured intent cluster.",
+      "intent": "Question-shaped, high commercial intent.",
+      "outline": [
+        "Short answer: the total at three app sizes",
+        "Line-by-line, each with source and check date",
+        "The free tiers that end, and at what threshold",
+        "What to cut first when the total gets uncomfortable"
+      ],
+      "assets": "Ledger data. Publish the table as CSV alongside the page — the first step toward the open dataset.",
+      "notes": "Gated on the pricing_snapshots table being live and populated. Strongly supported by GSC: pricing is 387 impressions across 85 queries, the site's largest cluster."
+    }
+  },
+  {
+    "title": "Refresh — AppFollow tool page",
+    "publish_date": "2026-10-27",
+    "channel": ["Blog"],
+    "format": "Article",
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Decision",
+    "target_keyword": "appfollow",
+    "cta": "Explore the ASO category",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "kpi": "Position (measured baseline 28.9); first clicks",
+    "owner": "IndieAppStack",
+    "stage": "Brief",
+    "repurposed_from": null,
+    "brief": {
+      "angle": "MEASURED: 171 impressions, and 'appfollow' is 44 impressions of brand-navigational intent at position 28.9. Same pattern as Appfigures — real name-searches landing on a page that is not answering them fast enough.",
+      "intent": "Brand-navigational.",
+      "outline": [
+        "Short answer up front",
+        "Dated tier table with sources",
+        "Cover 'appfollow connector' (19 impr) as a sub-question",
+        "When it is over-scoped for a solo app",
+        "FAQPage schema"
+      ],
+      "assets": "Live price check with sources and dates.",
+      "notes": "GSC-measured. Baseline: 171 impressions, 0 clicks, pos 30.46. LOWEST PRIORITY of the quarter and the first item to drop in a crunch month — but still ahead of every guide the data deprioritised."
+    }
+  },
+  {
+    "title": "Newsletter 02 — The verification log, October",
+    "publish_date": "2026-10-31",
+    "channel": ["Newsletter"],
+    "format": "Newsletter",
+    "pillar": "The Price Ledger",
+    "funnel_stage": "Retention",
+    "target_keyword": "n/a",
+    "cta": "Read the annual cost breakdown",
+    "goal": "Owned-audience insurance",
+    "kpi": "Open and reply rate vs Issue 01; unsubscribe rate",
+    "owner": "IndieAppStack",
+    "stage": "Idea",
+    "repurposed_from": "The real annual cost of a solo iOS subscription stack",
+    "brief": {
+      "angle": "Same format as Issue 01, led by the annual-cost piece and the new methodology page. First issue that can point at a correction log with real entries.",
+      "intent": "Retention and proof-of-rigour.",
+      "outline": [
+        "Count re-checked and count moved",
+        "The annual cost piece as the lead item",
+        "The methodology and correction log now published",
+        "One honest do-not-buy note"
+      ],
+      "assets": "Price ledger data for the month.",
+      "notes": "Same gating as Issue 01 if the ESP work slipped."
+    }
+  }
+]
