@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d" font-family='ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'>
+<title id="t">Where Codemagic stops being the cheaper option</title>
+<desc id="d">Line chart of monthly Codemagic cost against macOS build minutes used. The first 500 Mac mini M2 minutes each month cost nothing, then each minute costs 0.095 dollars. Cost passes the 49.99 dollar Xcode Cloud tier at about 1,026 minutes a month and the 89 dollar Bitrise Starter plan at about 1,437 minutes. List prices checked August 5, 2026.</desc>
+<rect width="1200" height="675" fill="#fbfaf7"/>
+<text x="96" y="46" font-family='ui-serif,"Source Serif 4",Georgia,"Times New Roman",serif' font-size="30" font-weight="600" fill="#20241f">Where Codemagic stops being the cheaper option</text>
+<text x="96" y="72" font-size="15.5" fill="#6e6a5e">On the free plan: 500 macOS M2 minutes at $0, then $0.095 each. List prices, checked Aug 5, 2026.</text>
+<rect x="96" y="128" width="247.2" height="451" fill="#e8efea"/>
+<line x1="96" y1="579" x2="986" y2="579" stroke="#e7e2d7" stroke-width="1"/>
+<text x="82" y="584" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="end">$0</text>
+<line x1="96" y1="478.8" x2="986" y2="478.8" stroke="#e7e2d7" stroke-width="1"/>
+<text x="82" y="483.8" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="end">$30</text>
+<line x1="96" y1="378.6" x2="986" y2="378.6" stroke="#e7e2d7" stroke-width="1"/>
+<text x="82" y="383.6" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="end">$60</text>
+<line x1="96" y1="278.3" x2="986" y2="278.3" stroke="#e7e2d7" stroke-width="1"/>
+<text x="82" y="283.3" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="end">$90</text>
+<line x1="96" y1="178.1" x2="986" y2="178.1" stroke="#e7e2d7" stroke-width="1"/>
+<text x="82" y="183.1" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="end">$120</text>
+<line x1="96" y1="579" x2="96" y2="586" stroke="#e7e2d7" stroke-width="1"/>
+<text x="96" y="607" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="middle">0</text>
+<line x1="244.3" y1="579" x2="244.3" y2="586" stroke="#e7e2d7" stroke-width="1"/>
+<text x="244.3" y="607" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="middle">300</text>
+<line x1="392.7" y1="579" x2="392.7" y2="586" stroke="#e7e2d7" stroke-width="1"/>
+<text x="392.7" y="607" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="middle">600</text>
+<line x1="541" y1="579" x2="541" y2="586" stroke="#e7e2d7" stroke-width="1"/>
+<text x="541" y="607" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="middle">900</text>
+<line x1="689.3" y1="579" x2="689.3" y2="586" stroke="#e7e2d7" stroke-width="1"/>
+<text x="689.3" y="607" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="middle">1,200</text>
+<line x1="837.7" y1="579" x2="837.7" y2="586" stroke="#e7e2d7" stroke-width="1"/>
+<text x="837.7" y="607" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="middle">1,500</text>
+<line x1="986" y1="579" x2="986" y2="586" stroke="#e7e2d7" stroke-width="1"/>
+<text x="986" y="607" font-size="14" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace' fill="#6e6a5e" text-anchor="middle">1,800</text>
+<text x="541" y="631" font-size="14" fill="#6e6a5e" text-anchor="middle">macOS build minutes per month</text>
+<text x="26" y="353.5" font-size="14" fill="#6e6a5e" text-anchor="middle" transform="rotate(-90 26 353.5)">Cost per month (USD)</text>
+<text x="219.6" y="152" font-size="13" font-weight="600" fill="#6e6a5e" text-anchor="middle">500 free minutes</text>
+<text x="219.6" y="170" font-size="13" fill="#6e6a5e" text-anchor="middle">refilled monthly</text>
+<line x1="96" y1="412" x2="986" y2="412" stroke="#6e6a5e" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round"/>
+<text x="1000" y="409" font-size="15.5" font-weight="600" fill="#20241f">$49.99</text>
+<text x="1000" y="429" font-size="13.5" fill="#6e6a5e">Xcode Cloud, 100 h</text>
+<line x1="96" y1="281.7" x2="986" y2="281.7" stroke="#6e6a5e" stroke-width="2" stroke-dasharray="8 5" stroke-linecap="round"/>
+<text x="1000" y="278.7" font-size="15.5" font-weight="600" fill="#20241f">$89</text>
+<text x="1000" y="298.7" font-size="13.5" fill="#6e6a5e">Bitrise Starter</text>
+<polyline points="96,579 343.2,579 986,166.4" fill="none" stroke="#2f8f6d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1000" y="163.4" font-size="15.5" font-weight="600" fill="#20241f">$123.50</text>
+<text x="1000" y="183.4" font-size="13.5" fill="#6e6a5e">Codemagic, 1,800 min</text>
+<line x1="603.4" y1="412" x2="603.4" y2="579" stroke="#9a6b23" stroke-width="1"/>
+<circle cx="603.4" cy="412" r="5.5" fill="#2f8f6d" stroke="#fbfaf7" stroke-width="2"/>
+<text x="613.4" y="433" font-size="14.5" font-weight="600" fill="#20241f" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace'>1,026 min</text>
+<line x1="806.4" y1="281.7" x2="806.4" y2="579" stroke="#9a6b23" stroke-width="1"/>
+<circle cx="806.4" cy="281.7" r="5.5" fill="#2f8f6d" stroke="#fbfaf7" stroke-width="2"/>
+<text x="816.4" y="302.7" font-size="14.5" font-weight="600" fill="#20241f" font-family='ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace'>1,437 min</text>
+<line x1="96" y1="95" x2="122" y2="95" stroke="#2f8f6d" stroke-width="2" stroke-linecap="round"/>
+<text x="132" y="100" font-size="14" fill="#20241f">Codemagic free plan, then $0.095 per M2 minute</text>
+<line x1="492" y1="95" x2="513" y2="95" stroke="#6e6a5e" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="528" y="100" font-size="14" fill="#20241f">Flat subscription price</text>
+<text x="1174" y="659" font-size="12.5" fill="#6e6a5e" text-anchor="end">Sources: codemagic.io/pricing &#183; developer.apple.com/xcode-cloud &#183; bitrise.io/pricing &#183; checked Aug 5, 2026</text>
+</svg>

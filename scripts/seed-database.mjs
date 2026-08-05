@@ -689,21 +689,38 @@ Usually not. Feature flags and experiments are built into PostHog and share its 
   {
     name: "Codemagic",
     slug: "codemagic",
-    tagline: "CI/CD for Flutter, React Native, native iOS, Android, and more.",
+    tagline:
+      "Hosted mobile CI/CD with 500 free macOS minutes a month, then $0.095 per M2 minute.",
     description:
       "Codemagic provides hosted CI/CD, macOS build machines, code signing workflows, app store publishing, and mobile-focused build automation.",
     website_url: "https://codemagic.io/",
     pricing_summary:
       "Free individual build minutes, pay-as-you-go build minutes, fixed-price annual plans, and enterprise options.",
     pricing_model: "usage_based",
-    best_for: ["Mobile CI/CD", "Flutter builds", "App Store deployment"],
-    not_good_for: ["Teams that only deploy static websites"],
-    platforms: ["iOS", "Android", "Flutter", "React Native", "Unity"],
+    best_for: [
+      "Cross-platform mobile CI/CD",
+      "Solo apps that stay inside 500 build minutes a month",
+      "TestFlight and App Store uploads",
+    ],
+    not_good_for: [
+      "iOS-only apps already covered by Xcode Cloud's included hours",
+      "Rare releases a local fastlane run already handles",
+      "Teams needing a second concurrent build or a second seat",
+    ],
+    platforms: [
+      "iOS",
+      "Android",
+      "Flutter",
+      "React Native",
+      "Ionic",
+      "Unity",
+      "MAUI",
+    ],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["Bitrise", "GitHub Actions", "fastlane"],
     categorySlugs: ["dev-productivity"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://codemagic.io/pricing/",
+      "Pricing/features checked 2026-08-05 from https://codemagic.io/pricing/ (plan-comparison table: free M2 = first 500/month at $0, then $0.095/min) and https://codemagic.io/ (platform list; Ionic and MAUI were previously missing). Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Bitrise",
