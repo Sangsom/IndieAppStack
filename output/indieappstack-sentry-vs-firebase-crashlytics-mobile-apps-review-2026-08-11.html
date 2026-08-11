@@ -1,165 +1,738 @@
 <style>
-  :root{
-    --bg:#f5f6f8; --surface:#ffffff; --surface-2:#eef1f5; --border:#dde2e8; --hair:#e9edf1;
-    --text:#1a1e24; --muted:#5b636e;
-    --accent:#2c5f4f;                 /* SUBJECT accent — retune to the brand's world */
-    --ok:#1f8f56; --warn:#bf860f; --risk:#cf3d3d;
-    --tofu:#2563eb; --mofu:#7c3aed; --bofu:#1f8f56; --ret:#bf860f;
-    --track:#e6e9ee; --shadow:0 1px 2px rgba(20,28,40,.05),0 10px 30px rgba(20,28,40,.05);
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef1f5;
+    --border: #dde2e8;
+    --hair: #e9edf1;
+    --text: #1a1e24;
+    --muted: #5b636e;
+    --accent: #2c5f4f; /* SUBJECT accent — retune to the brand's world */
+    --ok: #1f8f56;
+    --warn: #bf860f;
+    --risk: #cf3d3d;
+    --tofu: #2563eb;
+    --mofu: #7c3aed;
+    --bofu: #1f8f56;
+    --ret: #bf860f;
+    --track: #e6e9ee;
+    --shadow:
+      0 1px 2px rgba(20, 28, 40, 0.05), 0 10px 30px rgba(20, 28, 40, 0.05);
   }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#141619; --surface:#1c2025; --surface-2:#242a31; --border:#2e353e; --hair:#262c34;
-      --text:#e9edf2; --muted:#98a1ad; --accent:#8ec1ad;
-      --ok:#37c47c; --warn:#e0ac33; --risk:#f26565;
-      --tofu:#60a5fa; --mofu:#a78bfa; --bofu:#37c47c; --ret:#e0ac33;
-      --track:#2b323b; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.3);
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141619;
+      --surface: #1c2025;
+      --surface-2: #242a31;
+      --border: #2e353e;
+      --hair: #262c34;
+      --text: #e9edf2;
+      --muted: #98a1ad;
+      --accent: #8ec1ad;
+      --ok: #37c47c;
+      --warn: #e0ac33;
+      --risk: #f26565;
+      --tofu: #60a5fa;
+      --mofu: #a78bfa;
+      --bofu: #37c47c;
+      --ret: #e0ac33;
+      --track: #2b323b;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.3);
     }
   }
-  :root[data-theme="light"]{ --bg:#f5f6f8;--surface:#fff;--surface-2:#eef1f5;--border:#dde2e8;--hair:#e9edf1;--text:#1a1e24;--muted:#5b636e;--accent:#2c5f4f;--ok:#1f8f56;--warn:#bf860f;--risk:#cf3d3d;--tofu:#2563eb;--mofu:#7c3aed;--bofu:#1f8f56;--ret:#bf860f;--track:#e6e9ee; }
-  :root[data-theme="dark"]{ --bg:#141619;--surface:#1c2025;--surface-2:#242a31;--border:#2e353e;--hair:#262c34;--text:#e9edf2;--muted:#98a1ad;--accent:#8ec1ad;--ok:#37c47c;--warn:#e0ac33;--risk:#f26565;--tofu:#60a5fa;--mofu:#a78bfa;--bofu:#37c47c;--ret:#e0ac33;--track:#2b323b; }
+  :root[data-theme="light"] {
+    --bg: #f5f6f8;
+    --surface: #fff;
+    --surface-2: #eef1f5;
+    --border: #dde2e8;
+    --hair: #e9edf1;
+    --text: #1a1e24;
+    --muted: #5b636e;
+    --accent: #2c5f4f;
+    --ok: #1f8f56;
+    --warn: #bf860f;
+    --risk: #cf3d3d;
+    --tofu: #2563eb;
+    --mofu: #7c3aed;
+    --bofu: #1f8f56;
+    --ret: #bf860f;
+    --track: #e6e9ee;
+  }
+  :root[data-theme="dark"] {
+    --bg: #141619;
+    --surface: #1c2025;
+    --surface-2: #242a31;
+    --border: #2e353e;
+    --hair: #262c34;
+    --text: #e9edf2;
+    --muted: #98a1ad;
+    --accent: #8ec1ad;
+    --ok: #37c47c;
+    --warn: #e0ac33;
+    --risk: #f26565;
+    --tofu: #60a5fa;
+    --mofu: #a78bfa;
+    --bofu: #37c47c;
+    --ret: #e0ac33;
+    --track: #2b323b;
+  }
 
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  .mono{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
-  .page{max-width:1040px;margin:0 auto;padding:40px 22px 72px}
-  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-  h1,h2,h3,h4{margin:0;line-height:1.2;text-wrap:balance}
-  .muted{color:var(--muted)}
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font:
+      16px/1.65 system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family:
+      ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px 22px 72px;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  .muted {
+    color: var(--muted);
+  }
 
   /* Masthead */
-  .masthead{display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:space-between;padding-bottom:26px;border-bottom:1px solid var(--border)}
-  .eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:11px}
-  .masthead h1{font-size:26px;font-weight:700;letter-spacing:-.01em}
-  .masthead .domain{display:inline-block;margin-top:8px;font-weight:600}
-  .metarow{margin-top:13px;display:flex;flex-wrap:wrap;gap:7px 16px;font-size:13px;color:var(--muted)}
-  .metarow b{color:var(--text);font-weight:600}
-  .flagship{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:16px 20px;max-width:300px}
-  .flagship .lab{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px}
-  .flagship .metric{font-size:17px;font-weight:700;margin-top:6px;line-height:1.3}
-  .flagship p{margin:6px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 11px;
+  }
+  .masthead h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .masthead .domain {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .metarow {
+    margin-top: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .metarow b {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .flagship {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 16px 20px;
+    max-width: 300px;
+  }
+  .flagship .lab {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .flagship .metric {
+    font-size: 17px;
+    font-weight: 700;
+    margin-top: 6px;
+    line-height: 1.3;
+  }
+  .flagship p {
+    margin: 6px 0 0;
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
 
   /* Executive summary */
-  .exec{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:22px 24px;margin:24px 0}
-  .exec h2{font-size:16px;margin-bottom:12px}
-  .lead{font-size:16px;color:var(--text)}
-  .verifybar{margin-top:16px;border-left:3px solid var(--warn);background:var(--surface-2);border-radius:0 10px 10px 0;padding:12px 16px;font-size:14px}
-  .verifybar b{color:var(--warn)}
-  .statrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  .stat{flex:1;min-width:130px;background:var(--surface-2);border:1px solid var(--border);border-radius:11px;padding:11px 14px}
-  .stat .n{font-size:22px;font-weight:700;line-height:1}
-  .stat .l{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .exec {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+    margin: 24px 0;
+  }
+  .exec h2 {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .lead {
+    font-size: 16px;
+    color: var(--text);
+  }
+  .verifybar {
+    margin-top: 16px;
+    border-left: 3px solid var(--warn);
+    background: var(--surface-2);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+  .verifybar b {
+    color: var(--warn);
+  }
+  .statrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .stat {
+    flex: 1;
+    min-width: 130px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 11px 14px;
+  }
+  .stat .n {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat .l {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 5px;
+  }
 
-  .legend{display:flex;flex-wrap:wrap;gap:8px 15px;font-size:12.5px;color:var(--muted);margin:0 2px 6px;align-items:center}
-  .chip{font-size:10.5px;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted);white-space:nowrap;font-family:ui-monospace,Menlo,monospace}
-  .chip.m{color:var(--text)} .chip.u{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 50%,transparent)} .chip.n{color:var(--muted);border-style:dashed}
-  .chip.ts{color:var(--ret);border-color:color-mix(in srgb,var(--ret) 45%,transparent)}
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 0 2px 6px;
+    align-items: center;
+  }
+  .chip {
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 1px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+    font-family: ui-monospace, Menlo, monospace;
+  }
+  .chip.m {
+    color: var(--text);
+  }
+  .chip.u {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  .chip.n {
+    color: var(--muted);
+    border-style: dashed;
+  }
+  .chip.ts {
+    color: var(--ret);
+    border-color: color-mix(in srgb, var(--ret) 45%, transparent);
+  }
 
-  h2.sec{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:40px 0 15px;padding-bottom:9px;border-bottom:1px solid var(--hair)}
+  h2.sec {
+    font-size: 13px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 40px 0 15px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--hair);
+  }
 
   /* Per-piece manuscript */
-  .piece{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:0;margin-bottom:20px;overflow:hidden}
-  .piece-head{padding:16px 22px;border-bottom:1px solid var(--hair);display:flex;flex-wrap:wrap;gap:10px 16px;align-items:baseline;justify-content:space-between;background:var(--surface-2)}
-  .piece-head h3{font-size:18px;font-weight:700}
-  .piece-head .fmt{font-size:12px;color:var(--muted)}
-  .stage{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:999px;border:1px solid var(--border);color:var(--muted);white-space:nowrap}
-  .stage.review{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 45%,transparent)}
-  .stage.ready{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent)}
-  .fstage{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap;display:inline-block}
-  .fstage.awareness{color:var(--tofu);background:color-mix(in srgb,var(--tofu) 13%,transparent)}
-  .fstage.consideration{color:var(--mofu);background:color-mix(in srgb,var(--mofu) 13%,transparent)}
-  .fstage.decision{color:var(--bofu);background:color-mix(in srgb,var(--bofu) 13%,transparent)}
-  .fstage.retention{color:var(--ret);background:color-mix(in srgb,var(--ret) 13%,transparent)}
+  .piece {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 0;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .piece-head {
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--hair);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    align-items: baseline;
+    justify-content: space-between;
+    background: var(--surface-2);
+  }
+  .piece-head h3 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .piece-head .fmt {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .stage {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .stage.review {
+    color: var(--warn);
+    border-color: color-mix(in srgb, var(--warn) 45%, transparent);
+  }
+  .stage.ready {
+    color: var(--ok);
+    border-color: color-mix(in srgb, var(--ok) 45%, transparent);
+  }
+  .fstage {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .fstage.awareness {
+    color: var(--tofu);
+    background: color-mix(in srgb, var(--tofu) 13%, transparent);
+  }
+  .fstage.consideration {
+    color: var(--mofu);
+    background: color-mix(in srgb, var(--mofu) 13%, transparent);
+  }
+  .fstage.decision {
+    color: var(--bofu);
+    background: color-mix(in srgb, var(--bofu) 13%, transparent);
+  }
+  .fstage.retention {
+    color: var(--ret);
+    background: color-mix(in srgb, var(--ret) 13%, transparent);
+  }
 
-  .piece-body{display:grid;grid-template-columns:1fr 300px;gap:0}
-  .draft{padding:20px 22px;border-right:1px solid var(--hair);min-width:0}
-  .draft .answer{border-left:3px solid var(--accent);background:var(--surface-2);border-radius:0 10px 10px 0;padding:11px 15px;font-size:14.5px;margin-bottom:16px}
-  .draft .answer .lab{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:4px}
-  .manuscript{font-size:14.5px;line-height:1.7}
-  .manuscript h2{font-size:18px;margin:20px 0 8px} .manuscript h3{font-size:15.5px;margin:16px 0 6px}
-  .manuscript p{margin:0 0 12px} .manuscript ul,.manuscript ol{margin:0 0 12px;padding-left:22px}
-  .manuscript blockquote{margin:0 0 12px;padding:4px 14px;border-left:3px solid var(--border);color:var(--muted)}
-  .manuscript table{border-collapse:collapse;width:100%;margin:0 0 12px;font-size:13px}
-  .manuscript th,.manuscript td{border:1px solid var(--hair);padding:7px 10px;text-align:left}
-  .ph{color:var(--risk);font-weight:600;background:color-mix(in srgb,var(--risk) 11%,transparent);border-radius:5px;padding:0 4px}
+  .piece-body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 0;
+  }
+  .draft {
+    padding: 20px 22px;
+    border-right: 1px solid var(--hair);
+    min-width: 0;
+  }
+  .draft .answer {
+    border-left: 3px solid var(--accent);
+    background: var(--surface-2);
+    border-radius: 0 10px 10px 0;
+    padding: 11px 15px;
+    font-size: 14.5px;
+    margin-bottom: 16px;
+  }
+  .draft .answer .lab {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .manuscript {
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  .manuscript h2 {
+    font-size: 18px;
+    margin: 20px 0 8px;
+  }
+  .manuscript h3 {
+    font-size: 15.5px;
+    margin: 16px 0 6px;
+  }
+  .manuscript p {
+    margin: 0 0 12px;
+  }
+  .manuscript ul,
+  .manuscript ol {
+    margin: 0 0 12px;
+    padding-left: 22px;
+  }
+  .manuscript blockquote {
+    margin: 0 0 12px;
+    padding: 4px 14px;
+    border-left: 3px solid var(--border);
+    color: var(--muted);
+  }
+  .manuscript table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 0 12px;
+    font-size: 13px;
+  }
+  .manuscript th,
+  .manuscript td {
+    border: 1px solid var(--hair);
+    padding: 7px 10px;
+    text-align: left;
+  }
+  .ph {
+    color: var(--risk);
+    font-weight: 600;
+    background: color-mix(in srgb, var(--risk) 11%, transparent);
+    border-radius: 5px;
+    padding: 0 4px;
+  }
 
-  .side{padding:18px 20px;min-width:0}
-  .side h4{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 8px}
-  .side .kv{font-size:12.7px;margin-bottom:11px;word-break:break-word}
-  .side .kv .k{color:var(--muted)} .side .kv .v{color:var(--text);font-weight:600}
-  .side .block{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--hair)}
-  .side .block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .side {
+    padding: 18px 20px;
+    min-width: 0;
+  }
+  .side h4 {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .side .kv {
+    font-size: 12.7px;
+    margin-bottom: 11px;
+    word-break: break-word;
+  }
+  .side .kv .k {
+    color: var(--muted);
+  }
+  .side .kv .v {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .side .block {
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .side .block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
   /* Scorecard meters */
-  .score{display:flex;align-items:center;gap:9px;font-size:12.5px;margin-bottom:7px}
-  .score .lane{width:78px;color:var(--muted)} .score .bar{flex:1;height:7px;border-radius:999px;background:var(--track);overflow:hidden}
-  .score .fill{height:100%;border-radius:999px;background:var(--accent)}
-  .verdict{font-size:11px;font-weight:700}.verdict.pass{color:var(--ok)}.verdict.warn{color:var(--warn)}.verdict.fail{color:var(--risk)}
+  .score {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12.5px;
+    margin-bottom: 7px;
+  }
+  .score .lane {
+    width: 78px;
+    color: var(--muted);
+  }
+  .score .bar {
+    flex: 1;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--track);
+    overflow: hidden;
+  }
+  .score .fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+  .verdict {
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .verdict.pass {
+    color: var(--ok);
+  }
+  .verdict.warn {
+    color: var(--warn);
+  }
+  .verdict.fail {
+    color: var(--risk);
+  }
 
   /* Fact ledger */
-  .ledger{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-  .ledger li{font-size:12.6px;line-height:1.5;border-left:3px solid var(--ok);padding-left:10px}
-  .ledger li.flagged{border-left-color:var(--risk)}
-  .ledger .type{font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;color:var(--muted)}
+  .ledger {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .ledger li {
+    font-size: 12.6px;
+    line-height: 1.5;
+    border-left: 3px solid var(--ok);
+    padding-left: 10px;
+  }
+  .ledger li.flagged {
+    border-left-color: var(--risk);
+  }
+  .ledger .type {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+  }
 
-  ul.tight{margin:0;padding-left:18px;font-size:12.7px;line-height:1.6}
-  .asset{font-size:12.5px;border:1px dashed var(--border);border-radius:8px;padding:7px 10px;margin-bottom:7px}
-  .asset .t{font-weight:700;color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+  ul.tight {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 12.7px;
+    line-height: 1.6;
+  }
+  .asset {
+    font-size: 12.5px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+  }
+  .asset .t {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 
   /* Info cards */
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px 18px;box-shadow:var(--shadow)}
-  .card h3{font-size:14px;margin-bottom:8px}
-  .card ul{margin:0;padding-left:18px;font-size:13.3px;line-height:1.6} .card p{font-size:13.3px;color:var(--muted);margin:0}
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 18px;
+    box-shadow: var(--shadow);
+  }
+  .card h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .card ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13.3px;
+    line-height: 1.6;
+  }
+  .card p {
+    font-size: 13.3px;
+    color: var(--muted);
+    margin: 0;
+  }
 
   /* Seam */
-  .seam{background:var(--surface);border:1px dashed var(--border);border-radius:13px;padding:18px 20px}
-  .seam h3{font-size:14px;margin-bottom:6px}.seam p{font-size:13.5px;color:var(--muted);margin:0 0 10px}
-  ul.deferred{list-style:none;margin:0;padding:0;display:grid;gap:7px}
-  ul.deferred li{display:grid;grid-template-columns:20px 1fr;gap:9px;font-size:13.5px;line-height:1.5}
-  ul.deferred .ico{color:var(--accent);text-align:center}
+  .seam {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 13px;
+    padding: 18px 20px;
+  }
+  .seam h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .seam p {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  ul.deferred {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 7px;
+  }
+  ul.deferred li {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 9px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  ul.deferred .ico {
+    color: var(--accent);
+    text-align: center;
+  }
 
-  footer{margin-top:42px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12.5px;line-height:1.6}
-  footer b{color:var(--text);font-weight:600}.footer-src{margin-top:8px}
+  footer {
+    margin-top: 42px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  footer b {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .footer-src {
+    margin-top: 8px;
+  }
 
-  @media (max-width:760px){.piece-body{grid-template-columns:1fr}.draft{border-right:none;border-bottom:1px solid var(--hair)}}
-.review-table{overflow-x:auto;margin:0 0 16px}.table-caption{font-weight:700;margin:8px 0}.asset-preview{border:1px dashed var(--border);border-radius:10px;padding:12px 14px;margin:0 0 14px;background:var(--surface-2);font-size:13px}.manuscript code{font-family:ui-monospace,Menlo,monospace;font-size:.92em;background:var(--surface-2);padding:1px 4px;border-radius:4px}</style>
+  @media (max-width: 760px) {
+    .piece-body {
+      grid-template-columns: 1fr;
+    }
+    .draft {
+      border-right: none;
+      border-bottom: 1px solid var(--hair);
+    }
+  }
+  .review-table {
+    overflow-x: auto;
+    margin: 0 0 16px;
+  }
+  .table-caption {
+    font-weight: 700;
+    margin: 8px 0;
+  }
+  .asset-preview {
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 0 0 14px;
+    background: var(--surface-2);
+    font-size: 13px;
+  }
+  .manuscript code {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 0.92em;
+    background: var(--surface-2);
+    padding: 1px 4px;
+    border-radius: 4px;
+  }
+</style>
 
 <div class="page">
   <header class="masthead">
     <div>
       <div class="eyebrow">Content Drafts · Single flagship refresh</div>
       <h1>IndieAppStack</h1>
-      <a class="domain" href="https://indieappstack.com" target="_blank" rel="noopener">indieappstack.com</a>
+      <a
+        class="domain"
+        href="https://indieappstack.com"
+        target="_blank"
+        rel="noopener"
+        >indieappstack.com</a
+      >
       <div class="metarow">
         <span><b>Mode:</b> refresh-existing</span>
         <span><b>Voice:</b> canonical Brand Profile · derived from site</span>
         <span><b>Date:</b> <span class="mono">2026-08-11</span></span>
-        <span><b>Inputs:</b> Notion brief · live article · official product sources</span>
+        <span
+          ><b>Inputs:</b> Notion brief · live article · official product
+          sources</span
+        >
       </div>
     </div>
     <div class="flagship">
       <div class="lab">▶ Ship first</div>
       <div class="metric">Sentry vs Firebase Crashlytics</div>
-      <p>The brief records 233 impressions and identifies pricing as the unmet decision factor.</p>
+      <p>
+        The brief records 233 impressions and identifies pricing as the unmet
+        decision factor.
+      </p>
     </div>
   </header>
 
   <!-- Executive summary -->
   <section class="exec">
     <h2>Editor's note</h2>
-    <p class="lead">The refreshed comparison is factually clean and ready for editorial sign-off. It leads with the useful price insight—both products have a $0 solo path—makes the scope trade-off explicit, and now includes real Crashlytics and Sentry interface evidence with licensing and privacy checks complete.</p>
+    <p class="lead">
+      The refreshed comparison is factually clean and ready for editorial
+      sign-off. It leads with the useful price insight—both products have a $0
+      solo path—makes the scope trade-off explicit, and now includes real
+      Crashlytics and Sentry interface evidence with licensing and privacy
+      checks complete.
+    </p>
     <div class="statrow">
-      <div class="stat"><div class="n mono">1</div><div class="l">Drafts in this run</div></div>
-      <div class="stat"><div class="n mono">1</div><div class="l">Ready for sign-off</div></div>
-      <div class="stat"><div class="n mono">0</div><div class="l">Open verifications</div></div>
+      <div class="stat">
+        <div class="n mono">1</div>
+        <div class="l">Drafts in this run</div>
+      </div>
+      <div class="stat">
+        <div class="n mono">1</div>
+        <div class="l">Ready for sign-off</div>
+      </div>
+      <div class="stat">
+        <div class="n mono">0</div>
+        <div class="l">Open verifications</div>
+      </div>
     </div>
   </section>
 
   <div class="legend">
     <span>Provenance:</span>
-    <span class="chip m">measured</span><span class="chip u">user-provided</span>
-    <span class="chip n">n/a</span><span class="chip ts">time-sensitive</span>
+    <span class="chip m">measured</span
+    ><span class="chip u">user-provided</span> <span class="chip n">n/a</span
+    ><span class="chip ts">time-sensitive</span>
   </div>
 
   <!-- =================== PER-PIECE MANUSCRIPTS =================== -->
@@ -170,62 +743,788 @@
     <div class="piece-head">
       <div>
         <h3>Sentry vs Firebase Crashlytics for Mobile Apps</h3>
-        <div class="fmt">Comparison · 1,960 words · <span class="fstage consideration">Consideration</span></div>
+        <div class="fmt">
+          Comparison · 1,960 words ·
+          <span class="fstage consideration">Consideration</span>
+        </div>
       </div>
       <span class="stage review">Ready · assets complete</span>
     </div>
     <div class="piece-body">
       <div class="draft">
-        <div class="answer"><div class="lab">Extractable answer (GEO)</div>Sentry and Firebase Crashlytics are both free to start, but the right default depends on scope. Choose Crashlytics for a mobile-only app already using Firebase: Crashlytics is a no-cost product. Choose Sentry when you want one issue workflow across mobile, backend, and web, or expect to outgrow crash reporting.</div>
+        <div class="answer">
+          <div class="lab">Extractable answer (GEO)</div>
+          Sentry and Firebase Crashlytics are both free to start, but the right
+          default depends on scope. Choose Crashlytics for a mobile-only app
+          already using Firebase: Crashlytics is a no-cost product. Choose
+          Sentry when you want one issue workflow across mobile, backend, and
+          web, or expect to outgrow crash reporting.
+        </div>
         <!-- Rendered draft. Wrap [[verify: …]] placeholders in <span class="ph">…</span>. -->
-        <div class="manuscript"><h2>Short answer</h2><p>Sentry and Firebase Crashlytics are both free to start, but the right default depends on scope. Choose Crashlytics for a mobile-only app already using Firebase: Crashlytics is a no-cost product. Choose Sentry when you want one issue workflow across mobile, backend, and web, or expect to outgrow crash reporting.</p><p>For a solo launch, do not install both by default. Pick one owner for crashes, upload the symbols for every release, and make sure a test crash reaches the dashboard before the first external build.</p><div class="asset-preview"><strong>Existing conceptual graphic</strong><br>Two-column comparison of Sentry and Firebase Crashlytics, showing Sentry spanning mobile, backend, and web while Crashlytics focuses on mobile crashes inside the Firebase console.<br><span class="muted">/content-visuals/articles/sentry-vs-crashlytics-comparison.svg</span></div><figure class="asset-preview"><img src="indieappstack/assets/firebase-crashlytics-nonfatal-filter.png" alt="Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue." style="max-width:100%;height:auto;border-radius:7px"><figcaption>Firebase Crashlytics interface from <a href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics" target="_blank" rel="noopener">Google Firebase Codelabs</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Unmodified.</figcaption></figure><figure class="asset-preview"><img src="indieappstack/assets/sentry-issues-dashboard-redacted.png" alt="Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities." style="max-width:100%;height:auto;border-radius:7px"><figcaption>Sentry Issues interface captured Aug 11, 2026. Organization avatar, project selector, and all visible project identifiers were covered with opaque redactions.</figcaption></figure><h2>How much do Sentry and Firebase Crashlytics cost in 2026?</h2><p>At solo scale, both have a $0 path. The difference appears when volume, collaborators, and monitoring scope grow.</p><div class="review-table"><div class="table-caption">Solo-scale pricing (checked Aug 11, 2026)</div><table><thead><tr><th>Option</th><th>Current price</th><th>What matters to a solo mobile developer</th></tr></thead><tbody><tr><td>Sentry Developer</td><td>$0</td><td>1 user, 5,000 errors a month, 5 million spans, 50 replays, 5 GB of logs, and 5 GB of application metrics</td></tr><tr><td>Sentry Team</td><td>$26 a month on the annual pricing view ($312 a year)</td><td>Unlimited users, 50,000 included errors, API and third-party integrations, and paid overage options</td></tr><tr><td>Firebase Crashlytics</td><td>No cost on Spark and Blaze</td><td>Crash reporting remains a no-cost Firebase product; product limits still apply, and other Firebase or Google Cloud services can bill separately</td></tr></tbody></table></div><p>Prices and quotas last checked Aug 11, 2026, against <a href="https://sentry.io/pricing/" target="_blank" rel="noopener">Sentry pricing</a> and the official <a href="https://firebase.google.com/docs/projects/billing/firebase-pricing-plans" target="_blank" rel="noopener">Firebase pricing plans</a>. Recheck both before committing spend.</p><p>This changes the usual framing. Crashlytics does not win simply because it is free; Sentry is free for one user too. Crashlytics wins on cost when you need mobile crash reporting and nothing broader. Sentry's paid boundary arrives when you need more volume, another user, or features beyond the Developer plan.</p><h2>What is the practical difference between Sentry and Crashlytics?</h2><p>Crashlytics is a focused mobile crash reporter inside Firebase. Sentry is a broader error-monitoring workflow that can follow an issue beyond the mobile app.</p><div class="review-table"><div class="table-caption">Sentry vs Firebase Crashlytics</div><table><thead><tr><th>Decision</th><th>Sentry</th><th>Firebase Crashlytics</th></tr></thead><tbody><tr><td>Center of gravity</td><td>Errors across mobile, backend, and web</td><td>Mobile crashes and non-fatal events inside Firebase</td></tr><tr><td>Official mobile paths</td><td>Apple, Android, React Native, Flutter, and more</td><td>Apple, Android, Flutter, and Unity</td></tr><tr><td>Context beyond a crash</td><td>Releases, traces, logs, tags, replays, and related issues</td><td>Logs, custom keys, non-fatals, breadcrumb logs, issue variants, and impact</td></tr><tr><td>Team model at $0</td><td>1 user</td><td>Not priced per Crashlytics seat</td></tr><tr><td>Ecosystem fit</td><td>Separate monitoring vendor that can span services</td><td>Strongest when Firebase already owns part of the app stack</td></tr><tr><td>Main watch-out</td><td>Quotas, event volume, sampling, and alert noise need deliberate setup</td><td>Automatic breadcrumb logs require Google Analytics; adding Firebase only for Crashlytics may be unnecessary coupling</td></tr></tbody></table></div><p>Both tools group events into issues, accept non-fatal reports, and need readable symbols. The choice is not whether either can report a crash. It is where you want the investigation to continue after the crash appears.</p><h2>When should you choose Sentry?</h2><p>Choose <a href="/tools/sentry" target="_blank" rel="noopener">Sentry</a> when the error can cross an app boundary.</p><p>A mobile checkout might fail because the app threw an exception, the API returned an error, or a backend job timed out. If those surfaces all report into Sentry, one issue workflow can carry release, trace, tag, and related-event context across them. That is more useful than a second mobile-only dashboard when the bug is not mobile-only.</p><p>Sentry is also the cleaner fit when:</p><ul><li>the app has a backend or web surface you want to monitor in the same system;</li><li>React Native is a first-class requirement;</li><li>you want release health, traces, logs, or replay context beside errors;</li><li>you do not otherwise use Firebase and want crash reporting to remain a separate responsibility; or</li><li>one developer can stay inside the free Developer plan.</li></ul><p>The pricing decision is simple at first: start on Developer, watch the accepted-error quota, and move only when a real limit appears. Do not buy Team pre-emptively for a one-person app.</p><h2>When should you not use Sentry?</h2><p>Do not choose Sentry because the feature list is longer. More telemetry creates more decisions: which events to accept, what to sample, which data to scrub, how to name releases and environments, and which alerts deserve attention.</p><p>Skip Sentry when:</p><ul><li>the app is mobile-only, Firebase is already installed, and crash reporting is the entire requirement;</li><li>a second monitoring console would split attention without adding useful context;</li><li>the 5,000-error Developer quota is likely to be noisy because the app emits the same handled error repeatedly; or</li><li>nobody will maintain release naming, symbol uploads, alert rules, and data-scrubbing settings.</li></ul><p>Sentry can be the broader tool and still be the wrong fit. A solo stack stays durable when every tool owns one job you actually need.</p><h2>When should you choose Firebase Crashlytics?</h2><p>Choose <a href="/tools/firebase" target="_blank" rel="noopener">Firebase Crashlytics</a> when Firebase already sits in the app and the job is clear: catch mobile crashes, group them, show impact, and attach enough context to reproduce the failure.</p><p>Google's current Crashlytics docs list Apple, Android, Flutter, and Unity setup paths. Reports can include fatal crashes, non-fatal exceptions, custom keys, custom logs, and breadcrumb context. The dashboard groups related events into issues and variants, then highlights severity and prevalence so you can work on the failures affecting more people.</p><figure class="asset-preview"><img src="indieappstack/assets/firebase-crashlytics-event-summary.png" alt="Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context." style="max-width:100%;height:auto;border-radius:7px"><figcaption>Firebase Crashlytics interface from <a href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics" target="_blank" rel="noopener">Google Firebase Codelabs</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Unmodified.</figcaption></figure><p>Crashlytics is the practical fit when:</p><ul><li>the app already uses Firebase Analytics, Remote Config, Cloud Messaging, or another Firebase service;</li><li>mobile is the only runtime you need to monitor;</li><li>the priority is no-cost crash reporting rather than broader observability;</li><li>Flutter or Unity is the main client platform; or</li><li>you want crash reporting beside the Firebase release and product-operations tools you already open.</li></ul><p>The no-cost label is real, but keep it precise. Firebase lists Crashlytics as a no-cost product on both Spark and Blaze. Other Firebase and Google Cloud products can still create charges, so “Crashlytics is free” does not mean “the whole Firebase project can never bill.”</p><figure class="asset-preview"><img src="indieappstack/assets/firebase-crashlytics-logs.png" alt="Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash." style="max-width:100%;height:auto;border-radius:7px"><figcaption>Firebase Crashlytics interface from <a href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics" target="_blank" rel="noopener">Google Firebase Codelabs</a>, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Unmodified.</figcaption></figure><h2>When should you not use Firebase Crashlytics?</h2><p>Do not add Firebase only because Crashlytics costs $0 if the rest of the stack deliberately avoids Firebase. You still create a Firebase project, add configuration to the app, maintain its SDK, and accept another operational surface.</p><p>Skip Crashlytics when:</p><ul><li>you need one investigation path across mobile, backend, API, and web errors;</li><li>React Native support must come directly from the product's official platform path;</li><li>you want tracing, logs, or replay context in the same monitoring product rather than through adjacent Google services; or</li><li>enabling Google Analytics for automatic breadcrumb logs conflicts with the app's telemetry plan.</li></ul><p>Crashlytics works without turning the entire app into a Firebase stack. The narrower warning is about intent: do not add a platform dependency for one free feature unless that feature is worth owning.</p><h2>Which is easier to set up before launch?</h2><p>If Firebase is already configured, Crashlytics is usually the shorter path. Add the SDK, add the platform build step, force a test crash, and confirm the report arrives. On Apple platforms, the official setup uses Swift Package Manager and a build-phase script for dSYM upload.</p><p>Sentry's SDK setup is also direct, but the useful setup is larger than installing a package. Decide project boundaries, name releases and environments, upload symbols or source maps, scrub sensitive data, and create only the alerts someone will act on.</p><p>For either tool, setup is not complete until the dashboard shows a symbolicated test crash from a release build. An SDK that compiles but produces an unreadable stack trace is not crash reporting yet.</p><p>The step-by-step path lives in the <a href="/guides/crash-reporting-setup-indie-mobile-apps" target="_blank" rel="noopener">crash reporting setup guide</a>.</p><h2>Sentry vs Firebase Crashlytics: which should a solo developer pick?</h2><p>Pick Crashlytics when the app already uses Firebase and you need a calm, no-cost mobile crash dashboard. Pick Sentry when the monitored surface extends beyond the app, or when release, trace, log, and related-issue context belong in the same workflow.</p><p>If both still look equal, use this tiebreaker:</p><ul><li><strong>Mobile-only and Firebase already installed:</strong> Crashlytics.</li><li><strong>Mobile plus backend or web:</strong> Sentry.</li><li><strong>One developer and uncertain future scope:</strong> Sentry Developer is a reasonable $0 start.</li><li><strong>No Firebase today and no broader monitoring need:</strong> compare the operational dependency, not just the invoice.</li></ul><p>Whichever you choose, install one before the first external build. Crash reports cannot explain the failure that happened before monitoring existed.</p><h2>Frequently asked questions</h2><h3>Is Sentry free for a solo developer?</h3><p>Yes, within current limits. Sentry's Developer plan is $0 for 1 user and includes 5,000 errors a month, 5 million spans, 50 replays, 5 GB of logs, and 5 GB of application metrics (checked Aug 11, 2026). Move to Team when a real quota, collaboration, or integration requirement appears.</p><h3>Is Firebase Crashlytics really free?</h3><p>Firebase lists Crashlytics as a no-cost product on both the Spark and Blaze plans. Product limits still apply, and adjacent Firebase or Google Cloud services can have their own quotas and charges. Check the current Firebase pricing page before assuming the whole project is cost-free.</p><h3>Can I use Sentry and Crashlytics together?</h3><p>Technically, yes. For a solo app, do not run both without a specific reason, such as a short migration or a proven gap one tool fills. Duplicate crash SDKs create two dashboards, two alert streams, and two data-handling configurations while reporting many of the same failures.</p><h3>Does Crashlytics require Google Analytics?</h3><p>Crash reporting does not require Google Analytics, but Firebase's official setup says automatic breadcrumb logs do. If you want the user-action trail before a crash, include Analytics in the telemetry and consent decision rather than enabling it by accident.</p><h2>Source checks</h2><p>Product and pricing claims were checked against official sources on Aug 11, 2026:</p><ul><li><a href="https://sentry.io/pricing/" target="_blank" rel="noopener">Sentry pricing</a></li><li><a href="https://docs.sentry.io/platforms/apple/guides/ios/" target="_blank" rel="noopener">Sentry iOS SDK documentation</a></li><li><a href="https://docs.sentry.io/product/issues/issue-details/" target="_blank" rel="noopener">Sentry issue details documentation</a></li><li><a href="https://firebase.google.com/docs/crashlytics" target="_blank" rel="noopener">Firebase Crashlytics documentation</a></li><li><a href="https://firebase.google.com/docs/crashlytics/ios/get-started" target="_blank" rel="noopener">Firebase Crashlytics Apple setup</a></li><li><a href="https://firebase.google.com/docs/crashlytics/customize-crash-reports" target="_blank" rel="noopener">Firebase Crashlytics report customization</a></li><li><a href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics" target="_blank" rel="noopener">Firebase Crashlytics Unity codelab</a> — interface screenshots, CC BY 4.0</li><li><a href="https://firebase.google.com/docs/projects/billing/firebase-pricing-plans" target="_blank" rel="noopener">Firebase pricing plans</a></li></ul><p>No hands-on testing claim is made. Prices, quotas, and product capabilities can change; verify them again before publishing a later revision.</p><p>Explore the <a href="/categories/crash-reporting" target="_blank" rel="noopener">crash-reporting category</a> to compare the rest of the decision area.</p><p>Last checked: Aug 11, 2026.</p></div>
+        <div class="manuscript">
+          <h2>Short answer</h2>
+          <p>
+            Sentry and Firebase Crashlytics are both free to start, but the
+            right default depends on scope. Choose Crashlytics for a mobile-only
+            app already using Firebase: Crashlytics is a no-cost product. Choose
+            Sentry when you want one issue workflow across mobile, backend, and
+            web, or expect to outgrow crash reporting.
+          </p>
+          <p>
+            For a solo launch, do not install both by default. Pick one owner
+            for crashes, upload the symbols for every release, and make sure a
+            test crash reaches the dashboard before the first external build.
+          </p>
+          <div class="asset-preview">
+            <strong>Existing conceptual graphic</strong><br />Two-column
+            comparison of Sentry and Firebase Crashlytics, showing Sentry
+            spanning mobile, backend, and web while Crashlytics focuses on
+            mobile crashes inside the Firebase console.<br /><span class="muted"
+              >/content-visuals/articles/sentry-vs-crashlytics-comparison.svg</span
+            >
+          </div>
+          <figure class="asset-preview">
+            <img
+              src="indieappstack/assets/firebase-crashlytics-nonfatal-filter.png"
+              alt="Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue."
+              style="max-width: 100%; height: auto; border-radius: 7px"
+            />
+            <figcaption>
+              Firebase Crashlytics interface from
+              <a
+                href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics"
+                target="_blank"
+                rel="noopener"
+                >Google Firebase Codelabs</a
+              >, licensed under
+              <a
+                href="https://creativecommons.org/licenses/by/4.0/"
+                target="_blank"
+                rel="noopener"
+                >CC BY 4.0</a
+              >. Unmodified.
+            </figcaption>
+          </figure>
+          <figure class="asset-preview">
+            <img
+              src="indieappstack/assets/sentry-issues-dashboard-redacted.png"
+              alt="Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities."
+              style="max-width: 100%; height: auto; border-radius: 7px"
+            />
+            <figcaption>
+              Sentry Issues interface captured Aug 11, 2026. Organization
+              avatar, project selector, and all visible project identifiers were
+              covered with opaque redactions.
+            </figcaption>
+          </figure>
+          <h2>How much do Sentry and Firebase Crashlytics cost in 2026?</h2>
+          <p>
+            At solo scale, both have a $0 path. The difference appears when
+            volume, collaborators, and monitoring scope grow.
+          </p>
+          <div class="review-table">
+            <div class="table-caption">
+              Solo-scale pricing (checked Aug 11, 2026)
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Current price</th>
+                  <th>What matters to a solo mobile developer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sentry Developer</td>
+                  <td>$0</td>
+                  <td>
+                    1 user, 5,000 errors a month, 5 million spans, 50 replays, 5
+                    GB of logs, and 5 GB of application metrics
+                  </td>
+                </tr>
+                <tr>
+                  <td>Sentry Team</td>
+                  <td>$26 a month on the annual pricing view ($312 a year)</td>
+                  <td>
+                    Unlimited users, 50,000 included errors, API and third-party
+                    integrations, and paid overage options
+                  </td>
+                </tr>
+                <tr>
+                  <td>Firebase Crashlytics</td>
+                  <td>No cost on Spark and Blaze</td>
+                  <td>
+                    Crash reporting remains a no-cost Firebase product; product
+                    limits still apply, and other Firebase or Google Cloud
+                    services can bill separately
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Prices and quotas last checked Aug 11, 2026, against
+            <a href="https://sentry.io/pricing/" target="_blank" rel="noopener"
+              >Sentry pricing</a
+            >
+            and the official
+            <a
+              href="https://firebase.google.com/docs/projects/billing/firebase-pricing-plans"
+              target="_blank"
+              rel="noopener"
+              >Firebase pricing plans</a
+            >. Recheck both before committing spend.
+          </p>
+          <p>
+            This changes the usual framing. Crashlytics does not win simply
+            because it is free; Sentry is free for one user too. Crashlytics
+            wins on cost when you need mobile crash reporting and nothing
+            broader. Sentry's paid boundary arrives when you need more volume,
+            another user, or features beyond the Developer plan.
+          </p>
+          <h2>
+            What is the practical difference between Sentry and Crashlytics?
+          </h2>
+          <p>
+            Crashlytics is a focused mobile crash reporter inside Firebase.
+            Sentry is a broader error-monitoring workflow that can follow an
+            issue beyond the mobile app.
+          </p>
+          <div class="review-table">
+            <div class="table-caption">Sentry vs Firebase Crashlytics</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Decision</th>
+                  <th>Sentry</th>
+                  <th>Firebase Crashlytics</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Center of gravity</td>
+                  <td>Errors across mobile, backend, and web</td>
+                  <td>Mobile crashes and non-fatal events inside Firebase</td>
+                </tr>
+                <tr>
+                  <td>Official mobile paths</td>
+                  <td>Apple, Android, React Native, Flutter, and more</td>
+                  <td>Apple, Android, Flutter, and Unity</td>
+                </tr>
+                <tr>
+                  <td>Context beyond a crash</td>
+                  <td>
+                    Releases, traces, logs, tags, replays, and related issues
+                  </td>
+                  <td>
+                    Logs, custom keys, non-fatals, breadcrumb logs, issue
+                    variants, and impact
+                  </td>
+                </tr>
+                <tr>
+                  <td>Team model at $0</td>
+                  <td>1 user</td>
+                  <td>Not priced per Crashlytics seat</td>
+                </tr>
+                <tr>
+                  <td>Ecosystem fit</td>
+                  <td>Separate monitoring vendor that can span services</td>
+                  <td>
+                    Strongest when Firebase already owns part of the app stack
+                  </td>
+                </tr>
+                <tr>
+                  <td>Main watch-out</td>
+                  <td>
+                    Quotas, event volume, sampling, and alert noise need
+                    deliberate setup
+                  </td>
+                  <td>
+                    Automatic breadcrumb logs require Google Analytics; adding
+                    Firebase only for Crashlytics may be unnecessary coupling
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Both tools group events into issues, accept non-fatal reports, and
+            need readable symbols. The choice is not whether either can report a
+            crash. It is where you want the investigation to continue after the
+            crash appears.
+          </p>
+          <h2>When should you choose Sentry?</h2>
+          <p>
+            Choose
+            <a href="/tools/sentry" target="_blank" rel="noopener">Sentry</a>
+            when the error can cross an app boundary.
+          </p>
+          <p>
+            A mobile checkout might fail because the app threw an exception, the
+            API returned an error, or a backend job timed out. If those surfaces
+            all report into Sentry, one issue workflow can carry release, trace,
+            tag, and related-event context across them. That is more useful than
+            a second mobile-only dashboard when the bug is not mobile-only.
+          </p>
+          <p>Sentry is also the cleaner fit when:</p>
+          <ul>
+            <li>
+              the app has a backend or web surface you want to monitor in the
+              same system;
+            </li>
+            <li>React Native is a first-class requirement;</li>
+            <li>
+              you want release health, traces, logs, or replay context beside
+              errors;
+            </li>
+            <li>
+              you do not otherwise use Firebase and want crash reporting to
+              remain a separate responsibility; or
+            </li>
+            <li>one developer can stay inside the free Developer plan.</li>
+          </ul>
+          <p>
+            The pricing decision is simple at first: start on Developer, watch
+            the accepted-error quota, and move only when a real limit appears.
+            Do not buy Team pre-emptively for a one-person app.
+          </p>
+          <h2>When should you not use Sentry?</h2>
+          <p>
+            Do not choose Sentry because the feature list is longer. More
+            telemetry creates more decisions: which events to accept, what to
+            sample, which data to scrub, how to name releases and environments,
+            and which alerts deserve attention.
+          </p>
+          <p>Skip Sentry when:</p>
+          <ul>
+            <li>
+              the app is mobile-only, Firebase is already installed, and crash
+              reporting is the entire requirement;
+            </li>
+            <li>
+              a second monitoring console would split attention without adding
+              useful context;
+            </li>
+            <li>
+              the 5,000-error Developer quota is likely to be noisy because the
+              app emits the same handled error repeatedly; or
+            </li>
+            <li>
+              nobody will maintain release naming, symbol uploads, alert rules,
+              and data-scrubbing settings.
+            </li>
+          </ul>
+          <p>
+            Sentry can be the broader tool and still be the wrong fit. A solo
+            stack stays durable when every tool owns one job you actually need.
+          </p>
+          <h2>When should you choose Firebase Crashlytics?</h2>
+          <p>
+            Choose
+            <a href="/tools/firebase" target="_blank" rel="noopener"
+              >Firebase Crashlytics</a
+            >
+            when Firebase already sits in the app and the job is clear: catch
+            mobile crashes, group them, show impact, and attach enough context
+            to reproduce the failure.
+          </p>
+          <p>
+            Google's current Crashlytics docs list Apple, Android, Flutter, and
+            Unity setup paths. Reports can include fatal crashes, non-fatal
+            exceptions, custom keys, custom logs, and breadcrumb context. The
+            dashboard groups related events into issues and variants, then
+            highlights severity and prevalence so you can work on the failures
+            affecting more people.
+          </p>
+          <figure class="asset-preview">
+            <img
+              src="indieappstack/assets/firebase-crashlytics-event-summary.png"
+              alt="Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context."
+              style="max-width: 100%; height: auto; border-radius: 7px"
+            />
+            <figcaption>
+              Firebase Crashlytics interface from
+              <a
+                href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics"
+                target="_blank"
+                rel="noopener"
+                >Google Firebase Codelabs</a
+              >, licensed under
+              <a
+                href="https://creativecommons.org/licenses/by/4.0/"
+                target="_blank"
+                rel="noopener"
+                >CC BY 4.0</a
+              >. Unmodified.
+            </figcaption>
+          </figure>
+          <p>Crashlytics is the practical fit when:</p>
+          <ul>
+            <li>
+              the app already uses Firebase Analytics, Remote Config, Cloud
+              Messaging, or another Firebase service;
+            </li>
+            <li>mobile is the only runtime you need to monitor;</li>
+            <li>
+              the priority is no-cost crash reporting rather than broader
+              observability;
+            </li>
+            <li>Flutter or Unity is the main client platform; or</li>
+            <li>
+              you want crash reporting beside the Firebase release and
+              product-operations tools you already open.
+            </li>
+          </ul>
+          <p>
+            The no-cost label is real, but keep it precise. Firebase lists
+            Crashlytics as a no-cost product on both Spark and Blaze. Other
+            Firebase and Google Cloud products can still create charges, so
+            “Crashlytics is free” does not mean “the whole Firebase project can
+            never bill.”
+          </p>
+          <figure class="asset-preview">
+            <img
+              src="indieappstack/assets/firebase-crashlytics-logs.png"
+              alt="Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash."
+              style="max-width: 100%; height: auto; border-radius: 7px"
+            />
+            <figcaption>
+              Firebase Crashlytics interface from
+              <a
+                href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics"
+                target="_blank"
+                rel="noopener"
+                >Google Firebase Codelabs</a
+              >, licensed under
+              <a
+                href="https://creativecommons.org/licenses/by/4.0/"
+                target="_blank"
+                rel="noopener"
+                >CC BY 4.0</a
+              >. Unmodified.
+            </figcaption>
+          </figure>
+          <h2>When should you not use Firebase Crashlytics?</h2>
+          <p>
+            Do not add Firebase only because Crashlytics costs $0 if the rest of
+            the stack deliberately avoids Firebase. You still create a Firebase
+            project, add configuration to the app, maintain its SDK, and accept
+            another operational surface.
+          </p>
+          <p>Skip Crashlytics when:</p>
+          <ul>
+            <li>
+              you need one investigation path across mobile, backend, API, and
+              web errors;
+            </li>
+            <li>
+              React Native support must come directly from the product's
+              official platform path;
+            </li>
+            <li>
+              you want tracing, logs, or replay context in the same monitoring
+              product rather than through adjacent Google services; or
+            </li>
+            <li>
+              enabling Google Analytics for automatic breadcrumb logs conflicts
+              with the app's telemetry plan.
+            </li>
+          </ul>
+          <p>
+            Crashlytics works without turning the entire app into a Firebase
+            stack. The narrower warning is about intent: do not add a platform
+            dependency for one free feature unless that feature is worth owning.
+          </p>
+          <h2>Which is easier to set up before launch?</h2>
+          <p>
+            If Firebase is already configured, Crashlytics is usually the
+            shorter path. Add the SDK, add the platform build step, force a test
+            crash, and confirm the report arrives. On Apple platforms, the
+            official setup uses Swift Package Manager and a build-phase script
+            for dSYM upload.
+          </p>
+          <p>
+            Sentry's SDK setup is also direct, but the useful setup is larger
+            than installing a package. Decide project boundaries, name releases
+            and environments, upload symbols or source maps, scrub sensitive
+            data, and create only the alerts someone will act on.
+          </p>
+          <p>
+            For either tool, setup is not complete until the dashboard shows a
+            symbolicated test crash from a release build. An SDK that compiles
+            but produces an unreadable stack trace is not crash reporting yet.
+          </p>
+          <p>
+            The step-by-step path lives in the
+            <a
+              href="/guides/crash-reporting-setup-indie-mobile-apps"
+              target="_blank"
+              rel="noopener"
+              >crash reporting setup guide</a
+            >.
+          </p>
+          <h2>
+            Sentry vs Firebase Crashlytics: which should a solo developer pick?
+          </h2>
+          <p>
+            Pick Crashlytics when the app already uses Firebase and you need a
+            calm, no-cost mobile crash dashboard. Pick Sentry when the monitored
+            surface extends beyond the app, or when release, trace, log, and
+            related-issue context belong in the same workflow.
+          </p>
+          <p>If both still look equal, use this tiebreaker:</p>
+          <ul>
+            <li>
+              <strong>Mobile-only and Firebase already installed:</strong>
+              Crashlytics.
+            </li>
+            <li><strong>Mobile plus backend or web:</strong> Sentry.</li>
+            <li>
+              <strong>One developer and uncertain future scope:</strong> Sentry
+              Developer is a reasonable $0 start.
+            </li>
+            <li>
+              <strong>No Firebase today and no broader monitoring need:</strong>
+              compare the operational dependency, not just the invoice.
+            </li>
+          </ul>
+          <p>
+            Whichever you choose, install one before the first external build.
+            Crash reports cannot explain the failure that happened before
+            monitoring existed.
+          </p>
+          <h2>Frequently asked questions</h2>
+          <h3>Is Sentry free for a solo developer?</h3>
+          <p>
+            Yes, within current limits. Sentry's Developer plan is $0 for 1 user
+            and includes 5,000 errors a month, 5 million spans, 50 replays, 5 GB
+            of logs, and 5 GB of application metrics (checked Aug 11, 2026).
+            Move to Team when a real quota, collaboration, or integration
+            requirement appears.
+          </p>
+          <h3>Is Firebase Crashlytics really free?</h3>
+          <p>
+            Firebase lists Crashlytics as a no-cost product on both the Spark
+            and Blaze plans. Product limits still apply, and adjacent Firebase
+            or Google Cloud services can have their own quotas and charges.
+            Check the current Firebase pricing page before assuming the whole
+            project is cost-free.
+          </p>
+          <h3>Can I use Sentry and Crashlytics together?</h3>
+          <p>
+            Technically, yes. For a solo app, do not run both without a specific
+            reason, such as a short migration or a proven gap one tool fills.
+            Duplicate crash SDKs create two dashboards, two alert streams, and
+            two data-handling configurations while reporting many of the same
+            failures.
+          </p>
+          <h3>Does Crashlytics require Google Analytics?</h3>
+          <p>
+            Crash reporting does not require Google Analytics, but Firebase's
+            official setup says automatic breadcrumb logs do. If you want the
+            user-action trail before a crash, include Analytics in the telemetry
+            and consent decision rather than enabling it by accident.
+          </p>
+          <h2>Source checks</h2>
+          <p>
+            Product and pricing claims were checked against official sources on
+            Aug 11, 2026:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://sentry.io/pricing/"
+                target="_blank"
+                rel="noopener"
+                >Sentry pricing</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.sentry.io/platforms/apple/guides/ios/"
+                target="_blank"
+                rel="noopener"
+                >Sentry iOS SDK documentation</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://docs.sentry.io/product/issues/issue-details/"
+                target="_blank"
+                rel="noopener"
+                >Sentry issue details documentation</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://firebase.google.com/docs/crashlytics"
+                target="_blank"
+                rel="noopener"
+                >Firebase Crashlytics documentation</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://firebase.google.com/docs/crashlytics/ios/get-started"
+                target="_blank"
+                rel="noopener"
+                >Firebase Crashlytics Apple setup</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://firebase.google.com/docs/crashlytics/customize-crash-reports"
+                target="_blank"
+                rel="noopener"
+                >Firebase Crashlytics report customization</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics"
+                target="_blank"
+                rel="noopener"
+                >Firebase Crashlytics Unity codelab</a
+              >
+              — interface screenshots, CC BY 4.0
+            </li>
+            <li>
+              <a
+                href="https://firebase.google.com/docs/projects/billing/firebase-pricing-plans"
+                target="_blank"
+                rel="noopener"
+                >Firebase pricing plans</a
+              >
+            </li>
+          </ul>
+          <p>
+            No hands-on testing claim is made. Prices, quotas, and product
+            capabilities can change; verify them again before publishing a later
+            revision.
+          </p>
+          <p>
+            Explore the
+            <a href="/categories/crash-reporting" target="_blank" rel="noopener"
+              >crash-reporting category</a
+            >
+            to compare the rest of the decision area.
+          </p>
+          <p>Last checked: Aug 11, 2026.</p>
+        </div>
       </div>
       <aside class="side">
         <div class="block">
           <h4>Metadata</h4>
-          <div class="kv"><span class="k">Title tag:</span> <span class="v">Sentry vs Firebase Crashlytics: 2026 Pricing</span></div>
-          <div class="kv"><span class="k">Meta description:</span> <span class="v">Compare Sentry and Firebase Crashlytics on pricing, setup, mobile coverage, and when each fits a solo app. Prices checked Aug 11, 2026.</span></div>
-          <div class="kv"><span class="k">Slug:</span> <span class="v mono">sentry-vs-firebase-crashlytics-mobile-apps</span></div>
-          <div class="kv"><span class="k">Target query:</span> <span class="v">sentry vs firebase</span></div>
-          <div class="kv"><span class="k">Goal:</span> <span class="v">Non-branded organic + AI-cited sessions</span></div>
-          <div class="kv"><span class="k">CTA:</span> <span class="v">Explore the crash-reporting category</span></div>
-          <div class="kv"><span class="k">Schema:</span> <span class="v">Article + BreadcrumbList; FAQ content retained, FAQ rich results retired by Google</span></div>
+          <div class="kv">
+            <span class="k">Title tag:</span>
+            <span class="v">Sentry vs Firebase Crashlytics: 2026 Pricing</span>
+          </div>
+          <div class="kv">
+            <span class="k">Meta description:</span>
+            <span class="v"
+              >Compare Sentry and Firebase Crashlytics on pricing, setup, mobile
+              coverage, and when each fits a solo app. Prices checked Aug 11,
+              2026.</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Slug:</span>
+            <span class="v mono"
+              >sentry-vs-firebase-crashlytics-mobile-apps</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Target query:</span>
+            <span class="v">sentry vs firebase</span>
+          </div>
+          <div class="kv">
+            <span class="k">Goal:</span>
+            <span class="v">Non-branded organic + AI-cited sessions</span>
+          </div>
+          <div class="kv">
+            <span class="k">CTA:</span>
+            <span class="v">Explore the crash-reporting category</span>
+          </div>
+          <div class="kv">
+            <span class="k">Schema:</span>
+            <span class="v"
+              >Article + BreadcrumbList; FAQ content retained, FAQ rich results
+              retired by Google</span
+            >
+          </div>
         </div>
         <div class="block">
           <h4>SEO / GEO scorecard</h4>
-          <div class="score"><span class="lane">On-page</span><span class="bar"><span class="fill" style="width:94%"></span></span><span class="verdict pass">94</span></div>
-<div class="score"><span class="lane">GEO</span><span class="bar"><span class="fill" style="width:95%"></span></span><span class="verdict pass">95</span></div>
-<div class="score"><span class="lane">Readability</span><span class="bar"><span class="fill" style="width:92%"></span></span><span class="verdict pass">92</span></div>
-<div class="score"><span class="lane">E-E-A-T</span><span class="bar"><span class="fill" style="width:91%"></span></span><span class="verdict warn">91</span></div>
+          <div class="score">
+            <span class="lane">On-page</span
+            ><span class="bar"
+              ><span class="fill" style="width: 94%"></span></span
+            ><span class="verdict pass">94</span>
+          </div>
+          <div class="score">
+            <span class="lane">GEO</span
+            ><span class="bar"
+              ><span class="fill" style="width: 95%"></span></span
+            ><span class="verdict pass">95</span>
+          </div>
+          <div class="score">
+            <span class="lane">Readability</span
+            ><span class="bar"
+              ><span class="fill" style="width: 92%"></span></span
+            ><span class="verdict pass">92</span>
+          </div>
+          <div class="score">
+            <span class="lane">E-E-A-T</span
+            ><span class="bar"
+              ><span class="fill" style="width: 91%"></span></span
+            ><span class="verdict warn">91</span>
+          </div>
         </div>
         <div class="block">
           <h4>Fact ledger</h4>
-          <ul class="ledger"><li><span class="type">sourced</span> <span class="chip m">measured</span> — Sentry Developer is $0 for 1 user and includes 5,000 errors, 5 million spans, 50 replays, 5 GB logs, and 5 GB application metrics. <span class="muted">Sentry pricing · retrieved 2026-08-11</span></li>
-<li><span class="type">sourced</span> <span class="chip m">measured</span> — Sentry Team is shown at $26/month on the annual view ($312/year), with unlimited users and 50,000 included errors. <span class="muted">Sentry pricing · retrieved 2026-08-11</span></li>
-<li><span class="type">sourced</span> <span class="chip m">measured</span> — Crashlytics is a no-cost Firebase product on Spark and Blaze. <span class="muted">Firebase pricing plans · retrieved 2026-08-11</span></li>
-<li><span class="type">sourced</span> <span class="chip m">measured</span> — Crashlytics lists Apple, Android, Flutter, and Unity setup paths. <span class="muted">Firebase Crashlytics docs · retrieved 2026-08-11</span></li>
-<li><span class="type">sourced</span> <span class="chip m">measured</span> — Crashlytics supports custom keys, logs, non-fatals, breadcrumbs, and opt-in reporting. <span class="muted">Firebase report-customization docs · retrieved 2026-08-11</span></li>
-<li><span class="type">sourced</span> <span class="chip m">measured</span> — Automatic Crashlytics breadcrumb logs require Google Analytics. <span class="muted">Firebase Apple setup · retrieved 2026-08-11</span></li>
-<li><span class="type">sourced</span> <span class="chip m">measured</span> — Sentry issue details can connect releases, traces, replays, tags, breadcrumbs, and related issues. <span class="muted">Sentry issue-details docs · retrieved 2026-08-11</span></li>
-<li><span class="type">benchmark</span> <span class="chip m">measured</span> — The refresh brief reports 233 impressions, 1 click, position 9.2, and a 0.4% CTR baseline. <span class="muted">Notion Content Calendar · fetched 2026-08-11</span></li></ul>
+          <ul class="ledger">
+            <li>
+              <span class="type">sourced</span>
+              <span class="chip m">measured</span> — Sentry Developer is $0 for
+              1 user and includes 5,000 errors, 5 million spans, 50 replays, 5
+              GB logs, and 5 GB application metrics.
+              <span class="muted">Sentry pricing · retrieved 2026-08-11</span>
+            </li>
+            <li>
+              <span class="type">sourced</span>
+              <span class="chip m">measured</span> — Sentry Team is shown at
+              $26/month on the annual view ($312/year), with unlimited users and
+              50,000 included errors.
+              <span class="muted">Sentry pricing · retrieved 2026-08-11</span>
+            </li>
+            <li>
+              <span class="type">sourced</span>
+              <span class="chip m">measured</span> — Crashlytics is a no-cost
+              Firebase product on Spark and Blaze.
+              <span class="muted"
+                >Firebase pricing plans · retrieved 2026-08-11</span
+              >
+            </li>
+            <li>
+              <span class="type">sourced</span>
+              <span class="chip m">measured</span> — Crashlytics lists Apple,
+              Android, Flutter, and Unity setup paths.
+              <span class="muted"
+                >Firebase Crashlytics docs · retrieved 2026-08-11</span
+              >
+            </li>
+            <li>
+              <span class="type">sourced</span>
+              <span class="chip m">measured</span> — Crashlytics supports custom
+              keys, logs, non-fatals, breadcrumbs, and opt-in reporting.
+              <span class="muted"
+                >Firebase report-customization docs · retrieved 2026-08-11</span
+              >
+            </li>
+            <li>
+              <span class="type">sourced</span>
+              <span class="chip m">measured</span> — Automatic Crashlytics
+              breadcrumb logs require Google Analytics.
+              <span class="muted"
+                >Firebase Apple setup · retrieved 2026-08-11</span
+              >
+            </li>
+            <li>
+              <span class="type">sourced</span>
+              <span class="chip m">measured</span> — Sentry issue details can
+              connect releases, traces, replays, tags, breadcrumbs, and related
+              issues.
+              <span class="muted"
+                >Sentry issue-details docs · retrieved 2026-08-11</span
+              >
+            </li>
+            <li>
+              <span class="type">benchmark</span>
+              <span class="chip m">measured</span> — The refresh brief reports
+              233 impressions, 1 click, position 9.2, and a 0.4% CTR baseline.
+              <span class="muted"
+                >Notion Content Calendar · fetched 2026-08-11</span
+              >
+            </li>
+          </ul>
         </div>
         <!-- DELETE if none -->
         <div class="block">
           <h4>Asset requests</h4>
-          <div class="asset"><span class="t">3 Crashlytics screenshots · sourced · CC BY 4.0</span><br>Issues table, Event summary, and diagnostic logs are packaged and placed with attribution.<br><span class="muted">firebase-crashlytics-nonfatal-filter.png · firebase-crashlytics-event-summary.png · firebase-crashlytics-logs.png</span></div><div class="asset"><span class="t">Sentry screenshot · user-supplied · privacy-redacted</span><br>Real Sentry Issues capture with the workspace avatar, project selector, and 10 row identifiers covered by opaque bars. OCR found 0 remaining “mapon” matches. <a href="indieappstack/assets/sentry-vs-firebase-crashlytics-dashboard-capture-brief-2026-08-11.md">Open the completed Creative Studio record.</a><br><span class="muted">sentry-issues-dashboard-redacted.png · 1897 × 980 · immediately after the Crashlytics Issues table</span></div>
+          <div class="asset">
+            <span class="t"
+              >3 Crashlytics screenshots · sourced · CC BY 4.0</span
+            ><br />Issues table, Event summary, and diagnostic logs are packaged
+            and placed with attribution.<br /><span class="muted"
+              >firebase-crashlytics-nonfatal-filter.png ·
+              firebase-crashlytics-event-summary.png ·
+              firebase-crashlytics-logs.png</span
+            >
+          </div>
+          <div class="asset">
+            <span class="t"
+              >Sentry screenshot · user-supplied · privacy-redacted</span
+            ><br />Real Sentry Issues capture with the workspace avatar, project
+            selector, and 10 row identifiers covered by opaque bars. OCR found 0
+            remaining “mapon” matches.
+            <a
+              href="indieappstack/assets/sentry-vs-firebase-crashlytics-dashboard-capture-brief-2026-08-11.md"
+              >Open the completed Creative Studio record.</a
+            ><br /><span class="muted"
+              >sentry-issues-dashboard-redacted.png · 1897 × 980 · immediately
+              after the Crashlytics Issues table</span
+            >
+          </div>
         </div>
         <!-- DELETE if none -->
         <div class="block">
           <h4>Repurposing</h4>
           <ul class="tight">
-            <li><b>LinkedIn:</b> Sentry vs Crashlytics is not free versus paid. Both have a $0 solo path. The real question is where the investigation needs to continue.</li><li><b>Newsletter:</b> A three-row mobile-only / mobile + backend / already on Firebase decision card.</li><li><b>Short post:</b> Firebase already owns the app and mobile crashes are the whole job: Crashlytics. Errors cross app, API, and web: Sentry.</li>
+            <li>
+              <b>LinkedIn:</b> Sentry vs Crashlytics is not free versus paid.
+              Both have a $0 solo path. The real question is where the
+              investigation needs to continue.
+            </li>
+            <li>
+              <b>Newsletter:</b> A three-row mobile-only / mobile + backend /
+              already on Firebase decision card.
+            </li>
+            <li>
+              <b>Short post:</b> Firebase already owns the app and mobile
+              crashes are the whole job: Crashlytics. Errors cross app, API, and
+              web: Sentry.
+            </li>
           </ul>
         </div>
         <!-- DELETE if none -->
         <div class="block">
           <h4>Editor notes</h4>
           <ul class="tight">
-            <li>Preserved the live URL, short-answer convention, owned conceptual graphic, and useful internal links.</li><li>Reframed the choice around the measured price opportunity: both products have a $0 solo path, so scope decides.</li><li>Added explicit when-not-to-use sections and the Crashlytics/Google Analytics breadcrumb nuance.</li><li>Removed broad vendor-neutral, universal-simplicity, and unsupported setup-time claims.</li><li>Kept the FAQ for readers but did not treat FAQPage markup as a current Google rich-result lever.</li><li>Real-product evidence is complete: three licensed Crashlytics screenshots and one privacy-checked Sentry capture.</li>
+            <li>
+              Preserved the live URL, short-answer convention, owned conceptual
+              graphic, and useful internal links.
+            </li>
+            <li>
+              Reframed the choice around the measured price opportunity: both
+              products have a $0 solo path, so scope decides.
+            </li>
+            <li>
+              Added explicit when-not-to-use sections and the Crashlytics/Google
+              Analytics breadcrumb nuance.
+            </li>
+            <li>
+              Removed broad vendor-neutral, universal-simplicity, and
+              unsupported setup-time claims.
+            </li>
+            <li>
+              Kept the FAQ for readers but did not treat FAQPage markup as a
+              current Google rich-result lever.
+            </li>
+            <li>
+              Real-product evidence is complete: three licensed Crashlytics
+              screenshots and one privacy-checked Sentry capture.
+            </li>
           </ul>
         </div>
       </aside>
@@ -236,26 +1535,81 @@
   <!-- Batch consistency summary -->
   <h2 class="sec">Batch consistency</h2>
   <div class="cards">
-    <div class="card"><h3>Voice</h3><p>Calm, plain-spoken, practical, and quietly opinionated. No contractions, hype, fake testing, or unsupported prices.</p></div>
-    <div class="card"><h3>Angles &amp; overlap</h3><p>One flagship only. The article separates pricing, monitoring scope, setup, and when-not-to-use decisions without repeating the verdict.</p></div>
-    <div class="card"><h3>Internal linking (hub↔spoke)</h3><p>Links to the Sentry and Firebase tool spokes, the crash-reporting setup guide, and the crash-reporting category hub.</p></div>
+    <div class="card">
+      <h3>Voice</h3>
+      <p>
+        Calm, plain-spoken, practical, and quietly opinionated. No contractions,
+        hype, fake testing, or unsupported prices.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Angles &amp; overlap</h3>
+      <p>
+        One flagship only. The article separates pricing, monitoring scope,
+        setup, and when-not-to-use decisions without repeating the verdict.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Internal linking (hub↔spoke)</h3>
+      <p>
+        Links to the Sentry and Firebase tool spokes, the crash-reporting setup
+        guide, and the crash-reporting category hub.
+      </p>
+    </div>
   </div>
 
   <!-- Seam: what this deliverable deliberately defers (DELETE if empty) -->
   <h2 class="sec">Deliberately out of scope</h2>
   <div class="seam">
-    <h3>This is the finished copy — not the media, the schedule, or the publish.</h3>
+    <h3>
+      This is the finished copy — not the media, the schedule, or the publish.
+    </h3>
     <p>The following are intentionally deferred:</p>
     <ul class="deferred">
-      <li><span class="ico">→</span><span>Optional paired 1600 × 1125 composite; the article already places the two Issues views consecutively.</span></li>
-   <li><span class="ico">→</span><span>CMS/database update, database seed, and production deployment are not performed.</span></li>
-   <li><span class="ico">→</span><span>The Notion Content Calendar row is already in Review; publication remains a separate decision.</span></li>
+      <li>
+        <span class="ico">→</span
+        ><span
+          >Optional paired 1600 × 1125 composite; the article already places the
+          two Issues views consecutively.</span
+        >
+      </li>
+      <li>
+        <span class="ico">→</span
+        ><span
+          >CMS/database update, database seed, and production deployment are not
+          performed.</span
+        >
+      </li>
+      <li>
+        <span class="ico">→</span
+        ><span
+          >The Notion Content Calendar row is already in Review; publication
+          remains a separate decision.</span
+        >
+      </li>
     </ul>
   </div>
 
   <footer>
-    <b>Method.</b> Drafts written to the brief, in the brand's voice, and scored for on-page SEO, GEO citability, readability, and E-E-A-T. <b>The fact ledger is the trust layer:</b> every stat, quote, and customer is <em>sourced</em> (with a retrieval date), <em>user-provided</em>, or an explicit <em>[[verify]]/[[SME]]/[[legal]]</em> placeholder for the team — never invented. A draft with open placeholders is held at <em>Review</em>, never published. <b>What ranks and what AI engines cite is time-sensitive</b> — re-check before publishing.
-    <div class="footer-src"><b>Sources:</b> Sentry pricing and issue-details docs; Firebase Crashlytics docs, Apple setup, report customization, and pricing plans; Google Search Central; Notion Content Calendar brief. Retrieved 2026-08-11.</div>
-    <div class="footer-src">Internal work product prepared with the <b>dm-hub</b> Content Writer skill. Finished copy only — media (images/charts/video) and CMS publishing handled separately.</div>
+    <b>Method.</b> Drafts written to the brief, in the brand's voice, and scored
+    for on-page SEO, GEO citability, readability, and E-E-A-T.
+    <b>The fact ledger is the trust layer:</b> every stat, quote, and customer
+    is <em>sourced</em> (with a retrieval date), <em>user-provided</em>, or an
+    explicit <em>[[verify]]/[[SME]]/[[legal]]</em> placeholder for the team —
+    never invented. A draft with open placeholders is held at <em>Review</em>,
+    never published.
+    <b>What ranks and what AI engines cite is time-sensitive</b> — re-check
+    before publishing.
+    <div class="footer-src">
+      <b>Sources:</b> Sentry pricing and issue-details docs; Firebase
+      Crashlytics docs, Apple setup, report customization, and pricing plans;
+      Google Search Central; Notion Content Calendar brief. Retrieved
+      2026-08-11.
+    </div>
+    <div class="footer-src">
+      Internal work product prepared with the <b>dm-hub</b> Content Writer
+      skill. Finished copy only — media (images/charts/video) and CMS publishing
+      handled separately.
+    </div>
   </footer>
 </div>

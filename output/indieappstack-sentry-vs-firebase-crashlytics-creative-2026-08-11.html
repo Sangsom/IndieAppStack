@@ -1,98 +1,472 @@
 <style>
-  :root{
-    --bg:#f5f6f8; --surface:#ffffff; --surface-2:#eef1f5; --border:#dde2e8; --hair:#e9edf1;
-    --text:#1a1e24; --muted:#5b636e;
-    --accent:#2c5f4f;                 /* SUBJECT accent — retune to the brand's world */
-    --prod:#1f8f56; --brief:#bf860f; --risk:#cf3d3d;
-    --track:#e6e9ee; --shadow:0 1px 2px rgba(20,28,40,.05),0 10px 30px rgba(20,28,40,.05);
+  :root {
+    --bg: #f5f6f8;
+    --surface: #ffffff;
+    --surface-2: #eef1f5;
+    --border: #dde2e8;
+    --hair: #e9edf1;
+    --text: #1a1e24;
+    --muted: #5b636e;
+    --accent: #2c5f4f; /* SUBJECT accent — retune to the brand's world */
+    --prod: #1f8f56;
+    --brief: #bf860f;
+    --risk: #cf3d3d;
+    --track: #e6e9ee;
+    --shadow:
+      0 1px 2px rgba(20, 28, 40, 0.05), 0 10px 30px rgba(20, 28, 40, 0.05);
   }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#141619; --surface:#1c2025; --surface-2:#242a31; --border:#2e353e; --hair:#262c34;
-      --text:#e9edf2; --muted:#98a1ad; --accent:#8ec1ad;
-      --prod:#37c47c; --brief:#e0ac33; --risk:#f26565;
-      --track:#2b323b; --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.3);
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141619;
+      --surface: #1c2025;
+      --surface-2: #242a31;
+      --border: #2e353e;
+      --hair: #262c34;
+      --text: #e9edf2;
+      --muted: #98a1ad;
+      --accent: #8ec1ad;
+      --prod: #37c47c;
+      --brief: #e0ac33;
+      --risk: #f26565;
+      --track: #2b323b;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.3);
     }
   }
-  :root[data-theme="light"]{ --bg:#f5f6f8;--surface:#fff;--surface-2:#eef1f5;--border:#dde2e8;--hair:#e9edf1;--text:#1a1e24;--muted:#5b636e;--accent:#2c5f4f;--prod:#1f8f56;--brief:#bf860f;--risk:#cf3d3d;--track:#e6e9ee; }
-  :root[data-theme="dark"]{ --bg:#141619;--surface:#1c2025;--surface-2:#242a31;--border:#2e353e;--hair:#262c34;--text:#e9edf2;--muted:#98a1ad;--accent:#8ec1ad;--prod:#37c47c;--brief:#e0ac33;--risk:#f26565;--track:#2b323b; }
+  :root[data-theme="light"] {
+    --bg: #f5f6f8;
+    --surface: #fff;
+    --surface-2: #eef1f5;
+    --border: #dde2e8;
+    --hair: #e9edf1;
+    --text: #1a1e24;
+    --muted: #5b636e;
+    --accent: #2c5f4f;
+    --prod: #1f8f56;
+    --brief: #bf860f;
+    --risk: #cf3d3d;
+    --track: #e6e9ee;
+  }
+  :root[data-theme="dark"] {
+    --bg: #141619;
+    --surface: #1c2025;
+    --surface-2: #242a31;
+    --border: #2e353e;
+    --hair: #262c34;
+    --text: #e9edf2;
+    --muted: #98a1ad;
+    --accent: #8ec1ad;
+    --prod: #37c47c;
+    --brief: #e0ac33;
+    --risk: #f26565;
+    --track: #2b323b;
+  }
 
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  .mono{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
-  .page{max-width:1040px;margin:0 auto;padding:40px 22px 72px}
-  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-  h1,h2,h3,h4{margin:0;line-height:1.2;text-wrap:balance}
-  .muted{color:var(--muted)}
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font:
+      16px/1.65 system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono {
+    font-family:
+      ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px 22px 72px;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  .muted {
+    color: var(--muted);
+  }
 
-  .masthead{display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:space-between;padding-bottom:26px;border-bottom:1px solid var(--border)}
-  .eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:11px}
-  .masthead h1{font-size:26px;font-weight:700;letter-spacing:-.01em}
-  .masthead .domain{display:inline-block;margin-top:8px;font-weight:600}
-  .metarow{margin-top:13px;display:flex;flex-wrap:wrap;gap:7px 16px;font-size:13px;color:var(--muted)}
-  .metarow b{color:var(--text);font-weight:600}
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 26px;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 11px;
+  }
+  .masthead h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .masthead .domain {
+    display: inline-block;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .metarow {
+    margin-top: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .metarow b {
+    color: var(--text);
+    font-weight: 600;
+  }
 
-  .exec{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:22px 24px;margin:24px 0}
-  .exec h2{font-size:16px;margin-bottom:10px}
-  .lead{font-size:16px}
-  .statrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-  .stat{flex:1;min-width:130px;background:var(--surface-2);border:1px solid var(--border);border-radius:11px;padding:11px 14px}
-  .stat .n{font-size:22px;font-weight:700;line-height:1}
-  .stat .l{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .exec {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+    margin: 24px 0;
+  }
+  .exec h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .lead {
+    font-size: 16px;
+  }
+  .statrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .stat {
+    flex: 1;
+    min-width: 130px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 11px 14px;
+  }
+  .stat .n {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat .l {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 5px;
+  }
 
-  h2.sec{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:40px 0 15px;padding-bottom:9px;border-bottom:1px solid var(--hair)}
+  h2.sec {
+    font-size: 13px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 40px 0 15px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--hair);
+  }
 
-  .badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:999px;border:1px solid var(--border);white-space:nowrap;font-family:ui-monospace,Menlo,monospace}
-  .badge.prod{color:var(--prod);border-color:color-mix(in srgb,var(--prod) 45%,transparent)}
-  .badge.brief{color:var(--brief);border-color:color-mix(in srgb,var(--brief) 45%,transparent)}
+  .badge {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    white-space: nowrap;
+    font-family: ui-monospace, Menlo, monospace;
+  }
+  .badge.prod {
+    color: var(--prod);
+    border-color: color-mix(in srgb, var(--prod) 45%, transparent);
+  }
+  .badge.brief {
+    color: var(--brief);
+    border-color: color-mix(in srgb, var(--brief) 45%, transparent);
+  }
 
-  .asset{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden}
-  .asset-head{padding:14px 20px;border-bottom:1px solid var(--hair);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline;justify-content:space-between;background:var(--surface-2)}
-  .asset-head h3{font-size:16px;font-weight:700}
-  .asset-head .meta{font-size:12px;color:var(--muted)}
-  .asset-body{display:grid;grid-template-columns:1fr 290px;gap:0}
-  .render{padding:18px 20px;border-right:1px solid var(--hair);min-width:0;display:flex;align-items:center;justify-content:center;background:var(--surface-2)}
-  .render svg,.render img{max-width:100%;height:auto;border-radius:8px}
-  .render pre.mermaid{margin:0;width:100%;background:transparent}
+  .asset {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .asset-head {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--hair);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: baseline;
+    justify-content: space-between;
+    background: var(--surface-2);
+  }
+  .asset-head h3 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .asset-head .meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .asset-body {
+    display: grid;
+    grid-template-columns: 1fr 290px;
+    gap: 0;
+  }
+  .render {
+    padding: 18px 20px;
+    border-right: 1px solid var(--hair);
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-2);
+  }
+  .render svg,
+  .render img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  .render pre.mermaid {
+    margin: 0;
+    width: 100%;
+    background: transparent;
+  }
   /* brief-only */
-  .brief{padding:18px 20px;border-right:1px solid var(--hair);min-width:0}
-  .brief h4{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 6px}
-  .brief p{font-size:13.5px;margin:0 0 12px}
-  .prompt{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.55;white-space:pre-wrap;overflow-x:auto}
-  .prompt .lab{display:block;font-family:system-ui;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:6px}
+  .brief {
+    padding: 18px 20px;
+    border-right: 1px solid var(--hair);
+    min-width: 0;
+  }
+  .brief h4 {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .brief p {
+    font-size: 13.5px;
+    margin: 0 0 12px;
+  }
+  .prompt {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .prompt .lab {
+    display: block;
+    font-family: system-ui;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
 
-  .side{padding:16px 18px;min-width:0}
-  .side h4{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 8px}
-  .side .kv{font-size:12.7px;margin-bottom:10px;word-break:break-word}.side .kv .k{color:var(--muted)}.side .kv .v{color:var(--text);font-weight:600}
-  .side .block{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--hair)}.side .block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .side {
+    padding: 16px 18px;
+    min-width: 0;
+  }
+  .side h4 {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .side .kv {
+    font-size: 12.7px;
+    margin-bottom: 10px;
+    word-break: break-word;
+  }
+  .side .kv .k {
+    color: var(--muted);
+  }
+  .side .kv .v {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .side .block {
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--hair);
+  }
+  .side .block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
-  .swatches{display:flex;flex-wrap:wrap;gap:8px}
-  .sw{width:40px}.sw .c{height:34px;border-radius:7px;border:1px solid var(--border)}.sw .h{font-size:9px;color:var(--muted);font-family:ui-monospace,Menlo,monospace;margin-top:3px;text-align:center}
+  .swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .sw {
+    width: 40px;
+  }
+  .sw .c {
+    height: 34px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+  }
+  .sw .h {
+    font-size: 9px;
+    color: var(--muted);
+    font-family: ui-monospace, Menlo, monospace;
+    margin-top: 3px;
+    text-align: center;
+  }
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:15px 18px;box-shadow:var(--shadow)}
-  .card h3{font-size:14px;margin-bottom:8px}.card p{font-size:13.3px;color:var(--muted);margin:0}
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 15px 18px;
+    box-shadow: var(--shadow);
+  }
+  .card h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .card p {
+    font-size: 13.3px;
+    color: var(--muted);
+    margin: 0;
+  }
 
-  .seam{background:var(--surface);border:1px dashed var(--border);border-radius:13px;padding:18px 20px}
-  .seam h3{font-size:14px;margin-bottom:6px}.seam p{font-size:13.5px;color:var(--muted);margin:0 0 10px}
-  ul.deferred{list-style:none;margin:0;padding:0;display:grid;gap:7px}
-  ul.deferred li{display:grid;grid-template-columns:20px 1fr;gap:9px;font-size:13.5px;line-height:1.5}
-  ul.deferred .ico{color:var(--accent);text-align:center}
+  .seam {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 13px;
+    padding: 18px 20px;
+  }
+  .seam h3 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .seam p {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  ul.deferred {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 7px;
+  }
+  ul.deferred li {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    gap: 9px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  ul.deferred .ico {
+    color: var(--accent);
+    text-align: center;
+  }
 
-  footer{margin-top:42px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12.5px;line-height:1.6}
-  footer b{color:var(--text);font-weight:600}.footer-src{margin-top:8px}
+  footer {
+    margin-top: 42px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+  footer b {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .footer-src {
+    margin-top: 8px;
+  }
 
-  @media (max-width:760px){.asset-body{grid-template-columns:1fr}.render,.brief{border-right:none;border-bottom:1px solid var(--hair)}}
+  @media (max-width: 760px) {
+    .asset-body {
+      grid-template-columns: 1fr;
+    }
+    .render,
+    .brief {
+      border-right: none;
+      border-bottom: 1px solid var(--hair);
+    }
+  }
 </style>
 
 <div class="page">
   <header class="masthead">
     <div>
-      <div class="eyebrow">Creative Assets · One comparison · four real-UI assets</div>
+      <div class="eyebrow">
+        Creative Assets · One comparison · four real-UI assets
+      </div>
       <h1>IndieAppStack</h1>
-      <a class="domain" href="https://indieappstack.com" target="_blank" rel="noopener">indieappstack.com</a>
+      <a
+        class="domain"
+        href="https://indieappstack.com"
+        target="_blank"
+        rel="noopener"
+        >indieappstack.com</a
+      >
       <div class="metarow">
-        <span><b>Brand identity:</b> canonical Brand Profile · from-profile</span>
+        <span
+          ><b>Brand identity:</b> canonical Brand Profile · from-profile</span
+        >
         <span><b>Date:</b> <span class="mono">2026-08-11</span></span>
         <span><b>For:</b> Sentry vs Firebase Crashlytics for Mobile Apps</span>
       </div>
@@ -101,11 +475,26 @@
 
   <section class="exec">
     <h2>Art director's note</h2>
-    <p class="lead">The real-UI set is complete: three official Firebase Crashlytics screenshots are packaged under CC BY 4.0, and the user-supplied Sentry Issues capture is privacy-redacted and ready. Opaque bars cover the workspace avatar, project selector, and all 10 visible row identifiers; macOS Vision OCR found 0 remaining “mapon” matches.</p>
+    <p class="lead">
+      The real-UI set is complete: three official Firebase Crashlytics
+      screenshots are packaged under CC BY 4.0, and the user-supplied Sentry
+      Issues capture is privacy-redacted and ready. Opaque bars cover the
+      workspace avatar, project selector, and all 10 visible row identifiers;
+      macOS Vision OCR found 0 remaining “mapon” matches.
+    </p>
     <div class="statrow">
-      <div class="stat"><div class="n mono">4</div><div class="l">Assets this run</div></div>
-      <div class="stat"><div class="n mono">4</div><div class="l">Produced (files)</div></div>
-      <div class="stat"><div class="n mono">0</div><div class="l">Brief-only (need a tool/human)</div></div>
+      <div class="stat">
+        <div class="n mono">4</div>
+        <div class="l">Assets this run</div>
+      </div>
+      <div class="stat">
+        <div class="n mono">4</div>
+        <div class="l">Produced (files)</div>
+      </div>
+      <div class="stat">
+        <div class="n mono">0</div>
+        <div class="l">Brief-only (need a tool/human)</div>
+      </div>
     </div>
   </section>
 
@@ -114,42 +503,169 @@
 
   <article class="asset">
     <div class="asset-head">
-      <div><h3>Crashlytics open non-fatal Issues</h3><div class="meta">Product screenshot · official CC BY source · 910 × 1224 · for Sentry vs Firebase Crashlytics</div></div>
+      <div>
+        <h3>Crashlytics open non-fatal Issues</h3>
+        <div class="meta">
+          Product screenshot · official CC BY source · 910 × 1224 · for Sentry
+          vs Firebase Crashlytics
+        </div>
+      </div>
       <span class="badge prod">produced</span>
     </div>
     <div class="asset-body">
-      <div class="render"><div><img src="indieappstack/assets/firebase-crashlytics-nonfatal-filter.png" alt="Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue."><p class="muted" style="font-size:12px;margin:8px 0 0">Google Firebase Codelabs · CC BY 4.0 · unmodified</p></div></div>
+      <div class="render">
+        <div>
+          <img
+            src="indieappstack/assets/firebase-crashlytics-nonfatal-filter.png"
+            alt="Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue."
+          />
+          <p class="muted" style="font-size: 12px; margin: 8px 0 0">
+            Google Firebase Codelabs · CC BY 4.0 · unmodified
+          </p>
+        </div>
+      </div>
       <aside class="side">
-        <div class="block"><div class="kv"><span class="k">Placement:</span> <span class="v">After the conceptual comparison graphic</span></div><div class="kv"><span class="k">Alt text:</span> <span class="v">Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue.</span></div><div class="kv"><span class="k">Accessibility:</span> <span class="v">Readable issue label and filter state; descriptive caption and alt text supplied.</span></div></div>
-        <div class="block"><h4>Rights</h4><p class="muted" style="font-size:12.5px">Official Firebase codelab content, licensed under CC BY 4.0 unless otherwise noted. No image modification.</p></div>
+        <div class="block">
+          <div class="kv">
+            <span class="k">Placement:</span>
+            <span class="v">After the conceptual comparison graphic</span>
+          </div>
+          <div class="kv">
+            <span class="k">Alt text:</span>
+            <span class="v"
+              >Firebase Crashlytics dashboard filtered to open non-fatal issues,
+              with an Issues table showing one example issue.</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Accessibility:</span>
+            <span class="v"
+              >Readable issue label and filter state; descriptive caption and
+              alt text supplied.</span
+            >
+          </div>
+        </div>
+        <div class="block">
+          <h4>Rights</h4>
+          <p class="muted" style="font-size: 12.5px">
+            Official Firebase codelab content, licensed under CC BY 4.0 unless
+            otherwise noted. No image modification.
+          </p>
+        </div>
       </aside>
     </div>
   </article>
 
   <article class="asset">
     <div class="asset-head">
-      <div><h3>Crashlytics Event summary</h3><div class="meta">Product screenshot · official CC BY source · 1600 × 1264 · for Sentry vs Firebase Crashlytics</div></div>
+      <div>
+        <h3>Crashlytics Event summary</h3>
+        <div class="meta">
+          Product screenshot · official CC BY source · 1600 × 1264 · for Sentry
+          vs Firebase Crashlytics
+        </div>
+      </div>
       <span class="badge prod">produced</span>
     </div>
     <div class="asset-body">
-      <div class="render"><div><img src="indieappstack/assets/firebase-crashlytics-event-summary.png" alt="Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context."><p class="muted" style="font-size:12px;margin:8px 0 0">Google Firebase Codelabs · CC BY 4.0 · unmodified</p></div></div>
+      <div class="render">
+        <div>
+          <img
+            src="indieappstack/assets/firebase-crashlytics-event-summary.png"
+            alt="Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context."
+          />
+          <p class="muted" style="font-size: 12px; margin: 8px 0 0">
+            Google Firebase Codelabs · CC BY 4.0 · unmodified
+          </p>
+        </div>
+      </div>
       <aside class="side">
-        <div class="block"><div class="kv"><span class="k">Placement:</span> <span class="v">In “When should you choose Firebase Crashlytics?”</span></div><div class="kv"><span class="k">Alt text:</span> <span class="v">Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context.</span></div><div class="kv"><span class="k">Accessibility:</span> <span class="v">Large capture preserves stack-trace and release-context legibility.</span></div></div>
-        <div class="block"><h4>Rights</h4><p class="muted" style="font-size:12.5px">Official Firebase codelab content, licensed under CC BY 4.0 unless otherwise noted. No image modification.</p></div>
+        <div class="block">
+          <div class="kv">
+            <span class="k">Placement:</span>
+            <span class="v"
+              >In “When should you choose Firebase Crashlytics?”</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Alt text:</span>
+            <span class="v"
+              >Firebase Crashlytics Event summary showing an iOS crash stack
+              trace with app version, device, and timestamp context.</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Accessibility:</span>
+            <span class="v"
+              >Large capture preserves stack-trace and release-context
+              legibility.</span
+            >
+          </div>
+        </div>
+        <div class="block">
+          <h4>Rights</h4>
+          <p class="muted" style="font-size: 12.5px">
+            Official Firebase codelab content, licensed under CC BY 4.0 unless
+            otherwise noted. No image modification.
+          </p>
+        </div>
       </aside>
     </div>
   </article>
 
   <article class="asset">
     <div class="asset-head">
-      <div><h3>Crashlytics diagnostic logs</h3><div class="meta">Product screenshot · official CC BY source · 1600 × 600 · for Sentry vs Firebase Crashlytics</div></div>
+      <div>
+        <h3>Crashlytics diagnostic logs</h3>
+        <div class="meta">
+          Product screenshot · official CC BY source · 1600 × 600 · for Sentry
+          vs Firebase Crashlytics
+        </div>
+      </div>
       <span class="badge prod">produced</span>
     </div>
     <div class="asset-body">
-      <div class="render"><div><img src="indieappstack/assets/firebase-crashlytics-logs.png" alt="Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash."><p class="muted" style="font-size:12px;margin:8px 0 0">Google Firebase Codelabs · CC BY 4.0 · unmodified</p></div></div>
+      <div class="render">
+        <div>
+          <img
+            src="indieappstack/assets/firebase-crashlytics-logs.png"
+            alt="Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash."
+          />
+          <p class="muted" style="font-size: 12px; margin: 8px 0 0">
+            Google Firebase Codelabs · CC BY 4.0 · unmodified
+          </p>
+        </div>
+      </div>
       <aside class="side">
-        <div class="block"><div class="kv"><span class="k">Placement:</span> <span class="v">In “When should you choose Firebase Crashlytics?”</span></div><div class="kv"><span class="k">Alt text:</span> <span class="v">Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash.</span></div><div class="kv"><span class="k">Accessibility:</span> <span class="v">Wide crop keeps the log sequence readable at normal article width.</span></div></div>
-        <div class="block"><h4>Rights</h4><p class="muted" style="font-size:12.5px">Official Firebase codelab content, licensed under CC BY 4.0 unless otherwise noted. No image modification.</p></div>
+        <div class="block">
+          <div class="kv">
+            <span class="k">Placement:</span>
+            <span class="v"
+              >In “When should you choose Firebase Crashlytics?”</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Alt text:</span>
+            <span class="v"
+              >Firebase Crashlytics Logs tab showing timestamped diagnostic
+              messages recorded before an iOS crash.</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Accessibility:</span>
+            <span class="v"
+              >Wide crop keeps the log sequence readable at normal article
+              width.</span
+            >
+          </div>
+        </div>
+        <div class="block">
+          <h4>Rights</h4>
+          <p class="muted" style="font-size: 12.5px">
+            Official Firebase codelab content, licensed under CC BY 4.0 unless
+            otherwise noted. No image modification.
+          </p>
+        </div>
       </aside>
     </div>
   </article>
@@ -158,21 +674,55 @@
     <div class="asset-head">
       <div>
         <h3>Sentry Issues · privacy-redacted</h3>
-        <div class="meta">Product screenshot · user-supplied capture · 1897 × 980 · for Sentry vs Firebase Crashlytics</div>
+        <div class="meta">
+          Product screenshot · user-supplied capture · 1897 × 980 · for Sentry
+          vs Firebase Crashlytics
+        </div>
       </div>
       <span class="badge prod">produced</span>
     </div>
     <div class="asset-body">
-      <div class="render"><div><img src="indieappstack/assets/sentry-issues-dashboard-redacted.png" alt="Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities."><p class="muted" style="font-size:12px;margin:8px 0 0">User-supplied real capture · Aug 11, 2026 · organization/project identifiers redacted</p></div></div>
+      <div class="render">
+        <div>
+          <img
+            src="indieappstack/assets/sentry-issues-dashboard-redacted.png"
+            alt="Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities."
+          />
+          <p class="muted" style="font-size: 12px; margin: 8px 0 0">
+            User-supplied real capture · Aug 11, 2026 · organization/project
+            identifiers redacted
+          </p>
+        </div>
+      </div>
       <aside class="side">
         <div class="block">
-          <div class="kv"><span class="k">Placement:</span> <span class="v">Immediately after the Crashlytics Issues-table screenshot</span></div>
-          <div class="kv"><span class="k">Alt text:</span> <span class="v">Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities.</span></div>
-          <div class="kv"><span class="k">Privacy:</span> <span class="v">11 visible text references covered with opaque bars; workspace avatar neutralized; OCR found 0 “mapon” matches.</span></div>
+          <div class="kv">
+            <span class="k">Placement:</span>
+            <span class="v"
+              >Immediately after the Crashlytics Issues-table screenshot</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Alt text:</span>
+            <span class="v"
+              >Sentry Issues dashboard listing recent errors with last-seen
+              dates, trends, event counts, affected users, and priorities.</span
+            >
+          </div>
+          <div class="kv">
+            <span class="k">Privacy:</span>
+            <span class="v"
+              >11 visible text references covered with opaque bars; workspace
+              avatar neutralized; OCR found 0 “mapon” matches.</span
+            >
+          </div>
         </div>
         <div class="block">
           <h4>Edit integrity</h4>
-          <p class="muted" style="font-size:12.5px">The UI source is a real capture. The only changes are opaque privacy redactions and restoration to the original 1897 × 980 canvas.</p>
+          <p class="muted" style="font-size: 12.5px">
+            The UI source is a real capture. The only changes are opaque privacy
+            redactions and restoration to the original 1897 × 980 canvas.
+          </p>
         </div>
       </aside>
     </div>
@@ -181,9 +731,25 @@
   <!-- Brand consistency summary -->
   <h2 class="sec">Brand consistency</h2>
   <div class="cards">
-    <div class="card"><h3>Visual system</h3><p>All four real product interfaces retain their native appearance. IndieAppStack’s warm editorial system is used only in captions, placement, and review framing.</p></div>
-    <div class="card"><h3>Accessibility</h3><p>Every file has purpose-specific alt text. Source UI remains readable at article width, and Firebase attribution is visible in text.</p></div>
-    <div class="card"><h3>Still needed (brief-only)</h3><p>Nothing. All requested real-UI assets are filled.</p></div>
+    <div class="card">
+      <h3>Visual system</h3>
+      <p>
+        All four real product interfaces retain their native appearance.
+        IndieAppStack’s warm editorial system is used only in captions,
+        placement, and review framing.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Accessibility</h3>
+      <p>
+        Every file has purpose-specific alt text. Source UI remains readable at
+        article width, and Firebase attribution is visible in text.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Still needed (brief-only)</h3>
+      <p>Nothing. All requested real-UI assets are filled.</p>
+    </div>
   </div>
 
   <!-- Seam (DELETE if empty) -->
@@ -192,14 +758,37 @@
     <h3>The required article visuals are complete.</h3>
     <p>The following are intentionally deferred:</p>
     <ul class="deferred">
-      <li><span class="ico">→</span><span>Optional 1600 × 1125 paired composite; the article already places the two Issues views consecutively.</span></li>
-   <li><span class="ico">→</span><span>CMS placement and publication.</span></li>
+      <li>
+        <span class="ico">→</span
+        ><span
+          >Optional 1600 × 1125 paired composite; the article already places the
+          two Issues views consecutively.</span
+        >
+      </li>
+      <li>
+        <span class="ico">→</span><span>CMS placement and publication.</span>
+      </li>
     </ul>
   </div>
 
   <footer>
-    <b>Method.</b> Assets designed to the brief and themed to the Brand Profile's visual identity. <b>Honesty:</b> assets marked <em>produced</em> are real, openable files; assets marked <em>brief-only</em> are a creative brief + a copy-paste generation prompt + sourcing for a human or tool — never a faked preview, and never an invented logo or photo. Any data shown obeys the fact rules (sourced or flagged). <b>Channel specs are time-sensitive</b> — re-check before publishing.
-    <div class="footer-src"><b>Sources:</b> Google Firebase Codelabs, “Understand a Unity game's crashes using advanced Crashlytics features” (CC BY 4.0); user-supplied Sentry Issues capture, captured and privacy-redacted 2026-08-11.</div>
-    <div class="footer-src">Internal work product prepared with the <b>dm-hub</b> Creative Studio skill. Visual assets only — copy (content-writer), brand identity (brand-setup), final photo/video production, and CMS placement are handled separately.</div>
+    <b>Method.</b> Assets designed to the brief and themed to the Brand
+    Profile's visual identity. <b>Honesty:</b> assets marked
+    <em>produced</em> are real, openable files; assets marked
+    <em>brief-only</em> are a creative brief + a copy-paste generation prompt +
+    sourcing for a human or tool — never a faked preview, and never an invented
+    logo or photo. Any data shown obeys the fact rules (sourced or flagged).
+    <b>Channel specs are time-sensitive</b> — re-check before publishing.
+    <div class="footer-src">
+      <b>Sources:</b> Google Firebase Codelabs, “Understand a Unity game's
+      crashes using advanced Crashlytics features” (CC BY 4.0); user-supplied
+      Sentry Issues capture, captured and privacy-redacted 2026-08-11.
+    </div>
+    <div class="footer-src">
+      Internal work product prepared with the <b>dm-hub</b> Creative Studio
+      skill. Visual assets only — copy (content-writer), brand identity
+      (brand-setup), final photo/video production, and CMS placement are handled
+      separately.
+    </div>
   </footer>
 </div>

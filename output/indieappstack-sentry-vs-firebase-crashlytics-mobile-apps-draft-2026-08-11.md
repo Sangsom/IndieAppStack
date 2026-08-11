@@ -59,11 +59,11 @@ For a solo launch, do not install both by default. Pick one owner for crashes, u
 
 ![Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue.](/content-visuals/articles/firebase-crashlytics-nonfatal-filter.png "Crashlytics can filter the dashboard and Issues table to open non-fatal reports.")
 
-*Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified.*
+_Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified._
 
 ![Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities.](/content-visuals/articles/sentry-issues-dashboard-redacted.png "A real Sentry Issues view with organization and project identifiers removed.")
 
-*Sentry Issues interface captured Aug 11, 2026. Organization avatar, project selector, and all visible project identifiers were redacted with opaque bars.*
+_Sentry Issues interface captured Aug 11, 2026. Organization avatar, project selector, and all visible project identifiers were redacted with opaque bars._
 
 ## How much do Sentry and Firebase Crashlytics cost in 2026?
 
@@ -71,11 +71,11 @@ At solo scale, both have a $0 path. The difference appears when volume, collabor
 
 :::comparison Solo-scale pricing (checked Aug 11, 2026)
 
-| Option | Current price | What matters to a solo mobile developer |
-| --- | --- | --- |
-| Sentry Developer | $0 | 1 user, 5,000 errors a month, 5 million spans, 50 replays, 5 GB of logs, and 5 GB of application metrics |
-| Sentry Team | $26 a month on the annual pricing view ($312 a year) | Unlimited users, 50,000 included errors, API and third-party integrations, and paid overage options |
-| Firebase Crashlytics | No cost on Spark and Blaze | Crash reporting remains a no-cost Firebase product; product limits still apply, and other Firebase or Google Cloud services can bill separately |
+| Option               | Current price                                        | What matters to a solo mobile developer                                                                                                         |
+| -------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sentry Developer     | $0                                                   | 1 user, 5,000 errors a month, 5 million spans, 50 replays, 5 GB of logs, and 5 GB of application metrics                                        |
+| Sentry Team          | $26 a month on the annual pricing view ($312 a year) | Unlimited users, 50,000 included errors, API and third-party integrations, and paid overage options                                             |
+| Firebase Crashlytics | No cost on Spark and Blaze                           | Crash reporting remains a no-cost Firebase product; product limits still apply, and other Firebase or Google Cloud services can bill separately |
 
 :::
 
@@ -89,14 +89,14 @@ Crashlytics is a focused mobile crash reporter inside Firebase. Sentry is a broa
 
 :::comparison Sentry vs Firebase Crashlytics
 
-| Decision | Sentry | Firebase Crashlytics |
-| --- | --- | --- |
-| Center of gravity | Errors across mobile, backend, and web | Mobile crashes and non-fatal events inside Firebase |
-| Official mobile paths | Apple, Android, React Native, Flutter, and more | Apple, Android, Flutter, and Unity |
-| Context beyond a crash | Releases, traces, logs, tags, replays, and related issues | Logs, custom keys, non-fatals, breadcrumb logs, issue variants, and impact |
-| Team model at $0 | 1 user | Not priced per Crashlytics seat |
-| Ecosystem fit | Separate monitoring vendor that can span services | Strongest when Firebase already owns part of the app stack |
-| Main watch-out | Quotas, event volume, sampling, and alert noise need deliberate setup | Automatic breadcrumb logs require Google Analytics; adding Firebase only for Crashlytics may be unnecessary coupling |
+| Decision               | Sentry                                                                | Firebase Crashlytics                                                                                                 |
+| ---------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Center of gravity      | Errors across mobile, backend, and web                                | Mobile crashes and non-fatal events inside Firebase                                                                  |
+| Official mobile paths  | Apple, Android, React Native, Flutter, and more                       | Apple, Android, Flutter, and Unity                                                                                   |
+| Context beyond a crash | Releases, traces, logs, tags, replays, and related issues             | Logs, custom keys, non-fatals, breadcrumb logs, issue variants, and impact                                           |
+| Team model at $0       | 1 user                                                                | Not priced per Crashlytics seat                                                                                      |
+| Ecosystem fit          | Separate monitoring vendor that can span services                     | Strongest when Firebase already owns part of the app stack                                                           |
+| Main watch-out         | Quotas, event volume, sampling, and alert noise need deliberate setup | Automatic breadcrumb logs require Google Analytics; adding Firebase only for Crashlytics may be unnecessary coupling |
 
 :::
 
@@ -139,7 +139,7 @@ Google's current Crashlytics docs list Apple, Android, Flutter, and Unity setup 
 
 ![Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context.](/content-visuals/articles/firebase-crashlytics-event-summary.png "A Crashlytics Event summary connects the crash to a readable stack trace and release context.")
 
-*Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified.*
+_Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified._
 
 Crashlytics is the practical fit when:
 
@@ -153,7 +153,7 @@ The no-cost label is real, but keep it precise. Firebase lists Crashlytics as a 
 
 ![Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash.](/content-visuals/articles/firebase-crashlytics-logs.png "Crashlytics custom logs preserve diagnostic context around a reported event.")
 
-*Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified.*
+_Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified._
 
 ## When should you not use Firebase Crashlytics?
 
@@ -233,19 +233,19 @@ Last checked: Aug 11, 2026.
 
 ## Fact ledger
 
-| Claim as written | Type | Provenance | Source (retrieved) | Status |
-| --- | --- | --- | --- | --- |
-| Sentry Developer is $0 for 1 user | sourced | measured | [Sentry pricing](https://sentry.io/pricing/), 2026-08-11 | verified |
-| Developer includes 5,000 errors, 5 million spans, 50 replays, 5 GB logs, and 5 GB application metrics | sourced | measured | [Sentry pricing](https://sentry.io/pricing/), 2026-08-11 | verified |
-| Sentry Team is shown at $26/month on the annual view, $312/year, with unlimited users and 50,000 included errors | sourced | measured | [Sentry pricing](https://sentry.io/pricing/), 2026-08-11 | verified |
-| Crashlytics is a no-cost Firebase product on Spark and Blaze | sourced | measured | [Firebase pricing plans](https://firebase.google.com/docs/projects/billing/firebase-pricing-plans), 2026-08-11 | verified |
-| Crashlytics supports Apple, Android, Flutter, and Unity official setup paths | sourced | measured | [Firebase Crashlytics docs](https://firebase.google.com/docs/crashlytics), 2026-08-11 | verified |
-| Crashlytics groups crashes and uses variants, severity, and prevalence to help prioritize issues | sourced | measured | [Firebase Crashlytics docs](https://firebase.google.com/docs/crashlytics), 2026-08-11 | verified |
-| Crashlytics supports custom keys, custom logs, non-fatals, breadcrumb logs, and opt-in reporting | sourced | measured | [Customize Crashlytics reports](https://firebase.google.com/docs/crashlytics/customize-crash-reports), 2026-08-11 | verified |
-| Automatic Crashlytics breadcrumb logs require Google Analytics | sourced | measured | [Crashlytics Apple setup](https://firebase.google.com/docs/crashlytics/ios/get-started), 2026-08-11 | verified |
-| Sentry issue details can connect releases, traces, replays, tags, breadcrumbs, and related issues | sourced | measured | [Sentry issue details](https://docs.sentry.io/product/issues/issue-details/), 2026-08-11 | verified |
-| GSC opportunity: 233 impressions, 1 click, position 9.2 / baseline position 20.58, 0.4% CTR | benchmark | user-provided | Notion Content Calendar brief, fetched 2026-08-11 | verified as brief input; not stated in article |
-| "Do not run both without a specific reason" | brand-fact / editorial judgment | measured | retained from existing IndieAppStack comparison; aligned with brand's lean-stack method | verified as editorial position |
+| Claim as written                                                                                                 | Type                            | Provenance    | Source (retrieved)                                                                                                | Status                                         |
+| ---------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| Sentry Developer is $0 for 1 user                                                                                | sourced                         | measured      | [Sentry pricing](https://sentry.io/pricing/), 2026-08-11                                                          | verified                                       |
+| Developer includes 5,000 errors, 5 million spans, 50 replays, 5 GB logs, and 5 GB application metrics            | sourced                         | measured      | [Sentry pricing](https://sentry.io/pricing/), 2026-08-11                                                          | verified                                       |
+| Sentry Team is shown at $26/month on the annual view, $312/year, with unlimited users and 50,000 included errors | sourced                         | measured      | [Sentry pricing](https://sentry.io/pricing/), 2026-08-11                                                          | verified                                       |
+| Crashlytics is a no-cost Firebase product on Spark and Blaze                                                     | sourced                         | measured      | [Firebase pricing plans](https://firebase.google.com/docs/projects/billing/firebase-pricing-plans), 2026-08-11    | verified                                       |
+| Crashlytics supports Apple, Android, Flutter, and Unity official setup paths                                     | sourced                         | measured      | [Firebase Crashlytics docs](https://firebase.google.com/docs/crashlytics), 2026-08-11                             | verified                                       |
+| Crashlytics groups crashes and uses variants, severity, and prevalence to help prioritize issues                 | sourced                         | measured      | [Firebase Crashlytics docs](https://firebase.google.com/docs/crashlytics), 2026-08-11                             | verified                                       |
+| Crashlytics supports custom keys, custom logs, non-fatals, breadcrumb logs, and opt-in reporting                 | sourced                         | measured      | [Customize Crashlytics reports](https://firebase.google.com/docs/crashlytics/customize-crash-reports), 2026-08-11 | verified                                       |
+| Automatic Crashlytics breadcrumb logs require Google Analytics                                                   | sourced                         | measured      | [Crashlytics Apple setup](https://firebase.google.com/docs/crashlytics/ios/get-started), 2026-08-11               | verified                                       |
+| Sentry issue details can connect releases, traces, replays, tags, breadcrumbs, and related issues                | sourced                         | measured      | [Sentry issue details](https://docs.sentry.io/product/issues/issue-details/), 2026-08-11                          | verified                                       |
+| GSC opportunity: 233 impressions, 1 click, position 9.2 / baseline position 20.58, 0.4% CTR                      | benchmark                       | user-provided | Notion Content Calendar brief, fetched 2026-08-11                                                                 | verified as brief input; not stated in article |
+| "Do not run both without a specific reason"                                                                      | brand-fact / editorial judgment | measured      | retained from existing IndieAppStack comparison; aligned with brand's lean-stack method                           | verified as editorial position                 |
 
 ## Open placeholders
 
@@ -257,30 +257,30 @@ None. The real-product visual requirement is filled with the sourced Crashlytics
 
 **Creative Studio status (2026-08-11):** complete. Three official Firebase Crashlytics interface screenshots are sourced under CC BY 4.0 with attribution. A real Sentry Issues capture was supplied by the user, all visible organization/project references were covered with opaque redactions, and macOS Vision OCR found 0 remaining case-insensitive `mapon` matches across 113 recognized text lines. The Sentry UI itself was not reconstructed.
 
-| Type | Sourcing | Spec | Alt text | Filename | Placement |
-| --- | --- | --- | --- | --- | --- |
-| Screenshot | official source · CC BY 4.0 | Crashlytics dashboard filtered to open non-fatal issues, including the Issues table. | Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue. | `firebase-crashlytics-nonfatal-filter.png` | After the conceptual comparison graphic |
-| Screenshot | official source · CC BY 4.0 | Crashlytics Event summary with stack trace and release/device context. | Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context. | `firebase-crashlytics-event-summary.png` | In “When should you choose Firebase Crashlytics?” |
-| Screenshot | official source · CC BY 4.0 | Crashlytics Logs tab with timestamped diagnostic messages. | Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash. | `firebase-crashlytics-logs.png` | In “When should you choose Firebase Crashlytics?” |
-| Screenshot | user-supplied capture · privacy-redacted | Real Sentry Issues view with the organization avatar, project selector, and 10 visible row identifiers redacted using opaque bars. OCR verification found 0 remaining `mapon` matches. | Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities. | `sentry-issues-dashboard-redacted.png` | Immediately after the Crashlytics Issues-table screenshot |
+| Type       | Sourcing                                 | Spec                                                                                                                                                                                   | Alt text                                                                                                                  | Filename                                   | Placement                                                 |
+| ---------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------- |
+| Screenshot | official source · CC BY 4.0              | Crashlytics dashboard filtered to open non-fatal issues, including the Issues table.                                                                                                   | Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue.         | `firebase-crashlytics-nonfatal-filter.png` | After the conceptual comparison graphic                   |
+| Screenshot | official source · CC BY 4.0              | Crashlytics Event summary with stack trace and release/device context.                                                                                                                 | Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context.      | `firebase-crashlytics-event-summary.png`   | In “When should you choose Firebase Crashlytics?”         |
+| Screenshot | official source · CC BY 4.0              | Crashlytics Logs tab with timestamped diagnostic messages.                                                                                                                             | Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash.                       | `firebase-crashlytics-logs.png`            | In “When should you choose Firebase Crashlytics?”         |
+| Screenshot | user-supplied capture · privacy-redacted | Real Sentry Issues view with the organization avatar, project selector, and 10 visible row identifiers redacted using opaque bars. OCR verification found 0 remaining `mapon` matches. | Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities. | `sentry-issues-dashboard-redacted.png`     | Immediately after the Crashlytics Issues-table screenshot |
 
 ## Internal links
 
-| Anchor | Target | Role |
-| --- | --- | --- |
-| Sentry | `/tools/sentry` | Tool spoke |
-| Firebase Crashlytics | `/tools/firebase` | Tool spoke |
-| crash reporting setup guide | `/guides/crash-reporting-setup-indie-mobile-apps` | How-to spoke |
-| crash-reporting category | `/categories/crash-reporting` | Hub and single CTA |
+| Anchor                      | Target                                            | Role               |
+| --------------------------- | ------------------------------------------------- | ------------------ |
+| Sentry                      | `/tools/sentry`                                   | Tool spoke         |
+| Firebase Crashlytics        | `/tools/firebase`                                 | Tool spoke         |
+| crash reporting setup guide | `/guides/crash-reporting-setup-indie-mobile-apps` | How-to spoke       |
+| crash-reporting category    | `/categories/crash-reporting`                     | Hub and single CTA |
 
 ## SEO / GEO scorecard
 
-| Lane | Score | Verdict |
-| --- | ---: | --- |
-| On-page SEO | 94/100 | Existing slug preserved; target query leads title and H1; current price angle appears early; metadata is unique; internal hub-and-spoke links are present. |
+| Lane                    |  Score | Verdict                                                                                                                                                                                       |
+| ----------------------- | -----: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| On-page SEO             | 94/100 | Existing slug preserved; target query leads title and H1; current price angle appears early; metadata is unique; internal hub-and-spoke links are present.                                    |
 | GEO / answer extraction | 95/100 | Direct 50-word answer, question-shaped H2s, dated comparison tables, self-contained verdicts, and source checks. `FAQPage` is deliberately not treated as a current Google rich-result lever. |
-| Readability | 92/100 | Front-loaded answer, short paragraphs, explicit use-case sections, and concrete tiebreakers. Grade 9–10 practitioner voice. |
-| E-E-A-T / trust | 91/100 | Official sources only, dated pricing, no fake testing claim, institutional byline preserved. Real UI evidence is still needed. |
+| Readability             | 92/100 | Front-loaded answer, short paragraphs, explicit use-case sections, and concrete tiebreakers. Grade 9–10 practitioner voice.                                                                   |
+| E-E-A-T / trust         | 91/100 | Official sources only, dated pricing, no fake testing claim, institutional byline preserved. Real UI evidence is still needed.                                                                |
 
 ## Editor notes
 

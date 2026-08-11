@@ -137,24 +137,73 @@
       }
     ],
     "internalLinks": [
-      {"anchor": "Sentry", "target": "/tools/sentry", "note": "tool spoke"},
-      {"anchor": "Firebase Crashlytics", "target": "/tools/firebase", "note": "tool spoke"},
-      {"anchor": "crash reporting setup guide", "target": "/guides/crash-reporting-setup-indie-mobile-apps", "note": "how-to spoke"},
-      {"anchor": "crash-reporting category", "target": "/categories/crash-reporting", "note": "hub and single CTA"}
+      { "anchor": "Sentry", "target": "/tools/sentry", "note": "tool spoke" },
+      {
+        "anchor": "Firebase Crashlytics",
+        "target": "/tools/firebase",
+        "note": "tool spoke"
+      },
+      {
+        "anchor": "crash reporting setup guide",
+        "target": "/guides/crash-reporting-setup-indie-mobile-apps",
+        "note": "how-to spoke"
+      },
+      {
+        "anchor": "crash-reporting category",
+        "target": "/categories/crash-reporting",
+        "note": "hub and single CTA"
+      }
     ],
     "externalCitations": [
-      {"anchor": "Sentry pricing", "url": "https://sentry.io/pricing/", "retrieved": "2026-08-11"},
-      {"anchor": "Sentry issue details", "url": "https://docs.sentry.io/product/issues/issue-details/", "retrieved": "2026-08-11"},
-      {"anchor": "Firebase Crashlytics", "url": "https://firebase.google.com/docs/crashlytics", "retrieved": "2026-08-11"},
-      {"anchor": "Crashlytics Apple setup", "url": "https://firebase.google.com/docs/crashlytics/ios/get-started", "retrieved": "2026-08-11"},
-      {"anchor": "Customize Crashlytics reports", "url": "https://firebase.google.com/docs/crashlytics/customize-crash-reports", "retrieved": "2026-08-11"},
-      {"anchor": "Firebase Crashlytics Unity codelab", "url": "https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics", "retrieved": "2026-08-11", "license": "CC BY 4.0"},
-      {"anchor": "Firebase pricing plans", "url": "https://firebase.google.com/docs/projects/billing/firebase-pricing-plans", "retrieved": "2026-08-11"}
+      {
+        "anchor": "Sentry pricing",
+        "url": "https://sentry.io/pricing/",
+        "retrieved": "2026-08-11"
+      },
+      {
+        "anchor": "Sentry issue details",
+        "url": "https://docs.sentry.io/product/issues/issue-details/",
+        "retrieved": "2026-08-11"
+      },
+      {
+        "anchor": "Firebase Crashlytics",
+        "url": "https://firebase.google.com/docs/crashlytics",
+        "retrieved": "2026-08-11"
+      },
+      {
+        "anchor": "Crashlytics Apple setup",
+        "url": "https://firebase.google.com/docs/crashlytics/ios/get-started",
+        "retrieved": "2026-08-11"
+      },
+      {
+        "anchor": "Customize Crashlytics reports",
+        "url": "https://firebase.google.com/docs/crashlytics/customize-crash-reports",
+        "retrieved": "2026-08-11"
+      },
+      {
+        "anchor": "Firebase Crashlytics Unity codelab",
+        "url": "https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics",
+        "retrieved": "2026-08-11",
+        "license": "CC BY 4.0"
+      },
+      {
+        "anchor": "Firebase pricing plans",
+        "url": "https://firebase.google.com/docs/projects/billing/firebase-pricing-plans",
+        "retrieved": "2026-08-11"
+      }
     ],
     "cta": "Explore the crash-reporting category",
     "repurposing": [
-      {"derivative": "LinkedIn post", "hook": "Sentry vs Crashlytics is not free versus paid. Both have a $0 solo path.", "channel": "LinkedIn"},
-      {"derivative": "Newsletter decision card", "hook": "Mobile-only, mobile plus backend, or already on Firebase?", "channel": "Email"}
+      {
+        "derivative": "LinkedIn post",
+        "hook": "Sentry vs Crashlytics is not free versus paid. Both have a $0 solo path.",
+        "channel": "LinkedIn"
+      },
+      {
+        "derivative": "Newsletter decision card",
+        "hook": "Mobile-only, mobile plus backend, or already on Firebase?",
+        "channel": "Email"
+      }
     ],
     "seoGeoScore": {
       "onPage": 94,
@@ -162,11 +211,18 @@
       "readability": 92,
       "eeat": 91,
       "checklist": [
-        {"item": "Existing slug preserved", "pass": true},
-        {"item": "Extractable answer near the top", "pass": true},
-        {"item": "Question-shaped H2s and dated comparison tables", "pass": true},
-        {"item": "Official sources and retrieval dates", "pass": true},
-        {"item": "Real-product screenshot evidence", "pass": true, "note": "Three sourced Crashlytics screenshots and one privacy-redacted user-supplied Sentry Issues capture are included."}
+        { "item": "Existing slug preserved", "pass": true },
+        { "item": "Extractable answer near the top", "pass": true },
+        {
+          "item": "Question-shaped H2s and dated comparison tables",
+          "pass": true
+        },
+        { "item": "Official sources and retrieval dates", "pass": true },
+        {
+          "item": "Real-product screenshot evidence",
+          "pass": true,
+          "note": "Three sourced Crashlytics screenshots and one privacy-redacted user-supplied Sentry Issues capture are included."
+        }
       ]
     },
     "editorNotes": [
