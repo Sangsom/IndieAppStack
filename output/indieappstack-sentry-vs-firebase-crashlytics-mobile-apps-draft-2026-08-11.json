@@ -1,0 +1,185 @@
+[
+  {
+    "sourceBriefId": "3b1be5ec-9ff6-81ce-aa37-f7974b716c02",
+    "mode": "refresh-existing",
+    "title": "Sentry vs Firebase Crashlytics for Mobile Apps",
+    "slug": "sentry-vs-firebase-crashlytics-mobile-apps",
+    "format": "Comparison",
+    "channel": ["Blog"],
+    "pillar": "The Lean Stack",
+    "funnel_stage": "Consideration",
+    "goal": "Non-branded organic + AI-cited sessions",
+    "targetQuery": "sentry vs firebase",
+    "secondaryQueries": [
+      "sentry vs firebase crashlytics",
+      "crashlytics pricing",
+      "sentry pricing",
+      "mobile crash reporting"
+    ],
+    "searchIntent": "commercial",
+    "language": "en",
+    "wordCount": 1960,
+    "readingLevel": "Grade 9–10 practitioner target; not machine-measured",
+    "draftMarkdown": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack-sentry-vs-firebase-crashlytics-mobile-apps-draft-2026-08-11.md",
+    "geoAnswerBlock": "Sentry and Firebase Crashlytics are both free to start, but the right default depends on scope. Choose Crashlytics for a mobile-only app already using Firebase: Crashlytics is a no-cost product. Choose Sentry when you want one issue workflow across mobile, backend, and web, or expect to outgrow crash reporting.",
+    "metadata": {
+      "titleTag": "Sentry vs Firebase Crashlytics: 2026 Pricing",
+      "metaDescription": "Compare Sentry and Firebase Crashlytics on pricing, setup, mobile coverage, and when each fits a solo app. Prices checked Aug 11, 2026.",
+      "slug": "sentry-vs-firebase-crashlytics-mobile-apps",
+      "h1": "Sentry vs Firebase Crashlytics for Mobile Apps",
+      "schema": ["Article", "BreadcrumbList"],
+      "canonicalNotes": "Keep the existing URL. FAQ content stays, but Google retired FAQ rich results on May 7, 2026."
+    },
+    "factLedger": [
+      {
+        "claim": "Sentry Developer is $0 for 1 user and includes 5,000 errors, 5 million spans, 50 replays, 5 GB of logs, and 5 GB of application metrics.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://sentry.io/pricing/ · retrieved 2026-08-11",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Sentry Team is shown at $26 per month on the annual pricing view ($312 per year), with unlimited users and 50,000 included errors.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://sentry.io/pricing/ · retrieved 2026-08-11",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Crashlytics is a no-cost Firebase product on Spark and Blaze.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://firebase.google.com/docs/projects/billing/firebase-pricing-plans · retrieved 2026-08-11",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Crashlytics supports Apple, Android, Flutter, and Unity official setup paths.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://firebase.google.com/docs/crashlytics · retrieved 2026-08-11",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Crashlytics supports custom keys, custom logs, non-fatal reports, breadcrumb logs, and opt-in reporting.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://firebase.google.com/docs/crashlytics/customize-crash-reports · retrieved 2026-08-11",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Automatic Crashlytics breadcrumb logs require Google Analytics.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://firebase.google.com/docs/crashlytics/ios/get-started · retrieved 2026-08-11",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Sentry issue details can connect releases, traces, replays, tags, breadcrumbs, and related issues.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://docs.sentry.io/product/issues/issue-details/ · retrieved 2026-08-11",
+        "status": "verified",
+        "placeholder": null
+      }
+    ],
+    "openPlaceholders": [],
+    "assetRequests": [
+      {
+        "type": "screenshot",
+        "spec": "Firebase Crashlytics dashboard filtered to open non-fatal issues, including the Issues table.",
+        "sourcing": "official-source-cc-by-4.0",
+        "altText": "Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue.",
+        "filename": "firebase-crashlytics-nonfatal-filter.png",
+        "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/public/content-visuals/articles/firebase-crashlytics-nonfatal-filter.png",
+        "placement": "After the existing conceptual comparison graphic",
+        "status": "produced",
+        "attribution": "Firebase Crashlytics interface, Google Firebase Codelabs, CC BY 4.0; unmodified."
+      },
+      {
+        "type": "screenshot",
+        "spec": "Firebase Crashlytics Event summary with stack trace and release/device context.",
+        "sourcing": "official-source-cc-by-4.0",
+        "altText": "Firebase Crashlytics Event summary showing an iOS crash stack trace with app version, device, and timestamp context.",
+        "filename": "firebase-crashlytics-event-summary.png",
+        "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/public/content-visuals/articles/firebase-crashlytics-event-summary.png",
+        "placement": "In When should you choose Firebase Crashlytics?",
+        "status": "produced",
+        "attribution": "Firebase Crashlytics interface, Google Firebase Codelabs, CC BY 4.0; unmodified."
+      },
+      {
+        "type": "screenshot",
+        "spec": "Firebase Crashlytics Logs tab with timestamped diagnostic messages.",
+        "sourcing": "official-source-cc-by-4.0",
+        "altText": "Firebase Crashlytics Logs tab showing timestamped diagnostic messages recorded before an iOS crash.",
+        "filename": "firebase-crashlytics-logs.png",
+        "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/public/content-visuals/articles/firebase-crashlytics-logs.png",
+        "placement": "In When should you choose Firebase Crashlytics?",
+        "status": "produced",
+        "attribution": "Firebase Crashlytics interface, Google Firebase Codelabs, CC BY 4.0; unmodified."
+      },
+      {
+        "type": "screenshot",
+        "spec": "Real Sentry Issues view with the organization avatar, project selector, and 10 visible issue-row project identifiers covered by opaque privacy redactions.",
+        "sourcing": "user-supplied-capture-privacy-redacted",
+        "altText": "Sentry Issues dashboard listing recent errors with last-seen dates, trends, event counts, affected users, and priorities.",
+        "filename": "sentry-issues-dashboard-redacted.png",
+        "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/public/content-visuals/articles/sentry-issues-dashboard-redacted.png",
+        "placement": "Immediately after the sourced Crashlytics Issues-table screenshot",
+        "status": "produced",
+        "privacyValidation": "Opaque redactions cover 11 visible text references plus the workspace avatar. macOS Vision OCR recognized 113 text lines and found 0 case-insensitive mapon matches.",
+        "creativeBrief": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/sentry-vs-firebase-crashlytics-dashboard-capture-brief-2026-08-11.md"
+      }
+    ],
+    "internalLinks": [
+      {"anchor": "Sentry", "target": "/tools/sentry", "note": "tool spoke"},
+      {"anchor": "Firebase Crashlytics", "target": "/tools/firebase", "note": "tool spoke"},
+      {"anchor": "crash reporting setup guide", "target": "/guides/crash-reporting-setup-indie-mobile-apps", "note": "how-to spoke"},
+      {"anchor": "crash-reporting category", "target": "/categories/crash-reporting", "note": "hub and single CTA"}
+    ],
+    "externalCitations": [
+      {"anchor": "Sentry pricing", "url": "https://sentry.io/pricing/", "retrieved": "2026-08-11"},
+      {"anchor": "Sentry issue details", "url": "https://docs.sentry.io/product/issues/issue-details/", "retrieved": "2026-08-11"},
+      {"anchor": "Firebase Crashlytics", "url": "https://firebase.google.com/docs/crashlytics", "retrieved": "2026-08-11"},
+      {"anchor": "Crashlytics Apple setup", "url": "https://firebase.google.com/docs/crashlytics/ios/get-started", "retrieved": "2026-08-11"},
+      {"anchor": "Customize Crashlytics reports", "url": "https://firebase.google.com/docs/crashlytics/customize-crash-reports", "retrieved": "2026-08-11"},
+      {"anchor": "Firebase Crashlytics Unity codelab", "url": "https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics", "retrieved": "2026-08-11", "license": "CC BY 4.0"},
+      {"anchor": "Firebase pricing plans", "url": "https://firebase.google.com/docs/projects/billing/firebase-pricing-plans", "retrieved": "2026-08-11"}
+    ],
+    "cta": "Explore the crash-reporting category",
+    "repurposing": [
+      {"derivative": "LinkedIn post", "hook": "Sentry vs Crashlytics is not free versus paid. Both have a $0 solo path.", "channel": "LinkedIn"},
+      {"derivative": "Newsletter decision card", "hook": "Mobile-only, mobile plus backend, or already on Firebase?", "channel": "Email"}
+    ],
+    "seoGeoScore": {
+      "onPage": 94,
+      "geo": 95,
+      "readability": 92,
+      "eeat": 91,
+      "checklist": [
+        {"item": "Existing slug preserved", "pass": true},
+        {"item": "Extractable answer near the top", "pass": true},
+        {"item": "Question-shaped H2s and dated comparison tables", "pass": true},
+        {"item": "Official sources and retrieval dates", "pass": true},
+        {"item": "Real-product screenshot evidence", "pass": true, "note": "Three sourced Crashlytics screenshots and one privacy-redacted user-supplied Sentry Issues capture are included."}
+      ]
+    },
+    "editorNotes": [
+      "Preserved the live URL, short-answer convention, owned conceptual graphic, and useful internal links.",
+      "Reframed the article around the verified $0 starting point for both products.",
+      "Added explicit when-not-to-use sections and the Crashlytics breadcrumb dependency on Google Analytics.",
+      "FAQ content remains, but FAQPage is not recommended as a current Google rich-result tactic."
+    ],
+    "voiceProfileUsed": ".dm-hub/indieappstack/brand-profile.md · derived-from-site",
+    "stageRecommendation": "Ready for editorial sign-off",
+    "provenance": "Product and price claims sourced from official vendor documentation on 2026-08-11; GSC opportunity is user-provided through the Notion brief; no hands-on testing claim is made.",
+    "escalations": [],
+    "artifactUrl": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack-sentry-vs-firebase-crashlytics-mobile-apps-review-2026-08-11.html",
+    "mdPath": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack-sentry-vs-firebase-crashlytics-mobile-apps-draft-2026-08-11.md"
+  }
+]
