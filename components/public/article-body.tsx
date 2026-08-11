@@ -9,6 +9,28 @@ type ArticleBodyProps = {
   blocks: ArticleMarkdownBlock[];
 };
 
+const articleImageDimensions: Record<
+  string,
+  { height: number; width: number }
+> = {
+  "/content-visuals/articles/firebase-crashlytics-event-summary.png": {
+    height: 1264,
+    width: 1600,
+  },
+  "/content-visuals/articles/firebase-crashlytics-logs.png": {
+    height: 600,
+    width: 1600,
+  },
+  "/content-visuals/articles/firebase-crashlytics-nonfatal-filter.png": {
+    height: 1224,
+    width: 910,
+  },
+  "/content-visuals/articles/sentry-issues-dashboard-redacted.png": {
+    height: 980,
+    width: 1897,
+  },
+};
+
 export function ArticleBody({ blocks }: ArticleBodyProps) {
   return (
     <div className="grid gap-5">
@@ -40,15 +62,21 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
         }
 
         if (block.type === "image") {
+          const dimensions = articleImageDimensions[block.src] ?? {
+            height: 675,
+            width: 1200,
+          };
+
           return (
             <figure className="grid gap-2" key={index}>
               <Image
                 alt={block.alt}
                 className="h-auto w-full"
-                height={675}
+                height={dimensions.height}
+                sizes="(min-width: 1024px) 768px, calc(100vw - 2rem)"
                 src={block.src}
                 unoptimized={block.src.endsWith(".svg")}
-                width={1200}
+                width={dimensions.width}
               />
               {block.caption ? (
                 <figcaption className="text-sm leading-6 text-muted">
