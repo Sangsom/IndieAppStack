@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Decision flow for choosing a Superwall alternative for an indie iOS app</title>
+  <desc id="desc">Start by checking whether the app already uses RevenueCat and only needs paywall experiments. If so, keep RevenueCat and add Superwall. Otherwise choose by the primary job: RevenueCat for purchase and entitlement truth, Adapty for analytics-led paywall and onboarding experiments, Qonversion when tier or percentage fit drives the choice, or StoreKit 2 for a simple Apple-only app with a small product catalog and no need for remote iteration.</desc>
+  <defs>
+    <marker id="arrow-pine" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c5f4f"/>
+    </marker>
+    <marker id="arrow-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#20241f"/>
+    </marker>
+    <filter id="card-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#20241f" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .eyebrow { font: 700 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 2.5px; text-transform: uppercase; fill: #2c5f4f; }
+      .title { font: 600 52px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .dek { font: 400 21px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .step { font: 700 15px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; letter-spacing: 1.4px; text-transform: uppercase; }
+      .question { font: 600 25px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .prompt { font: 500 17px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .question-inverse { font: 600 25px "Source Serif 4", Georgia, serif; fill: #ffffff; }
+      .prompt-inverse { font: 500 17px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #e7e2d7; }
+      .route { font: 700 15px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; letter-spacing: 1.15px; text-transform: uppercase; }
+      .product { font: 600 30px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .body { font: 400 17px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #474b44; }
+      .note { font: 500 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .branch { font: 700 14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="1180" fill="#fbfaf7"/>
+  <path d="M84 76 H1516" stroke="#e7e2d7" stroke-width="2"/>
+  <text x="84" y="122" class="eyebrow">Indie iOS decision area</text>
+  <text x="84" y="184" class="title">Choose by the job that must stay reliable</text>
+  <text x="84" y="226" class="dek">Start with ownership, then compare workflow and pricing fit.</text>
+
+  <!-- Step 1: special integration path -->
+  <g aria-label="Step 1: check for the RevenueCat plus Superwall integration path">
+    <rect x="84" y="280" width="360" height="174" rx="7" fill="#ffffff" stroke="#e7e2d7" stroke-width="2" filter="url(#card-shadow)"/>
+    <rect x="104" y="302" width="78" height="30" rx="4" fill="#e8efea"/>
+    <text x="143" y="322" text-anchor="middle" class="step" fill="#2c5f4f">Step 1</text>
+    <text x="104" y="370" class="question">Already on RevenueCat?</text>
+    <text x="104" y="402" class="prompt">And the missing job is remote</text>
+    <text x="104" y="427" class="prompt">paywall experimentation?</text>
+
+    <path d="M444 367 H522" stroke="#2c5f4f" stroke-width="3" fill="none" marker-end="url(#arrow-pine)"/>
+    <text x="482" y="350" text-anchor="middle" class="branch" fill="#2c5f4f">Yes</text>
+
+    <rect x="540" y="280" width="492" height="174" rx="7" fill="#e8efea" stroke="#2c5f4f" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <text x="570" y="317" class="route" fill="#2c5f4f">Keep the ownership boundary</text>
+    <text x="570" y="362" class="product">RevenueCat + Superwall</text>
+    <text x="570" y="397" class="body">RevenueCat owns purchase and entitlement truth.</text>
+    <text x="570" y="423" class="body">Superwall owns paywall presentation and experiments.</text>
+
+    <path d="M264 454 V514 H800 V558" stroke="#20241f" stroke-width="2.5" fill="none" marker-end="url(#arrow-ink)"/>
+    <rect x="235" y="474" width="58" height="27" rx="4" fill="#fbfaf7"/>
+    <text x="264" y="493" text-anchor="middle" class="branch" fill="#20241f">No</text>
+  </g>
+
+  <!-- Step 2: route by the primary job -->
+  <g aria-label="Step 2: choose the primary subscription job">
+    <rect x="420" y="566" width="760" height="126" rx="7" fill="#20241f"/>
+    <rect x="450" y="588" width="78" height="30" rx="4" fill="#9a6b23"/>
+    <text x="489" y="608" text-anchor="middle" class="step" fill="#ffffff">Step 2</text>
+    <text x="800" y="632" text-anchor="middle" class="question-inverse">What is the primary job?</text>
+    <text x="800" y="663" text-anchor="middle" class="prompt-inverse">Pick one route. Do not buy overlapping responsibility by default.</text>
+
+    <path d="M800 692 V744 H226 V782" stroke="#20241f" stroke-width="2.5" fill="none" marker-end="url(#arrow-ink)"/>
+    <path d="M800 692 V744 H608 V782" stroke="#20241f" stroke-width="2.5" fill="none" marker-end="url(#arrow-ink)"/>
+    <path d="M800 692 V744 H992 V782" stroke="#20241f" stroke-width="2.5" fill="none" marker-end="url(#arrow-ink)"/>
+    <path d="M800 692 V744 H1374 V782" stroke="#20241f" stroke-width="2.5" fill="none" marker-end="url(#arrow-ink)"/>
+  </g>
+
+  <!-- Four labelled outcomes -->
+  <g aria-label="RevenueCat route">
+    <rect x="84" y="798" width="284" height="278" rx="7" fill="#ffffff" stroke="#2c5f4f" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <circle cx="118" cy="834" r="17" fill="#2c5f4f"/>
+    <text x="118" y="840" text-anchor="middle" class="step" fill="#ffffff">A</text>
+    <text x="146" y="840" class="route" fill="#2c5f4f">Infrastructure</text>
+    <text x="110" y="891" class="product">RevenueCat</text>
+    <path d="M110 912 H342" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="110" y="948" class="body">Choose when purchase</text>
+    <text x="110" y="974" class="body">and entitlement truth is</text>
+    <text x="110" y="1000" class="body">the job that must stay</text>
+    <text x="110" y="1026" class="body">reliable.</text>
+  </g>
+
+  <g aria-label="Adapty route">
+    <rect x="466" y="798" width="284" height="278" rx="7" fill="#ffffff" stroke="#9a6b23" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <circle cx="500" cy="834" r="17" fill="#9a6b23"/>
+    <text x="500" y="840" text-anchor="middle" class="step" fill="#ffffff">B</text>
+    <text x="528" y="840" class="route" fill="#72501c">Workflow</text>
+    <text x="492" y="891" class="product">Adapty</text>
+    <path d="M492 912 H724" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="492" y="948" class="body">Choose for analytics-led</text>
+    <text x="492" y="974" class="body">paywall and onboarding</text>
+    <text x="492" y="1000" class="body">experiments in one</text>
+    <text x="492" y="1026" class="body">workflow.</text>
+  </g>
+
+  <g aria-label="Qonversion route">
+    <rect x="850" y="798" width="284" height="278" rx="7" fill="#ffffff" stroke="#2c5f4f" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <circle cx="884" cy="834" r="17" fill="#2c5f4f"/>
+    <text x="884" y="840" text-anchor="middle" class="step" fill="#ffffff">C</text>
+    <text x="912" y="840" class="route" fill="#2c5f4f">Pricing fit</text>
+    <text x="876" y="891" class="product">Qonversion</text>
+    <path d="M876 912 H1108" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="876" y="948" class="body">Choose when the available</text>
+    <text x="876" y="974" class="body">tier or percentage meter</text>
+    <text x="876" y="1000" class="body">fits the app better.</text>
+    <text x="876" y="1038" class="note">Verify current pricing.</text>
+  </g>
+
+  <g aria-label="StoreKit 2 route">
+    <rect x="1232" y="798" width="284" height="278" rx="7" fill="#ffffff" stroke="#6e6a5e" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <circle cx="1266" cy="834" r="17" fill="#6e6a5e"/>
+    <text x="1266" y="840" text-anchor="middle" class="step" fill="#ffffff">D</text>
+    <text x="1294" y="840" class="route" fill="#565248">No platform</text>
+    <text x="1258" y="891" class="product">StoreKit 2</text>
+    <path d="M1258 912 H1490" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="1258" y="948" class="body">Choose for a simple,</text>
+    <text x="1258" y="974" class="body">Apple-only app with a</text>
+    <text x="1258" y="1000" class="body">small product catalog and</text>
+    <text x="1258" y="1026" class="body">no remote iteration.</text>
+  </g>
+
+  <path d="M84 1120 H1516" stroke="#e7e2d7" stroke-width="2"/>
+  <text x="84" y="1151" class="note">Decision principle: each block owns one job. Recheck current features and pricing before adopting.</text>
+  <text x="1516" y="1151" text-anchor="end" class="note">IndieAppStack · Aug 13, 2026</text>
+</svg>

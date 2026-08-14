@@ -29,6 +29,14 @@ const articleImageDimensions: Record<
     height: 980,
     width: 1897,
   },
+  "/content-visuals/articles/superwall-alternatives-ios-decision-flow.svg": {
+    height: 1180,
+    width: 1600,
+  },
+  "/content-visuals/articles/superwall-paywall-editor.png": {
+    height: 1123,
+    width: 1526,
+  },
 };
 
 export function ArticleBody({ blocks }: ArticleBodyProps) {

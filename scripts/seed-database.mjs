@@ -65,6 +65,7 @@ const pricingLastChecked = "2026-06-29";
 const publishedAt = "2026-07-10T02:08:13.410Z";
 const warpPublishedAt = "2026-07-18T09:00:00.000Z";
 const comparisonsPublishedAt = "2026-07-19T09:00:00.000Z";
+const superwallAlternativesPublishedAt = "2026-08-14T02:46:21.000Z";
 
 // Rebuilt long-form tool content (body_markdown, pros, cons, pricing_summary,
 // noindex) lives in a JSON data file so multi-paragraph Markdown does not have
@@ -2048,6 +2049,187 @@ Last checked: 2026-07-19.
           published_at: comparisonsPublishedAt,
         },
         {
+          title: "Superwall alternatives for indie iOS apps",
+          slug: "superwall-alternatives-ios-apps",
+          subtitle:
+            "Compare RevenueCat, Adapty, Qonversion, and StoreKit 2 by the subscription job each one should own.",
+          excerpt:
+            "Compare Superwall alternatives for an indie iOS app by purchase infrastructure, paywall workflow, pricing meter, and operational fit.",
+          body_markdown: `## Short answer
+The practical [Superwall](/tools/superwall) alternatives for an indie iOS app are [RevenueCat](/tools/revenuecat) when purchase and entitlement infrastructure is the priority, [Adapty](/tools/adapty) when paywall analytics and experimentation should live together, and [Qonversion](/tools/qonversion) when a lower percentage meter matters. For a simple Apple-only app, native StoreKit 2 may fit better than another platform.
+
+The first question is not “Which tool has paywalls?” They all do. Ask which job you need the tool to own, then compare the revenue meter attached to that job.
+
+> [!NOTE] Indie iOS scope
+> This comparison is for a solo developer or small team choosing a subscription and paywall stack for an iOS app. It favors a reliable purchase path, clear ownership, and the smallest operating workflow that the app will actually use.
+
+![Superwall's paywall editor showing an iPhone subscription paywall preview beside the editor's component tree.](/content-visuals/articles/superwall-paywall-editor.png "Superwall's real paywall editor, with the component tree beside an iPhone paywall preview. Captured August 14, 2026.")
+
+## Which Superwall alternatives are worth comparing?
+Use this shortlist for a solo or small-team iOS subscription app:
+
+- Choose [RevenueCat](/tools/revenuecat) when purchases, entitlements, and cross-platform customer state should be the dependable foundation.
+- Choose [Adapty](/tools/adapty) when a growth workflow needs paywall building, onboarding, experiments, and subscription analytics in one place.
+- Choose [Qonversion](/tools/qonversion) when you want subscription infrastructure and paywalls together, but the percentage meter and tier boundaries deserve more weight.
+- Choose native StoreKit 2 when the app is Apple-only, the product catalog is small, and remote paywall iteration is not yet a real job.
+
+Superwall remains a valid choice. Its current platform includes entitlements, purchase APIs, receipt validation, webhooks, analytics, paywalls, and experiments. Its infrastructure layer is free at any scale, while the paywall product is metered on revenue attributed to Superwall-rendered paywalls. Switching because you think Superwall is only a presentation SDK would solve an outdated problem.
+
+## How do Superwall alternatives compare on price?
+:::comparison Subscription and paywall pricing (checked August 13, 2026)
+| Option | Free boundary | Paid meter | What the meter means |
+| --- | --- | --- | --- |
+| [Superwall](/tools/superwall) | Infrastructure is free at any scale; paywalls are free up to $10,000 in monthly paywall-attributed revenue | 1% of paywall-attributed revenue after the free boundary | The paid base is revenue converted through a Superwall-rendered paywall, not every subscription dollar the platform observes |
+| [RevenueCat](/tools/revenuecat) | Free up to $2,500 in monthly tracked revenue | 1% of tracked revenue after the free boundary | The meter follows active subscriptions RevenueCat monitors; separate growth tools can also sit on your own infrastructure |
+| [Adapty](/tools/adapty) | Free while monthly revenue stays under $5,000 | 1% of monthly revenue after crossing $5,000 | The Pro platform bundles infrastructure, analytics, paywalls, and experiments; add-ons can carry separate charges |
+| [Qonversion](/tools/qonversion) | Free up to $10,000 in monthly tracked revenue | Starter is 0.6% of revenue; Growth is 0.8% | Starter adds advanced analytics and webhooks; Growth is the relevant comparison for Superwall-style A/B experiments |
+| Native StoreKit 2 | No third-party subscription-platform fee | Your engineering and operations time | Apple still owns App Store commerce; you own implementation, lifecycle handling, reporting, and any server-side subscription state |
+:::
+
+Prices and plan boundaries were checked August 13, 2026, against the official [Superwall](https://superwall.com/pricing), [RevenueCat](https://www.revenuecat.com/pricing), [Adapty](https://adapty.io/pricing/), and [Qonversion](https://qonversion.io/pricing) pricing pages. Recheck them before committing spend.
+
+The headline percentages hide the useful difference: **the base matters as much as the rate**. Superwall meters paywall-attributed revenue. RevenueCat and Adapty meter the subscription revenue they track. Qonversion advertises a lower rate, but its 0.6% Starter plan does not include A/B experiments; the 0.8% Growth plan is the closer replacement for Superwall's core experimentation job.
+
+## Why do generic Superwall alternatives lists get the decision wrong?
+They compare labels that no longer separate the products.
+
+“Subscription infrastructure” and “paywall SDK” used to describe different layers. The category has converged. Superwall, RevenueCat, Adapty, and Qonversion now overlap across purchases, entitlement state, remote paywalls, analytics, and experiments. A checklist that awards one point for every shared feature produces a tie and hides the tradeoff.
+
+Use three harder questions instead:
+
+- **What is the source of truth?** Decide which system tells the app whether a customer has access.
+- **What changes without an app release?** Paywall layout, copy, targeting, offers, and experiment rules only matter if you will use that operating loop.
+- **Which revenue does the vendor meter?** “1%” is incomplete until you know whether it applies to all tracked revenue or only paywall-attributed revenue.
+
+## When is RevenueCat the right Superwall alternative?
+Choose RevenueCat when purchase and entitlement truth is the first job.
+
+RevenueCat models products, offerings, and entitlements, then exposes customer state through its SDKs. Its paywalls can be configured remotely, and its current pricing page also offers growth tools for teams that keep their own in-app purchase infrastructure. The reason to choose it is not that Superwall lacks infrastructure. It is that you want RevenueCat's purchase and customer model to sit at the center of the stack.
+
+RevenueCat fits when:
+
+- The app already uses RevenueCat and a migration would create more risk than value.
+- iOS is only the first store, not the last.
+- Entitlements and customer state matter more than the paywall editor.
+- You want the [subscription MVP stack](/guides/subscription-mvp-stack-solo-ios-app) to keep one established purchase ledger.
+
+Skip it when a lower free boundary makes the percentage meter a poor fit or when the only missing job is a faster paywall workflow on top of infrastructure you already trust.
+
+## When is Adapty the right Superwall alternative?
+Choose Adapty when paywall work belongs beside subscription analytics.
+
+Adapty combines subscription infrastructure with a flow and paywall builder, targeting, A/B testing, and revenue analytics. Its documentation now directs new projects toward Flow Builder rather than the legacy Paywall Builder. That makes it practical when one person or a small growth team will routinely connect onboarding, paywall variants, cohort behavior, and revenue outcomes.
+
+Adapty fits when:
+
+- Onboarding and paywall experiments are one workflow.
+- Revenue, retention, churn, and lifetime-value analysis should sit beside the experiment.
+- Non-engineers need to change the monetization flow.
+- The 1% meter after the $5,000 boundary matches the value of the bundled workflow.
+
+Skip it when the app has one stable paywall and nobody can name the next experiment. A quiet product does not need a full growth operating system.
+
+## When is Qonversion the right Superwall alternative?
+Choose Qonversion when the bundled platform fits and the meter is the deciding constraint.
+
+The free tier includes subscription SDKs, basic analytics, customer management, a no-code paywall builder, and unlimited apps and seats up to $10,000 in monthly tracked revenue. Starter adds advanced analytics, integrations, and webhooks at 0.6% of revenue. Growth adds A/B experiments, raw data export, and additional integrations at 0.8%.
+
+That tier line matters. If you need to replace Superwall's remote paywall presentation but not its experiments, Starter may be enough. If experiments are the reason you are leaving, compare Superwall against Growth, not the cheaper headline rate.
+
+Qonversion fits when:
+
+- You want a broad subscription bundle with a higher free boundary.
+- 0.6% to 0.8% is material at the revenue level you expect.
+- The features you need map cleanly to Starter or Growth.
+- You are willing to evaluate the workflow on its own merits rather than treating popularity as proof.
+
+Skip it when pricing is the only advantage and the migration cost would exceed the expected savings.
+
+## When should you use StoreKit 2 instead?
+Use StoreKit 2 directly when the app is Apple-only, sells a small number of products, and does not need remote paywall experiments.
+
+StoreKit 2 provides Swift APIs for products, transactions, entitlement status, subscription state, and SwiftUI merchandising views. The App Store Server API can return transaction history and current subscription status from your server. That is enough to build a reliable purchase path without paying a third-party platform percentage.
+
+The tradeoff is ownership. You design the data model, handle transaction updates and restores, react to refunds and billing states, build reporting, and operate any server-side subscription logic. Native is the smallest vendor footprint, not automatically the smallest engineering responsibility.
+
+StoreKit-only fits when:
+
+- The app ships only on Apple platforms.
+- One or two products unlock one entitlement.
+- The paywall changes with app releases, not every week.
+- Cross-platform identity is not required.
+- You are comfortable maintaining the subscription lifecycle.
+
+Skip it when remote configuration, cross-platform state, customer support tooling, or dependable webhooks are already real requirements.
+
+## When should you run Superwall and RevenueCat together?
+Run both when RevenueCat already owns purchase truth and Superwall has a distinct job: paywall presentation, targeting, and experimentation.
+
+This is a supported integration, not an improvised stack. RevenueCat can send subscription and revenue events to Superwall, while Superwall's purchase controller can route purchase and restore logic through RevenueCat. The important rule is simple: one system owns entitlement truth, and both SDKs use the same customer identifier.
+
+The dual stack fits when:
+
+- RevenueCat is already proven in production.
+- The team wants Superwall's paywall workflow without migrating subscriber state.
+- The added SDK, dashboard, identity mapping, and event reconciliation have a named owner.
+- Paywall traffic is high enough for experiments to produce useful evidence.
+
+Do not start with two platforms just because the integration exists. Superwall can run as the subscription backend on its own, and RevenueCat has its own paywall and growth tools. A greenfield app should need a specific capability before it accepts two sources of configuration.
+
+![Decision flow routing an indie iOS app to RevenueCat, Adapty, Qonversion, StoreKit 2, or a RevenueCat-plus-Superwall setup based on ownership and workflow.](/content-visuals/articles/superwall-alternatives-ios-decision-flow.svg "Choose by the job that must stay reliable, then compare workflow and pricing fit.")
+
+## Which Superwall alternative should an indie iOS developer choose?
+- **RevenueCat:** choose purchase and entitlement infrastructure first.
+- **Adapty:** choose an analytics-led paywall and onboarding workflow.
+- **Qonversion:** choose the bundled platform when its tier and percentage meter fit better.
+- **StoreKit 2:** choose no third-party platform when the app is simple enough to own the lifecycle.
+- **Superwall plus RevenueCat:** keep both only when each has one explicit job.
+
+The quiet answer is often to keep Superwall. Its product boundary changed: it can now own the subscription backend as well as the paywall. Switch only when another option gives one decision area a clearer owner, a better operating workflow, or a meter that fits how the app earns.
+
+## Frequently asked questions
+### Can Superwall replace RevenueCat?
+Yes. Superwall's current subscription infrastructure includes entitlements, purchase APIs, receipt validation, webhooks, analytics, and SQL access, and that layer is advertised as free at any scale. RevenueCat remains a valid choice when you prefer its purchase and customer model or already rely on it in production.
+
+### Is RevenueCat a direct Superwall competitor?
+Increasingly, yes. Both now offer subscription infrastructure, remote paywalls, and growth tooling. They still lead with different operating models: RevenueCat centers purchase and entitlement infrastructure, while Superwall centers paywall presentation and experimentation.
+
+### Which alternative has the lowest percentage fee?
+Qonversion advertises 0.6% on Starter and 0.8% on Growth after its free boundary, compared with 1% meters on RevenueCat, Adapty, and Superwall. The bases and included features differ. Superwall charges on paywall-attributed revenue, and Qonversion reserves A/B experiments for Growth, so the lowest percentage is not automatically the lowest bill for your use case.
+
+### Is StoreKit 2 free?
+StoreKit 2 adds no third-party subscription-platform fee. Apple still owns App Store commerce, and you still pay with engineering and operating time for purchase state, lifecycle handling, reporting, and any server component you build.
+
+## Source checks
+Product and pricing claims were checked against official sources on August 13, 2026:
+
+- [Superwall pricing](https://superwall.com/pricing) and [Superwall documentation](https://superwall.com/docs/).
+- [RevenueCat pricing](https://www.revenuecat.com/pricing), [offerings](https://www.revenuecat.com/docs/offerings/overview), [entitlements](https://www.revenuecat.com/docs/getting-started/entitlements), and [Superwall integration](https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall).
+- [Adapty pricing](https://adapty.io/pricing/) and [paywall setup](https://adapty.io/docs/quickstart-paywalls).
+- [Qonversion pricing](https://qonversion.io/pricing) and [paywall experiments](https://documentation.qonversion.io/docs/paywall-experiments).
+- [Apple StoreKit 2](https://developer.apple.com/storekit/) and the [App Store Server API](https://developer.apple.com/documentation/appstoreserverapi/).
+
+No hands-on testing claim is made. The Superwall screenshot is a real interface capture supplied for editorial use, not evidence of an end-to-end product evaluation. Prices, plan boundaries, and capabilities can change; verify them again before acting on a later revision.
+
+Last checked: August 13, 2026.
+
+## Related tools and guides
+- Compare the two-tool boundary in [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
+- Review the wider category in [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
+- Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
+- See the [subscription-consumer stack](/stacks/subscription-consumer-app) for a lean implementation path.`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("paywalls").id,
+          seo_title: "Superwall alternatives for indie iOS apps",
+          seo_description:
+            "Compare RevenueCat, Adapty, Qonversion, and StoreKit 2 by pricing, paywall workflow, and fit. Prices checked August 2026.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: superwallAlternativesPublishedAt,
+        },
+        {
           title: "Mixpanel vs Amplitude for mobile app analytics",
           slug: "mixpanel-vs-amplitude",
           subtitle:
@@ -3370,6 +3552,30 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
         sort_order: 40,
       },
       {
+        article_id: articles.get("superwall-alternatives-ios-apps").id,
+        tool_id: tools.get("superwall").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("superwall-alternatives-ios-apps").id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("superwall-alternatives-ios-apps").id,
+        tool_id: tools.get("adapty").id,
+        relationship: "featured",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("superwall-alternatives-ios-apps").id,
+        tool_id: tools.get("qonversion").id,
+        relationship: "featured",
+        sort_order: 40,
+      },
+      {
         article_id: articles.get("mixpanel-vs-amplitude").id,
         tool_id: tools.get("mixpanel").id,
         relationship: "featured",
@@ -3629,6 +3835,23 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
   await upsert(
     "topic_queue",
     [
+      {
+        title: "Superwall alternatives for indie iOS apps",
+        slug: "superwall-alternatives-ios-apps",
+        target_keyword: "superwall alternatives",
+        search_intent: "commercial investigation",
+        target_category_id: categories.get("paywalls").id,
+        related_tool_ids: [
+          tools.get("superwall").id,
+          tools.get("revenuecat").id,
+          tools.get("adapty").id,
+          tools.get("qonversion").id,
+        ],
+        priority: 10,
+        status: "published",
+        notes:
+          "Published 2026-08-14 with a real Superwall editor capture and owned decision flow. AlternativeTo evidence was excluded from public copy pending independent reproduction.",
+      },
       {
         title: "Best paywall tools for iOS apps",
         slug: "best-paywall-tools-ios-apps",
