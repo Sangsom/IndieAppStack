@@ -1,0 +1,267 @@
+[
+  {
+    "sourceBriefId": "3b1be5ec-9ff6-81eb-859e-c47bc6d2b02d",
+    "mode": "net-new",
+    "title": "Superwall Alternatives for Indie iOS Apps",
+    "slug": "superwall-alternatives-ios-apps",
+    "format": "Comparison",
+    "channel": ["Blog"],
+    "pillar": "Correct The Record",
+    "funnel_stage": "Decision",
+    "goal": "Non-branded organic + AI-cited sessions; first earned citations",
+    "targetQuery": "superwall alternatives",
+    "secondaryQueries": [
+      "superwall competitors",
+      "superwall vs revenuecat",
+      "superwall pricing alternatives",
+      "ios paywall sdk",
+      "storekit vs superwall"
+    ],
+    "searchIntent": "commercial",
+    "language": "en",
+    "wordCount": 2110,
+    "readingLevel": "Grade 9–10 practitioner target; not machine-measured",
+    "draftMarkdown": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack-superwall-alternatives-ios-apps-draft-2026-08-13.md",
+    "geoAnswerBlock": "The practical Superwall alternatives for an indie iOS app are RevenueCat when purchase and entitlement infrastructure is the priority, Adapty when paywall analytics and experimentation should live together, and Qonversion when a lower percentage meter matters. For a simple Apple-only app, native StoreKit 2 may fit better than another platform.",
+    "metadata": {
+      "titleTag": "Superwall Alternatives for Indie iOS Apps",
+      "metaDescription": "Compare RevenueCat, Adapty, Qonversion, and StoreKit 2 by pricing, paywall workflow, and fit. Prices checked Aug 13, 2026.",
+      "slug": "superwall-alternatives-ios-apps",
+      "h1": "Superwall Alternatives for Indie iOS Apps",
+      "schema": ["Article", "BreadcrumbList"],
+      "canonicalNotes": "Net-new comparison. FAQ is for readers and answer extraction; no FAQ rich-result promise."
+    },
+    "factLedger": [
+      {
+        "claim": "Superwall's subscription infrastructure is free at any scale; its paywall product is free up to $10,000 monthly paywall-attributed revenue, then 1% of paywall-attributed revenue.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://superwall.com/pricing · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Superwall currently includes entitlements, purchase APIs, receipt validation, webhooks, analytics, SQL access, paywalls, and experiments.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://superwall.com/pricing · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "RevenueCat is free up to $2,500 monthly tracked revenue, then charges 1% of tracked revenue.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://www.revenuecat.com/pricing · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "RevenueCat models offerings and entitlements and can pair a remotely configured paywall with an offering.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://www.revenuecat.com/docs/offerings/overview and https://www.revenuecat.com/docs/getting-started/entitlements · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Adapty is free under $5,000 monthly revenue, then charges 1% of monthly revenue.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://adapty.io/pricing/ · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Adapty offers remote paywall and flow configuration, A/B tests, and subscription analytics; new projects are directed to Flow Builder.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://adapty.io/docs/quickstart-paywalls and https://adapty.io/pricing/ · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "Qonversion is free up to $10,000 MTR; Starter is 0.6% of revenue; Growth is 0.8% and adds A/B experiments.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://qonversion.io/pricing · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "StoreKit 2 provides Swift APIs for products, transactions, entitlements, subscription state, and merchandising views.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://developer.apple.com/storekit/ · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "The App Store Server API provides transaction history and current subscription status from a server.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://developer.apple.com/documentation/appstoreserverapi/ · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "RevenueCat and Superwall provide documented integration paths that keep RevenueCat as the purchase or entitlement source of truth while Superwall handles paywalls.",
+        "type": "sourced",
+        "provenance": "measured",
+        "source": "https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall and https://superwall.com/docs/ios/guides/using-revenuecat · retrieved 2026-08-13",
+        "status": "verified",
+        "placeholder": null
+      },
+      {
+        "claim": "The direct AlternativeTo URL /software/superwall/ returned 404 - Page not found on 2026-08-14.",
+        "type": "observed",
+        "provenance": "user-provided normal-browser capture",
+        "source": "output/indieappstack/assets/source-captures/alternativeto-superwall-404-2026-08-14.png · SHA-256 48a26101ef889fd8dcf770ace947a4bb5a44a550925783118b1cbb4ee43b257b",
+        "status": "needs-independent-reproduction",
+        "placeholder": "[[verify: Reproduce the direct-URL 404 in a second browser or independent network before publishing this narrow dated statement.]]"
+      },
+      {
+        "claim": "AlternativeTo has no Superwall listing under any URL.",
+        "type": "unsupported",
+        "provenance": "n/a",
+        "source": "The direct-URL 404 and partial internal-search capture cannot prove site-wide absence.",
+        "status": "do-not-claim",
+        "placeholder": null
+      },
+      {
+        "claim": "IndieAppStack recommendations are based on practical fit, not affiliate status.",
+        "type": "brand-fact",
+        "provenance": "measured",
+        "source": ".dm-hub/indieappstack/brand-profile.md · refreshed 2026-08-03",
+        "status": "verified",
+        "placeholder": null
+      }
+    ],
+    "openPlaceholders": [
+      "[[verify: Reproduce the direct AlternativeTo /software/superwall/ 404 observed on 2026-08-14 in a second browser or independent network before publishing the narrow dated direct-URL claim.]]",
+      "[[visual: The real Superwall paywall-editor capture is ready, but a campaign or placement capture that actually shows an associated paywall is still needed to fulfill the combined request.]]"
+    ],
+    "assetRequests": [
+      {
+        "type": "screenshot",
+        "spec": "Real Superwall dashboard showing the paywall editor and the associated campaign or placement configuration. Real product — capture or source, do NOT generate. Remove customer, project, and revenue identifiers.",
+        "sourcing": "capture-or-source",
+        "altText": "Superwall dashboard showing a paywall editor beside campaign or placement configuration.",
+        "filename": "superwall-paywall-editor-campaign-placement.png",
+        "placement": "After the Short answer",
+        "status": "partially-produced",
+        "files": [
+          "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/superwall-paywall-editor-2026-08-14.png",
+          "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/superwall-campaign-audience-config-2026-08-14.png"
+        ],
+        "briefFile": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/superwall-dashboard-capture-brief-2026-08-13.md",
+        "remainingGap": "The editor capture is publication-ready. The campaign capture shows no placements and no paywalls, so it cannot prove the requested paywall-to-campaign relationship."
+      },
+      {
+        "type": "screenshot",
+        "spec": "Normal-browser capture of the current AlternativeTo Superwall URL or search result, with URL and capture date preserved. Real product — capture or source, do NOT generate. Use only if it verifies the claim.",
+        "sourcing": "capture-or-source",
+        "altText": "AlternativeTo browser result for Superwall, captured with the URL and date visible.",
+        "filename": "alternativeto-superwall-listing-check-2026-08-13.png",
+        "placement": "In Why do generic Superwall alternatives lists get the decision wrong?",
+        "status": "produced-conditional",
+        "files": [
+          "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/alternativeto-superwall-404-2026-08-14.png",
+          "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/alternativeto-superwall-search-2026-08-14.png"
+        ],
+        "briefFile": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/alternativeto-superwall-capture-brief-2026-08-13.md",
+        "verificationGate": "Publish only the narrow statement that the direct URL returned 404 on 2026-08-14, and only after a second-browser or independent-network reproduction is logged. The search capture is archive-only."
+      },
+      {
+        "type": "diagram",
+        "spec": "A neutral decision flow: purchase truth to RevenueCat; analytics-led experimentation to Adapty; percentage and tier fit to Qonversion; simple Apple-only app to StoreKit 2; existing RevenueCat plus paywall experimentation to keep RevenueCat and add Superwall.",
+        "sourcing": "generate",
+        "altText": "Decision flow for choosing a Superwall alternative by subscription job and pricing meter.",
+        "filename": "superwall-alternatives-ios-decision-flow.svg",
+        "placement": "Before Which Superwall alternative should an indie iOS developer choose?",
+        "status": "produced",
+        "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/superwall-alternatives-ios-decision-flow.svg"
+      }
+    ],
+    "internalLinks": [
+      { "anchor": "Superwall", "target": "/tools/superwall", "note": "subject tool spoke" },
+      { "anchor": "RevenueCat", "target": "/tools/revenuecat", "note": "alternative tool spoke" },
+      { "anchor": "Adapty", "target": "/tools/adapty", "note": "alternative tool spoke" },
+      { "anchor": "Qonversion", "target": "/tools/qonversion", "note": "alternative tool spoke" },
+      { "anchor": "subscription MVP stack", "target": "/guides/subscription-mvp-stack-solo-ios-app", "note": "implementation guide" },
+      { "anchor": "Superwall vs RevenueCat", "target": "/comparisons/superwall-vs-revenuecat", "note": "deep comparison spoke" },
+      { "anchor": "current iOS paywall tools", "target": "/guides/best-paywall-tools-ios-apps", "note": "category guide" },
+      { "anchor": "subscription-consumer stack", "target": "/stacks/subscription-consumer-app", "note": "single CTA" }
+    ],
+    "externalCitations": [
+      { "anchor": "Superwall pricing", "url": "https://superwall.com/pricing", "retrieved": "2026-08-13" },
+      { "anchor": "Superwall documentation", "url": "https://superwall.com/docs/", "retrieved": "2026-08-13" },
+      { "anchor": "Superwall purchase controller", "url": "https://superwall.com/docs/ios/sdk-reference/PurchaseController", "retrieved": "2026-08-13" },
+      { "anchor": "Using RevenueCat with Superwall", "url": "https://superwall.com/docs/ios/guides/using-revenuecat", "retrieved": "2026-08-13" },
+      { "anchor": "RevenueCat pricing", "url": "https://www.revenuecat.com/pricing", "retrieved": "2026-08-13" },
+      { "anchor": "RevenueCat offerings", "url": "https://www.revenuecat.com/docs/offerings/overview", "retrieved": "2026-08-13" },
+      { "anchor": "RevenueCat entitlements", "url": "https://www.revenuecat.com/docs/getting-started/entitlements", "retrieved": "2026-08-13" },
+      { "anchor": "RevenueCat Superwall integration", "url": "https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall", "retrieved": "2026-08-13" },
+      { "anchor": "Adapty pricing", "url": "https://adapty.io/pricing/", "retrieved": "2026-08-13" },
+      { "anchor": "Adapty paywall setup", "url": "https://adapty.io/docs/quickstart-paywalls", "retrieved": "2026-08-13" },
+      { "anchor": "Qonversion pricing", "url": "https://qonversion.io/pricing", "retrieved": "2026-08-13" },
+      { "anchor": "Qonversion experiments", "url": "https://documentation.qonversion.io/docs/paywall-experiments", "retrieved": "2026-08-13" },
+      { "anchor": "Apple StoreKit 2", "url": "https://developer.apple.com/storekit/", "retrieved": "2026-08-13" },
+      { "anchor": "Apple App Store Server API", "url": "https://developer.apple.com/documentation/appstoreserverapi/", "retrieved": "2026-08-13" },
+      { "anchor": "Google AI search guidance", "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide", "retrieved": "2026-08-13" },
+      { "anchor": "Google Article structured data", "url": "https://developers.google.com/search/docs/appearance/structured-data/article", "retrieved": "2026-08-13" }
+    ],
+    "cta": "See the subscription-consumer stack",
+    "repurposing": [
+      {
+        "derivative": "LinkedIn decision post",
+        "hook": "The cheapest Superwall alternative is not the tool with the lowest percentage. First ask what revenue the percentage measures.",
+        "channel": "LinkedIn"
+      },
+      {
+        "derivative": "Newsletter decision card",
+        "hook": "Four exits from Superwall: purchase truth, analytics workflow, lower meter, or no platform.",
+        "channel": "Email"
+      },
+      {
+        "derivative": "Short thread",
+        "hook": "Superwall is no longer only a paywall SDK. If that is why you plan to switch, update the premise before you update the code.",
+        "channel": "X / Threads"
+      }
+    ],
+    "seoGeoScore": {
+      "onPage": 94,
+      "geo": 92,
+      "readability": 93,
+      "eeat": 84,
+      "checklist": [
+        { "item": "Search intent matches a decision-stage alternatives query", "pass": true },
+        { "item": "Title tag and meta description fit recommended lengths", "pass": true },
+        { "item": "Extractable answer near the top", "pass": true },
+        { "item": "Question-shaped H2s and dated price table", "pass": true },
+        { "item": "Official first-party citations and retrieval dates", "pass": true },
+        { "item": "Internal hub-and-spoke links and a single CTA", "pass": true },
+        { "item": "Article and BreadcrumbList schema recommended without special AI markup claims", "pass": true },
+        { "item": "Real-product screenshot evidence inserted", "pass": true },
+        { "item": "AlternativeTo 404 or unlisted claim verified or removed", "pass": false }
+      ]
+    },
+    "editorNotes": [
+      "Replaced the brief's stale billing-suite versus paywall-SDK premise with the current category reality: the major products overlap, so the decision turns on center of gravity and pricing base.",
+      "Added the Qonversion tier distinction: the 0.6% Starter rate excludes A/B experiments, so Growth at 0.8% is the closer Superwall replacement.",
+      "Made the StoreKit-only case operationally honest: no third-party platform fee does not mean no engineering responsibility.",
+      "Preserved the dual-tool path only for a named ownership boundary supported by both vendors' integration documentation.",
+      "Removed unverified 404 language from the publishable argument and kept it as an explicit editorial gate.",
+      "Anti-slop pass completed: no generic market intro, fake hands-on claim, unsupported superlative, repeated conclusion, or CTA stack."
+    ],
+    "voiceProfileUsed": ".dm-hub/indieappstack/brand-profile.md · derived-from-site",
+    "stageRecommendation": "Review (open placeholders)",
+    "provenance": "Product and price claims are sourced from official vendor and Apple documentation retrieved 2026-08-13. The content goal, CTA, GSC context, and planned publish date are user-provided through the Notion Content Calendar brief. Real-interface captures were user-provided on 2026-08-14. The narrow AlternativeTo direct-URL observation still needs independent reproduction; site-wide absence is unsupported. No hands-on testing claim is made.",
+    "escalations": [
+      "If the combined Superwall relationship visual remains required, capture a campaign or placement screen that actually shows an assigned paywall. The current campaign capture shows no placements and no paywalls.",
+      "Reproduce the dated AlternativeTo direct-URL 404 in a second browser or independent network and record browser, region, time, and editorial-use basis."
+    ],
+    "artifactUrl": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack-superwall-alternatives-ios-apps-review-2026-08-13.html",
+    "mdPath": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack-superwall-alternatives-ios-apps-draft-2026-08-13.md"
+  }
+]

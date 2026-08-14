@@ -1,0 +1,146 @@
+[
+  {
+    "sourcePiece": "Superwall Alternatives for Indie iOS Apps",
+    "sourceRequest": "A neutral decision flow: purchase truth to RevenueCat; analytics-led experimentation to Adapty; percentage and tier fit to Qonversion; simple Apple-only app to StoreKit 2; existing RevenueCat plus paywall experimentation to keep RevenueCat and add Superwall.",
+    "assetType": "diagram",
+    "productionPath": "svg",
+    "status": "produced",
+    "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/superwall-alternatives-ios-decision-flow.svg",
+    "inlineSource": null,
+    "dimensions": "1600x1180",
+    "placement": "Before Which Superwall alternative should an indie iOS developer choose?",
+    "altText": "Decision flow for choosing a Superwall alternative: keep RevenueCat and add Superwall for paywall experiments, or choose RevenueCat for purchase truth, Adapty for analytics-led experiments, Qonversion for tier or percentage fit, or StoreKit 2 for a simple Apple-only app.",
+    "brandApplication": "IndieAppStack's from-profile editorial almanac system: paper ground, white cards, ink text, pine decision accents, muted-gold secondary route, rule borders, Source Serif/Inter/system fallbacks, and restrained 7px cards.",
+    "genPrompt": null,
+    "sourcing": null,
+    "accessibility": {
+      "contrastChecked": true,
+      "notes": "Strong ink/paper and white/pine pairings. Labels, letters, shapes, and connector paths carry meaning in addition to color. SVG includes a title and long description. Full visual preview reviewed at 1600px."
+    },
+    "provenance": "Brand identity from-profile; data in-asset n/a; no quantitative claims.",
+    "artDirectorNotes": [
+      "The special RevenueCat-plus-Superwall ownership path is visually separated from the four primary alternatives.",
+      "All four outcome cards remain readable in the 1600x1180 article-width composition.",
+      "Quick Look's initial square crop was a preview-renderer artifact; a square inspection wrapper confirmed the complete SVG canvas visually."
+    ],
+    "escalations": []
+  },
+  {
+    "sourcePiece": "Superwall Alternatives for Indie iOS Apps",
+    "sourceRequest": "Real Superwall paywall editor capture. Real product — capture or source, do not generate.",
+    "assetType": "screenshot",
+    "productionPath": "user-provided-capture",
+    "status": "produced",
+    "publicationRecommendation": "Publish as the primary product screenshot; this partially fulfills the original combined editor-plus-campaign request.",
+    "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/superwall-paywall-editor-2026-08-14.png",
+    "briefFile": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/superwall-dashboard-capture-brief-2026-08-13.md",
+    "inlineSource": null,
+    "dimensions": "1526x1123",
+    "placement": "After the Short answer",
+    "altText": "Superwall's dark-theme paywall editor showing a mobile subscription paywall preview, its layer hierarchy, and device preview controls.",
+    "brandApplication": "The authentic dark product interface remains unchanged. IndieAppStack styling is applied only around the evidence image in the article or review package.",
+    "genPrompt": null,
+    "sourcing": "User-provided capture received 2026-08-14. Confirm the account/capture authorization and editorial trademark-use basis before publication.",
+    "accessibility": {
+      "contrastChecked": true,
+      "notes": "The paywall, layer tree, and preview controls are readable at native size. The source is 74 pixels narrower than the preferred 1600-pixel target, so it must not be enlarged beyond native width."
+    },
+    "provenance": "Brand identity from-profile; real product UI supplied by the user on 2026-08-14; no generated interface pixels; SHA-256 499a2324d36fa09e6245de7bf427d3d1fa2c91e2ced750bc78ff3330ff576a72.",
+    "artDirectorNotes": [
+      "Use as the primary product-evidence image after the Short answer.",
+      "The capture shows the editor clearly but does not prove campaign assignment; use the separate campaign capture for that workflow.",
+      "No obvious customer identifiers, revenue figures, API keys, or unpublished experiment results are visible."
+    ],
+    "escalations": [
+      "Record the capture/account authorization and editorial trademark-use basis before publication."
+    ]
+  },
+  {
+    "sourcePiece": "Superwall Alternatives for Indie iOS Apps",
+    "sourceRequest": "Real Superwall campaign or audience configuration capture associated with the product workflow.",
+    "assetType": "screenshot",
+    "productionPath": "user-provided-capture",
+    "status": "produced",
+    "publicationRecommendation": "Optional secondary evidence only; do not use this image to fulfill the requested paywall-to-placement relationship.",
+    "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/superwall-campaign-audience-config-2026-08-14.png",
+    "briefFile": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/superwall-dashboard-capture-brief-2026-08-13.md",
+    "inlineSource": null,
+    "dimensions": "1606x1006",
+    "placement": "Creative review/source archive; optionally in the Superwall workflow section only when discussing audience controls",
+    "altText": "Superwall's campaign dashboard showing an All Users audience with filter, entitlement, and frequency-limit controls; the captured test campaign has no placements or paywalls configured.",
+    "brandApplication": "The authentic dark product interface remains unchanged; IndieAppStack styling stays outside the evidence image.",
+    "genPrompt": null,
+    "sourcing": "User-provided capture received 2026-08-14. Confirm the account/capture authorization and editorial trademark-use basis before publication.",
+    "accessibility": {
+      "contrastChecked": true,
+      "notes": "Campaign title, audience, tabs, filters, entitlements, and limit controls are readable at native size."
+    },
+    "provenance": "Brand identity from-profile; real product UI supplied by the user on 2026-08-14; no generated interface pixels; SHA-256 b950b15c7bbab6042af637eef6222f435c61e081ca76ee3151b0abc4332a88a0.",
+    "artDirectorNotes": [
+      "Use only to illustrate the campaign and audience configuration surface.",
+      "The capture explicitly shows no placements and a No Paywalls state, so it must not be described as an active placement, assigned paywall, or running experiment.",
+      "The entitlement panel says Requires Android SDK v2, so this is weak supporting evidence in an iOS-specific article and should normally stay in the archive."
+    ],
+    "escalations": [
+      "Record the capture/account authorization and editorial trademark-use basis before publication."
+    ]
+  },
+  {
+    "sourcePiece": "Superwall Alternatives for Indie iOS Apps",
+    "sourceRequest": "Normal-browser capture of the current AlternativeTo Superwall direct URL with the final URL visible.",
+    "assetType": "screenshot",
+    "productionPath": "user-provided-capture+privacy-redaction",
+    "status": "produced",
+    "publicationRecommendation": "Publish conditionally after a second-browser or independent-network reproduction is logged, and only for the narrow dated direct-URL claim.",
+    "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/alternativeto-superwall-404-2026-08-14.png",
+    "briefFile": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/alternativeto-superwall-capture-brief-2026-08-13.md",
+    "inlineSource": null,
+    "dimensions": "1657x858",
+    "placement": "In Why do generic Superwall alternatives lists get the decision wrong? only after independent reproduction",
+    "altText": "AlternativeTo returning a 404 Page not found response for the direct Superwall software URL in a browser capture dated August 14, 2026.",
+    "brandApplication": "The authentic light website capture remains unrecolored. Browser extension and profile icons were blurred for privacy; the URL and evidence page remain intact.",
+    "genPrompt": null,
+    "sourcing": "User-provided normal-browser capture received 2026-08-14. Reproduce in a second browser or independent network before publishing the dated claim.",
+    "accessibility": {
+      "contrastChecked": true,
+      "notes": "The final URL and 404 text are readable. Privacy blur is limited to x=925–1504 and y=0–45; a pixel comparison confirmed zero changes outside that toolbar region."
+    },
+    "provenance": "Brand identity from-profile; real website capture supplied by the user on 2026-08-14; toolbar icons privacy-redacted without altering evidence pixels outside the redaction region; SHA-256 48a26101ef889fd8dcf770ace947a4bb5a44a550925783118b1cbb4ee43b257b.",
+    "artDirectorNotes": [
+      "This capture supports only the narrow dated statement that the direct URL returned AlternativeTo's 404 page in the captured browser session.",
+      "Do not generalize it into a timeless claim that AlternativeTo never lists Superwall."
+    ],
+    "escalations": [
+      "Reproduce the same result in a second browser or independent network and record browser, region, capture time, and rights basis before publication."
+    ]
+  },
+  {
+    "sourcePiece": "Superwall Alternatives for Indie iOS Apps",
+    "sourceRequest": "AlternativeTo internal search capture for Superwall as corroborating evidence.",
+    "assetType": "screenshot",
+    "productionPath": "user-provided-capture",
+    "status": "produced",
+    "publicationRecommendation": "Archive/supporting evidence only; do not publish this image as proof that no listing exists.",
+    "file": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/source-captures/alternativeto-superwall-search-2026-08-14.png",
+    "briefFile": "/Users/rinalds/Developer/Private/Web/IndieAppStack/output/indieappstack/assets/alternativeto-superwall-capture-brief-2026-08-13.md",
+    "inlineSource": null,
+    "dimensions": "1507x1255",
+    "placement": "Creative review/source archive only",
+    "altText": "AlternativeTo search results for Superwall showing near-name matches including SuperCollider, Supercell Wx, and Supercal in the visible results.",
+    "brandApplication": "The authentic light website capture remains unchanged and unrecolored.",
+    "genPrompt": null,
+    "sourcing": "User-provided capture received 2026-08-14. Retain only as supporting evidence because browser chrome and the search URL are not visible.",
+    "accessibility": {
+      "contrastChecked": true,
+      "notes": "The query heading and visible result names are readable at native size."
+    },
+    "provenance": "Brand identity from-profile; real website capture supplied by the user on 2026-08-14; browser URL and capture environment are not visible; SHA-256 2fda37f295d69526d9e80f905625eb7aad0a333e84f319cb2b3261699374af18.",
+    "artDirectorNotes": [
+      "This image corroborates the query context but cannot independently prove that no exact Superwall result exists beyond the visible portion.",
+      "Prefer the direct-URL capture as the published evidence image; use this only when the caption states its limited scope."
+    ],
+    "escalations": [
+      "Record the internal search URL and capture environment if this supporting image is published."
+    ]
+  }
+]
