@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">RevenueCat vs Adapty vs Superwall: choose by the job</title>
+  <desc id="desc">Three decision cards. RevenueCat owns purchase and entitlement truth. Adapty owns the paywall and subscription analytics loop. Superwall owns remote paywall iteration. Verified against official docs on Aug 18, 2026. Conceptual graphic, not a product screenshot.</desc>
+  <defs>
+    <style>
+      .eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.6px; text-transform: uppercase; fill: #2c5f4f; }
+      .title { font: 600 36px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .dek { font: 400 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .job { font: 700 12px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.2px; text-transform: uppercase; fill: #20241f; }
+      .tool { font: 600 28px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .copy { font: 400 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+      .foot { font: 500 13px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .badge { font: 600 13px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #2c5f4f; }
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="#fbfaf7"/>
+  <text x="56" y="58" class="eyebrow">Indie iOS decision area</text>
+  <text x="56" y="104" class="title">Choose by the job, not the category</text>
+  <text x="56" y="136" class="dek">All three now cover purchases, paywalls, and experiments. Pick the job that must stay boring.</text>
+
+  <g aria-label="RevenueCat: purchase truth">
+    <rect x="56" y="176" width="352" height="392" rx="7" fill="#ffffff" stroke="#e7e2d7" stroke-width="1.5"/>
+    <rect x="56" y="176" width="8" height="392" rx="0" fill="#2c5f4f"/>
+    <rect x="80" y="200" width="148" height="28" rx="4" fill="#e8efea"/>
+    <text x="92" y="219" class="job">Purchase truth</text>
+    <text x="80" y="272" class="tool">RevenueCat</text>
+    <text x="80" y="314" class="copy">Choose it when receipts,</text>
+    <text x="80" y="338" class="copy">entitlements, restores, and</text>
+    <text x="80" y="362" class="copy">customer state must be the</text>
+    <text x="80" y="386" class="copy">ledger the app trusts.</text>
+    <text x="80" y="430" class="copy">When not to use it: you</text>
+    <text x="80" y="454" class="copy">already have purchase</text>
+    <text x="80" y="478" class="copy">infrastructure and only want</text>
+    <text x="80" y="502" class="copy">a visual paywall editor.</text>
+    <text x="80" y="540" class="badge">First paid iOS MVP</text>
+  </g>
+
+  <g aria-label="Adapty: paywall analytics">
+    <rect x="424" y="176" width="352" height="392" rx="7" fill="#ffffff" stroke="#e7e2d7" stroke-width="1.5"/>
+    <rect x="424" y="176" width="8" height="392" fill="#9a6b23"/>
+    <rect x="448" y="200" width="176" height="28" rx="4" fill="#f4ead8"/>
+    <text x="460" y="219" class="job">Paywall analytics</text>
+    <text x="448" y="272" class="tool">Adapty</text>
+    <text x="448" y="314" class="copy">Choose it when paywalls,</text>
+    <text x="448" y="338" class="copy">onboarding flows, tests, and</text>
+    <text x="448" y="362" class="copy">subscription metrics are one</text>
+    <text x="448" y="386" class="copy">daily operating loop.</text>
+    <text x="448" y="430" class="copy">When not to use it: a tiny</text>
+    <text x="448" y="454" class="copy">MVP that only needs an</text>
+    <text x="448" y="478" class="copy">entitlement check, or you</text>
+    <text x="448" y="502" class="copy">cannot yet define a test.</text>
+    <text x="448" y="540" class="badge">Growth loop after traffic</text>
+  </g>
+
+  <g aria-label="Superwall: remote paywall iteration">
+    <rect x="792" y="176" width="352" height="392" rx="7" fill="#ffffff" stroke="#e7e2d7" stroke-width="1.5"/>
+    <rect x="792" y="176" width="8" height="392" fill="#6e6a5e"/>
+    <rect x="816" y="200" width="214" height="28" rx="4" fill="#eeeae3"/>
+    <text x="828" y="219" class="job">Remote iteration</text>
+    <text x="816" y="272" class="tool">Superwall</text>
+    <text x="816" y="314" class="copy">Choose it when paywall</text>
+    <text x="816" y="338" class="copy">presentation, campaigns, and</text>
+    <text x="816" y="362" class="copy">audiences must change without</text>
+    <text x="816" y="386" class="copy">an app release.</text>
+    <text x="816" y="430" class="copy">When not to use it: the paid</text>
+    <text x="816" y="454" class="copy">promise is unproven, or you</text>
+    <text x="816" y="478" class="copy">still need a purchase source</text>
+    <text x="816" y="502" class="copy">of truth first.</text>
+    <text x="816" y="540" class="badge">See Superwall vs RevenueCat</text>
+  </g>
+
+  <text x="56" y="644" class="foot">Conceptual decision graphic for IndieAppStack. Not a product screenshot. Docs checked Aug 18, 2026.</text>
+</svg>
