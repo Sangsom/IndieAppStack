@@ -37,6 +37,14 @@ const articleImageDimensions: Record<
     height: 1123,
     width: 1526,
   },
+  "/content-visuals/articles/revenuecat-paywalls-editor.png": {
+    height: 684,
+    width: 1024,
+  },
+  "/content-visuals/articles/adapty-paywall-builder.png": {
+    height: 735,
+    width: 1024,
+  },
 };
 
 export function ArticleBody({ blocks }: ArticleBodyProps) {

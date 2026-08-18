@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Estimated RevenueCat, Adapty, and Superwall fees at three revenue levels</title>
+  <desc id="desc">Grouped bar chart of calculated monthly platform fees on Aug 18, 2026. At $2,500 monthly revenue: RevenueCat $25, Adapty $0, Superwall $0. At $10,000: RevenueCat $100, Adapty $100, Superwall $0. At $50,000: all three $500 if Superwall revenue is fully paywall-attributed. Figures are 1% meter calculations from official pricing pages, not invoices.</desc>
+  <defs>
+    <style>
+      .eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.6px; text-transform: uppercase; fill: #2c5f4f; }
+      .title { font: 600 32px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .dek { font: 400 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .axis { font: 500 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #6e6a5e; }
+      .label { font: 600 16px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .value { font: 600 14px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #20241f; }
+      .legend { font: 500 14px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+      .foot { font: 500 12px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="#fbfaf7"/>
+  <text x="56" y="48" class="eyebrow">Price ledger | checked Aug 18, 2026</text>
+  <text x="56" y="90" class="title">What 1% costs at three revenue levels</text>
+  <text x="56" y="120" class="dek">Calculated from official meters. RevenueCat bills 1% of tracked revenue from $2,500 MTR. Adapty bills 1% after $5,000. Superwall Indie is $0 to $10,000 MAR, then 1% of paywall-attributed revenue.</text>
+
+  <rect x="56" y="148" width="16" height="16" fill="#2c5f4f"/>
+  <text x="80" y="161" class="legend">RevenueCat</text>
+  <rect x="196" y="148" width="16" height="16" fill="#9a6b23"/>
+  <text x="220" y="161" class="legend">Adapty</text>
+  <rect x="308" y="148" width="16" height="16" fill="#6e6a5e"/>
+  <text x="332" y="161" class="legend">Superwall Indie, all through its paywalls</text>
+
+  <!-- plot area: x=120 to 1140, y=200 to 560. max $500 = 360px -->
+  <line x1="120" y1="200" x2="120" y2="560" stroke="#e7e2d7" stroke-width="1"/>
+  <line x1="120" y1="560" x2="1140" y2="560" stroke="#e7e2d7" stroke-width="1"/>
+  <line x1="120" y1="200" x2="1140" y2="200" stroke="#e7e2d7" stroke-width="1"/>
+  <line x1="120" y1="380" x2="1140" y2="380" stroke="#e7e2d7" stroke-width="1"/>
+  <text x="108" y="564" class="axis" text-anchor="end">$0</text>
+  <text x="108" y="384" class="axis" text-anchor="end">$250</text>
+  <text x="108" y="204" class="axis" text-anchor="end">$500</text>
+
+  <!-- Group 1: $2,500 at x=200-460. bars 56 wide, gap 16. RC 25=18px, others 0 -->
+  <text x="330" y="592" class="label" text-anchor="middle">$2,500 / month</text>
+  <rect x="214" y="542" width="56" height="18" fill="#2c5f4f"/>
+  <text x="242" y="534" class="value" text-anchor="middle">$25</text>
+  <rect x="286" y="556" width="56" height="4" fill="#9a6b23"/>
+  <text x="314" y="548" class="value" text-anchor="middle">$0</text>
+  <rect x="358" y="556" width="56" height="4" fill="#6e6a5e"/>
+  <text x="386" y="548" class="value" text-anchor="middle">$0</text>
+
+  <!-- Group 2: $10,000. RC/Adapty 100=72px -->
+  <text x="630" y="592" class="label" text-anchor="middle">$10,000 / month</text>
+  <rect x="514" y="488" width="56" height="72" fill="#2c5f4f"/>
+  <text x="542" y="480" class="value" text-anchor="middle">$100</text>
+  <rect x="586" y="488" width="56" height="72" fill="#9a6b23"/>
+  <text x="614" y="480" class="value" text-anchor="middle">$100</text>
+  <rect x="658" y="556" width="56" height="4" fill="#6e6a5e"/>
+  <text x="686" y="548" class="value" text-anchor="middle">$0</text>
+
+  <!-- Group 3: $50,000. all 500=360px -->
+  <text x="930" y="592" class="label" text-anchor="middle">$50,000 / month</text>
+  <rect x="814" y="200" width="56" height="360" fill="#2c5f4f"/>
+  <text x="842" y="192" class="value" text-anchor="middle">$500</text>
+  <rect x="886" y="200" width="56" height="360" fill="#9a6b23"/>
+  <text x="914" y="192" class="value" text-anchor="middle">$500</text>
+  <rect x="958" y="200" width="56" height="360" fill="#6e6a5e"/>
+  <text x="986" y="192" class="value" text-anchor="middle">$500</text>
+
+  <text x="56" y="636" class="foot">Sources: revenuecat.com/pricing | adapty.io/pricing | superwall.com/pricing | retrieved Aug 18, 2026. Superwall $500 assumes all $50,000 is paywall-attributed. Not invoices.</text>
+  <text x="56" y="656" class="foot">IndieAppStack conceptual chart. Recheck official pages before committing spend.</text>
+</svg>
