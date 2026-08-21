@@ -167,26 +167,30 @@ You can, but plan for it. Because entitlement checks and purchase state run thro
     name: "Superwall",
     slug: "superwall",
     tagline:
-      "Remotely configurable paywalls and experimentation for subscription apps.",
+      "Subscription infrastructure is free; Indie is $0 to $10,000 MAR, then 1%; paid plans start at $49 per month plus 1%.",
     description:
-      "Superwall helps teams design, target, and test native paywalls without app releases, with analytics for conversion experiments.",
+      "Superwall helps teams design, target, and test native paywalls without app releases, with free subscription infrastructure and paywall billing on attributed revenue.",
     website_url: "https://superwall.com/",
-    pricing_last_checked: "2026-07-01",
+    pricing_last_checked: "2026-08-21",
     pricing_summary:
-      "Free and paid tiers based on monthly attributed revenue, plus custom enterprise pricing.",
+      "Indie is free to $10,000 monthly attributed revenue, then 1% of that MAR; Startup is $49 per month plus 1%; Scale is $199 per month plus 1%; subscription infrastructure stays free at any scale.",
     pricing_model: "usage_based",
     best_for: [
-      "Remote paywalls",
-      "Paywall A/B tests",
-      "Subscription conversion",
+      "Remote paywall experiments without an app release",
+      "Billing only on paywall-attributed revenue",
+      "Running Superwall next to an existing purchase backend",
     ],
-    not_good_for: ["Apps needing a full backend database"],
-    platforms: ["iOS", "Android", "React Native", "Flutter"],
+    not_good_for: [
+      "A simple Apple-only app that can ship a StoreKit 2 paywall in code",
+      "Teams that need auth, a database, or file storage from the same vendor",
+      "Builders who will not iterate on paywalls remotely",
+    ],
+    platforms: ["iOS", "Android", "React Native", "Flutter", "Web"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["RevenueCat", "Adapty", "Qonversion"],
     categorySlugs: ["paywalls", "monetization"],
     internal_notes:
-      "Pricing/features checked 2026-07-01 from https://superwall.com/pricing and https://docs.superwall.com/",
+      "Pricing/features checked 2026-08-21 from https://superwall.com/pricing (Indie $0 to $10k MAR then 1% of total MAR; Startup $49/mo + 1%; Scale $199/mo + 1%; Enterprise custom flat-rate; infra free at any scale; paywall 1% is paywall-attributed only) and https://www.revenuecat.com/pricing/ (MTR FAQ: $2.5k then 1% of tracked revenue). Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Qonversion",

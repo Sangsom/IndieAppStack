@@ -177,6 +177,23 @@ Notes:
 - Internal links were checked against published guide/comparison slugs. `telemetrydeck-vs-posthog-indie-analytics` is still briefed (unpublished), so it is referenced only via the analytics category and the privacy-friendly analytics starter stack, not linked directly.
 - These four articles are `ai_assisted` in the seed and `human_reviewed` true so they publish; re-read the bodies and re-run `db:seed` if any wording changes.
 
+## Superwall tool page refresh (2026-08-21)
+
+Live price check for `/tools/superwall`. Copy lives in `scripts/tool-content.json` (key `superwall`) and the Superwall object in `scripts/seed-database.mjs`.
+
+| Tool       | Claim type | Surface                      | Status   | Source                                                                                                                                                                                                                  |
+| ---------- | ---------- | ---------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Superwall  | pricing    | tools/superwall              | verified | https://superwall.com/pricing (Indie $0 to $10k MAR then 1% of total MAR; Startup $49/mo + 1% MAR; Scale $199/mo + 1% MAR; Enterprise custom flat-rate; infra free at any scale; paywall 1% is paywall-attributed only) |
+| Superwall  | feature    | tools/superwall              | verified | https://superwall.com/pricing (paywall engine renders on iOS, Android, React Native, Flutter, and web; Indie includes IAP SDK, paywalls, campaigns, audiences, templates; localization and collaborators on Startup)    |
+| RevenueCat | pricing    | tools/superwall (comparison) | verified | https://www.revenuecat.com/pricing/ (FAQ: MTR is all revenue RevenueCat tracks; $2.5k then 1%; no charge below the threshold)                                                                                           |
+
+Notes:
+
+- Superwall's plan cards added monthly Startup ($49) and Scale ($199) fees that were not on the July 19, 2026 tool-page snapshot. The two-layer meter (free infra / attributed paywall 1%) is unchanged.
+- Indie is the only card that prints the $10,000 MAR free band. Startup and Scale print a monthly fee plus 1% of MAR with no free band on those cards.
+- The `$50,000` worked example (none through Superwall → $0; half through Superwall → 1% of $25,000) is Superwall's own illustration on that pricing page, dated Aug 21, 2026.
+- Comparison articles that still quote the July 19 Superwall snapshot (`superwall-vs-revenuecat`, `revenuecat-alternatives`, `revenuecat-vs-adapty-ios-subscriptions`) were not updated in this refresh.
+
 ## Article Review Note Template
 
 Add this block to each draft before it moves from draft to review:

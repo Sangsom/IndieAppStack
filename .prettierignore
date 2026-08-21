@@ -8,3 +8,7 @@ next-env.d.ts
 
 # dm-hub tooling data (machine-written brand profiles, per engagement)
 .dm-hub
+
+# Content-writer run artifacts and rd-web local state
+output
+.claude
