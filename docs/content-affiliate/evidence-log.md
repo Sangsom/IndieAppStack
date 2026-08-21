@@ -194,6 +194,25 @@ Notes:
 - The `$50,000` worked example (none through Superwall → $0; half through Superwall → 1% of $25,000) is Superwall's own illustration on that pricing page, dated Aug 21, 2026.
 - Comparison articles that still quote the July 19 Superwall snapshot (`superwall-vs-revenuecat`, `revenuecat-alternatives`, `revenuecat-vs-adapty-ios-subscriptions`) were not updated in this refresh.
 
+## Stripe is not a RevenueCat alternative on iOS (2026-08-21)
+
+Guide slug `why-stripe-is-not-a-revenuecat-alternative-ios`. Copy lives in `scripts/seed-database.mjs` and `output/indieappstack/why-stripe-is-not-a-revenuecat-alternative-ios/content.md`.
+
+| Tool / source | Claim type   | Surface                                               | Status   | Source                                                                                                                                                                                                                                                                                                 |
+| ------------- | ------------ | ----------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Apple         | feature      | guides/why-stripe-is-not-a-revenuecat-alternative-ios | verified | https://developer.apple.com/app-store/review/guidelines/ (3.1.1 In-App Purchase; 3.1.3(e) goods/services outside the app; 3.1.3(a)/(b)/(d) other purchase methods)                                                                                                                                     |
+| Apple         | feature      | guides/why-stripe-is-not-a-revenuecat-alternative-ios | verified | https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu (updated Aug 18, 2026; unified terms Oct 1, 2026)                                                                                                                                                                       |
+| Stripe        | feature      | guides/why-stripe-is-not-a-revenuecat-alternative-ios | verified | https://docs.stripe.com/mobile/digital-goods (iOS digital goods: US Checkout redirect; physical goods: in-app payments)                                                                                                                                                                                |
+| Stripe        | feature      | guides/why-stripe-is-not-a-revenuecat-alternative-ios | verified | https://docs.stripe.com/mobile/digital-goods/checkout                                                                                                                                                                                                                                                  |
+| RevenueCat    | integration  | guides/why-stripe-is-not-a-revenuecat-alternative-ios | verified | https://www.revenuecat.com/integrations/stripe (web purchases mapped to the same customer/entitlement; not a StoreKit substitute)                                                                                                                                                                      |
+| AlternativeTo | visual_asset | guides/why-stripe-is-not-a-revenuecat-alternative-ios | verified | https://alternativeto.net/software/revenuecat/ captured Aug 21, 2026: copy "The best RevenueCat alternative is Stripe"; Stripe first with 69 likes; 13 apps; Payment Gateway filter; page last updated Jun 18, 2026. Crop: `/content-visuals/articles/alternativeto-revenuecat-ranking-2026-08-21.png` |
+
+Notes:
+
+- The brief cited 68 crowd votes. The live page on Aug 21, 2026 showed 69 likes. The article uses the measured number.
+- Decision graphic is an owned conceptual SVG, not a product screenshot.
+- No hands-on SDK testing claims.
+
 ## Article Review Note Template
 
 Add this block to each draft before it moves from draft to review:
