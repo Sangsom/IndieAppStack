@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">When Stripe fits versus when iOS in-app purchase is required</title>
+  <desc id="desc">Route by what you sell: in-app digital goods on iOS require StoreKit In-App Purchase and a subscription platform such as RevenueCat. Stripe fits physical goods, real-world services, web checkout, and Mac apps distributed outside the Mac App Store.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#20241f" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .title { font: 700 34px "Source Serif 4", "Iowan Old Style", Georgia, serif; fill: #20241f; }
+      .subtitle { font: 500 17px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .label { font: 700 12px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; letter-spacing: 0.12em; }
+      .tool { font: 700 28px Inter, ui-sans-serif, system-ui, sans-serif; fill: #20241f; }
+      .copy { font: 500 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #20241f; }
+      .muted { font: 500 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .on-pine { font: 600 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #fbfaf7; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="675"/>
+  <rect x="48" y="40" width="1104" height="595" rx="12" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="88" y="98" class="title">Route by what the purchase unlocks</text>
+  <text x="88" y="132" class="subtitle">Stripe and RevenueCat are not substitutes. Match the payment path to the product.</text>
+
+  <rect x="88" y="168" width="1008" height="48" rx="8" fill="#2c5f4f"/>
+  <text x="112" y="198" class="on-pine">Ask one question: does this purchase unlock digital features inside an iOS app?</text>
+
+  <rect x="88" y="244" width="488" height="292" rx="10" fill="#e8efea" stroke="#2c5f4f" stroke-width="1.5"/>
+  <text x="112" y="284" class="label">YES / IN-APP DIGITAL GOODS</text>
+  <text x="112" y="328" class="tool">StoreKit / RevenueCat</text>
+  <text x="112" y="368" class="copy">Subscriptions, premium unlocks, and</text>
+  <text x="112" y="392" class="copy">content used inside the app must use</text>
+  <text x="112" y="416" class="copy">Apple In-App Purchase (guideline 3.1.1).</text>
+  <text x="112" y="456" class="muted">Compare Adapty, Superwall, Qonversion,</text>
+  <text x="112" y="480" class="muted">or native StoreKit 2, not Stripe.</text>
+
+  <rect x="608" y="244" width="488" height="292" rx="10" fill="#fbfaf7" stroke="#e7e2d7" stroke-width="1.5"/>
+  <text x="632" y="284" class="label">NO / OUTSIDE THE APP</text>
+  <text x="632" y="328" class="tool">Stripe</text>
+  <text x="632" y="368" class="copy">Physical goods, real-world services,</text>
+  <text x="632" y="392" class="copy">web checkout, and Mac apps you ship</text>
+  <text x="632" y="416" class="copy">outside the Mac App Store.</text>
+  <text x="632" y="456" class="muted">Guideline 3.1.3(e) requires a non-IAP</text>
+  <text x="632" y="480" class="muted">method for goods consumed outside the app.</text>
+
+  <text x="88" y="580" class="muted">US storefront external-purchase links and EU alternative payments are narrow exceptions. They do not make Stripe a StoreKit replacement.</text>
+</svg>

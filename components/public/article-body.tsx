@@ -41,6 +41,10 @@ const articleImageDimensions: Record<
     height: 684,
     width: 1024,
   },
+  "/content-visuals/articles/alternativeto-revenuecat-ranking-2026-08-21.png": {
+    height: 1494,
+    width: 1600,
+  },
   "/content-visuals/articles/adapty-paywall-builder.png": {
     height: 735,
     width: 1024,
