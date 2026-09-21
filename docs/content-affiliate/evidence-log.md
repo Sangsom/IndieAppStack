@@ -213,6 +213,25 @@ Notes:
 - Decision graphic is an owned conceptual SVG, not a product screenshot.
 - No hands-on SDK testing claims.
 
+## Keywords Everywhere Affiliate Setup (2026-09-21)
+
+| Tool / source | Claim type | Surface | Status | Source |
+| ------------- | ---------- | ------- | ------ | ------ |
+| Keywords Everywhere | pricing | tools/keywords-everywhere, guides/keywords-everywhere-indie-mobile-developers | verified | https://keywordseverywhere.com/compare-plans.html (Bronze $84 / 100k credits / 1 seat; Silver $168 / 400k / 3; Gold $480 / 2M / 10; Platinum $1,440 / 8M / 20; annual only; credits expire 12 months) |
+| Keywords Everywhere | feature | same | verified | https://keywordseverywhere.com/frequently-asked-questions.html (credits, Google Keyword Planner data, no Safari/mobile app, not a rank tracker, YouTube/Amazon show Google volume, privacy: keywords sent to fetch metrics and not stored) |
+| Keywords Everywhere | platform | same | verified | https://keywordseverywhere.com and FAQ: Chrome, Firefox, Edge |
+| Keywords Everywhere | feature | same | verified | Chrome Web Store listing 2026-09-21: 4.5 from 5.7K ratings, 1.6M+ users, version 11.55, developer Axeman Technology Solutions LLP |
+| Keywords Everywhere | affiliate | same | needs_review | Owner-supplied FirstPromoter URL https://keywordseverywhere.com?fpr=od3ykm. Public copy does not state commission or cookie window. Collaborator.pro listed 40% recurring / 60-day cookie; unverified until FirstPromoter dashboard confirmation. |
+| Keywords Everywhere | visual_asset | guides/keywords-everywhere-indie-mobile-developers | verified | Owned decision SVG at `/content-visuals/articles/keywords-everywhere-decision.svg`. Not a product screenshot. |
+| Keywords Everywhere | visual_asset | same, tools/keywords-everywhere | verified | Owned captures 2026-09-21: `/content-visuals/articles/keywords-everywhere-extension-popup.png` (email redacted; credits 0) and `/content-visuals/articles/keywords-everywhere-google-serp-app-query.jpg` (volume/CPC hidden). |
+| Keywords Everywhere | hands_on | same | verified | Captures document the unpaid UI only. Public copy may describe what the screenshots show. Do not claim ranking, accuracy, or full-product testing. Do not publish overlay Moz/traffic figures as IndieAppStack facts. |
+
+Notes:
+
+- Decision graphic is an owned conceptual SVG, not a product screenshot.
+- Product screenshots are owned captures with account email redacted.
+- Do not publish commission rate or cookie window until the FirstPromoter dashboard values are recorded.
+
 ## Article Review Note Template
 
 Add this block to each draft before it moves from draft to review:

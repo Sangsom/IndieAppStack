@@ -4,6 +4,17 @@ import { cwd, exit } from "node:process";
 
 import { createClient } from "@supabase/supabase-js";
 
+import {
+  getKeywordsEverywhereArticleSeed,
+  getKeywordsEverywhereProgramSeed,
+  getKeywordsEverywhereToolContent,
+  getKeywordsEverywhereToolSeed,
+  getKeywordsEverywhereTopicSeed,
+  keywordsEverywhereAffiliateUrl,
+  keywordsEverywhereGuideSlug,
+  keywordsEverywhereSlug,
+} from "./content/keywords-everywhere.mjs";
+
 function readEnvLocal() {
   const envPath = path.join(cwd(), ".env.local");
 
@@ -76,6 +87,9 @@ const toolContentPath = path.join(cwd(), "scripts/tool-content.json");
 const toolContentBySlug = fs.existsSync(toolContentPath)
   ? JSON.parse(fs.readFileSync(toolContentPath, "utf8"))
   : {};
+Object.assign(toolContentBySlug, {
+  [keywordsEverywhereSlug]: getKeywordsEverywhereToolContent(),
+});
 
 const seedTools = [
   {
@@ -869,6 +883,7 @@ Warp's AI runs on a monthly credit allowance rather than unlimited use. The Free
     internal_notes:
       "Pricing/features checked 2026-07-18 from https://www.warp.dev/pricing and https://www.warp.dev/download (Free $0 limited AI + bring-your-own inference; Build $20/1,500 credits; Max $200/18,000 credits; Business $50/seat + SAML SSO; runs on macOS/Windows/Linux). Affiliate: self-serve referral link https://app.warp.dev/referral/L6LWW.",
   },
+  getKeywordsEverywhereToolSeed(),
 ];
 
 try {
@@ -1131,6 +1146,7 @@ try {
             internal_notes:
               "Checked 2026-07-18. First live affiliate link on the site. Referral URL: https://app.warp.dev/referral/L6LWW.",
           },
+          getKeywordsEverywhereProgramSeed(),
         ],
         { onConflict: "name" },
       )
@@ -1154,6 +1170,17 @@ try {
         affiliate_program_id: programs.get("Warp Referral Program").id,
         destination_url: "https://app.warp.dev/referral/L6LWW",
         slug: "warp",
+        status: "active",
+        default_rel: "sponsored nofollow",
+        disclosure_required: true,
+      },
+      {
+        tool_id: tools.get(keywordsEverywhereSlug).id,
+        affiliate_program_id: programs.get(
+          "Keywords Everywhere Affiliate Program",
+        ).id,
+        destination_url: keywordsEverywhereAffiliateUrl,
+        slug: keywordsEverywhereSlug,
         status: "active",
         default_rel: "sponsored nofollow",
         disclosure_required: true,
@@ -1272,6 +1299,7 @@ Last checked: 2026-07-18.`,
           ai_assisted: true,
           published_at: warpPublishedAt,
         },
+        getKeywordsEverywhereArticleSeed(categories.get("landing-pages").id),
         {
           title: "Best monetization tools for solo mobile developers",
           slug: "best-monetization-tools-solo-mobile-developers",
@@ -3942,6 +3970,30 @@ Last checked: Aug 21, 2026.
         sort_order: 10,
       },
       {
+        article_id: articles.get(keywordsEverywhereGuideSlug).id,
+        tool_id: tools.get(keywordsEverywhereSlug).id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get(keywordsEverywhereGuideSlug).id,
+        tool_id: tools.get("apptweak").id,
+        relationship: "supporting",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get(keywordsEverywhereGuideSlug).id,
+        tool_id: tools.get("appfigures").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get(keywordsEverywhereGuideSlug).id,
+        tool_id: tools.get("framer").id,
+        relationship: "supporting",
+        sort_order: 40,
+      },
+      {
         article_id: articles.get("warp-terminal-for-indie-mobile-developers")
           .id,
         tool_id: tools.get("fastlane").id,
@@ -4024,6 +4076,15 @@ Last checked: Aug 21, 2026.
   await upsert(
     "topic_queue",
     [
+      getKeywordsEverywhereTopicSeed({
+        landingPagesCategoryId: categories.get("landing-pages").id,
+        toolIds: [
+          tools.get(keywordsEverywhereSlug).id,
+          tools.get("apptweak").id,
+          tools.get("appfigures").id,
+          tools.get("framer").id,
+        ],
+      }),
       {
         title: "Superwall alternatives for indie iOS apps",
         slug: "superwall-alternatives-ios-apps",

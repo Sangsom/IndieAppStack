@@ -229,7 +229,7 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
           ) : null}
 
           {blocks.length ? (
-            <section className="rounded-card border border-rule bg-surface p-5 shadow-field">
+            <section className="min-w-0 rounded-card border border-rule bg-surface p-5 shadow-field">
               <ArticleBody blocks={blocks} />
             </section>
           ) : (

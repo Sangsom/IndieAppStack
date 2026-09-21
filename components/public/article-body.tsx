@@ -49,11 +49,19 @@ const articleImageDimensions: Record<
     height: 735,
     width: 1024,
   },
+  "/content-visuals/articles/keywords-everywhere-extension-popup.png": {
+    height: 496,
+    width: 542,
+  },
+  "/content-visuals/articles/keywords-everywhere-google-serp-app-query.jpg": {
+    height: 818,
+    width: 1024,
+  },
 };
 
 export function ArticleBody({ blocks }: ArticleBodyProps) {
   return (
-    <div className="grid gap-5">
+    <div className="grid min-w-0 gap-5">
       {blocks.map((block, index) => {
         if (block.type === "heading") {
           const Heading = block.level === 2 ? "h2" : "h3";
@@ -88,10 +96,10 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
           };
 
           return (
-            <figure className="grid gap-2" key={index}>
+            <figure className="grid w-full min-w-0 max-w-full gap-2" key={index}>
               <Image
                 alt={block.alt}
-                className="h-auto w-full"
+                className="h-auto w-full max-w-full min-w-0"
                 height={dimensions.height}
                 sizes="(min-width: 1024px) 768px, calc(100vw - 2rem)"
                 src={block.src}

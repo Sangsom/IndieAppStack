@@ -176,7 +176,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         </header>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px] lg:items-start">
-          <main className="rounded-card border border-rule bg-surface p-5 shadow-field">
+          <main className="min-w-0 rounded-card border border-rule bg-surface p-5 shadow-field">
             <ArticleBody blocks={blocks} />
           </main>
 

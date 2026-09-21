@@ -111,6 +111,16 @@ Three owned hero visuals created for the comparison-page build, all `generated_c
 
 Product-UI screenshots for these tools remain a capture-or-source asset request (do not generate). Each page ships the owned conceptual diagram above and defers real product screenshots until a hands-on capture exists.
 
+## Keywords Everywhere (2026-09-21)
+
+| Article | Asset | Type | Path | Provenance |
+| ------- | ----- | ---- | ---- | ---------- |
+| Keywords Everywhere for indie app developers | Fit decision graphic | decision_tree | `/content-visuals/articles/keywords-everywhere-decision.svg` | generated_concept |
+| Keywords Everywhere for indie app developers | Extension popup (credits at zero; account email redacted) | screenshot | `/content-visuals/articles/keywords-everywhere-extension-popup.png` | owned_capture |
+| Keywords Everywhere for indie app developers | Google SERP overlay for "grip training app" | screenshot | `/content-visuals/articles/keywords-everywhere-google-serp-app-query.jpg` | owned_capture |
+
+Owned captures dated 2026-09-21. Email was redacted from the popup. Do not quote overlay Moz, traffic, or ranking-keyword figures as IndieAppStack measurements. Do not generate a fake overlay.
+
 ## Article Review Template
 
 Add this block to each article brief or draft:

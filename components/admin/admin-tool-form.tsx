@@ -92,6 +92,41 @@ export function AdminToolForm({
         />
       </AdminField>
 
+      <AdminField
+        description="Public tool-page body. Supports the same Markdown conventions as articles."
+        label="Body markdown"
+      >
+        <textarea
+          className={`${inputClass} min-h-56 py-3 font-mono text-sm`}
+          defaultValue={tool?.body_markdown ?? ""}
+          name="body_markdown"
+        />
+      </AdminField>
+
+      <div className="grid gap-5 lg:grid-cols-2">
+        <AdminField
+          description="Use one item per line or comma-separated values."
+          label="Pros"
+        >
+          <textarea
+            className={`${inputClass} min-h-32 py-3`}
+            defaultValue={listValue(tool?.pros)}
+            name="pros"
+          />
+        </AdminField>
+
+        <AdminField
+          description="Use one item per line or comma-separated values."
+          label="Cons"
+        >
+          <textarea
+            className={`${inputClass} min-h-32 py-3`}
+            defaultValue={listValue(tool?.cons)}
+            name="cons"
+          />
+        </AdminField>
+      </div>
+
       <div className="grid gap-5 lg:grid-cols-2">
         <AdminField label="Website URL">
           <input
