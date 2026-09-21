@@ -19,7 +19,7 @@
 
   <rect class="bg" x="0" y="0" width="1200" height="675"/>
 
-  <text class="eyebrow" x="60" y="58">INDIEAPPSTACK � FIELD GUIDE</text>
+  <text class="eyebrow" x="60" y="58">INDIEAPPSTACK · FIELD GUIDE</text>
   <text class="headline" x="60" y="100">Does Keywords Everywhere earn a place?</text>
   <text class="subhead" x="60" y="134">A quick read for solo app builders deciding between Google keyword data and App Store ASO.</text>
 
@@ -45,7 +45,7 @@
 
   <rect x="624" y="176" width="516" height="424" rx="14" fill="#ffffff" stroke="#e7e2d7" stroke-width="1.5" filter="url(#softShadow)"/>
   <path d="M 638 176 h 488 a14 14 0 0 1 14 14 v 50 h -516 v -50 a14 14 0 0 1 14 -14 z" fill="#20241f"/>
-  <text class="col" x="652" y="217">Skip it  for now</text>
+  <text class="col" x="652" y="217">Skip it — for now</text>
 
   <g>
     <circle cx="664" cy="300" r="15" fill="none" stroke="#6e6a5e" stroke-width="2"/>
