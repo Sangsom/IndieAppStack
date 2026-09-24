@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">EU App Store commission at three monthly revenue levels</title>
+  <desc id="desc">For a Small Business Program developer using In-App Purchase on an EU App Store app, Apple's commission is 15 percent of the price the customer pays: 150 dollars on 1,000, 750 dollars on 5,000, and 1,500 dollars on 10,000.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#20241f" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .title { font: 700 34px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .subtitle { font: 500 17px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .label { font: 700 13px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; letter-spacing: 0.08em; }
+      .amount { font: 700 40px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .keep { font: 600 18px Inter, ui-sans-serif, system-ui, sans-serif; fill: #2c5f4f; }
+      .muted { font: 500 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .on-pine { font: 700 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #fbfaf7; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="720"/>
+  <rect x="48" y="36" width="1104" height="648" rx="12" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="88" y="96" class="title">What 15 percent costs in a month</text>
+  <text x="88" y="132" class="subtitle">EU App Store. In-App Purchase. Small Business Program, or a subscription after year one.</text>
+
+  <rect x="88" y="164" width="312" height="360" rx="10" fill="#e8efea" stroke="#2c5f4f" stroke-width="1.5"/>
+  <text x="112" y="208" class="label">CUSTOMERS PAY</text>
+  <text x="112" y="268" class="amount">$1,000</text>
+  <text x="112" y="320" class="muted">Apple commission</text>
+  <text x="112" y="356" class="keep">$150</text>
+  <text x="112" y="420" class="muted">You keep, before tax</text>
+  <text x="112" y="456" class="amount" style="font-size:32px">$850</text>
+
+  <rect x="444" y="164" width="312" height="360" rx="10" fill="#e8efea" stroke="#2c5f4f" stroke-width="1.5"/>
+  <text x="468" y="208" class="label">CUSTOMERS PAY</text>
+  <text x="468" y="268" class="amount">$5,000</text>
+  <text x="468" y="320" class="muted">Apple commission</text>
+  <text x="468" y="356" class="keep">$750</text>
+  <text x="468" y="420" class="muted">You keep, before tax</text>
+  <text x="468" y="456" class="amount" style="font-size:32px">$4,250</text>
+
+  <rect x="800" y="164" width="312" height="360" rx="10" fill="#e8efea" stroke="#2c5f4f" stroke-width="1.5"/>
+  <text x="824" y="208" class="label">CUSTOMERS PAY</text>
+  <text x="824" y="268" class="amount">$10,000</text>
+  <text x="824" y="320" class="muted">Apple commission</text>
+  <text x="824" y="356" class="keep">$1,500</text>
+  <text x="824" y="420" class="muted">You keep, before tax</text>
+  <text x="824" y="456" class="amount" style="font-size:32px">$8,500</text>
+
+  <text x="88" y="572" class="muted">Checked Sep 24, 2026 against Apple's EU business terms. The percent applies to the price the customer pays.</text>
+  <text x="88" y="604" class="muted">Tax, refunds, and another payment processor's fee are not in these figures.</text>
+  <rect x="88" y="628" width="1024" height="28" rx="6" fill="#2c5f4f"/>
+  <text x="112" y="647" class="on-pine">This rate does not apply outside the EU, or on a sale that is not In-App Purchase.</text>
+</svg>

@@ -57,6 +57,14 @@ const articleImageDimensions: Record<
     height: 818,
     width: 1024,
   },
+  "/content-visuals/articles/app-store-terms-2026-solo-cost.svg": {
+    height: 720,
+    width: 1200,
+  },
+  "/content-visuals/articles/app-store-terms-2026-fee-paths.svg": {
+    height: 780,
+    width: 1200,
+  },
 };
 
 export function ArticleBody({ blocks }: ArticleBodyProps) {
@@ -96,7 +104,10 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
           };
 
           return (
-            <figure className="grid w-full min-w-0 max-w-full gap-2" key={index}>
+            <figure
+              className="grid w-full min-w-0 max-w-full gap-2"
+              key={index}
+            >
               <Image
                 alt={block.alt}
                 className="h-auto w-full max-w-full min-w-0"

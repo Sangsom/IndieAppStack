@@ -3566,6 +3566,8 @@ For a solo developer on an EU App Store app who uses In-App Purchase and the Sma
 > [!NOTE] What this page will and will not do
 > Every rate below is copied from an Apple page or from Apple's Alternative Terms Addendum, checked Sep 24, 2026. A figure Apple does not publish is marked n/a. This is arithmetic for a one-person app. It is not a recommendation to switch payment tools, and it is not tax or legal advice.
 
+![Three cards showing Apple's 15 percent commission at $1,000, $5,000, and $10,000 a month: $150, $750, and $1,500.](/content-visuals/articles/app-store-terms-2026-solo-cost.svg "Small Business Program, EU In-App Purchase: 15 percent of the price the customer pays. Checked Sep 24, 2026.")
+
 ## What changed, who it applies to, and what it costs
 On Aug 18, 2026, Apple updated the Apple Developer Program License Agreement for apps distributed in the European Union. The Account Holder can agree to the terms now. They take effect on Oct 1, 2026, or on the date the account agrees, whichever is later. Until then, a developer who already uses alternative distribution or alternative payments in the EU can stay on the terms already in place.
 
@@ -3576,6 +3578,8 @@ Three charges are easy to mix up, because two of them are being removed and one 
 - The **initial acquisition fee** and the **store services fee** are defined in the Alternative Terms Addendum. The new terms eliminate both.
 - The **store services commission** is a different charge. It stays, and it applies only to certain out-of-app sales.
 - The **Core Technology Fee** was €0.50 per first annual install above a threshold. The new terms replace it, for apps distributed outside the App Store, with a **Core Technology Commission** of 5 percent.
+
+![Diagram of three EU fee paths: In-App Purchase at 15 or 26 percent, link-outs within 7 days at 10 or 15 percent, and a 5 percent Core Technology Commission outside the App Store.](/content-visuals/articles/app-store-terms-2026-fee-paths.svg "The initial acquisition fee and the store services fee are eliminated. The 5 percent commission is only for apps distributed outside the App Store.")
 
 If you sell through Apple In-App Purchase and you are in the Small Business Program, or the sale is an auto-renewable subscription after its first year, the new App Store rate is 15 percent. That is the figure in the short answer. The other rows in the table are for a different payment path or a developer who is not in a reduced-rate program.
 
