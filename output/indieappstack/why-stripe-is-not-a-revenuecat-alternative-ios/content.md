@@ -97,3 +97,4 @@ Last checked: Aug 21, 2026.
 - Read [RevenueCat vs Adapty vs Superwall](/comparisons/revenuecat-vs-adapty-ios-subscriptions) for the three-way subscription decision.
 - Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
 - Review the [monetization category](/categories/monetization).
+- Read [what the September 2026 App Store business terms cost](/guides/app-store-business-terms-2026-cost) for the EU commission arithmetic.
