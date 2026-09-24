@@ -96,67 +96,30 @@ const seedTools = [
   {
     name: "RevenueCat",
     slug: "revenuecat",
-    tagline:
-      "Subscriptions and in-app purchase infrastructure for mobile apps.",
+    tagline: "Free under $2,500 monthly tracked revenue, then 1% of that MTR.",
     description:
-      "RevenueCat helps solo developers ship reliable subscriptions, receipt validation, entitlements, paywalls, and revenue analytics without building purchase infrastructure from scratch.",
+      "RevenueCat pricing is $0 while monthly tracked revenue stays under $2,500, then 1% of that MTR. It handles receipt validation, entitlements, and purchase state for solo mobile apps.",
     website_url: "https://www.revenuecat.com/",
-    pricing_last_checked: "2026-07-19",
+    pricing_last_checked: "2026-09-24",
     pricing_summary:
-      "Free up to $2,500 monthly tracked revenue, then 1% of tracked revenue; Enterprise is custom.",
+      "Free while monthly tracked revenue stays under $2,500, then 1% of that MTR before store commission and taxes; Growth tools are 1% on their conversions; Custom is negotiated.",
     pricing_model: "usage_based",
-    best_for: ["Subscriptions", "In-app purchases", "Entitlement sync"],
-    not_good_for: ["Apps that only need one-time web checkout"],
-    pros: [
-      "Removes the most error-prone parts of subscriptions: receipt validation, entitlement checks, and cross-platform purchase state.",
-      "Free until $2,500 in monthly tracked revenue, so a small app pays nothing until it earns (checked July 19, 2026).",
-      "Open-source SDKs cover iOS, Android, React Native, and Flutter, which helps if you ship on more than one platform.",
-      "The remotely configurable paywall editor lets you change paywalls and run A/B tests without an app release.",
+    best_for: [
+      "Receipt validation and entitlement truth for subscriptions",
+      "A $0 tier while monthly tracked revenue stays under $2,500",
+      "The same customer record on iOS and another platform",
     ],
-    cons: [
-      "Pricing is a percentage of tracked revenue, so at higher revenue a flat fee or a self-built approach can become cheaper.",
-      "Entitlement logic runs through the SDK, which adds a dependency you would need to unwind to migrate away.",
-      "You still create products, prices, and subscription groups in App Store Connect yourself.",
-      "It is more infrastructure than an app with a single one-time unlock needs.",
+    not_good_for: [
+      "An iOS-only app that can ship a StoreKit 2 paywall in code",
+      "A single one-time unlock with no subscription",
+      "Builders who only need remote paywall experiments",
     ],
-    body_markdown: `RevenueCat is subscription and in-app purchase infrastructure for mobile apps. It sits between your app and the App Store and Google Play billing systems, handling receipt validation, entitlements, and cross-platform purchase state so you do not maintain that code yourself. For a solo iOS developer, the appeal is direct: you ship a paywall and reliable subscriptions in days instead of weeks, and you get revenue analytics without wiring up your own reporting.
-
-It fits best once the app actually charges money. If you are pre-revenue or only need a single one-time unlock, the SDK and its reporting are more than you need on day one. Most indie apps adopt it at the point they add their first subscription and keep it as they grow.
-
-## Pricing
-:::comparison RevenueCat plans (checked July 19, 2026)
-| Plan | Price | What is included |
-| --- | --- | --- |
-| Pro | Free up to $2,500 monthly tracked revenue, then 1% of tracked revenue | All SDKs, entitlements, the paywall editor, A/B testing, the REST API, and 40+ integrations |
-| Growth tools | 1% of monthly tracked revenue on tool conversions | Paywalls, web-to-app funnels, and A/B/n testing while you keep your own purchase backend |
-| Enterprise | Custom | Volume discounts, dedicated support, and custom SLAs for high-volume apps |
-:::
-
-The percentage applies to the revenue RevenueCat tracks, so your cost scales with what the app makes rather than a flat monthly fee. Pricing last checked July 19, 2026; confirm the current threshold and rate on the official pricing page before you rely on them.
-
-## Setup and integration
-RevenueCat provides open-source SDKs for iOS in Swift, plus Android, React Native, Flutter, and a REST API. On iOS you add the SDK through Swift Package Manager, create your products in App Store Connect, and map them to entitlements in the RevenueCat dashboard. The SDK then reports purchase and subscription state you can check with a single call.
-
-Plan for the parts RevenueCat does not remove. You still create products and subscription groups in App Store Connect, handle App Store review of the purchase flow, and design the paywall itself. The remotely configurable paywall editor lets you change paywall copy and layout without an app release, which matters once you start testing conversion. Sandbox testing on a real device is the slow part of any subscription integration, and that is true here too.
-
-## Frequently asked questions
-### Is RevenueCat free for a small app?
-Yes, within a limit. The Pro plan is free up to $2,500 in monthly tracked revenue, then costs 1% of tracked revenue (checked July 19, 2026). A pre-revenue or low-revenue app can run on it at no cost.
-
-### Do I still need App Store Connect if I use RevenueCat?
-Yes. You create your subscription products, prices, and subscription groups in App Store Connect and Google Play. RevenueCat maps those products to entitlements and manages purchase state; it does not replace the stores' own product setup or review.
-
-### How is RevenueCat different from Adapty?
-Both are subscription infrastructure with paywalls and analytics. [Adapty](/tools/adapty) leans harder into paywall A/B testing and no-code paywalls, while RevenueCat is broad subscription infrastructure with entitlements, analytics, and its own paywall editor. See the [RevenueCat vs Adapty comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions) for the head-to-head.
-
-### Can I switch away from RevenueCat later?
-You can, but plan for it. Because entitlement checks and purchase state run through the SDK, migrating means reworking that logic and re-validating receipts yourself or through another provider. It is a manageable change, not a trivial one, so weigh the lock-in against the time it saves early.`,
     platforms: ["iOS", "Android", "React Native", "Flutter", "Web"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["Adapty", "Superwall", "Qonversion"],
     categorySlugs: ["monetization", "paywalls"],
     internal_notes:
-      "Pricing/features checked 2026-07-19 from https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/",
+      "Pricing checked 2026-09-24 from https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management (free under $2,500 MTR, then 1% of whole MTR before store commission and taxes; $2,600 bills $26). September Apple figures carried from the app-store-business-terms-2026-cost guide. Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Adapty",
