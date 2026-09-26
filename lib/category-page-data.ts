@@ -11,6 +11,12 @@ import {
   hasSupabaseServerConfig,
 } from "@/lib/supabase/server";
 import { getAffiliateRedirectPath } from "@/lib/affiliate-links";
+import {
+  buildMonetizationComparison,
+  monetizationFaq,
+  monetizationHeading,
+  monetizationShortAnswer,
+} from "@/lib/monetization-category";
 import { singularizeNoun } from "@/lib/utils";
 
 type CategoryRow = {
@@ -97,8 +103,11 @@ export type CategoryPageData = {
   comparison: {
     columns: ComparisonColumn[];
     rows: ComparisonRow[];
+    sources?: string;
   };
   faq: CategoryFaq[];
+  heading?: string;
+  shortAnswer?: string;
   guides: CategoryGuide[];
   tools: CategoryTool[];
   useCases: {
@@ -218,18 +227,7 @@ const categoryCopy: Record<
     ],
   },
   monetization: {
-    faq: [
-      {
-        answer:
-          "Most subscription apps should pick a monetization tool before launch so paywalls, entitlements, and receipt validation are tested early.",
-        question: "When should I add monetization tooling?",
-      },
-      {
-        answer:
-          "Not always. A focused subscription service is often better when entitlements and cross-platform purchase state matter.",
-        question: "Is the app store SDK enough for subscriptions?",
-      },
-    ],
+    faq: monetizationFaq,
     whenToUse: [
       "You plan to sell subscriptions, consumables, unlocks, or paid tiers.",
       "You need entitlement state to sync reliably across devices.",
@@ -461,6 +459,10 @@ export const getCategoryPageData = cache(
       }));
 
     const copy = categoryCopy[category.slug] ?? defaultCopy(category);
+    const monetizationComparison =
+      category.slug === "monetization"
+        ? buildMonetizationComparison(tools)
+        : null;
 
     return {
       category: {
@@ -478,8 +480,12 @@ export const getCategoryPageData = cache(
         name: category.name,
         slug: category.slug,
       },
-      comparison: buildComparison(tools),
+      comparison: monetizationComparison ?? buildComparison(tools),
       faq: copy.faq,
+      heading:
+        category.slug === "monetization" ? monetizationHeading : undefined,
+      shortAnswer:
+        category.slug === "monetization" ? monetizationShortAnswer : undefined,
       guides: ((guidesResult.data ?? []) as ArticleRow[]).map((guide) => ({
         description:
           guide.excerpt ?? guide.subtitle ?? "A related category guide.",

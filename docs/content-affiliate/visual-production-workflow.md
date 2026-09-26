@@ -113,11 +113,11 @@ Product-UI screenshots for these tools remain a capture-or-source asset request 
 
 ## Keywords Everywhere (2026-09-21)
 
-| Article | Asset | Type | Path | Provenance |
-| ------- | ----- | ---- | ---- | ---------- |
-| Keywords Everywhere for indie app developers | Fit decision graphic | decision_tree | `/content-visuals/articles/keywords-everywhere-decision.svg` | generated_concept |
-| Keywords Everywhere for indie app developers | Extension popup (credits at zero; account email redacted) | screenshot | `/content-visuals/articles/keywords-everywhere-extension-popup.png` | owned_capture |
-| Keywords Everywhere for indie app developers | Google SERP overlay for "grip training app" | screenshot | `/content-visuals/articles/keywords-everywhere-google-serp-app-query.jpg` | owned_capture |
+| Article                                      | Asset                                                     | Type          | Path                                                                      | Provenance        |
+| -------------------------------------------- | --------------------------------------------------------- | ------------- | ------------------------------------------------------------------------- | ----------------- |
+| Keywords Everywhere for indie app developers | Fit decision graphic                                      | decision_tree | `/content-visuals/articles/keywords-everywhere-decision.svg`              | generated_concept |
+| Keywords Everywhere for indie app developers | Extension popup (credits at zero; account email redacted) | screenshot    | `/content-visuals/articles/keywords-everywhere-extension-popup.png`       | owned_capture     |
+| Keywords Everywhere for indie app developers | Google SERP overlay for "grip training app"               | screenshot    | `/content-visuals/articles/keywords-everywhere-google-serp-app-query.jpg` | owned_capture     |
 
 Owned captures dated 2026-09-21. Email was redacted from the popup. Do not quote overlay Moz, traffic, or ranking-keyword figures as IndieAppStack measurements. Do not generate a fake overlay.
 

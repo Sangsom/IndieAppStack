@@ -149,13 +149,11 @@ const articles = await upsert(
 );
 const article = articles[0];
 
-await supabase
-  .from("article_tools")
-  .delete()
-  .eq("article_id", article.id);
+await supabase.from("article_tools").delete().eq("article_id", article.id);
 
-const { error: articleToolsError } = await supabase.from("article_tools").insert(
-  [
+const { error: articleToolsError } = await supabase
+  .from("article_tools")
+  .insert([
     {
       article_id: article.id,
       tool_id: tool.id,
@@ -180,8 +178,7 @@ const { error: articleToolsError } = await supabase.from("article_tools").insert
       relationship: "supporting",
       sort_order: 40,
     },
-  ],
-);
+  ]);
 
 if (articleToolsError) {
   throw new Error(`article_tools insert failed: ${articleToolsError.message}`);

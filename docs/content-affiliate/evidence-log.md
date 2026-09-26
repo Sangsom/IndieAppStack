@@ -236,12 +236,12 @@ Notes:
 
 Guide slug `app-store-business-terms-2026-cost`. Copy lives in `scripts/seed-database.mjs` and `output/indieappstack/app-store-business-terms-2026-cost/content.md`.
 
-| Tool / source | Claim type | Surface | Status | Source |
-| --- | --- | --- | --- | --- |
-| Apple | feature | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/news/?id=gmws0jgp (Aug 18, 2026; effective Oct 1, 2026; initial acquisition fee and store services fee eliminated) |
-| Apple | feature | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/support/apps-in-the-eu/ (In-App Purchase 26%/15%, alternative payment 20%/10%, store services commission 15%/10%, Core Technology Commission 5% outside the App Store) |
-| Apple | feature | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu (same rates, 7-day link window, 12-month payment-choice lock) |
-| Apple | feature | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/contact/request/download/external/Alternative-EU-Terms-Addendum.pdf (section 3.4 initial acquisition fee and store services fee; section 4.1 Core Technology Fee €0.50 per first annual install above 1 million) |
+| Tool / source | Claim type | Surface                                   | Status   | Source                                                                                                                                                                                                                                       |
+| ------------- | ---------- | ----------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Apple         | feature    | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/news/?id=gmws0jgp (Aug 18, 2026; effective Oct 1, 2026; initial acquisition fee and store services fee eliminated)                                                                                               |
+| Apple         | feature    | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/support/apps-in-the-eu/ (In-App Purchase 26%/15%, alternative payment 20%/10%, store services commission 15%/10%, Core Technology Commission 5% outside the App Store)                                           |
+| Apple         | feature    | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/support/payment-options-on-the-app-store-in-the-eu (same rates, 7-day link window, 12-month payment-choice lock)                                                                                                 |
+| Apple         | feature    | guides/app-store-business-terms-2026-cost | verified | https://developer.apple.com/contact/request/download/external/Alternative-EU-Terms-Addendum.pdf (section 3.4 initial acquisition fee and store services fee; section 4.1 Core Technology Fee €0.50 per first annual install above 1 million) |
 
 Notes:
 

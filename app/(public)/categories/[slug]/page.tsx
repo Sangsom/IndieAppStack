@@ -14,6 +14,7 @@ import {
   type CategoryFaq,
 } from "@/lib/category-page-data";
 import { affiliateDisclosureCopy } from "@/lib/compliance";
+import { monetizationArchetypes } from "@/lib/monetization-category";
 import { createSeoMetadata, itemListJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 import { singularizeNoun } from "@/lib/utils";
@@ -144,6 +145,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const hasAffiliateLinks = data.tools.some((tool) => tool.affiliateHref);
+  const isMonetization = data.category.slug === "monetization";
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
@@ -182,8 +184,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           Category guide
         </p>
         <h1 className="mt-3 font-serif text-5xl font-semibold leading-tight text-ink sm:text-6xl">
-          {singularizeNoun(data.category.name)} tools for mobile apps
+          {data.heading ??
+            `${singularizeNoun(data.category.name)} tools for mobile apps`}
         </h1>
+        {data.shortAnswer ? (
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-ink">
+            {data.shortAnswer}
+          </p>
+        ) : null}
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
           {data.category.description}
         </p>
@@ -197,6 +205,42 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <BulletList items={data.useCases.whenToUse} />
         </Callout>
       </section>
+
+      {isMonetization && data.comparison.columns.length ? (
+        <div className="mt-12">
+          <ComparisonTable
+            caption="App monetization tools, priced Sep 25, 2026"
+            columns={data.comparison.columns}
+            featureLabel="Price check"
+            rows={data.comparison.rows}
+          />
+          {data.comparison.sources ? (
+            <p className="mt-4 max-w-4xl text-sm leading-6 text-muted">
+              {data.comparison.sources} The worked Apple figures are on the{" "}
+              <Link
+                className="font-semibold text-pine hover:text-ink"
+                href="/guides/app-store-business-terms-2026-cost"
+              >
+                September 2026 App Store terms guide
+              </Link>
+              .
+            </p>
+          ) : null}
+          <figure className="mt-8">
+            <img
+              alt="Decision diagram: subscription consumer and casual game apps use RevenueCat with Superwall, content and B2B apps use RevenueCat, and free utility or pre-launch apps skip a purchase SDK until they charge."
+              className="h-auto w-full rounded-card border border-rule"
+              height={640}
+              src="/content-visuals/articles/app-monetization-tools-by-archetype.svg"
+              width={1200}
+            />
+            <figcaption className="mt-3 text-sm leading-6 text-muted">
+              Pick by app type, then open the matching stack. Prices checked Sep
+              25, 2026.
+            </figcaption>
+          </figure>
+        </div>
+      ) : null}
 
       <section className="mt-12">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -231,13 +275,57 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
       </section>
 
-      {data.comparison.columns.length ? (
+      {!isMonetization && data.comparison.columns.length ? (
         <ComparisonTable
           caption={`${data.category.name} comparison`}
           className="mt-12"
           columns={data.comparison.columns}
           rows={data.comparison.rows}
         />
+      ) : null}
+
+      {isMonetization ? (
+        <section className="mt-12">
+          <p className="font-mono text-label-sm font-semibold uppercase tracking-[0.14em] text-pine">
+            Which to pick
+          </p>
+          <h2 className="mt-2 font-serif text-3xl font-semibold text-ink">
+            Match the tool to the app
+          </h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {monetizationArchetypes.map((archetype) => (
+              <Link
+                className="rounded-card border border-rule bg-surface p-4 transition-colors hover:border-pine focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+                href={archetype.href}
+                key={archetype.href}
+              >
+                <h3 className="font-serif text-2xl font-semibold text-ink">
+                  {archetype.name}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-muted">
+                  {archetype.pick}
+                </p>
+              </Link>
+            ))}
+          </div>
+          <p className="mt-6 text-body-md leading-7 text-muted">
+            If the app type is still open, use the{" "}
+            <Link
+              className="font-semibold text-pine hover:text-ink"
+              href="/stack-finder"
+            >
+              Stack Finder
+            </Link>{" "}
+            and start from the{" "}
+            <Link
+              className="font-semibold text-pine hover:text-ink"
+              href="/guides/best-monetization-tools-solo-mobile-developers"
+            >
+              monetization tools guide
+            </Link>
+            .
+          </p>
+        </section>
       ) : null}
 
       <div className="mt-12">

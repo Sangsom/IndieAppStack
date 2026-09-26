@@ -100,7 +100,7 @@ const seedTools = [
     description:
       "RevenueCat pricing is $0 while monthly tracked revenue stays under $2,500, then 1% of that MTR. It handles receipt validation, entitlements, and purchase state for solo mobile apps.",
     website_url: "https://www.revenuecat.com/",
-    pricing_last_checked: "2026-09-24",
+    pricing_last_checked: "2026-09-25",
     pricing_summary:
       "Free while monthly tracked revenue stays under $2,500, then 1% of that MTR before store commission and taxes; Growth tools are 1% on their conversions; Custom is negotiated.",
     pricing_model: "usage_based",
@@ -859,12 +859,12 @@ try {
           name: "Monetization",
           slug: "monetization",
           description:
-            "Compare subscription, paywall, purchase, and revenue tooling for mobile apps that need to charge confidently from the first release.",
+            "App monetization tools for a mobile app are RevenueCat, Adapty, Qonversion, and Superwall. Each is free under its own revenue threshold, then bills a percentage of tracked or paywall-attributed revenue. Apple's store commission is a separate bill.",
           sort_order: 10,
           status: "published",
           seo_description:
-            "Compare mobile app monetization tools for subscriptions, paywalls, entitlements, revenue analytics, and pricing experiments.",
-          seo_title: "Mobile App Monetization Tools",
+            "Compare app monetization tools for subscriptions and paywalls. Prices checked Sep 25, 2026, with Apple's September terms kept as a separate bill.",
+          seo_title: "App monetization tools",
         },
         {
           name: "Paywalls",
