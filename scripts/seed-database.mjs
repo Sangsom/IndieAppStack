@@ -79,6 +79,22 @@ const comparisonsPublishedAt = "2026-07-19T09:00:00.000Z";
 const superwallAlternativesPublishedAt = "2026-08-14T02:46:21.000Z";
 const stripeGuidePublishedAt = "2026-08-21T09:00:00.000Z";
 const appStoreTermsGuidePublishedAt = "2026-09-24T03:00:00.000Z";
+const ios27GuidePublishedAt = "2026-09-26T03:10:00.000Z";
+
+function readIos27GuideBody() {
+  const full = fs.readFileSync(
+    path.join(cwd(), "output/indieappstack/ios-27-and-your-stack/content.md"),
+    "utf8",
+  );
+  const marker = "## Short answer";
+  const index = full.indexOf(marker);
+
+  if (index === -1) {
+    throw new Error("iOS 27 guide is missing the Short answer heading.");
+  }
+
+  return `${full.slice(index).trim()}\n`;
+}
 
 // Rebuilt long-form tool content (body_markdown, pros, cons, pricing_summary,
 // noindex) lives in a JSON data file so multi-paragraph Markdown does not have
@@ -3685,6 +3701,26 @@ Last checked: Sep 24, 2026.
           published_at: appStoreTermsGuidePublishedAt,
         },
         {
+          title:
+            "iOS 27 and your stack: what actually changed for a solo developer",
+          slug: "ios-27-and-your-stack",
+          subtitle:
+            "Most solo apps can wait. New uploads need the iOS 27 SDK in April 2027.",
+          excerpt:
+            "iOS 27 shipped Sep 14, 2026. For a solo app already on the store, nothing has to ship this month. Answer Apple's social-media question only if you submit an update.",
+          body_markdown: readIos27GuideBody(),
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("monetization").id,
+          seo_title: "iOS 27: what indie developers need to do",
+          seo_description:
+            "iOS 27 shipped Sep 14, 2026. Most solo apps can wait. New uploads need the iOS 27 SDK in April 2027. Answer one question if you submit now.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: ios27GuidePublishedAt,
+        },
+        {
           title: "Draft guide that should stay private",
           slug: "draft-guide-private",
           subtitle: "This seed record proves drafts stay out of public routes.",
@@ -4140,6 +4176,18 @@ Last checked: Sep 24, 2026.
         tool_id: tools.get("bitrise").id,
         relationship: "supporting",
         sort_order: 30,
+      },
+      {
+        article_id: articles.get("ios-27-and-your-stack").id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "supporting",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("ios-27-and-your-stack").id,
+        tool_id: tools.get("sentry").id,
+        relationship: "supporting",
+        sort_order: 20,
       },
     ],
     { onConflict: "article_id,tool_id" },

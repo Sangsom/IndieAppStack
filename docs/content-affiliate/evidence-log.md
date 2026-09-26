@@ -250,7 +250,7 @@ Notes:
 
 ## iOS 27 and your stack (2026-09-26)
 
-Guide slug `ios-27-and-your-stack`. Draft only, at Review. Copy lives in `output/indieappstack/ios-27-and-your-stack/content.md`. Not seeded.
+Guide slug `ios-27-and-your-stack`. Copy lives in `output/indieappstack/ios-27-and-your-stack/content.md` and is seeded as a published guide.
 
 | Tool / source | Claim type   | Surface                      | Status       | Source                                                                                                                                                                                                             |
 | ------------- | ------------ | ---------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -269,7 +269,7 @@ Guide slug `ios-27-and-your-stack`. Draft only, at Review. Copy lives in `output
 Notes:
 
 - Checked Sep 26, 2026. No hands-on SDK testing. No vendor blog is a source for an Apple date.
-- The piece is a draft. It is not in `scripts/seed-database.mjs` until publish.
+- Seeded as a published guide from `scripts/seed-database.mjs` on Sep 26, 2026.
 
 ## Article Review Note Template
 
