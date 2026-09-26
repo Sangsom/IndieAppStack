@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">iOS 27 store changes with a date, and changes still marked n/a</title>
+  <desc id="desc">Social media capabilities must be indicated from September 2026 in order to submit an update. New uploads need the iOS 27 SDK starting April 2027. Volume Purchasing is described as this fall, Group Purchases as later this year, and Bundles and Suites as later in 2026. A calendar day for those three is n/a. Product page headers are coming this fall and are not a code change.</desc>
+  <defs>
+    <filter id="cardshadow2" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#20241f" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .title { font: 700 32px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .subtitle { font: 500 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .label { font: 700 12px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; letter-spacing: 0.08em; }
+      .name { font: 700 20px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .when { font: 700 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #2c5f4f; }
+      .muted { font: 500 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="620"/>
+  <rect x="40" y="28" width="1120" height="564" rx="12" fill="#ffffff" filter="url(#cardshadow2)"/>
+  <text x="72" y="80" class="title">Dated, or still n/a</text>
+  <text x="72" y="114" class="subtitle">Store and purchase surface. Checked Sep 26, 2026. No secondary dates.</text>
+
+  <rect x="72" y="148" width="1016" height="88" rx="10" fill="#e8efea" stroke="#2c5f4f" stroke-width="1.5"/>
+  <text x="96" y="182" class="name">Social media capabilities question</text>
+  <text x="96" y="210" class="when">September 2026, on the next submission</text>
+
+  <rect x="72" y="252" width="1016" height="88" rx="10" fill="#e8efea" stroke="#2c5f4f" stroke-width="1.5"/>
+  <text x="96" y="286" class="name">iOS 27 SDK for new uploads</text>
+  <text x="96" y="314" class="when">April 2027. Current minimum remains the iOS 26 SDK.</text>
+
+  <rect x="72" y="356" width="496" height="196" rx="10" fill="#fbfaf7" stroke="#e7e2d7" stroke-width="1.5"/>
+  <text x="96" y="392" class="label">COMING, DAY NOT PUBLISHED</text>
+  <text x="96" y="432" class="name">Volume Purchasing</text>
+  <text x="96" y="458" class="muted">This fall. Calendar day: n/a.</text>
+  <text x="96" y="496" class="name">Group Purchases</text>
+  <text x="96" y="522" class="muted">Later this year. Calendar day: n/a.</text>
+
+  <rect x="592" y="356" width="496" height="196" rx="10" fill="#fbfaf7" stroke="#e7e2d7" stroke-width="1.5"/>
+  <text x="616" y="392" class="label">NOT A REBUILD</text>
+  <text x="616" y="432" class="name">Bundles and Suites</text>
+  <text x="616" y="458" class="muted">Later in 2026. Open date: n/a.</text>
+  <text x="616" y="496" class="name">Product page headers</text>
+  <text x="616" y="522" class="muted">This fall. Not app code.</text>
+</svg>

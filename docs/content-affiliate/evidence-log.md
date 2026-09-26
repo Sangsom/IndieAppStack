@@ -248,6 +248,29 @@ Notes:
 - Checked Sep 24, 2026. Tax, payment-processor fees, and the Core Technology Fee at the three revenue levels are n/a.
 - No vendor blog is a rate source.
 
+## iOS 27 and your stack (2026-09-26)
+
+Guide slug `ios-27-and-your-stack`. Draft only, at Review. Copy lives in `output/indieappstack/ios-27-and-your-stack/content.md`. Not seeded.
+
+| Tool / source | Claim type   | Surface                      | Status       | Source                                                                                                                                                                                                             |
+| ------------- | ------------ | ---------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Apple         | feature      | guides/ios-27-and-your-stack | verified     | https://support.apple.com/en-us/149034 (iOS 27 released Sep 14, 2026) and https://developer.apple.com/news/releases/ (Xcode 27 27A266a on Sep 14, 2026; iOS 27.0 24A437)                                           |
+| Apple         | feature      | guides/ios-27-and-your-stack | verified     | https://developer.apple.com/news/?id=k1mtkt1k (Sep 9, 2026; April 2027 SDK minimum; social-media indication; macOS 27 Apple silicon only)                                                                          |
+| Apple         | feature      | guides/ios-27-and-your-stack | verified     | https://developer.apple.com/news/upcoming-requirements/ (current minimum still Xcode 26 / iOS 26 SDK since Apr 28, 2026)                                                                                           |
+| Apple         | platform     | guides/ios-27-and-your-stack | verified     | https://developer.apple.com/xcode/system-requirements/ (Xcode 27 requires macOS Tahoe 26.6+; deployment iOS 15–27, watchOS 9–27, macOS 12–27)                                                                      |
+| Apple         | feature      | guides/ios-27-and-your-stack | verified     | https://developer.apple.com/documentation/updates and https://developer.apple.com/forums/thread/832787 (scene life cycle on the iOS 27 SDK; older SDK builds keep working)                                         |
+| Apple         | feature      | guides/ios-27-and-your-stack | verified     | https://developer.apple.com/wwdc26/guides/app-store/ (Time Allowances from Sep 2026; Volume Purchasing this fall; Group Purchases later this year; Bundles later in 2026; 12-month commitment already on iOS 26.4) |
+| Apple         | feature      | guides/ios-27-and-your-stack | evidence_gap | Calendar day for Volume Purchasing, Group Purchases, and the Bundles request. Marked n/a. October 22 dates in secondary coverage are not used.                                                                     |
+| RevenueCat    | feature      | guides/ios-27-and-your-stack | verified     | https://github.com/RevenueCat/purchases-ios releases: 5.90.0 Sep 17, 2026 (paywall footer on iOS 27); 4.44.3 Aug 4, 2026; 5.80.1 Jul 2, 2026; 5.78.0 Jun 8, 2026                                                   |
+| Sentry        | platform     | guides/ios-27-and-your-stack | verified     | https://github.com/getsentry/sentry-cocoa/releases/tag/9.25.0 (Aug 5, 2026; macOS 12 and watchOS 9 because Xcode 27 drops earlier targets)                                                                         |
+| Catalog tools | feature      | guides/ios-27-and-your-stack | evidence_gap | No confirmed iOS 27 or Xcode 27 release note for Superwall, Adapty, Qonversion, Firebase, TelemetryDeck, OneSignal, or Fastlane. Dates marked n/a.                                                                 |
+| IndieAppStack | visual_asset | guides/ios-27-and-your-stack | verified     | Owned diagrams: `/content-visuals/articles/ios-27-solo-developer-decision.svg` and `/content-visuals/articles/ios-27-defer-timeline.svg`. Not product screenshots.                                                 |
+
+Notes:
+
+- Checked Sep 26, 2026. No hands-on SDK testing. No vendor blog is a source for an Apple date.
+- The piece is a draft. It is not in `scripts/seed-database.mjs` until publish.
+
 ## Article Review Note Template
 
 Add this block to each draft before it moves from draft to review:
