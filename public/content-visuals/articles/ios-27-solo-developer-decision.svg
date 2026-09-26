@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">What a solo iOS app does about iOS 27</title>
+  <desc id="desc">Three times to act. This month, answer Apple's social-media question only if you submit an update. Before the first Xcode 27 build, adopt the scene-based life cycle or the app fails to launch, and install Xcode 27 only on macOS Tahoe 26.6 or later. Starting April 2027, new uploads need the iOS 27 SDK. An already published binary is not given a removal date.</desc>
+  <defs>
+    <filter id="cardshadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#20241f" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .title { font: 700 32px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .subtitle { font: 500 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .label { font: 700 12px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; letter-spacing: 0.08em; }
+      .when { font: 700 26px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .copy { font: 500 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #20241f; }
+      .muted { font: 500 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="640"/>
+  <rect x="40" y="28" width="1120" height="584" rx="12" fill="#ffffff" filter="url(#cardshadow)"/>
+  <text x="72" y="80" class="title">Three times to act. Not a feature list.</text>
+  <text x="72" y="114" class="subtitle">Checked Sep 26, 2026. An app already on the store keeps running.</text>
+
+  <rect x="72" y="152" width="336" height="400" rx="10" fill="#e8efea" stroke="#2c5f4f" stroke-width="1.5"/>
+  <text x="96" y="190" class="label">THIS MONTH</text>
+  <text x="96" y="234" class="when">Only if you</text>
+  <text x="96" y="268" class="when">submit</text>
+  <text x="96" y="318" class="copy">Answer whether the app</text>
+  <text x="96" y="342" class="copy">includes social media</text>
+  <text x="96" y="366" class="copy">capabilities.</text>
+  <text x="96" y="430" class="muted">Do not rebuild because</text>
+  <text x="96" y="454" class="muted">iOS 27 shipped.</text>
+  <text x="96" y="510" class="muted">On the next submission.</text>
+
+  <rect x="432" y="152" width="336" height="400" rx="10" fill="#fbfaf7" stroke="#e7e2d7" stroke-width="1.5"/>
+  <text x="456" y="190" class="label">FIRST XCODE 27 BUILD</text>
+  <text x="456" y="234" class="when">Before that</text>
+  <text x="456" y="268" class="when">upload</text>
+  <text x="456" y="318" class="copy">Use the scene-based life</text>
+  <text x="456" y="342" class="copy">cycle, or the app fails</text>
+  <text x="456" y="366" class="copy">to launch.</text>
+  <text x="456" y="430" class="muted">Xcode 27 needs macOS</text>
+  <text x="456" y="454" class="muted">Tahoe 26.6 or later.</text>
+  <text x="456" y="510" class="muted">Older SDK builds still run.</text>
+
+  <rect x="792" y="152" width="336" height="400" rx="10" fill="#fbfaf7" stroke="#e7e2d7" stroke-width="1.5"/>
+  <text x="816" y="190" class="label">APRIL 2027</text>
+  <text x="816" y="234" class="when">New uploads</text>
+  <text x="816" y="268" class="when">only</text>
+  <text x="816" y="318" class="copy">The iOS 27 SDK becomes</text>
+  <text x="816" y="342" class="copy">the minimum for App</text>
+  <text x="816" y="366" class="copy">Store Connect.</text>
+  <text x="816" y="430" class="muted">Today the minimum is</text>
+  <text x="816" y="454" class="muted">still the iOS 26 SDK.</text>
+  <text x="816" y="510" class="muted">Removal date: n/a</text>
+</svg>
