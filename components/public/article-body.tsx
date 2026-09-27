@@ -65,6 +65,10 @@ const articleImageDimensions: Record<
     height: 780,
     width: 1200,
   },
+  "/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg": {
+    height: 720,
+    width: 1200,
+  },
 };
 
 export function ArticleBody({ blocks }: ArticleBodyProps) {

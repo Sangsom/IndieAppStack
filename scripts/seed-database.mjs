@@ -96,6 +96,23 @@ function readIos27GuideBody() {
   return `${full.slice(index).trim()}\n`;
 }
 
+function readSuperwallVsRevenueCatBody() {
+  const full = fs.readFileSync(
+    path.join(cwd(), "output/indieappstack/superwall-vs-revenuecat/content.md"),
+    "utf8",
+  );
+  const marker = "## Short answer";
+  const index = full.indexOf(marker);
+
+  if (index === -1) {
+    throw new Error(
+      "Superwall vs RevenueCat comparison is missing the Short answer heading.",
+    );
+  }
+
+  return `${full.slice(index).trim()}\n`;
+}
+
 // Rebuilt long-form tool content (body_markdown, pros, cons, pricing_summary,
 // noindex) lives in a JSON data file so multi-paragraph Markdown does not have
 // to be hand-escaped inside this module. Merged over each tool below by slug.
@@ -1877,124 +1894,24 @@ Last checked: Aug 18, 2026.
           published_at: publishedAt,
         },
         {
-          title: "Superwall vs RevenueCat for iOS subscription apps",
+          title: "RevenueCat vs Superwall for iOS subscription apps",
           slug: "superwall-vs-revenuecat",
           subtitle:
-            "Compare the remote paywall layer with the purchase-infrastructure layer, and decide whether to run one or both.",
+            "The same decision as Superwall vs RevenueCat: purchase truth, remote paywalls, or both.",
           excerpt:
-            "Compare Superwall and RevenueCat for iOS subscriptions, paywalls, entitlements, and pricing before choosing one or running both.",
-          body_markdown: `## Short answer
-[RevenueCat](/tools/revenuecat) and [Superwall](/tools/superwall) are often framed as rivals, but they lead with different jobs. Choose [RevenueCat](/tools/revenuecat) when the priority is durable purchase infrastructure: receipt validation, entitlement truth, and cross-platform customer state. Choose [Superwall](/tools/superwall) when the bottleneck is remote paywall presentation and fast creative iteration without shipping an app release. Many teams run both, because Superwall now keeps its subscription infrastructure free at any scale.
-
-There is no single winner. The right first choice depends on whether purchase truth or paywall iteration is the part of your system that must be dependable before the next release.
-
-> [!NOTE] Solo builder scope
-> This comparison is for a solo builder choosing a subscription and paywall stack for an iOS app. The goal is to sell and unlock reliably first, then iterate on the paywall once there is enough traffic to learn from.
-
-![Comparison graphic contrasting RevenueCat as the purchase and entitlement infrastructure layer with Superwall as the remote paywall presentation layer.](/content-visuals/articles/superwall-vs-revenuecat-comparison.svg "RevenueCat owns purchase truth; Superwall owns remote paywall iteration.")
-
-## Superwall vs RevenueCat at a glance
-:::comparison Superwall vs RevenueCat
-| Decision | RevenueCat | Superwall |
-| --- | --- | --- |
-| Center of gravity | Purchase infrastructure, entitlements, and customer state | Remote paywall presentation, campaigns, and experiments |
-| Choose it when... | Purchase truth must be reliable before anything else | You will change paywalls often without waiting on app review |
-| Paywall iteration | Built in, plus growth tools | Core strength; edit and test paywalls remotely |
-| Entitlement source of truth | Yes, its primary job | Its free infrastructure layer can also own this |
-| Cross-platform customer state | Strong focus across iOS, Android, and web | Available through its infrastructure layer |
-| Pricing meter (checked 2026-07-19) | Free up to $2,500 monthly tracked revenue, then about 1% of tracked revenue | Infrastructure free at any scale; paywall product free up to $10,000 monthly paywall-attributed revenue, then about 1% of that revenue |
-| Official sources | [Pricing](https://www.revenuecat.com/pricing/) and [docs](https://www.revenuecat.com/docs/) | [Pricing](https://superwall.com/pricing) and [docs](https://docs.superwall.com/) |
-:::
-
-## They solve two different jobs
-The category has converged, so both tools can technically handle purchases, entitlements, paywalls, and experiments. The useful way to tell them apart is by the job each one leads with.
-
-RevenueCat leads with purchase infrastructure. It handles StoreKit, receipt validation, restore, entitlement checks, webhooks, and cross-platform customer data, then adds paywall and growth tools on top. Superwall leads with the paywall itself: a remote editor, campaigns, audiences, and experiments, with a subscription infrastructure layer underneath that is now free at any scale.
-
-That overlap is why the choice feels confusing. The question is not "which one has paywalls," because both do. The question is which job is your bottleneck this month.
-
-## Choose RevenueCat when purchase truth is the job
-Choose [RevenueCat](/tools/revenuecat) when the subscription layer has to be dependable before the paywall gets sophisticated. For a solo iOS app, that usually means product mapping, SDK integration, receipt validation, restore purchases, entitlement checks, customer state, and revenue reporting that you do not want to improvise.
-
-RevenueCat is the strongest default when you want the purchase path to be boring and trustworthy, and when cross-platform customer state matters because the app already runs, or will run, on more than one platform.
-
-### Not good for
-- A team that only needs a remote paywall editor and already has reliable purchase infrastructure.
-- A web-only product that does not touch App Store or Google Play in-app purchases.
-- A builder who wants a generic backend database or a full product analytics warehouse.
-
-## Choose Superwall when paywall iteration is the job
-Choose [Superwall](/tools/superwall) when the bottleneck is changing the paywall, not proving that purchases work. You can edit paywall layout, copy, price display, targeting, and tests, then ship those changes without waiting on an App Store review cycle.
-
-Superwall is most compelling once the paid product is clear but the paywall is still moving. Its meter charges only on revenue its own paywalls convert, so infrastructure-only use stays free. That makes it reasonable to adopt Superwall for presentation while another tool, or Superwall's own free layer, owns entitlements.
-
-### Not good for
-- Apps that have not yet validated why anyone should pay.
-- Teams that need to settle purchase infrastructure and cross-platform state before touching presentation.
-- Builders who want one general analytics tool for product behavior beyond paywall and revenue flows.
-
-## Can you use RevenueCat and Superwall together?
-Yes, and many teams do. A common setup uses RevenueCat as the entitlement source of truth and Superwall as the remote paywall layer, wired together so paywall events and purchases stay in sync. This gives you durable purchase infrastructure and fast paywall iteration at the same time.
-
-The trade-off is two systems to integrate, reconcile, and reason about instead of one. Run both when paywall iteration and purchase truth are each real, active workloads. If you only need one job done well right now, start with the single tool that matches it and add the second later.
-
-Because Superwall keeps its infrastructure free at any scale, you can also run Superwall alone and let it own entitlements. Confirm that its infrastructure layer covers the platforms and reporting you need before you commit to that path.
-
-## Pricing comparison
-Pricing was source-checked on 2026-07-19 from official pages. Do not choose on pricing alone, and confirm the current numbers before you implement:
-
-- RevenueCat is free up to a monthly tracked-revenue threshold, then charges a small percentage of tracked revenue, with an enterprise path. At the last check the free tier covered up to $2,500 in monthly tracked revenue, then about 1%.
-- Superwall keeps its subscription infrastructure free at any scale and charges only on revenue its paywalls convert, above a free threshold. At the last check the paywall product was free up to $10,000 in monthly paywall-attributed revenue, then about 1% of that attributed revenue.
-
-The meters measure different things. RevenueCat's percentage applies to tracked revenue it processes; Superwall's applies only to revenue its paywalls drive. Match the meter to how your revenue actually flows.
-
-## What to verify before switching
-- Whether your product identifiers, subscription groups, and entitlement names map cleanly to the new tool.
-- Whether restore, grace periods, refunds, cancellations, and account deletion are covered.
-- Whether the tool integrates with the analytics, attribution, and backend systems you already use.
-- Whether the paywall changes you care about truly avoid an app release.
-- Whether exported data and webhooks meet your reporting needs.
-
-## Common questions
-
-### Is Superwall a replacement for RevenueCat?
-It can be, but they lead with different jobs. Superwall's infrastructure layer is free at any scale and can own entitlements, so a paywall-first team can run Superwall alone. Teams that want purchase truth and cross-platform customer state as the priority usually keep RevenueCat, and some run both.
-
-### Can RevenueCat and Superwall work together?
-Yes. A common pattern uses RevenueCat as the entitlement source of truth and Superwall as the remote paywall layer, kept in sync so purchases and paywall events agree. Expect to integrate and reconcile two systems rather than one.
-
-### Which is cheaper for a small app?
-Both start free. As of the 2026-07-19 check, RevenueCat is free up to $2,500 in monthly tracked revenue and Superwall's paywall product is free up to $10,000 in paywall-attributed revenue, with infrastructure free at any scale. The cheaper option depends on your revenue mix, so confirm the current thresholds on each pricing page.
-
-### Do I need either tool to launch a paywall?
-No. A native StoreKit 2 paywall with no third-party tool is a valid launch choice for a simple app. Add a paywall or infrastructure platform when you can name the experiment or the reliability problem it solves.
-
-## Source checks
-Pricing and product claims were checked on 2026-07-19 against official sources:
-
-- RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
-- Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
-
-Pricing meters and free thresholds change often, so confirm the current numbers on each official pricing page before committing. No hands-on testing claims are made in this comparison. The comparison graphic is an owned conceptual visual created for IndieAppStack.
-
-Last checked: 2026-07-19.
-
-## Related tools and guides
-- Compare all three options in the [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
-- Weigh other options in [RevenueCat alternatives for subscription apps](/comparisons/revenuecat-alternatives).
-- Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
-- Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
-- Review the [paywalls category](/categories/paywalls) and [monetization category](/categories/monetization).`,
+            "Compare RevenueCat vs Superwall for an iOS subscription app. Dated fees, the revenue-base split, and when to run both.",
+          body_markdown: readSuperwallVsRevenueCatBody(),
           author: "IndieAppStack",
           status: "published",
           content_type: "comparison",
           primary_category_id: categories.get("paywalls").id,
-          seo_title: "Superwall vs RevenueCat for iOS apps",
+          seo_title: "RevenueCat vs Superwall for iOS apps",
           seo_description:
-            "Compare Superwall and RevenueCat for iOS subscriptions, paywalls, entitlements, pricing model, and when to run both.",
+            "Compare RevenueCat vs Superwall for iOS apps. Dated fees, the revenue-base split, and when to run both. Checked Sep 27, 2026.",
           human_reviewed: true,
           ai_assisted: true,
           published_at: comparisonsPublishedAt,
+          updated_at: "2026-09-27T12:00:00.000Z",
         },
         {
           title: "RevenueCat alternatives for subscription apps",
