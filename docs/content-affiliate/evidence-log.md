@@ -271,6 +271,24 @@ Notes:
 - Checked Sep 26, 2026. No hands-on SDK testing. No vendor blog is a source for an Apple date.
 - Seeded as a published guide from `scripts/seed-database.mjs` on Sep 26, 2026.
 
+## RevenueCat vs Superwall refresh (2026-09-27)
+
+Comparison slug `superwall-vs-revenuecat`. URL unchanged. Copy lives in `output/indieappstack/superwall-vs-revenuecat/content.md` and is seeded by `readSuperwallVsRevenueCatBody()`.
+
+| Tool / source | Claim type   | Surface                             | Status   | Source                                                                                                                                                                                                                 |
+| ------------- | ------------ | ----------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| RevenueCat    | pricing      | comparisons/superwall-vs-revenuecat | verified | https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management (free up to $2,500 MTR; above that, 1% of the whole MTR; $2,600 bills $26; MTR is pre-commission) |
+| Superwall     | pricing      | comparisons/superwall-vs-revenuecat | verified | https://superwall.com/pricing (infra free at any scale; Indie $0 up to $10k MAR then 1% of total MAR; Startup $49/mo + 1% MAR; Scale $199/mo + 1% MAR; $50k none = $0; $50k half = 1% of $25k)                         |
+| Superwall     | integration  | comparisons/superwall-vs-revenuecat | verified | https://superwall.com/docs/ios/guides/using-revenuecat (purchase controller vs recommended observer mode; observer mode is not RevenueCat entitlements as source of truth)                                             |
+| RevenueCat    | integration  | comparisons/superwall-vs-revenuecat | verified | https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall (dashboard event forwarding; separate from the purchase path)                                                                          |
+| IndieAppStack | visual_asset | comparisons/superwall-vs-revenuecat | verified | Owned chart `/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg` plus the existing two-layer graphic. Not product screenshots.                                                                            |
+
+Notes:
+
+- Checked Sep 27, 2026. The July 19, 2026 snapshot on this comparison is replaced. `revenuecat-alternatives` and `revenuecat-vs-adapty-ios-subscriptions` were not part of this refresh.
+- Cluster links: Superwall alternatives (`/comparisons/superwall-alternatives-ios-apps`, Aug 18 brief) and the Superwall tool page (`/tools/superwall`, Aug 27 brief).
+- No hands-on testing. RevenueCat's printed example is $2,600 MTR = $26. Superwall prints "$0" and "1% of $25,000" for the $50,000 month. The $100, $250, and $500 rows are that 1% applied, not printed invoices.
+
 ## Article Review Note Template
 
 Add this block to each draft before it moves from draft to review:
