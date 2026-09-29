@@ -157,23 +157,30 @@ const seedTools = [
   {
     name: "Adapty",
     slug: "adapty",
-    tagline:
-      "Subscription infrastructure, paywalls, experiments, and revenue analytics.",
+    tagline: "Free under $5,000 monthly revenue, then 1% of that month.",
     description:
-      "Adapty combines purchase infrastructure with no-code paywalls, A/B testing, subscription analytics, and integrations for apps optimizing recurring revenue.",
+      "Adapty pricing is $0 while tracked revenue stays under $5,000, then 1% of that month. It handles purchases, paywalls, and subscription analytics for solo mobile apps.",
     website_url: "https://adapty.io/",
-    pricing_last_checked: "2026-07-01",
+    pricing_last_checked: "2026-09-29",
     pricing_summary:
-      "Free while under a monthly revenue threshold, then percentage-of-revenue pricing; enterprise is custom.",
+      "Free while tracked revenue stays under $5,000 on a rolling 30-day check, then 1% of that month's revenue; Enterprise is custom. Add-on rates were not in the Pro table.",
     pricing_model: "usage_based",
-    best_for: ["Paywall testing", "Subscription analytics", "No-code paywalls"],
-    not_good_for: ["Teams that only need a minimal receipt validator"],
-    platforms: ["iOS", "Android", "React Native", "Flutter", "Web"],
+    best_for: [
+      "Paywall tests and subscription analytics in one SDK",
+      "A $0 tier while tracked revenue stays under $5,000",
+      "A free country-level price check with Price Radar",
+    ],
+    not_good_for: [
+      "An iOS-only app that can ship a StoreKit 2 paywall in code",
+      "Builders who only need purchase truth and will not run paywall tests",
+      "A paywall bill that should ignore revenue the paywall did not convert",
+    ],
+    platforms: ["iOS", "Android", "React Native", "Flutter", "Unity", "Web"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["RevenueCat", "Superwall", "Qonversion"],
     categorySlugs: ["monetization", "paywalls"],
     internal_notes:
-      "Pricing/features checked 2026-07-01 from https://adapty.io/pricing/ and https://adapty.io/docs/",
+      "Pricing checked 2026-09-29 from https://adapty.io/pricing/ (free under $5,000 on a rolling 30-day check, then 1% of that month's tracked revenue before the platform cut; FAQ does not say a later month returns to $0) and https://adapty.io/subscription-price-radar/ (free, no sign-up). Apple figures carried from the app-store-business-terms-2026-cost guide. Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Superwall",
