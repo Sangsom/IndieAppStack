@@ -13,6 +13,10 @@ const articleImageDimensions: Record<
   string,
   { height: number; width: number }
 > = {
+  "/content-visuals/tools/fastlane-lane-minute-cost-oct-2026.svg": {
+    height: 675,
+    width: 1200,
+  },
   "/content-visuals/articles/firebase-crashlytics-event-summary.png": {
     height: 1264,
     width: 1600,

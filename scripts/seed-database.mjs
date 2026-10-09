@@ -794,7 +794,7 @@ Usually not. Feature flags and experiments are built into PostHog and share its 
     name: "fastlane",
     slug: "fastlane",
     tagline:
-      "Open-source automation for screenshots, beta distribution, and app releases.",
+      "Yes, fastlane is free. You pay for the Mac or the CI minutes where the lanes run.",
     description:
       "fastlane automates common mobile release work such as screenshots, certificates, metadata, TestFlight, Google Play, and deployment lanes.",
     website_url: "https://fastlane.tools/",
@@ -808,7 +808,7 @@ Usually not. Feature flags and experiments are built into PostHog and share its 
     alternatives: ["Codemagic", "Bitrise", "GitHub Actions"],
     categorySlugs: ["dev-productivity", "screenshots"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://fastlane.tools/",
+      "Pricing checked 2026-10-09. License: https://github.com/fastlane/fastlane/blob/master/LICENSE (MIT, free of charge) and https://docs.fastlane.tools/ (open source, runs on your machine or CI). Runners: https://docs.github.com/en/billing/reference/actions-runner-pricing (standard macOS $0.062/min; 12-core $0.077; M2 Pro $0.102) and https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions (Free 2,000 min; self-hosted and public standard runners not billed). Codemagic: https://codemagic.io/pricing/ (M2 first 500 then $0.095). Xcode Cloud: https://developer.apple.com/xcode-cloud/ (25 compute hours included, then $49.99 for 100). Bitrise: https://bitrise.io/pricing (macOS Medium $0.0072/min; Hobby 300 credits; Starter from $89/yr or $99 monthly, unlimited minutes). Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Warp",

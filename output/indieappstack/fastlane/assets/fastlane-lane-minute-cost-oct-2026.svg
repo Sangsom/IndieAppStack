@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d" font-family='ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'>
+<title id="t">Cost of one 15-minute iOS lane</title>
+<desc id="d">Bar chart of the list-price cost of one 15-minute iOS lane after free minutes are used. Your own Mac is 0 dollars. A standard GitHub-hosted macOS runner is 0.93 dollars at 0.062 dollars a minute. Codemagic Mac mini M2 is 1.43 dollars at 0.095 dollars a minute after the first 500 free minutes. Prices checked October 9, 2026.</desc>
+<rect width="1200" height="675" fill="#fbfaf7"/>
+<text x="72" y="56" font-family='ui-serif,"Source Serif 4",Georgia,"Times New Roman",serif' font-size="32" font-weight="600" fill="#20241f">Cost of one 15-minute iOS lane</text>
+<text x="72" y="88" font-size="16" fill="#6e6a5e">After the free minutes are used. List prices, checked Oct 9, 2026.</text>
+
+<text x="64" y="176" font-size="18" font-weight="600" fill="#20241f">Your Mac</text>
+<text x="64" y="200" font-size="14" fill="#6e6a5e">No minute fee</text>
+<rect x="420" y="158" width="8" height="48" rx="4" fill="#6e6a5e"/>
+<text x="440" y="190" font-size="20" font-weight="600" fill="#20241f">$0</text>
+
+<text x="64" y="296" font-size="18" font-weight="600" fill="#20241f">GitHub-hosted macOS</text>
+<text x="64" y="320" font-size="14" fill="#6e6a5e">Standard runner, $0.062/min</text>
+<rect x="420" y="278" width="384" height="48" rx="4" fill="#2c5f4f"/>
+<text x="816" y="310" font-size="20" font-weight="600" fill="#20241f">$0.93</text>
+
+<text x="64" y="416" font-size="18" font-weight="600" fill="#20241f">Codemagic M2</text>
+<text x="64" y="440" font-size="14" fill="#6e6a5e">After 500 free, $0.095/min</text>
+<rect x="420" y="398" width="591" height="48" rx="4" fill="#9a6b23"/>
+<text x="1023" y="430" font-size="20" font-weight="600" fill="#20241f">$1.43</text>
+
+<line x1="420" y1="470" x2="1040" y2="470" stroke="#e7e2d7" stroke-width="1"/>
+<text x="420" y="494" font-size="13" fill="#6e6a5e">$0</text>
+<text x="804" y="494" font-size="13" fill="#6e6a5e" text-anchor="middle">$0.93</text>
+<text x="1011" y="494" font-size="13" fill="#6e6a5e" text-anchor="middle">$1.43</text>
+
+<text x="72" y="560" font-size="15" fill="#6e6a5e">Fifteen minutes is the arithmetic unit, not a measured build of a particular app.</text>
+<text x="72" y="586" font-size="15" fill="#6e6a5e">GitHub Free includes 2,000 minutes a month on private repos before the $0.93 applies.</text>
+<text x="72" y="640" font-size="13" fill="#6e6a5e">Sources: docs.github.com/en/billing/reference/actions-runner-pricing | codemagic.io/pricing | checked Oct 9, 2026</text>
+</svg>
