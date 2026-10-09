@@ -1,9 +1,10 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
 
 import { lastUpdatedLabel } from "@/lib/compliance";
 
 type LegalSection = {
-  body: string[];
+  body: ReactNode[];
   title: string;
 };
 
@@ -40,10 +41,10 @@ export function LegalPage({ eyebrow, intro, sections, title }: LegalPageProps) {
               {section.title}
             </h2>
             <div className="mt-4 grid gap-3">
-              {section.body.map((paragraph) => (
+              {section.body.map((paragraph, index) => (
                 <p
                   className="text-body-md leading-8 text-muted"
-                  key={paragraph}
+                  key={`${section.title}-${index}`}
                 >
                   {paragraph}
                 </p>

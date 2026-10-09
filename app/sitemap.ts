@@ -27,8 +27,9 @@ type SitemapEntryInput = {
 // Bump the date (YYYY-MM-DD) whenever you meaningfully revise that page.
 const STATIC_PAGE_LASTMOD: Record<string, string> = {
   "/": "2026-07-19",
-  "/about": "2026-07-19",
+  "/about": "2026-10-09",
   "/affiliate-disclosure": "2026-07-19",
+  "/editorial-policy": "2026-10-09",
   "/privacy-policy": "2026-06-29",
   "/terms": "2026-06-29",
 };
@@ -121,6 +122,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: staticDate("/about", latestModified),
       path: "/about",
       priority: 0.4,
+    }),
+    entry({
+      lastModified: staticDate("/editorial-policy", latestModified),
+      path: "/editorial-policy",
+      priority: 0.5,
     }),
     entry({
       lastModified: staticDate("/affiliate-disclosure", latestModified),

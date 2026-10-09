@@ -306,7 +306,15 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
               </div>
               <div>
                 <dt className="font-semibold text-ink">Last checked</dt>
-                <dd className="mt-1 text-muted">{tool.lastChecked}</dd>
+                <dd className="mt-1 text-muted">
+                  {tool.lastChecked}.{" "}
+                  <Link
+                    className="font-semibold text-pine underline-offset-2 hover:text-ink hover:underline focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                    href="/editorial-policy"
+                  >
+                    How we check prices
+                  </Link>
+                </dd>
               </div>
               <div>
                 <dt className="font-semibold text-ink">Platforms</dt>
