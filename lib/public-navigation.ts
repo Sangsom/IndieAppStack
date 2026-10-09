@@ -27,6 +27,10 @@ export const footerNavigation = [
     href: "/about",
   },
   {
+    label: "How we check prices",
+    href: "/editorial-policy",
+  },
+  {
     label: "Affiliate disclosure",
     href: "/affiliate-disclosure",
   },

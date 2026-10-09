@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { LegalPage } from "@/components/public/legal-page";
 import { affiliateDisclosureCopy, ownerContactEmail } from "@/lib/compliance";
@@ -31,6 +32,16 @@ export default function AboutPage() {
           body: [
             "The goal is to describe when a tool is a good fit, when it is not, and what a builder should verify before adopting it.",
             "Content should avoid fake hands-on claims and invented pricing. Pricing and feature references should include last-checked dates or source links where practical.",
+            <>
+              The price check, the source rule, and the correction log are on{" "}
+              <Link
+                className="font-semibold text-pine underline-offset-2 hover:text-ink hover:underline focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                href="/editorial-policy"
+              >
+                how we check prices
+              </Link>
+              .
+            </>,
           ],
         },
         {
