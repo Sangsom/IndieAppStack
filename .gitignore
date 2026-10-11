@@ -51,3 +51,8 @@ next-env.d.ts
 
 # supabase
 supabase/.temp/
+
+# Local agent and editor state. rd-web writes machine paths, task scratch,
+# and audit logs under .claude/; Cursor hook state lives under .cursor/.
+.claude/
+.cursor/
