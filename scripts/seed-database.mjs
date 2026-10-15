@@ -113,6 +113,24 @@ function readSuperwallVsRevenueCatBody() {
   return `${full.slice(index).trim()}\n`;
 }
 
+function readPaywallToolsGuideBody() {
+  const full = fs.readFileSync(
+    path.join(
+      cwd(),
+      "output/indieappstack/best-paywall-tools-ios-apps/content.md",
+    ),
+    "utf8",
+  );
+  const marker = "## Short answer";
+  const index = full.indexOf(marker);
+
+  if (index === -1) {
+    throw new Error("Paywall tools guide is missing the Short answer heading.");
+  }
+
+  return `${full.slice(index).trim()}\n`;
+}
+
 // Rebuilt long-form tool content (body_markdown, pros, cons, pricing_summary,
 // noindex) lives in a JSON data file so multi-paragraph Markdown does not have
 // to be hand-escaped inside this module. Merged over each tool below by slug.
@@ -2901,115 +2919,22 @@ Last checked: 2026-07-09. Pricing thresholds are summarized at a high level; che
           published_at: publishedAt,
         },
         {
-          title: "Best paywall tools for iOS apps",
+          title: "Paywall apps for iOS",
           slug: "best-paywall-tools-ios-apps",
           subtitle:
-            "How to choose a paywall stack for subscriptions, experiments, and entitlement handling.",
+            "Choose by the job and the meter: infrastructure, remote paywalls, analytics, or a screen you build yourself.",
           excerpt:
-            "Compare practical paywall tools for iOS subscription apps without pretending one option fits every business model.",
-          body_markdown: `## Short answer
-A modern "paywall tool" now does two jobs at once: it owns purchase and entitlement infrastructure, and it renders and tests the paywall itself. [RevenueCat](/tools/revenuecat), [Superwall](/tools/superwall), and [Adapty](/tools/adapty) all cover both jobs today, so choose by where your product's center of gravity is:
-
-- Choose [RevenueCat](/tools/revenuecat) when durable purchase infrastructure and entitlement truth are the priority, and remote paywall testing is a bonus.
-- Choose [Superwall](/tools/superwall) when remote paywall presentation and fast creative iteration are the main bottleneck.
-- Choose [Adapty](/tools/adapty) when paywall building sits next to subscription analytics and experiments in a daily workflow.
-
-For the simplest apps, a native StoreKit paywall with no third-party tool is still a valid launch choice. Add a paywall platform when you will actually iterate on paywalls, not just to have one.
-
-> [!NOTE] Solo builder scope
-> This guide is for a solo builder choosing a paywall stack for an iOS subscription app. The goal is to sell and unlock reliably first, then iterate on the paywall once there is enough traffic to learn from.
-
-![Decision guide for choosing an iOS paywall stack, routing by whether purchase infrastructure, remote paywall iteration, or paywall analytics is the bottleneck.](/content-visuals/articles/paywall-tools-decision.svg "Choose by your bottleneck: infrastructure first, iteration first, or analytics first.")
-
-## A paywall tool is really two jobs
-"Paywall tool" used to mean the screen that sells the subscription. The category has since converged, and each major option can now:
-
-- Own purchase infrastructure: StoreKit handling, receipt validation, restore, and cross-platform customer state.
-- Own the entitlement decision: should this user see paid features right now?
-- Render the paywall remotely: change layout, copy, price display, and targeting without an app release.
-- Run experiments: A/B/n test paywalls and read conversion.
-
-Because they overlap so much, the real question is not "which tool has paywalls," but "which job is my bottleneck, and how does the pricing meter match my revenue?"
-
-## How they price, and why it matters
-A useful modern detail for a solo budget: the leading tools mostly charge a small percentage of the revenue they touch, above a free threshold, instead of a flat monthly fee. That keeps the entry cost near zero for a new app and scales only as you earn.
-
-- RevenueCat has a free tier up to a monthly tracked-revenue threshold, then charges a small percentage of tracked revenue; its growth tools such as paywalls can also be used with pay-per-conversion pricing.
-- Superwall keeps its infrastructure layer free at any scale and charges a small percentage of revenue attributed specifically to Superwall-rendered paywalls, above a free threshold.
-- Adapty offers a free tier under a monthly revenue threshold, then charges a small percentage of revenue above it.
-
-Confirm the current thresholds and percentages on each official pricing page before committing, because these numbers change.
-
-## Decision table
-:::comparison Paywall stack fit
-| Decision | RevenueCat | Superwall | Adapty |
-| --- | --- | --- | --- |
-| Center of gravity | Purchase and entitlement infrastructure | Remote paywall presentation and iteration | Paywall building plus subscription analytics |
-| Paywall experiments | Built in, plus growth tools | Core strength, fast iteration | Core strength, tied to analytics |
-| Best when | You want durable infrastructure first | You will change paywalls often without releases | You run paywall and pricing tests as a habit |
-| Pricing meter | Percent of tracked revenue above a free tier | Percent of paywall-attributed revenue above a free tier | Percent of revenue above a free tier |
-| Watch out for | Decide which growth tools you actually need | Attribute only paywall-driven revenue | Confirm which features are in the free tier |
-:::
-
-## Tool-by-tool fit
-### RevenueCat
-Choose [RevenueCat](/tools/revenuecat) when the priority is durable purchase infrastructure: StoreKit handling, receipt validation, restore, entitlement state, and cross-platform customer data. It renders and tests paywalls too, but the reason to start here is that the purchase layer stays reliable and vendor-neutral. Pick it when you want the subscription plumbing to be boring before you optimize the paywall.
-
-### Superwall
-Choose [Superwall](/tools/superwall) when remote paywall presentation and fast creative iteration are the bottleneck. You can change paywall layout, copy, targeting, and tests without shipping an app release, and its meter only charges on revenue its paywalls drive. Pick it when the paywall is something you plan to change often and you want that iteration decoupled from the App Store review cycle.
-
-### Adapty
-Choose [Adapty](/tools/adapty) when paywall building sits beside subscription analytics and experiments in one workflow. It combines a paywall and onboarding builder with A/B testing and revenue analytics such as MRR, LTV, and churn. Pick it when a growth or marketing workflow, not just engineering, will run paywall and pricing experiments regularly.
-
-### Qonversion
-[Qonversion](/tools/qonversion) bundles subscription SDKs, paywalls, customer data, and analytics into one subscription-focused surface. It is most interesting as an alternative to compare against the three above when you want a single bundled workflow. Check its current pricing and included features before committing.
-
-### Native StoreKit, no third-party tool
-For the simplest apps, one product and one paywall with no plans to experiment, a native StoreKit 2 paywall is a legitimate launch choice. You trade remote iteration and cross-platform customer state for fewer dependencies. Add a paywall platform when you can name the experiment you actually want to run.
-
-## When you do not need a paywall platform yet
-A paywall experimentation tool earns its place when there is enough paywall traffic to learn from a test. Before that point:
-
-- Ship one clear paywall and make the purchase and restore paths reliable.
-- Keep pricing and copy decisions manual and deliberate.
-- Instrument the funnel with a few events, using the analytics starter stack below.
-- Add remote paywall testing when weekly traffic can move a metric you trust.
-
-## Best for
-- iOS subscription apps choosing purchase infrastructure and a paywall workflow together.
-- Builders who want to sell and unlock reliably before optimizing the paywall.
-- Teams deciding between infrastructure-first, iteration-first, or analytics-first tools.
-
-## Not good for
-- Apps that only sell one-time web products or run on ads alone.
-- Teams that cannot yet state the subscription promise or the upgrade moment.
-
-## Internal links
-- Read the deep, head-to-head [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
-- Fit the paywall into the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
-- Start broad with [best monetization tools for solo mobile developers](/guides/best-monetization-tools-solo-mobile-developers).
-- Browse the [paywalls category](/categories/paywalls) and the [monetization category](/categories/monetization).
-- Instrument conversion with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack).
-
-## Source checks
-Pricing and product claims were checked against official sources on 2026-07-09:
-
-- RevenueCat pricing and docs: https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/
-- Superwall pricing and docs: https://superwall.com/pricing and https://docs.superwall.com/
-- Adapty pricing and docs: https://adapty.io/pricing/ and https://adapty.io/docs/
-
-Qonversion pricing was last confirmed on 2026-07-01: https://qonversion.io/pricing. Pricing meters and free thresholds change often, so exact percentages and thresholds are summarized at a high level here. The detailed head-to-head lives in the RevenueCat vs Adapty vs Superwall comparison. No hands-on testing claims are made in this guide. The decision visual is an owned conceptual graphic created for IndieAppStack.
-
-Last checked: 2026-07-09.`,
+            "Dated prices for RevenueCat, Adapty, Superwall, and Qonversion, plus when a custom paywall is enough.",
+          body_markdown: readPaywallToolsGuideBody(),
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("paywalls").id,
-          seo_title: "Best paywall tools for iOS apps",
+          seo_title: "Paywall apps for iOS: pricing and fit",
           seo_description:
-            "Compare paywall tools for iOS apps including RevenueCat, Adapty, and Superwall for subscriptions, experiments, and entitlements.",
+            "Dated prices for RevenueCat, Adapty, Superwall, and Qonversion, plus when a custom paywall is enough. Checked Oct 15, 2026.",
           human_reviewed: true,
-          ai_assisted: false,
+          ai_assisted: true,
           published_at: publishedAt,
         },
         {
@@ -3997,6 +3922,12 @@ Last checked: Sep 24, 2026.
         sort_order: 30,
       },
       {
+        article_id: articles.get("best-paywall-tools-ios-apps").id,
+        tool_id: tools.get("qonversion").id,
+        relationship: "recommended",
+        sort_order: 40,
+      },
+      {
         article_id: articles.get("best-aso-tools-for-indie-developers").id,
         tool_id: tools.get("apptweak").id,
         relationship: "recommended",
@@ -4209,20 +4140,21 @@ Last checked: Sep 24, 2026.
           "Published 2026-08-14 with a real Superwall editor capture and owned decision flow. AlternativeTo evidence was excluded from public copy pending independent reproduction.",
       },
       {
-        title: "Best paywall tools for iOS apps",
+        title: "Paywall apps for iOS",
         slug: "best-paywall-tools-ios-apps",
-        target_keyword: "best paywall tools for iOS apps",
+        target_keyword: "paywall apps ios",
         search_intent: "commercial investigation",
         target_category_id: categories.get("paywalls").id,
         related_tool_ids: [
           tools.get("revenuecat").id,
           tools.get("superwall").id,
           tools.get("adapty").id,
+          tools.get("qonversion").id,
         ],
         priority: 10,
         status: "published",
         notes:
-          "Upgraded and published during the Days 1-30 trust reset sprint.",
+          "Refreshed Oct 15, 2026 for paywall apps ios, custom paywall solution, and dated meters. Slug unchanged.",
       },
       {
         title: "Framer vs Webflow for mobile app landing pages",
