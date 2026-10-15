@@ -111,7 +111,7 @@ export async function generateMetadata({
     };
   }
 
-  return createSeoMetadata({
+  const metadata = createSeoMetadata({
     description: guide.metaDescription,
     // null → use the colocated per-article opengraph-image route
     imagePath: null,
@@ -119,6 +119,17 @@ export async function generateMetadata({
     title: guide.metaTitle,
     type: "article",
   });
+
+  if (guide.slug !== "ios-27-and-your-stack") {
+    return metadata;
+  }
+
+  return {
+    ...metadata,
+    title: {
+      absolute: guide.metaTitle,
+    },
+  };
 }
 
 export default async function GuidePage({ params }: GuidePageProps) {

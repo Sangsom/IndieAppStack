@@ -2,12 +2,12 @@
 
 **Slug:** ios-27-and-your-stack
 **URL:** /guides/ios-27-and-your-stack
-**SEO title:** iOS 27: what indie developers need to do
-**SEO description:** iOS 27 shipped Sep 14, 2026. Most solo apps can wait. New uploads need the iOS 27 SDK in April 2027. Answer one question if you submit now.
+**SEO title:** iOS 27 for Indie Devs: SDK Deadline and What to Do Now
+**SEO description:** iOS 27 shipped Sep 14, 2026. New uploads need the iOS 27 SDK from April 2027. What solo iOS developers must do now, and what can wait.
 
 ## Short answer
 
-iOS 27 reached customers on Sep 14, 2026. For a solo app already on the store, what indie developers need to do is usually nothing this month. New uploads must use the iOS 27 SDK starting April 2027. Submit before then only if you already planned an update, and answer Apple's social-media question when you do.
+iOS 27 reached customers on Sep 14, 2026. For a solo app already on the store, what indie developers need to do is usually nothing this month. New uploads need the iOS 27 SDK starting April 2027, and if you're submitting an update, you have to indicate whether the app includes social media capabilities.
 
 > [!NOTE] What this page will and will not do
 > Every date below is copied from an Apple page, an Apple technote, or a vendor changelog, checked Sep 26, 2026. A day Apple does not publish is marked n/a. This is orientation for a one-person iOS app. It is not a feature tour, and it is not a prompt to rebuild.
