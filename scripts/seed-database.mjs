@@ -1936,7 +1936,6 @@ Last checked: Aug 18, 2026.
           human_reviewed: true,
           ai_assisted: true,
           published_at: comparisonsPublishedAt,
-          updated_at: "2026-09-27T12:00:00.000Z",
         },
         {
           title: "RevenueCat alternatives for subscription apps",
