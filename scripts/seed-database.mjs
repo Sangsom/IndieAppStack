@@ -3567,9 +3567,9 @@ Last checked: Sep 24, 2026.
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("monetization").id,
-          seo_title: "iOS 27: what indie developers need to do",
+          seo_title: "iOS 27 for Indie Devs: SDK Deadline and What to Do Now",
           seo_description:
-            "iOS 27 shipped Sep 14, 2026. Most solo apps can wait. New uploads need the iOS 27 SDK in April 2027. Answer one question if you submit now.",
+            "iOS 27 shipped Sep 14, 2026. New uploads need the iOS 27 SDK from April 2027. What solo iOS developers must do now, and what can wait.",
           human_reviewed: true,
           ai_assisted: true,
           published_at: ios27GuidePublishedAt,
