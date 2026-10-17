@@ -32,8 +32,38 @@ type ToolDetailPageProps = {
 
 export const revalidate = 3600;
 
+const codemagicTitle = "Codemagic Pricing 2026: 500 Free Minutes, Then $0.095";
+const codemagicDescription =
+  "Codemagic gives 500 free Mac M2 minutes a month, then $0.095/min. See every plan, cost per build, and when Xcode Cloud or Bitrise is cheaper.";
+const codemagicHeading =
+  "Codemagic pricing, free tier, and when it's worth paying";
+
 function canonicalUrl(slug: string) {
   return new URL(`/tools/${slug}`, siteConfig.url).toString();
+}
+
+function toolPageTitle(tool: ToolDetail) {
+  if (tool.slug === "codemagic") {
+    return codemagicTitle;
+  }
+
+  return `${tool.name} review, pricing, alternatives, and fit`;
+}
+
+function toolPageDescription(tool: ToolDetail) {
+  if (tool.slug === "codemagic") {
+    return codemagicDescription;
+  }
+
+  return `${tool.tagline} Pricing checked ${tool.lastChecked}.`;
+}
+
+function toolPageHeading(tool: ToolDetail) {
+  if (tool.slug === "codemagic") {
+    return codemagicHeading;
+  }
+
+  return tool.name;
 }
 
 function Section({
@@ -151,19 +181,29 @@ export async function generateMetadata({
     };
   }
 
-  const description = `${tool.tagline} Pricing checked ${tool.lastChecked}.`;
-
-  return createSeoMetadata({
-    description,
+  const title = toolPageTitle(tool);
+  const metadata = createSeoMetadata({
+    description: toolPageDescription(tool),
     // null → use the colocated per-tool opengraph-image route
     imagePath: null,
     // Weak/off-audience tools stay published and internally linked, but are kept
     // out of the search index (links still followed).
     noindex: tool.noindex,
     path: `/tools/${tool.slug}`,
-    title: `${tool.name} review, pricing, alternatives, and fit`,
+    title,
     type: "article",
   });
+
+  if (tool.slug !== "codemagic") {
+    return metadata;
+  }
+
+  return {
+    ...metadata,
+    title: {
+      absolute: title,
+    },
+  };
 }
 
 export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
@@ -202,7 +242,7 @@ export default async function ToolDetailPage({ params }: ToolDetailPageProps) {
               ))}
             </div>
             <h1 className="mt-4 font-serif text-5xl font-semibold leading-tight text-ink sm:text-6xl">
-              {tool.name}
+              {toolPageHeading(tool)}
             </h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
               {tool.tagline}
