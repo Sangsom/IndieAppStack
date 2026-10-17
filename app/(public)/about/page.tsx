@@ -25,6 +25,27 @@ export default function AboutPage() {
           body: [
             "IndieAppStack organizes mobile app tools by use case, stage, platform, pricing model, and practical fit so builders can make faster stack decisions.",
             "The site includes tool pages, category pages, guides, comparison pages, affiliate redirect management, and analytics for understanding which recommendations readers use.",
+            <>
+              It&apos;s built by the team behind{" "}
+              <a
+                className="font-semibold text-pine underline-offset-2 hover:text-ink hover:underline focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                href="https://mrgripper.com"
+                rel="noreferrer"
+                target="_blank"
+              >
+                MrGripper
+              </a>{" "}
+              and{" "}
+              <a
+                className="font-semibold text-pine underline-offset-2 hover:text-ink hover:underline focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+                href="https://getmantis.app"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Mantis trading journal
+              </a>
+              .
+            </>,
           ],
         },
         {

@@ -13,6 +13,16 @@
         "Most solo iOS apps that make money do it with a subscription, and the fastest way to lose the plot is to hand-roll StoreKit receipts and paywall logic yourself. This stack keeps the money layer boring and reliable so you can spend your energy on the app itself.",
         "It starts free or near-free and only grows a bill where the bill is attached to revenue: subscriptions, paywall tests, and the analytics that tell you whether either is working. Everything else stays on a free tier until the app earns its way off it."
       ],
+      "exampleApps": [
+        {
+          "name": "MrGripper",
+          "href": "https://mrgripper.com"
+        },
+        {
+          "name": "Mantis trading journal",
+          "href": "https://getmantis.app"
+        }
+      ],
       "whoItsFor": [
         "A single developer shipping a consumer app that converts to a weekly or yearly subscription.",
         "You want paywall experiments without building an experiment framework.",

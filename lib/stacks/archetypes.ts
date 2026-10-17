@@ -18,9 +18,17 @@ export type StackCompatibilityNote = {
   title: string;
 };
 
+export type StackExampleApp = {
+  href: string;
+  name: string;
+};
+
 export type StackArchetype = {
   budgetBand: string;
   compatibilityNotes: StackCompatibilityNote[];
+  // Real apps from the same team, named as examples of the kind of product
+  // this stack is for. Not a claim that those apps use a specific SDK.
+  exampleApps?: StackExampleApp[];
   eyebrow: string;
   metaDescription: string;
   metaTitle: string;

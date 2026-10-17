@@ -208,6 +208,26 @@ export default async function StackPage({ params }: StackPageProps) {
                 {paragraph}
               </p>
             ))}
+            {archetype.exampleApps?.length ? (
+              <p className="mt-4 text-body-md leading-7 text-muted">
+                Real apps from this team include{" "}
+                {archetype.exampleApps.map((app, index) => (
+                  <span key={app.href}>
+                    {index > 0 ? " and " : null}
+                    <a
+                      className="font-semibold text-pine underline-offset-2 hover:text-ink hover:underline focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
+                      href={app.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {app.name}
+                    </a>
+                  </span>
+                ))}
+                . They&apos;re examples of the kind of app this stack is written
+                for.
+              </p>
+            ) : null}
           </div>
 
           <aside className="rounded-card border border-rule bg-surface p-5 shadow-field">

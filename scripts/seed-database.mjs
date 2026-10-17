@@ -1460,6 +1460,9 @@ For a solo iOS subscription MVP, keep the stack boring: App Store Connect owns t
 
 Add a backend only when paid value depends on account-backed data, synced history, credits, teams, or server-owned records. If the first version can unlock premium features from a verified entitlement, postpone the backend until the product proves it needs one.
 
+> [!NOTE] Solo iOS subscription apps
+> [MrGripper](https://mrgripper.com) and [Mantis trading journal](https://getmantis.app) are subscription apps from the same team. They're the kind of solo iOS subscription app this guide is written for.
+
 > [!NOTE] Solo builder scope
 > This guide is for a solo builder shipping a real subscription MVP, not a mature growth team. The goal is fewer moving parts, clearer failure modes, and enough measurement to make the next release smarter.
 
@@ -1948,6 +1951,9 @@ Last checked: Aug 18, 2026.
 The strongest [RevenueCat](/tools/revenuecat) alternatives for a solo iOS app are [Adapty](/tools/adapty) for paywall analytics and experiments, [Superwall](/tools/superwall) for remote paywall iteration, [Qonversion](/tools/qonversion) for a lower-percentage subscription meter, and native StoreKit 2 for the simplest apps that want no third-party dependency. RevenueCat remains a reliable default; look past it when pricing, paywall workflow, or dependency concerns give another tool a clear edge.
 
 Pick the alternative that matches the job you actually need done, not the one with the longest feature list.
+
+> [!NOTE] What we use in production
+> The subscription apps we ship are [MrGripper](https://mrgripper.com) and [Mantis trading journal](https://getmantis.app).
 
 > [!NOTE] Solo builder scope
 > This comparison is for a solo builder who already knows what RevenueCat does and wants to know when another subscription or paywall tool fits better. The goal is a reliable purchase path first, then the workflow that helps you improve revenue.
