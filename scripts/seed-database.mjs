@@ -921,8 +921,8 @@ try {
           sort_order: 10,
           status: "published",
           seo_description:
-            "Compare app monetization tools for subscriptions and paywalls. Prices checked Sep 25, 2026, with Apple's September terms kept as a separate bill.",
-          seo_title: "App monetization tools",
+            "RevenueCat, Adapty, Qonversion and Superwall are free until $2.5K–$10K a month in revenue, then take 0.8–1%. Apple's cut is a separate bill.",
+          seo_title: "App Monetization Tools Compared by Free Tier",
         },
         {
           name: "Paywalls",
