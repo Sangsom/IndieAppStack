@@ -2431,7 +2431,7 @@ Last checked: 2026-07-09.`,
             "Compare Sentry and Firebase Crashlytics on 2026 pricing, setup, mobile coverage, release context, and practical fit for a solo app.",
           body_markdown: `## Short answer
 
-Sentry and Firebase Crashlytics are both free to start, but the right default depends on scope. Choose Crashlytics for a mobile-only app already using Firebase: Crashlytics is a no-cost product. Choose Sentry when you want one issue workflow across mobile, backend, and web, or expect to outgrow crash reporting.
+Crashlytics is free on both Firebase plans, Spark and Blaze, with no paid tier to grow into. Sentry's Developer plan is free for one user; Team starts at $26 a month on annual billing. Pick Crashlytics for a mobile-only app that already uses Firebase. Pick Sentry when you want one issue list across the app, backend and web.
 
 For a solo launch, do not install both by default. Pick one owner for crashes, upload the symbols for every release, and make sure a test crash reaches the dashboard before the first external build.
 
@@ -2611,9 +2611,9 @@ Last checked: Aug 11, 2026.`,
           status: "published",
           content_type: "comparison",
           primary_category_id: categories.get("crash-reporting").id,
-          seo_title: "Sentry vs Firebase Crashlytics: 2026 Pricing",
+          seo_title: "Sentry vs Crashlytics: Free Limits in 2026",
           seo_description:
-            "Compare Sentry and Firebase Crashlytics on pricing, setup, mobile coverage, and when each fits a solo app. Prices checked Aug 11, 2026.",
+            "Crashlytics costs nothing on either Firebase plan. Sentry is free for one user, then $26 a month. Which one a solo mobile app should pick, and when.",
           human_reviewed: true,
           ai_assisted: true,
           published_at: publishedAt,
