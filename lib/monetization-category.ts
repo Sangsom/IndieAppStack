@@ -15,7 +15,7 @@ type NamedTool = {
 export const monetizationPriceCheckedLabel = "Sep 25, 2026";
 
 export const monetizationShortAnswer =
-  "App monetization tools sit between your app and the store. RevenueCat, Adapty, Qonversion, and Superwall each stay free under their own revenue threshold, then bill a percentage of tracked or paywall-attributed revenue. Apple's store commission is a separate bill. It does not change with the tool you pick.";
+  "App monetization tools handle receipts, entitlements and paywalls between your app and the store. RevenueCat, Adapty, Qonversion, and Superwall each stay free under their own revenue threshold, then bill a percentage of tracked or paywall-attributed revenue. Apple's store commission is a separate bill. It does not change with the tool you pick.";
 
 export const monetizationHeading = "App monetization tools";
 
