@@ -14,24 +14,18 @@ import {
   keywordsEverywhereGuideSlug,
   keywordsEverywhereSlug,
 } from "./content/keywords-everywhere.mjs";
+import { readEnvLocal } from "./env-local.mjs";
+import { conflictColumns, parseSeedArgs, planUpsert } from "./seed-plan.mjs";
 
-function readEnvLocal() {
-  const envPath = path.join(cwd(), ".env.local");
+let seedArgs;
 
-  if (!fs.existsSync(envPath)) {
-    return {};
-  }
-
-  return Object.fromEntries(
-    fs
-      .readFileSync(envPath, "utf8")
-      .split(/\r?\n/)
-      .filter((line) => line && !line.startsWith("#"))
-      .map((line) => {
-        const [key, ...valueParts] = line.split("=");
-        return [key, valueParts.join("=")];
-      }),
+try {
+  seedArgs = parseSeedArgs(process.argv);
+} catch (error) {
+  console.error(
+    error instanceof Error ? error.message : "Invalid seed arguments.",
   );
+  exit(1);
 }
 
 const envLocal = readEnvLocal();
@@ -41,10 +35,26 @@ const serviceRoleKey =
   process.env.SUPABASE_SERVICE_ROLE_KEY ?? envLocal.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !serviceRoleKey) {
+  const source =
+    process.env.GITHUB_ACTIONS === "true"
+      ? "GitHub Actions secrets"
+      : "the environment or .env.local";
   console.error(
-    "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY.",
+    `Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in ${source}.`,
   );
   exit(1);
+}
+
+let supabaseHost = "invalid-url";
+
+try {
+  const parsedUrl = new URL(supabaseUrl);
+
+  if (!parsedUrl.username && !parsedUrl.password && !parsedUrl.search) {
+    supabaseHost = parsedUrl.host;
+  }
+} catch {
+  supabaseHost = "invalid-url";
 }
 
 const supabase = createClient(supabaseUrl, serviceRoleKey, {
@@ -55,7 +65,83 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   },
 });
 
+const originalFrom = supabase.from.bind(supabase);
+supabase.from = (table) => {
+  const query = originalFrom(table);
+  query.delete = () => {
+    throw new Error(
+      `Refusing to delete from ${table}. Seed mode is upsert-only.`,
+    );
+  };
+  return query;
+};
+supabase.rpc = () => {
+  throw new Error("Refusing remote procedure calls. Seed mode is upsert-only.");
+};
+
+const seedCounts = {
+  inserted: 0,
+  unchanged: 0,
+  updated: 0,
+};
+
+async function fetchExistingRows(table, columns) {
+  const pageSize = 1000;
+  const rows = [];
+
+  for (let from = 0; ; from += pageSize) {
+    let query = supabase.from(table).select("*");
+
+    for (const column of columns) {
+      query = query.order(column, { ascending: true });
+    }
+
+    const { data, error } = await query.range(from, from + pageSize - 1);
+
+    if (error) {
+      throw new Error(`${table} diff failed: ${error.message}`);
+    }
+
+    rows.push(...(data ?? []));
+
+    if (!data || data.length < pageSize) {
+      break;
+    }
+  }
+
+  return rows;
+}
+
 async function upsert(table, rows, options) {
+  const optionNames = Object.keys(options ?? {});
+
+  if (
+    optionNames.some((name) => name !== "onConflict") ||
+    !options?.onConflict
+  ) {
+    throw new Error(
+      `${table} seed refused. Upserts require onConflict and no other write options.`,
+    );
+  }
+
+  const existing = await fetchExistingRows(
+    table,
+    conflictColumns(options.onConflict),
+  );
+  const plan = planUpsert(table, rows, options.onConflict, existing);
+  seedCounts.inserted += plan.inserted;
+  seedCounts.updated += plan.updated;
+  seedCounts.unchanged += plan.unchanged;
+
+  const prefix = seedArgs.dryRun ? "[seed] dry-run" : "[seed]";
+  console.log(
+    `${prefix} ${table}: inserted=${plan.inserted} updated=${plan.updated} unchanged=${plan.unchanged}`,
+  );
+
+  if (seedArgs.dryRun) {
+    return plan.previewRows;
+  }
+
   const { data, error } = await supabase
     .from(table)
     .upsert(rows, options)
@@ -918,6 +1004,10 @@ Warp's AI runs on a monthly credit allowance rather than unlimited use. The Free
 ];
 
 try {
+  console.log(
+    `[seed] target=${supabaseHost} mode=upsert-only dry_run=${seedArgs.dryRun}`,
+  );
+
   const categories = bySlug(
     await upsert(
       "categories",
@@ -4285,7 +4375,16 @@ Last checked: Sep 24, 2026.
     { onConflict: "slug" },
   );
 
-  console.log("Seed completed idempotently.");
+  const totalPrefix = seedArgs.dryRun ? "[seed] dry-run total" : "[seed] total";
+  console.log(
+    `${totalPrefix}: inserted=${seedCounts.inserted} updated=${seedCounts.updated} unchanged=${seedCounts.unchanged}`,
+  );
+
+  if (seedArgs.dryRun) {
+    console.log("Dry run completed. No rows were written.");
+  } else {
+    console.log("Seed completed idempotently.");
+  }
 } catch (error) {
   console.error(error.message);
   exit(1);

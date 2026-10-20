@@ -1,0 +1,65 @@
+name: Seed production
+
+# Upserts seeded content into production Supabase, then marks the public ISR
+# cache stale. Rows already in the database and absent from the seed are left
+# in place. The job never deletes or truncates.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/seed-production.yml
+      - output/indieappstack/**
+      - scripts/content/**
+      - scripts/env-local.mjs
+      - scripts/revalidate-production.mjs
+      - scripts/seed-database.mjs
+      - scripts/seed-plan.mjs
+      - scripts/tool-content.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: read
+
+concurrency:
+  group: seed-production
+  cancel-in-progress: false
+
+jobs:
+  seed:
+    name: Upsert production content
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Dry-run seed diff
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/seed-database.mjs --dry-run --upsert-only
+
+      - name: Upsert production seed
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run seed:prod
+
+      - name: Revalidate production cache
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          NEXT_PUBLIC_SITE_URL: https://indieappstack.com
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+        run: node scripts/revalidate-production.mjs

@@ -45,6 +45,9 @@ jobs:
       - name: Public content safety
         run: npm run content:safety
 
+      - name: Test
+        run: npm test
+
       - name: Build
         run: npm run build
 
