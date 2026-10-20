@@ -1,25 +1,23 @@
 ## Short answer
 
-Keywords Everywhere is a Chrome, Firefox, and Edge extension that overlays search volume, CPC, competition, and related keyword ideas on Google and 15+ other sites while you browse. For a solo mobile developer it is a landing-page and content-research tool, not an App Store ASO tool.
+Use Keywords Everywhere when a Google volume number would change a launch-page headline or a blog topic. Install the extension on Chrome, Firefox, or Edge on a laptop, run the search you are already writing around, and read the overlay. Skip it when the next job is the App Store listing.
 
-Use it when a Google volume number would change a launch-page headline or a blog topic. Skip it when the next job is the App Store listing, rank tracking, or a full SEO suite. Most mobile-tool decisions are about SDKs you embed in the app. This one sits in the desktop browser.
+This page is the how-to. Pricing, the API key, and the mobile and Android answer are on the [Keywords Everywhere tool page](/tools/keywords-everywhere).
 
 > [!NOTE] Affiliate disclosure
 > Links to Keywords Everywhere on this page are affiliate links. If you start through them, IndieAppStack may receive a commission at no extra cost to you. Inclusion is editorial: Google keyword data sometimes belongs in an indie launch stack, independent of the link.
 
 ![Two-column decision graphic: Keywords Everywhere earns a place when you are writing a launch page or post, you want volume, CPC, and competition while you browse, or you will check demand before buying ads; skip it when you need App Store keyword research, a one-off Google volume check is enough, you need rank tracking, or you expected it on iPhone or Safari.](/content-visuals/articles/keywords-everywhere-decision.svg "Does Keywords Everywhere earn a place in your stack?")
 
-## What Keywords Everywhere is
+## What you are installing
 
-Keywords Everywhere is a freemium browser add-on from Axeman Technology Solutions LLP. Once it is installed, keyword metrics appear on the pages you already use rather than in a separate dashboard you have to remember to open. The [Keywords Everywhere tool page](/tools/keywords-everywhere) keeps the short fit card, pricing table, and setup notes.
+Keywords Everywhere is a browser add-on from Axeman Technology Solutions LLP. Once it is installed, keyword metrics appear on the pages you already use rather than in a separate dashboard. The [tool page](/tools/keywords-everywhere) keeps the verdict, the credit table, the API key steps, and the phone answer.
 
-The free install covers keyword-idea widgets, traffic and Moz link metrics, SEO difficulty, YouTube and local SEO metrics, social engagement insights, and 200+ prompt templates for ChatGPT, Claude, Gemini, and DeepSeek. None of those free features use credits. Search volume, CPC, competition, trend charts, bulk uploads, and competitor gap analysis sit on paid annual credit plans.
+The free install covers keyword-idea widgets, traffic and Moz link metrics, SEO difficulty, YouTube and local SEO metrics, social engagement insights, and prompt templates. The vendor says none of those free features use credits, and that several of them need no API key. Search volume, CPC, competition, trend charts, bulk uploads, and competitor gap analysis sit on paid annual credit plans. Current prices are on the tool page, rechecked Oct 20, 2026.
 
 ![Screenshot of the Keywords Everywhere extension popup with research actions, a Global region selector, credits at zero, and a purchase-a-subscription link. Account details are redacted.](/content-visuals/articles/keywords-everywhere-extension-popup.png "Keywords Everywhere extension popup. Credits were at zero on Sep 21, 2026.")
 
-The popup is a research launcher inside the browser. A Sep 21, 2026 capture with credits at zero still shows the action grid and a purchase link. Volume, CPC, and competition stay locked until a paid plan is active. The Keyword Keg icon is visible in the unpaid popup; official plans still list Keyword Keg as a Gold-and-above extra.
-
-The Chrome Web Store listing reports a 4.5 rating from 5.7K ratings and more than 1.6 million users (checked Sep 21, 2026). Treat that as audience context, not a reason to adopt it.
+The popup is a research launcher inside the browser. A Sep 21, 2026 capture with credits at zero still shows the action grid and a purchase link. Volume, CPC, and competition stay locked until a paid plan is active.
 
 ## Where Google keyword data shows up in an indie launch
 
@@ -34,7 +32,7 @@ If you ship a mobile app on your own, Google keyword data shows up in a few pred
 
 That capture is a Google results page, not an App Store search. Play and App Store listings can appear in Google. Volume and CPC under the search bar are hidden because credits were at zero. Moz, traffic, and ranking-keyword figures on those listing cards are Keywords Everywhere overlay estimates, not IndieAppStack measurements.
 
-That is web demand, not App Store Optimization. App Store search uses a different index, a different keyword field, and different tools. For store-listing research, start with [AppTweak](/tools/apptweak) or [Appfigures](/tools/appfigures) and the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps).
+That is web demand, not App Store Optimization. App Store search uses a different index, a different keyword field, and different tools. For store-listing research, start with [AppTweak](/tools/apptweak) or [Appfigures](/tools/appfigures) and the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps). The tool page records what the vendor says about a Google Play overlay: Google Keyword Planner volume, not Play-native demand.
 
 ## When does it earn a place in the stack?
 
@@ -43,91 +41,67 @@ That is web demand, not App Store Optimization. App Store search uses a differen
 | Situation                                                     | Why it helps                                                                                                      |
 | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | You are writing a launch page or blog post                    | Volume and related queries show up on Google as you draft, so you do not context-switch into a separate SEO suite |
-| You want CPC and competition, not only volume                 | Paid plans add those metrics plus 12-month trends, which a volume-only overlay does not                           |
+| You want CPC and competition, not only volume                 | A paid plan adds those metrics plus 12-month trends, which a volume-only overlay does not                         |
 | You will check demand before buying ads or a content calendar | Inline data is enough to kill a weak topic early, without an Ahrefs- or Semrush-sized stack                       |
-| :::                                                           |
 
-Best for: a solo builder who is writing a launch page or blog post and wants Google volume, CPC, and competition without a full SEO suite.
+:::
+
+Use it for a launch page or a blog post when you want Google volume, CPC, and competition without a full SEO suite.
 
 ## When should a solo developer skip it?
 
-- You need App Store listing keywords. Keywords Everywhere does not replace [AppTweak](/tools/apptweak) or other tools in the [ASO category](/categories/aso). Those products research Apple and Google Play store search. Where Keywords Everywhere appears on Google Play pages, official docs say it shows Google Keyword Planner volume, not Play-native demand.
-- A one-off Google volume check is enough. Paid plans are annual credit bundles. If you will look up five queries and stop, Bronze is more tool than the moment requires.
-- You need rank tracking. Keywords Everywhere is explicit: it does not monitor your position day after day. It finds and researches keywords; it does not plot ranking history for your site.
-- You expected it on iPhone or Safari. There is no Safari version and no iOS or Android app. You need Chrome, Firefox, or Edge on a desktop or laptop.
+- You need App Store listing keywords. Keywords Everywhere does not replace [AppTweak](/tools/apptweak) or other tools in the [ASO category](/categories/aso). Those products research Apple and Google Play store search.
+- A one-off Google volume check is enough. Paid access is an annual credit bundle. If you will look up a handful of queries and stop, read the [credit table](/tools/keywords-everywhere) before you buy a year.
+- You need rank tracking. The vendor says it does not monitor your position day after day. It finds and researches keywords.
+- You expected it on a phone. Do the work on a laptop browser. The mobile and Android answer, including Safari, is on the [tool page](/tools/keywords-everywhere).
 
-Not good for: App Store listing research, rank tracking, or anyone expecting the extension to run on iPhone, iPad, or Safari.
+Leave it out for App Store listing research, rank tracking, or anyone who needed it on an iPhone.
 
-## What does Keywords Everywhere cost?
+## How to use it on a launch page
 
-Keywords Everywhere is freemium. The extension installs at no cost. Volume, CPC, competition, and trend data run on credits sold as annual plans. These figures were checked on Sep 21, 2026 against the official compare-plans page. Confirm current numbers before relying on them.
-
-:::comparison Keywords Everywhere plans (checked Sep 21, 2026)
-
-| Plan     | Price         | Credits / year | Seats | Notes                                                                                                     |
-| -------- | ------------- | -------------- | ----- | --------------------------------------------------------------------------------------------------------- |
-| Free     | $0            | None           | n/a   | Keyword ideas, traffic and Moz metrics, SEO reports, social insights, prompt templates. No search volume. |
-| Bronze   | $84 / year    | 100,000        | 1     | Full extension and API. Usual plan for a solo builder.                                                    |
-| Silver   | $168 / year   | 400,000        | 3     | Adds SEO Minion and premium ChatGPT prompts.                                                              |
-| Gold     | $480 / year   | 2,000,000      | 10    | Adds Keyword Keg and RapidLevelUp courses.                                                                |
-| Platinum | $1,440 / year | 8,000,000      | 20    | Priority email support.                                                                                   |
-| :::      |
-
-There are no monthly plans. Credits are valid for 12 months from purchase, and the oldest credits are used first. One credit buys volume, CPC, competition, and the 12-month trend for one keyword, including keywords with zero volume.
-
-Credit use on Google is easy to underestimate. A search that shows 8 Related keywords, 20 People Also Search For keywords, and 25 Long-tail keywords uses 1 + 8 + 20 + 25 = 54 credits. YouTube or Amazon lookups that show a single number under the search bar use one credit. Google Search Console pages charge per keyword shown. Autocomplete metrics can be turned off in settings if that burn rate is too high.
-
-For a solo app, Bronze is the plan that matches the job: one seat, 100,000 credits, and the same core features as every paid tier. Silver and above are team and extras territory.
-
-## How should you try it without overcommitting?
-
-- Install the free extension on Chrome, Firefox, or Edge and pin the K icon.
-- Use the free widgets, traffic metrics, and prompt templates on a real landing-page draft first. You do not need an API key for those.
-- If a volume number would change the headline, the post, or an ad, buy Bronze and add the free API key.
-- Turn off "Show metrics for search suggestions" if a normal Google session burns credits too fast.
+- Install the extension on Chrome, Firefox, or Edge on a desktop or laptop, and pin the K icon.
+- Open the draft headline as a Google search. Read the free widgets first: related queries, traffic metrics, and the prompt templates. You can do that pass before you care about a key.
+- If a volume, CPC, or competition number would change the headline, the post, or an ad, add the API key and a plan. The [tool page](/tools/keywords-everywhere) has the key steps and the current credit prices.
+- Turn off search-suggestion metrics if a normal Google session burns credits too fast. The tool page has the vendor's credit example.
 - Keep App Store listing work in [AppTweak](/tools/apptweak) or [Appfigures](/tools/appfigures). Do not mix the two indexes.
 
 [Start with Keywords Everywhere](/go/keywords-everywhere). That link is an affiliate redirect.
 
 ## Frequently asked questions
 
-### Is Keywords Everywhere an ASO tool?
+### Where is the pricing?
 
-No. It overlays Google and other web keyword metrics in the desktop browser. It does not replace App Store listing tools. For store-listing keywords, use the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps) and the [ASO tools guide](/guides/best-aso-tools-for-indie-developers).
+On the [Keywords Everywhere tool page](/tools/keywords-everywhere). That page has the annual credit table, rechecked Oct 20, 2026. This guide does not repeat it.
 
-### Is Keywords Everywhere free?
+### How do I use it without treating it as an ASO tool?
 
-The extension is free to install, and a long list of features works without credits. Search volume, CPC, competition, and trend data require a paid annual plan. The lowest paid plan is Bronze at $84 per year for 100,000 credits (checked Sep 21, 2026).
-
-### Does it work on iPhone or Safari?
-
-No. Official docs say it works on Chrome, Firefox, and Edge. There is no Safari version and no iOS or Android app. You need a desktop or laptop browser.
+Run it on the Google searches behind the launch page or the post. When the job moves to the App Store listing, switch to the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps) and the [ASO tools guide](/guides/best-aso-tools-for-indie-developers).
 
 ### How is it different from Google Keyword Planner?
 
-Keywords Everywhere says it uses the same search volume data as Google Keyword Planner, then shows exact monthly volume inline as you browse, without requiring active Google Ads spend. Keyword Planner lives inside a Google Ads account and, without active campaigns, groups volumes into broad ranges.
+The vendor says it uses the same search volume data as Google Keyword Planner, then shows monthly volume inline as you browse, without requiring active Google Ads spend. Keyword Planner lives inside a Google Ads account and, without active campaigns, groups volumes into broad ranges.
 
 ### Does volume on YouTube or Amazon come from those sites?
 
-No. Keywords Everywhere states that only Google releases search volume, so YouTube, Amazon, and similar sites show Google volume rather than a native estimate.
+No. The vendor states that only Google releases search volume, so YouTube, Amazon, and similar sites show Google volume rather than a native estimate.
 
-### Do I still need AppTweak if I install Keywords Everywhere?
+### Do I still need AppTweak if I use Keywords Everywhere on a launch page?
 
-Usually yes, if ASO is the job. [AppTweak](/tools/apptweak) is for App Store keyword research, metadata, and competitor listings. Keywords Everywhere is for Google and other web properties. They do not replace each other.
+Usually yes, if ASO is also the job. [AppTweak](/tools/apptweak) is for App Store keyword research, metadata, and competitor listings. Keywords Everywhere is for the web properties around the launch. They do not replace each other.
 
 ## The recommendation
 
-For a solo mobile developer, Keywords Everywhere is a reasonable pick in the [landing pages category](/categories/landing-pages) when you are researching launch-page copy or blog topics and you want volume, CPC, and competition without standing up a full SEO suite. Install the free extension first. Pay for Bronze only once a volume number would change a real marketing decision. If the next job is the App Store listing, stay in the [ASO tools](/guides/best-aso-tools-for-indie-developers).
+For a solo mobile developer, use Keywords Everywhere while you are writing launch-page copy or a blog topic and you want Google volume in the browser. Install the free extension first. Pay only once a volume number would change a real marketing decision, and check the price on the [tool page](/tools/keywords-everywhere) before you do. If the next job is the App Store listing, stay in the [ASO tools](/guides/best-aso-tools-for-indie-developers).
 
 ## Source checks
 
-Pricing, platform, credit, and product claims were checked on Sep 21, 2026 against official sources:
+Product claims on this page were checked on Oct 20, 2026 against official sources. Credit prices are maintained on the tool page, from the same check:
 
 - Keywords Everywhere homepage: https://keywordseverywhere.com
 - Plan comparison and credit rules: https://keywordseverywhere.com/compare-plans.html
-- FAQ (credits, privacy, platforms, Keyword Planner, rank tracking): https://keywordseverywhere.com/frequently-asked-questions.html
-- Chrome Web Store listing (rating, user count, developer, version 11.55): https://chromewebstore.google.com/detail/keywords-everywhere-keywo/hbapdpeemoojbophdfndmlgdhppljgmp
+- FAQ (credits, platforms, Keyword Planner, rank tracking): https://keywordseverywhere.com/frequently-asked-questions.html
+- Google Play overlay wording, cited from the tool page: https://keywordseverywhere.com/google-play-search-volume.html
 
 Product UI captures dated Sep 21, 2026 document the unpaid extension popup (account details redacted; credits at zero) and a Google overlay on an app-related query. Volume and CPC are hidden in that SERP capture. Overlay metrics on listing cards are Keywords Everywhere estimates, not IndieAppStack measurements. The captures are not a ranking, accuracy, or full-product test. The decision graphic is an owned diagram. Affiliate links are disclosed and use the site's /go redirect.
 
-Last checked: 2026-09-21.
+Last checked: 2026-10-20.
