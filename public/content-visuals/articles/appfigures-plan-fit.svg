@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+  <title id="title">Which Appfigures plan fits a solo app</title>
+  <desc id="desc">Prices checked Oct 20, 2026. A five-path decision diagram. Use App Store Connect when you only need your own downloads and reviews. Use free Starter or Connect at $9.99 when you want one dashboard. Connect's card prints 0 keywords. Use Monitor at $44.99 for 100 keywords or Optimize at $149.99 for 500 keywords. Treat Boost from $399.99 and Amplify at $1,399.99 as competitor research, not a solo sales dashboard. Choose AppTweak when the job is the listing.</desc>
+  <defs>
+    <filter id="card-shadow" x="-8%" y="-8%" width="116%" height="124%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#20241f" flood-opacity="0.08"/>
+    </filter>
+    <style>
+      .eyebrow { font: 700 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 2.2px; text-transform: uppercase; fill: #2c5f4f; }
+      .title { font: 600 42px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .dek { font: 400 18px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .job { font: 600 22px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .plan { font: 600 18px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+      .detail { font: 400 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #474b44; }
+      .warn { font: 600 18px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #9e4434; }
+      .note { font: 500 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    </style>
+  </defs>
+  <rect width="1200" height="860" fill="#fbfaf7"/>
+  <text x="64" y="64" class="eyebrow">Plan fit</text>
+  <text x="64" y="118" class="title">Which Appfigures plan, if any</text>
+  <text x="64" y="156" class="dek">Prices from the Analytics and ASO tab, checked Oct 20, 2026.</text>
+
+  <g filter="url(#card-shadow)">
+    <rect x="64" y="196" width="1072" height="96" rx="7" fill="#ffffff" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="92" y="236" class="job">Own downloads and reviews only</text>
+    <text x="92" y="268" class="plan">App Store Connect</text>
+    <text x="360" y="268" class="detail">No second analytics subscription for numbers you already own.</text>
+  </g>
+
+  <g filter="url(#card-shadow)">
+    <rect x="64" y="312" width="1072" height="96" rx="7" fill="#ffffff" stroke="#2c5f4f" stroke-width="2"/>
+    <text x="92" y="352" class="job">One dashboard for your own reports</text>
+    <text x="92" y="384" class="plan">Starter $0, or Connect $9.99</text>
+    <text x="430" y="384" class="detail">5 connected apps. Connect's card prints 0 keywords.</text>
+  </g>
+
+  <g filter="url(#card-shadow)">
+    <rect x="64" y="428" width="1072" height="96" rx="7" fill="#ffffff" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="92" y="468" class="job">Keyword ranks are a weekly habit</text>
+    <text x="92" y="500" class="plan">Monitor $44.99, or Optimize $149.99</text>
+    <text x="560" y="500" class="detail">100 keywords, or 500. Competitor slots stay at 0.</text>
+  </g>
+
+  <g filter="url(#card-shadow)">
+    <rect x="64" y="544" width="1072" height="108" rx="7" fill="#fff7f5" stroke="#9e4434" stroke-width="2"/>
+    <text x="92" y="584" class="job">Competitor estimates</text>
+    <text x="92" y="618" class="warn">Boost from $399.99, or Amplify $1,399.99</text>
+    <text x="92" y="646" class="detail">Boost is $399.99, $599.99, or $899.99 for 5, 10, or 25 competitors. Over-scoped for a solo sales report.</text>
+  </g>
+
+  <g filter="url(#card-shadow)">
+    <rect x="64" y="672" width="1072" height="96" rx="7" fill="#ffffff" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="92" y="712" class="job">The job is the listing</text>
+    <text x="92" y="744" class="plan">AppTweak, not Boost</text>
+    <text x="340" y="744" class="detail">Keyword research and metadata work belong on an ASO tool.</text>
+  </g>
+
+  <text x="64" y="818" class="note">Source: appfigures.com/platform/pricing, Oct 20, 2026. Monthly prices. Annual billing prints a lower per-month rate.</text>
+</svg>

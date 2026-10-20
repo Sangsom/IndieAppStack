@@ -37,6 +37,9 @@ const codemagicDescription =
   "Codemagic gives 500 free Mac M2 minutes a month, then $0.095/min. See every plan, cost per build, and when Xcode Cloud or Bitrise is cheaper.";
 const codemagicHeading =
   "Codemagic pricing, free tier, and when it's worth paying";
+const appfiguresTitle = "Appfigures pricing and fit";
+const appfiguresDescription =
+  "Checked Oct 20, 2026. Appfigures reports your downloads, revenue, and reviews. Starter is free. The Connect card is $9.99 per month and prints 0 keywords.";
 
 function canonicalUrl(slug: string) {
   return new URL(`/tools/${slug}`, siteConfig.url).toString();
@@ -47,12 +50,20 @@ function toolPageTitle(tool: ToolDetail) {
     return codemagicTitle;
   }
 
+  if (tool.slug === "appfigures") {
+    return appfiguresTitle;
+  }
+
   return `${tool.name} review, pricing, alternatives, and fit`;
 }
 
 function toolPageDescription(tool: ToolDetail) {
   if (tool.slug === "codemagic") {
     return codemagicDescription;
+  }
+
+  if (tool.slug === "appfigures") {
+    return appfiguresDescription;
   }
 
   return `${tool.tagline} Pricing checked ${tool.lastChecked}.`;

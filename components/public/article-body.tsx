@@ -17,6 +17,10 @@ const articleImageDimensions: Record<
     height: 675,
     width: 1200,
   },
+  "/content-visuals/articles/appfigures-plan-fit.svg": {
+    height: 860,
+    width: 1200,
+  },
   "/content-visuals/articles/firebase-crashlytics-event-summary.png": {
     height: 1264,
     width: 1600,
