@@ -556,21 +556,30 @@ Usually not. Feature flags and experiments are built into PostHog and share its 
   {
     name: "Appfigures",
     slug: "appfigures",
-    tagline: "App intelligence, ASO, reviews, rankings, and store analytics.",
+    tagline:
+      "Store reports for the apps you connect, with keyword caps printed on the plan cards.",
     description:
-      "Appfigures helps app teams monitor downloads, revenue, reviews, rankings, ASO keywords, app intelligence, and store performance.",
+      "Checked Oct 20, 2026. Appfigures reports downloads, revenue, and reviews for apps you connect. Starter is free. Connect is $9.99 per month and its plan card prints 0 keywords.",
     website_url: "https://appfigures.com/",
     pricing_summary:
-      "Paid plans start with app analytics and scale into ASO and market-intelligence bundles.",
-    pricing_model: "paid",
-    best_for: ["ASO tracking", "App intelligence", "Review monitoring"],
-    not_good_for: ["Teams that need only screenshot design"],
+      "Checked Oct 20, 2026. Starter is free. Connect is $9.99 per month and the plan card prints 0 keywords. The first printed keyword cap is Monitor at $44.99 per month.",
+    pricing_model: "freemium",
+    best_for: [
+      "Own-app download and revenue reporting",
+      "Review monitoring across stores",
+      "Keyword ranks on Monitor and above",
+    ],
+    not_good_for: [
+      "Apps that only need App Store Connect",
+      "Keyword research as the main job",
+      "Competitor estimates on a solo budget",
+    ],
     platforms: ["iOS", "Android", "Web"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["AppTweak", "AppFollow", "Sensor Tower"],
     categorySlugs: ["aso", "analytics"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://appfigures.com/platform/pricing",
+      "Pricing checked 2026-10-20 from https://appfigures.com/platform/pricing (Analytics and ASO). Starter free, 5 connected apps. Connect $9.99/mo ($7.99 annual display), 0 keywords, 0 competitors. Monitor $44.99 ($35.99), 100 keywords, daily. Optimize $149.99 ($119.99), 500 keywords, hourly, 0 competitors. Boost monthly $399.99/$599.99/$899.99 and annual display $349.99/$449.99/$649.99 for 5/10/25 competitors, 1,000 keywords. Amplify $1,399.99 ($999.99), 2,500 keywords, unlimited competitors. Extra apps $1.99 after 5. Trial unlocks Optimize, no card, duration not published. Market Intelligence Scout $599.99 is Get in Touch. Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "AppTweak",
