@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Adapty and Superwall fees at three revenue levels</title>
+  <desc id="desc">Checked Oct 20, 2026. If the whole amount is tracked by Adapty and also flows through a Superwall paywall: at $1,000 both are $0; at $10,000 Adapty is $100 and Superwall Indie is $0; at $50,000 both are $500. Figures are the published rates applied, not invoices. If none of a $50,000 month goes through a Superwall paywall, Superwall's published example is $0.</desc>
+  <defs>
+    <style>
+      .eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.6px; text-transform: uppercase; fill: #2c5f4f; }
+      .title { font: 600 32px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .dek { font: 400 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .cardlabel { font: 700 12px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.2px; text-transform: uppercase; fill: #2c5f4f; }
+      .cardtitle { font: 600 22px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .row { font: 500 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+      .money { font: 600 18px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #20241f; }
+      .muted { font: 500 14px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+      .foot { font: 500 13px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#fbfaf7"/>
+  <text x="48" y="44" class="eyebrow">Price ledger | checked Oct 20, 2026</text>
+  <text x="48" y="88" class="title">What the meters charge at three levels</text>
+  <text x="48" y="118" class="dek">Whole amount on both meters. Adapty bills tracked revenue. Superwall Indie bills paywall-attributed revenue. Not invoices.</text>
+
+  <rect x="48" y="152" width="352" height="470" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="72" y="188" class="cardlabel">Under both free bands</text>
+  <text x="72" y="226" class="cardtitle">$1,000 / month</text>
+  <text x="72" y="278" class="row">Adapty Pro</text>
+  <text x="360" y="278" class="money" text-anchor="end">$0</text>
+  <text x="72" y="306" class="muted">Under the $5,000 line.</text>
+  <line x1="72" y1="340" x2="376" y2="340" stroke="#e7e2d7"/>
+  <text x="72" y="384" class="row">Superwall Indie</text>
+  <text x="360" y="384" class="money" text-anchor="end">$0</text>
+  <text x="72" y="412" class="muted">Inside the $10,000 MAR band.</text>
+  <text x="72" y="520" class="muted">Price does not choose here.</text>
+  <text x="72" y="546" class="muted">Pick the job you will run.</text>
+  <text x="72" y="584" class="muted">Infrastructure on Superwall</text>
+  <text x="72" y="608" class="muted">stays $0 either way.</text>
+
+  <rect x="424" y="152" width="352" height="470" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="448" y="188" class="cardlabel">Bands diverge</text>
+  <text x="448" y="226" class="cardtitle">$10,000 / month</text>
+  <text x="448" y="278" class="row">Adapty Pro</text>
+  <text x="736" y="278" class="money" text-anchor="end">$100</text>
+  <text x="448" y="306" class="muted">1% of $10,000 tracked.</text>
+  <line x1="448" y1="340" x2="752" y2="340" stroke="#e7e2d7"/>
+  <text x="448" y="384" class="row">Superwall Indie</text>
+  <text x="736" y="384" class="money" text-anchor="end">$0</text>
+  <text x="448" y="412" class="muted">Still up to $10,000 MAR.</text>
+  <text x="448" y="500" class="muted">Startup is a different card:</text>
+  <text x="448" y="526" class="muted">$49 per month plus 1% of MAR,</text>
+  <text x="448" y="552" class="muted">which calculates to $149 here.</text>
+  <text x="448" y="590" class="muted">That card has no $10,000</text>
+  <text x="448" y="614" class="muted">free band on it.</text>
+
+  <rect x="800" y="152" width="352" height="470" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="824" y="188" class="cardlabel">Rates match, bases do not</text>
+  <text x="824" y="226" class="cardtitle">$50,000 / month</text>
+  <text x="824" y="278" class="row">Adapty Pro</text>
+  <text x="1112" y="278" class="money" text-anchor="end">$500</text>
+  <text x="824" y="306" class="muted">1% of tracked revenue.</text>
+  <line x1="824" y1="340" x2="1128" y2="340" stroke="#e7e2d7"/>
+  <text x="824" y="384" class="row">Superwall Indie</text>
+  <text x="1112" y="384" class="money" text-anchor="end">$500</text>
+  <text x="824" y="412" class="muted">1% of total MAR, if all</text>
+  <text x="824" y="436" class="muted">$50,000 went through</text>
+  <text x="824" y="460" class="muted">a Superwall paywall.</text>
+  <text x="824" y="520" class="muted">None through its paywall:</text>
+  <text x="824" y="546" class="muted">Superwall's example is $0.</text>
+  <text x="824" y="584" class="muted">Adapty stays $500. Its meter</text>
+  <text x="824" y="608" class="muted">does not care which screen sold.</text>
+
+  <text x="48" y="668" class="foot">Sources: adapty.io/pricing and superwall.com/pricing. Retrieved Oct 20, 2026. The $100, $500, and $149 figures are the published rates applied to these levels.</text>
+  <text x="48" y="694" class="foot">IndieAppStack conceptual chart. Recheck official pages before committing spend. Refund Saver's 0.2% illustration is not in the Adapty column.</text>
+</svg>
