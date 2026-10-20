@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { InlineMarkdown } from "@/components/public/inline-markdown";
 import { cn } from "@/lib/utils";
 
 type CategoryCardProps = {
@@ -36,7 +37,9 @@ export function CategoryCard({
           </p>
         ) : null}
       </div>
-      <p className="mt-3 text-body-md text-muted">{description}</p>
+      <p className="mt-3 text-body-md text-muted">
+        <InlineMarkdown text={description} />
+      </p>
       {children ? <div className="mt-4">{children}</div> : null}
       <a
         className="mt-5 inline-flex rounded-button text-sm font-semibold text-pine transition-colors hover:text-ink focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface"

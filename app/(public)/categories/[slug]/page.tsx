@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { ComparisonTable } from "@/components/public/comparison-table";
 import { DisclosureCallout } from "@/components/public/disclosure-callout";
+import { InlineMarkdown } from "@/components/public/inline-markdown";
 import { JsonLd } from "@/components/public/json-ld";
 import { NewsletterSignup } from "@/components/public/newsletter-signup";
 import { ToolCard } from "@/components/public/tool-card";
@@ -193,7 +194,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           </p>
         ) : null}
         <p className="mt-5 max-w-3xl text-lg leading-8 text-muted">
-          {data.category.description}
+          <InlineMarkdown text={data.category.description} />
         </p>
       </section>
 
