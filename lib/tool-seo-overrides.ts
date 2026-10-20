@@ -1,0 +1,29 @@
+export const TOOL_SEO_OVERRIDES: Record<
+  string,
+  { title: string; description: string; heading: string }
+> = {
+  appwrite: {
+    title: "Appwrite Pricing 2026: Free Tier, Pro $25/mo",
+    description:
+      "Free: 75,000 MAU, 2 GB storage, and 5 GB bandwidth. Pro from $25/month. Self-hosting is cheaper when the machine costs less than $25. Checked Oct 20, 2026.",
+    heading: "Appwrite pricing, free tier, and when it's worth paying",
+  },
+  codemagic: {
+    title: "Codemagic Pricing 2026: 500 Free Minutes, Then $0.095",
+    description:
+      "Codemagic gives 500 free Mac M2 minutes a month, then $0.095/min. See every plan, cost per build, and when Xcode Cloud or Bitrise is cheaper.",
+    heading: "Codemagic pricing, free tier, and when it's worth paying",
+  },
+};
+
+/** Absolute document title for slugs in the override map. Other tools keep the site template. */
+export function absoluteTitleForSlug(
+  slug: string,
+  title: string,
+): { absolute: string } | undefined {
+  if (!(slug in TOOL_SEO_OVERRIDES)) {
+    return undefined;
+  }
+
+  return { absolute: title };
+}
