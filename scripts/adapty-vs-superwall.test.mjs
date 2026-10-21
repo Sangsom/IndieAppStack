@@ -63,19 +63,28 @@ test("the slug renders on the comparison route the sitemap uses", () => {
 
   assert.equal(path, "/comparisons/adapty-vs-superwall");
   assert.match(body, /## Short answer/);
-  assert.match(
-    body,
-    /\/content-visuals\/articles\/adapty-vs-superwall-fees\.svg/,
-  );
-  assert.ok(
-    fs.existsSync(
-      "public/content-visuals/articles/adapty-vs-superwall-fees.svg",
-    ),
-  );
-  assert.ok(
+  const visuals = [
+    "adapty-vs-superwall-cover.webp",
+    "adapty-vs-superwall-fees.svg",
+    "adapty-vs-superwall-feature-matrix.svg",
+    "adapty-vs-superwall-decision-flow.svg",
+    "adapty-vs-superwall-stack.svg",
+  ];
+
+  for (const fileName of visuals) {
+    assert.match(body, new RegExp(`/content-visuals/articles/${fileName}`));
+    assert.ok(
+      fs.existsSync(`public/content-visuals/articles/${fileName}`),
+      fileName,
+    );
+  }
+
+  assert.doesNotMatch(body, /adapty-vs-superwall-jobs\.svg/);
+  assert.equal(
     fs.existsSync(
       "public/content-visuals/articles/adapty-vs-superwall-jobs.svg",
     ),
+    false,
   );
 });
 
