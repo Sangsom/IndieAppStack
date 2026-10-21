@@ -21,6 +21,28 @@ const articleImageDimensions: Record<
     height: 860,
     width: 1200,
   },
+  "/content-visuals/articles/best-crash-reporting-tools-cover.svg": {
+    height: 780,
+    width: 1200,
+  },
+  "/content-visuals/articles/best-crash-reporting-tools-crashlytics-event.webp":
+    {
+      height: 1264,
+      width: 1600,
+    },
+  "/content-visuals/articles/best-crash-reporting-tools-crashlytics-issues.webp":
+    {
+      height: 1224,
+      width: 910,
+    },
+  "/content-visuals/articles/best-crash-reporting-tools-decision.svg": {
+    height: 720,
+    width: 1200,
+  },
+  "/content-visuals/articles/best-crash-reporting-tools-dsym-path.svg": {
+    height: 780,
+    width: 1200,
+  },
   "/content-visuals/articles/firebase-crashlytics-event-summary.png": {
     height: 1264,
     width: 1600,
@@ -118,6 +140,7 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
             height: 675,
             width: 1200,
           };
+          const isCover = block.src.includes("-cover.");
 
           return (
             <figure
@@ -132,6 +155,9 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
                 src={block.src}
                 unoptimized={block.src.endsWith(".svg")}
                 width={dimensions.width}
+                {...(isCover
+                  ? { priority: true }
+                  : { loading: "lazy" as const })}
               />
               {block.caption ? (
                 <figcaption className="text-sm leading-6 text-muted">

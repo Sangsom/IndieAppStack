@@ -2727,6 +2727,8 @@ Last checked: Aug 11, 2026.`,
             "A ranked shortlist of the crash reporting tools in this directory, with free tiers checked Oct 20, 2026, plus a real Crashlytics setup from our iOS app.",
           body_markdown: `## Short answer
 
+![Bar chart of monthly crash-reporting prices: Crashlytics at $0 with no paid tier, Sentry Developer at $0, Sentry Team at $26 a month when billed annually, and $29 in Sentry monthly structured data, plus the Developer quotas.](/content-visuals/articles/best-crash-reporting-tools-cover.svg "Monthly list price for Crashlytics and Sentry, plus the Sentry Developer allowances of 1 user, 5,000 errors, 5 GB of logs, 5 GB of application metrics, 5 million spans, and 50 replays. Crashlytics has no published error cap. Custom logging is limited to 64 kB. Checked Oct 20, 2026. [Sentry pricing](https://sentry.io/pricing/) and [Firebase pricing plans](https://firebase.google.com/docs/projects/billing/firebase-pricing-plans).")
+
 Pick by the stack you already have. If the app is on Firebase, use [Firebase Crashlytics](/tools/firebase). If crashes also need to sit with backend or web errors, use [Sentry](/tools/sentry). The [crash reporting category](/categories/crash-reporting) lists those two tools. This guide ranks the tools that category lists. Bugsnag, Instabug, Embrace, and Measure have no page in it.
 
 The head-to-head on monitoring scope, including how the free limits differ, is [Sentry vs Firebase Crashlytics for mobile apps](/comparisons/sentry-vs-firebase-crashlytics-mobile-apps). This page is the ranked list for the category.
@@ -2771,7 +2773,7 @@ For a Firebase Android app, Crashlytics keeps crash and ANR triage in the consol
 
 The install steps, release names, and alert habit live in the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps).
 
-![Firebase Crashlytics dashboard filtered to open non-fatal issues.](/content-visuals/articles/firebase-crashlytics-nonfatal-filter.png "Crashlytics groups reports into an Issues table. This screenshot is Google's codelab, not our app.")
+![Firebase Crashlytics dashboard filtered to open non-fatal issues.](/content-visuals/articles/best-crash-reporting-tools-crashlytics-issues.webp "Crashlytics groups reports into an Issues table. This screenshot is Google's codelab, not our app.")
 
 Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified.
 
@@ -2781,7 +2783,7 @@ On Apple platforms, Crashlytics reports crashes and non-fatal errors. The offici
 
 Sentry's platform list includes an official iOS SDK, and its mobile session replay docs include iOS. Symbol upload is part of making those stacks readable. The scope choice between the two tools is the comparison linked above. The notes below are the part that comparison does not cover: what broke when we wired Crashlytics into our own iOS app.
 
-![Firebase Crashlytics Event summary showing an iOS crash stack trace.](/content-visuals/articles/firebase-crashlytics-event-summary.png "A symbolicated Crashlytics event shows the stack, app version, device, and time. This screenshot is Google's codelab, not our app.")
+![Firebase Crashlytics Event summary showing an iOS crash stack trace.](/content-visuals/articles/best-crash-reporting-tools-crashlytics-event.webp "A symbolicated Crashlytics event shows the stack, app version, device, and time. This screenshot is Google's codelab, not our app.")
 
 Firebase Crashlytics interface from [Google Firebase Codelabs](https://firebase.google.com/codelabs/understand-unity-games-crashes-using-advanced-crashlytics), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Unmodified.
 
