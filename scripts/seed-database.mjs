@@ -15,7 +15,8 @@ import {
   keywordsEverywhereSlug,
 } from "./content/keywords-everywhere.mjs";
 import { readEnvLocal } from "./env-local.mjs";
-import { conflictColumns, parseSeedArgs, planUpsert } from "./seed-plan.mjs";
+import { parseSeedArgs } from "./seed-plan.mjs";
+import { upsertChangedRows } from "./upsert-changed.mjs";
 
 let seedArgs;
 
@@ -85,50 +86,14 @@ const seedCounts = {
   updated: 0,
 };
 
-async function fetchExistingRows(table, columns) {
-  const pageSize = 1000;
-  const rows = [];
-
-  for (let from = 0; ; from += pageSize) {
-    let query = supabase.from(table).select("*");
-
-    for (const column of columns) {
-      query = query.order(column, { ascending: true });
-    }
-
-    const { data, error } = await query.range(from, from + pageSize - 1);
-
-    if (error) {
-      throw new Error(`${table} diff failed: ${error.message}`);
-    }
-
-    rows.push(...(data ?? []));
-
-    if (!data || data.length < pageSize) {
-      break;
-    }
-  }
-
-  return rows;
-}
-
 async function upsert(table, rows, options) {
-  const optionNames = Object.keys(options ?? {});
-
-  if (
-    optionNames.some((name) => name !== "onConflict") ||
-    !options?.onConflict
-  ) {
-    throw new Error(
-      `${table} seed refused. Upserts require onConflict and no other write options.`,
-    );
-  }
-
-  const existing = await fetchExistingRows(
+  const { plan, rows: written } = await upsertChangedRows(
+    supabase,
     table,
-    conflictColumns(options.onConflict),
+    rows,
+    options,
+    { dryRun: seedArgs.dryRun },
   );
-  const plan = planUpsert(table, rows, options.onConflict, existing);
   seedCounts.inserted += plan.inserted;
   seedCounts.updated += plan.updated;
   seedCounts.unchanged += plan.unchanged;
@@ -138,20 +103,7 @@ async function upsert(table, rows, options) {
     `${prefix} ${table}: inserted=${plan.inserted} updated=${plan.updated} unchanged=${plan.unchanged}`,
   );
 
-  if (seedArgs.dryRun) {
-    return plan.previewRows;
-  }
-
-  const { data, error } = await supabase
-    .from(table)
-    .upsert(rows, options)
-    .select();
-
-  if (error) {
-    throw new Error(`${table} seed failed: ${error.message}`);
-  }
-
-  return data;
+  return written;
 }
 
 function bySlug(rows) {

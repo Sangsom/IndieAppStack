@@ -13,6 +13,7 @@ import {
   keywordsEverywhereGuideSlug,
   keywordsEverywhereSlug,
 } from "./content/keywords-everywhere.mjs";
+import { upsertChangedRows } from "./upsert-changed.mjs";
 
 function readEnvLocal() {
   const envPath = path.join(cwd(), ".env.local");
@@ -55,16 +56,14 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
 });
 
 async function upsert(table, rows, options) {
-  const { data, error } = await supabase
-    .from(table)
-    .upsert(rows, options)
-    .select();
+  const { rows: written } = await upsertChangedRows(
+    supabase,
+    table,
+    rows,
+    options,
+  );
 
-  if (error) {
-    throw new Error(`${table} upsert failed: ${error.message}`);
-  }
-
-  return data;
+  return written;
 }
 
 async function requireBySlug(table, slug) {

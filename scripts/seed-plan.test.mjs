@@ -5,7 +5,12 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { readEnvLocal } from "./env-local.mjs";
-import { parseSeedArgs, planUpsert, valuesEqual } from "./seed-plan.mjs";
+import {
+  combineUpsertResult,
+  parseSeedArgs,
+  planUpsert,
+  valuesEqual,
+} from "./seed-plan.mjs";
 
 const repoRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -53,9 +58,52 @@ test("planUpsert counts inserts, updates, and unchanged rows", () => {
   assert.equal(plan.inserted, 1);
   assert.equal(plan.updated, 1);
   assert.equal(plan.unchanged, 1);
+  assert.deepEqual(
+    plan.rowsToWrite.map((row) => row.slug),
+    ["new", "existing"],
+  );
   assert.equal(plan.previewRows[0].id, "dry-run:categories:0");
   assert.equal(plan.previewRows[1].id, "id-existing");
   assert.equal(plan.previewRows[2].id, "id-same");
+});
+
+test("combineUpsertResult keeps unchanged ids and uses written rows", () => {
+  const plan = planUpsert(
+    "categories",
+    [
+      { name: "New", slug: "new" },
+      { name: "Renamed", slug: "existing" },
+      { name: "Same", slug: "same" },
+    ],
+    "slug",
+    [
+      { id: "id-existing", name: "Old", slug: "existing" },
+      { id: "id-same", name: "Same", slug: "same" },
+    ],
+  );
+  const combined = combineUpsertResult("slug", plan, [
+    { id: "real-new", name: "New", slug: "new" },
+    { id: "id-existing", name: "Renamed", slug: "existing" },
+  ]);
+
+  assert.equal(combined[0].id, "real-new");
+  assert.equal(combined[1].name, "Renamed");
+  assert.equal(combined[2].id, "id-same");
+  assert.equal(combined[2].slug, "same");
+});
+
+test("combineUpsertResult refuses a write the database did not return", () => {
+  const plan = planUpsert(
+    "categories",
+    [{ name: "New", slug: "new" }],
+    "slug",
+    [],
+  );
+
+  assert.throws(
+    () => combineUpsertResult("slug", plan, []),
+    /did not return a row/,
+  );
 });
 
 test("timestamp formatting does not count as an update", () => {
@@ -73,6 +121,7 @@ test("timestamp formatting does not count as an update", () => {
 
   assert.equal(plan.updated, 0);
   assert.equal(plan.unchanged, 1);
+  assert.equal(plan.rowsToWrite.length, 0);
 });
 
 test("missing payload keys are compared as null", () => {
@@ -133,6 +182,8 @@ test("seed script does not issue destructive queries", () => {
   assert.doesNotMatch(source, /\.rpc\s*\(/);
   assert.match(source, /upsert-only/);
   assert.match(source, /onConflict/);
+  assert.match(source, /upsertChangedRows/);
+  assert.doesNotMatch(source, /\.upsert\(\s*rows/);
 });
 
 test("env file parser keeps values that contain equals signs", () => {

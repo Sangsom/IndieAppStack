@@ -143,12 +143,16 @@ export function planUpsert(table, rows, onConflict, existingRows) {
   let updated = 0;
   let unchanged = 0;
   const previewRows = [];
+  // Normalized rows whose field values differ from the database. Unchanged
+  // rows stay out of the write so a reseed does not fire updated_at.
+  const rowsToWrite = [];
 
   for (const [index, row] of normalized.entries()) {
     const existing = existingByKey.get(conflictKey(row, columns));
 
     if (!existing) {
       inserted += 1;
+      rowsToWrite.push(row);
       previewRows.push({
         ...row,
         id: row.id ?? `dry-run:${table}:${index}`,
@@ -158,6 +162,7 @@ export function planUpsert(table, rows, onConflict, existingRows) {
 
     if (payloadChanged(row, existing)) {
       updated += 1;
+      rowsToWrite.push(row);
     } else {
       unchanged += 1;
     }
@@ -172,8 +177,30 @@ export function planUpsert(table, rows, onConflict, existingRows) {
   return {
     inserted,
     previewRows,
+    rowsToWrite,
     table,
     unchanged,
     updated,
   };
+}
+
+export function combineUpsertResult(onConflict, plan, writtenRows) {
+  const columns = conflictColumns(onConflict);
+  const writtenByKey = new Map(
+    (writtenRows ?? []).map((row) => [conflictKey(row, columns), row]),
+  );
+
+  for (const row of plan.rowsToWrite) {
+    const key = conflictKey(row, columns);
+
+    if (!writtenByKey.has(key)) {
+      throw new Error(
+        `${plan.table} upsert did not return a row for conflict key ${key}.`,
+      );
+    }
+  }
+
+  return plan.previewRows.map(
+    (row) => writtenByKey.get(conflictKey(row, columns)) ?? row,
+  );
 }
