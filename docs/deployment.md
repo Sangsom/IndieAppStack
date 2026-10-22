@@ -41,6 +41,38 @@ Configure these in Vercel Project Settings for Production and Preview. Do not co
 | `ANTHROPIC_MODEL`               | Current Claude model ID     | Current Claude model ID          | Keep current with Anthropic model docs.                    |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-XXXXXXXXXX`              | Optional (own property)          | GA4 analytics. Inlined at build — redeploy after changing. |
 
+## Database migrations
+
+SQL files in `supabase/migrations/` are applied on push to `main` by `.github/workflows/seed-production.yml`, in a job that finishes before the production content upsert. The job installs the Supabase CLI with `supabase/setup-cli`, then runs `supabase link --project-ref` and `supabase db push`. A pull request that changes `supabase/migrations/**` runs `supabase db push --dry-run` and does not apply SQL.
+
+`db push` applies local files that are absent from `supabase_migrations.schema_migrations`. Versions already recorded there are skipped. It needs three Actions secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_REF`, and `SUPABASE_DB_PASSWORD`. If any of them is missing, the job warns and exits successfully so the content seed still runs. Add the secrets under Settings > Secrets and variables > Actions.
+
+The access token has to be able to link the project. Current Supabase CLI guidance for that link step is a personal access token limited to the project, with read access to Project Settings, API Keys, and API Key Secrets. `SUPABASE_PROJECT_REF` is the project ref (the same identifier documented above as `SUPABASE_PROJECT_ID` for Vercel). `SUPABASE_DB_PASSWORD` is the database password. `db push` connects as the database user. The service role key does not replace it.
+
+Five migrations were on `main` before this job existed:
+
+- `20260628120000`
+- `20260628124500`
+- `20260628152000`
+- `20260629110000`
+- `20260719120000`
+
+Those files use `create type`, `create table`, or `add column`. Re-running them is not safe. If a dry-run lists any of them, remote history does not contain that version, and the job does not push. Mark the missing rows applied without running the SQL:
+
+```bash
+supabase migration repair --status applied 20260628120000
+supabase migration repair --status applied 20260628124500
+supabase migration repair --status applied 20260628152000
+supabase migration repair --status applied 20260629110000
+supabase migration repair --status applied 20260719120000
+```
+
+Do not pass `--include-all`. That flag runs the out-of-order files. Do not mark a version applied when its SQL has not actually been applied. `20261022050000_updated_at_only_on_change.sql` is the sitemap `lastmod` change and should be applied by `db push` after it is on `main`, not repaired in advance. After the five baseline rows are present, the next push applies only newer files.
+
+This repository could not read production `supabase_migrations.schema_migrations` when the workflow was added (no access token, project ref, or database password were available here). The first Actions log for this job is the check: a dry-run that says the remote database is up to date means the five versions are already recorded.
+
+IndexNow is unchanged. It runs after a successful Vercel Production deployment, not as part of this workflow.
+
 ## CI
 
 GitHub Actions runs on pushes to `main` and pull requests:

@@ -3,6 +3,11 @@ name: Seed production
 # Upserts seeded content into production Supabase, then marks the public ISR
 # cache stale. Rows already in the database and absent from the seed are left
 # in place. The job never deletes or truncates.
+#
+# Schema changes in supabase/migrations/ are applied in the migrate job before
+# the content upsert. A migration-only push does not reseed. Pull requests
+# dry-run and do not write. IndexNow stays on deployment_status, after the
+# Vercel Production deployment.
 on:
   push:
     branches:
@@ -12,23 +17,143 @@ on:
       - output/indieappstack/**
       - scripts/content/**
       - scripts/env-local.mjs
+      - scripts/plan-supabase-push.mjs
       - scripts/revalidate-production.mjs
+      - scripts/seed-content-changed.mjs
       - scripts/seed-database.mjs
       - scripts/seed-plan.mjs
+      - scripts/supabase-db-push.mjs
       - scripts/tool-content.json
+      - supabase/migrations/**
+  pull_request:
+    paths:
+      - .github/workflows/seed-production.yml
+      - scripts/plan-supabase-push.mjs
+      - scripts/supabase-db-push.mjs
+      - supabase/migrations/**
   workflow_dispatch:
 
 permissions:
   contents: read
   deployments: read
 
+# Production pushes share the existing seed group so a second push waits
+# instead of overlapping a db push or upsert. Pull-request dry-runs use a
+# separate group so they do not queue behind production.
 concurrency:
-  group: seed-production
+  group: ${{ github.event_name == 'pull_request' && format('supabase-migrate-{0}', github.ref) || 'seed-production' }}
   cancel-in-progress: false
 
 jobs:
+  migrate:
+    name: Apply Supabase migrations
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: 2.108.0
+          github-token: ${{ github.token }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Link and push migrations
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          SUPABASE_PUSH_MODE: apply
+        run: node scripts/supabase-db-push.mjs
+
+  migrate-dry-run:
+    name: Dry-run Supabase migrations
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: 2.108.0
+          github-token: ${{ github.token }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Dry-run migration push
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_PROJECT_REF: ${{ secrets.SUPABASE_PROJECT_REF }}
+          SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+          SUPABASE_PUSH_MODE: dry-run
+        run: node scripts/supabase-db-push.mjs
+
+  changes:
+    name: Detect content changes
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      content: ${{ steps.filter.outputs.content }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - name: Content paths in this push
+        id: filter
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "content=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          before="${{ github.event.before }}"
+          sha="${{ github.sha }}"
+          if [ -z "$before" ] || [ "$before" = "0000000000000000000000000000000000000000" ]; then
+            echo "::warning::No previous commit on this push. Content seed will run."
+            echo "content=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if ! git fetch --no-tags --depth=1 origin "$before"; then
+            echo "::warning::Could not fetch the previous commit. Content seed will run."
+            echo "content=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          files="$(git diff --name-only "$before" "$sha")"
+          printf '%s\n' "$files"
+          content="$(printf '%s\n' "$files" | node scripts/seed-content-changed.mjs)"
+          echo "content=$content" >> "$GITHUB_OUTPUT"
+
   seed:
     name: Upsert production content
+    needs:
+      - migrate
+      - changes
+    if: >-
+      github.event_name != 'pull_request' &&
+      needs.migrate.result == 'success' &&
+      needs.changes.outputs.content == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
