@@ -23,6 +23,10 @@ import {
   type ToolDetail,
   type ToolDetailArticle,
 } from "@/lib/tool-detail-data";
+import {
+  absoluteTitleForSlug,
+  TOOL_SEO_OVERRIDES,
+} from "@/lib/tool-seo-overrides";
 
 type ToolDetailPageProps = {
   params: Promise<{
@@ -32,11 +36,6 @@ type ToolDetailPageProps = {
 
 export const revalidate = 3600;
 
-const codemagicTitle = "Codemagic Pricing 2026: 500 Free Minutes, Then $0.095";
-const codemagicDescription =
-  "Codemagic gives 500 free Mac M2 minutes a month, then $0.095/min. See every plan, cost per build, and when Xcode Cloud or Bitrise is cheaper.";
-const codemagicHeading =
-  "Codemagic pricing, free tier, and when it's worth paying";
 const appfiguresTitle = "Appfigures pricing and fit";
 const appfiguresDescription =
   "Checked Oct 20, 2026. Appfigures reports your downloads, revenue, and reviews. Starter is free. The Connect card is $9.99 per month and prints 0 keywords.";
@@ -46,8 +45,10 @@ function canonicalUrl(slug: string) {
 }
 
 function toolPageTitle(tool: ToolDetail) {
-  if (tool.slug === "codemagic") {
-    return codemagicTitle;
+  const override = TOOL_SEO_OVERRIDES[tool.slug];
+
+  if (override) {
+    return override.title;
   }
 
   if (tool.slug === "appfigures") {
@@ -58,8 +59,10 @@ function toolPageTitle(tool: ToolDetail) {
 }
 
 function toolPageDescription(tool: ToolDetail) {
-  if (tool.slug === "codemagic") {
-    return codemagicDescription;
+  const override = TOOL_SEO_OVERRIDES[tool.slug];
+
+  if (override) {
+    return override.description;
   }
 
   if (tool.slug === "appfigures") {
@@ -70,8 +73,10 @@ function toolPageDescription(tool: ToolDetail) {
 }
 
 function toolPageHeading(tool: ToolDetail) {
-  if (tool.slug === "codemagic") {
-    return codemagicHeading;
+  const override = TOOL_SEO_OVERRIDES[tool.slug];
+
+  if (override) {
+    return override.heading;
   }
 
   return tool.name;
@@ -205,15 +210,15 @@ export async function generateMetadata({
     type: "article",
   });
 
-  if (tool.slug !== "codemagic") {
+  const absoluteTitle = absoluteTitleForSlug(tool.slug, title);
+
+  if (!absoluteTitle) {
     return metadata;
   }
 
   return {
     ...metadata,
-    title: {
-      absolute: title,
-    },
+    title: absoluteTitle,
   };
 }
 
