@@ -2,12 +2,11 @@
 -- every update, including a reseed that wrote the same column values. Keep the
 -- previous timestamp unless a column other than updated_at actually changed.
 --
--- Apply this file to the hosted Supabase project the same way as the other
--- files in supabase/migrations/: `supabase db push`, or paste it into the SQL
--- editor. GitHub Actions does not run migrations. The production seed workflow
--- only upserts content. That seed also skips unchanged rows, so lastmod stays
--- put on the next reseed even before this function is replaced. Apply the
--- function anyway so admin saves and one-off upserts follow the same rule.
+-- Push to main applies this file in .github/workflows/seed-production.yml
+-- (supabase link, then supabase db push) before the content upsert. The seed
+-- only upserts content, and it skips unchanged rows, so lastmod stays put on
+-- a reseed even before this function is replaced. The function still needs to
+-- land so admin saves and one-off upserts follow the same rule.
 
 create or replace function public.set_updated_at()
 returns trigger
