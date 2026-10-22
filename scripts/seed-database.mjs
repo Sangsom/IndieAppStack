@@ -166,6 +166,7 @@ const superwallAlternativesPublishedAt = "2026-08-14T02:46:21.000Z";
 const stripeGuidePublishedAt = "2026-08-21T09:00:00.000Z";
 const appStoreTermsGuidePublishedAt = "2026-09-24T03:00:00.000Z";
 const ios27GuidePublishedAt = "2026-09-26T03:10:00.000Z";
+const adaptyVsSuperwallPublishedAt = "2026-10-20T09:00:00.000Z";
 
 function readIos27GuideBody() {
   const full = fs.readFileSync(
@@ -1903,7 +1904,7 @@ The capture below is Adapty's paywall builder in the Builder & Generator tab, no
 
 [Superwall](/tools/superwall) is the remote-paywall job: change paywalls, campaigns, audiences, and upgrade prompts without shipping a new app version each time. Its pricing page keeps subscription infrastructure free at any scale and meters the paywall product on revenue that flows through Superwall-rendered paywalls.
 
-That is a different decision than RevenueCat vs Adapty, so Superwall stays a short third job here rather than a full third product review. For the two-way paywall-versus-infrastructure matchup, read [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat). For the wider set, see [RevenueCat alternatives](/comparisons/revenuecat-alternatives).
+That is a different decision than RevenueCat vs Adapty, so Superwall stays a short third job here rather than a full third product review. For the two-way paywall-versus-infrastructure matchup, read [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat). For Adapty against Superwall, read [Adapty vs Superwall](/comparisons/adapty-vs-superwall). For the wider set, see [RevenueCat alternatives](/comparisons/revenuecat-alternatives).
 
 **When not to use Superwall:** skip it before the paid promise is clear. Skip it when you still need to choose a purchase-infrastructure source of truth. Skip it if you want one general analytics tool for product behavior beyond paywall and revenue flows.
 
@@ -2004,6 +2005,7 @@ Last checked: Aug 18, 2026.
 
 - Compare [RevenueCat](/tools/revenuecat), [Adapty](/tools/adapty), and [Superwall](/tools/superwall).
 - Go deeper on one matchup in [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
+- Compare the pair in [Adapty vs Superwall](/comparisons/adapty-vs-superwall).
 - See the wider set in [RevenueCat alternatives](/comparisons/revenuecat-alternatives).
 - Review the [paywalls category](/categories/paywalls) and [monetization category](/categories/monetization).
 - Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
@@ -2019,6 +2021,190 @@ Last checked: Aug 18, 2026.
           human_reviewed: true,
           ai_assisted: true,
           published_at: publishedAt,
+        },
+        {
+          title: "Adapty vs Superwall for iOS subscription apps",
+          slug: "adapty-vs-superwall",
+          subtitle:
+            "Superwall is the paywall experiment layer, with free infrastructure. Adapty is the subscription backend plus the paywall builder.",
+          excerpt:
+            "Compare Adapty and Superwall for an iOS subscription app: dated fees at $1,000, $10,000, and $50,000, and when the two can sit in one stack.",
+          body_markdown: `![Illustrative Adapty and Superwall Indie fees at three public revenue levels, using published rates checked Oct 20, 2026.](/content-visuals/articles/adapty-vs-superwall-cover.webp "Example tiers, not invoices. At $1,000 both are $0. At $10,000 Adapty is $100 and Superwall Indie is $0. At $50,000 both are $500 when the whole amount is on both meters. Sources: [Adapty pricing](https://adapty.io/pricing/) and [Superwall pricing](https://superwall.com/pricing), checked Oct 20, 2026.")
+
+## Short answer
+
+[Superwall](/tools/superwall) is the paywall experimentation layer. Its pricing page, checked Oct 20, 2026, still prices subscription infrastructure at $0 at any scale: entitlements, purchase APIs, webhooks, and SQL access. That free layer does not turn Superwall into Adapty. The bill, when there is one, is for the paywall product, and only on revenue that flows through a Superwall-rendered paywall.
+
+[Adapty](/tools/adapty) is the subscription backend plus the paywall builder. One meter covers purchases, the no-code flow and paywall builder, A/B tests, and revenue analytics. Adapty is $0 up to $5,000 in monthly tracked revenue, then 1% of that month's revenue. Checked Oct 20, 2026 on [Adapty pricing](https://adapty.io/pricing/).
+
+Choose by the job first. The price only separates them once the free bands diverge:
+
+- At $1,000 a month, both published solo meters are $0. Choose the job, not the price. Checked Oct 20, 2026.
+- At $10,000 a month, Adapty is $100 if it tracks the whole month. Superwall Indie is $0 while monthly attributed revenue stays at or under $10,000. Checked Oct 20, 2026.
+- At $50,000 a month, both are $500 when the whole month sits on both meters. Superwall is the lower bill when part of that month never touches a Superwall paywall. Adapty stays at 1% of tracked revenue either way. Checked Oct 20, 2026.
+
+> [!NOTE] What we use
+> Checked Oct 20, 2026. We build [Mantis](https://getmantis.app), a trading journal, and [MrGripper](https://mrgripper.com), a grip strength logger. Both apps run on [RevenueCat](/tools/revenuecat). RevenueCat is the layer that holds purchase state and entitlements for those apps. The experience is ordinary infrastructure: products still live in App Store Connect, and the apps ask RevenueCat whether a customer has access.
+>
+> This page does not print a monthly revenue figure for those apps. The fee table uses three public revenue levels. It is not a reading of our invoices, and it is not a claim about which free tier the apps sit in.
+>
+> Disclosure: we build Mantis and MrGripper.
+
+No hands-on trial of Adapty or Superwall is claimed here. The RevenueCat note is the stack those two apps ship with.
+
+## Comparison table
+
+The cells below are the vendors' own descriptions, checked Oct 20, 2026. A feature checklist ends in a tie. The useful differences are the revenue base, the free band, and which analytics sit on the plan you can actually stay on.
+
+:::comparison Adapty vs Superwall (checked Oct 20, 2026)
+| Decision | Adapty | Superwall |
+| --- | --- | --- |
+| Pricing basis | 1% of monthly tracked revenue after the free band. Tracked revenue is subscriptions, renewals, and one-time purchases, in USD, before Apple, Google, or Stripe take their cut. [Pricing](https://adapty.io/pricing/) | Infrastructure is $0 at any scale. The paywall product is 1% of revenue that flows through a Superwall-rendered paywall, and only that revenue. [Pricing](https://superwall.com/pricing) |
+| Free tier | $0 up to $5,000 a month. Under that line, Adapty says nearly every feature is free, including some add-ons. The check is a rolling 30 days until you cross the line. After that, Adapty bills 1% of each month's revenue from then on. [Pricing FAQ](https://adapty.io/pricing/) | Infrastructure is $0 at any scale, with no tracked-revenue threshold. Indie paywalls are $0 up to $10,000 in monthly attributed revenue (MAR), then 1% of total MAR. Startup is $49 per month plus 1% of MAR, and that card does not show the $10,000 band. [Pricing](https://superwall.com/pricing) |
+| Paywall builder | No-code Flow and Paywall Builder. The SDK renders flows natively. A custom paywall is the other path: your app draws the UI from a remote product list. [Paywall setup](https://adapty.io/docs/quickstart-paywalls) | Paywall editor with a sidebar, a device preview, and a component editor, plus templates. Campaigns decide which paywall a placement shows. [Paywall editor](https://docs.superwall.com/docs/dashboard/dashboard-creating-paywalls/paywall-editor-overview) |
+| A/B tests | A/B tests on pricing, paywalls, and flows, with custom traffic splits. That wording is Adapty's, on the pricing page. [Pricing](https://adapty.io/pricing/) | An audience can split new users across paywalls by a percentage you set, including a holdout with no paywall. Superwall's campaigns doc calls that an experiment. [Campaigns](https://superwall.com/docs/dashboard/dashboard-campaigns/campaigns) |
+| Analytics | Adapty lists live revenue, MRR, churn, ARPU, and conversion metrics, plus install-to-purchase funnels, cohort analysis, cumulative LTV, and revenue predictions. Vendor wording. [Pricing](https://adapty.io/pricing/) | Indie includes Charts. A campaign shows opens, conversions, and conversion rate. SQL access to subscription data is on every plan. [Pricing](https://superwall.com/pricing) and [Campaigns](https://superwall.com/docs/dashboard/dashboard-campaigns/campaigns) |
+| SDKs | The pricing FAQ lists iOS (Swift), Android (Kotlin), Flutter, React Native, Unity, and more. The docs homepage also lists Kotlin Multiplatform and Capacitor. [Pricing FAQ](https://adapty.io/pricing/) and [docs](https://adapty.io/docs/) | The paywall runtime renders on iOS, Android, React Native, Flutter, and web on the pricing page. The docs homepage also lists Capacitor and Unity. [Pricing](https://superwall.com/pricing) and [docs](https://docs.superwall.com/) |
+| Web paywalls | A browser checkout linked from an in-app paywall or flow, with Stripe, Paddle, or another provider. Adapty says the App Store path without extra requirements is the US storefront. [Web paywall](https://adapty.io/docs/web-paywall) | A placement becomes a URL. The paywall leads to Stripe checkout, then back to the iOS app. Web checkout requires Superwall iOS SDK 4.2.0 or later. [Web checkout](https://superwall.com/docs/web-checkout) |
+:::
+
+![Adapty and Superwall on paywall builder, A/B testing, SDK platforms, and analytics, from the vendors' own descriptions.](/content-visuals/articles/adapty-vs-superwall-feature-matrix.svg "Vendor descriptions checked Oct 20, 2026. Sources: [Adapty pricing](https://adapty.io/pricing/), [Adapty docs](https://adapty.io/docs/), [Superwall pricing](https://superwall.com/pricing), [Superwall docs](https://docs.superwall.com/), and [Superwall campaigns](https://superwall.com/docs/dashboard/dashboard-campaigns/campaigns).")
+
+Two limits sit beside that table, both from the vendor pages checked Oct 20, 2026.
+
+Adapty's web paywall doc says the EU, Japan, and Brazil need Apple's entitlement, Apple's disclosure sheet, and an Apple commission on linked purchases. Confirm Apple's current terms before you ship that button. The dated Apple arithmetic on this site is [what the September 2026 App Store business terms cost](/guides/app-store-business-terms-2026-cost).
+
+Superwall Startup, at $49 per month plus 1% of MAR, is where localization, collaborators, and surveys sit. A solo app that needs those features leaves the $0 Indie band even while attributed revenue is small. Checked Oct 20, 2026 on [Superwall pricing](https://superwall.com/pricing).
+
+## Fee at $1,000, $10,000, and $50,000 (checked Oct 20, 2026)
+
+These figures are calculations from the public meters, not invoices. Checked Oct 20, 2026.
+
+The shared assumption in the first table: the dollar amount is revenue Adapty tracks, and the same dollars all flow through a Superwall-rendered paywall, so they also count as Superwall MAR. The Superwall column is Indie, not Startup. Refund Saver is not included.
+
+:::comparison Monthly fee if the whole amount is on both meters (checked Oct 20, 2026)
+| Monthly revenue | Adapty Pro | Superwall Indie |
+| --- | --- | --- |
+| $1,000 | $0 | $0 |
+| $10,000 | $100 | $0 |
+| $50,000 | $500 | $500 |
+:::
+
+![Calculated Adapty and Superwall Indie fees at $1,000, $10,000, and $50,000 when the whole amount is on both meters, checked Oct 20, 2026.](/content-visuals/articles/adapty-vs-superwall-fees.svg "Illustrative tiers at published rates, not invoices. At $1,000 both are $0. At $10,000 Adapty is $100 and Superwall Indie is $0. At $50,000 both are $500 if every dollar also went through a Superwall paywall. Sources: [Adapty pricing](https://adapty.io/pricing/) and [Superwall pricing](https://superwall.com/pricing), checked Oct 20, 2026.")
+
+How those cells are reached, checked Oct 20, 2026:
+
+- Adapty is $0 up to $5,000 a month. $1,000 is under that line, so the cell is $0. $10,000 is 1% of $10,000, which is $100. $50,000 is 1% of $50,000, which is $500. The 1% applies to that month's tracked revenue, not only the dollars above $5,000. Adapty's pricing FAQ says that once you cross $5,000 you are billed 1% of each month's revenue from then on. It does not say a later quiet month returns to $0.
+- Superwall Indie is $0 up to $10,000 MAR, then 1% of total MAR. $1,000 and $10,000 are inside that band, so those cells are $0. $50,000 is 1% of total MAR, which is $500, and only on the assumption that all $50,000 flowed through a Superwall paywall.
+- Superwall's pricing page states the other $50,000 cases in its own words. None through a Superwall paywall is $0 for the whole platform. Half through a Superwall paywall is 1% of $25,000, and the other $25,000 stays free. That half case is $250 if you apply the 1% to the $25,000 the page names. Infrastructure stays $0 in every row. Checked Oct 20, 2026.
+
+Startup is a different bill. The card is $49 per month plus 1% of MAR, with no $10,000 free band on it. Checked Oct 20, 2026.
+
+:::comparison Superwall Startup if you leave Indie (checked Oct 20, 2026)
+| Monthly attributed revenue | Startup fee, calculated |
+| --- | --- |
+| $1,000 | $59 |
+| $10,000 | $149 |
+| $50,000 | $549 |
+:::
+
+Each Startup cell is $49 plus 1% of that attributed amount. $1,000 becomes $59, $10,000 becomes $149, and $50,000 becomes $549. Those are calculations, not invoices. Checked Oct 20, 2026.
+
+Refund Saver is optional on Adapty. The pricing page's illustration adds 0.2% on top of the 1%. That 0.2% is not in the Adapty column. Checked Oct 20, 2026 on [Adapty pricing](https://adapty.io/pricing/).
+
+![Decision flow for Adapty or Superwall: the job first, then whether Startup features or missed paywall revenue change the bill.](/content-visuals/articles/adapty-vs-superwall-decision-flow.svg "Illustrative public levels, not a portfolio figure. Adapty meters tracked revenue after $5,000. Superwall Indie meters paywall-attributed revenue after $10,000 and keeps infrastructure at $0. Sources: [Adapty pricing](https://adapty.io/pricing/) and [Superwall pricing](https://superwall.com/pricing), checked Oct 20, 2026.")
+
+## Who should pick which
+
+Use the three levels above as the decision, not as a ranking. Checked Oct 20, 2026.
+
+At $1,000 a month, price does not choose. Both solo meters are $0. Choose Adapty when you want purchases, a no-code paywall and onboarding flow, experiments, and the revenue analytics list in one product. Choose Superwall when the work you will actually do is changing paywalls, campaigns, and audiences, and the free infrastructure is enough for entitlements. Checked Oct 20, 2026.
+
+At $10,000 a month, the meters split. Adapty is $100 if it tracks the whole month. Superwall Indie is $0 if attributed revenue is at or under $10,000. Stay on Superwall Indie when experiments are the job and you do not need localization, collaborators, or surveys. Move to Adapty when the analytics and the paywall workflow are one loop and the $100 is an acceptable bill for that bundle. If you need Superwall Startup at this level, the calculated bill is $149, which is more than Adapty's $100. Checked Oct 20, 2026.
+
+At $50,000 a month, the headline rates match when every dollar is on both meters: $500 and $500. Choose Superwall when a real share of revenue never passes through a Superwall paywall, because that share stays off the meter, or when you want the entitlement layer at $0 and will only pay for paywall revenue. Choose Adapty when you want 1% of tracked revenue to buy the analytics-plus-builder loop, including revenue that never started on a paywall experiment. Checked Oct 20, 2026.
+
+## Can you use them together
+
+![Where the paywall SDK sits relative to StoreKit for Adapty alone, Superwall alone, and Superwall with RevenueCat.](/content-visuals/articles/adapty-vs-superwall-stack.svg "Adapty alone and Superwall alone both reach StoreKit. The documented pair is Superwall with RevenueCat in observer mode or with a purchase controller. Superwall plus Adapty is a migration overlap, not a long-term stack. Infrastructure on Superwall stays at $0. Checked Oct 20, 2026. Sources: [Using RevenueCat](https://superwall.com/docs/ios/guides/using-revenuecat), [advanced configuration](https://superwall.com/docs/ios/guides/advanced-configuration), and [Adapty migration from Superwall](https://adapty.io/docs/migration-from-superwall).")
+
+Superwall on top of RevenueCat is a documented pair. Superwall's guide to using RevenueCat, checked Oct 20, 2026, describes a purchase controller, where RevenueCat completes the purchase, and an observer mode, where Superwall completes the purchase and RevenueCat observes it. The guide calls observer mode the recommended paired setup. Keep one system as the entitlement authority. The matchup, including which side owns access in observer mode, is [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
+
+Superwall on top of Adapty is not that kind of page. Checked Oct 20, 2026, the RevenueCat guide names RevenueCat. Superwall's advanced purchasing page says a purchase controller can use StoreKit, RevenueCat, Qonversion, or your own billing system. It does not name Adapty. Adapty's migration guide says you can run both during a rollout, with Adapty forwarding raw store events back to Superwall while you verify the new integration. Treat that as a migration overlap, not as a long-term stack. Do not leave two products both deciding whether the customer has access.
+
+If the missing piece on an Adapty app is a remote paywall, Adapty already ships the Flow and Paywall Builder. A second editor needs a capability you can name. Otherwise it is a second SDK, a second dashboard, and a second place where a paywall change can ship.
+
+## Migration notes
+
+Map the same objects in either direction, then test on a small cohort before you move traffic:
+
+- Product identifiers and subscription groups in App Store Connect, or the Stripe product and price ids if the sale is on the web.
+- Adapty access levels and Superwall entitlements. They are the same job under two names. Adapty's migration guide says an entitlement becomes an access level such as premium.
+- Adapty placements and Superwall placements and campaigns. Adapty says campaign audiences do not carry over. You recreate them.
+- One customer identifier if both SDKs are in the binary during an overlap.
+- Restore, refunds, cancellation, billing issues, grace, and account deletion.
+
+Superwall's pricing page, checked Oct 20, 2026, describes an automated move from RevenueCat and an incremental move from in-house StoreKit or Play Billing. It does not name an Adapty importer on that page. Plan an Adapty-to-Superwall move as a manual SDK swap, not as the RevenueCat workflow.
+
+Adapty publishes two clocks for the reverse move. The pricing FAQ, checked Oct 20, 2026, says a move from RevenueCat, Superwall, or an in-house setup is typically a few days to a week. The Superwall migration guide, checked the same day, says most migrations take about two hours: swap the SDK, point store server notifications at Adapty, and ship a release. Paid subscribers keep access, Adapty says, because the SDK restores it from App Store and Google Play receipts on first launch. Use the guide's steps when the app matches that simple case. Use the FAQ's longer window when it does not. Both sentences are Adapty's.
+
+Subscribers who do not update the app keep access through the store, Adapty says, so you do not have to force the update to protect a current subscription. Historical analytics are a separate import, and Adapty says to wait at least a week after the SDK release before you backfill.
+
+## Common questions
+
+### Is Superwall cheaper than Adapty?
+
+Not on every plan, and not on every revenue base. Checked Oct 20, 2026.
+
+At $1,000, both solo meters are $0. At $10,000, Adapty is $100 of tracked revenue and Superwall Indie is $0 if attributed revenue is at or under $10,000. Superwall Startup at that same $10,000 of attributed revenue is $149, which is more than Adapty's $100. At $50,000, both are $500 when the whole month is on both meters. Superwall is cheaper when some of the month never goes through a Superwall paywall. Adapty's 1% still applies to tracked revenue. Checked Oct 20, 2026.
+
+### Can Superwall replace Adapty?
+
+On infrastructure, yes, if you accept Superwall's wording. The pricing page, checked Oct 20, 2026, says entitlements, purchase APIs, webhooks, and SQL access are free at any scale, so a paywall-first app can run Superwall without a second subscription backend.
+
+On the operating loop, not as a copy of the same bundle. Adapty's pricing page puts revenue analytics (MRR, churn, cohorts, LTV, and predictions) next to the paywall builder and A/B tests, on one tracked-revenue meter. Superwall Indie lists Charts, campaigns, audiences, and templates. Replace Adapty with Superwall when the job you will run is remote paywall experiments. Keep Adapty when the analytics and the paywall workflow are one daily loop.
+
+### How does Adapty vs Superwall vs RevenueCat split?
+
+Three jobs, not one winner. Adapty is the tracked-revenue bundle: backend, paywall builder, experiments, and subscription analytics. Superwall is the paywall experiment layer, with infrastructure priced at $0 and a paywall meter on attributed revenue only. Checked Oct 20, 2026. RevenueCat is the purchase and entitlement ledger. This page does not restate RevenueCat's prices. Read [RevenueCat vs Adapty](/comparisons/revenuecat-vs-adapty-ios-subscriptions) for that pair, and [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat) when the question is paywall iteration against purchase truth. The wider shortlist is [Superwall alternatives for indie iOS apps](/comparisons/superwall-alternatives-ios-apps).
+
+## Source checks
+
+Pricing and product claims were checked on Oct 20, 2026, against official pages:
+
+- Adapty pricing, including the free band, the 1% meter, the analytics list, the SDK list, and the FAQ clocks for migration: [pricing](https://adapty.io/pricing/)
+- Adapty paywall setup: [quickstart](https://adapty.io/docs/quickstart-paywalls)
+- Adapty web paywalls: [web paywall](https://adapty.io/docs/web-paywall)
+- Adapty migration from Superwall: [migration guide](https://adapty.io/docs/migration-from-superwall)
+- Superwall pricing, including free infrastructure, Indie, Startup, and the $50,000 examples: [pricing](https://superwall.com/pricing)
+- Superwall campaigns and paywall splits: [campaigns](https://superwall.com/docs/dashboard/dashboard-campaigns/campaigns)
+- Superwall paywall editor: [editor overview](https://docs.superwall.com/docs/dashboard/dashboard-creating-paywalls/paywall-editor-overview)
+- Superwall web checkout: [web checkout](https://superwall.com/docs/web-checkout)
+- Superwall with RevenueCat: [using RevenueCat](https://superwall.com/docs/ios/guides/using-revenuecat)
+- Superwall purchase controller, which names StoreKit, RevenueCat, and Qonversion: [advanced configuration](https://superwall.com/docs/ios/guides/advanced-configuration). Checked Oct 20, 2026.
+
+Vendor wording is labeled as the vendor's. The fee cells are arithmetic on those published rates, not invoices. Prices and plan boundaries move, so open the pricing pages again before you commit spend. No hands-on trial of Adapty or Superwall is claimed. The diagrams are owned conceptual visuals created for IndieAppStack.
+
+Last checked: Oct 20, 2026.
+
+## Related tools and guides
+
+- Compare [Adapty](/tools/adapty) and [Superwall](/tools/superwall).
+- Read [RevenueCat vs Adapty](/comparisons/revenuecat-vs-adapty-ios-subscriptions) and [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
+- See the wider set in [Superwall alternatives for indie iOS apps](/comparisons/superwall-alternatives-ios-apps).
+- Review the [paywalls category](/categories/paywalls).
+- Read [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
+- Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "comparison",
+          primary_category_id: categories.get("paywalls").id,
+          seo_title: "Adapty vs Superwall: Pricing, Paywalls & Which to Pick",
+          seo_description:
+            "Compare Adapty vs Superwall for iOS apps. Dated fees at $1,000, $10,000, and $50,000. Prices checked Oct 20, 2026.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: adaptyVsSuperwallPublishedAt,
         },
         {
           title: "RevenueCat vs Superwall for iOS subscription apps",
@@ -2315,6 +2501,7 @@ Last checked: August 13, 2026.
 
 ## Related tools and guides
 - Compare the two-tool boundary in [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
+- Compare Adapty and Superwall in [Adapty vs Superwall](/comparisons/adapty-vs-superwall).
 - Review the wider category in [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
 - Start earlier with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
 - See the [subscription-consumer stack](/stacks/subscription-consumer-app) for a lean implementation path.`,
@@ -3956,6 +4143,24 @@ Last checked: Sep 24, 2026.
         article_id: articles.get("revenuecat-vs-adapty-ios-subscriptions").id,
         tool_id: tools.get("superwall").id,
         relationship: "featured",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get("adapty-vs-superwall").id,
+        tool_id: tools.get("adapty").id,
+        relationship: "featured",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("adapty-vs-superwall").id,
+        tool_id: tools.get("superwall").id,
+        relationship: "featured",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get("adapty-vs-superwall").id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "supporting",
         sort_order: 30,
       },
       {

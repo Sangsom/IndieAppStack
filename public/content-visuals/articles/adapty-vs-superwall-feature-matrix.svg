@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Adapty and Superwall feature matrix</title>
+  <desc id="desc">Vendor descriptions checked Oct 20, 2026 for paywall builder, A/B testing, SDK platforms, and analytics. Not a score.</desc>
+  <style>
+    .eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.6px; fill: #2c5f4f; }
+    .title { font: 600 32px "Source Serif 4", Georgia, serif; fill: #20241f; }
+    .dek { font: 400 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .head { font: 700 14px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.2px; fill: #fbfaf7; }
+    .label { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1px; fill: #2c5f4f; }
+    .cell { font: 500 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .foot { font: 500 13px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+  </style>
+  <rect width="1200" height="1040" fill="#fbfaf7"/>
+  <text x="48" y="48" class="eyebrow">FEATURE MATRIX | CHECKED OCT 20, 2026</text>
+  <text x="48" y="96" class="title">Paywall, tests, SDKs, analytics</text>
+  <text x="48" y="128" class="dek">Each cell is the vendor's own description. This is not a score, and it does not add a feature the pricing pages omit.</text>
+
+  <rect x="48" y="160" width="1104" height="52" rx="7" fill="#2c5f4f"/>
+  <text x="72" y="192" class="head">SURFACE</text>
+  <text x="300" y="192" class="head">ADAPTY</text>
+  <text x="748" y="192" class="head">SUPERWALL</text>
+
+  <rect x="48" y="228" width="1104" height="176" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="72" y="268" class="label">PAYWALL BUILDER</text>
+  <text x="300" y="268" class="cell">No-code Flow and Paywall Builder.</text>
+  <text x="300" y="294" class="cell">The SDK renders flows natively.</text>
+  <text x="300" y="320" class="cell">A custom paywall is the other path.</text>
+  <text x="748" y="268" class="cell">Editor with a sidebar, a device</text>
+  <text x="748" y="294" class="cell">preview, and a component editor,</text>
+  <text x="748" y="320" class="cell">plus templates. Campaigns choose</text>
+  <text x="748" y="346" class="cell">the paywall a placement shows.</text>
+
+  <rect x="48" y="420" width="1104" height="176" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="72" y="460" class="label">A/B TESTING</text>
+  <text x="300" y="460" class="cell">A/B tests on pricing, paywalls,</text>
+  <text x="300" y="486" class="cell">and flows, with custom traffic</text>
+  <text x="300" y="512" class="cell">splits. That wording is Adapty's.</text>
+  <text x="748" y="460" class="cell">New users can split across</text>
+  <text x="748" y="486" class="cell">paywalls by a percentage,</text>
+  <text x="748" y="512" class="cell">including a holdout. The campaigns</text>
+  <text x="748" y="538" class="cell">doc calls that an experiment.</text>
+
+  <rect x="48" y="612" width="1104" height="176" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="72" y="652" class="label">SDK PLATFORMS</text>
+  <text x="300" y="652" class="cell">iOS (Swift), Android (Kotlin),</text>
+  <text x="300" y="678" class="cell">Flutter, React Native, Unity,</text>
+  <text x="300" y="704" class="cell">and more. Docs also list Kotlin</text>
+  <text x="300" y="730" class="cell">Multiplatform and Capacitor.</text>
+  <text x="748" y="652" class="cell">Pricing page: iOS, Android,</text>
+  <text x="748" y="678" class="cell">React Native, Flutter, and web.</text>
+  <text x="748" y="704" class="cell">Docs also list Capacitor</text>
+  <text x="748" y="730" class="cell">and Unity.</text>
+
+  <rect x="48" y="804" width="1104" height="160" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="72" y="844" class="label">ANALYTICS</text>
+  <text x="300" y="844" class="cell">Live revenue, MRR, churn, ARPU,</text>
+  <text x="300" y="870" class="cell">conversion, funnels, cohorts,</text>
+  <text x="300" y="896" class="cell">cumulative LTV, and predictions.</text>
+  <text x="300" y="922" class="cell">Vendor wording.</text>
+  <text x="748" y="844" class="cell">Indie includes Charts. A campaign</text>
+  <text x="748" y="870" class="cell">shows opens, conversions, and</text>
+  <text x="748" y="896" class="cell">conversion rate. SQL access is</text>
+  <text x="748" y="922" class="cell">on every plan.</text>
+
+  <text x="48" y="1000" class="foot">Sources: adapty.io/pricing, adapty.io/docs, superwall.com/pricing, docs.superwall.com, and Superwall's campaigns doc. Retrieved Oct 20, 2026.</text>
+</svg>

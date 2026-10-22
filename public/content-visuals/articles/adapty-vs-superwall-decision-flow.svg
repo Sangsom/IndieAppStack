@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1080" viewBox="0 0 1200 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Which product fits the job, Adapty or Superwall</title>
+  <desc id="desc">Checked Oct 20, 2026. Choose the job first. Adapty is the tracked-revenue bundle. Superwall is the paywall experiment layer with infrastructure at $0. Startup features and revenue that misses a Superwall paywall change the bill.</desc>
+  <style>
+    .eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.6px; fill: #2c5f4f; }
+    .title { font: 600 32px "Source Serif 4", Georgia, serif; fill: #20241f; }
+    .dek { font: 400 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .question { font: 600 22px "Source Serif 4", Georgia, serif; fill: #fbfaf7; }
+    .cardlabel { font: 700 12px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.2px; fill: #2c5f4f; }
+    .cardtitle { font: 600 28px "Source Serif 4", Georgia, serif; fill: #20241f; }
+    .row { font: 500 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .muted { font: 500 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .notelabel { font: 700 12px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.2px; fill: #9a6b23; }
+    .foot { font: 500 13px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+  </style>
+  <rect width="1200" height="1080" fill="#fbfaf7"/>
+  <text x="48" y="48" class="eyebrow">WHICH ONE FITS | CHECKED OCT 20, 2026</text>
+  <text x="48" y="96" class="title">Start with the job, then the meter</text>
+  <text x="48" y="128" class="dek">Illustrative public levels only. The three revenue examples in the article are not a portfolio figure.</text>
+
+  <rect x="280" y="160" width="640" height="88" rx="7" fill="#2c5f4f"/>
+  <text x="600" y="212" class="question" text-anchor="middle">What will you run this month?</text>
+
+  <line x1="440" y1="248" x2="312" y2="300" stroke="#2c5f4f" stroke-width="2"/>
+  <line x1="760" y1="248" x2="888" y2="300" stroke="#2c5f4f" stroke-width="2"/>
+
+  <rect x="48" y="300" width="528" height="400" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="72" y="340" class="cardlabel">ONE PRODUCT FOR THE LOOP</text>
+  <text x="72" y="388" class="cardtitle">Adapty</text>
+  <text x="72" y="440" class="row">Purchases, a no-code paywall and</text>
+  <text x="72" y="466" class="row">onboarding flow, experiments, and</text>
+  <text x="72" y="492" class="row">revenue analytics.</text>
+  <line x1="72" y1="524" x2="536" y2="524" stroke="#e7e2d7"/>
+  <text x="72" y="564" class="muted">Meter: $0 up to $5,000 in monthly</text>
+  <text x="72" y="590" class="muted">tracked revenue, then 1% of that</text>
+  <text x="72" y="616" class="muted">month. The 1% follows revenue</text>
+  <text x="72" y="642" class="muted">Adapty tracks, including sales that</text>
+  <text x="72" y="668" class="muted">never started as a test.</text>
+
+  <rect x="624" y="300" width="528" height="400" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="648" y="340" class="cardlabel">PAYWALL EXPERIMENTS</text>
+  <text x="648" y="388" class="cardtitle">Superwall</text>
+  <text x="648" y="440" class="row">Changing paywalls, campaigns, and</text>
+  <text x="648" y="466" class="row">audiences. Free infrastructure can</text>
+  <text x="648" y="492" class="row">hold entitlements.</text>
+  <line x1="648" y1="524" x2="1112" y2="524" stroke="#e7e2d7"/>
+  <text x="648" y="564" class="muted">Meter: Indie is $0 up to $10,000</text>
+  <text x="648" y="590" class="muted">MAR, then 1% of paywall-attributed</text>
+  <text x="648" y="616" class="muted">revenue. Infrastructure stays $0.</text>
+  <text x="648" y="654" class="muted">The free layer does not turn</text>
+  <text x="648" y="680" class="muted">Superwall into Adapty.</text>
+
+  <rect x="48" y="732" width="528" height="220" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="72" y="772" class="notelabel">LEAVES THE INDIE BAND</text>
+  <text x="72" y="816" class="row">Localization, collaborators, or</text>
+  <text x="72" y="842" class="row">surveys sit on Superwall Startup,</text>
+  <text x="72" y="868" class="row">not the $0 Indie card.</text>
+  <text x="72" y="910" class="muted">At an illustrative $10,000, Startup</text>
+  <text x="72" y="936" class="muted">calculates to $149. Adapty is $100.</text>
+
+  <rect x="624" y="732" width="528" height="220" rx="7" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="648" y="772" class="notelabel">REVENUE MISSES THE PAYWALL</text>
+  <text x="648" y="816" class="row">A share that never touches a</text>
+  <text x="648" y="842" class="row">Superwall paywall stays off</text>
+  <text x="648" y="868" class="row">Superwall's meter.</text>
+  <text x="648" y="910" class="muted">Adapty still meters tracked revenue.</text>
+  <text x="648" y="936" class="muted">At $50,000 with none through it: $0.</text>
+
+  <text x="48" y="996" class="foot">Sources: adapty.io/pricing and superwall.com/pricing. Retrieved Oct 20, 2026. Dollar cells are the published rates applied to illustrative tiers.</text>
+  <text x="48" y="1024" class="foot">IndieAppStack decision flow. Recheck the vendor pages before you commit spend. Refund Saver is not in these cells.</text>
+</svg>

@@ -103,7 +103,31 @@ const articleImageDimensions: Record<
     height: 720,
     width: 1200,
   },
+  "/content-visuals/articles/adapty-vs-superwall-cover.webp": {
+    height: 630,
+    width: 1200,
+  },
+  "/content-visuals/articles/adapty-vs-superwall-fees.svg": {
+    height: 760,
+    width: 1200,
+  },
+  "/content-visuals/articles/adapty-vs-superwall-feature-matrix.svg": {
+    height: 1040,
+    width: 1200,
+  },
+  "/content-visuals/articles/adapty-vs-superwall-decision-flow.svg": {
+    height: 1080,
+    width: 1200,
+  },
+  "/content-visuals/articles/adapty-vs-superwall-stack.svg": {
+    height: 980,
+    width: 1200,
+  },
 };
+
+const priorityArticleImages = new Set([
+  "/content-visuals/articles/adapty-vs-superwall-cover.webp",
+]);
 
 export function ArticleBody({ blocks }: ArticleBodyProps) {
   return (
@@ -140,7 +164,7 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
             height: 675,
             width: 1200,
           };
-          const isCover = block.src.includes("-cover.");
+          const priority = priorityArticleImages.has(block.src);
 
           return (
             <figure
@@ -155,7 +179,7 @@ export function ArticleBody({ blocks }: ArticleBodyProps) {
                 src={block.src}
                 unoptimized={block.src.endsWith(".svg")}
                 width={dimensions.width}
-                {...(isCover
+                {...(priority
                   ? { priority: true }
                   : { loading: "lazy" as const })}
               />

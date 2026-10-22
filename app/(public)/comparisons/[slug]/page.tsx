@@ -27,6 +27,17 @@ type ComparisonPageProps = {
   }>;
 };
 
+const adaptyVsSuperwallOgImage =
+  "/content-visuals/articles/adapty-vs-superwall-cover.webp";
+
+function comparisonOgImagePath(slug: string) {
+  if (slug === "adapty-vs-superwall") {
+    return adaptyVsSuperwallOgImage;
+  }
+
+  return null;
+}
+
 export const revalidate = 3600;
 
 function canonicalUrl(slug: string) {
@@ -47,7 +58,10 @@ function ComparisonStructuredData({ comparison }: { comparison: GuideDetail }) {
         datePublished: comparison.publishedAtIso ?? comparison.updatedAtIso,
         description: comparison.description,
         headline: comparison.title,
-        image: absoluteUrl(`/comparisons/${comparison.slug}/opengraph-image`),
+        image:
+          comparison.slug === "adapty-vs-superwall"
+            ? absoluteUrl(adaptyVsSuperwallOgImage)
+            : absoluteUrl(`/comparisons/${comparison.slug}/opengraph-image`),
         mainEntityOfPage: canonicalUrl(comparison.slug),
         publisher: {
           "@type": "Organization",
@@ -113,8 +127,9 @@ export async function generateMetadata({
 
   return createSeoMetadata({
     description: comparison.metaDescription,
-    // null → use the colocated per-article opengraph-image route
-    imagePath: null,
+    // null → use the colocated per-article opengraph-image route.
+    // adapty-vs-superwall sets a static cover at page level only.
+    imagePath: comparisonOgImagePath(comparison.slug),
     path: `/comparisons/${comparison.slug}`,
     title: comparison.metaTitle,
     type: "article",
