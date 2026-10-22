@@ -6,6 +6,8 @@ import {
   getStackArchetypeSlugs,
   getStacksLastReviewedIso,
 } from "@/lib/stacks/archetypes";
+import generatedLastmod from "@/lib/static-page-lastmod.generated.json";
+import { staticPageLastmodMap } from "@/lib/static-page-lastmod";
 
 type ContentRoute = {
   lastModified: Date;
@@ -18,21 +20,12 @@ type SitemapEntryInput = {
   priority: number;
 };
 
-// Source-code-driven pages have no database row to date them, so their real
-// "last content change" is the last time we edited the page's copy. We record
-// that here explicitly instead of reading git history or file mtimes at build:
-// Vercel's shallow clone makes per-file git dates non-deterministic, and checkout
-// mtimes reset on every deploy — either would reintroduce the "every page shares
-// one bulk-regeneration timestamp" problem this sitemap is meant to avoid.
-// Bump the date (YYYY-MM-DD) whenever you meaningfully revise that page.
-const STATIC_PAGE_LASTMOD: Record<string, string> = {
-  "/": "2026-07-19",
-  "/about": "2026-10-09",
-  "/affiliate-disclosure": "2026-07-19",
-  "/editorial-policy": "2026-10-09",
-  "/privacy-policy": "2026-06-29",
-  "/terms": "2026-06-29",
-};
+// Source pages have no database row. lastmod is the commit date of the page
+// source file. CI checks out with fetch-depth: 0, and the production build
+// unshallows before writing lib/static-page-lastmod.generated.json into the
+// bundle (a reseed re-renders the sitemap where .git is gone). The hand list
+// in lib/static-page-lastmod.mjs covers a shallow clone or a missing repo.
+// Checkout mtimes are not used: they reset on every deploy.
 
 function entry({
   lastModified,
@@ -63,8 +56,12 @@ function latestOf(routes: ContentRoute[], fallback: Date): Date {
   );
 }
 
-function staticDate(path: string, fallback: Date): Date {
-  const value = STATIC_PAGE_LASTMOD[path];
+function staticDate(
+  pageLastmod: Record<string, string>,
+  path: string,
+  fallback: Date,
+): Date {
+  const value = pageLastmod[path];
 
   return value ? new Date(value) : fallback;
 }
@@ -72,12 +69,18 @@ function staticDate(path: string, fallback: Date): Date {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { categories, comparisons, guides, latestModified, tools } =
     await getSitemapContentRoutes();
+  const pageLastmod = staticPageLastmodMap({
+    generated: generatedLastmod,
+  });
 
   const stacksLastModified = new Date(getStacksLastReviewedIso());
 
   // The homepage surfaces the whole catalog, so its freshness is the later of
   // its own copy edits and the newest piece of content it links to.
-  const homeModified = maxDate(staticDate("/", latestModified), latestModified);
+  const homeModified = maxDate(
+    staticDate(pageLastmod, "/", latestModified),
+    latestModified,
+  );
 
   return [
     entry({ lastModified: homeModified, path: "/", priority: 1 }),
@@ -119,27 +122,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }),
     ),
     entry({
-      lastModified: staticDate("/about", latestModified),
+      lastModified: staticDate(pageLastmod, "/about", latestModified),
       path: "/about",
       priority: 0.4,
     }),
     entry({
-      lastModified: staticDate("/editorial-policy", latestModified),
+      lastModified: staticDate(
+        pageLastmod,
+        "/editorial-policy",
+        latestModified,
+      ),
       path: "/editorial-policy",
       priority: 0.5,
     }),
     entry({
-      lastModified: staticDate("/affiliate-disclosure", latestModified),
+      lastModified: staticDate(
+        pageLastmod,
+        "/affiliate-disclosure",
+        latestModified,
+      ),
       path: "/affiliate-disclosure",
       priority: 0.3,
     }),
     entry({
-      lastModified: staticDate("/privacy-policy", latestModified),
+      lastModified: staticDate(pageLastmod, "/privacy-policy", latestModified),
       path: "/privacy-policy",
       priority: 0.3,
     }),
     entry({
-      lastModified: staticDate("/terms", latestModified),
+      lastModified: staticDate(pageLastmod, "/terms", latestModified),
       path: "/terms",
       priority: 0.3,
     }),

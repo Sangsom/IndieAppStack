@@ -18,6 +18,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          # Static sitemap lastmod reads each page file's commit date. The
+          # default shallow clone hides older edits.
+          fetch-depth: 0
 
       # `cache: npm` is set explicitly, so setup-node v5's automatic
       # package-manager caching changes nothing for this workflow.

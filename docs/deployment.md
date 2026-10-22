@@ -41,6 +41,12 @@ Configure these in Vercel Project Settings for Production and Preview. Do not co
 | `ANTHROPIC_MODEL`               | Current Claude model ID     | Current Claude model ID          | Keep current with Anthropic model docs.                    |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | `G-XXXXXXXXXX`              | Optional (own property)          | GA4 analytics. Inlined at build — redeploy after changing. |
 
+## Database migrations
+
+SQL files in `supabase/migrations/` are applied to the hosted Supabase project by hand. GitHub Actions does not run them, and `npm run seed:prod` only upserts content.
+
+After a migration lands on `main`, apply it with `supabase db push` or the Supabase SQL editor before relying on it. `20261022050000_updated_at_only_on_change.sql` keeps `updated_at` still unless a column other than `updated_at` changed. The seed also skips unchanged rows, so a reseed keeps sitemap `lastmod` even if that function has not been replaced yet. Apply the function so admin saves and one-off upserts follow the same rule.
+
 ## CI
 
 GitHub Actions runs on pushes to `main` and pull requests:
