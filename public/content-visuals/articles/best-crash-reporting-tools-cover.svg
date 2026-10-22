@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+  <title id="title">Free-tier crash reporting prices and Sentry Developer limits</title>
+  <desc id="desc">Bar chart of monthly list prices checked Oct 20, 2026. Crashlytics is $0 with no paid tier and no published error cap. Sentry Developer is $0 for 1 user, with 5,000 errors, 5 GB of logs, 5 GB of application metrics, 5 million spans, and 50 replays a month. Sentry Team is $26 a month when billed annually, and $29 a month in the page structured data.</desc>
+  <style>
+    .title { font: 640 34px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .sub { font: 500 16px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .name { font: 650 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .detail { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .value { font: 700 20px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .chip { font: 650 16px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .chip-label { font: 500 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .note { font: 500 15px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .source { font: 500 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+  </style>
+  <rect width="1200" height="780" fill="#fbfaf7"/>
+  <text x="64" y="64" class="title">Free tier, then the first paid month</text>
+  <text x="64" y="98" class="sub">List prices checked Oct 20, 2026. Crashlytics has no published error cap.</text>
+
+  <text x="64" y="168" class="name">Crashlytics</text>
+  <text x="64" y="192" class="detail">No separate charge, no paid tier</text>
+  <rect x="430" y="150" width="8" height="48" rx="4" fill="#9a6b23"/>
+  <text x="450" y="182" class="value">$0</text>
+
+  <text x="64" y="256" class="name">Sentry Developer</text>
+  <text x="64" y="280" class="detail">1 user</text>
+  <rect x="430" y="238" width="8" height="48" rx="4" fill="#2c5f4f"/>
+  <text x="450" y="270" class="value">$0</text>
+
+  <text x="64" y="344" class="name">Sentry Team</text>
+  <text x="64" y="368" class="detail">Billed annually, $312 a year</text>
+  <rect x="430" y="326" width="502" height="48" rx="4" fill="#2c5f4f"/>
+  <text x="946" y="358" class="value">$26</text>
+
+  <text x="64" y="432" class="name">Sentry Team</text>
+  <text x="64" y="456" class="detail">Monthly price in structured data</text>
+  <rect x="430" y="414" width="560" height="48" rx="4" fill="#3d6f9a"/>
+  <text x="1004" y="446" class="value">$29</text>
+
+  <line x1="430" y1="484" x2="990" y2="484" stroke="#e7e2d7" stroke-width="1"/>
+  <text x="430" y="506" class="source">$0</text>
+  <text x="990" y="506" class="source" text-anchor="end">$29 / month</text>
+
+  <text x="64" y="560" class="name">Sentry Developer includes each month</text>
+  <rect x="64" y="580" width="168" height="84" rx="14" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="148" y="614" class="chip" text-anchor="middle">1</text>
+  <text x="148" y="638" class="chip-label" text-anchor="middle">user</text>
+  <rect x="248" y="580" width="168" height="84" rx="14" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="332" y="614" class="chip" text-anchor="middle">5,000</text>
+  <text x="332" y="638" class="chip-label" text-anchor="middle">errors</text>
+  <rect x="432" y="580" width="168" height="84" rx="14" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="516" y="614" class="chip" text-anchor="middle">5 GB</text>
+  <text x="516" y="638" class="chip-label" text-anchor="middle">logs</text>
+  <rect x="616" y="580" width="168" height="84" rx="14" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="700" y="614" class="chip" text-anchor="middle">5 GB</text>
+  <text x="700" y="638" class="chip-label" text-anchor="middle">app metrics</text>
+  <rect x="800" y="580" width="168" height="84" rx="14" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="884" y="614" class="chip" text-anchor="middle">5 million</text>
+  <text x="884" y="638" class="chip-label" text-anchor="middle">spans</text>
+  <rect x="984" y="580" width="152" height="84" rx="14" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="1060" y="614" class="chip" text-anchor="middle">50</text>
+  <text x="1060" y="638" class="chip-label" text-anchor="middle">replays</text>
+
+  <text x="64" y="706" class="note">Crashlytics custom logging is limited to 64 kB. The chart does not draw a Crashlytics error quota, because none is published.</text>
+  <text x="64" y="742" class="source">Sources: sentry.io/pricing and firebase.google.com/docs/projects/billing/firebase-pricing-plans. Checked Oct 20, 2026.</text>
+</svg>
