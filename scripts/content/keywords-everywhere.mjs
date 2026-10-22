@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 export const keywordsEverywherePublishedAt = "2026-09-21T09:00:00.000Z";
-export const keywordsEverywherePricingChecked = "2026-09-21";
+export const keywordsEverywherePricingChecked = "2026-10-20";
 export const keywordsEverywhereAffiliateUrl =
   "https://keywordseverywhere.com/?fpr=od3ykm";
 
@@ -32,22 +32,22 @@ export function getKeywordsEverywhereToolSeed() {
     name: "Keywords Everywhere",
     slug: keywordsEverywhereSlug,
     tagline:
-      "Browser extension for Google search volume, CPC, and competition while you browse.",
+      "Web search volume from $84 a year, with a free API key. Not App Store keywords, and not a phone app.",
     description:
-      "Keywords Everywhere is a Chrome, Firefox, and Edge extension that overlays search volume, CPC, competition, and related keyword ideas on Google and 15+ other sites. For a solo mobile developer it is a landing-page and content-research tool, not an App Store ASO tool.",
+      "Keywords Everywhere overlays Google web search volume, CPC, and competition in Chrome, Firefox, and Edge. It is not App Store search volume, and there is no Android or iPhone app. Paid metrics use a free API key and annual credits.",
     website_url: "https://keywordseverywhere.com/",
     pricing_summary:
-      "Freemium. Free install with keyword ideas, traffic and Moz metrics, SEO reports, social insights, and prompt templates. Paid annual credit plans for search volume, CPC, competition, and trends: Bronze $84 / 100,000 credits / 1 seat; Silver $168 / 400,000 / 3 seats; Gold $480 / 2,000,000 / 10 seats; Platinum $1,440 / 8,000,000 / 20 seats. No monthly plans. Credits expire after 12 months. Checked 2026-09-21.",
+      "Freemium. Free install. Volume, CPC, competition, and trends are annual credits: Bronze $84 / 100,000 credits / 1 seat; Silver $168 / 400,000 / 3 seats; Gold $480 / 2,000,000 / 10 seats; Platinum $1,440 / 8,000,000 / 20 seats. No monthly plan. The vendor prints $7 a month beside Bronze, which is $84 divided by 12. Credits expire after 12 months. Checked October 20, 2026.",
     pricing_model: "freemium",
     best_for: [
-      "Landing page keyword research",
-      "Checking Google demand before writing content",
-      "Inline volume, CPC, and competition while browsing",
+      "Launch-page and blog research on Google",
+      "Checking web demand before you write or buy ads",
+      "One person on the Bronze credit plan",
     ],
     not_good_for: [
-      "App Store listing research and ASO",
+      "App Store or Google Play search volume",
+      "Android, iPhone, iPad, or Safari",
       "Rank tracking",
-      "Anyone expecting an iPhone, iPad, or Safari app",
     ],
     platforms: ["Chrome", "Firefox", "Edge", "Web"],
     app_stages: ["Prototype", "MVP", "Growth"],
@@ -58,17 +58,17 @@ export function getKeywordsEverywhereToolSeed() {
     status: "published",
     noindex: false,
     internal_notes:
-      "Pricing/features checked 2026-09-21 from https://keywordseverywhere.com/compare-plans.html, https://keywordseverywhere.com/frequently-asked-questions.html, https://keywordseverywhere.com, and the Chrome Web Store listing. Affiliate: FirstPromoter link https://keywordseverywhere.com/?fpr=od3ykm. Third-party directories list 40% recurring / 60-day cookie; confirm in the FirstPromoter dashboard before publishing commission claims.",
+      "Pricing/features checked 2026-10-20 from https://keywordseverywhere.com/compare-plans.html (Bronze $84/100k/1 seat, Silver $168/400k/3, Gold $480/2M/10, Platinum $1,440/8M/20; annual only; $7/mo is $84/12; per-site caps 1k/2k/5k/10k), https://keywordseverywhere.com/frequently-asked-questions.html (free API key, no Safari/iOS/Android app), and https://keywordseverywhere.com/google-play-search-volume.html (Play overlay is Google Keyword Planner volume). Affiliate: FirstPromoter link https://keywordseverywhere.com/?fpr=od3ykm. Vendor FAQ now states 40% recurring; public copy still omits the rate until the FirstPromoter dashboard confirms the live link. Cookie window still unpublished on the vendor site.",
     pros: [
-      "Shows volume, CPC, and competition on the Google searches you already run, so landing-page research does not need a separate SEO suite.",
-      "The extension is free to install, and keyword ideas, traffic metrics, and prompt templates work without credits (checked September 21, 2026).",
-      "Bronze is $84 per year for 100,000 credits and one seat, which matches a solo builder who researches in bursts rather than all day.",
+      "Shows Google volume, CPC, and competition on the searches you already run, so a launch page does not need a separate SEO suite.",
+      "The API key is free. Paid credits attach to that key, and the same key covers your own browsers on one seat (checked October 20, 2026).",
+      "Bronze is $84 a year for 100,000 credits and one seat. Silver is $168, Gold is $480, and Platinum is $1,440, all annual (checked October 20, 2026).",
       "It is a browser overlay, not an SDK, so nothing is added to the app binary.",
     ],
     cons: [
-      "It is not an ASO tool. App Store and Google Play keyword research still need a dedicated store-intelligence product.",
-      "Search volume, CPC, and competition sit on annual credit plans. There is no monthly option, and unused credits expire after 12 months.",
-      "There is no Safari version and no iOS or Android app, so it will not run on an iPhone or iPad.",
+      "The numbers are Google web search volume. The vendor says a Google Play overlay is Keyword Planner data, not Play Store demand. It does not replace an App Store ASO tool.",
+      "Plans are annual only. The vendor prints $7 a month beside Bronze, which is $84 divided by 12, not a monthly bill. Credits expire 12 months after purchase.",
+      "There is no Android app, no iPhone or iPad app, and no Safari version. You need Chrome, Firefox, or Edge on a desktop or laptop.",
       "A Google search that shows 8 Related, 20 People Also Search For, and 25 Long-tail keywords uses 54 credits, so casual browsing burns the meter faster than a one-keyword lookup.",
     ],
     body_markdown: tool,
@@ -95,13 +95,13 @@ export function getKeywordsEverywhereProgramSeed() {
     status: "approved",
     application_url: "https://keywordseverywhere.com/",
     commission_notes:
-      "Program type: affiliate via FirstPromoter. Self-serve referral parameter fpr=od3ykm. Exact commission rate and payout terms are not published on the public marketing site; confirm in the FirstPromoter dashboard before stating a percentage. Third-party directories listed 40% recurring on 2026-09-21; treat that figure as unverified until the dashboard confirms it.",
+      "Program type: affiliate via FirstPromoter. Self-serve referral parameter fpr=od3ykm. The vendor FAQ stated 40% recurring commissions on 2026-10-20 (https://keywordseverywhere.com/frequently-asked-questions.html). Public pages still do not state a rate until the FirstPromoter dashboard confirms the live link pays that rate.",
     cookie_notes:
-      "No official public cookie window found on keywordseverywhere.com on 2026-09-21. Third-party directories listed 60 days; confirm in the FirstPromoter dashboard before publishing a cookie claim.",
+      "No official public cookie window found on keywordseverywhere.com on 2026-10-20. Third-party directories listed 60 days on 2026-09-21; confirm in the FirstPromoter dashboard before publishing a cookie claim.",
     allowed_promotion_notes:
       "Approved affiliate link is live. Best fit for landing-page, launch, and content-research articles. Always disclose as an affiliate link. Do not present Keywords Everywhere as an ASO or App Store keyword tool. Do not rank it by commission.",
     internal_notes:
-      "Checked 2026-09-21. Owner supplied FirstPromoter link https://keywordseverywhere.com?fpr=od3ykm. Destination normalized to https://keywordseverywhere.com/?fpr=od3ykm. Public copy must not state commission or cookie window until the dashboard values are recorded. Owned UI captures added 2026-09-21: popup (email redacted, credits 0) and Google SERP overlay for an app-related query. Do not quote overlay Moz/traffic figures as site facts.",
+      "Rechecked 2026-10-20. Owner supplied FirstPromoter link https://keywordseverywhere.com?fpr=od3ykm. Destination normalized to https://keywordseverywhere.com/?fpr=od3ykm. Vendor FAQ states 40% recurring; public copy still must not state commission or cookie window until the dashboard confirms the live link. Owned UI captures from 2026-09-21: popup (email redacted, credits 0) and Google SERP overlay for an app-related query. Do not quote overlay Moz/traffic figures as site facts.",
   };
 }
 
@@ -113,9 +113,9 @@ export function getKeywordsEverywhereArticleSeed(landingPagesCategoryId) {
       "Keywords Everywhere for indie app developers: Google search data, not App Store ASO",
     slug: keywordsEverywhereGuideSlug,
     subtitle:
-      "A source-checked look at where a Google-keyword browser extension fits a solo mobile app launch, and where it does not.",
+      "How to use the browser extension on a launch page or blog post, and when a solo mobile developer should leave it out of the stack.",
     excerpt:
-      "Keywords Everywhere overlays Google search volume, CPC, and competition in Chrome, Firefox, and Edge. Here is an honest read on when it helps an indie app landing page, when App Store ASO tools are the better fit, and what it costs.",
+      "Install Keywords Everywhere on a laptop browser, read Google volume while you draft a launch page, and keep App Store listing work in an ASO tool. Pricing, the API key, and the phone answer are on the tool page.",
     body_markdown: guide,
     author: "IndieAppStack",
     status: "published",
@@ -123,7 +123,7 @@ export function getKeywordsEverywhereArticleSeed(landingPagesCategoryId) {
     primary_category_id: landingPagesCategoryId,
     seo_title: "Keywords Everywhere for Indie Apps, Not ASO",
     seo_description:
-      "A source-checked guide to Keywords Everywhere for solo app builders: Google keyword data vs App Store ASO, current pricing, and when to skip it.",
+      "How a solo developer uses Keywords Everywhere on a launch page: Google volume in the browser, and when to leave listing keywords to an ASO tool.",
     human_reviewed: true,
     ai_assisted: true,
     published_at: keywordsEverywherePublishedAt,
@@ -139,12 +139,12 @@ export function getKeywordsEverywhereTopicSeed({
       "Keywords Everywhere for indie app developers: Google search data, not App Store ASO",
     slug: keywordsEverywhereGuideSlug,
     target_keyword: "keywords everywhere",
-    search_intent: "commercial investigation",
+    search_intent: "how-to",
     target_category_id: landingPagesCategoryId,
     related_tool_ids: toolIds,
     priority: 120,
     status: "published",
     notes:
-      "Affiliate keyword setup 2026-09-21. FirstPromoter link fpr=od3ykm. Brand-navigational query plus fit guidance that separates Google keyword data from App Store ASO.",
+      "Intent split 2026-10-20. This guide is the launch-page how-to. The tool page owns the review, credit pricing, API key, and mobile or Android answer. FirstPromoter link fpr=od3ykm.",
   };
 }
