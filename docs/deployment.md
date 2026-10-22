@@ -43,7 +43,9 @@ Configure these in Vercel Project Settings for Production and Preview. Do not co
 
 ## Database migrations
 
-SQL files in `supabase/migrations/` are applied on push to `main` by `.github/workflows/seed-production.yml`, in a job that finishes before the production content upsert. The job installs the Supabase CLI with `supabase/setup-cli`, then runs `supabase link --project-ref` and `supabase db push`. A pull request that changes `supabase/migrations/**` runs `supabase db push --dry-run` and does not apply SQL.
+SQL files in `supabase/migrations/` are applied on push to `main` by `.github/workflows/seed-production.yml`, in a job that finishes before the production content upsert. The job installs the Supabase CLI with `supabase/setup-cli`, then runs `supabase link --project-ref` and `supabase db push`. A pull request that changes `supabase/migrations/**` runs `supabase db push --dry-run` and does not apply SQL. `npm run seed:prod` only upserts content.
+
+`20261022050000_updated_at_only_on_change.sql` keeps `updated_at` still unless a column other than `updated_at` changed. The seed also skips unchanged rows, so a reseed keeps sitemap `lastmod` even if that function has not been replaced yet. The workflow applies the function so admin saves and one-off upserts follow the same rule. Do not mark `20261022050000` applied with `supabase migration repair` before that SQL has run.
 
 `db push` applies local files that are absent from `supabase_migrations.schema_migrations`. Versions already recorded there are skipped. It needs three Actions secrets: `SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROJECT_REF`, and `SUPABASE_DB_PASSWORD`. If any of them is missing, the job warns and exits successfully so the content seed still runs. Add the secrets under Settings > Secrets and variables > Actions.
 
@@ -67,7 +69,7 @@ supabase migration repair --status applied 20260629110000
 supabase migration repair --status applied 20260719120000
 ```
 
-Do not pass `--include-all`. That flag runs the out-of-order files. Do not mark a version applied when its SQL has not actually been applied. `20261022050000_updated_at_only_on_change.sql` is the sitemap `lastmod` change and should be applied by `db push` after it is on `main`, not repaired in advance. After the five baseline rows are present, the next push applies only newer files.
+Do not pass `--include-all`. That flag runs the out-of-order files. Do not mark a version applied when its SQL has not actually been applied. After the five baseline rows are present, the next push applies only newer files, including `20261022050000` from the sitemap `lastmod` fix.
 
 This repository could not read production `supabase_migrations.schema_migrations` when the workflow was added (no access token, project ref, or database password were available here). The first Actions log for this job is the check: a dry-run that says the remote database is up to date means the five versions are already recorded.
 
