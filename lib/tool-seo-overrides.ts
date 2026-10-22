@@ -14,6 +14,12 @@ export const TOOL_SEO_OVERRIDES: Record<
       "Codemagic gives 500 free Mac M2 minutes a month, then $0.095/min. See every plan, cost per build, and when Xcode Cloud or Bitrise is cheaper.",
     heading: "Codemagic pricing, free tier, and when it's worth paying",
   },
+  "keywords-everywhere": {
+    title: "Keywords Everywhere Review 2026: Pricing, Credits & Mobile",
+    description:
+      "Annual credits from $84. The API key is free. Google web volume, not App Store or Play Store demand. No Android, iPhone, or iPad app. Checked Oct 22, 2026.",
+    heading: "Keywords Everywhere review, credit pricing, and no mobile app",
+  },
 };
 
 /** Absolute document title for slugs in the override map. Other tools keep the site template. */
