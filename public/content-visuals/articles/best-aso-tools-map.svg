@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
   <title id="title">The four ASO jobs and their tools</title>
-  <desc id="desc">A map of the four main app store optimization jobs, keyword research, rank and market monitoring, reviews and reputation, and store creative, each matched to tools.</desc>
+  <desc id="desc">A map of the four main app store optimization jobs, keyword research, rank and market monitoring, reviews and reputation, and store creative, each matched to tools. Entry prices were checked Oct 20, 2026.</desc>
   <defs>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#15202b" flood-opacity="0.14"/>
@@ -24,13 +24,13 @@
   <text x="124" y="238" class="tag">KEYWORD RESEARCH</text>
   <text x="124" y="278" class="step">What can rank and convert?</text>
   <text x="124" y="330" class="copy">Volume, difficulty, and intent for realistic terms.</text>
-  <text x="124" y="356" class="tool">AppTweak · Appfigures</text>
+  <text x="124" y="356" class="tool">AppTweak · Astro</text>
 
   <rect x="616" y="196" width="488" height="176" rx="24" fill="#e8f5ef" stroke="#76bd8c" stroke-width="2"/>
   <text x="644" y="238" class="tag">RANK + MARKET MONITORING</text>
   <text x="644" y="278" class="step">Are the numbers moving?</text>
   <text x="644" y="330" class="copy">Rankings, downloads, and revenue over time.</text>
-  <text x="644" y="356" class="tool">Appfigures</text>
+  <text x="644" y="356" class="tool">Appfigures from Monitor</text>
 
   <rect x="96" y="388" width="488" height="176" rx="24" fill="#fff2dc" stroke="#e3b762" stroke-width="2"/>
   <text x="124" y="430" class="tag">REVIEWS + REPUTATION</text>
@@ -45,5 +45,5 @@
   <text x="644" y="548" class="tool">AppScreens</text>
 
   <rect x="96" y="588" width="1008" height="1" fill="#dde4e8"/>
-  <text x="96" y="614" class="small">ASO tools inform decisions. The listing copy, screenshots, and the app's promise do most of the work.</text>
+  <text x="96" y="614" class="small">Entry prices checked Oct 20, 2026. The listing copy, screenshots, and the app's promise do most of the work.</text>
 </svg>

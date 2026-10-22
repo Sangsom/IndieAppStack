@@ -1039,7 +1039,7 @@ try {
           name: "ASO",
           slug: "aso",
           description:
-            "Research keywords, competitors, reviews, rankings, and creative assets that help mobile apps earn qualified store traffic.",
+            "Research keywords, competitors, reviews, rankings, and creative assets that help mobile apps earn qualified store traffic. [Compare ASO tools by price →](/guides/best-aso-tools-for-indie-developers).",
           sort_order: 30,
           status: "published",
           seo_description:
@@ -3364,70 +3364,81 @@ Last checked: 2026-07-09. Pricing thresholds are summarized at a high level; che
           published_at: publishedAt,
         },
         {
-          title: "Best ASO tools for indie developers",
+          title: "Best ASO Tools for Indie Developers (2026): Prices Compared",
           slug: "best-aso-tools-for-indie-developers",
           subtitle:
-            "A practical shortlist for keywords, rankings, reviews, and screenshot workflows.",
+            "Entry price, free tier, and the job each tool fits, checked Oct 20, 2026.",
           excerpt:
-            "Choose ASO tools based on the part of the store listing you can improve this month.",
+            "A dated price table for Astro, Appfigures, AppTweak, AppFollow, and AppScreens, plus the ASO tool we use on Mantis and MrGripper.",
           body_markdown: `## Short answer
-Do not buy a large app-intelligence stack before launch. Choose one ASO tool for the job you can improve this month, then add others only when the work demands it. For most indie developers:
+Choose one ASO tool for the job you can do this month, then read its entry price. ASO tools inform a listing decision. They do not create installs. The copy, the screenshots, and the app's promise still do that work.
 
-- Choose [AppTweak](/tools/apptweak) when keyword research, metadata, and competitor ASO are the main work.
-- Choose [Appfigures](/tools/appfigures) when rankings, reviews, downloads, and revenue monitoring across a portfolio are the bigger need.
-- Choose [AppFollow](/tools/appfollow) when replying to reviews and protecting store reputation is the daily job.
-- Use [AppScreens](/tools/appscreens) for the creative side: screenshots, captions, exports, and localization.
+We build Mantis and MrGripper. Astro is the ASO tool we use for keyword tracking on those two apps.
 
-ASO tools inform decisions; they do not make installs happen. The listing copy, the screenshots, and the app's promise do most of the work. Buy the tool that sharpens the specific decision you are stuck on.
+:::comparison ASO tools by entry price (checked Oct 20, 2026)
+| Tool | Entry price | Free tier | Best at |
+| --- | --- | --- | --- |
+| Astro | Single Mac License at $9 per month, billed annually at $108. Astro's page says prices are in USD and that taxes may apply. | Astro's keyword docs say the free version can track up to 10 keywords. | Keyword tracking on a Mac for iOS apps you ship. [Astro](https://tryastro.app/) |
+| Appfigures | Starter is free. Connect, the first paid card, is $9.99 per month, or $7.99 per month on the annual display, and that card prints 0 keywords and 0 competitors. The first printed keyword cap is Monitor at $44.99 per month ($35.99 on the annual display) for 100 keywords. | The pricing page says you can use Appfigures for free on Starter. It does not print a Starter keyword count. | Reports on apps you connect, such as downloads, revenue, and reviews. [Appfigures](/tools/appfigures) |
+| AppTweak | The Essential card for 5 apps prints $79 per month on annual billing ($949 billed annually) and a monthly rate of $99. That card lists 500 keywords, 1 seat, and 6 months of history. This check showed a dollar sign. AppTweak says prices are also offered in euros, US dollars, pounds sterling, and yen. | The plan cards say "Start a 7-day free trial". There is no permanent free ASO plan on that card. | Keyword research and listing work on the App Store and Google Play. [AppTweak](/tools/apptweak) |
+| AppFollow | The pricing page does not print a price. It points to a sales conversation. | The page says "Try AppFollow for free" and does not print free-tier limits. | Review replies and store reputation. [AppFollow](/tools/appfollow) |
+| AppScreens | Free is $0. Pro is $8.25 per month billed annually at $99, or $25 billed monthly. Scale is $15 per month billed annually at $180, or $50 billed monthly. | Free covers 1 saved project, up to 5 screens, and essential store sizes. No card. | Store screenshots, captions, and localized exports. [AppScreens](/tools/appscreens) |
+:::
+
+> [!NOTE] How we use Astro
+> We build Mantis and MrGripper. Astro is the ASO tool we use for keyword tracking on those two apps. This note has no ranks, no traffic figure, and no keyword count from either app. Claims on Astro's site stay Astro's claims.
 
 > [!NOTE] Solo builder scope
-> This guide is for a solo or small indie team optimizing an App Store or Google Play listing, not an agency running many clients. Start with the free trials and one clear job before committing to a paid tier.
+> This guide is for a solo or small indie team optimizing an App Store or Google Play listing, not an agency running many clients. Start with the free tier or the trial and one clear job before a paid plan.
 
-![Map of the four main ASO jobs, keyword research, rank and market monitoring, reviews and reputation, and store creative, matched to tools.](/content-visuals/articles/best-aso-tools-map.svg "Match the tool to the ASO job you need done this month, not to the brand.")
+![Map of the four main ASO jobs, keyword research, rank and market monitoring, reviews and reputation, and store creative, matched to tools. Entry prices checked Oct 20, 2026.](/content-visuals/articles/best-aso-tools-map.svg "Match the tool to the ASO job you need done this month. Entry prices checked Oct 20, 2026.")
 
 ## The four ASO jobs
-Most ASO work falls into four jobs. Match the tool to the job, not the brand:
+Most ASO work falls into four jobs. Match the tool to the job, then check the entry price in the table above.
 
 :::comparison ASO jobs and tools
 | Job | What it answers | Reach for |
 | --- | --- | --- |
-| Keyword research | Which terms can this app realistically rank and convert for? | AppTweak, Appfigures |
-| Rank and market monitoring | Are rankings, downloads, and revenue moving, and why? | Appfigures |
-| Reviews and reputation | What are users saying, and are we responding? | AppFollow, Appfigures |
+| Keyword research | Which terms can this app realistically rank and convert for? | AppTweak, Astro |
+| Rank and market monitoring | Are rankings, downloads, and revenue moving? | Appfigures, from the Monitor plan upward for a printed keyword cap |
+| Reviews and reputation | What are users saying, and are you responding? | AppFollow, Appfigures |
 | Store creative | Do the screenshots and captions explain the app fast? | AppScreens |
 :::
 
 ## Tool-by-tool fit
+### Astro
+[Astro](https://tryastro.app/) is a Mac app for App Store keyword tracking. The homepage says it is available for macOS 14 and up. The price block lists one Single Mac License at $9 per month, billed annually at $108, and says prices are in USD and that taxes may apply. The same block, in Astro's words, includes unlimited keywords, popularity and difficulty data, keyword suggestions, charts and rankings, ratings analysis, competitor keyword extraction, keyword translations, and more than 60 countries. Astro's keyword docs say 91 App Store countries are available, and that the free version can track up to 10 keywords. Those country counts are Astro's, and they do not match each other. A paid subscription has 14 days to request a refund by email to hello@tryastro.app, which is Astro's refund policy.
+
 ### AppTweak
-[AppTweak](/tools/apptweak) is an ASO and app-intelligence platform built around keyword research, metadata optimization, competitor monitoring, and creative analysis across many countries. It is the strongest fit when the next task is picking keywords and rewriting the listing around search intent. It offers a free trial, and paid tiers scale mainly by tracked keywords, historical data range, and seats.
+[AppTweak](/tools/apptweak) is the fit when the next task is keyword research and a listing rewrite across the App Store and Google Play. On Oct 20, 2026 the Essential card for 5 apps printed $79 per month on annual billing ($949 billed annually) and a monthly rate of $99, with 500 keywords, 1 seat, and 6 months of history. The same 5-app selector showed Grow at $299 per month on annual billing ($3,590 billed annually, or $359 monthly) with 1,500 keywords, 1 seat, and 12 months of history, and Expand at $549 per month on annual billing ($6,590 billed annually, or $659 monthly) with 3,000 keywords, 1 seat, and 24 months of history. Enterprise is contact-only. The page changes the currency symbol by location. This check showed a dollar sign, and AppTweak's pricing FAQ says prices are offered in euros, US dollars, pounds sterling, and yen. The plan cards say "Start a 7-day free trial". AppTweak's FAQ says the trial starts after you enter billing information, and the card is charged if you do not cancel before the trial ends. One trial is allowed per product.
 
 ### Appfigures
-[Appfigures](/tools/appfigures) is analytics-first and also does ASO: downloads and revenue, rankings, review monitoring, and keyword tracking across iOS and Android. It is the better fit when you want an ongoing read on store performance, especially across more than one app. It offers a free trial, and paid tiers scale by tracked apps, keyword counts, and update frequency.
+[Appfigures](/tools/appfigures) is the fit when you want reports on apps you connect: downloads, revenue, and reviews, on iOS and Android. Checked Oct 20, 2026 on the Analytics and ASO tab. Starter is the free plan named on the page, and the page does not print a Starter keyword count. Connect is $9.99 per month, or $7.99 per month on the annual display, and that card prints 0 keywords and 0 competitors. Monitor is $44.99 per month ($35.99 on the annual display) for 100 keywords and 0 competitors. Optimize is $149.99 per month ($119.99 on the annual display) for 500 keywords and 0 competitors. The Connected Apps row on the Connect column prints "5, then $1.99 each". A free trial needs no credit card and unlocks Optimize. The pricing FAQ does not say how many days it lasts. When it ends, the account moves to the free plan.
 
 ### AppFollow
-[AppFollow](/tools/appfollow) centers on review management and reputation: monitoring ratings, replying to reviews, and routing feedback, with ASO features alongside. Choose it when responding to reviews and protecting store reputation is a recurring job. Its pricing is quote-based, so confirm current terms directly.
+[AppFollow](/tools/appfollow) is the fit when the daily job is reading and replying to reviews. Checked Oct 20, 2026, the pricing page does not print a dollar amount. It offers a sales conversation, and the page says "Try AppFollow for free" without printing free-tier limits. Confirm the current terms on that page before you budget a reply workflow.
 
 ### AppScreens
-[AppScreens](/tools/appscreens) is a creative tool for producing store screenshots, captions, device frames, exports, and localized variants. It does not do keyword research; it makes the listing look credible once the positioning is set. See the [screenshots category](/categories/screenshots) for alternatives.
+[AppScreens](/tools/appscreens) makes store screenshots, captions, and localized exports. It does not do keyword research. Checked Oct 20, 2026. Free is $0: 1 saved project, up to 5 screens, essential iOS and Android sizes, and no card. Pro is $8.25 per month billed annually at $99, and the same page lists a monthly Pro price of $25. Scale is $15 per month billed annually at $180, and a monthly Scale price of $50. See the [screenshots category](/categories/screenshots) for other creative tools.
 
 ## When you do not need a paid ASO tool yet
-If the app has not launched or the positioning is still moving, a paid ASO subscription is premature. Before paying:
+If the app has not launched, or the positioning is still moving, a paid ASO subscription is premature. Before paying:
 
 - Write a specific promise you can turn into keywords.
 - Read competitor titles, subtitles, and top reviews by hand.
 - Draft screenshots that explain the app in the first two frames.
-- Use the free trials to sanity-check keyword ideas.
+- Use Astro's free version, Appfigures Starter, the AppScreens free plan, or a trial to check a short keyword list.
 
-Add a paid plan when you have a listing to optimize and a decision the tool will actually change.
+Add a paid plan when you have a listing to optimize and a decision the tool will change.
 
 ## Best for
 - Apps preparing a launch, relaunch, or metadata refresh.
-- Builders who want store insight and creative production to work together.
+- Builders who want the entry price and the free tier in one place before they pick a job.
 - Teams choosing one ASO job to improve this month.
 
 ## Not good for
 - Apps that have not settled the target user or positioning.
-- Teams expecting ASO tools to guarantee installs without better copy and creative.
+- Teams that expect an ASO subscription to produce installs without better copy and creative.
 
 ## Internal links
 - Work through the [ASO starter checklist](/guides/aso-starter-checklist-indie-mobile-apps) first.
@@ -3437,24 +3448,28 @@ Add a paid plan when you have a listing to optimize and a decision the tool will
 - Connect launch timing through the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist).
 
 ## Source checks
-Product and pricing claims were checked against official sources on 2026-07-09:
+Prices and limits below were read from the vendor pages on Oct 20, 2026. Figures are the vendor's. Pricing checked 2026-10-20.
 
+- Astro pricing: https://tryastro.app/
+- Astro keyword docs, including the free-version limit: https://tryastro.app/docs/how-to-add-keywords/
 - AppTweak pricing: https://www.apptweak.com/en/pricing
-- Appfigures pricing: https://appfigures.com/pricing
+- Appfigures pricing: https://appfigures.com/platform/pricing
 - AppFollow pricing: https://appfollow.io/pricing
+- AppScreens pricing: https://appscreens.com/pricing
 
-Pricing tiers and limits change often, so exact numbers are summarized at a high level. No hands-on testing claims are made in this guide. The ASO tools map is an owned conceptual visual created for IndieAppStack.
+The Astro note does not report ranks or results. The ASO tools map is an owned conceptual visual created for IndieAppStack.
 
-Last checked: 2026-07-09.`,
+Last checked: 2026-10-20.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("aso").id,
-          seo_title: "Best ASO tools for indie developers",
+          seo_title:
+            "Best ASO Tools for Indie Developers (2026): Prices Compared",
           seo_description:
-            "Compare ASO tools for indie developers, including keyword research, rankings, reviews, screenshots, and app store listing workflows.",
+            "Dated entry prices for Astro, Appfigures, AppTweak, AppFollow, and AppScreens, plus the free tier and the job each one fits. Checked Oct 20, 2026.",
           human_reviewed: true,
-          ai_assisted: false,
+          ai_assisted: true,
           published_at: publishedAt,
         },
         {
