@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860" role="img" aria-labelledby="t d" font-family='ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif'>
+<title id="t">Bitrise plan prices, annual billing versus monthly billing</title>
+<desc id="d">Bar chart of Bitrise monthly price when billed annually and when billed monthly, checked October 25, 2026. Hobby is 0 dollars, with 1 private app, a team of one, and 5 concurrent builds. Starter tier 1 is 89 dollars yearly or 99 monthly, with 2 private apps and 1 concurrency. Starter tier 2 is 179 or 199, with 2 private apps and 2 concurrencies. Starter tier 3 is 269 or 299, with 3 private apps and 4 concurrencies. Pro starts at 200 yearly or 218 monthly, with unlimited private apps, 10 macOS concurrencies, and 30 Linux concurrencies. Enterprise is custom and is not a bar. Source: bitrise.io/pricing.</desc>
+<rect width="1200" height="860" fill="#fbfaf7"/>
+<text x="64" y="52" font-family='ui-serif,"Source Serif 4",Georgia,"Times New Roman",serif' font-size="32" font-weight="600" fill="#20241f">Bitrise plan prices</text>
+<text x="64" y="84" font-size="16" fill="#6e6a5e">Monthly price on annual billing versus monthly billing. Checked Oct 25, 2026.</text>
+<rect x="64" y="108" width="18" height="18" rx="3" fill="#2c5f4f"/>
+<text x="90" y="122" font-size="14" fill="#20241f">Billed annually</text>
+<rect x="240" y="108" width="18" height="18" rx="3" fill="#9a6b23"/>
+<text x="266" y="122" font-size="14" fill="#20241f">Billed monthly</text>
+<line x1="150" y1="470" x2="1140" y2="470" stroke="#e7e2d7" stroke-width="1"/>
+<text x="140" y="474" font-size="13" fill="#6e6a5e" text-anchor="end">$0</text>
+<line x1="150" y1="370" x2="1140" y2="370" stroke="#e7e2d7" stroke-width="1"/>
+<text x="140" y="374" font-size="13" fill="#6e6a5e" text-anchor="end">$100</text>
+<line x1="150" y1="270" x2="1140" y2="270" stroke="#e7e2d7" stroke-width="1"/>
+<text x="140" y="274" font-size="13" fill="#6e6a5e" text-anchor="end">$200</text>
+<line x1="150" y1="170" x2="1140" y2="170" stroke="#e7e2d7" stroke-width="1"/>
+<text x="140" y="174" font-size="13" fill="#6e6a5e" text-anchor="end">$300</text>
+<rect x="213.0" y="464.0" width="32" height="6.0" rx="4" fill="#2c5f4f"/>
+<text x="229.0" y="456.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$0</text>
+<rect x="253.0" y="464.0" width="32" height="6.0" rx="4" fill="#9a6b23"/>
+<text x="269.0" y="456.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$0</text>
+<text x="249.0" y="498" font-size="16" font-weight="600" fill="#20241f" text-anchor="middle">Hobby</text>
+<text x="249.0" y="520" font-size="13" fill="#6e6a5e" text-anchor="middle">300 credits</text>
+<text x="249.0" y="542" font-size="14" fill="#20241f" text-anchor="middle">1 private app</text>
+<text x="249.0" y="564" font-size="14" fill="#20241f" text-anchor="middle">5 concurrent</text>
+<rect x="411.0" y="381.0" width="32" height="89.0" rx="4" fill="#2c5f4f"/>
+<text x="427.0" y="350.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$89</text>
+<rect x="451.0" y="371.0" width="32" height="99.0" rx="4" fill="#9a6b23"/>
+<text x="467.0" y="363.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$99</text>
+<text x="447.0" y="498" font-size="16" font-weight="600" fill="#20241f" text-anchor="middle">Starter 1</text>
+<text x="447.0" y="520" font-size="13" fill="#6e6a5e" text-anchor="middle">Tier table</text>
+<text x="447.0" y="542" font-size="14" fill="#20241f" text-anchor="middle">2 private apps</text>
+<text x="447.0" y="564" font-size="14" fill="#20241f" text-anchor="middle">1 concurrent</text>
+<rect x="609.0" y="291.0" width="32" height="179.0" rx="4" fill="#2c5f4f"/>
+<text x="625.0" y="283.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$179</text>
+<rect x="649.0" y="271.0" width="32" height="199.0" rx="4" fill="#9a6b23"/>
+<text x="665.0" y="263.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$199</text>
+<text x="645.0" y="498" font-size="16" font-weight="600" fill="#20241f" text-anchor="middle">Starter 2</text>
+<text x="645.0" y="520" font-size="13" fill="#6e6a5e" text-anchor="middle">Tier table</text>
+<text x="645.0" y="542" font-size="14" fill="#20241f" text-anchor="middle">2 private apps</text>
+<text x="645.0" y="564" font-size="14" fill="#20241f" text-anchor="middle">2 concurrent</text>
+<rect x="807.0" y="201.0" width="32" height="269.0" rx="4" fill="#2c5f4f"/>
+<text x="823.0" y="193.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$269</text>
+<rect x="847.0" y="171.0" width="32" height="299.0" rx="4" fill="#9a6b23"/>
+<text x="863.0" y="163.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$299</text>
+<text x="843.0" y="498" font-size="16" font-weight="600" fill="#20241f" text-anchor="middle">Starter 3</text>
+<text x="843.0" y="520" font-size="13" fill="#6e6a5e" text-anchor="middle">Card ceiling</text>
+<text x="843.0" y="542" font-size="14" fill="#20241f" text-anchor="middle">3 private apps</text>
+<text x="843.0" y="564" font-size="14" fill="#20241f" text-anchor="middle">4 concurrent</text>
+<rect x="1005.0" y="270.0" width="32" height="200.0" rx="4" fill="#2c5f4f"/>
+<text x="1021.0" y="262.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$200</text>
+<rect x="1045.0" y="252.0" width="32" height="218.0" rx="4" fill="#9a6b23"/>
+<text x="1061.0" y="244.0" font-size="13" font-weight="600" fill="#20241f" text-anchor="middle">$218</text>
+<text x="1041.0" y="498" font-size="16" font-weight="600" fill="#20241f" text-anchor="middle">Pro, from</text>
+<text x="1041.0" y="520" font-size="13" fill="#6e6a5e" text-anchor="middle">Starting price</text>
+<text x="1041.0" y="542" font-size="14" fill="#20241f" text-anchor="middle">Unlimited apps</text>
+<text x="1041.0" y="564" font-size="14" fill="#20241f" text-anchor="middle">10 macOS, 30 Linux</text>
+<text x="64" y="620" font-size="15" fill="#6e6a5e">Hobby is free: 300 build credits a month. The pricing page does not say how many credits one minute uses.</text>
+<text x="64" y="646" font-size="15" fill="#6e6a5e">Starter tiers are the View all Plan tiers table. The card ceiling of 4 concurrent builds and 3 private apps is tier 3.</text>
+<text x="64" y="672" font-size="15" fill="#6e6a5e">Pro is the published starting price. The comparison table lists 10 macOS and 30 Linux concurrent builds.</text>
+<text x="64" y="698" font-size="15" fill="#6e6a5e">Enterprise is custom, from 2,000 builds a month, and is not a bar.</text>
+<text x="64" y="760" font-size="13" fill="#6e6a5e">Source: bitrise.io/pricing, plan cards, comparison table, Hobby FAQ, and Starter tier table. Checked Oct 25, 2026.</text>
+<text x="64" y="820" font-size="13" fill="#6e6a5e">Prices are the monthly amount. Annual figures are the per-month rate when billed annually, not a yearly total.</text>
+</svg>
