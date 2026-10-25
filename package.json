@@ -21,7 +21,7 @@
     "seo:indexnow": "node scripts/indexnow-submit.mjs",
     "db:seed": "node scripts/seed-database.mjs",
     "seed:prod": "node scripts/seed-database.mjs --upsert-only",
-    "test": "node --test scripts/plan-supabase-push.test.mjs scripts/revalidate-production.test.mjs scripts/seed-plan.test.mjs scripts/static-page-lastmod.test.mjs scripts/supabase-migrate-workflow.test.mjs scripts/updated-at-trigger.test.mjs scripts/upsert-changed.test.mjs",
+    "test": "node --test scripts/adapty-vs-superwall.test.mjs scripts/plan-supabase-push.test.mjs scripts/revalidate-production.test.mjs scripts/seed-plan.test.mjs scripts/static-page-lastmod.test.mjs scripts/supabase-migrate-workflow.test.mjs scripts/superwall-vs-revenuecat.test.mjs scripts/updated-at-trigger.test.mjs scripts/upsert-changed.test.mjs",
     "subscribers:delete": "node scripts/delete-subscriber.mjs",
     "admin:grant": "node scripts/grant-admin.mjs",
     "design:contrast": "node scripts/check-design-contrast.mjs"

@@ -116,22 +116,18 @@ test("each price sits with a checked date, and the disclosure line is present", 
   }
 });
 
-test("the superwall-vs-revenuecat object is unchanged against origin/main", () => {
+test("the adapty-vs-superwall object and tool content stay unchanged against origin/main", () => {
   const baseSeed = execSync("git show origin/main:scripts/seed-database.mjs", {
     encoding: "utf8",
   });
   assert.equal(
-    objectForSlug(seed, "superwall-vs-revenuecat"),
-    objectForSlug(baseSeed, "superwall-vs-revenuecat"),
+    objectForSlug(seed, "adapty-vs-superwall"),
+    objectForSlug(baseSeed, "adapty-vs-superwall"),
   );
-
-  const baseBody = execSync(
-    "git show origin/main:output/indieappstack/superwall-vs-revenuecat/content.md",
-    { encoding: "utf8" },
+  assert.equal(
+    fs.readFileSync("scripts/tool-content.json", "utf8"),
+    execSync("git show origin/main:scripts/tool-content.json", {
+      encoding: "utf8",
+    }),
   );
-  const currentBody = fs.readFileSync(
-    "output/indieappstack/superwall-vs-revenuecat/content.md",
-    "utf8",
-  );
-  assert.equal(currentBody, baseBody);
 });

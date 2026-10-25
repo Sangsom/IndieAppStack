@@ -99,6 +99,10 @@ const articleImageDimensions: Record<
     height: 720,
     width: 1200,
   },
+  "/content-visuals/articles/superwall-vs-revenuecat-monthly-fee-chart.svg": {
+    height: 760,
+    width: 1200,
+  },
   "/content-visuals/articles/paywall-apps-ios-fees-oct-2026.svg": {
     height: 720,
     width: 1200,
