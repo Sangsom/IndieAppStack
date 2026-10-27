@@ -8,6 +8,12 @@ export const TOOL_SEO_OVERRIDES: Record<
       "Free: 75,000 MAU, 2 GB storage, and 5 GB bandwidth. Pro from $25/month. Self-hosting is cheaper when the machine costs less than $25. Checked Oct 20, 2026.",
     heading: "Appwrite pricing, free tier, and when it's worth paying",
   },
+  bitrise: {
+    title: "Bitrise Pricing 2026: Free Hobby Plan, Starter From $89/mo",
+    description:
+      "Bitrise Hobby is free: 1 app, 300 credits a month. Starter is $89/mo yearly or $99 monthly; Pro is $200. When it's worth paying. Checked Oct 25, 2026.",
+    heading: "Bitrise pricing, plans, and when it's worth paying",
+  },
   codemagic: {
     title: "Codemagic Pricing 2026: 500 Free Minutes, Then $0.095",
     description:

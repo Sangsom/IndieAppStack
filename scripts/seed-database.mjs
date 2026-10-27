@@ -831,7 +831,7 @@ Usually not. Feature flags and experiments are built into PostHog and share its 
     alternatives: ["Codemagic", "GitHub Actions", "fastlane"],
     categorySlugs: ["dev-productivity"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://bitrise.io/pricing",
+      "Pricing checked 2026-10-25 from https://bitrise.io/pricing. Hobby card: team of one. Hobby FAQ: free, 1 private app, 5 concurrencies, 90 minute timeout, 300 credits per month. Starter card: from $89/mo billed annually or $99 monthly, unlimited team members, unlimited build minutes, up to 4 concurrent builds, up to 3 private apps, recommended up to 100 builds/month. Starter tier modal (View all Plan tiers): tier 1 $89 yearly or $99 monthly, 1 concurrency, 2 private apps; tier 2 $179 or $199, 2 concurrencies, 2 apps; tier 3 $269 or $299, 4 concurrencies, 3 apps. Comparison table: team members Unlimited across Starter, Pro, and Enterprise (colspan 3). Pro card: from $200 yearly or $218 monthly, from 250 builds/month, 10 concurrent builds. Comparison table: Pro builds/month 250-2,000, concurrency up to 10 macOS and 30 Linux, unlimited private apps. Enterprise: custom, from 2,000 builds/month (table 2,000+). Minute rates in the pricing FAQ: macOS Medium $0.0072 (Hobby and Starter), macOS Large $0.0096 (Hobby and Pro), Linux Medium $0.0044 (Hobby). The page does not publish credits per minute. Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Emerge Tools",
