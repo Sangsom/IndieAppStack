@@ -13,6 +13,10 @@ const articleImageDimensions: Record<
   string,
   { height: number; width: number }
 > = {
+  "/content-visuals/tools/bitrise-plans-oct-2026.svg": {
+    height: 860,
+    width: 1200,
+  },
   "/content-visuals/tools/fastlane-lane-minute-cost-oct-2026.svg": {
     height: 675,
     width: 1200,
