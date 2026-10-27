@@ -1,100 +1,98 @@
-# RevenueCat vs Superwall for iOS subscription apps
+# Superwall vs RevenueCat for iOS subscription apps
 
 **Mode:** refresh-existing · **Keep URL:** `https://indieappstack.com/comparisons/superwall-vs-revenuecat`
-**Target query:** `revenuecat vs superwall` · **Also cover:** `superwall vs revenuecat`
+**Target query:** `superwall vs revenuecat`
 **Intent:** commercial investigation, mid-decision
 **Pillar:** The Lean Stack · **Funnel stage:** Consideration · **Goal:** Non-branded organic + AI-cited sessions
 **CTA (single):** Stack Finder → `/stack-finder`
-**Draft date:** 2026-09-27 · **Prices checked:** 2026-09-27
-**Pre-edit GSC baseline:** page 141 impressions, 0 clicks, position 26.87. Query `revenuecat vs superwall`: 14 impressions, position 13.9, 2 clicks. Query `superwall vs revenuecat`: 22 impressions, position 21.4.
+**Draft date:** 2026-10-25 · **Prices checked:** 2026-10-25
+**Rewrite:** 2 of 2. Prior refresh was Sep 27, 2026.
 
 ---
 
 ## How to publish this
 
-Replace the existing comparison body for slug `superwall-vs-revenuecat`. Do not change the slug or URL. The page already emits `Article`, `BreadcrumbList`, and `FAQPage` schema when the Common questions section has two or more H3s. Set `updated_at` to Sep 27, 2026 so Last checked moves, and leave `published_at` on Jul 19, 2026. Keep related-tool cards for RevenueCat and Superwall.
+Replace the existing comparison body for slug `superwall-vs-revenuecat`. Do not change the slug or URL. The page already emits `Article`, `BreadcrumbList`, and `FAQPage` schema when the Common questions section has two or more H3s. Leave `published_at` on Jul 19, 2026. The Last checked line on the page moves when a production reseed updates the row. Keep related-tool cards for RevenueCat and Superwall.
 
-Copy is seeded from this file by `readSuperwallVsRevenueCatBody()` in `scripts/seed-database.mjs`. Do not run a production seed until this draft is approved.
+Copy is seeded from this file by `readSuperwallVsRevenueCatBody()` in `scripts/seed-database.mjs`. The body below this heading is what ships. A merged change is not live until the production seed runs.
 
-The fee diagram is an owned conceptual chart at `/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg`. It is not a product screenshot and it does not imply hands-on testing. The existing two-layer graphic stays.
+The fee chart is generated from the published rates at `/content-visuals/articles/superwall-vs-revenuecat-monthly-fee-chart.svg`. The fee diagram at `/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg` covers the partial-paywall cases. Neither graphic is a product screenshot, and neither implies hands-on testing. The two-layer graphic stays. The cover is the generated Open Graph image for this comparison.
 
 ## CMS fields
 
 **Title / H1**
 
 ```text
-RevenueCat vs Superwall for iOS subscription apps
+Superwall vs RevenueCat for iOS subscription apps
 ```
 
 **Subtitle**
 
 ```text
-The same decision as Superwall vs RevenueCat: purchase truth, remote paywalls, or both.
+Pick RevenueCat when purchases must stay dependable. Pick Superwall when you will change paywalls often.
 ```
 
 **Excerpt**
 
 ```text
-Compare RevenueCat vs Superwall for an iOS subscription app. Dated fees, the revenue-base split, and when to run both.
+Compare Superwall vs RevenueCat for an iOS subscription app. A dated verdict, the fee math, and when to run both.
 ```
 
-**SEO title** — 36 characters
+**SEO title**
 
 ```text
-RevenueCat vs Superwall for iOS apps
+Superwall vs RevenueCat: Pricing & What Each Does (2026)
 ```
 
-**SEO description** — 125 characters
+**SEO description**
 
 ```text
-Compare RevenueCat vs Superwall for iOS apps. Dated fees, the revenue-base split, and when to run both. Checked Sep 27, 2026.
+Checked Oct 25, 2026: Superwall Indie is free to $10k in paywall revenue, then 1%. RevenueCat is free to $2.5k tracked, then 1%. Which iOS apps need which.
 ```
 
 ---
 
 ## Short answer
-RevenueCat vs Superwall is a choice about which job is the bottleneck. Choose [RevenueCat](/tools/revenuecat) when purchase truth has to be dependable before the next release. Choose [Superwall](/tools/superwall) when the bottleneck is changing paywalls without an App Store review. Superwall vs RevenueCat is that same decision with the names reversed. The jobs stay put when the word order changes.
+Pick RevenueCat if you need dependable purchases and entitlements first; it is free until $2,500 a month in tracked revenue, then 1%. Pick Superwall if you will change paywalls often; its infrastructure is free and Indie paywalls are free to $10,000 in paywall revenue. Many apps run both. Checked Oct 25, 2026.
 
-Run one tool when only one of those jobs is active. Run both when purchase truth and paywall iteration are each real work this month. Prices below were checked Sep 27, 2026.
-
-> [!NOTE] Solo builder scope
-> This comparison is for a solo builder choosing a subscription and paywall stack for an iOS app. Sell and unlock reliably first. Iterate on the paywall once there is traffic to learn from.
+> [!NOTE] What we use
+> We build [Mantis](https://getmantis.app), a trading journal, and [MrGripper](https://mrgripper.com), a grip strength logger. Both apps run on [RevenueCat](/tools/revenuecat). RevenueCat holds purchase state and entitlements for those apps. This page does not print a revenue figure for them.
+>
+> Disclosure: we build Mantis and MrGripper.
 
 ![Comparison graphic contrasting RevenueCat as the purchase and entitlement infrastructure layer with Superwall as the remote paywall presentation layer.](/content-visuals/articles/superwall-vs-revenuecat-comparison.svg "RevenueCat owns purchase truth. Superwall owns remote paywall iteration. Some apps run both.")
 
-## RevenueCat vs Superwall at a glance
-:::comparison RevenueCat vs Superwall (checked Sep 27, 2026)
-| Decision | RevenueCat | Superwall |
+## Superwall vs RevenueCat at a glance
+[Superwall](/tools/superwall) leads with the paywall: a remote editor, campaigns, audiences, and experiments. Under that, subscription infrastructure (entitlements, purchase APIs, webhooks, and SQL access) is free at any scale. [RevenueCat](/tools/revenuecat) leads with purchase infrastructure. It handles StoreKit, receipt validation, restore, entitlement checks, webhooks, and cross-platform customer data, then adds paywalls and growth tools on top. Each product can present a paywall, and each can own entitlements. Choose by the job that is the bottleneck this month.
+
+:::comparison Superwall vs RevenueCat (checked Oct 25, 2026)
+| Decision | Superwall | RevenueCat |
 | --- | --- | --- |
-| Center of gravity | Purchase infrastructure, entitlements, and customer state | Remote paywall presentation, with free infrastructure underneath |
-| Choose it when | Purchase truth must be reliable before anything else | You will change paywalls often without waiting on app review |
-| Paywall iteration | Included, including a path that uses only the growth tools | The paid product: edit and test paywalls remotely |
-| Entitlement source of truth | Yes, on its own, or when a purchase controller keeps RevenueCat in charge | Yes, on its own free infrastructure layer. In the recommended paired setup, Superwall completes the purchase and is the entitlement authority |
-| Pricing meter | Free while monthly tracked revenue (MTR) stays under $2,500, then 1% of the whole MTR | Infrastructure free at any scale. Indie paywalls are $0 up to $10,000 monthly attributed revenue (MAR), then 1% of total MAR |
-| What the 1% covers | Purchases and renewals RevenueCat tracks, before store commission and taxes | Revenue that flowed through a Superwall-rendered paywall, not every subscription the app tracks |
-| Official sources | [Pricing](https://www.revenuecat.com/pricing/) and [billing docs](https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management) | [Pricing](https://superwall.com/pricing) |
+| Center of gravity | Remote paywall presentation, with free infrastructure underneath | Purchase infrastructure, entitlements, and customer state |
+| Choose it when | You will change paywalls often without waiting on app review | Purchase truth must be reliable before anything else |
+| Paywall iteration | The paid product: edit and test paywalls remotely | Included, including a path that uses only the growth tools |
+| Entitlement source of truth | Yes, on its own free infrastructure layer. In the recommended paired setup, Superwall completes the purchase and is the entitlement authority | Yes, on its own, or when a purchase controller keeps RevenueCat in charge |
+| Pricing meter | Infrastructure free at any scale. Indie paywalls are $0 up to $10,000 monthly attributed revenue (MAR), then 1% of total MAR | Free up to $2,500 in monthly tracked revenue (MTR), then 1% of the whole MTR |
+| What the 1% covers | Revenue that flowed through a Superwall-rendered paywall, not every subscription the app tracks | Purchases and renewals RevenueCat tracks, before store commission and taxes |
+| Official sources | [Pricing](https://superwall.com/pricing) | [Pricing](https://www.revenuecat.com/pricing/) and [billing docs](https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management) |
 :::
 
-## Superwall vs RevenueCat is the same choice
-People search both orders. RevenueCat vs Superwall and Superwall vs RevenueCat name the same two products. Reversing the words does not reverse the jobs.
-
-[RevenueCat](/tools/revenuecat) leads with purchase infrastructure. It handles StoreKit, receipt validation, restore, entitlement checks, webhooks, and cross-platform customer data, then adds paywalls and growth tools on top. [Superwall](/tools/superwall) leads with the paywall: a remote editor, campaigns, audiences, and experiments. Under that, subscription infrastructure — entitlements, purchase APIs, webhooks, and SQL access — is free at any scale.
-
-Each product can present a paywall, and each can own entitlements. Choose by the job that is the bottleneck this month.
-
 ## What each meter charges
-The headline rate on both public pricing pages is 1%. The revenue base is different. Compare the base before you compare the rate.
+The headline rate on both public pricing pages is 1%. The revenue base is different, and the 1% applies to the whole metered amount once the month is past the free line, not only the dollars above it. Compare the base before you compare the rate. Checked Oct 25, 2026.
 
-RevenueCat bills monthly tracked revenue. MTR is the amount charged to the customer, before store commission and taxes, including purchases and renewals and non-subscription products. MTR under $2,500 is free. MTR above $2,500 is billed at 1% of the whole tracked amount, not only the dollars above the line. RevenueCat's own example: $2,600 in MTR bills $26. A later month that falls back under $2,500 returns to $0. Checked Sep 27, 2026 on the [pricing page](https://www.revenuecat.com/pricing/) and the [billing docs](https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management).
+RevenueCat bills monthly tracked revenue. MTR is the amount charged to the customer, before store commission and taxes, including purchases, renewals, and non-subscription products. The pricing page says pay nothing for up to $2,500 in MTR, then 1% of what you track once you hit $2,500. The billing doc's bullets say MTR under $2,500 is free and MTR above $2,500 is 1% of the whole tracked amount, not only the dollars above the line. Its worked example is $2,600 in MTR, which bills $26. A later month that falls back under $2,500 returns to $0. Custom pricing is listed for high transaction volume. Checked Oct 25, 2026 on the [pricing page](https://www.revenuecat.com/pricing/) and the [billing docs](https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management).
 
-Superwall bills two layers, and they do not share a meter. Infrastructure is $0 at any scale. The paywall product on Indie is $0 up to $10,000 in monthly attributed revenue, then 1% of total MAR. MAR here is paywall-attributed revenue: subscriptions purchased outside a Superwall paywall, and imported or pre-integration users, are not on that meter. Superwall's own illustration on the pricing page: a $50,000 month with nothing through a Superwall paywall is $0; the same month with half through a Superwall paywall is 1% of $25,000, and the other $25,000 stays unmetered. Checked Sep 27, 2026 on [superwall.com/pricing](https://superwall.com/pricing).
+Superwall bills two layers, and they do not share a meter. Infrastructure is $0 at any scale. The paywall product on Indie is $0 up to $10,000 in monthly attributed revenue, then 1% of total MAR, not only the amount above $10,000. MAR here is paywall-attributed revenue: subscriptions purchased outside a Superwall paywall, and imported or pre-integration users, are not on that meter. Superwall's own illustration on the pricing page: a $50,000 month with nothing through a Superwall paywall is $0; the same month with half through a Superwall paywall is 1% of $25,000, and the other $25,000 stays unmetered. Checked Oct 25, 2026 on [superwall.com/pricing](https://superwall.com/pricing).
 
-Two plan details sit beside that Indie figure.
+RevenueCat also sells growth tools at 1% of MTR on what those tools track, if you keep your own purchase backend. The table below uses the Pro meter, which is the one that tracks the app's purchases. Checked Oct 25, 2026 on the [pricing page](https://www.revenuecat.com/pricing/).
 
-- RevenueCat also sells growth tools at 1% of MTR on the conversions those tools produce, if you keep your own purchase backend. The table below uses the Pro meter, which is the one that tracks the app's purchases.
-- Superwall Startup is $49 per month plus 1% of MAR, and Scale is $199 per month plus 1% of MAR. Those cards do not reprint the $10,000 free band. Localization and collaborators sit on Startup, so a solo builder who needs them pays $49 per month even while attributed revenue is still small. The full tier table is on the [Superwall tool page](/tools/superwall).
+Superwall Startup is $49 per month plus 1% of MAR, and Scale is $199 per month plus 1% of MAR. Enterprise is custom. Those Startup and Scale cards do not reprint the $10,000 free band. Localization and collaborators sit on Startup, so a solo builder who needs them pays the $49 base even while attributed revenue is still small. Checked Oct 25, 2026 on the [Superwall pricing page](https://superwall.com/pricing). The full tier table is on the [Superwall tool page](/tools/superwall).
 
-:::comparison Estimated monthly fee (checked Sep 27, 2026)
+![Chart of estimated monthly fees for RevenueCat and Superwall Indie from $0 to $50,000 in monthly revenue](/content-visuals/articles/superwall-vs-revenuecat-monthly-fee-chart.svg "Arithmetic from published rates, checked Oct 25, 2026; not invoices. RevenueCat's 1% applies to all monthly tracked revenue once the month is above $2,500, not only the amount above that line. Superwall Indie's 1% applies to all paywall-attributed revenue once that total is above $10,000, not only the amount above that line. This chart assumes every dollar also went through a Superwall paywall, so the lines meet after $10,000. Sources: [RevenueCat pricing](https://www.revenuecat.com/pricing/) and [Superwall pricing](https://superwall.com/pricing).")
+
+The table keeps the cases the chart does not draw, including a month that only partly goes through a Superwall paywall. Checked Oct 25, 2026.
+
+:::comparison Estimated monthly fee (checked Oct 25, 2026)
 | Assumption | RevenueCat Pro | Superwall Indie |
 | --- | --- | --- |
 | $2,500, and RevenueCat tracks all of it | $0 (at the free boundary: pay nothing for up to $2,500) | $0 |
@@ -105,19 +103,19 @@ Two plan details sit beside that Indie figure.
 | $50,000 tracked by RevenueCat, with none of it through a Superwall paywall | $500 | $0 (Superwall's published example) |
 :::
 
-![Fee diagram comparing RevenueCat's 1% of tracked revenue with Superwall Indie's 1% of paywall-attributed revenue at $10,000 and at Superwall's $50,000 example.](/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg "At $10,000 on both meters, RevenueCat is $100 and Superwall Indie is $0. At $50,000, Superwall's bill depends on how much of that month went through its paywall.")
+![Fee diagram comparing RevenueCat's 1% of tracked revenue with Superwall Indie's 1% of paywall-attributed revenue at $10,000 and at Superwall's $50,000 example.](/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg "Checked Oct 25, 2026. At $10,000 on both meters, RevenueCat is $100 and Superwall Indie is $0. At $50,000, Superwall's bill depends on how much of that month went through its paywall. Sources: [RevenueCat pricing](https://www.revenuecat.com/pricing/) and [Superwall pricing](https://superwall.com/pricing).")
 
-Those dollar figures are arithmetic from the published rates, plus the examples each vendor prints. They are not invoices. Confirm the live numbers before you commit spend.
+Those dollar figures are arithmetic from the published rates, plus the examples each vendor prints. They are not invoices. Confirm the live numbers before you commit spend. Checked Oct 25, 2026.
 
 ## When to run both rather than choose
 You can run both. Both vendors document a path, and the paths are not the same job.
 
-Superwall's iOS guide, [Using RevenueCat](https://superwall.com/docs/ios/guides/using-revenuecat), describes two setups (checked Sep 27, 2026):
+Superwall's iOS guide, [Using RevenueCat](https://superwall.com/docs/ios/guides/using-revenuecat), describes two setups (checked Oct 25, 2026):
 
 - **Purchase controller.** Superwall presents the paywall. RevenueCat performs the purchase and the restore, and you sync Superwall's subscription status from RevenueCat entitlements. This is the setup where RevenueCat stays the entitlement source of truth.
 - **Observer mode, which Superwall recommends for the paired setup.** You tell RevenueCat that your app completes purchases. Superwall completes the purchase. RevenueCat observes the transactions for its charts. In this mode you are not using RevenueCat entitlements as the source of truth. User identifiers still have to match across the two SDKs.
 
-A third, separate switch lives in the RevenueCat dashboard: forwarding billing events to Superwall for revenue tracking. That integration does not present the paywall and it does not replace either SDK. The steps are on [RevenueCat's Superwall integration page](https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall).
+A third, separate switch lives in the RevenueCat dashboard: forwarding billing events to Superwall for revenue tracking. That integration does not present the paywall and it does not replace either SDK. The steps are on [RevenueCat's Superwall integration page](https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall). Checked Oct 25, 2026.
 
 The cost of running both is two systems to configure, identify users in, and reason about. Do it when paywall iteration and purchase reporting are each active work. If only one job matters this month, start with the single tool that owns it.
 
@@ -148,39 +146,37 @@ A native StoreKit 2 paywall with no third-party SDK is a valid launch for a simp
 
 ## Common questions
 
-### What does RevenueCat vs Superwall come down to?
-The job you need done this month. RevenueCat vs Superwall favors RevenueCat when receipt validation, entitlements, and cross-platform customer state have to be dependable first. It favors Superwall when you will change paywall layout, copy, targeting, and tests without an App Store release. Both can do parts of the other job. Lead with the bottleneck.
-
-### What does Superwall vs RevenueCat come down to?
-The same choice, with the names reversed. Superwall vs RevenueCat asks which job you need: remote paywall iteration, or purchase infrastructure. Then compare the meter. Once monthly tracked revenue is above $2,500, RevenueCat's 1% applies to the whole MTR, not only the amount past the line. Superwall's paywall 1% applies only to paywall-attributed revenue, and Indie stays at $0 through $10,000 MAR. Checked Sep 27, 2026.
+### What does the choice come down to?
+The job you need done this month. Choose RevenueCat when receipt validation, entitlements, and cross-platform customer state have to be dependable first. Choose Superwall when you will change paywall layout, copy, targeting, and tests without an App Store release. Both can do parts of the other job. Lead with the bottleneck.
 
 ### Which costs less at $10,000 a month?
-On the published Indie and Pro meters, Superwall Indie is $0 at $10,000 of paywall-attributed revenue, and RevenueCat Pro is $100 if it tracks $10,000 of MTR. That comparison holds only when the $10,000 is on both meters. If half of a larger month never touches a Superwall paywall, Superwall's bill is 1% of the attributed half, while RevenueCat's bill is still 1% of everything it tracks. Startup at $49 per month plus 1% of MAR is a different Superwall bill, and it is the one you pay if you need localization or collaborators.
+On the published Indie and Pro meters, Superwall Indie is $0 at $10,000 of paywall-attributed revenue, and RevenueCat Pro is $100 if it tracks $10,000 of MTR. That comparison holds only when the $10,000 is on both meters. On Superwall's $50,000 illustration, half through a Superwall paywall is 1% of $25,000, and RevenueCat is still 1% of everything it tracks ($500 if it tracks the whole $50,000). Startup at $49 per month plus 1% of MAR is a different Superwall bill, and it is the one you pay if you need localization or collaborators. Checked Oct 25, 2026.
 
 ### Can RevenueCat and Superwall run together?
-Yes. Superwall documents a purchase controller, where RevenueCat completes purchases, and an observer mode, where Superwall completes purchases and RevenueCat records them. Observer mode is the paired setup Superwall recommends, and in that mode RevenueCat entitlements are not the source of truth. RevenueCat also documents a dashboard integration that forwards subscription events to Superwall. Either way you operate two SDKs, and the app user id has to match. Checked Sep 27, 2026.
+Yes. Superwall documents a purchase controller, where RevenueCat completes purchases, and an observer mode, where Superwall completes purchases and RevenueCat records them. Observer mode is the paired setup Superwall recommends, and in that mode RevenueCat entitlements are not the source of truth. RevenueCat also documents a dashboard integration that forwards subscription events to Superwall. Either way you operate two SDKs, and the app user id has to match. Checked Oct 25, 2026.
 
 ### Do you need either tool to ship a paywall?
 No. StoreKit 2 can sell a subscription with the paywall in the app. Add a tool when remote iteration or purchase-state maintenance is the problem you can name. The [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app) is the earlier cut of that choice.
 
 ## Source checks
-Pricing and the paired-setup claims were checked on Sep 27, 2026 against official sources:
+Pricing and the paired-setup claims were checked on Oct 25, 2026 against official sources:
 
 - RevenueCat pricing: https://www.revenuecat.com/pricing/
-- RevenueCat billing and the $2,600 example: https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management
-- Superwall pricing, plan cards, and the $50,000 attributed-revenue examples: https://superwall.com/pricing
+- RevenueCat billing and the $2,600 example: https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management. Checked Oct 25, 2026.
+- Superwall pricing, plan cards, and the $50,000 attributed-revenue examples: https://superwall.com/pricing. Checked Oct 25, 2026.
 - Superwall with RevenueCat on iOS: https://superwall.com/docs/ios/guides/using-revenuecat
 - RevenueCat event forwarding to Superwall: https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall
 
-No hands-on testing claims are made in this comparison. The two graphics are owned conceptual visuals. The fee chart states its assumptions in the caption and the footer.
+No hands-on trial of Superwall is claimed in this comparison. The RevenueCat note is the stack Mantis and MrGripper ship with. The graphics are owned visuals. The fee chart and the fee diagram state their assumptions in the caption and the footer.
 
-Last checked: Sep 27, 2026.
+Last checked: Oct 25, 2026.
 
 ## Related tools and guides
 - Read [Superwall pricing](/tools/superwall) for the Indie, Startup, Scale, and Enterprise cards.
 - Read [RevenueCat pricing](/tools/revenuecat) for the MTR threshold and the growth-tools path.
 - Compare the wider shortlist in [Superwall alternatives for indie iOS apps](/comparisons/superwall-alternatives-ios-apps).
 - See the three-way matchup in [RevenueCat vs Adapty](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
+- Compare Adapty and Superwall in [Adapty vs Superwall](/comparisons/adapty-vs-superwall).
 - Start from the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
 - Review [paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps) and the [paywalls category](/categories/paywalls).
 - If you are still choosing the broader stack, use the [Stack Finder](/stack-finder).
