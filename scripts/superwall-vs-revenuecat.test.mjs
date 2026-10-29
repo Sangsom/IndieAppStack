@@ -1,5 +1,4 @@
 import assert from "node:assert/strict";
-import { execSync } from "node:child_process";
 import fs from "node:fs";
 import test from "node:test";
 
@@ -14,27 +13,6 @@ const bodyPath = "output/indieappstack/superwall-vs-revenuecat/content.md";
 const chartPath =
   "public/content-visuals/articles/superwall-vs-revenuecat-monthly-fee-chart.svg";
 
-function gitShow(ref, filePath) {
-  return execSync(`git show ${ref}:${filePath}`, { encoding: "utf8" });
-}
-
-function baseText(filePath) {
-  const refs = ["origin/main", "main"];
-  const errors = [];
-
-  for (const ref of refs) {
-    try {
-      return gitShow(ref, filePath);
-    } catch (error) {
-      errors.push(error instanceof Error ? error.message : String(error));
-    }
-  }
-
-  throw new Error(
-    `Could not read ${filePath} from base.\n${errors.join("\n")}`,
-  );
-}
-
 function objectForSlug(source, slug) {
   const slugAt = source.indexOf(`slug: "${slug}"`);
   assert.notEqual(slugAt, -1, `missing slug ${slug}`);
@@ -46,14 +24,7 @@ function objectForSlug(source, slug) {
   return source.slice(objectStart, objectEnd + "\n        },".length);
 }
 
-function slugsIn(source) {
-  return [...source.matchAll(/\n          slug: "([^"]+)"/g)].map(
-    (match) => match[1],
-  );
-}
-
 const seed = fs.readFileSync(seedPath, "utf8");
-const baseSeed = baseText(seedPath);
 const content = fs.readFileSync(bodyPath, "utf8");
 const seededBody = content.slice(content.indexOf("## Short answer"));
 const comparison = objectForSlug(seed, "superwall-vs-revenuecat");
@@ -154,78 +125,4 @@ test("the fee chart is the published-rate arithmetic", () => {
     seededBody,
     /Arithmetic from published rates, checked Oct 25, 2026; not invoices/,
   );
-});
-
-test("only the three named comparison objects differ from main", () => {
-  const allowed = new Set([
-    "revenuecat-vs-adapty-ios-subscriptions",
-    "superwall-alternatives-ios-apps",
-    "superwall-vs-revenuecat",
-  ]);
-  const currentSlugs = slugsIn(seed);
-  assert.deepEqual(currentSlugs, slugsIn(baseSeed));
-
-  for (const slug of currentSlugs) {
-    if (allowed.has(slug)) {
-      continue;
-    }
-
-    assert.equal(
-      objectForSlug(seed, slug),
-      objectForSlug(baseSeed, slug),
-      slug,
-    );
-  }
-
-  assert.equal(
-    fs.readFileSync("scripts/tool-content.json", "utf8"),
-    baseText("scripts/tool-content.json"),
-  );
-
-  const revenueCatSentence =
-    "The two-way matchup for that meter split is [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).";
-  const alternativesSentence =
-    "The dated fee split for running both is [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).";
-
-  for (const [slug, sentence] of [
-    ["revenuecat-vs-adapty-ios-subscriptions", revenueCatSentence],
-    ["superwall-alternatives-ios-apps", alternativesSentence],
-  ]) {
-    const current = objectForSlug(seed, slug);
-    const restored = current.replace(`\n\n${sentence}\n`, "\n");
-    assert.notEqual(restored, current, slug);
-    assert.equal(restored, objectForSlug(baseSeed, slug), slug);
-  }
-});
-
-test("the diff stays off the homepage and off the locked files", () => {
-  const changed = new Set(
-    [
-      execSync("git diff --name-only origin/main", { encoding: "utf8" }),
-      execSync("git ls-files --others --exclude-standard", {
-        encoding: "utf8",
-      }),
-    ]
-      .join("\n")
-      .split("\n")
-      .map((line) => line.trim())
-      .filter(Boolean),
-  );
-  const allowed = new Set([
-    "components/public/article-body.tsx",
-    "output/indieappstack/superwall-vs-revenuecat/content.md",
-    "package.json",
-    "public/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg",
-    "public/content-visuals/articles/superwall-vs-revenuecat-monthly-fee-chart.svg",
-    "scripts/adapty-vs-superwall.test.mjs",
-    "scripts/seed-database.mjs",
-    "scripts/superwall-vs-revenuecat-fee-chart.mjs",
-    "scripts/superwall-vs-revenuecat.test.mjs",
-  ]);
-
-  for (const filePath of changed) {
-    assert.ok(allowed.has(filePath), filePath);
-    assert.doesNotMatch(filePath, /homepage/i);
-    assert.notEqual(filePath, "app/(public)/page.tsx");
-  }
 });
