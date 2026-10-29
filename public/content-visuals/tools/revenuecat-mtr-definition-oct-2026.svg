@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">What RevenueCat counts as monthly tracked revenue</title>
+<desc id="desc">Monthly tracked revenue includes paid subscriptions, renewals, and one-time purchases. It is measured in USD before store commission and taxes, as the amount charged to the customer. It is not monthly recurring revenue and it is not proceeds after the store cut. Checked Oct 29, 2026.</desc>
+<defs>
+<style>
+.eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.4px; fill: #2c5f4f; }
+.title { font: 600 30px "Source Serif 4", Georgia, serif; fill: #20241f; }
+.dek { font: 400 16px Inter, ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #6e6a5e; }
+.card-title { font: 600 22px "Source Serif 4", Georgia, serif; fill: #20241f; }
+.body { font: 500 18px Inter, ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #20241f; }
+.foot { font: 500 14px Inter, ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #6e6a5e; }
+</style>
+</defs>
+<rect width="1200" height="675" fill="#fbfaf7"/>
+<text x="48" y="48" class="eyebrow">MTR DEFINITION · CHECKED OCT 29, 2026</text>
+<text x="48" y="96" class="title">What the 1% is calculated on</text>
+<text x="48" y="136" class="dek">The billing period is not a calendar month. The docs use a date-to-date example, July 15 to August 15.</text>
+<rect x="48" y="180" width="340" height="280" rx="7" fill="#ffffff" stroke="#e7e2d7"/><text x="72" y="228" class="card-title">Counted</text><rect x="416" y="180" width="340" height="280" rx="7" fill="#ffffff" stroke="#e7e2d7"/><text x="440" y="228" class="card-title">The base</text><rect x="784" y="180" width="340" height="280" rx="7" fill="#ffffff" stroke="#e7e2d7"/><text x="808" y="228" class="card-title">Not this</text>
+<text x="72" y="280" class="body">Paid subscriptions,</text><text x="72" y="312" class="body">renewals, and one-time</text><text x="72" y="344" class="body">purchases in that</text><text x="72" y="376" class="body">billing period.</text><text x="440" y="280" class="body">USD, before store</text><text x="440" y="312" class="body">commission and taxes.</text><text x="440" y="344" class="body">The amount charged</text><text x="440" y="376" class="body">to the customer.</text><text x="808" y="280" class="body">Not monthly recurring</text><text x="808" y="312" class="body">revenue. Not the proceeds</text><text x="808" y="344" class="body">left after the</text><text x="808" y="376" class="body">store cut.</text>
+<text x="48" y="520" class="foot">Pricing FAQ: revenue tracked by RevenueCat, in USD, before the platform cut, including one-time purchases.</text>
+<text x="48" y="548" class="foot">Billing docs: before store commission and taxes, including non-subscription products. The amount charged, not net proceeds.</text>
+<text x="48" y="600" class="foot">RevenueCat pricing, checked Oct 29, 2026 · revenuecat.com/pricing</text>
+<text x="48" y="628" class="foot">Also the billing docs: revenuecat.com/docs/welcome/set-up-revenuecat/account-management.</text>
+</svg>

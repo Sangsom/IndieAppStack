@@ -186,13 +186,13 @@ const seedTools = [
   {
     name: "RevenueCat",
     slug: "revenuecat",
-    tagline: "Free under $2,500 monthly tracked revenue, then 1% of that MTR.",
+    tagline: "Free under $2,500 monthly tracked revenue, then 1% of all MTR.",
     description:
-      "RevenueCat pricing is $0 while monthly tracked revenue stays under $2,500, then 1% of that MTR. It handles receipt validation, entitlements, and purchase state for solo mobile apps.",
+      "RevenueCat pricing is $0 while monthly tracked revenue stays under $2,500, then 1% of all MTR. It handles receipt validation, entitlements, and purchase state for solo mobile apps.",
     website_url: "https://www.revenuecat.com/",
-    pricing_last_checked: "2026-09-25",
+    pricing_last_checked: "2026-10-29",
     pricing_summary:
-      "Free while monthly tracked revenue stays under $2,500, then 1% of that MTR before store commission and taxes; Growth tools are 1% on their conversions; Custom is negotiated.",
+      "Free under $2,500 monthly tracked revenue. At $2,500 MTR the pricing page charges $25, which is 1% of all MTR, and the billing docs' example is $2,600 billed at $26. MTR is before store commission and taxes and includes non-subscription purchases. A later month under $2,500 returns to free. Growth Tools on your own purchase infrastructure are 1% of MTR on what you track. Custom pricing and SLAs for high volume. Checked Oct 29, 2026.",
     pricing_model: "usage_based",
     best_for: [
       "Receipt validation and entitlement truth for subscriptions",
@@ -209,7 +209,7 @@ const seedTools = [
     alternatives: ["Adapty", "Superwall", "Qonversion"],
     categorySlugs: ["monetization", "paywalls"],
     internal_notes:
-      "Pricing checked 2026-09-24 from https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management (free under $2,500 MTR, then 1% of whole MTR before store commission and taxes; $2,600 bills $26). September Apple figures carried from the app-store-business-terms-2026-cost guide. Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
+      "Pricing checked 2026-10-29 from https://www.revenuecat.com/pricing/ and https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management (free under $2,500 MTR; at $2,500 the pricing FAQ bills $25; above that, 1% of all MTR before store commission and taxes; $2,600 bills $26). September Apple figures stay on the app-store-business-terms-2026-cost guide. Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Adapty",
