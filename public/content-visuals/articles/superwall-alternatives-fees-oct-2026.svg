@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1080" viewBox="0 0 1240 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Monthly fees for Superwall alternatives at four revenue levels</title>
+  <desc id="desc">Prices checked Oct 29, 2026. Fees at $5,000, $10,000, $25,000, and $50,000 for Superwall Indie, RevenueCat, Adapty, Qonversion Pro, and Apphud Free and Pro. The Superwall series assumes all revenue goes through the paywall. Purchasely and Nami ML are omitted because they have no public price.</desc>
+  <style>
+    .eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.6px; text-transform: uppercase; fill: #2c5f4f; }
+    .title { font: 600 34px "Source Serif 4", Georgia, serif; fill: #20241f; }
+    .dek { font: 400 16px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .col { font: 700 14px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 0.6px; fill: #2c5f4f; }
+    .vendor { font: 600 18px "Source Serif 4", Georgia, serif; fill: #20241f; }
+    .money { font: 600 18px ui-monospace, "SF Mono", Menlo, Consolas, monospace; fill: #20241f; }
+    .over { font: 500 15px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .foot { font: 500 14px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+  </style>
+  <rect width="1240" height="1080" fill="#fbfaf7"/>
+  <text x="48" y="48" class="eyebrow">Price ledger</text>
+  <text x="48" y="96" class="title">Monthly fee at four revenue levels</text>
+  <text x="48" y="132" class="dek">Published rates applied to each column. Not an invoice.</text>
+  <text x="48" y="158" class="dek">Superwall uses paywall-attributed revenue. This chart assumes all of the column goes through the paywall.</text>
+  <line x1="48" y1="186" x2="1192" y2="186" stroke="#e7e2d7" stroke-width="2"/>
+  <text x="430" y="228" text-anchor="middle" class="col">$5,000</text>
+  <text x="640" y="228" text-anchor="middle" class="col">$10,000</text>
+  <text x="850" y="228" text-anchor="middle" class="col">$25,000</text>
+  <text x="1060" y="228" text-anchor="middle" class="col">$50,000</text>
+  <rect x="48" y="270" width="1144" height="74" fill="#ffffff"/>
+  <text x="72" y="300" class="vendor">Superwall Indie</text>
+    <text x="430" y="300" text-anchor="middle" class="money">$0</text>
+    
+    <text x="640" y="300" text-anchor="middle" class="money">$0</text>
+    
+    <text x="850" y="300" text-anchor="middle" class="money">$250</text>
+    <rect x="812.5" y="310" width="75.0" height="10" rx="4" fill="#2c5f4f"/>
+    <text x="1060" y="300" text-anchor="middle" class="money">$500</text>
+    <rect x="985" y="310" width="150.0" height="10" rx="4" fill="#2c5f4f"/>
+  
+  <text x="72" y="374" class="vendor">RevenueCat</text>
+    <text x="430" y="374" text-anchor="middle" class="money">$50</text>
+    <rect x="422.5" y="384" width="15.0" height="10" rx="4" fill="#9a6b23"/>
+    <text x="640" y="374" text-anchor="middle" class="money">$100</text>
+    <rect x="625" y="384" width="30.0" height="10" rx="4" fill="#9a6b23"/>
+    <text x="850" y="374" text-anchor="middle" class="money">$250</text>
+    <rect x="812.5" y="384" width="75.0" height="10" rx="4" fill="#9a6b23"/>
+    <text x="1060" y="374" text-anchor="middle" class="money">$500</text>
+    <rect x="985" y="384" width="150.0" height="10" rx="4" fill="#9a6b23"/>
+  <rect x="48" y="418" width="1144" height="74" fill="#ffffff"/>
+  <text x="72" y="448" class="vendor">Adapty</text>
+    <text x="430" y="448" text-anchor="middle" class="money">$0</text>
+    
+    <text x="640" y="448" text-anchor="middle" class="money">$100</text>
+    <rect x="625" y="458" width="30.0" height="10" rx="4" fill="#20241f"/>
+    <text x="850" y="448" text-anchor="middle" class="money">$250</text>
+    <rect x="812.5" y="458" width="75.0" height="10" rx="4" fill="#20241f"/>
+    <text x="1060" y="448" text-anchor="middle" class="money">$500</text>
+    <rect x="985" y="458" width="150.0" height="10" rx="4" fill="#20241f"/>
+  
+  <text x="72" y="522" class="vendor">Qonversion Pro</text>
+    <text x="430" y="522" text-anchor="middle" class="money">$0</text>
+    
+    <text x="640" y="522" text-anchor="middle" class="money">$80</text>
+    <rect x="628" y="532" width="24.0" height="10" rx="4" fill="#6e6a5e"/>
+    <text x="850" y="522" text-anchor="middle" class="money">$200</text>
+    <rect x="820" y="532" width="60.0" height="10" rx="4" fill="#6e6a5e"/>
+    <text x="1060" y="522" text-anchor="middle" class="money">$400</text>
+    <rect x="1000" y="532" width="120.0" height="10" rx="4" fill="#6e6a5e"/>
+  <rect x="48" y="566" width="1144" height="74" fill="#ffffff"/>
+  <text x="72" y="596" class="vendor">Apphud Free</text>
+    <text x="430" y="596" text-anchor="middle" class="money">$0</text>
+    
+    <text x="640" y="596" text-anchor="middle" class="money">$0</text>
+    
+    <text x="850" y="596" text-anchor="middle" class="over">over cap</text>
+    <text x="1060" y="596" text-anchor="middle" class="over">over cap</text>
+  
+  <text x="72" y="670" class="vendor">Apphud Pro</text>
+    <text x="430" y="670" text-anchor="middle" class="money">$49.50</text>
+    <rect x="422.575" y="680" width="14.9" height="10" rx="4" fill="#9a6b23"/>
+    <text x="640" y="670" text-anchor="middle" class="money">$99</text>
+    <rect x="625.15" y="680" width="29.7" height="10" rx="4" fill="#9a6b23"/>
+    <text x="850" y="670" text-anchor="middle" class="money">$247.50</text>
+    <rect x="812.875" y="680" width="74.3" height="10" rx="4" fill="#9a6b23"/>
+    <text x="1060" y="670" text-anchor="middle" class="money">$495</text>
+    <rect x="985.75" y="680" width="148.5" height="10" rx="4" fill="#9a6b23"/>
+  <line x1="48" y1="760" x2="1192" y2="760" stroke="#e7e2d7" stroke-width="2"/>
+  <text x="48" y="796" class="foot">Prices checked Oct 29, 2026 · vendor pricing pages</text>
+  <text x="48" y="822" class="foot">Purchasely and Nami ML are omitted: no public price (sales demo).</text>
+  <text x="48" y="856" class="foot">Superwall Indie = $0 up to $10,000 MAR, else 1% of total MAR.</text>
+  <text x="48" y="880" class="foot">RevenueCat = $0 up to $2,500 MTR, else 1% of the whole MTR.</text>
+  <text x="48" y="904" class="foot">Adapty = $0 up to $5,000, else 1% of the full month's tracked revenue.</text>
+  <text x="48" y="928" class="foot">Qonversion Pro = $0 at or under $7,000 MTR, else 0.8% of total tracked revenue.</text>
+  <text x="48" y="952" class="foot">Apphud Free = $0 up to $10,000 MTR. Above that, the Free plan publishes no fee.</text>
+  <text x="48" y="976" class="foot">Apphud Pro = the greater of $49 and 0.99% of MTR. These columns are above the $1,000 month in which paid plans are free.</text>
+  <text x="48" y="1008" class="foot">Sources: superwall.com/pricing, revenuecat.com/pricing, adapty.io/pricing, qonversion.io/pricing, apphud.com/pricing.</text>
+</svg>

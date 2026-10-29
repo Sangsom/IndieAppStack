@@ -2289,46 +2289,58 @@ Last checked: 2026-07-19.
           published_at: comparisonsPublishedAt,
         },
         {
-          title: "Superwall alternatives for indie iOS apps",
+          title: "Superwall alternatives for iOS apps",
           slug: "superwall-alternatives-ios-apps",
           subtitle:
-            "Compare RevenueCat, Adapty, Qonversion, and StoreKit 2 by the subscription job each one should own.",
+            "Compare RevenueCat, Adapty, Qonversion, Apphud, Purchasely, Nami ML, and StoreKit 2 by the job each one should own.",
           excerpt:
-            "Compare Superwall alternatives for an indie iOS app by purchase infrastructure, paywall workflow, pricing meter, and operational fit.",
+            "Superwall alternatives for an iOS app, compared by the job each tool owns and the price each vendor published on Oct 29, 2026.",
           body_markdown: `## Short answer
-The practical [Superwall](/tools/superwall) alternatives for an indie iOS app are [RevenueCat](/tools/revenuecat) when purchase and entitlement infrastructure is the priority, [Adapty](/tools/adapty) when paywall analytics and experimentation should live together, and [Qonversion](/tools/qonversion) when a lower percentage meter matters. For a simple Apple-only app, native StoreKit 2 may fit better than another platform.
+Superwall is a paywall and experiment layer whose subscription infrastructure is free. Indie paywalls are free up to $10,000 MAR, then 1% of total MAR (checked Oct 29, 2026). RevenueCat or Adapty fits an all-in-one SDK, Qonversion or Apphud a lower percentage meter, StoreKit 2 no platform fee, and Purchasely or Nami ML fit larger teams on sales-led pricing.
 
-The first question is not “Which tool has paywalls?” They all do. Ask which job you need the tool to own, then compare the revenue meter attached to that job.
+The first question is not which tool has paywalls. Ask which job the tool should own, then compare the meter attached to that job.
 
 > [!NOTE] Indie iOS scope
-> This comparison is for a solo developer or small team choosing a subscription and paywall stack for an iOS app. It favors a reliable purchase path, clear ownership, and the smallest operating workflow that the app will actually use.
+> This comparison is for a solo developer or small team choosing a subscription and paywall stack for an iOS app. It favors a reliable purchase path, clear ownership, and the smallest operating workflow that the app will actually use. Purchasely and Nami ML are on the shortlist because people compare them with Superwall. Neither publishes a price.
 
-![Superwall's paywall editor showing an iPhone subscription paywall preview beside the editor's component tree.](/content-visuals/articles/superwall-paywall-editor.png "Superwall's real paywall editor, with the component tree beside an iPhone paywall preview. Captured August 14, 2026.")
+![Chart of monthly fees at $5,000, $10,000, $25,000, and $50,000 for Superwall Indie, RevenueCat, Adapty, Qonversion Pro, and Apphud Free and Pro. Purchasely and Nami ML are omitted because they publish no price.](/content-visuals/articles/superwall-alternatives-fees-oct-2026.svg "Monthly fee if the whole amount is tracked, and, for Superwall, if it all goes through the paywall. Prices checked Oct 29, 2026. Not an invoice.")
 
 ## Which Superwall alternatives are worth comparing?
 Use this shortlist for a solo or small-team iOS subscription app:
 
 - Choose [RevenueCat](/tools/revenuecat) when purchases, entitlements, and cross-platform customer state should be the dependable foundation.
-- Choose [Adapty](/tools/adapty) when a growth workflow needs paywall building, onboarding, experiments, and subscription analytics in one place.
-- Choose [Qonversion](/tools/qonversion) when you want subscription infrastructure and paywalls together, but the percentage meter and tier boundaries deserve more weight.
+- Choose [Adapty](/tools/adapty) when paywall building, onboarding, experiments, and subscription analytics should live in one place.
+- Choose [Qonversion](/tools/qonversion) when you want infrastructure and paywalls on one published plan, and the 0.8% meter is the constraint (checked Oct 29, 2026).
+- Choose [Apphud](https://apphud.com/pricing) when you want a published percentage and a free line up to $10,000 MTR (checked Oct 29, 2026).
+- Choose [Purchasely](https://www.purchasely.com/pricing) when you want a no-code screen builder and can take a sales demo. No public price (checked Oct 29, 2026).
+- Choose [Nami ML](https://www.nami.ml/pricing/) when the team is at enterprise subscriber scale and can take a sales demo. No public price (checked Oct 29, 2026).
 - Choose native StoreKit 2 when the app is Apple-only, the product catalog is small, and remote paywall iteration is not yet a real job.
 
-Superwall remains a valid choice. Its current platform includes entitlements, purchase APIs, receipt validation, webhooks, analytics, paywalls, and experiments. Its infrastructure layer is free at any scale, while the paywall product is metered on revenue attributed to Superwall-rendered paywalls. Switching because you think Superwall is only a presentation SDK would solve an outdated problem.
+[Superwall](/tools/superwall) remains a valid choice. Its pricing page lists paywalls, campaigns, and audiences on the Indie plan, and the page navigation includes app experiments. Subscription infrastructure, including entitlements, purchase APIs, webhooks, and SQL access, is free at any scale. Indie paywalls are $0 up to $10,000 MAR, then 1% of total MAR, and that 1% applies only to paywall-attributed revenue (checked Oct 29, 2026). Switching because you think Superwall is only a presentation SDK would solve an outdated problem.
+
+![Superwall's paywall editor showing an iPhone subscription paywall preview beside the editor's component tree.](/content-visuals/articles/superwall-paywall-editor.png "Superwall's real paywall editor, with the component tree beside an iPhone paywall preview. Captured August 14, 2026.")
 
 ## How do Superwall alternatives compare on price?
-:::comparison Subscription and paywall pricing (checked August 13, 2026)
-| Option | Free boundary | Paid meter | What the meter means |
+:::comparison Subscription and paywall pricing (checked Oct 29, 2026)
+| Vendor | Free tier | Fee above the free tier | Paid minimum |
 | --- | --- | --- | --- |
-| [Superwall](/tools/superwall) | Infrastructure is free at any scale; paywalls are free up to $10,000 in monthly paywall-attributed revenue | 1% of paywall-attributed revenue after the free boundary | The paid base is revenue converted through a Superwall-rendered paywall, not every subscription dollar the platform observes |
-| [RevenueCat](/tools/revenuecat) | Free up to $2,500 in monthly tracked revenue | 1% of tracked revenue after the free boundary | The meter follows active subscriptions RevenueCat monitors; separate growth tools can also sit on your own infrastructure |
-| [Adapty](/tools/adapty) | Free while monthly revenue stays under $5,000 | 1% of monthly revenue after crossing $5,000 | The Pro platform bundles infrastructure, analytics, paywalls, and experiments; add-ons can carry separate charges |
-| [Qonversion](/tools/qonversion) | Free up to $10,000 in monthly tracked revenue | Starter is 0.6% of revenue; Growth is 0.8% | Starter adds advanced analytics and webhooks; Growth is the relevant comparison for Superwall-style A/B experiments |
-| Native StoreKit 2 | No third-party subscription-platform fee | Your engineering and operations time | Apple still owns App Store commerce; you own implementation, lifecycle handling, reporting, and any server-side subscription state |
+| [Superwall](/tools/superwall) | Infrastructure is $0 at any scale. Indie paywalls are $0 up to $10,000 MAR | 1% of total MAR, and only revenue attributed to a Superwall paywall | Indie has no monthly minimum. Startup is $49 per month plus 1% of MAR. Scale is $199 per month plus 1% of MAR. Enterprise is a custom flat rate |
+| [RevenueCat](/tools/revenuecat) | Free up to $2,500 MTR | 1% of the whole MTR. A $2,600 month is $26 | No monthly minimum. Returns to free if MTR falls below $2,500. High volume is custom |
+| [Adapty](/tools/adapty) | Free up to $5,000 a month | 1% of the full month's tracked revenue once you are above $5,000 | No monthly minimum. Enterprise is custom |
+| [Qonversion](/tools/qonversion) | Free at or under $7,000 MTR on Pro | 0.8% of total tracked revenue. The page's examples are $64 at $8,000 and $400 at $50,000 | No monthly minimum on Pro. Enterprise is custom |
+| [Apphud](https://apphud.com/pricing) | Free up to $10,000 MTR, one seat | Pro is 0.99% of MTR. Expert is 1.19% of MTR | Pro is at least $49 per month, five seats. Expert is at least $59 per month. A month under $1,000 MTR is free on paid plans. Enterprise, for apps over $100,000 a month, has no public price |
+| Purchasely | No public price (sales demo) | No public price (sales demo) | No public price (sales demo) |
+| Nami ML | No public price (sales demo) | No public price (sales demo) | No public price (sales demo) |
+| Native StoreKit 2 | No third-party subscription fee | No third-party subscription fee | Engineering and operations time |
 :::
 
-Prices and plan boundaries were checked August 13, 2026, against the official [Superwall](https://superwall.com/pricing), [RevenueCat](https://www.revenuecat.com/pricing), [Adapty](https://adapty.io/pricing/), and [Qonversion](https://qonversion.io/pricing) pricing pages. Recheck them before committing spend.
+The chart above applies this table at $5,000, $10,000, $25,000, and $50,000. For Superwall, the chart assumes the whole amount is paywall-attributed revenue. Above each free line, the percentage applies to the whole measured month, not only the dollars past the line. Purchasely and Nami ML are not on the chart: no public price (sales demo). Checked Oct 29, 2026.
 
-The headline percentages hide the useful difference: **the base matters as much as the rate**. Superwall meters paywall-attributed revenue. RevenueCat and Adapty meter the subscription revenue they track. Qonversion advertises a lower rate, but its 0.6% Starter plan does not include A/B experiments; the 0.8% Growth plan is the closer replacement for Superwall's core experimentation job.
+Apphud's plan card says free up to $10,000 MTR. The same page's FAQ says free under $10,000, and that going over $10,000 starts a 14-day grace period before dashboard access stops. The chart treats $10,000 as still on the free card. Checked Oct 29, 2026.
+
+Prices were opened on Oct 29, 2026 against [Superwall](https://superwall.com/pricing), [RevenueCat](https://www.revenuecat.com/pricing/), [Adapty](https://adapty.io/pricing/), [Qonversion](https://qonversion.io/pricing), [Apphud](https://apphud.com/pricing), [Purchasely](https://www.purchasely.com/pricing), and [Nami ML](https://www.nami.ml/pricing/). Recheck them before committing spend.
+
+The useful difference is the base, not only the rate. Superwall meters paywall-attributed revenue. RevenueCat, Adapty, Qonversion, and Apphud meter tracked revenue. Qonversion's page shows one Pro plan at 0.8% of the whole month after $7,000 MTR, and its own examples are $64 at $8,000 and $400 at $50,000 (checked Oct 29, 2026).
 
 ## Why do generic Superwall alternatives lists get the decision wrong?
 They compare labels that no longer separate the products.
@@ -2346,6 +2358,8 @@ Choose RevenueCat when purchase and entitlement truth is the first job.
 
 RevenueCat models products, offerings, and entitlements, then exposes customer state through its SDKs. Its paywalls can be configured remotely, and its current pricing page also offers growth tools for teams that keep their own in-app purchase infrastructure. The reason to choose it is not that Superwall lacks infrastructure. It is that you want RevenueCat's purchase and customer model to sit at the center of the stack.
 
+RevenueCat is free up to $2,500 in monthly tracked revenue, then 1% of the whole MTR, measured before store commission and taxes. The billing doc's example is $26 on a $2,600 month. If MTR falls below $2,500, the account returns to free. The 30-day payment grace period applies only in the first month you cross the line. Growth Tools, including paywalls and web-to-app funnels, can run on your own purchase infrastructure at 1% of the MTR you track. High volume is custom ([RevenueCat pricing](https://www.revenuecat.com/pricing/) and [billing](https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management), checked Oct 29, 2026).
+
 RevenueCat fits when:
 
 - The app already uses RevenueCat and a migration would create more risk than value.
@@ -2358,32 +2372,40 @@ Skip it when a lower free boundary makes the percentage meter a poor fit or when
 ## When is Adapty the right Superwall alternative?
 Choose Adapty when paywall work belongs beside subscription analytics.
 
-Adapty combines subscription infrastructure with a flow and paywall builder, targeting, A/B testing, and revenue analytics. Its documentation now directs new projects toward Flow Builder rather than the legacy Paywall Builder. That makes it practical when one person or a small growth team will routinely connect onboarding, paywall variants, cohort behavior, and revenue outcomes.
+Adapty combines subscription infrastructure with a flow and paywall builder, targeting, A/B testing, and revenue analytics. Its paywall guide recommends the Flow and Paywall Builder for the no-code journey, and it also documents a custom paywall you render yourself. That makes it practical when one person or a small growth team will routinely connect onboarding, paywall variants, cohort behavior, and revenue outcomes. The meter is free up to $5,000 a month, then 1% of the full month's tracked revenue. The page also says free while you earn under $5,000, and 1% once you pass $5,000. Before the line, it tracks revenue on a rolling 30 days and does not charge ([Adapty pricing](https://adapty.io/pricing/), checked Oct 29, 2026).
 
 Adapty fits when:
 
 - Onboarding and paywall experiments are one workflow.
 - Revenue, retention, churn, and lifetime-value analysis should sit beside the experiment.
 - Non-engineers need to change the monetization flow.
-- The 1% meter after the $5,000 boundary matches the value of the bundled workflow.
+- The bundled workflow is worth the meter at the revenue you expect.
 
 Skip it when the app has one stable paywall and nobody can name the next experiment. A quiet product does not need a full growth operating system.
 
 ## When is Qonversion the right Superwall alternative?
 Choose Qonversion when the bundled platform fits and the meter is the deciding constraint.
 
-The free tier includes subscription SDKs, basic analytics, customer management, a no-code paywall builder, and unlimited apps and seats up to $10,000 in monthly tracked revenue. Starter adds advanced analytics, integrations, and webhooks at 0.6% of revenue. Growth adds A/B experiments, raw data export, and additional integrations at 0.8%.
+Pro is the only published plan. It is free while monthly tracked revenue is at or under $7,000, then 0.8% of total tracked revenue, not only the amount above $7,000. The pricing page's examples are $64 at $8,000 MTR and $400 at $50,000 MTR. Analytics, A/B experiments, the no-code paywall builder, integrations, webhooks, raw data export, and unlimited apps and seats are on that same plan. Enterprise is custom ([Qonversion pricing](https://qonversion.io/pricing), checked Oct 29, 2026).
 
-That tier line matters. If you need to replace Superwall's remote paywall presentation but not its experiments, Starter may be enough. If experiments are the reason you are leaving, compare Superwall against Growth, not the cheaper headline rate.
+There is no second published tier that removes experiments. If experiments are the reason you are leaving Superwall, they sit on the same 0.8% plan as the rest of Pro.
 
 Qonversion fits when:
 
-- You want a broad subscription bundle with a higher free boundary.
-- 0.6% to 0.8% is material at the revenue level you expect.
-- The features you need map cleanly to Starter or Growth.
+- You want a broad subscription bundle with a higher free boundary than RevenueCat or Adapty.
+- The published percentage on total tracked revenue is material at the revenue you expect.
 - You are willing to evaluate the workflow on its own merits rather than treating popularity as proof.
 
 Skip it when pricing is the only advantage and the migration cost would exceed the expected savings.
+
+## Apphud, Purchasely and Nami ML: when they fit
+Apphud publishes a meter. Free is $0 up to $10,000 MTR, with one seat, purchase infrastructure, and a no-code paywall builder. Pro is 0.99% of MTR, at least $49 a month, with five seats, A/B tests, and integrations. Expert is 1.19% of MTR, at least $59 a month. Paid plans are free in a month under $1,000 MTR. Enterprise, for apps over $100,000 a month, and the Refund Shield add-on have no public price. Checked Oct 29, 2026 on the [Apphud pricing page](https://apphud.com/pricing).
+
+Purchasely is a no-code paywall and screen builder. Its site describes publishing paywalls, onboarding, and experiments without an app release. The pricing URL opens the homepage, which lists no price. There is no public price (sales demo). Checked Oct 29, 2026 on [Purchasely](https://www.purchasely.com/pricing).
+
+Nami ML is enterprise software for teams with 100,000 or more active subscribers. The pricing page offers a custom annual contract for pages, experiments, and a drop-in SDK, with web, CTV, and flows on higher tiers. It publishes no price (sales demo), and a quote follows a first call. Checked Oct 29, 2026 on the [Nami ML pricing page](https://www.nami.ml/pricing/).
+
+Apphud fits a published percentage, Purchasely fits no-code screens, and Nami ML fits enterprise scale.
 
 ## When should you use StoreKit 2 instead?
 Use StoreKit 2 directly when the app is Apple-only, sells a small number of products, and does not need remote paywall experiments.
@@ -2407,7 +2429,7 @@ Run both when RevenueCat already owns purchase truth and Superwall has a distinc
 
 The dated fee split for running both is [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
 
-This is a supported integration, not an improvised stack. RevenueCat can send subscription and revenue events to Superwall, while Superwall's purchase controller can route purchase and restore logic through RevenueCat. The important rule is simple: one system owns entitlement truth, and both SDKs use the same customer identifier.
+This is a supported integration, not an improvised stack. RevenueCat can send subscription and revenue events to Superwall, while Superwall's purchase controller can route purchase and restore logic through RevenueCat. Superwall's iOS guide also documents an observer-mode setup that does not use a purchase controller. The important rule is simple: one system owns entitlement truth, and both SDKs use the same customer identifier (checked Oct 29, 2026).
 
 The dual stack fits when:
 
@@ -2418,12 +2440,15 @@ The dual stack fits when:
 
 Do not start with two platforms just because the integration exists. Superwall can run as the subscription backend on its own, and RevenueCat has its own paywall and growth tools. A greenfield app should need a specific capability before it accepts two sources of configuration.
 
-![Decision flow routing an indie iOS app to RevenueCat, Adapty, Qonversion, StoreKit 2, or a RevenueCat-plus-Superwall setup based on ownership and workflow.](/content-visuals/articles/superwall-alternatives-ios-decision-flow.svg "Choose by the job that must stay reliable, then compare workflow and pricing fit.")
+![Decision flow routing an indie iOS app to RevenueCat, Adapty, Qonversion, Apphud, Purchasely, Nami ML, StoreKit 2, or a RevenueCat-plus-Superwall setup based on ownership and workflow.](/content-visuals/articles/superwall-alternatives-ios-decision-flow.svg "Choose by the job that must stay reliable, then compare workflow and pricing fit. Checked Oct 29, 2026.")
 
 ## Which Superwall alternative should an indie iOS developer choose?
 - **RevenueCat:** choose purchase and entitlement infrastructure first.
 - **Adapty:** choose an analytics-led paywall and onboarding workflow.
-- **Qonversion:** choose the bundled platform when its tier and percentage meter fit better.
+- **Qonversion:** choose the bundled platform when its percentage meter fits better.
+- **Apphud:** choose the published percentage meter when the seat caps fit.
+- **Purchasely:** choose a no-code screen builder. No public price (sales demo).
+- **Nami ML:** choose the enterprise platform when subscriber scale matches its pricing page. No public price (sales demo).
 - **StoreKit 2:** choose no third-party platform when the app is simple enough to own the lifecycle.
 - **Superwall plus RevenueCat:** keep both only when each has one explicit job.
 
@@ -2431,31 +2456,44 @@ The quiet answer is often to keep Superwall. Its product boundary changed: it ca
 
 ## Frequently asked questions
 ### Can Superwall replace RevenueCat?
-Yes. Superwall's current subscription infrastructure includes entitlements, purchase APIs, receipt validation, webhooks, analytics, and SQL access, and that layer is advertised as free at any scale. RevenueCat remains a valid choice when you prefer its purchase and customer model or already rely on it in production.
+Yes. Superwall's pricing page says subscription infrastructure, including entitlements, purchase APIs, webhooks, and SQL access, is free at any scale. The 1% applies to paywall-attributed revenue, not to that infrastructure. RevenueCat remains a valid choice when you prefer its purchase and customer model or already rely on it in production. Checked Oct 29, 2026.
 
 ### Is RevenueCat a direct Superwall competitor?
 Increasingly, yes. Both now offer subscription infrastructure, remote paywalls, and growth tooling. They still lead with different operating models: RevenueCat centers purchase and entitlement infrastructure, while Superwall centers paywall presentation and experimentation.
 
 ### Which alternative has the lowest percentage fee?
-Qonversion advertises 0.6% on Starter and 0.8% on Growth after its free boundary, compared with 1% meters on RevenueCat, Adapty, and Superwall. The bases and included features differ. Superwall charges on paywall-attributed revenue, and Qonversion reserves A/B experiments for Growth, so the lowest percentage is not automatically the lowest bill for your use case.
+Among published percentage meters, Qonversion Pro is 0.8% of total tracked revenue after $7,000 MTR. Apphud Pro is 0.99% of MTR with a $49 monthly minimum, and Expert is 1.19% with a $59 minimum. RevenueCat, Adapty, and Superwall Indie use a 1% meter, on different bases. StoreKit 2 adds no third-party percentage. Purchasely and Nami ML publish no price. The bases differ, so the lowest percentage is not automatically the lowest bill. Checked Oct 29, 2026.
 
 ### Is StoreKit 2 free?
 StoreKit 2 adds no third-party subscription-platform fee. Apple still owns App Store commerce, and you still pay with engineering and operating time for purchase state, lifecycle handling, reporting, and any server component you build.
 
-## Source checks
-Product and pricing claims were checked against official sources on August 13, 2026:
+### What is the best Superwall alternative?
+No single row in the price table fits every app. Use the job: RevenueCat or Adapty for an all-in-one SDK, Qonversion or Apphud for a lower percentage meter, StoreKit 2 for no third-party fee, and Purchasely or Nami ML when a sales demo is acceptable. The table is the price source. Checked Oct 29, 2026.
 
-- [Superwall pricing](https://superwall.com/pricing) and [Superwall documentation](https://superwall.com/docs/).
-- [RevenueCat pricing](https://www.revenuecat.com/pricing), [offerings](https://www.revenuecat.com/docs/offerings/overview), [entitlements](https://www.revenuecat.com/docs/getting-started/entitlements), and [Superwall integration](https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall).
-- [Adapty pricing](https://adapty.io/pricing/) and [paywall setup](https://adapty.io/docs/quickstart-paywalls).
-- [Qonversion pricing](https://qonversion.io/pricing) and [paywall experiments](https://documentation.qonversion.io/docs/paywall-experiments).
+### Is there a free Superwall alternative?
+Yes, inside the free lines in the table. RevenueCat is free up to $2,500 MTR, Adapty up to $5,000 a month, Qonversion at or under $7,000 MTR, and Apphud up to $10,000 MTR. StoreKit 2 adds no third-party subscription fee. Above those lines the published meters start. Purchasely and Nami ML have no public price, so the table cannot call them free. Checked Oct 29, 2026.
+
+## Source checks
+Product and pricing claims were checked against official sources on 2026-10-29:
+
+- [Superwall pricing](https://superwall.com/pricing). The Indie card reads "Up to $10k MAR, then 1% of total MAR." Startup is $49 per month plus 1% of MAR. Scale is $199 per month plus 1% of MAR. Infrastructure is free at any scale, and the 1% applies only to paywall-attributed revenue.
+- [Superwall with RevenueCat](https://superwall.com/docs/ios/guides/using-revenuecat).
+- [RevenueCat pricing](https://www.revenuecat.com/pricing/) and [account billing](https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management). Free up to $2,500 MTR, then 1% of the whole MTR. The billing example is $26 on $2,600 MTR.
+- [RevenueCat Superwall integration](https://www.revenuecat.com/docs/integrations/third-party-integrations/superwall).
+- [Adapty pricing](https://adapty.io/pricing/) and [paywall setup](https://adapty.io/docs/quickstart-paywalls). Free up to $5,000 a month, then 1% of the full month's tracked revenue.
+- [Qonversion pricing](https://qonversion.io/pricing). Pro is free at or under $7,000 MTR, then 0.8% of total tracked revenue.
+- [Apphud pricing](https://apphud.com/pricing). Free up to $10,000 MTR. Pro is 0.99% of MTR, at least $49 per month. Expert is 1.19% of MTR, at least $59 per month.
+- [Purchasely pricing](https://www.purchasely.com/pricing). The URL opens the homepage, which lists no public price (sales demo).
+- [Nami ML pricing](https://www.nami.ml/pricing/). Custom annual contract. No public price (sales demo).
 - [Apple StoreKit 2](https://developer.apple.com/storekit/) and the [App Store Server API](https://developer.apple.com/documentation/appstoreserverapi/).
 
 No hands-on testing claim is made. The Superwall screenshot is a real interface capture supplied for editorial use, not evidence of an end-to-end product evaluation. Prices, plan boundaries, and capabilities can change; verify them again before acting on a later revision.
 
-Last checked: August 13, 2026.
+Last checked: 2026-10-29.
 
 ## Related tools and guides
+- Read the [Superwall](/tools/superwall) tool page.
+- Compare the wider purchase-infrastructure set in [RevenueCat alternatives](/comparisons/revenuecat-alternatives).
 - Compare the two-tool boundary in [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat).
 - Compare Adapty and Superwall in [Adapty vs Superwall](/comparisons/adapty-vs-superwall).
 - Review the wider category in [Best paywall tools for iOS apps](/guides/best-paywall-tools-ios-apps).
@@ -2465,9 +2503,9 @@ Last checked: August 13, 2026.
           status: "published",
           content_type: "comparison",
           primary_category_id: categories.get("paywalls").id,
-          seo_title: "Superwall alternatives for indie iOS apps",
+          seo_title: "Superwall Alternatives for iOS Apps (2026)",
           seo_description:
-            "Compare RevenueCat, Adapty, Qonversion, and StoreKit 2 by pricing, paywall workflow, and fit. Prices checked August 2026.",
+            "Superwall alternatives compared: RevenueCat, Adapty, Qonversion, Apphud, Purchasely, Nami ML and StoreKit 2, with prices checked Oct 29, 2026.",
           human_reviewed: true,
           ai_assisted: true,
           published_at: superwallAlternativesPublishedAt,
