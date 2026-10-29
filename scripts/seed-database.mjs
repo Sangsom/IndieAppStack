@@ -1276,14 +1276,21 @@ try {
           excerpt:
             "Warp is an AI terminal for macOS, Windows, and Linux. Here is an honest read on when it earns a place in a solo mobile developer's setup, when to skip it, and what it costs.",
           body_markdown: `## Short answer
-Warp is worth trying if you spend real time on the command line, running fastlane, git, and build scripts, and want AI help plus cleaner output without leaving the terminal. It is a general desktop terminal, not a mobile-specific tool, so it changes how you work rather than what you can ship. If your current terminal already stays out of your way, Warp is a nice-to-have, not a fix.
+Warp has no native iOS or Android app (checked Oct 29, 2026). It is a desktop terminal for macOS, Windows, and Linux. From a phone you can open Warp's Oz web app in a browser to check on cloud agents. For mobile development, it is where you run fastlane, git, and xcodebuild/Gradle on your Mac or PC.
+
+Warp is worth trying if you spend real time on the command line, running fastlane, git, and build scripts, and want AI help plus cleaner output without leaving the terminal.
 
 Most mobile-tool decisions are about SDKs you embed in the app. Warp is different: it is part of your workstation, not your app. So the question is less "which is best" and more "does this remove enough command-line friction to be worth a new habit."
 
 > [!NOTE] Affiliate disclosure
 > The Warp link on this page is a referral link. If you start with Warp through it, IndieAppStack may receive referral credit at no extra cost to you. It does not change our read on the tool: Warp is here because it fits the command-line side of indie mobile work, not because of the link.
 
-![Two-column decision graphic: Warp earns a place in a solo mobile developer's stack when you forget rarely-used commands, read a lot of build output, or repeat multi-step commands; skip it for now when your terminal already disappears, you want minimal and lightweight, you expect a mobile build tool, or you are wary of usage-based AI pricing.](/content-visuals/articles/warp-terminal-decision.svg "Does Warp earn a place in your stack?")
+## Is there a Warp mobile app for iPhone or Android?
+![Two columns: on a Mac or PC, Warp terminal runs on macOS, Windows, and Linux; on a phone, there is no Warp app, and the Oz web app in a browser is for cloud agents.](/content-visuals/articles/warp-mobile-vs-desktop.svg "Checked Oct 29, 2026 · warp.dev/download, docs.warp.dev")
+
+Warp Terminal has no native iOS or Android app. The [download page](https://www.warp.dev/download) lists desktop builds only: macOS 10.14 or later, Linux, and Windows 10 and 11. An App Store search and a Google Play search on Oct 29, 2026 returned no warp.dev terminal app. Other products use the Warp name, including an HR and payroll app, and those are not this terminal.
+
+From a phone you can reach cloud agents, not a local shell. The [agents page](https://www.warp.dev/agents) says you can interact with cloud agents through Warp Terminal, Web, or Mobile. The [Oz web app](https://docs.warp.dev/platform/oz-web-app/) works on mobile devices, so a phone browser can monitor and manage those agents. You cannot run a Warp terminal session, fastlane, or xcodebuild on the phone.
 
 ## What Warp is
 Warp is a terminal that adds an AI assistant, command blocks, autocompletion, and saved workflows on top of a normal shell. It calls itself an agentic development environment, and it runs on macOS, Windows, and Linux, working with bash, zsh, fish, PowerShell, and WSL2. You keep your existing shell and commands, and Warp layers a faster, more readable interface, plus AI, over them.
@@ -1299,6 +1306,8 @@ If you build a mobile app on your own, the command line shows up in a few predic
 None of this needs a special terminal. But it is exactly the work where AI suggestions and cleaner output can save the minutes you would otherwise spend reading a wall of log text or looking up a flag.
 
 ## When Warp earns its place
+![Two-column decision graphic: Warp earns a place in a solo mobile developer's stack when you forget rarely-used commands, read a lot of build output, or repeat multi-step commands; skip it for now when your terminal already disappears, you want minimal and lightweight, you expect a mobile build tool, or you are wary of usage-based AI pricing.](/content-visuals/articles/warp-terminal-decision.svg "Does Warp earn a place in your stack?")
+
 :::comparison When Warp helps a solo mobile developer
 | Situation | Why Warp helps |
 | --- | --- |
@@ -1313,33 +1322,36 @@ The theme is consistency and recall. For a solo developer wearing every hat, sha
 - Your terminal already disappears. If you rarely fight your current setup, Warp solves a problem you do not have.
 - You want minimal and lightweight. Warp is a full-featured app, not a bare terminal.
 - You expect a mobile build tool. Warp does not build, sign, or ship your app; that still belongs to fastlane, Xcode, and your CI.
-- You are wary of usage-based AI pricing. Warp's AI runs on a monthly credit allowance, so plan around the free tier or bring your own AI inference.
+- You are wary of usage-based AI pricing. Paid plans include a monthly dollar amount of agent usage, and extra usage is pay-as-you-go, so plan around the free tier or bring your own AI inference.
 
 ## Pricing
-Warp is freemium, and its AI features run on a monthly credit allowance. These figures were checked on 2026-07-18 against the official pricing page. Warp uses a credit-based model and adjusts it, so confirm current numbers before relying on them.
+Warp lists plan prices in dollars, and included agent usage is listed in dollars too. These figures were checked on Oct 29, 2026 against [Warp's pricing page](https://www.warp.dev/pricing). Confirm the current numbers before you rely on them.
 
-:::comparison Warp plans (checked 2026-07-18)
-| Plan | Price | Notes |
+:::comparison Warp plans (checked 2026-10-29)
+| Plan | Price | Included agent usage |
 | --- | --- | --- |
-| Free | $0 | Limited AI and cloud-agent usage; bring your own AI inference |
-| Build | $20 per user per month | 1,500 credits (about $20 of included agent usage at API rates) |
-| Max | $200 per user per month | 18,000 credits |
-| Business | $50 per user per month | 1,500 credits per seat; SAML-based SSO |
-| Enterprise | Custom | Admin controls; contact sales |
+| Free | $0 | Core terminal, Warp Agent CLI, pay-as-you-go extra agent usage, bring your own AI inference, and limited cloud agents |
+| Build | $20 per month, or $18 per month on the annual plan | $20 of agent usage each month at API rates |
+| Max | $200 per month, or $180 per month on the annual plan | $200 of agent usage each month (10× Build) |
+| Business | $50 per user per month, or $45 per user per month on the annual plan, up to 25 seats | $20 of agent usage per seat each month at API rates; SAML-based SSO |
+| Enterprise | Custom | Custom |
 :::
 
-The Free plan lets you bring your own AI inference, so you can point Warp at your own model access instead of spending Warp credits. Because the AI is credit-metered, the practical question is whether the free allowance covers a normal week of your work.
+The Free plan lets you bring your own AI inference, so you can point Warp at your own model access instead of Warp's included agent usage. Because usage is metered in dollars at API rates, the practical question is whether the free plan covers a normal week of your work.
 
 ## How to try Warp without overcommitting
 - Install the free plan and use it as your daily terminal for a week of real work: a release, a few merges, a gnarly build failure.
 - Lean on the AI for the commands you usually look up, and save two or three workflows you run often.
-- Watch your credit use. If the free allowance covers a normal week, you have your answer. If you hit the ceiling and the time saved is real, Build is the next step; if not, keep the free tier or your old terminal.
+- Watch agent usage. If the free plan covers a normal week, you have your answer. If you need more included usage and the time saved is real, Build is the next step; if not, keep the free tier or your old terminal.
 
 Ready to try it? [Start with Warp](/go/warp), then see the full [Warp tool page](/tools/warp) and the rest of the [developer productivity category](/categories/dev-productivity).
 
 ## Frequently asked questions
+### Does Warp have a mobile app?
+No. Warp has no native iOS or Android app (checked Oct 29, 2026), and it runs on macOS, Windows, and Linux. From a phone you can open the Oz web app in a browser to manage cloud agents, not a local terminal session.
+
 ### Is Warp free for indie developers?
-Yes. Warp has a free plan with a limited monthly AI allowance and support for bringing your own AI inference, which is enough for many solo developers. Paid plans start at $20 per user per month (checked 2026-07-18) and add more credits and team features.
+Yes. The Free plan is $0 and includes the core terminal, Warp Agent CLI access, pay-as-you-go extra agent usage, bring your own AI inference, and limited cloud agents (checked Oct 29, 2026). Paid plans start at $20 per month for Build, or $18 per month on the annual plan.
 
 ### Does Warp work for iOS and Android development?
 Warp is a general desktop terminal for macOS, Windows, and Linux; it is not iOS or Android specific. It helps with the command-line work around mobile development, such as git, fastlane, and build and release scripts, but it does not build or ship the app itself.
@@ -1354,21 +1366,24 @@ Warp's Business plan adds SAML-based SSO for teams, and the Free plan lets you b
 For a solo mobile developer, Warp is a reasonable pick in the [developer productivity category](/categories/dev-productivity) if command-line work is a daily part of your build-and-release loop and you want AI recall plus cleaner output. Start on the free plan, judge it on one real release cycle, and only pay once the time saved is obvious. If your current terminal already stays out of your way, there is no urgency to switch.
 
 ## Source checks
-Pricing, platform, and product claims were checked on 2026-07-18 against official sources:
+Pricing, platform, and product claims were checked on 2026-10-29 against official sources:
 
 - Warp pricing: https://www.warp.dev/pricing
 - Warp downloads and platform support: https://www.warp.dev/download
+- Cloud agents from Warp Terminal, Web, or Mobile: https://www.warp.dev/agents
+- Oz web app on mobile devices: https://docs.warp.dev/platform/oz-web-app/
+- App Store and Google Play: iTunes Search API queries for "warp terminal", "Warp", and "warp.dev", plus Google Play searches for "warp terminal" and "warp.dev", on 2026-10-29. No warp.dev terminal app. Google Play's co.warp.app is "Warp: AI Native HR & Payroll", a different product. The download page lists desktop platforms only.
 
 No hands-on testing claims are made in this article. No screenshots are used. Affiliate links are disclosed and use the site's /go redirect.
 
-Last checked: 2026-07-18.`,
+Last checked: 2026-10-29.`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
           primary_category_id: categories.get("dev-productivity").id,
-          seo_title: "Warp for Indie Mobile Developers: Worth It?",
+          seo_title: "Does Warp Terminal Have a Mobile App? (2026)",
           seo_description:
-            "An honest guide to Warp, the AI terminal, for solo mobile developers: what it does, when it earns a place in your stack, when to skip it, and current pricing (checked July 2026).",
+            "Warp has no iOS or Android app. It runs on macOS, Windows and Linux; from a phone you can only manage cloud agents in a browser. Checked Oct 29, 2026.",
           human_reviewed: true,
           ai_assisted: true,
           published_at: warpPublishedAt,
