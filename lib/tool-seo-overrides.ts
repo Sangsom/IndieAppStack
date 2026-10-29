@@ -26,6 +26,12 @@ export const TOOL_SEO_OVERRIDES: Record<
       "Annual credits from $84. The API key is free. Google web volume, not App Store or Play Store demand. No Android, iPhone, or iPad app. Checked Oct 22, 2026.",
     heading: "Keywords Everywhere review, credit pricing, and no mobile app",
   },
+  revenuecat: {
+    title: "RevenueCat Pricing 2026: Free to $2,500 MTR, Then 1%",
+    description:
+      "RevenueCat is free under $2,500 monthly tracked revenue, then 1% of all MTR. What counts as MTR, worked examples and add-ons. Checked Oct 29, 2026.",
+    heading: "RevenueCat pricing, free tier, and what 1% of MTR costs",
+  },
 };
 
 /** Absolute document title for slugs in the override map. Other tools keep the site template. */

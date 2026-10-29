@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+<title id="title">RevenueCat returns to free when MTR falls back under $2,500</title>
+<desc id="desc">A month under $2,500 is $0. A month at $2,500 or more is 1% of all monthly tracked revenue. A later month under $2,500 is $0 again. A 30-day payment grace period applies only in the first month. Checked Oct 29, 2026.</desc>
+<defs>
+<style>
+.eyebrow { font: 700 13px ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: 1.4px; fill: #2c5f4f; }
+.title { font: 600 30px "Source Serif 4", Georgia, serif; fill: #20241f; }
+.dek { font: 400 16px Inter, ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #6e6a5e; }
+.card-title { font: 600 18px Inter, ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #6e6a5e; }
+.fee { font: 600 36px "Source Serif 4", Georgia, serif; fill: #20241f; }
+.note { font: 500 16px Inter, ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #20241f; }
+.foot { font: 500 14px Inter, ui-sans-serif, -apple-system, "Segoe UI", sans-serif; fill: #6e6a5e; }
+</style>
+</defs>
+<rect width="1200" height="675" fill="#fbfaf7"/>
+<text x="48" y="48" class="eyebrow">BACK UNDER THE LINE · CHECKED OCT 29, 2026</text>
+<text x="48" y="96" class="title">A later quiet month is free again</text>
+<text x="48" y="136" class="dek">The 30-day grace period for adding a card is only in the first month you cross the line.</text>
+<rect x="40" y="180" width="348" height="270" rx="7" fill="#ffffff" stroke="#e7e2d7"/><text x="64" y="224" class="card-title">Under $2,500</text><text x="64" y="292" class="fee">$0</text><text x="64" y="348" class="note">The month did not</text><text x="64" y="376" class="note">hit the threshold.</text><polygon points="392,310 410,318 392,326" fill="#9a6b23"/><rect x="416" y="180" width="348" height="270" rx="7" fill="#ffffff" stroke="#e7e2d7"/><text x="440" y="224" class="card-title">At $2,500 or above</text><text x="440" y="292" class="fee">1% of all MTR</text><text x="440" y="348" class="note">The whole month,</text><text x="440" y="376" class="note">not the overflow.</text><polygon points="768,310 786,318 768,326" fill="#9a6b23"/><rect x="792" y="180" width="348" height="270" rx="7" fill="#ffffff" stroke="#e7e2d7"/><text x="816" y="224" class="card-title">Back under $2,500</text><text x="816" y="292" class="fee">$0 again</text><text x="816" y="348" class="note">The billing docs say</text><text x="816" y="376" class="note">it returns to free.</text>
+<text x="48" y="500" class="foot">Billing docs: if MTR falls below $2,500 in a later month, RevenueCat returns to free.</text>
+<text x="48" y="528" class="foot">Pricing FAQ: no charge on a month that does not hit $2,500. At $2,500 the charge is $25.</text>
+<text x="48" y="576" class="foot">After the first month, crossing the limit can restrict new charts, experiments, and paywall edits until payment.</text>
+<text x="48" y="628" class="foot">Checked Oct 29, 2026 · revenuecat.com/docs/welcome/set-up-revenuecat/account-management</text>
+</svg>

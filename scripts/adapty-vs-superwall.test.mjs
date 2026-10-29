@@ -116,7 +116,7 @@ test("each price sits with a checked date, and the disclosure line is present", 
   }
 });
 
-test("the adapty-vs-superwall object and tool content stay unchanged against origin/main", () => {
+test("the adapty-vs-superwall object stays unchanged, and tool content other than revenuecat matches origin/main", () => {
   const baseSeed = execSync("git show origin/main:scripts/seed-database.mjs", {
     encoding: "utf8",
   });
@@ -124,10 +124,15 @@ test("the adapty-vs-superwall object and tool content stay unchanged against ori
     objectForSlug(seed, "adapty-vs-superwall"),
     objectForSlug(baseSeed, "adapty-vs-superwall"),
   );
-  assert.equal(
+  const currentTools = JSON.parse(
     fs.readFileSync("scripts/tool-content.json", "utf8"),
+  );
+  const baseTools = JSON.parse(
     execSync("git show origin/main:scripts/tool-content.json", {
       encoding: "utf8",
     }),
   );
+  delete currentTools.revenuecat;
+  delete baseTools.revenuecat;
+  assert.deepEqual(currentTools, baseTools);
 });
