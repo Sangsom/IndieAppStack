@@ -1,15 +1,15 @@
-# Paywall apps for iOS
+# Paywall tools and software for iOS apps
 
 **Slug:** best-paywall-tools-ios-apps
 **URL:** /guides/best-paywall-tools-ios-apps
-**SEO title:** Paywall apps for iOS: pricing and fit
-**SEO description:** Dated prices for RevenueCat, Adapty, Superwall, and Qonversion, plus when a custom paywall is enough. Checked Oct 15, 2026.
+**SEO title:** Paywall Tools and Software for iOS (2026)
+**SEO description:** Paywall tools and software for iOS: RevenueCat, Adapty, Superwall and Qonversion fees, and when a custom StoreKit 2 paywall is enough. Oct 29, 2026.
 
 ## Short answer
 
-Paywall apps for iOS now cover two jobs at once: purchase and entitlement infrastructure, and the screen that sells the subscription. Choose the tool whose meter matches the revenue you will actually track. If you cannot name a paywall experiment, a custom paywall solution in your own StoreKit screen is still a valid start.
+Paywall tools for iOS now cover two jobs at once: purchase and entitlement infrastructure, and the screen that sells the subscription. Choose the tool whose meter matches the revenue you will actually track. If you cannot name a paywall experiment, a custom paywall solution in your own StoreKit screen is still a valid start.
 
-On Oct 15, 2026, the public meters were:
+On Oct 29, 2026, the public meters were:
 
 - [RevenueCat](/tools/revenuecat) is free while monthly tracked revenue stays under $2,500, then 1% of that whole amount.
 - [Adapty](/tools/adapty) is free while tracked revenue stays under $5,000, then 1% of that month.
@@ -17,7 +17,7 @@ On Oct 15, 2026, the public meters were:
 - [Qonversion](/tools/qonversion) is free while monthly tracked revenue is at or under $7,000, then 0.8% of the whole amount.
 
 > [!NOTE] Solo builder scope
-> This guide is for a solo builder choosing a paywall stack for an iOS subscription app. The figures below are copied or calculated from vendor pricing pages on Oct 15, 2026. They are not invoices, and they do not include the App Store commission.
+> This guide is for a solo builder choosing a paywall stack for an iOS subscription app. The figures below are copied or calculated from vendor pricing pages on Oct 29, 2026. They are not invoices, and they do not include the App Store commission.
 
 ![Decision guide for an iOS paywall stack: RevenueCat when purchase infrastructure is the bottleneck, Superwall when remote paywall iteration is the bottleneck, Adapty when paywall analytics is the bottleneck.](/content-visuals/articles/paywall-tools-decision.svg "Choose by the bottleneck: infrastructure, remote iteration, or paywall analytics.")
 
@@ -25,7 +25,7 @@ On Oct 15, 2026, the public meters were:
 
 The percentages look similar. The free boundary, and what counts as revenue, do not. RevenueCat, Adapty, and Qonversion meter revenue the platform tracks, including renewals and one-time purchases, in USD, before Apple or Google take a cut. Superwall's paywall product meters only revenue that flows through a Superwall-rendered paywall. Subscriptions bought on a screen Superwall did not render are not on that bill.
 
-:::comparison Monthly platform fee, checked Oct 15, 2026
+:::comparison Monthly platform fee, checked Oct 29, 2026
 | Monthly revenue on the vendor's meter | RevenueCat | Adapty | Superwall Indie | Qonversion |
 | --- | --- | --- | --- | --- |
 | $8,000 | $80 | $80 | $0 | $64 |
@@ -33,7 +33,7 @@ The percentages look similar. The free boundary, and what counts as revenue, do 
 | $50,000 | $500 | $500 | $500 if all of it is paywall-attributed; $0 if none is | $400 |
 :::
 
-![Calculated monthly fees for RevenueCat, Adapty, Superwall Indie, and Qonversion at $8,000 and $50,000, checked Oct 15, 2026.](/content-visuals/articles/paywall-apps-ios-fees-oct-2026.svg "At $8,000, Qonversion's published example is $64, RevenueCat and Adapty calculate to $80, and Superwall Indie is $0. At $50,000, Qonversion's published example is $400. The other three calculate to $500 only when the full amount is on their meter.")
+![Calculated monthly fees for RevenueCat, Adapty, Superwall Indie, and Qonversion at $8,000 and $50,000, checked Oct 29, 2026.](/content-visuals/articles/paywall-apps-ios-fees-oct-2026.svg "At $8,000, Qonversion's published example is $64, RevenueCat and Adapty calculate to $80, and Superwall Indie is $0. At $50,000, Qonversion's published example is $400. The other three calculate to $500 only when the full amount is on their meter.")
 
 Qonversion publishes the $8,000 and $50,000 rows itself: $64 and $400. Its $10,000 cell is the same 0.8% rate, calculated rather than copied from an example. The RevenueCat and Adapty cells are 1% of the row. Superwall Indie is $0 at $8,000 and $10,000 because those amounts sit inside the free band, and $500 at $50,000 only when every dollar is paywall-attributed. Those calculated cells are not sample invoices.
 
@@ -97,6 +97,26 @@ A custom paywall solution is the screen you design in the app and present with S
 
 That is the right start for one product, one screen, and no experiment you can name. It is the wrong start when you already know you will change the paywall more often than you submit a build, or when Android and web need the same entitlement state. A custom screen is still an App Store purchase. It is not a Stripe checkout. Read [why Stripe is not a RevenueCat alternative on iOS](/guides/why-stripe-is-not-a-revenuecat-alternative-ios) before treating a web payment form as a substitute for this choice.
 
+![Four boxes in a row for a custom iOS paywall: load StoreKit 2 products, show your SwiftUI paywall, purchase, then verify the transaction and unlock.](/content-visuals/articles/custom-paywall-storekit2-flow.svg "A custom paywall stays in the app: load products, show your SwiftUI screen, purchase, then verify the transaction and unlock.")
+
+### What you build yourself
+
+Load products with Product.products(for:) and the identifiers from App Store Connect. Apple's [Product](https://developer.apple.com/documentation/storekit/product) page, opened Oct 29, 2026, says a Product is that in-app purchase, and that displayName, description, and displayPrice are what the screen shows. A tap calls purchase(options:) or purchase(confirmIn:options:). A purchase on this device returns Product.PurchaseResult.success. It does not arrive on Transaction.updates.
+
+[Transaction.updates](https://developer.apple.com/documentation/storekit/transaction/updates) is the other listener. Apple calls it the asynchronous sequence that emits a transaction when the system creates or updates transactions outside the app or on other devices, including Ask to Buy, offer code redemptions, and a purchase on another device. Start a Task on it at launch so unfinished transactions are not missed, then finish() each one. Read currentEntitlement before the feature turns on. The Product page says that property holds the entitling transaction. Add [App Store Server Notifications](https://developer.apple.com/documentation/appstoreservernotifications) only when refunds and renewals must land while the app is closed.
+
+### What it costs
+
+A custom paywall solution has no vendor percentage. The four meters above do not apply, because those SDKs are not in the purchase path. You pay the App Store commission, which this guide does not quote as a rate, and you pay engineering time when the copy or the layout has to ship in a new build.
+
+### When to switch to a platform
+
+Switch if you will test the paywall every month, if someone who does not ship code has to edit the copy, or if the same entitlement has to be true on iOS and another platform. StoreKit 2 knows the App Store purchase. It does not reconcile a Play Store or web purchase into one customer record.
+
+### SwiftUI SubscriptionStoreView as a middle option
+
+[SubscriptionStoreView](https://developer.apple.com/documentation/storekit/subscriptionstoreview), opened Oct 29, 2026, is Apple's SwiftUI view for auto-renewable subscriptions in one subscription group. Apple's page says it shows each option's localized name, description, and price, plus a purchase button, and that a group identifier or a list of product identifiers makes the view load that data from the App Store. It does not add a vendor percentage or a remote experiment. Draw your own screen when the layout has to be custom, or when a test has to swap two paywalls without a release.
+
 ## When you do not need a paywall platform yet
 
 A remote experiment earns its SDK when there is enough paywall traffic to move a metric you trust. Before that:
@@ -111,23 +131,28 @@ A remote experiment earns its SDK when there is enough paywall traffic to move a
 If you want a lean iOS stack around the tool you pick, start with the [Stack Finder](/stack-finder).
 
 - Read the head-to-head [RevenueCat vs Adapty vs Superwall comparison](/comparisons/revenuecat-vs-adapty-ios-subscriptions), and [Superwall vs RevenueCat](/comparisons/superwall-vs-revenuecat) when the question is paywall iteration versus purchase infrastructure.
+- When Superwall is the candidate and you want the other options beside it, read [Superwall alternatives](/comparisons/superwall-alternatives-ios-apps).
 - Fit the choice into the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app).
 - Start broader with [monetization tools for solo mobile developers](/guides/best-monetization-tools-solo-mobile-developers).
 - Browse the [paywalls category](/categories/paywalls) and the [monetization category](/categories/monetization).
 
 ## Source checks
 
-Pricing pages were opened on Oct 15, 2026:
+Pricing pages and Apple documentation were opened on Oct 29, 2026:
 
-- RevenueCat pricing: https://www.revenuecat.com/pricing
+- RevenueCat pricing: https://www.revenuecat.com/pricing/
 - RevenueCat billing docs, including the $2,600 example and the return to $0 under $2,500: https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management
 - Adapty pricing, including the rolling $5,000 check and the "from then on" billing line: https://adapty.io/pricing/
 - Superwall pricing, including Indie, Startup at $49, Scale at $199, and free infrastructure: https://superwall.com/pricing
 - Qonversion pricing, including the $64 and $400 examples: https://qonversion.io/pricing
+- StoreKit Product, including products(for:), purchase(options:), purchase(confirmIn:options:), displayPrice, and currentEntitlement: https://developer.apple.com/documentation/storekit/product
+- Transaction.updates: https://developer.apple.com/documentation/storekit/transaction/updates
+- SubscriptionStoreView: https://developer.apple.com/documentation/storekit/subscriptionstoreview
+- App Store Server Notifications: https://developer.apple.com/documentation/appstoreservernotifications
 
-No hands-on testing claims are made in this guide. The decision graphic and the fee chart are owned diagrams. The two editor images are owned captures of vendor dashboards, used to show the workspace, not to prove a result.
+No hands-on testing claims are made in this guide. The decision graphic, the fee chart, and the custom paywall flow are owned diagrams. The two editor images are owned captures of vendor dashboards, used to show the workspace, not to prove a result.
 
-Last checked: Oct 15, 2026.
+Last checked: Oct 29, 2026.
 
 ## Common questions
 
@@ -137,7 +162,7 @@ Paywall apps for iOS are the tools that sell a subscription and keep entitlement
 
 ### What does a custom paywall solution cost?
 
-A custom paywall solution has no vendor percentage in the tables above. You pay the App Store commission on the purchase, and you pay in engineering time when the screen, the copy, or the price display has to change. Add a platform when that release cost is the bottleneck.
+A custom paywall solution has no vendor percentage in the tables above. You pay the App Store commission on the purchase, and you pay in engineering time when the screen, the copy, or the price display has to change. Add a platform when that release cost is the bottleneck, when someone who does not ship code has to edit the copy, or when the same entitlement has to be true on another platform. SubscriptionStoreView does not add a vendor percentage either.
 
 ### When should a solo app skip these tools?
 
