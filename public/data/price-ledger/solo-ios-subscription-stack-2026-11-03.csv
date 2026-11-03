@@ -1,0 +1,14 @@
+line_id,line,vendor,plan,published_price,usd_per_year_at_1000_per_month,usd_per_year_at_5000_per_month,usd_per_year_at_10000_per_month,notes,source_url,checked_on
+apple-developer-program,Apple Developer Program,Apple,Membership,$99 annual membership,99.00,99.00,99.00,Required to publish on the App Store,https://developer.apple.com/programs/,2026-11-03
+app-store-commission,App Store commission,Apple,Small Business Program,15 percent on paid apps and In-App Purchases,1800.00,9000.00,18000.00,15 percent of annual sales in each column; Small Business Program up to $1 million proceeds per calendar year; tax adjustments not modeled,https://developer.apple.com/app-store/small-business-program/,2026-11-03
+purchases-entitlements,Purchases and entitlements,RevenueCat,Pro,"$0 under $2,500 monthly tracked revenue, then 1 percent of the whole MTR",0.00,600.00,1200.00,"MTR is before store commission and taxes; a month back under $2,500 returns to $0",https://www.revenuecat.com/docs/welcome/set-up-revenuecat/account-management,2026-11-03
+backend,Backend,Supabase,None / Free / Pro,"Free: $0, 500 MB database; Pro: from $25 per month",0.00,0.00,300.00,"No backend at $1,000 a month; Supabase Free at $5,000; Supabase Pro at $10,000 (assumes the database exceeds 500 MB)",https://supabase.com/pricing,2026-11-03
+crash-reporting,Crash reporting,Firebase,Crashlytics,No-cost on Spark and Blaze,0.00,0.00,0.00,,https://firebase.google.com/pricing,2026-11-03
+analytics,Analytics,Firebase,Analytics,No-cost on Spark and Blaze,0.00,0.00,0.00,,https://firebase.google.com/pricing,2026-11-03
+ci-builds,CI builds,Apple,Xcode Cloud,25 compute hours per month included with membership,0.00,0.00,0.00,Next plan: 100 compute hours for $49.99 per month,https://developer.apple.com/xcode-cloud/,2026-11-03
+landing-page-domain,Landing page and domain,Framer,Basic,"$10 per month, custom domain",120.00,120.00,120.00,$10 x 12; complimentary domain listed on yearly billing; sales tax added at checkout,https://www.framer.com/pricing,2026-11-03
+keyword-tracking,Keyword tracking,Appfigures,Starter / Monitor,"Starter free; Monitor $35.99 per month on annual billing ($44.99 monthly), 100 keywords",0.00,431.88,431.88,"Starter at $1,000 a month; Monitor ($35.99 x 12) at $5,000 and $10,000",https://appfigures.com/pricing,2026-11-03
+newsletter,Newsletter,Kit,Free,"Free up to 10,000 subscribers",0.00,0.00,0.00,,https://kit.com/pricing,2026-11-03
+app-store-screenshots,App Store screenshots,Screenshots Pro,Basic,$0 forever,0.00,0.00,0.00,,https://screenshots.pro/pricing,2026-11-03
+total,Total for the year,,,,2019.00,10250.88,20150.88,Sum of the lines above,,2026-11-03
+total-without-commission,Without the App Store commission,,,,219.00,1250.88,2150.88,Total minus the App Store commission line,,2026-11-03
