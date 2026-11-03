@@ -2,6 +2,12 @@ export const TOOL_SEO_OVERRIDES: Record<
   string,
   { title: string; description: string; heading: string }
 > = {
+  appfollow: {
+    title: "AppFollow Plans and Pricing 2026: Free Plan, MCP Connector",
+    description:
+      "Checked Nov 3, 2026. AppFollow has 5 plans, from Free to Enterprise, and prints no prices. Essential, Team, and Enterprise include a 10-day free trial.",
+    heading: "AppFollow plans, the MCP connector, and when it fits",
+  },
   appwrite: {
     title: "Appwrite Pricing 2026: Free Tier, Pro $25/mo",
     description:
