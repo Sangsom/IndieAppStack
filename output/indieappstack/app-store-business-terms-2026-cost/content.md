@@ -154,4 +154,5 @@ Last checked: Sep 24, 2026.
 - Read [why Stripe is not a RevenueCat alternative on iOS](/guides/why-stripe-is-not-a-revenuecat-alternative-ios) before treating an EU payment option as a StoreKit replacement.
 - Start from the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app) if the purchase path is still In-App Purchase.
 - Compare [RevenueCat alternatives](/comparisons/revenuecat-alternatives) when the job is entitlements or paywall iteration, not Apple's commission.
+- See [what it costs to run an indie iOS app](/guides/cost-to-run-an-indie-ios-app) for the commission next to every other line in a solo stack, for a full year.
 - Review the [monetization category](/categories/monetization).

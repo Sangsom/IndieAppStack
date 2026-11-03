@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Annual cost of a solo iOS subscription stack at three revenue levels</title>
+  <desc id="desc">Stacked bars. At 1,000 dollars a month in sales the year costs 2,019 dollars: 1,800 Apple commission, 0 RevenueCat, 219 membership and tools. At 5,000 dollars a month it costs 10,250.88 dollars: 9,000 commission, 600 RevenueCat, 650.88 membership and tools. At 10,000 dollars a month it costs 20,150.88 dollars: 18,000 commission, 1,200 RevenueCat, 950.88 membership and tools. Prices checked Nov 3, 2026.</desc>
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#20241f" flood-opacity="0.12"/>
+    </filter>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .title { font: 700 34px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .subtitle { font: 500 17px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .label { font: 700 13px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; letter-spacing: 0.08em; }
+      .total { font: 700 26px "Source Serif 4", Georgia, serif; fill: #20241f; }
+      .value { font: 500 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #20241f; }
+      .muted { font: 500 15px Inter, ui-sans-serif, system-ui, sans-serif; fill: #6e6a5e; }
+      .on-pine { font: 700 16px Inter, ui-sans-serif, system-ui, sans-serif; fill: #fbfaf7; }
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <rect x="48" y="36" width="1104" height="688" rx="12" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="88" y="96" class="title">What a solo iOS subscription stack costs in a year</text>
+  <text x="88" y="132" class="subtitle">Bars share one scale. Every sale through In-App Purchase, Small Business Program, tax not modeled.</text>
+
+  <!-- Scale: 1024 px = $20,150.88 -->
+  <text x="88" y="200" class="label">$1,000 A MONTH IN SALES</text>
+  <text x="1112" y="204" class="total" text-anchor="end">$2,019.00</text>
+  <rect x="88" y="216" width="1024" height="44" rx="6" fill="#fbfaf7" stroke="#e7e2d7"/>
+  <rect x="88" y="216" width="91.5" height="44" fill="#2c5f4f"/>
+  <rect x="179.5" y="216" width="11.1" height="44" fill="#6e6a5e"/>
+  <text x="88" y="288" class="value">Apple commission $1,800</text>
+  <text x="340" y="288" class="value">RevenueCat $0</text>
+  <text x="520" y="288" class="value">Membership and tools $219.00</text>
+
+  <text x="88" y="344" class="label">$5,000 A MONTH IN SALES</text>
+  <text x="1112" y="348" class="total" text-anchor="end">$10,250.88</text>
+  <rect x="88" y="360" width="1024" height="44" rx="6" fill="#fbfaf7" stroke="#e7e2d7"/>
+  <rect x="88" y="360" width="457.3" height="44" fill="#2c5f4f"/>
+  <rect x="545.3" y="360" width="30.5" height="44" fill="#9a6b23"/>
+  <rect x="575.8" y="360" width="33.1" height="44" fill="#6e6a5e"/>
+  <text x="88" y="432" class="value">Apple commission $9,000</text>
+  <text x="340" y="432" class="value">RevenueCat $600</text>
+  <text x="520" y="432" class="value">Membership and tools $650.88</text>
+
+  <text x="88" y="488" class="label">$10,000 A MONTH IN SALES</text>
+  <text x="1112" y="492" class="total" text-anchor="end">$20,150.88</text>
+  <rect x="88" y="504" width="1024" height="44" rx="6" fill="#fbfaf7" stroke="#e7e2d7"/>
+  <rect x="88" y="504" width="914.7" height="44" fill="#2c5f4f"/>
+  <rect x="1002.7" y="504" width="61.0" height="44" fill="#9a6b23"/>
+  <rect x="1063.7" y="504" width="48.3" height="44" fill="#6e6a5e"/>
+  <text x="88" y="576" class="value">Apple commission $18,000</text>
+  <text x="340" y="576" class="value">RevenueCat $1,200</text>
+  <text x="520" y="576" class="value">Membership and tools $950.88</text>
+
+  <rect x="88" y="598" width="14" height="14" fill="#2c5f4f"/>
+  <text x="110" y="610" class="muted">Apple commission, 15 percent</text>
+  <rect x="340" y="598" width="14" height="14" fill="#9a6b23"/>
+  <text x="362" y="610" class="muted">RevenueCat, 1 percent of all monthly tracked revenue once a month is over $2,500</text>
+  <rect x="88" y="624" width="14" height="14" fill="#6e6a5e"/>
+  <text x="110" y="636" class="muted">Membership and tools: Developer Program $99, Framer $120, Appfigures, and Supabase</text>
+
+  <text x="88" y="662" class="muted">Prices checked Nov 3, 2026, on each vendor's pricing page. Crash reporting, analytics, CI, newsletter, and screenshots are $0.</text>
+  <rect x="88" y="678" width="1024" height="32" rx="6" fill="#2c5f4f"/>
+  <text x="112" y="700" class="on-pine">Apple's commission is close to 90 percent of the bill at every size.</text>
+</svg>

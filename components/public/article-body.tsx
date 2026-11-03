@@ -99,6 +99,14 @@ const articleImageDimensions: Record<
     height: 780,
     width: 1200,
   },
+  "/content-visuals/articles/solo-ios-stack-annual-cost-three-sizes.svg": {
+    height: 760,
+    width: 1200,
+  },
+  "/content-visuals/articles/solo-ios-stack-free-tier-limits.svg": {
+    height: 760,
+    width: 1200,
+  },
   "/content-visuals/articles/revenuecat-vs-superwall-fee-bases.svg": {
     height: 720,
     width: 1200,

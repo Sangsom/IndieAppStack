@@ -119,6 +119,8 @@ const stripeGuidePublishedAt = "2026-08-21T09:00:00.000Z";
 const appStoreTermsGuidePublishedAt = "2026-09-24T03:00:00.000Z";
 const ios27GuidePublishedAt = "2026-09-26T03:10:00.000Z";
 const adaptyVsSuperwallPublishedAt = "2026-10-20T09:00:00.000Z";
+const soloStackCostGuidePublishedAt = "2026-11-03T09:00:00.000Z";
+const soloStackCostGuideSlug = "cost-to-run-an-indie-ios-app";
 
 function readIos27GuideBody() {
   const full = fs.readFileSync(
@@ -130,6 +132,26 @@ function readIos27GuideBody() {
 
   if (index === -1) {
     throw new Error("iOS 27 guide is missing the Short answer heading.");
+  }
+
+  return `${full.slice(index).trim()}\n`;
+}
+
+function readSoloStackCostGuideBody() {
+  const full = fs.readFileSync(
+    path.join(
+      cwd(),
+      `output/indieappstack/${soloStackCostGuideSlug}/content.md`,
+    ),
+    "utf8",
+  );
+  const marker = "## Short answer";
+  const index = full.indexOf(marker);
+
+  if (index === -1) {
+    throw new Error(
+      "Solo stack cost guide is missing the Short answer heading.",
+    );
   }
 
   return `${full.slice(index).trim()}\n`;
@@ -1626,6 +1648,7 @@ Postpone anything that needs traffic, operational discipline, or team bandwidth 
 - Start with the [best monetization tools guide](/guides/best-monetization-tools-solo-mobile-developers) for the broader landscape.
 - Compare subscription infrastructure in [RevenueCat vs Adapty vs Superwall](/comparisons/revenuecat-vs-adapty-ios-subscriptions).
 - Review the [monetization category](/categories/monetization) and [paywall tools](/categories/paywalls).
+- Price the whole stack for a year with [what it costs to run an indie iOS app](/guides/cost-to-run-an-indie-ios-app).
 - Compare backend choices in [Supabase vs Firebase vs Appwrite for mobile backends](/comparisons/supabase-vs-firebase-indie-mobile-apps) and the [backend category](/categories/backend).
 - Add measurement with the [privacy-friendly analytics starter stack](/guides/privacy-friendly-analytics-starter-stack) and the [analytics category](/categories/analytics).
 - Install crash monitoring with the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps) and the [crash reporting category](/categories/crash-reporting).
@@ -3934,6 +3957,7 @@ Last checked: Sep 24, 2026.
 - Read [why Stripe is not a RevenueCat alternative on iOS](/guides/why-stripe-is-not-a-revenuecat-alternative-ios) before treating an EU payment option as a StoreKit replacement.
 - Start from the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app) if the purchase path is still In-App Purchase.
 - Compare [RevenueCat alternatives](/comparisons/revenuecat-alternatives) when the job is entitlements or paywall iteration, not Apple's commission.
+- See [what it costs to run an indie iOS app](/guides/cost-to-run-an-indie-ios-app) for the commission next to every other line in a solo stack, for a full year.
 - Review the [monetization category](/categories/monetization).`,
           author: "IndieAppStack",
           status: "published",
@@ -3965,6 +3989,26 @@ Last checked: Sep 24, 2026.
           human_reviewed: true,
           ai_assisted: true,
           published_at: ios27GuidePublishedAt,
+        },
+        {
+          title:
+            "How much does it cost to run an indie iOS app? The annual ledger for a solo subscription stack",
+          slug: soloStackCostGuideSlug,
+          subtitle:
+            "Every line in a lean solo iOS subscription stack, totalled at three sizes, dated, and sourced, including Apple's commission.",
+          excerpt:
+            "About $2,019, $10,251, or $20,151 a year at $1,000, $5,000, and $10,000 a month in sales. Apple's 15 percent is close to 90 percent of each total. Checked Nov 3, 2026.",
+          body_markdown: readSoloStackCostGuideBody(),
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("monetization").id,
+          seo_title: "How much does it cost to run an indie iOS app?",
+          seo_description:
+            "A solo iOS subscription stack costs $2,019, $10,251, or $20,151 a year at $1,000, $5,000, and $10,000 a month. Every line dated and sourced.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: soloStackCostGuidePublishedAt,
         },
         {
           title: "Draft guide that should stay private",
@@ -4458,6 +4502,42 @@ Last checked: Sep 24, 2026.
         tool_id: tools.get("sentry").id,
         relationship: "supporting",
         sort_order: 20,
+      },
+      {
+        article_id: articles.get(soloStackCostGuideSlug).id,
+        tool_id: tools.get("revenuecat").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get(soloStackCostGuideSlug).id,
+        tool_id: tools.get("supabase").id,
+        relationship: "supporting",
+        sort_order: 20,
+      },
+      {
+        article_id: articles.get(soloStackCostGuideSlug).id,
+        tool_id: tools.get("firebase").id,
+        relationship: "supporting",
+        sort_order: 30,
+      },
+      {
+        article_id: articles.get(soloStackCostGuideSlug).id,
+        tool_id: tools.get("framer").id,
+        relationship: "supporting",
+        sort_order: 40,
+      },
+      {
+        article_id: articles.get(soloStackCostGuideSlug).id,
+        tool_id: tools.get("appfigures").id,
+        relationship: "supporting",
+        sort_order: 50,
+      },
+      {
+        article_id: articles.get(soloStackCostGuideSlug).id,
+        tool_id: tools.get("kit").id,
+        relationship: "supporting",
+        sort_order: 60,
       },
     ],
     { onConflict: "article_id,tool_id" },
