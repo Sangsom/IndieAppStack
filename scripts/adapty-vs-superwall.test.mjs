@@ -116,7 +116,7 @@ test("each price sits with a checked date, and the disclosure line is present", 
   }
 });
 
-test("the adapty-vs-superwall object and tool content stay unchanged against origin/main", () => {
+test("the adapty-vs-superwall object and its Adapty and Superwall tool content stay unchanged against origin/main", () => {
   const baseSeed = execSync("git show origin/main:scripts/seed-database.mjs", {
     encoding: "utf8",
   });
@@ -124,10 +124,17 @@ test("the adapty-vs-superwall object and tool content stay unchanged against ori
     objectForSlug(seed, "adapty-vs-superwall"),
     objectForSlug(baseSeed, "adapty-vs-superwall"),
   );
-  assert.equal(
+  // Guard only the tool entries this comparison depends on, so other tool
+  // page refreshes can change scripts/tool-content.json without failing here.
+  const toolContent = JSON.parse(
     fs.readFileSync("scripts/tool-content.json", "utf8"),
+  );
+  const baseToolContent = JSON.parse(
     execSync("git show origin/main:scripts/tool-content.json", {
       encoding: "utf8",
     }),
   );
+  for (const slug of ["adapty", "superwall"]) {
+    assert.deepEqual(toolContent[slug], baseToolContent[slug], slug);
+  }
 });

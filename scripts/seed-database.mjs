@@ -664,21 +664,30 @@ Usually not. Feature flags and experiments are built into PostHog and share its 
   {
     name: "AppFollow",
     slug: "appfollow",
-    tagline: "Review management, ASO monitoring, and app reputation workflows.",
+    tagline:
+      "One inbox for app reviews, ratings, and ASO data, with an MCP connector for AI assistants.",
     description:
-      "AppFollow helps mobile teams monitor reviews, respond to ratings, track app store performance, and manage customer feedback workflows.",
+      "Checked Nov 3, 2026. AppFollow collects app reviews, ratings, and ASO data in one inbox. Five plans run from Free to Enterprise, and the pricing page prints no prices.",
     website_url: "https://appfollow.io/",
     pricing_summary:
-      "Paid plans for review management and app monitoring; check current tiers for review and integration limits.",
-    pricing_model: "paid",
-    best_for: ["Review monitoring", "Support workflows", "ASO reporting"],
-    not_good_for: ["Teams that need paywall infrastructure"],
+      "Checked Nov 3, 2026. Five plans: Free, ASO, Essential, Team, and Enterprise. The pricing page prints no prices. Essential, Team, and Enterprise include a 10-day free trial. ASO has none.",
+    pricing_model: "freemium",
+    best_for: [
+      "One review inbox across stores",
+      "Review replies routed to a helpdesk",
+      "Review and ASO data inside AI assistants",
+    ],
+    not_good_for: [
+      "iOS-only apps with a few reviews a week",
+      "Budgeting from a public price list",
+      "Keyword research as the main job",
+    ],
     platforms: ["iOS", "Android", "Web"],
     app_stages: ["MVP", "Growth", "Scale"],
     alternatives: ["Appfigures", "AppTweak", "Sensor Tower"],
     categorySlugs: ["aso"],
     internal_notes:
-      "Pricing/features checked 2026-06-29 from https://appfollow.io/pricing",
+      "Checked 2026-11-03. https://appfollow.io/pricing prints no tiers or prices (contact-sales form, 'Try AppFollow for free'; meta description: 'from free to enterprise', 'free 10-day trial'). Plans from support article 360020979798 (updated 2026-10-23): Free (7-day history, API access, Slack/Zendesk/MS Teams/Telegram/email), ASO (30 days), Essential (365 days, AI replies, translation, helpdesk integrations, CSV/Excel), Team (full history, agent tracking, executive reports), Enterprise (custom roles, SSO, Samsung/Huawei). Trial article 360020832657 (2026-10-23): 10-day trial on Essential, Team, Enterprise; none on ASO. Self-serve add-ons 47996823479441 (2026-10-27): apps, manual replies, keywords, competitors, API credits, billed monthly; Free can add sources and API credits. MCP article 49071302595601 (2026-10-26): Claude, ChatGPT, Codex, Cursor; Owner or Admin; Google, email, or SSO sign-in; listed in the Claude connectors directory; tools vary by plan and permissions; calls use workspace API credits. AI Toolkit: github.com/AppFollow/appfollow-ai-toolkit (Apache-2.0). Tableau WDC needs Advanced API access. Body, pros, cons, and pricing_summary live in scripts/tool-content.json.",
   },
   {
     name: "Framer",
