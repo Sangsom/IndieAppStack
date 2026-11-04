@@ -17,7 +17,7 @@ const comparisonTitle =
   '          title: "Sentry vs Firebase Crashlytics for Mobile Apps"';
 const comparisonSeo = 'seo_title: "Sentry vs Crashlytics: Free Limits in 2026"';
 const comparisonHash =
-  "28fc41c1d8b749ef70a1b98e0c551e13c3dc0ec08571d116f7b0f4d695f0fc80";
+  "494f9d733d83a5ed4a92f9910e90e5bc0e66afa4ca86453c43daf59e7ce084eb";
 
 function comparisonObject() {
   const start = seed.indexOf(comparisonTitle);
@@ -58,12 +58,13 @@ test("the crash reporting guide sits after the Sentry comparison", () => {
   assert.equal(seed.split(`slug: "${guideSlug}"`).length, 2);
 });
 
-test("the Sentry comparison object is unchanged", () => {
+test("the Sentry comparison keeps its Aug 11 body plus one Flutter link", () => {
   const object = comparisonObject();
   const hash = createHash("sha256").update(object).digest("hex");
 
   assert.equal(hash, comparisonHash);
   assert.equal(object.includes(guideSlug), false);
+  assert.equal(object.match(/\/guides\/flutter-crash-reporting/g).length, 1);
   assert.match(object, /Last checked: Aug 11, 2026\./);
 });
 
@@ -168,13 +169,13 @@ test("every price is dated and the disclosure line is present", () => {
   );
 });
 
-test("the crash-reporting category description links the new guide only", () => {
+test("the crash-reporting category keeps the ranked shortlist and adds the Flutter guide", () => {
   const description =
-    'slug: "crash-reporting",\n          description:\n            "Monitor crashes, errors, regressions, and production quality so releases stay trustworthy after app store approval. Ranked shortlist: /guides/best-crash-reporting-tools-mobile.",';
+    'slug: "crash-reporting",\n          description:\n            "Monitor crashes, errors, regressions, and production quality so releases stay trustworthy after app store approval. Ranked shortlist: /guides/best-crash-reporting-tools-mobile. Flutter: [Flutter crash reporting tools](/guides/flutter-crash-reporting).",';
 
   assert.equal(seed.includes(description), true);
   assert.equal(
     seed.split("/guides/best-crash-reporting-tools-mobile").length - 1,
-    1,
+    2,
   );
 });

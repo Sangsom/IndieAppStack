@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+  <title id="title">Where Flutter symbol upload sits in the release build</title>
+  <desc id="desc">A release build with split debug info writes Dart symbol files. Obfuscation also writes an obfuscation map when the tool asks for one. Apple dSYM files and Android mapping files are separate native artifacts. Crashlytics, Sentry, and Bugsnag each document a Dart symbol upload. Embrace documents an iOS dSYM script and Android mapping upload. A Dart split-debug-info upload command was not found in the Embrace docs checked Nov 4, 2026.</desc>
+  <style>
+    .title { font: 640 30px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .sub { font: 500 16px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .tag { font: 700 12px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0.06em; fill: #6e6a5e; }
+    .name { font: 650 18px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .copy { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #374550; }
+    .small { font: 500 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+  </style>
+  <rect width="1200" height="780" fill="#fbfaf7"/>
+  <text x="48" y="56" class="title">Symbols leave the build, then each vendor has its own upload</text>
+  <text x="48" y="88" class="sub">Checked Nov 4, 2026. Upload the files for the binary you shipped, not an older local build.</text>
+
+  <rect x="48" y="120" width="1104" height="110" rx="16" fill="#e8efea" stroke="#2c5f4f"/>
+  <text x="72" y="158" class="tag">FLUTTER BUILD</text>
+  <text x="72" y="192" class="name">flutter build &lt;target&gt; --split-debug-info=app-debug-info</text>
+  <text x="72" y="216" class="copy">Add --obfuscate when you want obfuscation. Sentry also documents --save-obfuscation-map for issue titles.</text>
+
+  <rect x="48" y="256" width="340" height="150" rx="16" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="68" y="292" class="tag">DART</text>
+  <text x="68" y="328" class="name">.symbols files</text>
+  <text x="68" y="360" class="copy">One file per architecture.</text>
+  <text x="68" y="382" class="copy">Unique to that build.</text>
+
+  <rect x="430" y="256" width="340" height="150" rx="16" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="450" y="292" class="tag">APPLE</text>
+  <text x="450" y="328" class="name">dSYM</text>
+  <text x="450" y="360" class="copy">Native frames. Crashlytics can</text>
+  <text x="450" y="382" class="copy">generate Flutter dSYMs on Apple.</text>
+
+  <rect x="812" y="256" width="340" height="150" rx="16" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="832" y="292" class="tag">ANDROID</text>
+  <text x="832" y="328" class="name">mapping.txt</text>
+  <text x="832" y="360" class="copy">R8 or ProGuard names for</text>
+  <text x="832" y="382" class="copy">Java and Kotlin frames.</text>
+
+  <rect x="48" y="432" width="260" height="200" rx="16" fill="#ffffff" stroke="#2c5f4f"/>
+  <text x="68" y="468" class="tag">CRASHLYTICS</text>
+  <text x="68" y="502" class="name">firebase CLI</text>
+  <text x="68" y="534" class="copy">Android: crashlytics:symbols:upload</text>
+  <text x="68" y="558" class="copy">before the obfuscated crash.</text>
+  <text x="68" y="590" class="small">Apple: auto dSYM on Flutter 3.12+</text>
+
+  <rect x="328" y="432" width="260" height="200" rx="16" fill="#ffffff" stroke="#2c5f4f"/>
+  <text x="348" y="468" class="tag">SENTRY</text>
+  <text x="348" y="502" class="name">sentry_dart_plugin</text>
+  <text x="348" y="534" class="copy">flutter pub run sentry_dart_plugin</text>
+  <text x="348" y="558" class="copy">after the build. Auth token in env.</text>
+  <text x="348" y="590" class="small">Plugin example pin: ^3.4.0</text>
+
+  <rect x="608" y="432" width="260" height="200" rx="16" fill="#ffffff" stroke="#2c5f4f"/>
+  <text x="628" y="468" class="tag">BUGSNAG</text>
+  <text x="628" y="502" class="name">bugsnag-cli</text>
+  <text x="628" y="534" class="copy">upload dart --api-key=KEY</text>
+  <text x="628" y="558" class="copy">app-debug-info/</text>
+  <text x="628" y="590" class="small">Also upload native dSYMs and maps.</text>
+
+  <rect x="888" y="432" width="264" height="200" rx="16" fill="#fff2dc" stroke="#e3b762"/>
+  <text x="908" y="468" class="tag">EMBRACE</text>
+  <text x="908" y="502" class="name">dSYM script</text>
+  <text x="908" y="534" class="copy">iOS run.sh is documented.</text>
+  <text x="908" y="558" class="copy">Android mapping upload is too.</text>
+  <text x="908" y="590" class="small">No Dart symbol command found.</text>
+
+  <text x="48" y="672" class="small">Crashlytics Apple auto-upload needs Flutter 3.12.0+ and the Crashlytics Flutter plugin 3.3.4+. Android upload needs Firebase CLI 11.9.0+.</text>
+  <text x="48" y="698" class="small">Embrace artifact settings list dSYMs, ProGuard/R8, NDK symbols, and web source maps. They do not list a Dart --split-debug-info file.</text>
+  <text x="48" y="724" class="small">Sources: Firebase Crashlytics Flutter get-started, Sentry Dart plugin docs, Bugsnag upload Dart docs, Embrace Flutter install and artifact settings. Nov 4, 2026.</text>
+</svg>

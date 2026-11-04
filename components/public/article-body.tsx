@@ -33,6 +33,22 @@ const articleImageDimensions: Record<
     height: 780,
     width: 1200,
   },
+  "/content-visuals/articles/flutter-crash-reporting-cover.svg": {
+    height: 780,
+    width: 1200,
+  },
+  "/content-visuals/articles/flutter-crash-reporting-error-paths.svg": {
+    height: 780,
+    width: 1200,
+  },
+  "/content-visuals/articles/flutter-crash-reporting-paid-entry.svg": {
+    height: 720,
+    width: 1200,
+  },
+  "/content-visuals/articles/flutter-crash-reporting-symbol-upload.svg": {
+    height: 780,
+    width: 1200,
+  },
   "/content-visuals/articles/best-crash-reporting-tools-crashlytics-event.webp":
     {
       height: 1264,
@@ -147,6 +163,7 @@ const articleImageDimensions: Record<
 
 const priorityArticleImages = new Set([
   "/content-visuals/articles/adapty-vs-superwall-cover.webp",
+  "/content-visuals/articles/flutter-crash-reporting-cover.svg",
 ]);
 
 export function ArticleBody({ blocks }: ArticleBodyProps) {

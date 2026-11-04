@@ -1044,7 +1044,7 @@ try {
           name: "Crash Reporting",
           slug: "crash-reporting",
           description:
-            "Monitor crashes, errors, regressions, and production quality so releases stay trustworthy after app store approval. Ranked shortlist: /guides/best-crash-reporting-tools-mobile.",
+            "Monitor crashes, errors, regressions, and production quality so releases stay trustworthy after app store approval. Ranked shortlist: /guides/best-crash-reporting-tools-mobile. Flutter: [Flutter crash reporting tools](/guides/flutter-crash-reporting).",
           sort_order: 50,
           status: "published",
           seo_description:
@@ -2709,6 +2709,8 @@ Crashlytics is free on both Firebase plans, Spark and Blaze, with no paid tier t
 
 For a solo launch, do not install both by default. Pick one owner for crashes, upload the symbols for every release, and make sure a test crash reaches the dashboard before the first external build.
 
+A Flutter app also has Dart errors, native crashes, and obfuscation maps to account for. That comparison is [Flutter crash reporting tools](/guides/flutter-crash-reporting).
+
 ![Two-column comparison of Sentry and Firebase Crashlytics, showing Sentry spanning mobile, backend, and web while Crashlytics focuses on mobile crashes inside the Firebase console.](/content-visuals/articles/sentry-vs-crashlytics-comparison.svg "Sentry spans mobile, backend, and web errors; Crashlytics is mobile-first inside the Firebase console.")
 
 ![Firebase Crashlytics dashboard filtered to open non-fatal issues, with an Issues table showing one example issue.](/content-visuals/articles/firebase-crashlytics-nonfatal-filter.png "Crashlytics can filter the dashboard and Issues table to open non-fatal reports.")
@@ -2946,6 +2948,8 @@ Readable Android stacks need the mapping file. The Crashlytics Gradle plugin upl
 
 For a Firebase Android app, Crashlytics keeps crash and ANR triage in the console you already open. For an Android app with a backend, or a React Native app, Sentry is the tool in this category with an official React Native SDK and one issue list across those surfaces. Flutter is documented for both.
 
+The Flutter packages, free tiers, and symbol upload are in [Flutter crash reporting tools](/guides/flutter-crash-reporting).
+
 The install steps, release names, and alert habit live in the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps).
 
 ![Firebase Crashlytics dashboard filtered to open non-fatal issues.](/content-visuals/articles/best-crash-reporting-tools-crashlytics-issues.webp "Crashlytics groups reports into an Issues table. This screenshot is Google's codelab, not our app.")
@@ -3026,6 +3030,259 @@ Last checked: Oct 20, 2026.`,
           human_reviewed: true,
           ai_assisted: true,
           published_at: "2026-10-20T15:00:00.000Z",
+        },
+        {
+          title:
+            "Flutter crash reporting tools (2026): Crashlytics, Sentry, Bugsnag, Embrace",
+          slug: "flutter-crash-reporting",
+          subtitle:
+            "Dart errors, native crashes, and obfuscation maps are a different job from a native-only crash tool.",
+          excerpt:
+            "Crashlytics, Sentry, Bugsnag, and Embrace on Flutter: what each SDK captures, the pub.dev package, free-tier limits, and symbol upload. Checked Nov 4, 2026.",
+          body_markdown: `## Short answer
+
+![Four jobs a Flutter crash report has to cover: Dart framework errors, async Dart errors, native crashes, and Android ANRs, plus a separate symbol upload.](/content-visuals/articles/flutter-crash-reporting-cover.svg "Dart framework errors, async Dart errors, native crashes, and Android ANRs are separate hooks. Symbol upload is a build step.")
+
+Pick the Flutter crash tool that matches the stack you already run, then upload symbols before you trust a stack trace. As of November 2026, four vendors publish a Flutter SDK with a documented Dart path and a public pricing page: Firebase Crashlytics, Sentry, Bugsnag, and Embrace.
+
+If the app is already a Firebase project, use [Firebase Crashlytics](/tools/firebase). The package is \`firebase_crashlytics\` (6.0.1 on pub.dev, checked Nov 4, 2026). Crashlytics is a no-cost product on both the Spark and Blaze plans. There is no Crashlytics paid tier. Custom logging is still limited to 64 kB. Checked Nov 4, 2026, on the [Firebase pricing page](https://firebase.google.com/pricing) and the [pricing plans](https://firebase.google.com/docs/projects/billing/firebase-pricing-plans).
+
+If crashes also need to sit with a backend or a web app, use [Sentry](/tools/sentry). The package is \`sentry_flutter\` (10.3.0 on pub.dev, checked Nov 4, 2026). The Developer plan is $0 for 1 user and includes 5,000 errors, 5 GB of logs, 5 GB of application metrics, 5 million spans, 50 replays, and 1 GB of attachments a month, with a 30-day lookback. Team, the paid entry, is $26 a month when billed annually ($312 a year). The same page's structured data lists a monthly Team price of $29. Checked Nov 4, 2026, on [Sentry pricing](https://sentry.io/pricing/).
+
+Bugsnag (\`bugsnag_flutter\`, 4.3.0 on pub.dev, checked Nov 4, 2026) has a Free plan at $0 for 1 user, with 7,500 events, 1 million spans a month, and 7 days of retention. Embrace (\`embrace\`, 4.9.0 on pub.dev, checked Nov 4, 2026) has a Free plan at $0 for up to 1 million sessions a year and 5 users, with 3 days of event retention. Pro is $0.80 per 1,000 sessions with a minimum of $80 a month. Checked Nov 4, 2026, on [Bugsnag pricing](https://www.bugsnag.com/pricing/) and [Embrace pricing](https://embrace.io/pricing/).
+
+The native shortlist in the [crash reporting category](/categories/crash-reporting) stays at [crash reporting tools for mobile apps](/guides/best-crash-reporting-tools-mobile). That page ranks the two tools the category lists. This page is the Flutter decision, including Bugsnag and Embrace, which have no page in that category. The scope choice between Sentry and Crashlytics is [Sentry vs Firebase Crashlytics for mobile apps](/comparisons/sentry-vs-firebase-crashlytics-mobile-apps). The install habit for a launch, including release names and alerts, is the [crash reporting setup guide](/guides/crash-reporting-setup-indie-mobile-apps).
+
+> [!NOTE] Solo builder scope
+> This guide is for one developer choosing one crash reporter for a Flutter app on iOS and Android. Prices and SDK behavior are the vendors' own pages, checked Nov 4, 2026. It does not claim a hands-on install of these SDKs.
+
+## Two kinds of failure
+
+A Flutter app fails in two places. Dart code throws inside the framework or inside a Future. Native code crashes in Kotlin, Swift, Objective-C, or C, and Android can also record an Application Not Responding (ANR) when the main thread stays blocked. A plugin that only listens to one of those hooks will show a clean dashboard while the other class of failure never arrives.
+
+![Diagram of Dart framework errors, async Dart errors, and native crashes or ANRs reaching one Flutter plugin, with symbol upload required before the dashboard can name methods.](/content-visuals/articles/flutter-crash-reporting-error-paths.svg "Framework throws use FlutterError.onError. Async errors use PlatformDispatcher.onError. Native crashes use the bundled Android or Apple SDK.")
+
+The Dart hooks are named, and they are not interchangeable:
+
+- \`FlutterError.onError\` receives errors the Flutter framework already caught, including many throws from widget code.
+- \`PlatformDispatcher.instance.onError\` receives asynchronous errors the framework did not catch. Sentry's usage page says the SDK installs this handler on Flutter 3.3 and higher, and used \`runZonedGuarded\` on older Flutter. Checked Nov 4, 2026, on [Sentry usage for Flutter](https://docs.sentry.io/platforms/dart/guides/flutter/usage/).
+- A native crash does not pass through either Dart callback. The Flutter plugin has to ship the vendor's Android and Apple SDKs, and those SDKs report the crash, often on the next launch.
+
+ANRs are a third native signal. Firebase's Flutter get-started says Crashlytics then monitors crashes and, on Android, non-fatal errors and ANRs. The Crashlytics FAQ says ANR collection uses \`getHistoricalProcessExitReasons\`, which exists on Android 11 and higher, and that those ANRs are sent the next time the app starts. Checked Nov 4, 2026, on the [Flutter get-started](https://firebase.google.com/docs/crashlytics/flutter/get-started) (page updated 2026-11-03 UTC) and the [Crashlytics FAQ](https://firebase.google.com/docs/crashlytics/troubleshooting).
+
+That split is why a general iOS list is the wrong page for a Flutter query. The native list can tell you to upload a dSYM. It does not tell you which pub.dev package records a Dart exception, or which flag writes the Dart symbol file.
+
+## Free tiers and the first paid month
+
+![Bar chart of published paid entry prices: Crashlytics at $0 with no paid tier, Sentry Team at $26 a month when billed annually, and Embrace Pro at an $80 a month minimum. Bugsnag is not plotted.](/content-visuals/articles/flutter-crash-reporting-paid-entry.svg "Crashlytics has no paid tier. Sentry Team is $26 a month on annual billing. Embrace Pro has an $80 a month minimum. Bugsnag does not print a fixed paid dollar amount.")
+
+The chart plots published dollar entry prices only. Crashlytics stays at $0 because there is no paid Crashlytics plan. Sentry's paid entry is the Team plan at $26 a month when billed annually. Embrace's paid entry is a minimum of $80 a month, and usage still bills at $0.80 per 1,000 sessions. Bugsnag's Free plan is $0, but Select and Preferred are sliders. The static pricing HTML prints "STARTING AT $0" and does not include a dollar amount for any event tier, so this guide does not treat that label as a paid price. Checked Nov 4, 2026.
+
+Free allowances are not one unit, so they are not on the same bar. Sentry meters errors. Bugsnag meters events, which its pricing page defines as an unhandled exception or a handled exception you choose to report. Embrace meters sessions per year. Crashlytics does not publish an error cap. Comparing "5,000" with "1 million" without the unit would be a false chart.
+
+:::comparison Flutter crash tools (checked Nov 4, 2026)
+| Decision | Firebase Crashlytics | Sentry | Bugsnag | Embrace |
+| --- | --- | --- | --- | --- |
+| pub.dev package | \`firebase_crashlytics\` 6.0.1, published by firebase.google.com. Checked Nov 4, 2026. [Package](https://pub.dev/packages/firebase_crashlytics) | \`sentry_flutter\` 10.3.0. Symbol upload uses dev package \`sentry_dart_plugin\` 3.4.0. Checked Nov 4, 2026. [Package](https://pub.dev/packages/sentry_flutter) | \`bugsnag_flutter\` 4.3.0, homepage bugsnag.com. The integration guide still said latest v4.2.1 the same day. Checked Nov 4, 2026. [Package](https://pub.dev/packages/bugsnag_flutter) | \`embrace\` 4.9.0, homepage embrace.io. Checked Nov 4, 2026. [Package](https://pub.dev/packages/embrace) |
+| Dart exceptions | You assign \`FlutterError.onError\` and \`PlatformDispatcher.instance.onError\`. Checked Nov 4, 2026. [Flutter get-started](https://firebase.google.com/docs/crashlytics/flutter/get-started) | \`SentryFlutter.init\` installs the handler: \`PlatformDispatcher.onError\` on Flutter 3.3+, \`runZonedGuarded\` before that. Checked Nov 4, 2026. [Usage](https://docs.sentry.io/platforms/dart/guides/flutter/usage/) | \`bugsnag.start\` then reports unhandled Dart errors. Checked Nov 4, 2026. [Flutter guide](https://docs.bugsnag.com/platforms/flutter/) | \`Embrace.instance.start\` is required to capture Dart errors. Checked Nov 4, 2026. [Install](https://embrace.io/docs/flutter/integration/) |
+| Native crashes | The Flutter plugin reports crashes. A native crash is not the Dart test exception. Checked Nov 4, 2026. [Flutter get-started](https://firebase.google.com/docs/crashlytics/flutter/get-started) | The plugin reports native crashes through the Android and Apple SDKs, including Java, Kotlin, C, C++, Objective-C, and Swift. Checked Nov 4, 2026. [pub.dev](https://pub.dev/packages/sentry_flutter) | Unhandled Dart errors and native Android and iOS crashes are automatic. Native crashes send on the next launch. Checked Nov 4, 2026. [Flutter guide](https://docs.bugsnag.com/platforms/flutter/) | Native test crash is \`EmbraceSamples.triggerNativeSdkError\`. The session uploads on a later launch. Checked Nov 4, 2026. [Crash reporting](https://embrace.io/docs/flutter/integration/crash-reporting/) |
+| ANR | Android ANRs, reported on the next start, Android 11 and higher. Checked Nov 4, 2026. [FAQ](https://firebase.google.com/docs/crashlytics/troubleshooting) | Android ANR is on by default, timeout 5 seconds. iOS and macOS app hangs are on by default, timeout 2 seconds. Checked Nov 4, 2026. [ANR docs](https://docs.sentry.io/platforms/dart/guides/flutter/configuration/anr-app-hangs/) | Android ANR detection is on by default. Fatal iOS app hangs are on by default after 2,000 ms. Checked Nov 4, 2026. [Flutter guide](https://docs.bugsnag.com/platforms/flutter/) | ANR monitoring is marked on for the Free plan, mobile only. Checked Nov 4, 2026. [Pricing](https://embrace.io/pricing/) |
+| Free tier | No-cost product on Spark and Blaze. No published error cap. Custom logs limited to 64 kB. Checked Nov 4, 2026. [Pricing plans](https://firebase.google.com/docs/projects/billing/firebase-pricing-plans) | Developer is $0, 1 user, 5,000 errors, 5 GB logs, 5 GB application metrics, 5 million spans, 50 replays, 1 GB attachments, 30-day lookback. Checked Nov 4, 2026. [Pricing](https://sentry.io/pricing/) | Free is $0, 1 user, 7,500 events, 1 million spans a month, 7-day retention. Checked Nov 4, 2026. [Pricing](https://www.bugsnag.com/pricing/) | Free is $0, up to 1 million sessions a year, up to 5 users, 3-day event retention. Checked Nov 4, 2026. [Pricing](https://embrace.io/pricing/) |
+| Paid entry | No Crashlytics paid tier. Other Firebase or Google Cloud products in the same project can still bill. Checked Nov 4, 2026. [Pricing](https://firebase.google.com/pricing) | Team is $26 a month billed annually ($312 a year). Structured data lists monthly Team at $29. Includes 50,000 errors. Checked Nov 4, 2026. [Pricing](https://sentry.io/pricing/) | Select starts its event slider at 50,000 events a month, Preferred at 100,000. No fixed dollar was printed in the page HTML. Checked Nov 4, 2026. [Pricing](https://www.bugsnag.com/pricing/) | Pro is $0.80 per 1,000 sessions, minimum $80 a month, up to 10 users, 14-day event retention. Checked Nov 4, 2026. [Pricing](https://embrace.io/pricing/) |
+| Symbol upload | Android: \`firebase crashlytics:symbols:upload\` with Firebase CLI 11.9.0+. Apple: automatic Flutter dSYM on Flutter 3.12.0+ and plugin 3.3.4+. Checked Nov 4, 2026. [Flutter get-started](https://firebase.google.com/docs/crashlytics/flutter/get-started) | \`sentry_dart_plugin\` after the build. Obfuscated titles need \`--save-obfuscation-map\`. Checked Nov 4, 2026. [Dart plugin](https://docs.sentry.io/platforms/dart/guides/flutter/debug-symbols/dart-plugin/) | \`bugsnag-cli upload dart\` for \`--split-debug-info\` files, plus native dSYMs and Android maps. Checked Nov 4, 2026. [Upload Dart](https://docs.bugsnag.com/build-integrations/bugsnag-cli/upload-dart/) | iOS dSYM run script is documented. Android mapping upload is documented. A Dart symbol command was not on the docs pages checked. [Install](https://embrace.io/docs/flutter/integration/) |
+:::
+
+Use one tool. A second SDK duplicates the dashboard, the alert stream, and the symbol upload, and it still reports many of the same failures. The setup guide makes the same call for a native app.
+
+## Firebase Crashlytics
+
+Choose Crashlytics when the Flutter app already has a Firebase project. You get crash reports in the console you already open, and you do not add a second vendor to the privacy label for crash reporting alone. Do not create a Firebase project only to gain Crashlytics if the rest of the app is staying off Google. In that case Sentry or Bugsnag is the smaller commitment.
+
+The Flutter get-started, updated 2026-11-03 UTC, is three steps. Add the packages, run \`flutterfire configure\`, then assign the two Dart handlers. Breadcrumb logs that show screens before a crash, a non-fatal, or an ANR need Google Analytics in the Firebase project, which means also adding \`firebase_analytics\`. Checked Nov 4, 2026.
+
+Fatal Dart reports are sent without waiting for the next launch. Non-fatal reports are written to disk and sent with the next fatal report or when the app restarts. Crashlytics stores the most recent eight recorded non-fatal exceptions, and that count resets when a fatal exception is sent. Checked Nov 4, 2026, on [customize crash reports for Flutter](https://firebase.google.com/docs/crashlytics/flutter/customize-crash-reports).
+
+Symbol upload is the step that makes an obfuscated build readable. If you pass \`--split-debug-info\`, and optionally \`--obfuscate\`:
+
+- On Apple platforms, Flutter 3.12.0 or later and the Crashlytics Flutter plugin 3.3.4 or later can generate and upload Flutter symbols as dSYM files.
+- On Android, upload the debug symbols with Firebase CLI 11.9.0 or later before you report a crash from an obfuscated build: \`firebase crashlytics:symbols:upload --app=FIREBASE_APP_ID PATH/TO/symbols\`. The app id is the Firebase Android app id, the \`mobilesdk_app_id\` value, not the package name. The path is the same directory you passed to \`--split-debug-info\`.
+
+The forced test in that guide is a button that throws \`Exception()\`. Open the Crashlytics dashboard under DevOps and Engagement. The page says to enable debug logging if the report is still missing after five minutes.
+
+## Sentry
+
+Choose Sentry when the Flutter app is one surface among several. The same project can hold the app, an API, and a marketing site, which is the case the [Sentry comparison](/comparisons/sentry-vs-firebase-crashlytics-mobile-apps) already makes for native apps. The Flutter-specific cost is the SDK floor and the symbol plugin.
+
+The current Flutter docs are written for Sentry Flutter SDK v10. They require Flutter 3.44.0 and Dart 3.12.0 or later, Android \`minSdk\` 26 or higher, and iOS 15.0 or macOS 12.0 or later, with Swift Package Manager. From v10.0.0 the iOS and macOS native SDKs ship through Swift Package Manager, and the plugin does not support CocoaPods. Checked Nov 4, 2026, on [Sentry for Flutter](https://docs.sentry.io/platforms/dart/guides/flutter/) and the [\`sentry_flutter\` package page](https://pub.dev/packages/sentry_flutter). If the app is below those floors, read the migration guide before you upgrade. This page does not restate older SDK requirements.
+
+\`SentryFlutter.init\` is the setup. Pass the DSN and an \`appRunner\`. You do not also assign \`FlutterError.onError\` for the default path. The SDK already captures framework errors, and it already installs \`PlatformDispatcher.onError\` on current Flutter. Use \`Sentry.runZonedGuarded\` when you need your own zone, including the web zone-mismatch case the troubleshooting page documents. Checked Nov 4, 2026.
+
+ANR and app hang detection are on by default. Android uses a 5 second timeout. iOS and macOS use a 2 second app-hang timeout. Frames in those events can be Dart, Java, Kotlin, Swift, Objective-C, or C, so the matching debug file still has to be uploaded. Checked Nov 4, 2026, on the [ANR and app hang page](https://docs.sentry.io/platforms/dart/guides/flutter/configuration/anr-app-hangs/).
+
+For symbols, add \`sentry_dart_plugin\` as a dev dependency. The docs example uses \`sentry_dart_plugin: ^3.4.0\`, which matched the pub.dev version on Nov 4, 2026. Set \`SENTRY_AUTH_TOKEN\` in the environment, not in the repo. Build with obfuscation when you want it:
+
+\`flutter build <target> --obfuscate --split-debug-info=<output-directory> --extra-gen-snapshot-options=--save-obfuscation-map=build/app/obfuscation.map.json\`
+
+Point \`dart_symbol_map_path\` at that map, then run \`flutter pub run sentry_dart_plugin\`. Without \`--split-debug-info\` and \`--obfuscate\`, Dart stacks can still be readable. Sentry still recommends the plugin so native frames, such as iOS frames, can be named. Checked Nov 4, 2026, on the [Dart plugin page](https://docs.sentry.io/platforms/dart/guides/flutter/debug-symbols/dart-plugin/).
+
+The wizard can add a sample exception that fires on startup. Run the app, confirm the issue, then remove that line so it does not report on every launch. Developer plan limits still apply: 5,000 errors a month and one user. A second person, or a noisy release, is the move to Team at $26 a month on annual billing (checked Nov 4, 2026).
+
+## Bugsnag
+
+Choose Bugsnag when you want crash reporting outside Firebase and outside Sentry, and you can live with a short free retention window. The Free plan is $0 for one user. It includes error and performance monitoring, 7,500 events, 1 million spans a month, and 7 days of data retention. Paid plans on the compare table list 60 days. Select adds unlimited users. Preferred adds the stability and segmentation features on that table. Enterprise is contact sales. Checked Nov 4, 2026, on [Bugsnag pricing](https://www.bugsnag.com/pricing/).
+
+The event slider for Select begins at 50,000 monthly events. Preferred begins at 100,000. Because the page does not print a dollar next to those tiers in the HTML fetched on Nov 4, 2026, this guide stops at the free allowance and the slider floors. Recheck the pricing page in a browser before you budget a paid plan. A 14-day trial runs on the Enterprise plan, with no charge until the trial ends if you pick a plan during it. Checked Nov 4, 2026, on the [billing docs](https://docs.bugsnag.com/product/plans-and-billing/).
+
+Install with \`flutter pub add bugsnag_flutter\`. On Nov 4, 2026 the pub.dev API listed 4.3.0, published Nov 3, 2026. The Flutter integration guide's "latest version" line still said v4.2.1. Trust the resolver, then confirm the version you locked.
+
+Start the client before \`runApp\`:
+
+\`await bugsnag.start(apiKey: 'your-api-key');\`
+
+After that, unhandled Dart errors and native Android and iOS crashes report automatically. Dart errors and handled errors can send during the session. Native crashes, ANRs, and fatal app hangs send on the next launch. On iOS, crashes are not reported while a debugger is attached. ANRs are on by default and are unlikely in Dart code. They show up from native Android components. Fatal iOS hangs use a 2,000 ms default. Checked Nov 4, 2026, on the [Flutter integration guide](https://docs.bugsnag.com/platforms/flutter/).
+
+If you build with \`--split-debug-info\`, upload every \`.symbols\` file for that build. Bugsnag's CLI does it in one command: \`bugsnag-cli upload dart --api-key=YOUR_API_KEY app-debug-info/\`. Uploaded Flutter symbols apply to new events, not to events already stored. Native iOS still needs dSYMs. Android still needs mapping files for R8 or ProGuard and NDK symbols when you ship native code. Checked Nov 4, 2026, on [showing full stacktraces](https://docs.bugsnag.com/platforms/flutter/showing-full-stacktraces/) and [upload Dart symbols](https://docs.bugsnag.com/build-integrations/bugsnag-cli/upload-dart/).
+
+## Embrace
+
+Choose Embrace when you want session timelines with the crash, and you can accept a 3-day event retention on the free plan. That window is the practical limit. A crash you notice next week is already gone from the free event store. The Free plan is $0, up to 1 million sessions a year, up to 5 users, with errors, exceptions, crashes, and ANR monitoring marked on. Past either cap, the pricing FAQ says you cannot add users or ingest more data unless you upgrade. Pro is $0.80 per 1,000 sessions with a minimum spend of $80 a month, up to 10 users, and 14 days of event retention. Checked Nov 4, 2026, on [Embrace pricing](https://embrace.io/pricing/).
+
+The package is \`embrace\`. \`Embrace.instance.start\` has to wrap \`main\`. The install doc says that call is what captures Dart errors. iOS also initializes Embrace in \`AppDelegate\` with the Flutter platform option, and it uploads dSYMs from a run script. Android applies the \`embrace-swazzler\` Gradle plugin, an \`embrace-config.json\` with \`"app_framework": "flutter"\`, and \`Embrace.getInstance().start\` in an \`Application\` subclass. Checked Nov 4, 2026, on the [Flutter install guide](https://embrace.io/docs/flutter/integration/).
+
+Two dates on that page matter for a solo iOS build. Embrace Flutter SDK 4.9.0 supports Swift Package Manager, and the doc says that support needs Flutter 3.44.0 or later. CocoaPods trunk stops accepting new Podspecs on December 2, 2026. After that date, new Embrace iOS versions are documented as Swift Package Manager only. Checked Nov 4, 2026.
+
+The documented test crash is \`EmbraceSamples.triggerNativeSdkError()\` from \`package:embrace/embrace_samples.dart\`. Run it with no debugger attached, including Flutter DevTools. After the crash, launch the app again. Embrace sessions upload on a later launch. Backgrounding the app is the separate step the install guide uses to flush a normal session. Checked Nov 4, 2026, on [collect your first crash report](https://embrace.io/docs/flutter/integration/crash-reporting/).
+
+Symbol files are the gap to verify before you adopt Embrace for an obfuscated Flutter build. The install guide requires an iOS dSYM upload. The artifact settings list dSYMs, ProGuard and R8 mappings, NDK symbols, and web source maps. They do not list a Dart \`--split-debug-info\` file, and this guide did not find an upload command for one on the docs pages checked Nov 4, 2026. If you ship with \`--obfuscate\`, confirm that path with Embrace before you treat Dart stacks as readable. Do not assume the iOS dSYM script covers Dart symbols.
+
+## Other official Flutter packages
+
+These packages exist on pub.dev and name a vendor as the publisher. Their free-tier limits and starting prices were not on a vendor pricing page this guide could verify on Nov 4, 2026, so they are not in the table and not in the chart.
+
+- \`datadog_flutter_plugin\` 3.7.0, homepage the DataDog \`dd-sdk-flutter\` repository. The package page describes Flutter bindings for the Datadog mobile SDKs. Checked Nov 4, 2026. [Package](https://pub.dev/packages/datadog_flutter_plugin)
+- \`newrelic_mobile\` 1.3.5, homepage the New Relic \`newrelic-flutter-agent\` repository. The package page says it captures Dart errors and uses the native New Relic agents. Checked Nov 4, 2026. [Package](https://pub.dev/packages/newrelic_mobile)
+- \`rollbar_flutter\` 1.5.2, homepage rollbar.com. The package page says \`RollbarFlutter.run\` reports unhandled errors. Checked Nov 4, 2026. [Package](https://pub.dev/packages/rollbar_flutter)
+- \`luciq_flutter\` 19.13.0, updated Nov 4, 2026, homepage luciq.ai. The package page calls it the official Luciq SDK and lists crash reporting. \`instabug_flutter\` 16.0.4, homepage instabug.com, was last published Nov 27, 2025. Checked Nov 4, 2026. [Luciq](https://pub.dev/packages/luciq_flutter)
+
+If you need a price before you add one of these, read that vendor's pricing page the same day. A package name is not a free tier.
+
+## Symbol upload
+
+![Release build with split debug info, then separate uploads for Crashlytics, Sentry, Bugsnag, and Embrace.](/content-visuals/articles/flutter-crash-reporting-symbol-upload.svg "Dart symbol files, Apple dSYMs, and Android mapping files leave the build. Each vendor documents a different upload.")
+
+\`--split-debug-info\` writes Dart symbols outside the binary. \`--obfuscate\` renames the Dart code and has to be paired with that flag. The dashboard then needs the file that matches the build id of the binary you shipped. A symbol file from yesterday's build does not repair today's crash.
+
+Keep three artifacts distinct:
+
+- Dart \`.symbols\` files from \`--split-debug-info\`, one per architecture.
+- Apple dSYM files for native frames. Crashlytics can also receive Flutter symbols as dSYMs on Apple when the version floor above is met.
+- Android \`mapping.txt\` for R8 or ProGuard names. NDK \`.so\` symbols are a further file if you ship C or C++.
+
+Upload before you call the test crash on an obfuscated build. Bugsnag applies Flutter symbols to new events only. Sentry says a file uploaded after a missing-symbol report can take up to an hour to apply to new events, and existing events are not reprocessed. Checked Nov 4, 2026, on the [Sentry upload page](https://docs.sentry.io/platforms/dart/guides/flutter/data-management/debug-files/upload/).
+
+## Setup checklist and a forced test crash
+
+Do this once, on a release-like build, before the first external tester. The [setup guide](/guides/crash-reporting-setup-indie-mobile-apps) covers release names and the weekly triage habit. The steps here are the Flutter hooks.
+
+- Pick one owner. Crashlytics if Firebase is already in the app. Sentry if the backend or the web app should share the issue list. Bugsnag if you want a non-Firebase crash tool and can work inside 7 days of free retention. Embrace if you want sessions and can work inside 3 days of free event retention, or you already accept the $80 Pro minimum.
+- Add the one package: \`flutter pub add firebase_crashlytics\`, \`sentry_flutter\`, \`bugsnag_flutter\`, or \`embrace\`. For Crashlytics, also run \`flutterfire configure\`. For Sentry, add \`sentry_dart_plugin\` as a dev dependency. For Embrace, finish the iOS \`AppDelegate\` step and the Android Gradle step in the install guide along with the Dart line.
+- Wire Dart errors the way that vendor documents. Crashlytics leaves the two handlers to you.
+
+\`\`\`dart
+import 'dart:ui';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/widgets.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+  runApp(const MyApp());
+}
+\`\`\`
+
+That block is the handler pair from the Crashlytics Flutter get-started, with the imports those calls need. Sentry's equivalent is \`SentryFlutter.init\`, which installs its own handler. Bugsnag's equivalent is \`bugsnag.start\` before \`runApp\`. Embrace's equivalent is \`Embrace.instance.start(() => runApp(const MyApp()))\`. Add \`runZonedGuarded\` yourself only when the vendor still documents it. On current Sentry that is \`Sentry.runZonedGuarded\`, for a custom zone. It is not a fourth required line on the Crashlytics path.
+
+- Build a release or profile binary with the symbol flags you intend to ship. Upload the Dart symbols, the dSYM, and the Android mapping file for that same binary.
+- Force a test with the debugger detached. Crashlytics documents a button that runs \`throw Exception()\`. Sentry's wizard inserts a sample exception. Remove it after the issue appears. Bugsnag reports an unhandled Dart throw after \`bugsnag.start\`, and it sends native crashes on the next launch. Embrace documents \`EmbraceSamples.triggerNativeSdkError()\`, then a fresh launch.
+- Confirm the issue shows a method name, not an obfuscated address, and that the release or version matches the build you uploaded. If the names are missing, the symbol upload missed that build id. Fix the upload before you invite testers.
+
+## Frequently asked questions
+
+### Does Crashlytics catch Dart errors in a Flutter app?
+
+Yes, after you assign the handlers. \`FlutterError.onError\` should call \`FirebaseCrashlytics.instance.recordFlutterFatalError\`. \`PlatformDispatcher.instance.onError\` should call \`recordError\` with \`fatal: true\`. The Flutter get-started documents both. Native crashes still depend on the Android and Apple tooling \`flutterfire configure\` adds, and on symbol upload when the build is obfuscated. Checked Nov 4, 2026.
+
+### Do I still need runZonedGuarded?
+
+Only where the SDK says so. Sentry already runs your init on \`PlatformDispatcher.onError\` for Flutter 3.3 and higher, and on \`runZonedGuarded\` for older Flutter. Use \`Sentry.runZonedGuarded\` when you want a custom zone, which the troubleshooting page uses to avoid a web zone mismatch. Crashlytics, Bugsnag, and Embrace document their own start calls instead of a zone wrapper. Checked Nov 4, 2026.
+
+### What has to be uploaded before an obfuscated stack is readable?
+
+The Dart files produced by \`--split-debug-info\`, plus native symbols. Crashlytics uses \`firebase crashlytics:symbols:upload\` on Android and can upload Flutter dSYMs on Apple when Flutter is 3.12.0 or later and the plugin is 3.3.4 or later. Sentry uses \`sentry_dart_plugin\`, and obfuscated issue titles need the obfuscation map from \`--save-obfuscation-map\`. Bugsnag uses \`bugsnag-cli upload dart\`, and still wants dSYMs and Android mapping files. Embrace documents the iOS dSYM script and Android mapping upload. A Dart symbol upload command was not on the Embrace docs checked Nov 4, 2026.
+
+### Is there a free Flutter crash reporter that is not Firebase?
+
+Yes. Sentry's Developer plan is $0 for one user and 5,000 errors a month. Bugsnag's Free plan is $0 for one user, 7,500 events a month, and 7 days of retention. Embrace's Free plan is $0 up to 1 million sessions a year, 5 users, and 3 days of event retention. Each figure was checked Nov 4, 2026 on that vendor's pricing page. The smaller retention windows are the constraint, not the $0 label.
+
+### Should a solo Flutter app run two crash SDKs?
+
+No. One SDK, one symbol upload, and one test crash are enough before the first external build. A second SDK adds a second dashboard and a second place for symbols to go missing. Use the [setup guide](/guides/crash-reporting-setup-indie-mobile-apps) for the release-name habit after the tool is chosen.
+
+### How long does the free plan keep a crash?
+
+Sentry's Developer column lists a 30-day lookback. Bugsnag's Free tier lists 7 days of data retention, and the paid compare columns list 60 days. Embrace's Free plan lists 3 days of event retention, and Pro lists 14 days. Crashlytics does not publish an error-retention window on the pricing page checked Nov 4, 2026. Check the dashboard against a crash you sent on purpose before you assume last month is still there.
+
+## Source checks
+
+Product, package, and pricing claims were checked against official pages on Nov 4, 2026:
+
+- Firebase pricing: https://firebase.google.com/pricing
+- Firebase pricing plans, including the 64 kB Crashlytics logging limit: https://firebase.google.com/docs/projects/billing/firebase-pricing-plans
+- Crashlytics Flutter get-started, page updated 2026-11-03 UTC: https://firebase.google.com/docs/crashlytics/flutter/get-started
+- Crashlytics Flutter customize reports: https://firebase.google.com/docs/crashlytics/flutter/customize-crash-reports
+- Crashlytics FAQ, Android 11 ANRs: https://firebase.google.com/docs/crashlytics/troubleshooting
+- \`firebase_crashlytics\` 6.0.1: https://pub.dev/packages/firebase_crashlytics
+- Sentry pricing, including Team at $26 a month annually, $312 a year, and $29 a month in structured data: https://sentry.io/pricing/
+- Sentry for Flutter, SDK v10 floors: https://docs.sentry.io/platforms/dart/guides/flutter/
+- Sentry Flutter usage and \`runZonedGuarded\`: https://docs.sentry.io/platforms/dart/guides/flutter/usage/
+- Sentry Flutter ANR and app hangs: https://docs.sentry.io/platforms/dart/guides/flutter/configuration/anr-app-hangs/
+- Sentry Dart plugin: https://docs.sentry.io/platforms/dart/guides/flutter/debug-symbols/dart-plugin/
+- \`sentry_flutter\` 10.3.0 and \`sentry_dart_plugin\` 3.4.0: https://pub.dev/packages/sentry_flutter
+- Bugsnag pricing: https://www.bugsnag.com/pricing/
+- Bugsnag billing docs: https://docs.bugsnag.com/product/plans-and-billing/
+- Bugsnag Flutter guide: https://docs.bugsnag.com/platforms/flutter/
+- Bugsnag Dart symbol upload: https://docs.bugsnag.com/build-integrations/bugsnag-cli/upload-dart/
+- \`bugsnag_flutter\` 4.3.0: https://pub.dev/packages/bugsnag_flutter
+- Embrace pricing: https://embrace.io/pricing/
+- Embrace Flutter install: https://embrace.io/docs/flutter/integration/
+- Embrace Flutter crash reporting: https://embrace.io/docs/flutter/integration/crash-reporting/
+- Embrace artifact uploads: https://embrace.io/docs/product/settings/app-settings/dsym-symbols/
+- \`embrace\` 4.9.0: https://pub.dev/packages/embrace
+
+The cover, the error-path diagram, the price chart, and the symbol-upload diagram are owned graphics. Prices, quotas, and SDK floors change. Verify them again before you buy a paid tier.
+
+Last checked: Nov 4, 2026.
+`,
+          author: "IndieAppStack",
+          status: "published",
+          content_type: "guide",
+          primary_category_id: categories.get("crash-reporting").id,
+          seo_title:
+            "Flutter crash reporting tools (2026): Crashlytics, Sentry, Bugsnag, Embrace",
+          seo_description:
+            "Crashlytics if the Flutter app is on Firebase. Sentry if crashes cross into the backend. Bugsnag and Embrace free tiers, checked Nov 4, 2026.",
+          human_reviewed: true,
+          ai_assisted: true,
+          published_at: "2026-11-04T15:00:00.000Z",
         },
         {
           title: "A privacy-friendly analytics starter stack",
@@ -3685,7 +3942,8 @@ Tool facts in this guide were checked against official pages on 2026-07-01:
 - Browse the [crash reporting category](/categories/crash-reporting).
 - Compare [Sentry](/tools/sentry) and [Firebase](/tools/firebase).
 - Use the [mobile app launch stack checklist](/guides/mobile-app-launch-stack-checklist) before public launch.
-- Pair this with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app) if the launch depends on paid subscriptions.`,
+- Pair this with the [subscription MVP stack guide](/guides/subscription-mvp-stack-solo-ios-app) if the launch depends on paid subscriptions.
+- For a Flutter app, compare SDKs in [Flutter crash reporting tools](/guides/flutter-crash-reporting).`,
           author: "IndieAppStack",
           status: "published",
           content_type: "guide",
@@ -4454,6 +4712,18 @@ Last checked: Sep 24, 2026.
         tool_id: tools.get("emerge-tools").id,
         relationship: "supporting",
         sort_order: 30,
+      },
+      {
+        article_id: articles.get("flutter-crash-reporting").id,
+        tool_id: tools.get("firebase").id,
+        relationship: "recommended",
+        sort_order: 10,
+      },
+      {
+        article_id: articles.get("flutter-crash-reporting").id,
+        tool_id: tools.get("sentry").id,
+        relationship: "recommended",
+        sort_order: 20,
       },
       {
         article_id: articles.get("warp-terminal-for-indie-mobile-developers")
