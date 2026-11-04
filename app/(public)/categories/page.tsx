@@ -12,7 +12,7 @@ export const metadata: Metadata = createSeoMetadata({
   title: "Tool categories",
 });
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export default async function CategoriesPage() {
   const { categories } = await getHomepageData();

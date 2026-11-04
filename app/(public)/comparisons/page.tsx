@@ -13,7 +13,7 @@ export const metadata: Metadata = createSeoMetadata({
   title: "Product comparisons",
 });
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export default async function ComparisonsPage() {
   const comparisons = await getComparisonList();

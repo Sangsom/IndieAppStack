@@ -19,7 +19,7 @@ type ToolsPageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = createSeoMetadata({
   description:

@@ -276,7 +276,7 @@ export async function runRevalidation(env = process.env) {
     }
 
     logSafe(
-      "[revalidate] REVALIDATE_SECRET is unset. Skipped cache refresh. Public pages refresh within their one hour cache window.",
+      "[revalidate] REVALIDATE_SECRET is unset. Skipped cache refresh. Public pages refresh within their one day cache window.",
     );
     return;
   }

@@ -26,7 +26,7 @@ type CategoryPageProps = {
   }>;
 };
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 function canonicalUrl(slug: string) {
   return new URL(`/categories/${slug}`, siteConfig.url).toString();

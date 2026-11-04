@@ -27,7 +27,7 @@ type StackPageProps = {
   }>;
 };
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const ANALYTICS_LOCATION = "stacks";
 

@@ -27,7 +27,7 @@ type GuidePageProps = {
   }>;
 };
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 function canonicalUrl(slug: string) {
   return new URL(`/guides/${slug}`, siteConfig.url).toString();

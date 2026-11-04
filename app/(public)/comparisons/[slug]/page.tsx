@@ -38,7 +38,7 @@ function comparisonOgImagePath(slug: string) {
   return null;
 }
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 function canonicalUrl(slug: string) {
   return new URL(`/comparisons/${slug}`, siteConfig.url).toString();

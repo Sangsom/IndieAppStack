@@ -34,7 +34,7 @@ type ToolDetailPageProps = {
   }>;
 };
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const appfiguresTitle = "Appfigures pricing and fit";
 const appfiguresDescription =

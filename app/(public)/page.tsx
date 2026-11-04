@@ -17,7 +17,7 @@ export const metadata: Metadata = createSeoMetadata({
   title: "Choose the right tools for your mobile app",
 });
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 function SectionHeader({
   ctaHref,

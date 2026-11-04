@@ -10,7 +10,7 @@ import {
   getStacksLastReviewedLabel,
 } from "@/lib/stacks/data";
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export const metadata: Metadata = createSeoMetadata({
   description:

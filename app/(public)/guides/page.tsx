@@ -13,7 +13,7 @@ export const metadata: Metadata = createSeoMetadata({
   title: "Guides and articles",
 });
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export default async function GuidesPage() {
   const guides = await getGuideList();
