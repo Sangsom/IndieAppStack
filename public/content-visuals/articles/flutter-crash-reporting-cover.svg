@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+  <title id="title">Four jobs a Flutter crash report has to cover</title>
+  <desc id="desc">A Flutter crash tool has to record Dart framework errors, async Dart errors, native crashes, and Android ANRs, then apply a separate symbol upload before the stack names methods.</desc>
+  <style>
+    .title { font: 640 34px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .sub { font: 500 16px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+    .tag { font: 700 13px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #2c5f4f; letter-spacing: 0.08em; }
+    .name { font: 650 22px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #20241f; }
+    .copy { font: 500 15px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #374550; }
+    .note { font: 500 14px Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #6e6a5e; }
+  </style>
+  <rect width="1200" height="780" fill="#fbfaf7"/>
+  <text x="56" y="64" class="title">A Flutter report is four jobs, not one stack</text>
+  <text x="56" y="98" class="sub">Dart errors and native crashes take different paths. Symbols are a build upload, not an SDK flag.</text>
+
+  <rect x="56" y="140" width="520" height="150" rx="18" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="80" y="176" class="tag">DART FRAMEWORK</text>
+  <text x="80" y="212" class="name">FlutterError.onError</text>
+  <text x="80" y="246" class="copy">Build errors, layout failures, and throws inside the widget tree.</text>
+
+  <rect x="624" y="140" width="520" height="150" rx="18" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="648" y="176" class="tag">ASYNC DART</text>
+  <text x="648" y="212" class="name">PlatformDispatcher.onError</text>
+  <text x="648" y="246" class="copy">Errors the framework does not catch. Older Flutter used a zone.</text>
+
+  <rect x="56" y="316" width="520" height="150" rx="18" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="80" y="352" class="tag">NATIVE</text>
+  <text x="80" y="388" class="name">Kotlin, Swift, and C crashes</text>
+  <text x="80" y="422" class="copy">Caught by the Android or Apple SDK under the Flutter plugin.</text>
+
+  <rect x="624" y="316" width="520" height="150" rx="18" fill="#ffffff" stroke="#e7e2d7"/>
+  <text x="648" y="352" class="tag">ANDROID ANR</text>
+  <text x="648" y="388" class="name">Main thread blocked</text>
+  <text x="648" y="422" class="copy">Reported by the native layer where that SDK documents ANRs.</text>
+
+  <rect x="56" y="492" width="1088" height="168" rx="18" fill="#e8efea" stroke="#2c5f4f"/>
+  <text x="80" y="536" class="tag">SEPARATE UPLOAD</text>
+  <text x="80" y="576" class="name">--split-debug-info, dSYM, and mapping files</text>
+  <text x="80" y="614" class="copy">Obfuscation removes names from the binary. The dashboard only restores them after the matching symbol file is uploaded for that build.</text>
+  <text x="80" y="644" class="note">Checked against vendor Flutter docs, Nov 4, 2026. This diagram does not rank the tools.</text>
+</svg>
