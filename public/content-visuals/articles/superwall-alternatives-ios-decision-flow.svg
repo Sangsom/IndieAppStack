@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1560" viewBox="0 0 1600 1560" role="img" aria-labelledby="title desc">
   <title id="title">Decision flow for choosing a Superwall alternative for an indie iOS app</title>
-  <desc id="desc">Start by checking whether the app already uses RevenueCat and only needs paywall experiments. If so, keep RevenueCat and add Superwall. Otherwise choose by the primary job: RevenueCat for purchase and entitlement truth, Adapty for analytics-led paywall and onboarding experiments, Qonversion when tier or percentage fit drives the choice, or StoreKit 2 for a simple Apple-only app with a small product catalog and no need for remote iteration.</desc>
+  <desc id="desc">Start by checking whether the app already uses RevenueCat and only needs paywall experiments. If so, keep RevenueCat and add Superwall. Otherwise choose by the primary job: RevenueCat for purchase and entitlement truth, Adapty for analytics-led paywall and onboarding experiments, Qonversion when the published percentage meter fits, or StoreKit 2 for a simple Apple-only app. Apphud, Purchasely, and Nami ML are also on the shortlist. Purchasely and Nami ML have no public price.</desc>
   <defs>
     <marker id="arrow-pine" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c5f4f"/>
@@ -28,7 +28,7 @@
     </style>
   </defs>
 
-  <rect width="1600" height="1180" fill="#fbfaf7"/>
+  <rect width="1600" height="1560" fill="#fbfaf7"/>
   <path d="M84 76 H1516" stroke="#e7e2d7" stroke-width="2"/>
   <text x="84" y="122" class="eyebrow">Indie iOS decision area</text>
   <text x="84" y="184" class="title">Choose by the job that must stay reliable</text>
@@ -105,10 +105,10 @@
     <text x="912" y="840" class="route" fill="#2c5f4f">Pricing fit</text>
     <text x="876" y="891" class="product">Qonversion</text>
     <path d="M876 912 H1108" stroke="#e7e2d7" stroke-width="2"/>
-    <text x="876" y="948" class="body">Choose when the available</text>
-    <text x="876" y="974" class="body">tier or percentage meter</text>
-    <text x="876" y="1000" class="body">fits the app better.</text>
-    <text x="876" y="1038" class="note">Verify current pricing.</text>
+    <text x="876" y="948" class="body">Choose when the published</text>
+    <text x="876" y="974" class="body">percentage meter fits</text>
+    <text x="876" y="1000" class="body">the app better.</text>
+    <text x="876" y="1038" class="note">One plan on its pricing page.</text>
   </g>
 
   <g aria-label="StoreKit 2 route">
@@ -124,7 +124,42 @@
     <text x="1258" y="1026" class="body">no remote iteration.</text>
   </g>
 
-  <path d="M84 1120 H1516" stroke="#e7e2d7" stroke-width="2"/>
-  <text x="84" y="1151" class="note">Decision principle: each block owns one job. Recheck current features and pricing before adopting.</text>
-  <text x="1516" y="1151" text-anchor="end" class="note">IndieAppStack · Aug 13, 2026</text>
+  <text x="84" y="1116" class="eyebrow">Also on the shortlist</text>
+
+  <g aria-label="Apphud route">
+    <rect x="84" y="1140" width="448" height="270" rx="7" fill="#ffffff" stroke="#2c5f4f" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <text x="110" y="1184" class="route" fill="#2c5f4f">Published meter</text>
+    <text x="110" y="1234" class="product">Apphud</text>
+    <path d="M110 1256 H506" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="110" y="1294" class="body">Choose when a published</text>
+    <text x="110" y="1320" class="body">percentage and the seat</text>
+    <text x="110" y="1346" class="body">caps fit the team.</text>
+    <text x="110" y="1380" class="note">Confirm the current card.</text>
+  </g>
+
+  <g aria-label="Purchasely route">
+    <rect x="576" y="1140" width="448" height="270" rx="7" fill="#ffffff" stroke="#9a6b23" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <text x="602" y="1184" class="route" fill="#72501c">No public price</text>
+    <text x="602" y="1234" class="product">Purchasely</text>
+    <path d="M602 1256 H998" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="602" y="1294" class="body">No-code paywalls and</text>
+    <text x="602" y="1320" class="body">other in-app screens.</text>
+    <text x="602" y="1346" class="body">Sales demo.</text>
+    <text x="602" y="1380" class="note">No public price.</text>
+  </g>
+
+  <g aria-label="Nami ML route">
+    <rect x="1068" y="1140" width="448" height="270" rx="7" fill="#ffffff" stroke="#6e6a5e" stroke-width="2.5" filter="url(#card-shadow)"/>
+    <text x="1094" y="1184" class="route" fill="#565248">No public price</text>
+    <text x="1094" y="1234" class="product">Nami ML</text>
+    <path d="M1094 1256 H1490" stroke="#e7e2d7" stroke-width="2"/>
+    <text x="1094" y="1294" class="body">Enterprise platform for</text>
+    <text x="1094" y="1320" class="body">large subscriber bases.</text>
+    <text x="1094" y="1346" class="body">Custom annual contract.</text>
+    <text x="1094" y="1380" class="note">No public price.</text>
+  </g>
+
+  <path d="M84 1464 H1516" stroke="#e7e2d7" stroke-width="2"/>
+  <text x="84" y="1504" class="note">Each block owns one job. Purchasely and Nami ML have no public price.</text>
+  <text x="1516" y="1504" text-anchor="end" class="note">IndieAppStack · Oct 29, 2026</text>
 </svg>
